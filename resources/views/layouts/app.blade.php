@@ -23,30 +23,31 @@
         <nav class="navbar navbar-default">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="row">
-                    <div class="col-md-2">
-                        <a class="navbar-brand" href="{{route('home')}}"><img src="{{asset('images/logo.jpg')}}" style="height:50px;" ></a>
-                    </div><!-- /.col-md-10 -->
-                    <div class="menu-tigger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <div class="col-md-10">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="{{route('home')}}" class="selected"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
-                            <li><a href=""><i class="fa fa-th-large" aria-hidden="true"></i>Jobs</a></li>
-                            <li><a href=""><i class="fa fa-user" aria-hidden="true"></i>Professionals</a></li>
-                            <li><a href="" ><i class="fa fa-user" aria-hidden="true"></i>Workers</a></li>
-                            <li><a href="" ><i class="fa fa-user" aria-hidden="true"></i>Maids</a></li>
-                            <li><a href="" ><i class="fa fa-gift" aria-hidden="true"></i>Packages</a></li>
-                            <li><a href="{{route('login')}}"  role="button"><i class="fa fa-lock" aria-hidden="true"></i> Login or Register</a></li>
-                        </ul>
-                    </div><!-- /.col-md-10 -->
-                </div><!-- /.row -->
-            </div><!-- /.container -->
-        </nav>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.php"><img src="{{asset('images/logo.jpg')}}" style="height:50px;" ></a>
+                </div>
 
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{route('home')}}" class="selected"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
+                        <li><a href=""><i class="fa fa-th-large" aria-hidden="true"></i>Jobs</a></li>
+                        <li><a href=""><i class="fa fa-user" aria-hidden="true"></i>Professionals</a></li>
+                        <li><a href="" ><i class="fa fa-user" aria-hidden="true"></i>Workers</a></li>
+                        <li><a href="" ><i class="fa fa-user" aria-hidden="true"></i>Maids</a></li>
+                        <li><a href="" ><i class="fa fa-gift" aria-hidden="true"></i>Packages</a></li>
+                        <li><a href="{{route('login')}}"  role="button"><i class="fa fa-lock" aria-hidden="true"></i> Login or Register</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        
         <main style="padding-top: 70px;">
             @yield('content')
         </main>
@@ -93,9 +94,9 @@
                             <p>Please enter your email address to subscribe to our newsletter</p>
                             <form>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-mail" id="exampleInputEmail1" placeholder="Email-address">
+                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email-address">
                                 </div>
-                                <button type="submit" class="btn btn-submit">Subscribe</button>
+                                <button type="submit" class="btn btn-warning btn-block">Subscribe</button>
                             </form>
 
                         </div>
