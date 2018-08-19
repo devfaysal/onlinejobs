@@ -11666,10 +11666,16 @@ body {
 .form-group .form-changer,
 .select-category {
   background-color: #fff;
-  width: 100%;
-  height: 60px;
+  padding: 25px;
+  font-size: 20px;
   border-radius: 2px;
   color: rgba(0, 0, 0, 0.4);
+}
+
+.search-box-submit {
+  padding: 9px 20px;
+  font-size: 20px;
+  line-height: inherit;
 }
 
 .select-category .select-styled {
@@ -13358,8 +13364,13 @@ p {
 
 /*START Override Bootstrap styles*/
 
+.navbar {
+  margin-bottom: 0;
+}
+
 .navbar-brand {
   height: 70px;
+  padding: 10px 15px;
 }
 
 .navbar-nav {
@@ -13404,14 +13415,6 @@ nav {
 .navbar-default .navbar-nav > li > a.selected {
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
-}
-
-.navbar {
-  margin-bottom: 0;
-  position: absolute;
-  width: 100%;
-  border-radius: 0;
-  z-index: 104;
 }
 
 .nav > li > a {

@@ -10,7 +10,7 @@
                     <form class="form-inline" method="post" id="form1" action="index.php">
                         <div class="form-group">
                             <input type="text" class="form-control form-changer search-box" name="jobs_categories" id="jobs_categories" placeholder="Find Jobs">
-                            <a href="#" class="btn btn-warning" onclick="document.getElementById('form1').submit();">Search</a>
+                            <a href="#" class="btn btn-warning search-box-submit" onclick="document.getElementById('form1').submit();">Search</a>
                             <br />
                         </div> 
                     </form>

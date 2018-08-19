@@ -258,12 +258,16 @@ body {
 .form-group .form-changer,
 .select-category {
     background-color: #fff;
-    width: 100%;
-    height: 60px;
+    padding: 25px;
+    font-size: 20px;
     border-radius: 2px;
     color: rgba(0, 0, 0, .4);
 }
-
+.search-box-submit{
+    padding: 9px 20px;
+    font-size: 20px;
+    line-height: inherit;
+}
 .select-category .select-styled {
     padding: 12px;
     font-family: inherit;
@@ -1775,21 +1779,6 @@ span.per-month {
 ======================================= */
 
 @media all and (max-width: 1020px) {
-
-    // .menu-tigger{
-    //     display: block;
-    // }
-
-    // .navbar-nav {
-    //     position: absolute;
-    //     top: 58px;
-    //     background-color: #fff;
-    //     width: 100%;
-    //     /*display: none;*/
-    // }
-    // .navbar {
-    //     height: 68px;
-    // }
     .caption-fix h1,
     .caption-fix p {
         display: none;
@@ -1931,8 +1920,12 @@ span.per-month {
     height: 35px;
 }
 /*START Override Bootstrap styles*/
+.navbar{
+    margin-bottom: 0;
+}
 .navbar-brand{
     height: 70px;
+    padding: 10px 15px;
 }
 .navbar-nav{
     margin: 0px -15px;
@@ -1967,13 +1960,6 @@ nav {
 .navbar-default .navbar-nav>li>a.selected {
     background-color: rgba(0, 0, 0, .6);
     color: white;
-}
-.navbar {
-    margin-bottom: 0;
-    position: absolute;
-    width: 100%;
-    border-radius: 0;
-    z-index: 104;
 }
 .nav>li>a {
     padding: 0 24px;
