@@ -34,7 +34,7 @@
                     </div>
                     <div class="col-md-10">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="{{route('home')}}"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
+                            <li><a href="{{route('home')}}" class="selected"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
                             <li><a href=""><i class="fa fa-th-large" aria-hidden="true"></i>Jobs</a></li>
                             <li><a href=""><i class="fa fa-user" aria-hidden="true"></i>Professionals</a></li>
                             <li><a href="" ><i class="fa fa-user" aria-hidden="true"></i>Workers</a></li>

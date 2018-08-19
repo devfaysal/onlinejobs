@@ -558,25 +558,6 @@ nav {
     margin-bottom: 15px;
 }
 
-.jobs-in-reach ul li {
-    display: inline-block;
-}
-
-.jobs-in-reach ul li a {
-    display: block;
-    padding: 10px 12px;
-    font-size: 14px;
-    font-weight: 600;
-    background: rgba(0, 0, 0, .06);
-    transition: all .3s ease;
-}
-
-.jobs-in-reach ul li a:hover {
-    background-color: rgba(0, 0, 0, .4);
-    color: white;
-    text-decoration: none;
-}
-
 .location {
     margin-left: 10px;
 }
@@ -1996,4 +1977,35 @@ span.per-month {
     margin: 50px 0;
     background: #eee;
     border-radius: 5px;
+}
+
+/*START Override Bootstrap styles*/
+.text-warning{
+    color: #f0ad4e;
+}
+
+.panel-warning > .panel-heading{
+    color: #fff;
+    background-color: #f0ad4e;
+}
+/*END Override Bootstrap styles*/
+/*Sidebar*/
+
+.jobs-in-reach ul li {
+    display: inline-block;
+}
+.jobs-in-reach ul li a {
+    display: block;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    background: rgba(0, 0, 0, .06);
+    transition: all .3s ease;
+    margin-bottom: 3px;
+    color: #666666;
+}
+.jobs-in-reach ul li a:hover {
+    background-color: rgba(0, 0, 0, .4);
+    color: white;
+    text-decoration: none;
 }

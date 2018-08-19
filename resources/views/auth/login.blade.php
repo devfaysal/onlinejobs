@@ -43,8 +43,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group mb-0">
-                            <button type="submit" class="btn btn-warning">
+                        <div class="form-group mb-0 text-center">
+                            <button type="submit" class="btn btn-warning btn-block">
                                 {{ __('Login') }}
                             </button>
 
@@ -52,7 +52,7 @@
                                 {{ __('Forgot Your Password?') }}
                             </a>
                         </div>
-                        <div class="newuser"><i class="fa fa-user" aria-hidden="true"></i> New User? <a href="http://jobnetwork.test/register">Register Here</a></div>
+                        <div class="newuser text-center"><i class="fa fa-user" aria-hidden="true"></i> New User? <a href="http://jobnetwork.test/register">Register Here</a></div>
                     </form>
                 </div>
             </div>

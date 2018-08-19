@@ -3,14 +3,14 @@
                 <div>
                     <h1>Meet the staff, see into the heart of companies, get inspired</h1>
                     <p>Explore
-                        <span> Thousands of Jobs </span> arround you
+                        <span class="text-warning"> Thousands of Jobs </span> arround you
                         <br> with simple search
                     </p>
             
                     <form class="form-inline" method="post" id="form1" action="index.php">
-                        <div class="form-group flex-box" style="text-align:left; font-size:16px;">
-                            <input type="text" class="form-control form-changer search-box" name="jobs_categories" id="jobs_categories" placeholder="Find Jobs" style="width:100%;"  value="" >
-                            <a href="#" class="btn btn-zone pull-right" onclick="document.getElementById('form1').submit();">Search</a>
+                        <div class="form-group">
+                            <input type="text" class="form-control form-changer search-box" name="jobs_categories" id="jobs_categories" placeholder="Find Jobs">
+                            <a href="#" class="btn btn-warning" onclick="document.getElementById('form1').submit();">Search</a>
                             <br />
                         </div> 
                     </form>
