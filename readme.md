@@ -14,8 +14,8 @@ Job Network website
 
 ```php artisan key:generate```
 
-** Create database and update the ```.env``` file
+* Create database and update the ```.env``` file
 
-```php artisan serve or create vhost``` 
+```php artisan serve``` or create vhost 
 
-** Additionally if it needs to add CSS/JS: ```npm install```
+* Additionally if it needs to add CSS/JS: ```npm install```
