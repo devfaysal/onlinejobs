@@ -4,18 +4,18 @@ Job Network website
 
 ## Installation
 
-```git clone https://gitlab.com/iamfaysal/jobnetwork.git```
+* ```git clone https://gitlab.com/iamfaysal/jobnetwork.git```
 
-```cd jobnetwork```
+* ```cd jobnetwork```
 
-```composer inatall```
+* ```composer inatall```
 
-```cp .env.example .env```
+* ```cp .env.example .env```
 
-```php artisan key:generate```
+* ```php artisan key:generate```
 
 * Create database and update the ```.env``` file
 
-```php artisan serve``` or create vhost 
+* ```php artisan serve``` or create vhost 
 
 * Additionally if it needs to add CSS/JS: ```npm install```
