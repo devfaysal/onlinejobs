@@ -42,7 +42,20 @@
                         <li><a href="" ><i class="fa fa-user" aria-hidden="true"></i>Workers</a></li>
                         <li><a href="" ><i class="fa fa-user" aria-hidden="true"></i>Maids</a></li>
                         <li><a href="" ><i class="fa fa-gift" aria-hidden="true"></i>Packages</a></li>
+                        @guest
                         <li><a href="{{route('login')}}"  role="button"><i class="fa fa-lock" aria-hidden="true"></i> Login or Register</a></li>
+                        @else
+                        <li>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                             <i class="fa fa-sign-out" aria-hidden="true"></i>{{ __('Logout') }}
+                            </a>
+                        </li>
+                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        @endguest
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->

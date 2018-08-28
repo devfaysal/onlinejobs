@@ -17,6 +17,15 @@ return [
         'jobseeker' => [
             'profile' => 'r,u'
         ],
+        'professional' => [
+            'profile' => 'r,u'
+        ],
+        'worker' => [
+            'profile' => 'r,u'
+        ],
+        'maid' => [
+            'profile' => 'r,u'
+        ],
     ],
     'permission_structure' => [
         'cru_user' => [

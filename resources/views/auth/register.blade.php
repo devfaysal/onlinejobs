@@ -64,13 +64,13 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <input id="role" class="radio" type="radio" name="role" required>
+                                    <input id="role" class="radio" type="radio" name="role" value="employer" required>
                                 </div>
                                 <label for="role" class="col-md-10">I am an Employer (Recruiter)</label>
                             </div>
                             <div class="row">
                                 <div class="col-md-2">
-                                    <input id="role" class="radio" type="radio" name="role" required>
+                                    <input id="role" class="radio" type="radio" name="role" value="jobseeker" required>
                                 </div>
                                 <label for="role" class="col-md-10">I am a Job-Seeker (Employee)</label>
                             </div>
