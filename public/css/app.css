@@ -12996,30 +12996,6 @@ h1 a {
   background-color: rgba(0, 0, 0, 0.08);
 }
 
-.userIcon:after {
-  content: 'User name';
-  position: absolute;
-  top: 70px;
-  right: 0;
-  padding: 8px 14px;
-  color: white;
-  font-size: 12px;
-  background-color: rgba(0, 0, 0, 0.8);
-  overflow-wrap: break-word;
-  -webkit-transition: all .4s ease;
-  transition: all .4s ease;
-  white-space: nowrap;
-  line-height: 20px;
-  opacity: 0;
-  visibility: hidden;
-}
-
-.userIcon:hover:after {
-  opacity: 1;
-  visibility: visible;
-  top: 40px;
-}
-
 .class-trigger {
   display: inline-block;
   cursor: pointer;

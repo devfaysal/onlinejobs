@@ -52,7 +52,7 @@
                                 {{ __('Forgot Your Password?') }}
                             </a>
                         </div>
-                        <div class="newuser text-center"><i class="fa fa-user" aria-hidden="true"></i> New User? <a href="http://jobnetwork.test/register">Register Here</a></div>
+                        <div class="newuser text-center"><i class="fa fa-user" aria-hidden="true"></i> New User? <a href="{{route('register')}}">Register Here</a></div>
                     </form>
                 </div>
             </div>
