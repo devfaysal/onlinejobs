@@ -29,7 +29,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function maid_profile(){
-        return $this->hasOne(Maid::class);
+    public function maidProfile(){
+        return $this->hasOne(MaidProfile::class);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMaidsTable extends Migration
+class CreateMaidProfilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMaidsTable extends Migration
      */
     public function up()
     {
-        Schema::create('maids', function (Blueprint $table) {
+        Schema::create('maid_profiles', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->integer('nationality_id');
@@ -40,6 +40,6 @@ class CreateMaidsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('maids');
+        Schema::dropIfExists('maid_profiles');
     }
 }
