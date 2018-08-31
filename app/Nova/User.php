@@ -70,7 +70,7 @@ class User extends Resource
                 ->creationRules('required', 'string', 'min:6')
                 ->updateRules('nullable', 'string', 'min:6'),
 
-            HasOne::make('MaidProfile'),
+            HasOne::make('Profile'),
 
             MorphToMany::make('Roles')
                 ->searchable(),
@@ -96,7 +96,9 @@ class User extends Resource
      */
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new Filters\UserRole,
+        ];
     }
 
     /**

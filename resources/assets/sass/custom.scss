@@ -1919,6 +1919,11 @@ span.per-month {
     width: 35px;
     height: 35px;
 }
+.center-thumbnail-image{
+    display: block;
+    max-width: 200px;
+    margin: auto;
+}
 /*START Override Bootstrap styles*/
 .navbar{
     margin-bottom: 0;

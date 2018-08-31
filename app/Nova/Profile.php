@@ -6,14 +6,14 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class MaidProfile extends Resource
+class Profile extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\MaidProfile';
+    public static $model = 'App\Profile';
 
     /**
      * The single value that should be used to represent the resource when being displayed.

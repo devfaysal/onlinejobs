@@ -50,7 +50,7 @@
                             <ul class='dropdown-menu'>
                                 <li> <a href='#'><h4>Logged as:  {{ Auth::user()->name }}</h4></a></li>
                                 <li role='separator' class='divider'></li>
-                                <li><a href="{{route('profile.create')}}">Create or Update your Resume</a></li>
+                                <li><a href="{{route('profile.index')}}">Profile</a></li>
                                 <li role='separator' class='divider'></li>
                                 <li><a href='#'>Change Password</a></li>
                                 <li role='separator' class='divider'></li>

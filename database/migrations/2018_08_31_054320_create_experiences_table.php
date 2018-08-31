@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMaidProfilesTable extends Migration
+class CreateExperiencesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,23 +13,19 @@ class CreateMaidProfilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('maid_profiles', function (Blueprint $table) {
+        Schema::create('experiences', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->integer('nationality_id');
-            $table->integer('religion_id');
-            $table->integer('language_id');
-            $table->integer('gender_id');
-            $table->string('education');
-            $table->string('marital_status');
-            $table->string('height');
-            $table->string('skill_level');
-            $table->date('date_of_birth');
-            $table->timestamps();
+            $table->string('employer_name');
+            $table->string('country');
+            $table->date('from_date');
+            $table->date('to_date');
+            $table->string('remark');
 
             $table->foreign('user_id')
                   ->references('id')->on('users')
                   ->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -40,6 +36,6 @@ class CreateMaidProfilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('maid_profiles');
+        Schema::dropIfExists('experiences');
     }
 }
