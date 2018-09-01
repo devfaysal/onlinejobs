@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -24,5 +25,19 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function maids()
+    {
+        return view('maids');
+    }
+
+    public function maidsearch(Request $request){
+        $users = User::whereRoleIs('maid')->with('Profile')->where('status', 1)->whereHas('Profile', function($q){
+            global $request;
+            $q->where('religion', $request->religion);
+        })->get();
+
+        return view('maids', compact('users'));
     }
 }

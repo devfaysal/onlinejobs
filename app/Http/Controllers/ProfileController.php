@@ -8,6 +8,11 @@ use Session;
 use Image; /* https://github.com/Intervention/image */
 use Storage;
 use App\Religion;
+use App\Country;
+use App\Language;
+use App\SkillLevel;
+use App\MaritalStatus;
+use App\Gender;
 
 class ProfileController extends Controller
 {
@@ -75,13 +80,18 @@ class ProfileController extends Controller
         }
         $profile = $user->profile;
         $religions = Religion::where('status', '=', 1)->get();
+        $nationalitys = Country::where('status', '=', 1)->get();
+        $languages = Language::where('status', '=', 1)->get();
+        $skill_levels = SkillLevel::where('status', '=', 1)->get();
+        $marital_statuses = MaritalStatus::where('status', '=', 1)->get();
+        $genders = Gender::where('status', '=', 1)->get();
 
         if($user->hasRole('professional')){
-            return view('profile.professional.edit', compact('profile','religions'));
+            return view('profile.professional.edit', compact('profile','religions','nationalitys','languages','skill_levels','marital_statuses','gender'));
         }elseif($user->hasRole('worker')){
-            return view('profile.worker.edit', compact('profile','religions'));
+            return view('profile.worker.edit', compact('profile','religions','nationalitys','languages','skill_levels','marital_statuses','gender'));
         }elseif($user->hasRole('maid')){
-            return view('profile.maid.edit', compact('profile','religions'));
+            return view('profile.maid.edit', compact('profile','religions','nationalitys','languages','skill_levels','marital_statuses','genders'));
         };
     }
 

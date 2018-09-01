@@ -8,7 +8,9 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\MorphToMany;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasOne;
+use Laravel\Nova\Fields\Boolean;
 
 class User extends Resource
 {
@@ -62,7 +64,7 @@ class User extends Resource
                 ->sortable()
                 ->rules('required'),
 
-            Text::make('Status')
+            Boolean::make('Status')
                 ->sortable(),
 
             Password::make('Password')
@@ -72,8 +74,9 @@ class User extends Resource
 
             HasOne::make('Profile'),
 
-            MorphToMany::make('Roles')
-                ->searchable(),
+            MorphToMany::make('Roles', 'roles')
+                ->hideFromIndex(),
+            BelongsTo::make('Roles', 'roles'),
         ];
     }
 

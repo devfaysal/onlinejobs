@@ -9,16 +9,20 @@
                     <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
                     @endif
                     <div class="col-md-4 text-center">
-                        <img class="thumbnail center-thumbnail-image" src="{{$profile->full_image != '' ? asset('storage/'.$profile->full_image) :  asset('images/avatar.jpg')}}" alt="avatar">
-                        <h1 class="text-warning">{{$profile->name}}</h1>
-                        <a href="{{route('profile.edit', $profile->id)}}" class="btn btn-warning">Edit Basic information</a>
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><h1 class="text-warning">{{$profile->name}}</h1><a href="{{route('profile.edit', $profile->id)}}" class="btn btn-warning">Edit information</a></div>
+                            <div class="panel-body">
+                                <img class="thumbnail center-thumbnail-image" src="{{$profile->full_image != '' ? asset('storage/'.$profile->full_image) :  asset('images/avatar_full.jpg')}}" alt="avatar">
+                            </div>
+                        </div>
+                        
                     </div>
                     <div class="col-md-8">
                         <div class="panel panel-default">
                             <div class="panel-heading"><h4 class="text-uppercase">Basic Information</h4></div>
                             <div class="panel-body">
                                 <div class="col-md-12">
-                                    <div class="row">
+                                    <div class="row border-bottom">
                                         <div class="col-md-6">
                                             <p class="profile-title">Name</p>
                                             <p class="profile-content">{{$profile->name}}</p>
@@ -28,47 +32,47 @@
                                             <p class="profile-content">{{$profile->phone}}</p>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row border-bottom">
                                         <div class="col-md-6">
                                             <p class="profile-title">Gender</p>
-                                            <p class="profile-content">{{$profile->gender}}</p>
+                                            <p class="profile-content">{{$profile->gender_data ? $profile->gender_data->name : 'N/A'}}</p>
                                         </div>
                                         <div class="col-md-6">
                                             <p class="profile-title">Date of birth</p>
                                             <p class="profile-content">{{$profile->date_of_birth}}</p>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row border-bottom">
                                         <div class="col-md-6">
                                             <p class="profile-title">Nationality</p>
-                                            <p class="profile-content">{{$profile->nationality}}</p>
+                                            <p class="profile-content">{{$profile->nationality_data? $profile->nationality_data->name : 'N/A'}}</p>
                                         </div>
                                         <div class="col-md-6">
                                             <p class="profile-title">Religion</p>
-                                            <p class="profile-content">{{$profile->religion}}</p>
+                                            <p class="profile-content">{{$profile->religion_data? $profile->religion_data->name : 'N/A'}}</p>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row border-bottom">
                                         <div class="col-md-6">
                                             <p class="profile-title">Native Language</p>
-                                            <p class="profile-content">{{$profile->native_language}}</p>
+                                            <p class="profile-content">{{$profile->native_language_data? $profile->native_language_data->name : 'N/A'}}</p>
                                         </div>
                                         <div class="col-md-6">
                                             <p class="profile-title">Other Languages</p>
                                             <p class="profile-content">{{$profile->other_languages}}</p>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row border-bottom">
                                         <div class="col-md-6">
                                             <p class="profile-title">Marital Status</p>
-                                            <p class="profile-content">{{$profile->marital_status}}</p>
+                                            <p class="profile-content">{{$profile->marital_status_data ? $profile->marital_status_data->name : 'N/A'}}</p>
                                         </div>
                                         <div class="col-md-6">
                                             <p class="profile-title">Height</p>
                                             <p class="profile-content">{{$profile->height}}</p>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row border-bottom">
                                         <div class="col-md-6">
                                             <p class="profile-title">Weight</p>
                                             <p class="profile-content">{{$profile->weight}}</p>
@@ -81,7 +85,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <p class="profile-title">Skill Level</p>
-                                            <p class="profile-content">{{$profile->skill_level}}</p>
+                                            <p class="profile-content">{{$profile->skill_level_data ? $profile->skill_level_data->name : 'N/A'}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -93,7 +97,7 @@
                             <div class="panel-heading"><h4 class="text-uppercase">Other Information</h4></div>
                             <div class="panel-body">
                                 <div class="col-md-12">
-                                    <div class="row">
+                                    <div class="row border-bottom">
                                         <div class="col-md-6">
                                             <p class="profile-title">Willing to work on off days with compensation
                                             </p>
@@ -104,7 +108,7 @@
                                             <p class="profile-content">{{$profile->able_to_handle_pork}}</p>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row border-bottom">
                                         <div class="col-md-6">
                                             <p class="profile-title">Able to gardening</p>
                                             <p class="profile-content">{{$profile->able_to_gardening}}</p>
@@ -114,7 +118,7 @@
                                             <p class="profile-content">{{$profile->able_to_care_dog_cat}}</p>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row border-bottom">
                                         <div class="col-md-6">
                                             <p class="profile-title">Able to simple sewing</p>
                                             <p class="profile-content">{{$profile->able_to_simple_sewing}}</p>
@@ -124,7 +128,7 @@
                                             <p class="profile-content">{{$profile->able_to_wash_car}}</p>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row border-bottom">
                                         <div class="col-md-6">
                                             <p class="profile-title">Able to eat pork</p>
                                             <p class="profile-content">{{$profile->able_to_eat_pork}}</p>
@@ -134,7 +138,7 @@
                                             <p class="profile-content">{{$profile->able_to_care_infants}}</p>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row border-bottom">
                                         <div class="col-md-6">
                                             <p class="profile-title">Care of elderly</p>
                                             <p class="profile-content">{{$profile->able_to_care_elderly}}</p>

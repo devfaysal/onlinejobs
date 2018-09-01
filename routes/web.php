@@ -19,7 +19,9 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => 'auth'], function()
-{
+Route::group(['middleware' => 'auth'], function(){
     Route::resource('profile', 'ProfileController')->except('destroy');
 });
+
+Route::get('/maids', 'HomeController@maids')->name('maids');
+Route::post('/maids/search', 'HomeController@maidsearch')->name('maids.search');

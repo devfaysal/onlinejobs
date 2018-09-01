@@ -1876,8 +1876,19 @@ span.per-month {
 
 
 /*Faysal Ahamed Custom*/
+.verticle-center{
+    display: flex;
+    align-items: center;
+}
 .content{
     padding-top: 20px;
+}
+.menu-user-avatar{
+    width: 50px;
+    border-radius: 50%;
+}
+.border-bottom{
+    border-bottom: 1px solid #eee;
 }
 .auth-form{
     border: 1px solid #ccc;
@@ -1892,15 +1903,20 @@ span.per-month {
 }
 .center-thumbnail-image{
     display: block;
-    max-width: 200px;
+    max-width: 100%;
+    max-height: 388px;
     margin: auto;
 }
 .profile-title{
     font-weight: 900;
     margin-bottom: 0;
+    padding-top: 5px;
+    color: #f0ad4e;
 }
 .profile-content{
     font-size: 20px;
+    padding-bottom: 5px;
+    margin-bottom: 0;
 }
 /*START Override Bootstrap styles*/
 .navbar{

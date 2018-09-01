@@ -8,14 +8,14 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Boolean;
 
-class Country extends Resource
+class Gender extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\Country';
+    public static $model = 'App\Gender';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -43,11 +43,9 @@ class Country extends Resource
     {
         return [
             ID::make()->sortable(),
-
             Text::make('Name')
                 ->sortable()
-                ->rules('required'),
-
+                ->rules('required', 'max:255'),
             Boolean::make('Status')
         ];
     }

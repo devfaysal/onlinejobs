@@ -5,6 +5,8 @@ namespace App\Nova;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\BelongsTo;
 
 class Profile extends Resource
 {
@@ -41,6 +43,9 @@ class Profile extends Resource
     {
         return [
             ID::make()->sortable(),
+            Text::make('Name'),
+            Text::make('Phone'),
+            BelongsTo::make('Religions', 'religion_data')
         ];
     }
 

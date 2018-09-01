@@ -40,13 +40,14 @@
                         <li><a href=""><i class="fa fa-th-large" aria-hidden="true"></i>Jobs</a></li>
                         <li><a href=""><i class="fa fa-user" aria-hidden="true"></i>Professionals</a></li>
                         <li><a href="" ><i class="fa fa-user" aria-hidden="true"></i>Workers</a></li>
-                        <li><a href="" ><i class="fa fa-user" aria-hidden="true"></i>Maids</a></li>
+                        <li><a href="{{route('maids')}}" ><i class="fa fa-user" aria-hidden="true"></i>Maids</a></li>
                         <li><a href="" ><i class="fa fa-gift" aria-hidden="true"></i>Packages</a></li>
                         @guest
                         <li><a href="{{route('login')}}"  role="button"><i class="fa fa-lock" aria-hidden="true"></i> Login or Register</a></li>
                         @else
                         <li class='dropdown'>
-                            <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'><span class="userIcon"><i class="fa fa-user"></i></span><i class="fa fa-angle-down class-trigger"></i></a>
+                            {{-- <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'><span class="userIcon"><i class="fa fa-user"></i></span><i class="fa fa-angle-down class-trigger"></i></a> --}}
+                            <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'><img class="menu-user-avatar" src="{{Auth::user()->profile->image != '' ? asset('storage/'.Auth::user()->profile->image) :  asset('images/avatar.jpg')}}" alt=""><i class="fa fa-angle-down class-trigger"></i></a>
                             <ul class='dropdown-menu'>
                                 <li> <a href='#'><h4>Logged as:  {{ Auth::user()->name }}</h4></a></li>
                                 <li role='separator' class='divider'></li>

@@ -41,8 +41,10 @@
                                 <div class="form-group">
                                     <label for="gender">{{ __('Gender') }}</label>
                                     <select name="gender" id="gender" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}">
-                                        <option value="1">Male</option>
-                                        <option value="2">Female</option>
+                                        <option value="">--Select Gender--</option>
+                                        @foreach ($genders as $gender)
+                                            <option value="{{$gender->id}}" {{$gender->id == $profile->gender ? 'selected':''}}>{{$gender->name}}</option>
+                                        @endforeach
                                     </select>
                                     @if ($errors->has('gender'))
                                         <span class="invalid-feedback" role="alert">
@@ -54,12 +56,12 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="nationality">{{ __('Nationality') }}</label>
-                                    <select name="nationality" id="nationality" class="form-control{{ $errors->has('nationality') ? ' is-invalid' : '' }}"></select>
-                                    @if ($errors->has('nationality'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('nationality') }}</strong>
-                                        </span>
-                                    @endif
+                                    <select name="nationality" id="nationality" class="form-control{{ $errors->has('nationality') ? ' is-invalid' : '' }}">
+                                        <option value="">--Select Nationality--</option>
+                                        @foreach ($nationalitys as $nationality)
+                                            <option value="{{$nationality->id}}" {{$nationality->id == $profile->nationality ? 'selected':''}}>{{$nationality->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -81,7 +83,12 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="native_language">{{ __('Native Language') }}</label>
-                                    <select name="native_language" id="native_language" class="form-control{{ $errors->has('native_language') ? ' is-invalid' : '' }}"></select>
+                                    <select name="native_language" id="native_language" class="form-control{{ $errors->has('native_language') ? ' is-invalid' : '' }}">
+                                        <option value="">--Select Native Language--</option>
+                                        @foreach ($languages as $language)
+                                            <option value="{{$language->id}}" {{$language->id == $profile->native_language ? 'selected':''}}>{{$language->name}}</option>
+                                        @endforeach
+                                    </select>
                                     @if ($errors->has('native_language'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('native_language') }}</strong>
@@ -117,9 +124,10 @@
                                 <div class="form-group">
                                     <label for="marital_status">{{ __('Marital Status') }}</label>
                                     <select name="marital_status" id="marital_status" class="form-control{{ $errors->has('marital_status') ? ' is-invalid' : '' }}">
-                                        <option value="1">Married</option>
-                                        <option value="2">Single</option>
-                                        <option value="3">Divorced</option>
+                                        <option value="">--Select Marital Status--</option>
+                                        @foreach ($marital_statuses as $marital_status)
+                                            <option value="{{$marital_status->id}}" {{$marital_status->id == $profile->marital_status ? 'selected':''}}>{{$marital_status->name}}</option>
+                                        @endforeach
                                     </select>
                                     @if ($errors->has('marital_status'))
                                         <span class="invalid-feedback" role="alert">
@@ -168,9 +176,10 @@
                                 <div class="form-group">
                                     <label for="skill_level">{{ __('Skill Level') }}</label>
                                     <select name="skill_level" id="skill_level" class="form-control{{ $errors->has('skill_level') ? ' is-invalid' : '' }}">
-                                        <option value="beginner">Beginner</option>
-                                        <option value="intermidiate">Intermidiate</option>
-                                        <option value="expert">Expert</option>
+                                        <option value="">--Select Skill Level--</option>
+                                        @foreach ($skill_levels as $skill_level)
+                                            <option value="{{$skill_level->id}}" {{$skill_level->id == $profile->skill_level ? 'selected':''}}>{{$skill_level->name}}</option>
+                                        @endforeach
                                     </select>
                                     @if ($errors->has('skill_level'))
                                         <span class="invalid-feedback" role="alert">
@@ -354,7 +363,7 @@
                                             <label for="full_image">{{ __('Full Image') }}</label>
                                             <input onchange="previewFile('#full_image_preview','#full_image')" id="full_image" type="file" class="form-control-file{{ $errors->has('full_image') ? ' is-invalid' : '' }}" name="full_image">
                                             <p class="text-danger">To get best view, upload a square size image and must be less than 250KB</p>
-                                            <img id="full_image_preview" style="width: 100px;" src="{{$profile->full_image != '' ? asset('storage/'.$profile->full_image) :  asset('images/avatar.jpg')}}" class="img-thumbnail" height="">
+                                            <img id="full_image_preview" style="width: 100px;" src="{{$profile->full_image != '' ? asset('storage/'.$profile->full_image) :  asset('images/avatar_full.jpg')}}" class="img-thumbnail" height="">
                 
                                             @if ($errors->has('full_image'))
                                                 <span class="invalid-feedback" role="alert">
