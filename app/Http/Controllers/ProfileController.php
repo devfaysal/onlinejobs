@@ -7,6 +7,7 @@ use App\User;
 use Session;
 use Image; /* https://github.com/Intervention/image */
 use Storage;
+use App\Religion;
 
 class ProfileController extends Controller
 {
@@ -72,12 +73,15 @@ class ProfileController extends Controller
         if($user->profile->id != $id){
             die();
         }
+        $profile = $user->profile;
+        $religions = Religion::where('status', '=', 1)->get();
+
         if($user->hasRole('professional')){
-            return view('profile.professional.edit', compact('user'));
+            return view('profile.professional.edit', compact('profile','religions'));
         }elseif($user->hasRole('worker')){
-            return view('profile.worker.edit', compact('user'));
+            return view('profile.worker.edit', compact('profile','religions'));
         }elseif($user->hasRole('maid')){
-            return view('profile.maid.edit', compact('user'));
+            return view('profile.maid.edit', compact('profile','religions'));
         };
     }
 

@@ -4,19 +4,19 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 col-md-offset-2">
-            <h1 class="text-center text-warning">{{$user->profile->name}}</h1>
+            <h1 class="text-center text-warning">{{$profile->name}}</h1>
             <div class="card auth-form">
                 <div class="card-header"></div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('profile.update', $user->profile->id) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('profile.update', $profile->id) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="name">{{ __('Name') }}</label>
-                                    <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->profile->name }}" placeholder="Name">
+                                    <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $profile->name }}" placeholder="Name">
         
                                     @if ($errors->has('name'))
                                         <span class="invalid-feedback" role="alert">
@@ -28,7 +28,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="phone">{{ __('Phone') }}</label>
-                                    <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ $user->profile->phone }}" placeholder="Phone">
+                                    <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ $profile->phone }}" placeholder="Phone">
         
                                     @if ($errors->has('phone'))
                                         <span class="invalid-feedback" role="alert">
@@ -65,7 +65,12 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="religion">{{ __('Religion') }}</label>
-                                    <select name="religion" id="religion" class="form-control{{ $errors->has('religion') ? ' is-invalid' : '' }}"></select>
+                                    <select name="religion" id="religion" class="form-control{{ $errors->has('religion') ? ' is-invalid' : '' }}" required>
+                                        <option value="">--Select Religion--</option>
+                                        @foreach ($religions as $religion)
+                                            <option value="{{$religion->id}}" {{$religion->id == $profile->religion ? 'selected':''}}>{{$religion->name}}</option>
+                                        @endforeach
+                                    </select>
                                     @if ($errors->has('religion'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('religion') }}</strong>
@@ -87,7 +92,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="other_languages">{{ __('Other Languages') }}</label>
-                                    <input id="other_languages" type="text" class="form-control{{ $errors->has('other_languages') ? ' is-invalid' : '' }}" name="other_languages" value="{{ $user->profile->other_languages }}" placeholder="Other Languages">
+                                    <input id="other_languages" type="text" class="form-control{{ $errors->has('other_languages') ? ' is-invalid' : '' }}" name="other_languages" value="{{ $profile->other_languages }}" placeholder="Other Languages">
         
                                     @if ($errors->has('other_languages'))
                                         <span class="invalid-feedback" role="alert">
@@ -99,7 +104,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="date_of_birth">{{ __('Date of Birth') }}</label>
-                                    <input id="date_of_birth" type="date" class="form-control{{ $errors->has('date_of_birth') ? ' is-invalid' : '' }}" name="date_of_birth" value="{{ $user->profile->date_of_birth }}" placeholder="Date of Birth">
+                                    <input id="date_of_birth" type="date" class="form-control{{ $errors->has('date_of_birth') ? ' is-invalid' : '' }}" name="date_of_birth" value="{{ $profile->date_of_birth }}" placeholder="Date of Birth">
         
                                     @if ($errors->has('date_of_birth'))
                                         <span class="invalid-feedback" role="alert">
@@ -126,7 +131,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="height">{{ __('Height (CM)') }}</label>
-                                    <input id="height" type="text" class="form-control{{ $errors->has('height') ? ' is-invalid' : '' }}" name="height" value="{{ $user->profile->height }}" placeholder="Height">
+                                    <input id="height" type="text" class="form-control{{ $errors->has('height') ? ' is-invalid' : '' }}" name="height" value="{{ $profile->height }}" placeholder="Height">
         
                                     @if ($errors->has('height'))
                                         <span class="invalid-feedback" role="alert">
@@ -138,7 +143,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="weight">{{ __('Weight (Pound)') }}</label>
-                                    <input id="weight" type="text" class="form-control{{ $errors->has('weight') ? ' is-invalid' : '' }}" name="weight" value="{{ $user->profile->weight }}" placeholder="Weight">
+                                    <input id="weight" type="text" class="form-control{{ $errors->has('weight') ? ' is-invalid' : '' }}" name="weight" value="{{ $profile->weight }}" placeholder="Weight">
         
                                     @if ($errors->has('weight'))
                                         <span class="invalid-feedback" role="alert">
@@ -150,7 +155,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="highest_education">{{ __('Highest Education') }}</label>
-                                    <input id="highest_education" type="text" class="form-control{{ $errors->has('highest_education') ? ' is-invalid' : '' }}" name="highest_education" value="{{ $user->profile->highest_education }}" placeholder="Highest Education">
+                                    <input id="highest_education" type="text" class="form-control{{ $errors->has('highest_education') ? ' is-invalid' : '' }}" name="highest_education" value="{{ $profile->highest_education }}" placeholder="Highest Education">
         
                                     @if ($errors->has('highest_education'))
                                         <span class="invalid-feedback" role="alert">
@@ -335,7 +340,7 @@
                                             <label for="image">{{ __('Half Image') }}</label>
                                             <input onchange="previewFile('#image_preview', '#image')" id="image" type="file" class="form-control-file{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image">
                                             <p class="text-danger">To get best view, upload a square size image and must be less than 250KB</p>
-                                            <img id="image_preview" style="width: 100px;" src="{{$user->profile->image != '' ? asset('storage/'.$user->profile->image) :  asset('images/avatar.jpg')}}" class="img-thumbnail" height="">
+                                            <img id="image_preview" style="width: 100px;" src="{{$profile->image != '' ? asset('storage/'.$profile->image) :  asset('images/avatar.jpg')}}" class="img-thumbnail" height="">
                 
                                             @if ($errors->has('image'))
                                                 <span class="invalid-feedback" role="alert">
@@ -349,7 +354,7 @@
                                             <label for="full_image">{{ __('Full Image') }}</label>
                                             <input onchange="previewFile('#full_image_preview','#full_image')" id="full_image" type="file" class="form-control-file{{ $errors->has('full_image') ? ' is-invalid' : '' }}" name="full_image">
                                             <p class="text-danger">To get best view, upload a square size image and must be less than 250KB</p>
-                                            <img id="full_image_preview" style="width: 100px;" src="{{$user->profile->full_image != '' ? asset('storage/'.$user->profile->full_image) :  asset('images/avatar.jpg')}}" class="img-thumbnail" height="">
+                                            <img id="full_image_preview" style="width: 100px;" src="{{$profile->full_image != '' ? asset('storage/'.$profile->full_image) :  asset('images/avatar.jpg')}}" class="img-thumbnail" height="">
                 
                                             @if ($errors->has('full_image'))
                                                 <span class="invalid-feedback" role="alert">

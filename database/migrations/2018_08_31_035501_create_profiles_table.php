@@ -42,6 +42,7 @@ class CreateProfilesTable extends Migration
             //Maid Skill Work Area
             $table->boolean('able_to_care_infants')->nullable();
             $table->boolean('able_to_care_elderly')->nullable();
+            $table->boolean('able_to_care_disabled')->nullable();
             $table->boolean('able_to_do_general_housework')->nullable();
             $table->boolean('able_to_cook')->nullable();
 

@@ -6,11 +6,6 @@
 /* @import url('https://fonts.googleapis.com/css?family=Raleway');*/
 @import url('https://fonts.googleapis.com/css?family=Abel');
 
-p {
-    margin: 0;
-    padding: 0;
-}
-
 ul {
     list-style: none;
     margin: 0;
@@ -429,16 +424,6 @@ body {
     color: #4e4e4e;
     padding: 0;
     display: inline-block;
-}
-
-.content .row {
-    margin-top: 40px;
-    margin-bottom: 70px;
-}
-
-.content-left {
-    /*border:#4e4e4e;
-	box-shadow: 8px -2px 26px 5px #f7f7f7;*/
 }
 
 .content-left h1 {
@@ -1828,24 +1813,7 @@ span.per-month {
 .resume-wrap  span.cop-color-black{ color:rgba(0, 0, 0, .8);  font-size: 16px; }
 
 
-.side_bar{
-	border:1px solid #eee;
-	
-	}
-	.content-right-head h1 {
-    font-size: 14px;
-    background-color: #666;
-    padding: 20px 15px;
-    color: #fff;
-    font-weight: 700;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-}
-.content-right-head, p{
-	padding:5px;
-	
-	
-	}
+
 	
 	.package-bg {
     background: rgba(0, 0, 0, 0.1);
@@ -1908,6 +1876,9 @@ span.per-month {
 
 
 /*Faysal Ahamed Custom*/
+.content{
+    padding-top: 20px;
+}
 .auth-form{
     border: 1px solid #ccc;
     padding: 30px;
@@ -1923,6 +1894,13 @@ span.per-month {
     display: block;
     max-width: 200px;
     margin: auto;
+}
+.profile-title{
+    font-weight: 900;
+    margin-bottom: 0;
+}
+.profile-content{
+    font-size: 20px;
 }
 /*START Override Bootstrap styles*/
 .navbar{
