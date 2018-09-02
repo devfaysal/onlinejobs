@@ -13,7 +13,7 @@
 
                         <div class="form-group">
                             <label for="name">{{ __('Name') }}</label>
-                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="Full Name" required autofocus>
+                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="Full Name" required>
 
                             @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">

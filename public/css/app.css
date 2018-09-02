@@ -13290,6 +13290,14 @@ span.per-month {
 
 /*Faysal Ahamed Custom*/
 
+.is-invalid {
+  border: 1px solid red;
+}
+
+.invalid-feedback {
+  color: red;
+}
+
 .verticle-center {
   display: -webkit-box;
   display: -ms-flexbox;
