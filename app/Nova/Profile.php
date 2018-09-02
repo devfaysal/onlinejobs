@@ -45,7 +45,7 @@ class Profile extends Resource
             ID::make()->sortable(),
             Text::make('Name'),
             Text::make('Phone'),
-            BelongsTo::make('Religions', 'religion_data')
+            BelongsTo::make('Religion', 'religion_data')
         ];
     }
 
