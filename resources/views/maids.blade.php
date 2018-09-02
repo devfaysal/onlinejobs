@@ -14,17 +14,32 @@
                                 @csrf
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="religion" name="religion" placeholder="Religion">
+                                        <select name="religion" id="religion" class="form-control">
+                                            <option value="">--Religion--</option>
+                                            @foreach ($religions as $religion)
+                                                <option value="{{$religion->id}}">{{$religion->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="country" name="country" placeholder="Country">
+                                        <select name="native_language" id="native_language" class="form-control">
+                                            <option value="">--Language--</option>
+                                            @foreach ($languages as $language)
+                                                <option value="{{$language->id}}" >{{$language->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="language" name="language" placeholder="Language">
+                                        <select name="nationality" id="nationality" class="form-control">
+                                            <option value="">--Nationality--</option>
+                                            @foreach ($nationalitys as $nationality)
+                                                <option value="{{$nationality->id}}" >{{$nationality->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">

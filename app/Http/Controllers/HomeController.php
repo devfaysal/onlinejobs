@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Religion;
+use App\Country;
+use App\Language;
 
 class HomeController extends Controller
 {
@@ -29,15 +32,26 @@ class HomeController extends Controller
 
     public function maids()
     {
-        return view('maids');
+        $religions = Religion::where('status', '=', 1)->get();
+        $nationalitys = Country::where('status', '=', 1)->get();
+        $languages = Language::where('status', '=', 1)->get();
+        return view('maids', compact('religions','nationalitys','languages'));
     }
 
     public function maidsearch(Request $request){
-        $users = User::whereRoleIs('maid')->with('Profile')->where('status', 1)->whereHas('Profile', function($q){
-            global $request;
-            $q->where('religion', $request->religion);
-        })->get();
+        $religions = Religion::where('status', '=', 1)->get();
+        $nationalitys = Country::where('status', '=', 1)->get();
+        $languages = Language::where('status', '=', 1)->get();
 
-        return view('maids', compact('users'));
+        $users = User::whereRoleIs('maid')
+                        ->with('Profile')
+                        ->where('status', 1)
+                        ->whereHas('Profile', function($query) use($request){
+                            $query->where('religion', $request->religion ? $request->religion : 0)
+                                    ->orWhere('nationality', $request->nationality ? $request->nationality : 0)
+                                    ->orWhere('native_language', $request->native_language ?  $request->native_language : 0);
+                        })->get();
+
+        return view('maids', compact('users','religions','nationalitys','languages'));
     }
 }

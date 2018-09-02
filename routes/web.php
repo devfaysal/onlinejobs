@@ -24,4 +24,4 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 Route::get('/maids', 'HomeController@maids')->name('maids');
-Route::post('/maids/search', 'HomeController@maidsearch')->name('maids.search');
+Route::any('/maids/search', 'HomeController@maidsearch')->name('maids.search');
