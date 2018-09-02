@@ -57,7 +57,7 @@
                                 <div class="panel-body">
                                     <div class="row verticle-center">
                                         <div class="col-md-2">
-                                            <img class="img-responsive" src="{{$user->profile->image != '' ? asset('storage/'.$user->profile->image) :  asset('images/avatar.jpg')}}" alt="">
+                                            <img class="search-result-thumbnail" src="{{$user->profile->image != '' ? asset('storage/'.$user->profile->image) :  asset('images/avatar.jpg')}}" alt="">
                                         </div>
                                         <div class="col-md-3">
                                             <p class="profile-title">Name</p>

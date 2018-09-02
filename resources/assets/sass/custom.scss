@@ -1882,10 +1882,6 @@ span.per-month {
 .invalid-feedback{
     color: red;
 }
-.verticle-center{
-    display: flex;
-    align-items: center;
-}
 .content{
     padding-top: 20px;
 }
@@ -2003,4 +1999,15 @@ nav {
     background-color: rgba(0, 0, 0, .4);
     color: white;
     text-decoration: none;
+}
+.search-result-thumbnail{
+    display: block;
+    width: 100px;
+    margin: auto;
+}
+@media only screen and (min-width: 500px){
+    .verticle-center{
+        display: flex;
+        align-items: center;
+    }
 }
