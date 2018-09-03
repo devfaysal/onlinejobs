@@ -203,4 +203,14 @@ class ProfileController extends Controller
     {
         //
     }
+
+
+    public function public($public)
+    {
+        $user = User::where('public_id', '=', $public)->first();
+
+        echo '<pre>';
+        print_r($user);
+        echo '</pre>';
+    }
 }

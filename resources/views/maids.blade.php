@@ -78,7 +78,7 @@
                                                 <p class="">{{$user->profile->date_of_birth}}</p>
                                         </div>
                                         <div class="col-md-2">
-                                            <a href="" class="btn btn-block btn-warning">Details</a>
+                                            <a href="{{route('profile.public', $user->public_id)}}" class="btn btn-block btn-warning">Details</a>
                                         </div>
                                     </div>
                                 </div>
