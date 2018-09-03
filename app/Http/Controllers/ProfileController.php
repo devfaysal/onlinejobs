@@ -209,8 +209,13 @@ class ProfileController extends Controller
     {
         $user = User::where('public_id', '=', $public)->first();
 
-        echo '<pre>';
-        print_r($user);
-        echo '</pre>';
+        $profile = $user->profile;
+        if($user->hasRole('professional')){
+            return view('profile.professional.show', compact('profile'));
+        }elseif($user->hasRole('worker')){
+            return view('profile.worker.show', compact('profile'));
+        }elseif($user->hasRole('maid')){
+            return view('profile.maid.show', compact('profile'));
+        };
     }
 }
