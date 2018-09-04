@@ -26,6 +26,6 @@ class Profile extends Model
         return $this->belongsTo(MaritalStatus::class, 'marital_status');
     }
     public function gender_data(){
-        return $this->belongsTo(MaritalStatus::class, 'gender');
+        return $this->belongsTo(Gender::class, 'gender');
     }
 }

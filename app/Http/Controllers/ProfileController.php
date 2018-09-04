@@ -26,11 +26,11 @@ class ProfileController extends Controller
         $user = auth()->user();
         $profile = $user->profile;
         if($user->hasRole('professional')){
-            return view('profile.professional.index', compact('profile'));
+            return view('profile.professional.show', compact('profile'));
         }elseif($user->hasRole('worker')){
-            return view('profile.worker.index', compact('profile'));
+            return view('profile.worker.show', compact('profile'));
         }elseif($user->hasRole('maid')){
-            return view('profile.maid.index', compact('profile'));
+            return view('profile.maid.show', compact('profile'));
         };
     }
 
@@ -87,9 +87,9 @@ class ProfileController extends Controller
         $genders = Gender::where('status', '=', 1)->get();
 
         if($user->hasRole('professional')){
-            return view('profile.professional.edit', compact('profile','religions','nationalitys','languages','skill_levels','marital_statuses','gender'));
+            return view('profile.professional.edit', compact('profile','religions','nationalitys','languages','skill_levels','marital_statuses','genders'));
         }elseif($user->hasRole('worker')){
-            return view('profile.worker.edit', compact('profile','religions','nationalitys','languages','skill_levels','marital_statuses','gender'));
+            return view('profile.worker.edit', compact('profile','religions','nationalitys','languages','skill_levels','marital_statuses','genders'));
         }elseif($user->hasRole('maid')){
             return view('profile.maid.edit', compact('profile','religions','nationalitys','languages','skill_levels','marital_statuses','genders'));
         };
@@ -181,6 +181,7 @@ class ProfileController extends Controller
         $profile->able_to_eat_pork = $request->able_to_eat_pork;
         $profile->able_to_care_infants = $request->able_to_care_infants;
         $profile->able_to_care_elderly = $request->able_to_care_elderly;
+        $profile->able_to_care_disabled = $request->able_to_care_disabled;
         $profile->able_to_do_general_housework = $request->able_to_do_general_housework;
         $profile->able_to_cook = $request->able_to_cook;
 

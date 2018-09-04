@@ -316,20 +316,6 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="able_to_care_disabled">{{ __('Able to care Disabled') }}</label>
-                                    <select name="able_to_care_disabled" id="able_to_care_disabled" class="form-control{{ $errors->has('able_to_care_disabled') ? ' is-invalid' : '' }}">
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
-                                    </select>
-                                    @if ($errors->has('able_to_care_disabled'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('able_to_care_disabled') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
                                     <label for="able_to_do_general_housework">{{ __('Able to do general housework') }}</label>
                                     <select name="able_to_do_general_housework" id="able_to_do_general_housework" class="form-control{{ $errors->has('able_to_do_general_housework') ? ' is-invalid' : '' }}">
                                         <option value="1">Yes</option>

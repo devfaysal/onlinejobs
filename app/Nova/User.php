@@ -76,7 +76,8 @@ class User extends Resource
 
             MorphToMany::make('Roles', 'roles')
                 ->hideFromIndex(),
-            BelongsTo::make('Role', 'roles'),
+            BelongsTo::make('Role', 'roles')
+                ->onlyOnIndex(),
         ];
     }
 

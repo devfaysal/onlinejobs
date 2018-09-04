@@ -24,3 +24,6 @@ Route::group(['middleware' => 'auth'], function(){
 });
 Route::get('/maids', 'HomeController@maids')->name('maids');
 Route::any('/maids/search', 'HomeController@maidsearch')->name('maids.search');
+
+Route::get('/workers', 'HomeController@workers')->name('workers');
+Route::any('/workers/search', 'HomeController@workersearch')->name('workers.search');

@@ -54,4 +54,29 @@ class HomeController extends Controller
 
         return view('maids', compact('users','religions','nationalitys','languages'));
     }
+
+    public function workers()
+    {
+        $religions = Religion::where('status', '=', 1)->get();
+        $nationalitys = Country::where('status', '=', 1)->get();
+        $languages = Language::where('status', '=', 1)->get();
+        return view('workers', compact('religions','nationalitys','languages'));
+    }
+
+    public function workersearch(Request $request){
+        $religions = Religion::where('status', '=', 1)->get();
+        $nationalitys = Country::where('status', '=', 1)->get();
+        $languages = Language::where('status', '=', 1)->get();
+
+        $users = User::whereRoleIs('worker')
+                        ->with('Profile')
+                        ->where('status', 1)
+                        ->whereHas('Profile', function($query) use($request){
+                            $query->where('religion', $request->religion ? $request->religion : 0)
+                                    ->orWhere('nationality', $request->nationality ? $request->nationality : 0)
+                                    ->orWhere('native_language', $request->native_language ?  $request->native_language : 0);
+                        })->get();
+
+        return view('workers', compact('users','religions','nationalitys','languages'));
+    }
 }
