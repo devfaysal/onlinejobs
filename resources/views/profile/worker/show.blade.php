@@ -102,7 +102,13 @@
                     <div class="col-md-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="text-uppercase">Work Experience <a class="btn btn-warning" href="{{route('experience.create')}}">Add Experience</a></h4>
+                                <h4 class="text-uppercase">Work Experience 
+                                        @auth
+                                            @if(Auth::user()->id == $profile->user->id)
+                                                <a class="btn btn-warning" href="{{route('experience.create')}}">Add Experience</a>
+                                            @endif
+                                        @endauth
+                                    </h4>
                             </div>
                             <div class="panel-body">
                                 @foreach ($experiences as $experience)
