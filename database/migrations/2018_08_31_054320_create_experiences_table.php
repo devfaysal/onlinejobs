@@ -17,7 +17,7 @@ class CreateExperiencesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('employer_name');
-            $table->string('country');
+            $table->string('country')->nullable();
             $table->date('from_date');
             $table->date('to_date');
             $table->string('remark');

@@ -101,73 +101,47 @@
                     </div><!--/.col-md-8-->
                     <div class="col-md-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading"><h4 class="text-uppercase">Other Information</h4></div>
+                            <div class="panel-heading">
+                                <h4 class="text-uppercase">Work Experience <a class="btn btn-warning" href="{{route('experience.create')}}">Add Experience</a></h4>
+                            </div>
                             <div class="panel-body">
-                                <div class="col-md-12">
-                                    <div class="row border-bottom">
-                                        <div class="col-md-6">
-                                            <p class="profile-title">Willing to work on off days with compensation
-                                            </p>
-                                            <p class="profile-content">{{$profile->work_on_off_days_with_compensation == 1 ? 'Yes' : 'No'}}</p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p class="profile-title">Able to handle pork</p>
-                                            <p class="profile-content">{{$profile->able_to_handle_pork == 1 ? 'Yes' : 'No'}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="row border-bottom">
-                                        <div class="col-md-6">
-                                            <p class="profile-title">Able to gardening</p>
-                                            <p class="profile-content">{{$profile->able_to_gardening == 1 ? 'Yes' : 'No'}}</p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p class="profile-title">Able to care dog/cat</p>
-                                            <p class="profile-content">{{$profile->able_to_care_dog_cat == 1 ? 'Yes' : 'No'}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="row border-bottom">
-                                        <div class="col-md-6">
-                                            <p class="profile-title">Able to simple sewing</p>
-                                            <p class="profile-content">{{$profile->able_to_simple_sewing == 1 ? 'Yes' : 'No'}}</p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p class="profile-title">Able to car wash</p>
-                                            <p class="profile-content">{{$profile->able_to_wash_car == 1 ? 'Yes' : 'No'}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="row border-bottom">
-                                        <div class="col-md-6">
-                                            <p class="profile-title">Able to eat pork</p>
-                                            <p class="profile-content">{{$profile->able_to_eat_pork == 1 ? 'Yes' : 'No'}}</p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p class="profile-title">Care of infants/children</p>
-                                            <p class="profile-content">{{$profile->able_to_care_infants == 1 ? 'Yes' : 'No'}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="row border-bottom">
-                                        <div class="col-md-6">
-                                            <p class="profile-title">Care of elderly</p>
-                                            <p class="profile-content">{{$profile->able_to_care_elderly == 1 ? 'Yes' : 'No'}}</p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p class="profile-title">Care of disabled</p>
-                                            <p class="profile-content">{{$profile->able_to_care_disabled == 1 ? 'Yes' : 'No'}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p class="profile-title">General housework</p>
-                                            <p class="profile-content">{{$profile->able_to_do_general_housework == 1 ? 'Yes' : 'No'}}</p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p class="profile-title">Cooking</p>
-                                            <p class="profile-content">{{$profile->able_to_cook == 1 ? 'Yes' : 'No'}}</p>
+                                @foreach ($experiences as $experience)
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="row verticle-center">
+                                            <div class="col-md-2">
+                                                <p class="profile-title">Employer Name</p>
+                                                <p class="profile-content">{{$experience->employer_name ?? 'N/A'}}</p>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <p class="profile-title">Country</p>
+                                                <p class="profile-content">{{$experience->country_data->name ?? 'N/A'}}</p>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <p class="profile-title">From Date</p>
+                                                <p class="profile-content">{{$experience->from_date ?? 'N/A'}}</p>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <p class="profile-title">To Date</p>
+                                                <p class="profile-content">{{$experience->to_date ?? 'N/A'}}</p>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <p class="profile-title">Remark</p>
+                                                <p class="profile-content">{{$experience->remark ?? 'N/A'}}</p>
+                                            </div>
+                                            <div class="col-md-2">
+                                                @auth
+                                                    @if(Auth::user()->id == $profile->user->id)
+                                                        <a href="{{route('experience.edit', $experience->id)}}" class="btn btn-warning">Edit</a>
+                                                    @endif
+                                                @endauth
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div><!--/.panel-body-->
-                        </div><!--/.panel panel-default-->
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
                 </div><!--/.col-md-9-->
                 <div class="col-md-3">

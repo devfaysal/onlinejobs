@@ -13,6 +13,7 @@ use App\Language;
 use App\SkillLevel;
 use App\MaritalStatus;
 use App\Gender;
+use App\Experience;
 
 class ProfileController extends Controller
 {
@@ -25,10 +26,11 @@ class ProfileController extends Controller
     {
         $user = auth()->user();
         $profile = $user->profile;
+        $experiences = Experience::get();
         if($user->hasRole('professional')){
             return view('profile.professional.show', compact('profile'));
         }elseif($user->hasRole('worker')){
-            return view('profile.worker.show', compact('profile'));
+            return view('profile.worker.show', compact('profile','experiences'));
         }elseif($user->hasRole('maid')){
             return view('profile.maid.show', compact('profile'));
         };
@@ -209,12 +211,13 @@ class ProfileController extends Controller
     public function public($public)
     {
         $user = User::where('public_id', '=', $public)->first();
+        $experiences = Experience::get();
 
         $profile = $user->profile;
         if($user->hasRole('professional')){
             return view('profile.professional.show', compact('profile'));
         }elseif($user->hasRole('worker')){
-            return view('profile.worker.show', compact('profile'));
+            return view('profile.worker.show', compact('profile','experiences'));
         }elseif($user->hasRole('maid')){
             return view('profile.maid.show', compact('profile'));
         };
