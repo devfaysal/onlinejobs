@@ -17,7 +17,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="mt-3 text-primary text-uppercase text-center">{{$page}}</h1>
+                    <h1 class="mt-3 text-primary text-capitalize text-center">
+                        @if (Route::currentRouteName() == 'maids' || Route::currentRouteName() == 'maids.search')
+                            Domestic Maids
+                        @elseif(Route::currentRouteName() == 'workers' || Route::currentRouteName() == 'workers.search')
+                            General Workers
+                        @endif
+                    </h1>
                 </div>
                 <div class="col-md-12">
                     <div class="banner_tranparent">
@@ -52,7 +58,7 @@
                                     </select>
                                 </div>
                                 <div class="col-3">
-                                <button type="submit" class="btn btn-primary btn-block">Search {{$page}}</button>
+                                <button type="submit" class="btn btn-primary text-capitalize btn-block">Search {{$page}}</button>
                                 </div>
                             </div>
                         </form>

@@ -8,32 +8,11 @@
                 <div class="row">
                     <nav class="nav nav-pills nav-fill">
                         <a class="nav-item nav-link" href="#">All jobs</a>
-                        <a class="nav-item nav-link" href="#"  data-toggle="modal" data-target="#exampleModalCenter">IIT/IIM Jobs</a>
+                        <a class="nav-item nav-link" href="#">IIT/IIM Jobs</a>
                         <a class="nav-item nav-link" href="#">Govt. Jobs</a>
                         <a class="nav-item nav-link" href="#">International jobs</a>
                         <a class="nav-item nav-link" href="#">Walk in jobs </a>
                     </nav>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content tex-center">
-                                <div class="modal-header">
-                                    <h5 class="modal-title text-center" id="exampleModalLongTitle"> Jobs for IIT/IIM Graduates </h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body text-center iim">
-                                    <img src="images/premiumLogo_v1.png" class="img-fluid"> 
-                                    <h6>Hand Picked, High Quality Jobs for Top Talent </h6>  <br/> <br/>
-                                    <a class="btn btn-primary  btn-large">View all MBA jobs </a>
-
-                                    <a class="btn btn-primary  btn-large">View engineering jobs </a>
-                                </div>
-                            </div>
-                        </div><!--  /.modal-dialog modal-dialog-centered  -->
-                    </div><!--  /.modal fade  -->
                 </div><!--  /.row  -->
             </div><!--  /.container  -->
         </div><!--  /.top_bar  -->
@@ -86,8 +65,8 @@
                     <div class="row">
                         <div class="col-sm-6 col-md-5 col-lg-6 ">
                             <div class="whitebg text-center banner_equal">
-                                <p> Need to nauri ? </p>
-                                <a class="btn btn-warning  btn-large btn-block"> Register with us  </a>
+                                <p> Need Jobs ? </p>
+                                <a class="btn btn-warning  btn-large btn-block" href="{{route('register')}}"> Register with us  </a>
                                 <hr class="hr-text" data-content="or">
                                 <h5><a href=""> Upload CV </a> </h5>
                                 <p class="small_TxT2"> Max 2 MB, doc, docx, rtf, pdf </p> 
@@ -471,7 +450,7 @@
               </div>
 
               <div class="whitetab mar_top smallertxt">
-                <img src="images/naukri_fast.jpg" class="img-fluid pad_10"> <hr/> 
+                <img src="images/naukri_Logo.png"" class="img-fluid pad_10"> <hr/> 
                   <ul class="list_pad">
                       <li><a href=""> Naukri Resume Score - Free </a>
     Get your FREE resume feedback report and know the improvement areas in your resume within 30 seconds</li>
@@ -490,13 +469,13 @@
               </div>
 
               <div class="whitebg">
-                <img src="images/naukri_career.jpg" class="img-fluid">
+                <img src="images/naukri_Logo.png"g" class="img-fluid">
                 <p class="text-center"> Salary trends in over 3500 Companies </p>
                     <a class="btn btn-primary  btn-large btn-block"> View sallaries  </a>
               </div>
 
               <div class="whitebg">
-                <img src="images/naukri_learn.jpg" class="img-fluid">
+                <img src="images/naukri_Logo.png"" class="img-fluid">
                 <p class="text-center"> 500+ courses to help you get better jobs </p>
                     <a class="btn btn-primary  btn-large btn-block"> Explore courses  </a>
                     <hr/>
