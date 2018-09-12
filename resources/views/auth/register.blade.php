@@ -87,7 +87,7 @@
                                 <div class="col-md-2">
                                     <input id="agreement" class="checkbox" type="checkbox" name="agreement" required>
                                 </div>
-                                <label for="agreement" class="col-md-10">I have read and agree to the<a href="">Terms and Conditions</a> governing the use of jobshouse.com</label>
+                                <label for="agreement" class="col-md-10">I have read and agree to the<a href="">Terms and Conditions</a> governing the use of onlinejobs.my</label>
                             </div>
                         </div>
 

@@ -452,10 +452,10 @@
               <div class="whitetab mar_top smallertxt">
                 <img src="images/naukri_Logo.png"" class="img-fluid pad_10"> <hr/> 
                   <ul class="list_pad">
-                      <li><a href=""> Naukri Resume Score - Free </a>
+                      <li><a href=""> Onlinejobs Resume Score - Free </a>
     Get your FREE resume feedback report and know the improvement areas in your resume within 30 seconds</li>
                       <li> <a href=""> Reach out to more recruiters </a>
-    Become a Featured Applicant on Naukri and Increase your profile views by up to 3 times. Know More.</li> 
+    Become a Featured Applicant on Onlinejobs and Increase your profile views by up to 3 times. Know More.</li> 
                   </ul>
                   <hr/> 
                   <p class="whitebg smallertxt">
@@ -493,11 +493,11 @@
                 <p class="whitebg"> Services for Recruiters </p>
                   <hr/> 
                   <ul class="">
-                      <li><a href="">Naukri Employer Zone </a>
+                      <li><a href="">Onlinejobs Employer Zone </a>
     End your hunt for the perfect employee </li>
                       <li> <a href=""> Search CVs for Free now </a> 
     Find the right candidate</li> 
-                      <li> <a href=""> Naukri Job Posting Services and Resume Database Access </a>
+                      <li> <a href=""> Onlinejobs Job Posting Services and Resume Database Access </a>
     Call 1800-102-2558 for Employer products </li> 
                       <li> <a href=""> Campus Hiring Solutions </a>
     Optimize your Fresher Hiring </li> 
@@ -509,7 +509,7 @@
               </div>
 
               <div class="whitetab mar_top smallertxt">
-                <p class="whitebg"> Naukri JobSpeak </p>
+                <p class="whitebg"> Onlinejobs JobSpeak </p>
                   <hr/> 
                   <p class="whitebg smallertxt">
                     A monthly Job Index that provides insight into hiring trends in your city, job function and industry. <br/> 
