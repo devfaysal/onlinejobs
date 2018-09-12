@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,300i,400,400i,500,500i,700,900,900i);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
 /*!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)
@@ -13526,149 +13526,29 @@ a.text-dark:focus {
   clip: auto;
 }
 
-body {
-  font-family: 'Roboto', sans-serif !important;
-  background: #F0F0F0;
-  font-size: .9rem;
-  font-weight: 300;
+/*Navbar*/
+
+.nav-item {
+  margin: 0 5px;
 }
 
-* {
-  border-radius: 0 !important;
-}
+/*Navbar End*/
 
-a:link {
-  color: #1EA5D2;
-}
-
-a:visited {
-  color: #1EA5D2;
-}
-
-a:active {
-  color: #1EA5D2;
-}
-
-a:hover {
-  color: #1EA5D2;
-}
-
-.header {
-  background: #ffffff;
-  padding: 10px 0;
-}
-
-/* adds some margin below the link sets  */
-
-.navbar .dropdown-menu div[class*="col"] {
-  margin-bottom: 1rem;
-}
-
-.navbar .dropdown-menu {
-  border: none;
-  background: transparent !important;
-}
-
-.navbar .dropdown-menu .container {
-  width: 400px;
-}
-
-.navbar .dropdown-menu .bgcolor {
-  background-color: #eee !important;
-  padding: 0 10px 10px 10px;
-  line-height: 30px;
-  margin: -10px 0 0 0 !important;
+.verticle-center {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 /* breakpoint and up - mega dropdown styles */
 
 @media screen and (min-width: 992px) {
-  /* remove the padding from the navbar so the dropdown hover state is not broken */
-
-  .navbar {
-    padding-top: 0px;
-    padding-bottom: 0px;
-  }
-
-  /* remove the padding from the nav-item and add some margin to give some breathing room on hovers */
-
-  .navbar .nav-item {
-    padding: .5rem .5rem;
-    margin: 0 .25rem;
-  }
-
-  /* makes the dropdown full width  */
-
-  .navbar .dropdown {
-    position: static;
-  }
-
-  .navbar .dropdown-menu {
-    width: 100%;
-    left: 0;
-    right: 0;
-    /*  height of nav-item  */
-    top: 45px;
-  }
-
-  .navbar-nav ul {
-    background: #eeeeee !important;
-    padding: 0 10px;
-  }
-
   /* shows the dropdown menu on hover */
 
   .navbar .dropdown:hover .dropdown-menu,
   .navbar .dropdown .dropdown-menu:hover {
     display: block !important;
   }
-
-  .navbar .dropdown-menu {
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    background-color: #fff;
-  }
-}
-
-/* breakpoint and up - mega dropdown styles */
-
-@media screen and (max-width: 800px) {
-  .navbar .dropdown-menu .bgcolor {
-    background-color: #fff !important;
-  }
-
-  .navbar-nav ul {
-    background: #ffffff !important;
-    padding: 0 10px;
-  }
-
-  .navbar-dark .navbar-nav .active > .nav-link,
-  .navbar-dark .navbar-nav .nav-link.active,
-  .navbar-dark .navbar-nav .nav-link.show,
-  .navbar-dark .navbar-nav .show > .nav-link {
-    background: #ffffff !important;
-  }
-}
-
-.navbar-dark {
-  background: #fff !important;
-}
-
-.navbar-dark a {
-  color: #666666 !important;
-  text-transform: uppercase !important;
-  font-size: .85em !important;
-  font-family: 'Roboto', sans-serif !important;
-}
-
-.navbar-dark .navbar-toggler {
-  background: #333333;
-}
-
-.navbar-dark .navbar-nav .active > .nav-link,
-.navbar-dark .navbar-nav .nav-link.active,
-.navbar-dark .navbar-nav .nav-link.show,
-.navbar-dark .navbar-nav .show > .nav-link {
-  background: #eeeeee !important;
 }
 
 /* home banner box */
@@ -13687,7 +13567,7 @@ a:hover {
   border-radius: 0 !important;
   color: #eeeeee;
   font-size: .8em;
-  padding: .5rem 5rem;
+  padding: .5rem 4rem;
 }
 
 .nav-pills .nav-link.active,

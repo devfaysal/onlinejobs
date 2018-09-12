@@ -35,13 +35,15 @@ class HomeController extends Controller
         $religions = Religion::where('status', '=', 1)->get();
         $nationalitys = Country::where('status', '=', 1)->get();
         $languages = Language::where('status', '=', 1)->get();
-        return view('maids', compact('religions','nationalitys','languages'));
+        $page = 'maids';
+        return view('maids', compact('religions','nationalitys','languages','page'));
     }
 
     public function maidsearch(Request $request){
         $religions = Religion::where('status', '=', 1)->get();
         $nationalitys = Country::where('status', '=', 1)->get();
         $languages = Language::where('status', '=', 1)->get();
+        $page = 'maids';
 
         $users = User::whereRoleIs('maid')
                         ->with('Profile')
@@ -52,7 +54,7 @@ class HomeController extends Controller
                                     ->orWhere('native_language', $request->native_language ?  $request->native_language : 0);
                         })->get();
 
-        return view('maids', compact('users','religions','nationalitys','languages'));
+        return view('maids', compact('users','religions','nationalitys','languages','page'));
     }
 
     public function workers()
@@ -60,13 +62,15 @@ class HomeController extends Controller
         $religions = Religion::where('status', '=', 1)->get();
         $nationalitys = Country::where('status', '=', 1)->get();
         $languages = Language::where('status', '=', 1)->get();
-        return view('workers', compact('religions','nationalitys','languages'));
+        $page = 'workers';
+        return view('workers', compact('religions','nationalitys','languages','page'));
     }
 
     public function workersearch(Request $request){
         $religions = Religion::where('status', '=', 1)->get();
         $nationalitys = Country::where('status', '=', 1)->get();
         $languages = Language::where('status', '=', 1)->get();
+        $page = 'workers';
 
         $users = User::whereRoleIs('worker')
                         ->with('Profile')
@@ -77,6 +81,6 @@ class HomeController extends Controller
                                     ->orWhere('native_language', $request->native_language ?  $request->native_language : 0);
                         })->get();
 
-        return view('workers', compact('users','religions','nationalitys','languages'));
+        return view('workers', compact('users','religions','nationalitys','languages','page'));
     }
 }

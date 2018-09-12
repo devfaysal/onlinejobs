@@ -1,7 +1,7 @@
 <div class="sidebar">
-    <div class="panel panel-warning">
-        <div class="panel-heading"><h4 class="text-uppercase">Jobs in your reach</h4></div>
-        <div class="panel-body jobs-in-reach">
+    <div class="card">
+        <div class="card-body jobs-in-reach">
+            <h4 class="card-title">Jobs in your reach</h4>
             <ul>
                 <li><a href="#">Php</a></li>
                 <li><a href="#">JAVA</a></li>
@@ -24,13 +24,13 @@
         </div>
     </div>
     
-    <div class="panel panel-warning">
-        <div class="panel-heading"><h4 class="text-uppercase">Write Us</h4></div>
-        <div class="panel-body">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Write Us</h4>
             <ul class="quick-contact">
                 <li><input type="text" class="form-control" name="contact_user" placeholder="Your Name"></li>
                 <li><input type="email" class="form-control" name="contact_email" placeholder="Your Email Id"></li>
-                <li><textarea placeholder="Message"></textarea></li>
+                <li><textarea class="form-control" placeholder="Message"></textarea></li>
                 <li><input type="button" class="btn btn-block btn-warning" value="Send" style="max-width:100px"></li>
             </ul>
         </div>

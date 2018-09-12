@@ -7,7 +7,7 @@
             <div class="container">
                 <div class="row">
                     <nav class="nav nav-pills nav-fill">
-                        <a class="nav-item nav-link active" href="#">All jobs</a>
+                        <a class="nav-item nav-link" href="#">All jobs</a>
                         <a class="nav-item nav-link" href="#"  data-toggle="modal" data-target="#exampleModalCenter">IIT/IIM Jobs</a>
                         <a class="nav-item nav-link" href="#">Govt. Jobs</a>
                         <a class="nav-item nav-link" href="#">International jobs</a>

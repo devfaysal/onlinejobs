@@ -17,10 +17,6 @@
 
 Auth::routes();
 
-Route::get('/test', function(){
-    return view('layouts.new');
-});
-
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/profile/{public}', 'ProfileController@public')->name('profile.public');
 Route::group(['middleware' => 'auth'], function(){
