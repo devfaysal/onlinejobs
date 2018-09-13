@@ -15,6 +15,6 @@ class Authorize
      */
     public function handle($request, $next)
     {
-        return Nova::check($request) ? $next($request) : abort(403);
+        return Nova::check($request) ? $next($request) : redirect('/');
     }
 }
