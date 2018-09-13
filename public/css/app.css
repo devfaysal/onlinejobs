@@ -13528,8 +13528,21 @@ a.text-dark:focus {
 
 /*Navbar*/
 
+.navbar {
+  padding: 0;
+}
+
 .nav-item {
   margin: 0 5px;
+  padding: 10px 0;
+}
+
+.nav-link {
+  padding: 3px 1rem;
+}
+
+.dropdown-menu {
+  top: 49px;
 }
 
 /*Navbar End*/
