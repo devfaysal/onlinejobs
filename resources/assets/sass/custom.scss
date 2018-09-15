@@ -259,3 +259,12 @@ background: #707070;
     text-indent: -9999px;
     background-color: #000;
 }
+
+/****************************************
+ Print
+*****************************************/
+@media print {
+    .hidefromprint{
+        display: none;
+    }
+}

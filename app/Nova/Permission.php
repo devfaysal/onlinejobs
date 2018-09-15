@@ -21,7 +21,7 @@ class Permission extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -46,7 +46,7 @@ class Permission extends Resource
             Text::make('Name')
                 ->sortable()
                 ->rules('required')
-                ->onlyOnIndex(),
+                ->hideWhenUpdating(),
 
             Text::make('Display Name')
                 ->sortable()

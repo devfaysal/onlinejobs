@@ -13929,6 +13929,16 @@ article h6 {
   background-color: #000;
 }
 
+/****************************************
+ Print
+*****************************************/
+
+@media print {
+  .hidefromprint {
+    display: none;
+  }
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

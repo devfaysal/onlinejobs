@@ -11,6 +11,7 @@ use Laravel\Nova\Fields\MorphToMany;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\Boolean;
+use Inspheric\Fields\Url;
 
 class User extends Resource
 {
@@ -77,6 +78,11 @@ class User extends Resource
             MorphToMany::make('Roles', 'roles')
                 ->hideFromIndex(),
             BelongsTo::make('Role', 'roles')
+                ->onlyOnIndex(),
+            Text::make('Profile','public_id', function ($public_id) {
+                    return '<a target="_blank" href="/profile/'.$public_id.'">View</a>';
+                })
+                ->asHtml()
                 ->onlyOnIndex(),
         ];
     }

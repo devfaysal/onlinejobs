@@ -13,6 +13,13 @@
                 </div>
             </div>
             @endif
+            @auth
+            @if(Auth::user()->can('print'))
+                <div class="col-md-12 hidefromprint mb-3">
+                    <a class="btn btn-success" href="" onclick="window.print();return false;">Print profile</a>
+                </div>
+            @endif
+            @endauth
             <div class="col-md-4 text-center">
                 <div class="card">
                     @auth

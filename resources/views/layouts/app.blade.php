@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/favicon.ico')}}">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -153,7 +153,7 @@
         @yield('content')
     </main>
 
-    <section class="footer_top">
+    <section class="footer_top hidefromprint">
     <div class="container">
       <div class="row">
           <div class="col-md-3 col-sm-6">
@@ -255,7 +255,7 @@
     </div>
     </section>
 
-    <section class="footer_middle tex-center"> 
+    <section class="footer_middle tex-center hidefromprint"> 
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-12">
@@ -353,7 +353,7 @@
             </div>
         </div>
     </section>
-    <section class="footer_bottom"> 
+    <section class="footer_bottom hidefromprint"> 
         <div class="container tex-center">
             <div class="row">
                 <div class="col-md-12">

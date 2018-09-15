@@ -31,7 +31,6 @@ class UserRole extends Filter
         return [
             'Maid' => 'maid',
             'Worker' => 'worker',
-            'Professional' => 'professional',
         ];
     }
 }

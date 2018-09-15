@@ -6,6 +6,10 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\MorphToMany;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 
 class Role extends Resource
 {
@@ -50,6 +54,8 @@ class Role extends Resource
             Text::make('Display Name')
                 ->sortable()
                 ->rules('required'),
+            BelongsToMany::make('Permissions')
+            ->hideFromIndex(),
         ];
     }
 
