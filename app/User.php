@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'phone', 'password', 'public_id',
+        'name', 'email', 'phone', 'password', 'public_id','status'
     ];
 
     /**
@@ -28,6 +28,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function agent_profile(){
+        return $this->hasOne(AgentProfile::class);
+    }
 
     public function profile(){
         return $this->hasOne(Profile::class);

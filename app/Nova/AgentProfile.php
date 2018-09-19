@@ -4,31 +4,24 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Gravatar;
-use Laravel\Nova\Fields\Password;
-use Laravel\Nova\Fields\MorphToMany;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\HasOne;
-use Laravel\Nova\Fields\Boolean;
-use Inspheric\Fields\Url;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Fields\Text;
 
-class User extends Resource
+class AgentProfile extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\User';
+    public static $model = 'App\AgentProfile';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -36,7 +29,7 @@ class User extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name', 'email',
+        'id',
     ];
 
     /**
@@ -50,41 +43,21 @@ class User extends Resource
         return [
             ID::make()->sortable(),
 
-            //Gravatar::make(),
-
-            Text::make('Name')
+            Text::make('Agency Name','agency_registered_name')
                 ->sortable()
                 ->rules('required', 'max:255'),
-
-            Text::make('Email')
+            Text::make('License No','license_no')
                 ->sortable()
-                ->rules('required', 'email', 'max:255')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
-
-            Text::make('Phone')
+                ->rules('required', 'max:255'),
+            Text::make('Country','agency_country')
                 ->sortable()
-                ->rules('required'),
-
-            Boolean::make('Status')
-                ->sortable(),
-
-            Password::make('Password')
-                ->onlyOnForms()
-                ->creationRules('required', 'string', 'min:6')
-                ->updateRules('nullable', 'string', 'min:6'),
-
-            HasOne::make('Profile'),
-
-            MorphToMany::make('Roles', 'roles')
-                ->hideFromIndex(),
-            BelongsTo::make('Role', 'roles')
-                ->onlyOnIndex(),
-            Text::make('Profile','public_id', function ($public_id) {
-                    return '<a target="_blank" href="/profile/'.$public_id.'">View</a>';
-                })
-                ->asHtml()
-                ->onlyOnIndex(),
+                ->rules('required', 'max:255'),
+            Text::make('Contact name','first_name')
+                ->sortable()
+                ->rules('required', 'max:255'),
+            Text::make('Mobile','phone')
+                ->sortable()
+                ->rules('required', 'max:255'),
         ];
     }
 
@@ -107,9 +80,7 @@ class User extends Resource
      */
     public function filters(Request $request)
     {
-        return [
-            new Filters\UserRole,
-        ];
+        return [];
     }
 
     /**

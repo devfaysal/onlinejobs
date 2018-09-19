@@ -4,18 +4,28 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\MorphToMany;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\Boolean;
 use Inspheric\Fields\Url;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
-class User extends Resource
+class Workers extends Resource
 {
+    /**
+     * Build an "index" query for the given resource.
+     *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+        return $query->whereRoleIs('worker')->get();
+    }
     /**
      * The model the resource corresponds to.
      *
@@ -28,7 +38,7 @@ class User extends Resource
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -36,7 +46,7 @@ class User extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name', 'email',
+        'id',
     ];
 
     /**
@@ -49,8 +59,6 @@ class User extends Resource
     {
         return [
             ID::make()->sortable(),
-
-            //Gravatar::make(),
 
             Text::make('Name')
                 ->sortable()
@@ -76,10 +84,6 @@ class User extends Resource
 
             HasOne::make('Profile'),
 
-            MorphToMany::make('Roles', 'roles')
-                ->hideFromIndex(),
-            BelongsTo::make('Role', 'roles')
-                ->onlyOnIndex(),
             Text::make('Profile','public_id', function ($public_id) {
                     return '<a target="_blank" href="/profile/'.$public_id.'">View</a>';
                 })
@@ -107,9 +111,7 @@ class User extends Resource
      */
     public function filters(Request $request)
     {
-        return [
-            new Filters\UserRole,
-        ];
+        return [];
     }
 
     /**

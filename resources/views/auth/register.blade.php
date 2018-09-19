@@ -8,9 +8,13 @@
                 <div class="card-header"><h2>{{ __('Sign up today, its easy!') }}</h2></div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
+                    <form method="POST" action="@auth @if(Auth::user()->hasRole('agent') ){{route('agent.saveuser')}} @endif @else{{ route('register') }} @endauth" aria-label="{{ __('Register') }}">
                         @csrf
-
+                        @auth
+                            @if(Auth::user()->hasRole('agent') )
+                                <input type="hidden" name="agent_code" value="{{Auth::user()->agent_profile->agent_code}}">
+                            @endif
+                        @endauth
                         <div class="form-group">
                             <label for="name">{{ __('Name') }}</label>
                             <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="Full Name" required>

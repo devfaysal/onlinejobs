@@ -17,7 +17,7 @@ return [
         'jobseeker' => [
             'profile' => 'r,u'
         ],
-        'professional' => [
+        'agent' => [
             'profile' => 'r,u'
         ],
         'worker' => [

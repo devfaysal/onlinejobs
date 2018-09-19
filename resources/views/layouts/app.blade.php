@@ -70,7 +70,14 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Logged in as {{Auth::user()->name}}</a>
-                            <a class="dropdown-item" href="{{route('profile.index')}}">Profile</a>
+
+                            @if(Auth::user()->hasRole(['maid', 'worker']) )
+                                <a class="dropdown-item" href="{{route('profile.index')}}">Profile</a>
+                            @endif
+                            @if(Auth::user()->hasRole('agent') )
+                                <a class="dropdown-item" href="{{route('agent.index')}}">Profile</a>
+                            @endif
+
                             <a class="dropdown-item" href="#">Change Password</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"

@@ -23,6 +23,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('profile', 'ProfileController')->except('destroy');
     Route::resource('experience', 'ExperienceController')->except('destroy');
 });
+Route::get('agent/createuser', 'AgentProfileController@createuser')->name('agent.createuser');
+Route::post('agent/saveuser', 'AgentProfileController@saveuser')->name('agent.saveuser');
+Route::resource('agent', 'AgentProfileController')->except('destroy');
+
 Route::get('/maids', 'HomeController@maids')->name('maids');
 Route::any('/maids/search', 'HomeController@maidsearch')->name('maids.search');
 
