@@ -60,7 +60,7 @@ class AgentProfileController extends Controller
      * @param  \App\Agent  $agent
      * @return \Illuminate\Http\Response
      */
-    public function show(Agent $agent)
+    public function show(AgentProfile $agentProfile)
     {
         
     }
@@ -71,9 +71,12 @@ class AgentProfileController extends Controller
      * @param  \App\Agent  $agent
      * @return \Illuminate\Http\Response
      */
-    public function edit(Agent $agent)
+    public function edit($agent)
     {
-        //
+        $countrys = Country::where('status', 1)->get();
+        $nationalitys = $countrys;
+        $agentProfile = AgentProfile::where('id', $agent)->first();
+        return view('agent.edit', compact('agentProfile','countrys','nationalitys'));
     }
 
     /**
@@ -83,9 +86,55 @@ class AgentProfileController extends Controller
      * @param  \App\Agent  $agent
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Agent $agent)
+    public function update(Request $request, $agent)
     {
-        //
+        $agent = AgentProfile::where('id', $agent)->first();
+        $agent->agency_registered_name = $request->agency_registered_name;
+        $agent->agency_address = $request->agency_address;
+        $agent->agency_city = $request->agency_city;
+        $agent->agency_country = $request->agency_country;
+        $agent->agency_phone = $request->agency_phone;
+        $agent->agency_fax = $request->agency_fax;
+        $agent->agency_email = $request->agency_email;
+        $agent->license_no = $request->license_no;
+        $agent->license_issue_date = $request->license_issue_date;
+        $agent->license_expire_date = $request->license_expire_date;
+
+        if($request->file('license_file')){
+            $this->validate($request, [
+                'license_file' => 'image|max:250',
+            ]);
+            
+            $image_basename = explode('.',$request->file('license_file')->getClientOriginalName())[0];
+            $image = $image_basename . '-' . time() . '.' . $request->file('license_file')->getClientOriginalExtension();
+
+            $img = Image::make($request->file('license_file')->getRealPath());
+            $img->stream();
+
+            //Upload image
+            Storage::disk('local')->put('public/'.$image, $img);
+
+            //add new image path to database
+            $agent->license_file = $image;
+            
+        }
+        //Point of Contact
+        $agent->first_name = $request->name;
+        $agent->middle_name = $request->middle_name;
+        $agent->last_name = $request->last_name;
+        $agent->designation = $request->designation;
+        $agent->address = $request->address;
+        $agent->nationality = $request->nationality;
+        $agent->passport = $request->passport;
+        $agent->nic = $request->nic;
+        $agent->phone = $request->phone;
+        $agent->email = $request->email;
+        $agent->save();
+
+        Session::flash('message', 'Profile Updated Successfully!!'); 
+        Session::flash('alert-class', 'alert-success');
+
+        return redirect()->route('agent.index');
     }
 
     /**
@@ -94,7 +143,7 @@ class AgentProfileController extends Controller
      * @param  \App\Agent  $agent
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Agent $agent)
+    public function destroy(AgentProfile $agentProfile)
     {
         //
     }

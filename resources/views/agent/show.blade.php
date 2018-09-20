@@ -18,6 +18,7 @@
     
     <div class="col-md-8 ml-auto mr-auto">
         <a class="btn btn-success" href="{{route('agent.createuser')}}">Create Worker/maid</a>
+        <a class="btn btn-warning" href="{{route('agent.edit', Auth::user()->agent_profile->id)}}">Edit My Profile</a>
         <div class="card">
             <h4 class="card-title text-center mt-3">Agent Information</h4>
             <div class="card-body">
@@ -46,7 +47,7 @@
             <div class="card-body">
                 <ul>
                 @foreach ($workers_maids as $workers_maid)
-                    <li><a href="{{route('profile.public', $workers_maid->public_id)}}">{{$workers_maid->name}}</a> <a class="btn btn-success" href="{{route('profile.edit', $workers_maid->id)}}">Edit Profile</a></li>
+                    <li>{{$workers_maid->name}} <a class="btn btn-info" href="{{route('profile.public', $workers_maid->public_id)}}">View</a> <a class="btn btn-success" href="{{route('profile.edit', $workers_maid->id)}}">Edit </a></li>
                 @endforeach
                 </ul>
             </div>

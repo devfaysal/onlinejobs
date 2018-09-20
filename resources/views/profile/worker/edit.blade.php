@@ -3,6 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        @if(Session::has('message'))
+        <div class="col-md-12">
+            <div class="alert {{ Session::get('alert-class', 'alert-info') }} alert-dismissible fade show" role="alert">
+                <strong>{{ Session::get('message') }}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        @endif
         <div class="col-md-8 col-md-offset-2">
             <div class="card mt-3">
                 <div class="card-header">
