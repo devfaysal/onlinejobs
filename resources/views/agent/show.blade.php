@@ -47,7 +47,7 @@
             <div class="card-body">
                 <ul>
                 @foreach ($workers_maids as $workers_maid)
-                    <li class="mb-1">{{$workers_maid->name}} <a class="btn btn-info" href="{{route('profile.public', $workers_maid->public_id)}}">View</a> <a class="btn btn-success" href="{{route('profile.edit', $workers_maid->id)}}">Edit </a></li>
+                    <li class="mb-1">{{$workers_maid->name}} <a class="btn btn-info" href="{{route('profile.public', $workers_maid->public_id)}}">View</a> <a class="btn btn-success" href="{{route('profile.edit', $workers_maid->profile->id)}}">Edit </a></li>
                 @endforeach
                 </ul>
             </div>
