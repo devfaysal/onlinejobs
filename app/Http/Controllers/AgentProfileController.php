@@ -9,6 +9,14 @@ use App\User;
 use Illuminate\Support\Facades\Hash;
 use App\Profile;
 use Session;
+use Image; /* https://github.com/Intervention/image */
+use Storage;
+use App\Religion;
+use App\Language;
+use App\SkillLevel;
+use App\MaritalStatus;
+use App\Gender;
+use App\Experience;
 
 class AgentProfileController extends Controller
 {
@@ -150,7 +158,13 @@ class AgentProfileController extends Controller
 
     public function createuser()
     {
-        return view('auth.register');
+        $religions = Religion::where('status', '=', 1)->get();
+        $nationalitys = Country::where('status', '=', 1)->get();
+        $languages = Language::where('status', '=', 1)->get();
+        $skill_levels = SkillLevel::where('status', '=', 1)->get();
+        $marital_statuses = MaritalStatus::where('status', '=', 1)->get();
+        $genders = Gender::where('status', '=', 1)->get();
+        return view('agent.createuser', compact('religions','nationalitys','languages','skill_levels','marital_statuses','genders'));
     }
 
     public function saveuser( Request $request)
@@ -159,33 +173,97 @@ class AgentProfileController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
-        $user->password = Hash::make($request->password);
+        $user->password = Hash::make('password');
         $user->public_id = time().md5($request->email);
-
+        $user->status = 1;
         $role = $request->role;
-        if($role == 'maid' || $role == 'worker'){
-            $user->status = 1;
-        }elseif($role == 'agent'){
-            $user->status = 0;
-        }
 
         $user->save();
-  
-        if($role == 'maid' || $role == 'worker' || $role == 'agent'){
-            $user->attachRole($role);
+        $user->attachRole($role);
+
+        $profile = new Profile;
+
+        if($request->file('image')){
+            $this->validate($request, [
+                'image' => 'image|max:250',
+            ]);
+            
+            $image_basename = explode('.',$request->file('image')->getClientOriginalName())[0];
+            $image = $image_basename . '-' . time() . '.' . $request->file('image')->getClientOriginalExtension();
+
+            $img = Image::make($request->file('image')->getRealPath());
+            $img->stream();
+
+            //Upload image
+            Storage::disk('local')->put('public/'.$image, $img);
+
+            //Remove if there was any old image
+            if($profile->image != ''){
+                Storage::disk('local')->delete('public/'.$profile->image);
+            }
+
+            //add new image path to database
+            $profile->image = $image;
+            
         }
 
-        if($role == 'maid' || $role == 'worker'){
-            $profile = new Profile;
-            $profile->user_id = $user->id;
-            $profile->agent_code = $request->agent_code;
-            $profile->name = $user->name;
-            $profile->phone = $user->phone;
-            $profile->save();
+        if($request->file('full_image')){
+            $this->validate($request, [
+                'full_image' => 'image|max:250',
+            ]);
+            
+            $image_basename = explode('.',$request->file('full_image')->getClientOriginalName())[0];
+            $image = $image_basename . '-' . time() . '.' . $request->file('full_image')->getClientOriginalExtension();
+
+            $img = Image::make($request->file('full_image')->getRealPath());
+            $img->stream();
+
+            //Upload image
+            Storage::disk('local')->put('public/'.$image, $img);
+
+            //Remove if there was any old image
+            if($profile->full_image != ''){
+                Storage::disk('local')->delete('public/'.$profile->full_image);
+            }
+
+            //add new image path to database
+            $profile->full_image = $image;
+            
         }
+
+        $profile->user_id = $user->id;
+        $profile->agent_code = $request->agent_code;
+        $profile->name = $request->name;
+        $profile->phone = $request->phone;
+        $profile->gender = $request->gender;
+        $profile->date_of_birth = $request->date_of_birth;
+        $profile->nationality = $request->nationality;
+        $profile->religion = $request->religion;
+        $profile->native_language = $request->native_language;
+        $profile->other_languages = $request->other_languages;
+        $profile->marital_status = $request->marital_status;
+        $profile->height = $request->height;
+        $profile->weight = $request->weight;
+        $profile->highest_education = $request->highest_education;
+        $profile->skill_level = $request->skill_level;
+        $profile->work_on_off_days_with_compensation = $request->work_on_off_days_with_compensation;
+        $profile->able_to_handle_pork = $request->able_to_handle_pork;
+        $profile->able_to_gardening = $request->able_to_gardening;
+        $profile->able_to_care_dog_cat = $request->able_to_care_dog_cat;
+        $profile->able_to_simple_sewing = $request->able_to_simple_sewing;
+        $profile->able_to_wash_car = $request->able_to_wash_car;
+        $profile->able_to_eat_pork = $request->able_to_eat_pork;
+        $profile->able_to_care_infants = $request->able_to_care_infants;
+        $profile->able_to_care_elderly = $request->able_to_care_elderly;
+        $profile->able_to_care_disabled = $request->able_to_care_disabled;
+        $profile->able_to_do_general_housework = $request->able_to_do_general_housework;
+        $profile->able_to_cook = $request->able_to_cook;
+
+        $profile->save();
+
         Session::flash('message', ucfirst($role).' Created successfully!! now update profile'); 
         Session::flash('alert-class', 'alert-success');
 
-        return redirect()->route('profile.edit', $user->id);
+        return redirect()->route('agent.index');
     }
 }
