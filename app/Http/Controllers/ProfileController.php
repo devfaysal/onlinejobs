@@ -76,13 +76,13 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        $logged_user = auth()->user();
-        $editable_user = User::where('id', $id)->first();
+        //$logged_user = auth()->user();
+        $user = User::where('id', $id)->first();
         
         // if($logged_user->id != $id || $logged_user->agent_profile->agent_code != $editable_user->profile->agent_code){
         //     die();
         // }
-        $profile = $editable_user->profile;
+        $profile = $user->profile;
         $religions = Religion::where('status', '=', 1)->get();
         $nationalitys = Country::where('status', '=', 1)->get();
         $languages = Language::where('status', '=', 1)->get();
@@ -90,9 +90,9 @@ class ProfileController extends Controller
         $marital_statuses = MaritalStatus::where('status', '=', 1)->get();
         $genders = Gender::where('status', '=', 1)->get();
 
-        if($editable_user->hasRole('worker')){
+        if($user->hasRole('worker')){
             return view('profile.worker.edit', compact('profile','religions','nationalitys','languages','skill_levels','marital_statuses','genders'));
-        }elseif($editable_user->hasRole('maid')){
+        }elseif($user->hasRole('maid')){
             return view('profile.maid.edit', compact('profile','religions','nationalitys','languages','skill_levels','marital_statuses','genders'));
         };
     }
@@ -107,8 +107,8 @@ class ProfileController extends Controller
     public function update(Request $request, $id)
     {
         $logged_user = auth()->user();
-        $editable_user = User::where('id', $id)->first();
-        $profile = $editable_user->profile;
+        $user = User::where('id', $id)->first();
+        $profile = $user->profile;
         // if($user->profile->id != $id){
         //     die();
         // }
