@@ -6,6 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="card mt-3">
                 <div class="card-header">
+                    <h1 class="text-center">{{$profile->name}}</h1>
                     <h3 class="text-center mt-2">Edit Information</h3>
                 </div>
 

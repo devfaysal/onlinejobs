@@ -134,9 +134,9 @@ class AgentProfileController extends Controller
             $profile->phone = $user->phone;
             $profile->save();
         }
-        Session::flash('message', ucfirst($role).' Created under this agent successfully!'); 
+        Session::flash('message', ucfirst($role).' Created successfully!! now update profile'); 
         Session::flash('alert-class', 'alert-success');
 
-        return redirect()->route('agent.index');
+        return redirect()->route('profile.edit', $user->id);
     }
 }

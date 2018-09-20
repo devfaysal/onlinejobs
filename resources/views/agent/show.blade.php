@@ -46,7 +46,7 @@
             <div class="card-body">
                 <ul>
                 @foreach ($workers_maids as $workers_maid)
-                    <li><a href="{{route('profile.public', $workers_maid->public_id)}}">{{$workers_maid->name}}</a></li>
+                    <li><a href="{{route('profile.public', $workers_maid->public_id)}}">{{$workers_maid->name}}</a> <a class="btn btn-success" href="{{route('profile.edit', $workers_maid->id)}}">Edit Profile</a></li>
                 @endforeach
                 </ul>
             </div>

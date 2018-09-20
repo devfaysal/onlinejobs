@@ -4,9 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 col-md-offset-2">
-            <h1 class="text-center text-warning">{{$profile->name}}</h1>
-            <div class="card auth-form">
-                <div class="card-header"></div>
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h1 class="text-center">{{$profile->name}}</h1>
+                    <h3 class="text-center mt-2">Edit Information</h3>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('profile.update', $profile->id) }}" enctype="multipart/form-data">

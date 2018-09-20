@@ -76,11 +76,13 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        $user = auth()->user();
-        if($user->profile->id != $id){
-            die();
-        }
-        $profile = $user->profile;
+        $logged_user = auth()->user();
+        $editable_user = User::where('id', $id)->first();
+        
+        // if($logged_user->id != $id || $logged_user->agent_profile->agent_code != $editable_user->profile->agent_code){
+        //     die();
+        // }
+        $profile = $editable_user->profile;
         $religions = Religion::where('status', '=', 1)->get();
         $nationalitys = Country::where('status', '=', 1)->get();
         $languages = Language::where('status', '=', 1)->get();
@@ -88,11 +90,9 @@ class ProfileController extends Controller
         $marital_statuses = MaritalStatus::where('status', '=', 1)->get();
         $genders = Gender::where('status', '=', 1)->get();
 
-        if($user->hasRole('professional')){
-            return view('profile.professional.edit', compact('profile','religions','nationalitys','languages','skill_levels','marital_statuses','genders'));
-        }elseif($user->hasRole('worker')){
+        if($editable_user->hasRole('worker')){
             return view('profile.worker.edit', compact('profile','religions','nationalitys','languages','skill_levels','marital_statuses','genders'));
-        }elseif($user->hasRole('maid')){
+        }elseif($editable_user->hasRole('maid')){
             return view('profile.maid.edit', compact('profile','religions','nationalitys','languages','skill_levels','marital_statuses','genders'));
         };
     }
@@ -106,11 +106,12 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = auth()->user();
-        $profile = $user->profile;
-        if($user->profile->id != $id){
-            die();
-        }
+        $logged_user = auth()->user();
+        $editable_user = User::where('id', $id)->first();
+        $profile = $editable_user->profile;
+        // if($user->profile->id != $id){
+        //     die();
+        // }
 
         if($request->file('image')){
             $this->validate($request, [
@@ -192,6 +193,9 @@ class ProfileController extends Controller
         Session::flash('message', 'Information saved successfully!'); 
         Session::flash('alert-class', 'alert-success');
 
+        if($logged_user->hasRole('agent')){
+            return redirect()->route('agent.index');
+        }
         return redirect()->route('profile.index');
 
     }
