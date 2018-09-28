@@ -32,3 +32,7 @@ Route::any('/maids/search', 'HomeController@maidsearch')->name('maids.search');
 
 Route::get('/workers', 'HomeController@workers')->name('workers');
 Route::any('/workers/search', 'HomeController@workersearch')->name('workers.search');
+
+Route::get('/CadidateStatusView', function(){
+    return view('CadidateStatusView');
+})->name('CadidateStatusView');

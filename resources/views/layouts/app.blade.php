@@ -47,13 +47,13 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-info" href="{{route('maids')}}">Domestic Maids</a>
+                        <a class="nav-link" href="{{route('maids')}}">Domestic Maids</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-success" href="{{route('workers')}}">General Workers</a>
+                        <a class="nav-link" href="{{route('workers')}}">General Workers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Employers Zone</a>
+                        <a class="nav-link" href="#">Employers Area</a>
                     </li>
                     
                 </ul>
