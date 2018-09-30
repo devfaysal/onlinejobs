@@ -11,8 +11,9 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- Styles -->
-        <link href="{{ asset('admin/css/vendor.css') }}" rel="stylesheet">
-        <link href="{{ asset('admin/css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('admin-assets/css/vendor.css') }}" rel="stylesheet">
+        <link href="{{ asset('admin-assets/css/app.css') }}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
         
         <!-- Theme initialization -->
         <script>
@@ -21,11 +22,11 @@
             // var themeName = themeSettings.themeName || '';
             // if (themeName)
             // {
-            //     document.write('<link rel="stylesheet" id="theme-style" href="admin/css/app-' + themeName + '.css">');
+            //     document.write('<link rel="stylesheet" id="theme-style" href="admin-assets/css/app-' + themeName + '.css">');
             // }
             // else
             // {
-            //     document.write('<link rel="stylesheet" id="theme-style" href="admin/css/app.css">');
+            //     document.write('<link rel="stylesheet" id="theme-style" href="admin-assets/css/app.css">');
             // }
         </script>
     </head>
@@ -76,7 +77,7 @@
                                         <li>
                                             <a href="" class="notification-item">
                                                 <div class="img-col">
-                                                    <div class="img" style="background-image: url({{asset('admin/assets/faces/5.jpg')}})"></div>
+                                                    <div class="img" style="background-image: url({{asset('admin-assets/assets/faces/5.jpg')}})"></div>
                                                 </div>
                                                 <div class="body-col">
                                                     <p>
@@ -88,7 +89,7 @@
                                         <li>
                                             <a href="" class="notification-item">
                                                 <div class="img-col">
-                                                    <div class="img" style="background-image: url({{asset('admin/assets/faces/8.jpg')}})"></div>
+                                                    <div class="img" style="background-image: url({{asset('admin-assets/assets/faces/8.jpg')}})"></div>
                                                 </div>
                                                 <div class="body-col">
                                                     <p>
@@ -145,7 +146,7 @@
                         <nav class="menu">
                             <ul class="sidebar-menu metismenu" id="sidebar-menu">
                                 <li class="active">
-                                    <a href="index.html">
+                                    <a href="/admin">
                                         <i class="fa fa-home"></i> Dashboard </a>
                                 </li>
                                 <li>
@@ -169,7 +170,7 @@
                                     </a>
                                     <ul class="sidebar-nav">
                                         <li>
-                                            <a href="#"> Active Agents </a>
+                                            <a href="{{route('admin.agent.index')}}"> Active Agents </a>
                                         </li>
                                         <li>
                                             <a href="#"> Agent Apllications </a>
@@ -516,24 +517,10 @@
                 <div class="color-secondary"></div>
             </div>
         </div>
-        <script>
-            (function(i, s, o, g, r, a, m)
-            {
-                i['GoogleAnalyticsObject'] = r;
-                i[r] = i[r] || function()
-                {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
-                a = s.createElement(o),
-                    m = s.getElementsByTagName(o)[0];
-                a.async = 1;
-                a.src = g;
-                m.parentNode.insertBefore(a, m)
-            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-            ga('create', 'UA-80463319-4', 'auto');
-            ga('send', 'pageview');
-        </script>
-        <script src="{{asset('admin/js/vendor.js')}}"></script>
-        <script src="{{asset('admin/js/app.js')}}"></script>
+        <script src="{{asset('admin-assets/js/vendor.js')}}"></script>
+        <script src="{{asset('admin-assets/js/app.js')}}"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+        @yield('javascript')
     </body>
 </html>

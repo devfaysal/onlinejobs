@@ -17,11 +17,15 @@
 
 Auth::routes();
 
-Route::get('/jobadmin', function(){
-    return view('admin.index');
-});
-Route::get('/jobadmin/login', function(){
-    return view('admin.login');
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', function(){
+        return view('admin.index');
+    });
+    Route::get('/login', function(){
+        return view('admin.login');
+    });
+    Route::get('/getAgentsData', 'Admin\AgentController@getAgentsData');
+    Route::resource('/agent', 'Admin\AgentController');
 });
 
 Route::get('/', 'HomeController@index')->name('home');
