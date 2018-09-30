@@ -32,7 +32,7 @@
     $('#users-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: 'http://jobnetwork.test/admin/getAgentsData',
+        ajax: '{{route('admin.getAgentsData')}}',
         columns: [
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},

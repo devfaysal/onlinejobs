@@ -24,7 +24,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', function(){
         return view('admin.login');
     });
-    Route::get('/getAgentsData', 'Admin\AgentController@getAgentsData');
+    Route::get('/getAgentsData', 'Admin\AgentController@getAgentsData')->name('getAgentsData');
     Route::resource('/agent', 'Admin\AgentController');
 });
 
