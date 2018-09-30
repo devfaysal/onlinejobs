@@ -17,6 +17,13 @@
 
 Auth::routes();
 
+Route::get('/jobadmin', function(){
+    return view('admin.index');
+});
+Route::get('/jobadmin/login', function(){
+    return view('admin.login');
+});
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/profile/{public}', 'ProfileController@public')->name('profile.public');
 Route::group(['middleware' => 'auth'], function(){
