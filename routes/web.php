@@ -26,6 +26,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 
     /*Agent*/
+    Route::get('/agent/approve/{id}', 'Admin\AgentController@approve')->name('agent.approve');
+    Route::get('/agent/reject/{id}', 'Admin\AgentController@reject')->name('agent.reject');
     Route::get('/getAgentsData', 'Admin\AgentController@getAgentsData')->name('getAgentsData');
     Route::get('/agent-application', 'Admin\AgentController@agentApplication')->name('agentApplication');
     Route::get('/getAgentsApplicationData', 'Admin\AgentController@getAgentsApplicationData')->name('getAgentsApplicationData');

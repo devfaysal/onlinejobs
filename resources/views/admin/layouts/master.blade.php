@@ -69,7 +69,7 @@
                                     <ul class="notifications-container">
                                         @foreach ($agent_applications as $aaps)
                                         <li>
-                                            <a href="" class="notification-item">
+                                            <a href="{{route('admin.agentApplication')}}" class="notification-item">
                                                 <div class="body-col">
                                                     <p><span class="accent">{{$aaps->name}} has applied to become Agent</span></p>
                                                 </div>
@@ -80,7 +80,7 @@
                                     <footer>
                                         <ul>
                                             <li>
-                                                <a href=""> View All </a>
+                                                <a href="{{route('admin.agentApplication')}}"> View All </a>
                                             </li>
                                         </ul>
                                     </footer>
@@ -89,18 +89,27 @@
                             <li class="profile dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                     <div class="img" style="background-image: url('https://avatars3.githubusercontent.com/u/3959008?v=3&s=40')"> </div>
-                                    <span class="name"> John Doe </span>
+                                    @auth
+                                    <span class="name"> {{Auth::user()->name}} </span>
+                                    @endauth
                                 </a>
                                 <div class="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1">
-                                    <a class="dropdown-item" href="#">
+                                    {{-- <a class="dropdown-item" href="#">
                                         <i class="fa fa-user icon"></i> Profile </a>
                                     <a class="dropdown-item" href="#">
                                         <i class="fa fa-bell icon"></i> Notifications </a>
                                     <a class="dropdown-item" href="#">
                                         <i class="fa fa-gear icon"></i> Settings </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="login.html">
-                                        <i class="fa fa-power-off icon"></i> Logout </a>
+                                    <div class="dropdown-divider"></div> --}}
+
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    <i class="fa fa-power-off icon"></i>{{ __('Logout') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                    </form>
                                 </div>
                             </li>
                         </ul>
@@ -171,16 +180,16 @@
                                         <li>
                                             <a href="{{route('admin.country.index')}}"> Countries </a>
                                         </li>
-                                        <li>
+                                        {{-- <li>
                                             <a href="#"> Employer Apllications </a>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a href="forms.html">
                                         <i class="fa fa-pencil-square-o"></i> Forms </a>
-                                </li>
-                                <li>
+                                </li> --}}
+                                {{-- <li>
                                     <a href="">
                                         <i class="fa fa-desktop"></i> UI Elements
                                         <i class="fa arrow"></i>
@@ -202,8 +211,8 @@
                                             <a href="grid.html"> Grid </a>
                                         </li>
                                     </ul>
-                                </li>
-                                <li>
+                                </li> --}}
+                                {{-- <li>
                                     <a href="">
                                         <i class="fa fa-file-text-o"></i> Pages
                                         <i class="fa arrow"></i>
@@ -231,8 +240,8 @@
                                             <a href="error-500-alt.html"> Error 500 Global </a>
                                         </li>
                                     </ul>
-                                </li>
-                                <li>
+                                </li> --}}
+                                {{-- <li>
                                     <a href="">
                                         <i class="fa fa-sitemap"></i> Menu Levels
                                         <i class="fa arrow"></i>
@@ -281,8 +290,8 @@
                                             </ul>
                                         </li>
                                     </ul>
-                                </li>
-                                <li>
+                                </li> --}}
+                                {{-- <li>
                                     <a href="screenful.html">
                                         <i class="fa fa-bar-chart"></i> Agile Metrics
                                         <span class="label label-screenful">by Screenful</span>
@@ -291,7 +300,7 @@
                                 <li>
                                     <a href="https://github.com/modularcode/modular-admin-html">
                                         <i class="fa fa-github-alt"></i> Theme Docs </a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </nav>
                     </div>
