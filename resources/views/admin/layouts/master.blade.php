@@ -14,6 +14,11 @@
         <link href="{{ asset('admin-assets/css/vendor.css') }}" rel="stylesheet">
         <link href="{{ asset('admin-assets/css/app.css') }}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+        <style>
+            tfoot {
+                display: table-header-group;
+            }
+        </style>
         
         <!-- Theme initialization -->
         <script>
@@ -57,48 +62,20 @@
                                 <a href="" data-toggle="dropdown">
                                     <i class="fa fa-bell-o"></i>
                                     <sup>
-                                        <span class="counter">8</span>
+                                        <span class="counter">{{count($agent_applications)}}</span>
                                     </sup>
                                 </a>
                                 <div class="dropdown-menu notifications-dropdown-menu">
                                     <ul class="notifications-container">
+                                        @foreach ($agent_applications as $aaps)
                                         <li>
                                             <a href="" class="notification-item">
-                                                <div class="img-col">
-                                                    <div class="img" style="background-image: url('assets/faces/3.jpg')"></div>
-                                                </div>
                                                 <div class="body-col">
-                                                    <p>
-                                                        <span class="accent">Zack Alien</span> pushed new commit:
-                                                        <span class="accent">Fix page load performance issue</span>. </p>
+                                                    <p><span class="accent">{{$aaps->name}} has applied to become Agent</span></p>
                                                 </div>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="" class="notification-item">
-                                                <div class="img-col">
-                                                    <div class="img" style="background-image: url({{asset('admin-assets/assets/faces/5.jpg')}})"></div>
-                                                </div>
-                                                <div class="body-col">
-                                                    <p>
-                                                        <span class="accent">Amaya Hatsumi</span> started new task:
-                                                        <span class="accent">Dashboard UI design.</span>. </p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="notification-item">
-                                                <div class="img-col">
-                                                    <div class="img" style="background-image: url({{asset('admin-assets/assets/faces/8.jpg')}})"></div>
-                                                </div>
-                                                <div class="body-col">
-                                                    <p>
-                                                        <span class="accent">Andy Nouman</span> deployed new version of
-                                                        <span class="accent">NodeJS REST Api V3</span>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @endforeach
                                     </ul>
                                     <footer>
                                         <ul>
@@ -173,35 +150,29 @@
                                             <a href="{{route('admin.agent.index')}}"> Active Agents </a>
                                         </li>
                                         <li>
-                                            <a href="#"> Agent Apllications </a>
+                                            <a href="{{route('admin.agentApplication')}}"> Agent Apllications </a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="">
-                                        <i class="fa fa-area-chart"></i>General Workers
-                                        <i class="fa arrow"></i>
-                                    </a>
-                                    <ul class="sidebar-nav">
-                                        <li>
-                                            <a href="#"> Flot Charts </a>
-                                        </li>
-                                        <li>
-                                            <a href="#"> Morris Charts </a>
-                                        </li>
-                                    </ul>
+                                    <a href="{{route('admin.worker.index')}}">
+                                        <i class="fa fa-pencil-square-o"></i> General Workers </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('admin.maid.index')}}">
+                                        <i class="fa fa-pencil-square-o"></i> Domestic Maids </a>
                                 </li>
                                 <li>
                                     <a href="">
-                                        <i class="fa fa-table"></i> Domestic Maids
+                                        <i class="fa fa-users"></i> Settings
                                         <i class="fa arrow"></i>
                                     </a>
                                     <ul class="sidebar-nav">
                                         <li>
-                                            <a href="#"> Static Tables </a>
+                                            <a href="{{route('admin.country.index')}}"> Countries </a>
                                         </li>
                                         <li>
-                                            <a href="#"> Responsive Tables </a>
+                                            <a href="#"> Employer Apllications </a>
                                         </li>
                                     </ul>
                                 </li>

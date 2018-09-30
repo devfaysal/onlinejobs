@@ -2,7 +2,7 @@
 @section('content')
 <article class="content dashboard-page">
     <div class="title-block">
-        <h1 class="title"> Agents </h1>
+        <h1 class="title"> Countries <a class="btn btn-primary btn-sm" href="{{route('admin.country.create')}}">Add New</a></h1>
     </div>
     <section class="section">
         <table id="users-table" class="table table-condensed">
@@ -10,7 +10,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
-                    <th>Email</th>
+                    <th>Status</th>
                     <th>Created At</th>
                     <th>Updated At</th>
                     <th>Action</th>
@@ -20,7 +20,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
-                    <th>Email</th>
+                    <th>Status</th>
                     <th>Created At</th>
                     <th>Updated At</th>
                 </tr>
@@ -34,11 +34,11 @@
     $('#users-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{{route('admin.getAgentsData')}}',
+        ajax: '{{route('admin.getCountryData')}}',
         columns: [
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
-            {data: 'email', name: 'email'},
+            {data: 'status', name: 'status'},
             {data: 'created_at', name: 'created_at'},
             {data: 'updated_at', name: 'updated_at'},
             {data: 'action', name: 'action', orderable: false, searchable: false}

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\User;
+use App\Country;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
 
-class AgentController extends Controller
+class CountryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,34 +16,14 @@ class AgentController extends Controller
      */
     public function index()
     {
-        return view('admin.agent.index');
+        return view('admin.country.index');
     }
-
-    public function getAgentsData()
+    public function getCountryData()
     {
-        $users = User::where('status', 1)->whereRoleIs('agent')->select(['id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
-
-        return DataTables::of($users)
-        ->addColumn('action', function ($user) {
-            return '<a href="'.route('admin.agent.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-        })
-        ->editColumn('id', 'ID: {{$id}}')
-        ->removeColumn('password')
-        ->make(true);
-    }
-
-    public function agentApplication()
-    {
-        return view('admin.agent.agentApplication');
-    }
-
-    public function getAgentsApplicationData()
-    {
-        $users = User::where('status', 0)->whereRoleIs('agent')->select(['id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
-
-        return DataTables::of($users)
-        ->addColumn('action', function ($user) {
-            return '<a href="'.route('admin.agent.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+        $countries = Country::select(['id', 'name', 'status', 'created_at', 'updated_at'])->get();
+        return DataTables::of($countries)
+        ->addColumn('action', function ($country) {
+            return '<a href="'.route('admin.country.edit', $country->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
         })
         ->editColumn('id', 'ID: {{$id}}')
         ->removeColumn('password')
@@ -57,7 +37,7 @@ class AgentController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.country.create');
     }
 
     /**

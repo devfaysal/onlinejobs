@@ -1,10 +1,10 @@
 @extends('admin.layouts.master')
 @section('content')
 <article class="content dashboard-page">
-    <div class="title-block">
-        <h1 class="title"> Agents </h1>
-    </div>
     <section class="section">
+        <div class="title-block">
+            <h1 class="title"> General Workers </h1>
+        </div>
         <table id="users-table" class="table table-condensed">
             <thead>
                 <tr>
@@ -34,7 +34,7 @@
     $('#users-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{{route('admin.getAgentsData')}}',
+        ajax: '{{route('admin.getWorkersData')}}',
         columns: [
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},

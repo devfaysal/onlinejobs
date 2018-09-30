@@ -2,7 +2,7 @@
 @section('content')
 <article class="content dashboard-page">
     <div class="title-block">
-        <h1 class="title"> Agents </h1>
+        <h1 class="title"> Agent Applications </h1>
     </div>
     <section class="section">
         <table id="users-table" class="table table-condensed">
@@ -34,7 +34,7 @@
     $('#users-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{{route('admin.getAgentsData')}}',
+        ajax: '{{route('admin.getAgentsApplicationData')}}',
         columns: [
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},

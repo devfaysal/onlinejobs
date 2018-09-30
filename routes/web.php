@@ -24,8 +24,24 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', function(){
         return view('admin.login');
     });
+
+    /*Agent*/
     Route::get('/getAgentsData', 'Admin\AgentController@getAgentsData')->name('getAgentsData');
+    Route::get('/agent-application', 'Admin\AgentController@agentApplication')->name('agentApplication');
+    Route::get('/getAgentsApplicationData', 'Admin\AgentController@getAgentsApplicationData')->name('getAgentsApplicationData');
     Route::resource('/agent', 'Admin\AgentController');
+
+    /*Worker*/
+    Route::get('/getWorkersData', 'Admin\WorkerController@getWorkersData')->name('getWorkersData');
+    Route::resource('/worker', 'Admin\WorkerController');
+
+    /*Maid*/
+    Route::get('/getMaidsData', 'Admin\MaidController@getMaidsData')->name('getMaidsData');
+    Route::resource('/maid', 'Admin\MaidController');
+
+    /*Settings*/
+    Route::resource('/country', 'Admin\CountryController');
+    Route::get('/getCountryData', 'Admin\CountryController@getCountryData')->name('getCountryData');
 });
 
 Route::get('/', 'HomeController@index')->name('home');
