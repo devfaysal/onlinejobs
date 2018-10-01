@@ -1089,9 +1089,9 @@ $(function() {
 
         Morris.Donut({
             element: 'dashboard-sales-breakdown-chart',
-            data: [{ label: "Download Sales", value: 12 },
-                { label: "In-Store Sales", value: 30 },
-                { label: "Mail-Order Sales", value: 20 } ],
+            data: [{ label: "Three Months", value: 20 },
+                { label: "Six Month", value: 50 },
+                { label: "One Year", value: 120 } ],
             resize: true,
             colors: [
                 tinycolor(config.chart.colorPrimary.toString()).lighten(10).toString(),
