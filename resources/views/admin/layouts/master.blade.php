@@ -54,7 +54,7 @@
                         </form> --}}
                     </div>
                     <div class="header-block header-block-buttons">
-                        <h1 class="text-center">Online Jobs Admin</h1>
+                        <h1 class="text-center">Online Jobs @if(Auth::user()->hasRole('agent')) Agent @else Admin @endif</h1>
                     </div>
                     <div class="header-block header-block-nav">
                         <ul class="nav-profile">
@@ -150,7 +150,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                @endif
+                                
                                 <li>
                                     <a href="">
                                         <i class="fa fa-users"></i> Agents
@@ -165,6 +165,7 @@
                                         </li>
                                     </ul>
                                 </li>
+                                @endif
                                 <li>
                                     <a href="{{route('admin.worker.index')}}">
                                         <i class="fa fa-pencil-square-o"></i> General Workers </a>
