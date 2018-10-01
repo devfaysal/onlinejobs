@@ -11,6 +11,11 @@ class User extends Authenticatable
     use LaratrustUserTrait;
     use Notifiable;
 
+    protected $casts = [
+        'created_at' => 'datetime:d/m/Y g:i A',
+        'updated_at' => 'datetime:d/m/Y g:i A',
+    ];
+
     /**
      * The attributes that are mass assignable.
      *

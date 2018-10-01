@@ -450,7 +450,7 @@
               </div>
 
               <div class="whitetab mar_top smallertxt">
-                <img src="images/naukri_Logo.png"" class="img-fluid pad_10"> <hr/> 
+                <img src="images/onlinejobs-logo.png" class="img-fluid pad_10"> <hr/> 
                   <ul class="list_pad">
                       <li><a href=""> Onlinejobs Resume Score - Free </a>
     Get your FREE resume feedback report and know the improvement areas in your resume within 30 seconds</li>
@@ -469,13 +469,13 @@
               </div>
 
               <div class="whitebg">
-                <img src="images/naukri_Logo.png"g" class="img-fluid">
+                <img src="images/onlinejobs-logo.png" class="img-fluid">
                 <p class="text-center"> Salary trends in over 3500 Companies </p>
                     <a class="btn btn-primary  btn-large btn-block"> View sallaries  </a>
               </div>
 
               <div class="whitebg">
-                <img src="images/naukri_Logo.png"" class="img-fluid">
+                <img src="images/onlinejobs-logo.png" class="img-fluid">
                 <p class="text-center"> 500+ courses to help you get better jobs </p>
                     <a class="btn btn-primary  btn-large btn-block"> Explore courses  </a>
                     <hr/>

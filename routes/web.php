@@ -16,15 +16,13 @@
 // });
 
 Auth::routes();
-
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::get('/admin/login', function(){
+    return view('admin.login');
+});
+Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadministrator|agent')->group(function () {
     Route::get('/', function(){
         return view('admin.index');
     });
-    Route::get('/login', function(){
-        return view('admin.login');
-    });
-
     /*Agent*/
     Route::get('/agent/approve/{id}', 'Admin\AgentController@approve')->name('agent.approve');
     Route::get('/agent/reject/{id}', 'Admin\AgentController@reject')->name('agent.reject');

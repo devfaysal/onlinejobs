@@ -21,37 +21,37 @@
         </style>
         
         <!-- Theme initialization -->
-        <script>
-            // var themeSettings = (localStorage.getItem('themeSettings')) ? JSON.parse(localStorage.getItem('themeSettings')) :
-            // {};
-            // var themeName = themeSettings.themeName || '';
-            // if (themeName)
-            // {
-            //     document.write('<link rel="stylesheet" id="theme-style" href="admin-assets/css/app-' + themeName + '.css">');
-            // }
-            // else
-            // {
-            //     document.write('<link rel="stylesheet" id="theme-style" href="admin-assets/css/app.css">');
-            // }
-        </script>
+        {{-- <script>
+            var themeSettings = (localStorage.getItem('themeSettings')) ? JSON.parse(localStorage.getItem('themeSettings')) :
+            {};
+            var themeName = themeSettings.themeName || '';
+            if (themeName)
+            {
+                document.write('<link rel="stylesheet" id="theme-style" href="http://jobnetwork.testa/admin-assets/css/app-' + themeName + '.css">');
+            }
+            else
+            {
+                document.write('<link rel="stylesheet" id="theme-style" href="http://jobnetwork.test/admin-assets/css/app.css">');
+            }
+        </script> --}}
     </head>
     <body>
         <div class="main-wrapper">
             <div class="app" id="app">
-                <header class="header">
+                <header class="header bg-white">
                     <div class="header-block header-block-collapse d-lg-none d-xl-none">
                         <button class="collapse-btn" id="sidebar-collapse-btn">
                             <i class="fa fa-bars"></i>
                         </button>
                     </div>
                     <div class="header-block header-block-search">
-                        <form role="search">
+                        {{-- <form role="search">
                             <div class="input-container">
                                 <i class="fa fa-search"></i>
                                 <input type="search" placeholder="Search">
                                 <div class="underline"></div>
                             </div>
-                        </form>
+                        </form> --}}
                     </div>
                     <div class="header-block header-block-buttons">
                         <h1 class="text-center">Online Jobs Admin</h1>
@@ -60,9 +60,9 @@
                         <ul class="nav-profile">
                             <li class="notifications new">
                                 <a href="" data-toggle="dropdown">
-                                    <i class="fa fa-bell-o"></i>
+                                    <i class="fa fa-bell-o fa-2x text-danger"></i>
                                     <sup>
-                                        <span class="counter">{{count($agent_applications)}}</span>
+                                        <span class="counter text-warning">{{count($agent_applications)}}</span>
                                     </sup>
                                 </a>
                                 <div class="dropdown-menu notifications-dropdown-menu">
@@ -117,7 +117,7 @@
                 </header>
                 <aside class="sidebar">
                     <div class="sidebar-container">
-                        <div class="sidebar-header">
+                        <div class="sidebar-header bg-white">
                             <div class="brand">
                                 <img src="{{asset('images/onlinejobs-logo.png')}}" alt="">
                                 {{-- <div class="logo">

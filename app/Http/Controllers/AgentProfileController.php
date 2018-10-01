@@ -27,6 +27,9 @@ class AgentProfileController extends Controller
      */
     public function index()
     {
+        if(!auth()->user()){
+            abort(404);
+        }
         $user = auth()->user();
         if($user->status != 1){
             return view('agent.review');

@@ -102,13 +102,13 @@ class RegisterController extends Controller
             $agent = new AgentProfile;
             $agent->user_id = $user->id;
             $agent->agent_code = time();
-            $agent->agency_registered_name = $data['agency_registered_name'];
+            $agent->agency_registered_name = $data['name'];
             $agent->agency_address = $data['agency_address'];
             $agent->agency_city = $data['agency_city'];
             $agent->agency_country = $data['agency_country'];
             $agent->agency_phone = $data['agency_phone'];
             $agent->agency_fax = $data['agency_fax'];
-            $agent->agency_email = $data['agency_email'];
+            $agent->agency_email = $data['email'];
             $agent->license_no = $data['license_no'];
             $agent->license_issue_date = $data['license_issue_date'];
             $agent->license_expire_date = $data['license_expire_date'];
@@ -134,7 +134,7 @@ class RegisterController extends Controller
                 
             }
             //Point of Contact
-            $agent->first_name = $data['name'];
+            $agent->first_name = $data['first_name'];
             $agent->middle_name = $data['middle_name'];
             $agent->last_name = $data['last_name'];
             $agent->designation = $data['designation'];
@@ -143,7 +143,7 @@ class RegisterController extends Controller
             $agent->passport = $data['passport'];
             $agent->nic = $data['nic'];
             $agent->phone = $data['phone'];
-            $agent->email = $data['email'];
+            $agent->email = $data['contact_email'];
             $agent->save();
         }
 

@@ -95,21 +95,21 @@
                             </div>
                             <ul class="nav nav-tabs pull-right" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="#visits" role="tab" data-toggle="tab">Visits</a>
+                                    <a class="nav-link active" href="#visits" role="tab" data-toggle="tab">Hired</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#downloads" role="tab" data-toggle="tab">Downloads</a>
+                                    <a class="nav-link" href="#downloads" role="tab" data-toggle="tab">Yearly</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="card-block">
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active fade show" id="visits">
-                                    <p class="title-description"> Number of unique visits last 30 days </p>
+                                    <p class="title-description"> Number of Hired last 30 Days </p>
                                     <div id="dashboard-visits-chart"></div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="downloads">
-                                    <p class="title-description"> Number of downloads last 30 days </p>
+                                    <p class="title-description"> Number of Hired last 30 Days </p>
                                     <div id="dashboard-downloads-chart"></div>
                                 </div>
                             </div>
@@ -124,7 +124,7 @@
                             <div class="card sameheight-item" data-exclude="xs,sm">
                                 <div class="card-header">
                                     <div class="header-block">
-                                        <h3 class="title"> Sales by countries </h3>
+                                        <h3 class="title"> Agents by countries </h3>
                                     </div>
                                 </div>
                                 <div class="card-block">
@@ -136,7 +136,7 @@
                     <div class="card sameheight-item sales-breakdown" data-exclude="xs,sm,lg">
                         <div class="card-header">
                             <div class="header-block">
-                                <h3 class="title"> Sales breakdown </h3>
+                                <h3 class="title"> Hiring breakdown </h3>
                             </div>
                         </div>
                         <div class="card-block">
