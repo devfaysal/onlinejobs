@@ -16,7 +16,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="card mt-3">
                 <div class="card-header">
-                    <h3 class="text-center mt-2">Create Worker/Maid</h3>
+                    <h3 class="text-center mt-2">Create General Worker/ Domestic Maid</h3>
                 </div>
 
                 <div class="card-body">

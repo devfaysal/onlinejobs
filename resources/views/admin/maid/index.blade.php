@@ -2,7 +2,7 @@
 @section('content')
 <article class="content dashboard-page">
     <div class="title-block">
-        <h1 class="title"> Domestic Maids </h1>
+        <h1 class="title"> Domestic Maids <a class="btn btn-success" href="/agent/createuser">Add Domestic Maid</a></h1>
     </div>
     <section class="section">
         <table id="users-table" class="table table-condensed">
@@ -11,8 +11,8 @@
                     <th>Id</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
+                    <th>Registered On</th>
+                    <th>Last Modified</th>
                     <th>Action</th>
                 </tr>
             </thead>

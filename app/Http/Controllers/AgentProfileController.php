@@ -267,6 +267,6 @@ class AgentProfileController extends Controller
         Session::flash('message', ucfirst($role).' Created successfully!! now update profile'); 
         Session::flash('alert-class', 'alert-success');
 
-        return redirect()->route('agent.index');
+        return redirect()->route('admin.home');
     }
 }

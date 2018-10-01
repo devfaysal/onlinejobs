@@ -3,7 +3,7 @@
 <article class="content dashboard-page">
     <section class="section">
         <div class="title-block">
-            <h1 class="title"> General Workers </h1>
+            <h1 class="title"> General Workers <a class="btn btn-success" href="/agent/createuser">Add General Worker</a></h1>
         </div>
         <table id="users-table" class="table table-condensed">
             <thead>
@@ -11,8 +11,8 @@
                     <th>Id</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
+                    <th>Registered On</th>
+                    <th>Last Modified</th>
                     <th>Action</th>
                 </tr>
             </thead>

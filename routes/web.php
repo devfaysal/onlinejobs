@@ -22,7 +22,7 @@ Route::get('/admin/login', function(){
 Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadministrator|agent')->group(function () {
     Route::get('/', function(){
         return view('admin.index');
-    });
+    })->name('home');
     /*Agent*/
     Route::get('/agent/approve/{id}', 'Admin\AgentController@approve')->name('agent.approve');
     Route::get('/agent/reject/{id}', 'Admin\AgentController@reject')->name('agent.reject');
