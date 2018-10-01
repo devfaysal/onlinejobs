@@ -2,7 +2,7 @@
 @section('content')
 <article class="content dashboard-page">
     <div class="title-block">
-        <h1 class="title"> Domestic Maids <a class="btn btn-success" href="/agent/createuser">Add Domestic Maid</a></h1>
+        <h1 class="title"> Domestic Maids @if(Auth::user()->hasRole('agent'))<a class="btn btn-success" href="/agent/createuser">Add Domestic Maid</a>@endif</h1>
     </div>
     <section class="section">
         <table id="users-table" class="table table-condensed">
