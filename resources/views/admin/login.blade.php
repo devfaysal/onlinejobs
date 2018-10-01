@@ -11,8 +11,8 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- Styles -->
-        <link href="{{ asset('admin/css/vendor.css') }}" rel="stylesheet">
-        <link href="{{ asset('admin/css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('admin-assets/css/vendor.css') }}" rel="stylesheet">
+        <link href="{{ asset('admin-assets/css/app.css') }}" rel="stylesheet">
         
         <!-- Theme initialization -->
         <script>
@@ -125,7 +125,7 @@
                 ga('create', 'UA-80463319-4', 'auto');
                 ga('send', 'pageview');
             </script>
-            <script src="{{asset('admin/js/vendor.js')}}"></script>
-            <script src="{{asset('admin/js/app.js')}}"></script>
+            <script src="{{asset('admin-assets/js/vendor.js')}}"></script>
+            <script src="{{asset('admin-assets/js/app.js')}}"></script>
         </body>
     </html>

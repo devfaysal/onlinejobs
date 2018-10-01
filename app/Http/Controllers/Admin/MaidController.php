@@ -21,7 +21,15 @@ class MaidController extends Controller
 
     public function getMaidsData()
     {
-        $users = User::where('status', 1)->whereRoleIs('maid')->select(['id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
+        if(auth()->user()->hasRole('agent')){
+            $users = User::whereRoleIs('maid')->whereHas('profile', function ($q) {
+                $agent = auth()->user();
+                $q->where('agent_code', $agent->agent_profile->agent_code);
+            })->select(['id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
+        }else{
+            $users = User::where('status', 1)->whereRoleIs('maid')->select(['id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
+        }
+        
 
         return DataTables::of($users)
         ->addColumn('action', function ($user) {

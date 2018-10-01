@@ -135,6 +135,7 @@
                                     <a href="/admin">
                                         <i class="fa fa-home"></i> Dashboard </a>
                                 </li>
+                                @if(Auth::user()->hasRole('superadministrator'))
                                 <li>
                                     <a href="">
                                         <i class="fa fa-users"></i> Employers
@@ -149,6 +150,7 @@
                                         </li>
                                     </ul>
                                 </li>
+                                @endif
                                 <li>
                                     <a href="">
                                         <i class="fa fa-users"></i> Agents
@@ -171,6 +173,7 @@
                                     <a href="{{route('admin.maid.index')}}">
                                         <i class="fa fa-pencil-square-o"></i> Domestic Maids </a>
                                 </li>
+                                @if(Auth::user()->hasRole('superadministrator'))
                                 <li>
                                     <a href="">
                                         <i class="fa fa-users"></i> Settings
@@ -185,6 +188,7 @@
                                         </li> --}}
                                     </ul>
                                 </li>
+                                @endif
                                 {{-- <li>
                                     <a href="forms.html">
                                         <i class="fa fa-pencil-square-o"></i> Forms </a>

@@ -22,8 +22,12 @@ class AgentController extends Controller
 
     public function getAgentsData()
     {
-        $users = User::where('status', 1)->whereRoleIs('agent')->select(['id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
-
+        $users = User::with('agent_profile')->where('status', 1)->whereRoleIs('agent')->select(['id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
+        //$users = User::with('agent_profile')->where('status', 1)->whereRoleIs('agent')->select('users.*')->get();
+        //$users = User::with('agent_profile')->select('users.*')->get();
+        // echo '<pre>';
+        // print_r($users);
+        // echo '</pre>';
         return DataTables::of($users)
         ->addColumn('action', function ($user) {
             return '<a href="'.route('admin.agent.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
