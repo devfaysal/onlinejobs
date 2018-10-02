@@ -33,7 +33,8 @@ class WorkerController extends Controller
 
         return DataTables::of($users)
         ->addColumn('action', function ($user) {
-            return '<a href="'.route('admin.worker.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            //return '<a href="'.route('admin.worker.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            return '<a class="btn btn-xs btn-primary" href="#">Edit</a>';
         })
         ->editColumn('id', 'ID: {{$id}}')
         ->removeColumn('password')

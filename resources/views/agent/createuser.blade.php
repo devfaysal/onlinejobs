@@ -42,8 +42,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="name">{{ __('Name') }}</label>
-                                    <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="Name">
+                                    <label for="name">{{ __('Name *') }}</label>
+                                    <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="Name" required>
         
                                     @if ($errors->has('name'))
                                         <span class="invalid-feedback" role="alert">
@@ -55,7 +55,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="email">{{ __('E-Mail Address') }}</label>
-                                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="E-Mail" required>
+                                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="E-Mail">
         
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
@@ -66,8 +66,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="phone">{{ __('Phone') }}</label>
-                                    <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" placeholder="Phone">
+                                    <label for="phone">{{ __('Phone *') }}</label>
+                                    <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" placeholder="Phone" required>
         
                                     @if ($errors->has('phone'))
                                         <span class="invalid-feedback" role="alert">
@@ -94,8 +94,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="nationality">{{ __('Nationality') }}</label>
-                                    <select name="nationality" id="nationality" class="form-control{{ $errors->has('nationality') ? ' is-invalid' : '' }}">
+                                    <label for="nationality">{{ __('Nationality *') }}</label>
+                                    <select name="nationality" id="nationality" class="form-control{{ $errors->has('nationality') ? ' is-invalid' : '' }}" required>
                                         <option value="">--Select Nationality--</option>
                                         @foreach ($nationalitys as $nationality)
                                             <option value="{{$nationality->id}}" {{$nationality->id == old('nationality') ? 'selected':''}}>{{$nationality->name}}</option>
@@ -106,7 +106,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="religion">{{ __('Religion') }}</label>
-                                    <select name="religion" id="religion" class="form-control{{ $errors->has('religion') ? ' is-invalid' : '' }}" required>
+                                    <select name="religion" id="religion" class="form-control{{ $errors->has('religion') ? ' is-invalid' : '' }}" >
                                         <option value="">--Select Religion--</option>
                                         @foreach ($religions as $religion)
                                             <option value="{{$religion->id}}" {{$religion->id == old('religion')? 'selected':''}}>{{$religion->name}}</option>

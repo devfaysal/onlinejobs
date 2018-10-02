@@ -21,8 +21,8 @@
                     <th>Id</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
+                    <th>Registered On</th>
+                    <th>Last Modified</th>
                     <th>Action</th>
                 </tr>
             </thead>

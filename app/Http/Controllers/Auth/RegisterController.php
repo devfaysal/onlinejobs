@@ -106,7 +106,7 @@ class RegisterController extends Controller
             $agent->agency_address = $data['agency_address'];
             $agent->agency_city = $data['agency_city'];
             $agent->agency_country = $data['agency_country'];
-            $agent->agency_phone = $data['agency_phone'];
+            $agent->agency_phone = $data['phone'];
             $agent->agency_fax = $data['agency_fax'];
             $agent->agency_email = $data['email'];
             $agent->license_no = $data['license_no'];
@@ -142,11 +142,13 @@ class RegisterController extends Controller
             $agent->nationality = $data['nationality'];
             $agent->passport = $data['passport'];
             $agent->nic = $data['nic'];
-            $agent->phone = $data['phone'];
+            $agent->phone = $data['contact_phone'];
             $agent->email = $data['contact_email'];
             $agent->save();
         }
 
+        // Session::flash('message', ucfirst($role).' Registered successfully!!'); 
+        // Session::flash('alert-class', 'alert-success');
         return $user;
     }
 }

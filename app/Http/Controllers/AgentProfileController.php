@@ -174,7 +174,7 @@ class AgentProfileController extends Controller
     {
         $user = new User;
         $user->name = $request->name;
-        $user->email = $request->email;
+        $user->email = $request->email ?? 'test@test.com';
         $user->phone = $request->phone;
         $user->password = Hash::make('password');
         $user->public_id = time().md5($request->email);

@@ -27,7 +27,7 @@
                             <h3>Company Information</h3>
                         </div>
                         <div class="form-group row">
-                            <label for="name" class="col-sm-4 col-form-label">{{ __('Agency Registered Name') }}</label>
+                            <label for="name" class="col-sm-4 col-form-label">{{ __('Agency Registered Name *') }}</label>
                             <div class="col-sm-8">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="Agency Registered Name" required>
 
@@ -65,7 +65,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="agency_country" class="col-sm-4 col-form-label">{{ __('Agency Country') }}</label>
+                            <label for="agency_country" class="col-sm-4 col-form-label">{{ __('Agency Country *') }}</label>
                             <div class="col-sm-8">
                                 <select name="agency_country" id="agency_country" class="form-control{{ $errors->has('agency_country') ? ' is-invalid' : '' }}" required>
                                     <option value="">--Select Country--</option>
@@ -81,13 +81,13 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="agency_phone" class="col-sm-4 col-form-label">{{ __('Agency Phone') }}</label>
+                            <label for="phone" class="col-sm-4 col-form-label">{{ __('Agency Phone *') }}</label>
                             <div class="col-sm-8">
-                                <input id="agency_phone" type="text" class="form-control{{ $errors->has('agency_phone') ? ' is-invalid' : '' }}" name="agency_phone" value="{{ old('agency_phone') }}" placeholder="Agency Phone" required>
+                                <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" placeholder="Agency Phone" required>
 
-                            @if ($errors->has('agency_phone'))
+                            @if ($errors->has('phone'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('agency_phone') }}</strong>
+                                    <strong>{{ $errors->first('phone') }}</strong>
                                 </span>
                             @endif
                             </div>
@@ -105,7 +105,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="license_no" class="col-sm-4 col-form-label">{{ __('License No') }}</label>
+                            <label for="license_no" class="col-sm-4 col-form-label">{{ __('License No *') }}</label>
                             <div class="col-sm-8">
                                 <input id="license_no" type="text" class="form-control{{ $errors->has('license_no') ? ' is-invalid' : '' }}" name="license_no" value="{{ old('license_no') }}" placeholder="License No" required>
 
@@ -156,7 +156,7 @@
                             <h3>Sign Up Information</h3>
                         </div>
                         <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label">{{ __('Agency Email') }}</label>
+                            <label for="email" class="col-sm-4 col-form-label">{{ __('Agency Email *') }}</label>
                             <div class="col-sm-8">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Agency Email" required>
 
@@ -168,7 +168,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="password" class="col-sm-4 col-form-label">{{ __('Password') }}</label>
+                            <label for="password" class="col-sm-4 col-form-label">{{ __('Password *') }}</label>
                             <div class="col-sm-8">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password" required>
 
@@ -181,7 +181,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-sm-4 col-form-label">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-sm-4 col-form-label">{{ __('Confirm Password *') }}</label>
 
                             <div class="col-sm-8">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" required>
@@ -291,13 +291,13 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="phone" class="col-sm-4 col-form-label">{{ __('Phone Number') }}</label>
+                            <label for="contact_phone" class="col-sm-4 col-form-label">{{ __('Phone Number') }}</label>
                             <div class="col-sm-8">
-                                <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" placeholder="Phone Number">
+                                <input id="contact_phone" type="text" class="form-control{{ $errors->has('contact_phone') ? ' is-invalid' : '' }}" name="contact_phone" value="{{ old('contact_phone') }}" placeholder="Phone Number">
 
-                            @if ($errors->has('phone'))
+                            @if ($errors->has('contact_phone'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('phone') }}</strong>
+                                    <strong>{{ $errors->first('contact_phone') }}</strong>
                                 </span>
                             @endif
                             </div>

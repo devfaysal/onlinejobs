@@ -30,7 +30,8 @@ class AgentController extends Controller
         // echo '</pre>';
         return DataTables::of($users)
         ->addColumn('action', function ($user) {
-            return '<a href="'.route('admin.agent.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            //return '<a href="'.route('admin.agent.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            return '<a class="btn btn-xs btn-primary" href="#">Edit</a>';
         })
         ->editColumn('id', 'ID: {{$id}}')
         ->removeColumn('password')
@@ -48,7 +49,7 @@ class AgentController extends Controller
 
         return DataTables::of($users)
         ->addColumn('action', function ($user) {
-            return '<a href="'.route('admin.agent.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a><a class="ml-1 btn btn-success" href="'.route('admin.agent.approve', $user->id).'">Approve</a><a class="ml-1 btn btn-danger" href="'.route('admin.agent.reject', $user->id).'">Reject</a>';
+            return '<a href="#" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a><a class="ml-1 btn btn-success" href="'.route('admin.agent.approve', $user->id).'">Approve</a><a class="ml-1 btn btn-danger" href="'.route('admin.agent.reject', $user->id).'">Reject</a>';
         })
         ->editColumn('id', 'ID: {{$id}}')
         ->removeColumn('password')
