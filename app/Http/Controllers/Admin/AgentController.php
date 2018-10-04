@@ -28,10 +28,27 @@ class AgentController extends Controller
         // echo '<pre>';
         // print_r($users);
         // echo '</pre>';
+        // foreach ($users as $user){
+        //     // echo '<pre>';
+        //     // print_r($user->agent_profile);
+        //     // echo '</pre>';
+        //     echo $user->agent_profile['country_data']['name'];
+        //     echo '<br/>';
+        // }
+
         return DataTables::of($users)
         ->addColumn('action', function ($user) {
             //return '<a href="'.route('admin.agent.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-            return '<a class="btn btn-xs btn-primary" href="#">Edit</a>';
+            return '<a class="btn btn-xs btn-primary" href="#">View</a>';
+        })
+        ->addColumn('country', function($user) {
+            return $user->agent_profile['country_data']['name'];
+        })
+        ->addColumn('first_name', function($user) {
+            return $user->agent_profile['first_name'];
+        })
+        ->addColumn('phone', function($user) {
+            return $user->agent_profile['phone'];
         })
         ->editColumn('id', 'ID: {{$id}}')
         ->removeColumn('password')

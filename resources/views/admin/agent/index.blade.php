@@ -9,8 +9,11 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Name</th>
+                    <th>Agency Name</th>
                     <th>Email</th>
+                    <th>Country</th>
+                    <th>Person Name</th>
+                    <th>Phone</th>
                     <th>Registered On</th>
                     <th>Last Modified</th>
                     <th>Action</th>
@@ -19,8 +22,11 @@
             <tfoot>
                 <tr>
                     <th>Id</th>
-                    <th>Name</th>
+                    <th>Agency Name</th>
                     <th>Email</th>
+                    <th>Country</th>
+                    <th>Person Name</th>
+                    <th>Phone</th>
                     <th>Created At</th>
                     <th>Updated At</th>
                 </tr>
@@ -39,6 +45,9 @@
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},
+            {data: 'country', name: 'country'},
+            {data: 'first_name', name: 'first_name'},
+            {data: 'phone', name: 'phone'},
             {data: 'created_at', name: 'created_at'},
             {data: 'updated_at', name: 'updated_at'},
             {data: 'action', name: 'action', orderable: false, searchable: false}

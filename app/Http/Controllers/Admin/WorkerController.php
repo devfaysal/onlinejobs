@@ -27,14 +27,14 @@ class WorkerController extends Controller
                 $q->where('agent_code', $agent->agent_profile->agent_code);
             })->select(['id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
         }else{
-            $users = User::where('status', 1)->whereRoleIs('worker')->select(['id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
+            $users = User::where('status', 1)->whereRoleIs('worker')->select(['id','public_id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
         }
         
 
         return DataTables::of($users)
         ->addColumn('action', function ($user) {
             //return '<a href="'.route('admin.worker.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-            return '<a class="btn btn-xs btn-primary" href="#">Edit</a>';
+            return '<a target="_blank" class="btn btn-xs btn-primary" href="'.route('profile.public', $user->public_id).'">View</a>';
         })
         ->editColumn('id', 'ID: {{$id}}')
         ->removeColumn('password')
