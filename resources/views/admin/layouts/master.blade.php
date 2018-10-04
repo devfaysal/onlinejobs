@@ -60,7 +60,7 @@
                         <ul class="nav-profile">
                             <li class="notifications new">
                                 <a href="" data-toggle="dropdown">
-                                    <i class="fa fa-bell-o fa-2x text-danger"></i>
+                                    <i class="fa fa-commenting fa-2x text-danger"></i>
                                     <sup>
                                         <span class="counter text-warning">{{count($agent_applications)}}</span>
                                     </sup>

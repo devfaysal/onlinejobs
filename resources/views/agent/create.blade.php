@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-3">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card auth-form">
                 <div class="card-header"><h2>{{ __('Agent!!! Sign up today, its easy!') }}</h2></div>
 
@@ -23,6 +23,8 @@
                                 @endif
                             </div>
                         </div> --}}
+                        <div class="row">
+                        <div class="col-md-6">
                         <div class="form-group">
                             <h3>Company Information</h3>
                         </div>
@@ -187,13 +189,15 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" required>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-6">
                         <div class="form-group">
                             <h3>Contact Information</h3>
                         </div>
                         <div class="form-group row">
-                            <label for="first_name" class="col-sm-4 col-form-label">{{ __('First Name') }}</label>
+                            <label for="first_name" class="col-sm-4 col-form-label">{{ __('First Name *') }}</label>
                             <div class="col-sm-8">
-                                <input id="first_name" type="text" class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" name="first_name" value="{{ old('first_name') }}" placeholder="First Name">
+                                <input id="first_name" type="text" class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" name="first_name" value="{{ old('first_name') }}" placeholder="First Name" required>
 
                             @if ($errors->has('first_name'))
                                 <span class="invalid-feedback" role="alert">
@@ -251,7 +255,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="nationality" class="col-sm-4 col-form-label">{{ __('Nationality') }}</label>
+                            <label for="nationality" class="col-sm-4 col-form-label">{{ __('Nationality *') }}</label>
                             <div class="col-sm-8">
                                 <select name="nationality" id="nationality" class="form-control{{ $errors->has('nationality') ? ' is-invalid' : '' }}">
                                     <option value="">--Select Nationality--</option>
@@ -291,7 +295,19 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="contact_phone" class="col-sm-4 col-form-label">{{ __('Phone Number') }}</label>
+                            <label for="passport_file" class="col-sm-4 col-form-label">{{ __('Passport/NIC (Upload Scanned copy) *') }}</label>
+                            <div class="col-sm-8">
+                                <input id="passport_file" type="file" class="form-control-file{{ $errors->has('passport_file') ? ' is-invalid' : '' }}" name="passport_file" value="{{ old('passport_file') }}">
+
+                            @if ($errors->has('passport_file'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('passport_file') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="contact_phone" class="col-sm-4 col-form-label">{{ __('Phone Number *') }}</label>
                             <div class="col-sm-8">
                                 <input id="contact_phone" type="text" class="form-control{{ $errors->has('contact_phone') ? ' is-invalid' : '' }}" name="contact_phone" value="{{ old('contact_phone') }}" placeholder="Phone Number">
 
@@ -304,7 +320,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="contact_email" class="col-sm-4 col-form-label">{{ __('E-Mail Address') }}</label>
+                            <label for="contact_email" class="col-sm-4 col-form-label">{{ __('E-Mail Address *') }}</label>
                             <div class="col-sm-8">
                                 <input id="contact_email" type="contact_email" class="form-control{{ $errors->has('contact_email') ? ' is-invalid' : '' }}" name="contact_email" value="{{ old('contact_email') }}" placeholder="E-Mail">
 
@@ -321,7 +337,8 @@
                                 </div>
                                 <label for="agreement" class="col-sm-8">I have read and agree to the<a href="">Terms and Conditions</a> governing the use of onlinejobs.my</label>
                         </div>
-
+                    </div>
+                </div>
                         <div class="form-group mb-0">
                             <button type="submit" class="btn btn-warning btn-block">
                                 {{ __('Register') }}
