@@ -25,7 +25,7 @@ class MaidController extends Controller
             $users = User::whereRoleIs('maid')->whereHas('profile', function ($q) {
                 $agent = auth()->user();
                 $q->where('agent_code', $agent->agent_profile->agent_code);
-            })->select(['id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
+            })->select(['id','public_id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
         }else{
             $users = User::where('status', 1)->whereRoleIs('maid')->select(['id','public_id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
         }
