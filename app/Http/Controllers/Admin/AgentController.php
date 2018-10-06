@@ -68,6 +68,15 @@ class AgentController extends Controller
         ->addColumn('action', function ($user) {
             return '<a href="#" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a><a class="ml-1 btn btn-success" href="'.route('admin.agent.approve', $user->id).'">Approve</a><a class="ml-1 btn btn-danger" href="'.route('admin.agent.reject', $user->id).'">Reject</a>';
         })
+        ->addColumn('country', function($user) {
+            return $user->agent_profile['country_data']['name'];
+        })
+        ->addColumn('first_name', function($user) {
+            return $user->agent_profile['first_name'];
+        })
+        ->addColumn('phone', function($user) {
+            return $user->agent_profile['phone'];
+        })
         ->editColumn('id', 'ID: {{$id}}')
         ->removeColumn('password')
         ->make(true);

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-3">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <div class="card auth-form">
                 <div class="card-header"><h2>{{ __('Agent!!! Sign up today, its easy!') }}</h2></div>
 
@@ -23,8 +23,8 @@
                                 @endif
                             </div>
                         </div> --}}
-                        <div class="row">
-                        <div class="col-md-6">
+                        
+                        
                         <div class="form-group">
                             <h3>Company Information</h3>
                         </div>
@@ -189,8 +189,8 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" required>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
+                    
+                    
                         <div class="form-group">
                             <h3>Contact Information</h3>
                         </div>
@@ -337,8 +337,7 @@
                                 </div>
                                 <label for="agreement" class="col-sm-8">I have read and agree to the<a href="">Terms and Conditions</a> governing the use of onlinejobs.my</label>
                         </div>
-                    </div>
-                </div>
+                  
                         <div class="form-group mb-0">
                             <button type="submit" class="btn btn-warning btn-block">
                                 {{ __('Register') }}

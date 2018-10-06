@@ -1,8 +1,10 @@
 <?php
-use Illuminate\Support\Facades\Schema;
+use App\Profile;
+use App\AgentProfile;
+use App\EmployerProfile;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Profile;
+use Illuminate\Support\Facades\Schema;
 
 class LaratrustSeeder extends Seeder
 {
@@ -58,33 +60,13 @@ class LaratrustSeeder extends Seeder
             $user = \App\User::create([
                 'name' => ucwords(str_replace('_', ' ', $key)),
                 'email' => $key.'@app.com',
+                'status' => 1,
                 'phone' => '0123456789',
                 'password' => bcrypt('password'),
                 'public_id' => time().md5($key.'@app.com'),
             ]);
 
-            $user->attachRole($role);
-            
-            if($role == 'maid' || $role == 'worker'){
-                $profile = new Profile;
-                $profile->user_id = $user->id;
-                $profile->name = $user->name;
-                $profile->phone = $user->phone;
-                $profile->agent_code = 'agent';
-                $profile->save();
-            }elseif($role == 'agent'){
-                $profile = new AgentProfile;
-                $profile->agent_code = 'agent';
-                $profile->user_id = $user->id;
-                $profile->first_name = $user->name;
-                $profile->phone = $user->phone;
-                $profile->save();
-            }elseif($role == 'employer'){
-                $employer = new EmployerProfile;
-                $employer->user_id = $user->id;
-                $employer->save();
-            }
-            
+            $user->attachRole($role);            
         }
     }
 
