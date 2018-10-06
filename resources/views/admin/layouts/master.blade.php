@@ -143,10 +143,10 @@
                                     </a>
                                     <ul class="sidebar-nav">
                                         <li>
-                                            <a href="#"> Active Employers </a>
+                                            <a href="{{route('admin.employer.index')}}"> Active Employers </a>
                                         </li>
                                         <li>
-                                            <a href="#"> Employer Apllications </a>
+                                            <a href="{{route('admin.employerApplication')}}"> Employer Apllications </a>
                                         </li>
                                     </ul>
                                 </li>
@@ -162,6 +162,9 @@
                                         </li>
                                         <li>
                                             <a href="{{route('admin.agentApplication')}}"> Agent Apllications </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('admin.rejectedAgentApplication')}}">Rejected Apllications </a>
                                         </li>
                                     </ul>
                                 </li>

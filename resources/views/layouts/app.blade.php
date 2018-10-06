@@ -10,6 +10,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        tfoot {
+            display: table-header-group;
+        }
+    </style>
 </head>
 
 <body>
@@ -54,8 +59,21 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('workers')}}">General Workers</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Employers Area</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Employers Area
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @guest
+                            <a class="dropdown-item" href="{{route('employer.register')}}">Employer Registration</a>
+                            @endguest
+                            @auth
+                            @if(Auth::user()->hasRole('employer'))
+                            <a class="dropdown-item" href="{{route('employer.show')}}">Dashboard</a>
+                            @endif
+                            @endauth
+                            
+                        </div>
                     </li>
                     
                 </ul>
@@ -386,7 +404,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     @yield('script')
 </body>
 </html>

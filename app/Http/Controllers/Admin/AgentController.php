@@ -66,7 +66,34 @@ class AgentController extends Controller
 
         return DataTables::of($users)
         ->addColumn('action', function ($user) {
-            return '<a href="#" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a><a class="ml-1 btn btn-success" href="'.route('admin.agent.approve', $user->id).'">Approve</a><a class="ml-1 btn btn-danger" href="'.route('admin.agent.reject', $user->id).'">Reject</a>';
+            return '<a href="#" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a><a class="ml-1 btn btn-success" href="'.route('admin.agent.approve', $user->id).'" onclick="return confirm(\'Are you sure?\')">Approve</a><a class="ml-1 btn btn-danger" href="'.route('admin.agent.reject', $user->id).'" onclick="return confirm(\'Are you sure?\')">Reject</a>';
+        })
+        ->addColumn('country', function($user) {
+            return $user->agent_profile['country_data']['name'];
+        })
+        ->addColumn('first_name', function($user) {
+            return $user->agent_profile['first_name'];
+        })
+        ->addColumn('phone', function($user) {
+            return $user->agent_profile['phone'];
+        })
+        ->editColumn('id', 'ID: {{$id}}')
+        ->removeColumn('password')
+        ->make(true);
+    }
+
+    public function rejectedAgentApplication()
+    {
+        return view('admin.agent.rejectedAgentApplication');
+    }
+
+    public function getRejectedAgentApplicationData()
+    {
+        $users = User::where('status', -1)->whereRoleIs('agent')->select(['id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
+
+        return DataTables::of($users)
+        ->addColumn('action', function ($user) {
+            return '<a href="#" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a><a class="ml-1 btn btn-success" href="'.route('admin.agent.restore', $user->id).'" onclick="return confirm(\'Are you sure?\')">Restore</a>';
         })
         ->addColumn('country', function($user) {
             return $user->agent_profile['country_data']['name'];
@@ -101,6 +128,16 @@ class AgentController extends Controller
         $agent->save();
         Session::flash('message', 'Application Rejected!!'); 
         Session::flash('alert-class', 'alert-danger');
+        return redirect()->back();
+    }
+
+    public function restore($id){
+        $agent = User::where('id', $id)->first();
+
+        $agent->status = 0;
+        $agent->save();
+        Session::flash('message', 'Application Restored!!'); 
+        Session::flash('alert-class', 'alert-warning');
         return redirect()->back();
     }
 

@@ -16,12 +16,12 @@ class CreateEmployerProfilesTable extends Migration
         Schema::create('employer_profiles', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->string('address');
-            $table->string('country');
-            $table->string('company_name');
-            $table->string('company_address');
-            $table->string('company_city');
-            $table->string('company_country');
+            $table->string('address')->nullable();
+            $table->string('country')->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('company_address')->nullable();
+            $table->string('company_city')->nullable();
+            $table->string('company_country')->nullable();
             $table->timestamps();
         });
     }
