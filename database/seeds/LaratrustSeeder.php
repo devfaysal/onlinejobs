@@ -65,11 +65,26 @@ class LaratrustSeeder extends Seeder
 
             $user->attachRole($role);
             
-            $profile = new Profile;
-            $profile->user_id = $user->id;
-            $profile->name = $user->name;
-            $profile->phone = $user->phone;
-            $profile->save();
+            if($role == 'maid' || $role == 'worker'){
+                $profile = new Profile;
+                $profile->user_id = $user->id;
+                $profile->name = $user->name;
+                $profile->phone = $user->phone;
+                $profile->agent_code = 'agent';
+                $profile->save();
+            }elseif($role == 'agent'){
+                $profile = new AgentProfile;
+                $profile->agent_code = 'agent';
+                $profile->user_id = $user->id;
+                $profile->first_name = $user->name;
+                $profile->phone = $user->phone;
+                $profile->save();
+            }elseif($role == 'employer'){
+                $employer = new EmployerProfile;
+                $employer->user_id = $user->id;
+                $employer->save();
+            }
+            
         }
     }
 

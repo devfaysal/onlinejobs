@@ -29,6 +29,7 @@ class MaidSeeder extends Seeder
 
             $profile = new Profile;
             $profile->user_id = $user->id;
+            $profile->agent_code = 'agent';
             $profile->name = $user->name;
             $profile->phone = $user->phone;
             $profile->save();

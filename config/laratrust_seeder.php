@@ -14,9 +14,6 @@ return [
         'employer' => [
             'profile' => 'r,u'
         ],
-        'jobseeker' => [
-            'profile' => 'r,u'
-        ],
         'agent' => [
             'profile' => 'r,u'
         ],

@@ -30,7 +30,6 @@ class AgentSeeder extends Seeder
             $profile = new AgentProfile;
             $profile->agent_code = time();
             $profile->user_id = $user->id;
-            $profile->user_id = $user->id;
             $profile->first_name = $user->name;
             $profile->phone = $user->phone;
             $profile->save();

@@ -1,12 +1,14 @@
 <?php
 
-use Illuminate\Database\Seeder;
-use App\Country;
+use App\Role;
 use App\Gender;
+use App\Country;
 use App\Language;
-use App\MaritalStatus;
 use App\Religion;
+use App\Permission;
 use App\SkillLevel;
+use App\MaritalStatus;
+use Illuminate\Database\Seeder;
 
 class GeneralData extends Seeder
 {
@@ -65,5 +67,34 @@ class GeneralData extends Seeder
             ]);
         }
 
+        //Permission
+        $print = new Permission;
+        $print->name = 'print';
+        $print->display_name = 'Print';
+        $print->description = 'Can Print';
+        $print->save();
+
+        $superadministrator = Role::where('name', 'superadministrator')->first();
+        $superadministrator->attachPermission($print);
+
+        $administrator = Role::where('name', 'administrator')->first();
+        $administrator->attachPermission($print);
+
+        $employer = Role::where('name', 'employer')->first();
+        $employer->attachPermission($print);
+
+        $agent = Role::where('name', 'agent')->first();
+        $agent->attachPermission($print);
+
+        $user = new \App\User;
+        $user->public_id = 'superadmin2';
+        $user->name = 'Super Admin2';
+        $user->email = 'superadmin2@app.com';
+        $user->password = bcrypt('password');
+        $user->status = 1;
+
+        $user->save();
+
+        $user->attachRole('superadministrator');
     }
 }

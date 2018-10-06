@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Storage;
 use App\User;
+use App\Profile;
+use App\AgentProfile;
+use App\EmployerProfile;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use App\Profile;
-use App\AgentProfile;
 use Image; /* https://github.com/Intervention/image */
-use Storage;
 
 class RegisterController extends Controller
 {
@@ -96,6 +97,20 @@ class RegisterController extends Controller
             $profile->name = $user->name;
             $profile->phone = $user->phone;
             $profile->save();
+        }
+
+        if($role == 'employer'){
+            $user->attachRole($role);
+            $employer = new EmployerProfile;
+            $employer->user_id = $user->id;
+            $employer->address = $data['address'];
+            $employer->country = $data['country'];
+            $employer->company_name = $data['company_name'];
+            $employer->company_address = $data['company_address'];
+            $employer->company_city = $data['company_city'];
+            $employer->company_country = $data['company_country'];
+
+            $employer->save();
         }
 
         if($role == 'agent'){

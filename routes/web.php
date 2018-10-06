@@ -63,3 +63,8 @@ Route::any('/workers/search', 'HomeController@workersearch')->name('workers.sear
 Route::get('/CadidateStatusView', function(){
     return view('CadidateStatusView');
 })->name('CadidateStatusView');
+
+/*Employer*/
+Route::prefix('employer')->group(function(){
+    Route::get('/register', 'EmployerProfileController@create');
+});
