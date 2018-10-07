@@ -10,6 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <style>
         tfoot {
             display: table-header-group;
@@ -177,7 +178,7 @@
     </nav>
 
     <main>
-        @if(Session::has('message'))
+        {{-- @if(Session::has('message'))
         <div class="col-md-12">
             <div class="alert {{ Session::get('alert-class', 'alert-info') }} alert-dismissible fade show" role="alert">
                 <strong>{{ Session::get('message') }}</strong>
@@ -186,7 +187,7 @@
                 </button>
             </div>
         </div>
-        @endif
+        @endif --}}
         @yield('content')
     </main>
 
@@ -405,6 +406,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     @yield('script')
 </body>

@@ -81,5 +81,6 @@ Route::prefix('employer')->group(function(){
     Route::get('/profile', 'EmployerProfileController@show')->name('employer.show');
     Route::get('/getAllMaids', 'EmployerProfileController@getAllMaids')->name('getAllMaids');
     Route::get('/getAllWorkers', 'EmployerProfileController@getAllWorkers')->name('getAllWorkers');
+    Route::post('/sendOffer', 'EmployerProfileController@sendOffer')->name('sendOffer');
 });
 

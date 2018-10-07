@@ -34,6 +34,9 @@
                 <div class="card">
                         <h4 class="card-title text-center mt-3">All Domestic Maids</h4>
                     <div class="card-body">
+                        <form method="post" action="{{route('sendOffer')}}">
+                            <input style="float: right;" class="btn btn-success mb-2" type="submit" value="Send Offer">
+                            @csrf
                         <table id="maids-table" class="table table-condensed">
                             <thead>
                                 <tr>
@@ -55,11 +58,15 @@
                                 </tr>
                             </tfoot>
                         </table>
+                    </form>
                     </div>
                 </div>
                 <div class="card">
                         <h4 class="card-title text-center mt-3">All General Workers</h4>
                     <div class="card-body">
+                            <form method="post" action="{{route('sendOffer')}}">
+                                    <input style="float: right;" class="btn btn-success mb-2" type="submit" value="Send Offer">
+                                    @csrf
                         <table id="workers-table" class="table table-condensed">
                             <thead>
                                 <tr>
@@ -81,6 +88,7 @@
                                 </tr>
                             </tfoot>
                         </table>
+                    </form>
                     </div>
                 </div>
             </div><!--/.col-md-12-->
