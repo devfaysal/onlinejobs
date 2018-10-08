@@ -18,8 +18,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        $agent_applications = User::where('status', 0)->whereRoleIs('agent')->get();
-        View::share('agent_applications',$agent_applications);
+        view()->composer('admin.layouts.master', function ($view){
+            $view->with('agent_applications', User::where('status', 0)->whereRoleIs('agent')->get());
+        });
     }
 
     /**
