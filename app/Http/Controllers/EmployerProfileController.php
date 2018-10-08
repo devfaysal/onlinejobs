@@ -61,8 +61,11 @@ class EmployerProfileController extends Controller
         }else{
             abort(404);
         }
+        $total_maids = User::whereRoleIs('maid')->count();
+        $total_workers = User::whereRoleIs('worker')->count();
+        $total_agents = User::whereRoleIs('agent')->count();
 
-        return view('employer.show', compact('employer'));
+        return view('employer.show', compact('employer','total_maids','total_workers', 'total_agents'));
     }
     public function getAllMaids(){
 

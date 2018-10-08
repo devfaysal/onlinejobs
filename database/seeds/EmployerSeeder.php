@@ -16,6 +16,8 @@ class EmployerSeeder extends Seeder
         $user = User::where('email', 'employer@app.com')->first();
         $profile = new EmployerProfile;
         $profile->user_id = $user->id;
+        $profile->address = '39 Fake street';
+        $profile->country = 1;
         $profile->company_name = 'Lorem Company';
         $profile->company_address = '29 Long Street';
         $profile->company_city = 1;

@@ -15,22 +15,25 @@
             @endif
             <div class="col-md-12 ml-auto mr-auto">
                 <div class="card">
-                    <h4 class="card-title text-center mt-3">Employer Information</h4>
                     <div class="card-body">
-                        <div class="col-md-12">
-                            <div class="row border-bottom">
-                                <div class="col-md-4">
-                                    <p class="profile-title">Employer Name</p>
-                                    <p class="profile-content">{{$employer->name ?? 'N/A'}}</p>
-                                </div>
-                                <div class="col-md-4">
-                                    <p class="profile-title">Address</p>
-                                    <p class="profile-content">{{$employer->employer_profile->company_address ?? 'N/A'}}</p>
-                                </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h1>Welcome {{$employer->name}}</h1>
+                            </div>
+                            <div class="col-md-6">
+                                <span>Address</span><br/>
+                                <span>{{$employer->employer_profile->address}}</span><br/>
+                                <span>{{$employer->employer_profile->country_data->name}}</span>
+                                
                             </div>
                         </div>
                     </div><!--/.panel-body-->
                 </div><!--/.panel panel-default-->
+                <div class="card">
+                    <div class="card-body">
+                            <canvas id="myChart" width="100px" height="30vh"></canvas>
+                    </div>
+                </div>
                 <div class="card">
                         <h4 class="card-title text-center mt-3">All Domestic Maids</h4>
                     <div class="card-body">
@@ -150,4 +153,41 @@
         }
     });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+<script>
+        var ctx = document.getElementById("myChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Domestic Maids", "General Workers", "Agents"],
+                datasets: [{
+                    label: '',
+                    data: [856, 725, 95],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(54, 32, 235, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(54, 32, 235, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                },
+                legend: { 
+                    display: false 
+                }
+            }
+        });
+        </script>
 @endsection
