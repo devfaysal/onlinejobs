@@ -10,9 +10,11 @@
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
-                    <th>Email</th>
-                    <th>Registered On</th>
-                    <th>Last Modified</th>
+                    <th>Passport</th>
+                    <th>Country</th>
+                    <th>Date of Birth</th>
+                    <th>Marital Status</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -20,9 +22,11 @@
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
-                    <th>Email</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
+                    <th>Passport</th>
+                    <th>Country</th>
+                    <th>Date of Birth</th>
+                    <th>Marital Status</th>
+                    <th>Status</th>
                 </tr>
             </tfoot>
         </table>
@@ -38,9 +42,11 @@
         columns: [
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
-            {data: 'email', name: 'email'},
-            {data: 'created_at', name: 'created_at'},
-            {data: 'updated_at', name: 'updated_at'},
+            {data: 'passport', name: 'passport'},
+            {data: 'country', name: 'country'},
+            {data: 'date_of_birth', name: 'date_of_birth'},
+            {data: 'marital_status', name: 'marital_status'},
+            {data: 'status', name: 'status'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ],
         initComplete: function () {

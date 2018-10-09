@@ -18,6 +18,9 @@
             tfoot {
                 display: table-header-group;
             }
+            table.dataTable tfoot th, table.dataTable tfoot td{
+                padding: 10px 18px 6px 0;
+            }
         </style>
         
         <!-- Theme initialization -->
