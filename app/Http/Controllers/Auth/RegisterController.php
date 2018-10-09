@@ -40,6 +40,8 @@ class RegisterController extends Controller
     {
         if(Auth::user()->hasRole('employer')){
             return '/employer/profile';
+        }elseif(Auth::user()->hasRole('agent')){
+            return '/agent';
         }else{
             return '/';
         }

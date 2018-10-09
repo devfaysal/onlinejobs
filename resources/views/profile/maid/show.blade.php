@@ -37,76 +37,51 @@
                     <div class="card">
                         <h4 class="card-title text-center mt-3">Basic Information</h4>
                         <div class="card-body">
-                            <div class="col-md-12">
-                                <div class="row border-bottom">
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Name</p>
-                                        <p class="profile-content">{{$profile->name ?? 'N/A'}}</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Phone</p>
-                                        <p class="profile-content">{{$profile->phone ?? 'N/A'}}</p>
-                                    </div>
-                                </div>
-                                <div class="row border-bottom">
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Gender</p>
-                                        <p class="profile-content">{{$profile->gender_data->name ?? 'N/A'}}</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Date of birth</p>
-                                        <p class="profile-content">{{$profile->date_of_birth ?? 'N/A'}}</p>
-                                    </div>
-                                </div>
-                                <div class="row border-bottom">
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Nationality</p>
-                                        <p class="profile-content">{{$profile->nationality_data->name ?? 'N/A'}}</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Religion</p>
-                                        <p class="profile-content">{{$profile->religion_data->name ?? 'N/A'}}</p>
-                                    </div>
-                                </div>
-                                <div class="row border-bottom">
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Native Language</p>
-                                        <p class="profile-content">{{$profile->native_language_data->name ?? 'N/A'}}</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Other Languages</p>
-                                        <p class="profile-content">{{$profile->other_languages ?? 'N/A'}}</p>
-                                    </div>
-                                </div>
-                                <div class="row border-bottom">
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Marital Status</p>
-                                        <p class="profile-content">{{$profile->marital_status_data->name ?? 'N/A'}}</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Height</p>
-                                        <p class="profile-content">{{$profile->height ?? 'N/A'}}</p>
-                                    </div>
-                                </div>
-                                <div class="row border-bottom">
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Weight</p>
-                                        <p class="profile-content">{{$profile->weight ?? 'N/A'}}</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Highest Education</p>
-                                        <p class="profile-content">{{$profile->highest_education ?? 'N/A'}}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Skill Level</p>
-                                        <p class="profile-content">{{$profile->skill_level_data->name ?? 'N/A'}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!--/.panel-body-->
-                    </div><!--/.panel panel-default-->
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>Name :</th>
+                                    <td>{{$profile->name ?? 'N/A'}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Date of Birth :</th>
+                                    <td>{{\Carbon\Carbon::parse($profile->date_of_birth)->format('d/m/Y')}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Age :</th>
+                                    {{-- <td>{{ \Carbon\Carbon::parse($profile->date_of_birth)->diffForHumans() }}</td> --}}
+                                    <td>{{ \Carbon\Carbon::parse($profile->date_of_birth)->diff(\Carbon\Carbon::now())->format('%y years %m months')}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Gender :</th>
+                                    <td>{{$profile->gender_data->name ?? 'N/A'}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Marital Status :</th>
+                                    <td>{{$profile->marital_status ?? 'N/A'}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nationality :</th>
+                                    <td>{{$profile->nationality_data->name ?? 'N/A'}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Highest Education :</th>
+                                    <td>{{$profile->highest_education ?? 'N/A'}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Religion :</th>
+                                    <td>{{$profile->religion_data->name ?? 'N/A'}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Height :</th>
+                                    <td>{{$profile->height ?? 'N/A'}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Weight :</th>
+                                    <td>{{$profile->weight ?? 'N/A'}}</td>
+                                </tr>
+                            </table>
+                        </div><!--/.card-body-->
+                    </div><!--/.card-->
                 </div><!--/.col-md-8-->
                 <div class="col-md-12 mt-2">
                     <div class="card">

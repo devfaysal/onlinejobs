@@ -8,9 +8,6 @@
                     <h1 class="display-4">Hello, Agent!</h1>
                     <hr class="my-4">
                     <p>Your account need to be approved by admin for further action</p>
-                    <p class="lead">
-                        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-                    </p>
                 </div>
             </div>
         </div>

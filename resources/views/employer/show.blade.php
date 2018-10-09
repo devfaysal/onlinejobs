@@ -43,7 +43,7 @@
                         <h4 class="card-title text-center mt-3">All Domestic Maids and General Workers</h4>
                     <div class="card-body">
                         <form method="post" action="{{route('sendOffer')}}">
-                            <input style="float: right;" class="btn btn-success mb-2" type="submit" value="Send Offer">
+                            <input onclick="return confirm('Are you sure?')" style="float: right;" class="btn btn-success mb-2" type="submit" value="Send Offer">
                             @csrf
                         <table id="maids-table" class="table table-condensed">
                             <thead>

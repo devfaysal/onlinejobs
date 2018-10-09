@@ -159,6 +159,12 @@ class EmployerProfileController extends Controller
 
     public function sendOffer(Request $request)
     {
+        if(!$request->id){
+            Session::flash('message', 'No Domestic Maid or Worker Selected!'); 
+            Session::flash('alert-class', 'alert-danger');
+
+            return redirect()->back();
+        }
         $offer = new Offer;
         $offer->employer_id = auth()->user()->id;
         $offer->save();

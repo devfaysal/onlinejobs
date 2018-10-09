@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-4 col-md-offset-4">
-            <div class="card auth-form">
+            <div class="card mt-4 mb-4">
                 <div class="card-header"><h1>{{ __('Login') }}</h1></div>
 
                 <div class="card-body">
@@ -52,7 +52,7 @@
                                 {{ __('Forgot Your Password?') }}
                             </a>
                         </div>
-                        <div class="newuser text-center"><i class="fa fa-user" aria-hidden="true"></i> New User? <a href="{{route('register')}}">Register Here</a></div>
+                        {{-- <div class="newuser text-center"><i class="fa fa-user" aria-hidden="true"></i> New User? <a href="{{route('register')}}">Register Here</a></div> --}}
                     </form>
                 </div>
             </div>
