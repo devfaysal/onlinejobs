@@ -23,8 +23,8 @@
                             </div>
                             <div class="col-md-6">
                                 <span>Address</span><br/>
-                                <span>{{$employer->employer_profile->address}}</span><br/>
-                                <span>{{$employer->employer_profile->country_data->name}}</span>
+                                <span>{{$employer->employer_profile->address ?? 'N/A'}}</span><br/>
+                                <span>{{$employer->employer_profile->country_data->name ?? 'N/A'}}</span>
                                 
                             </div>
                         </div>
