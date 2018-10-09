@@ -19,6 +19,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <h1>Welcome {{$employer->name}}</h1>
+                                <p>Offer Sent: 25 <br/> Hired: 18</p>
                             </div>
                             <div class="col-md-6">
                                 <span>Address</span><br/>
@@ -29,13 +30,13 @@
                         </div>
                     </div><!--/.panel-body-->
                 </div><!--/.panel panel-default-->
-                <div class="card">
+                <div class="card mt-4">
                     <div class="card-body">
-                            <canvas id="myChart" width="100px" height="30vh"></canvas>
+                            <canvas id="myChart" width="75%" height="20vh"></canvas>
                     </div>
                 </div>
-                <div class="card">
-                        <h4 class="card-title text-center mt-3">All Domestic Maids</h4>
+                <div class="card mt-4">
+                        <h4 class="card-title text-center mt-3">All Domestic Maids and General Workers</h4>
                     <div class="card-body">
                         <form method="post" action="{{route('sendOffer')}}">
                             <input style="float: right;" class="btn btn-success mb-2" type="submit" value="Send Offer">
@@ -45,49 +46,25 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Registered On</th>
-                                    <th>Last Modified</th>
-                                    <th>Action</th>
+                                    <th>Passport</th>
+                                    <th>Country</th>
+                                    <th>Date of Birth</th>
+                                    <th>Marital Status</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Offer</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
                                     <th>Id</th>
                                     <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Created At</th>
-                                    <th>Updated At</th>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </form>
-                    </div>
-                </div>
-                <div class="card">
-                        <h4 class="card-title text-center mt-3">All General Workers</h4>
-                    <div class="card-body">
-                            <form method="post" action="{{route('sendOffer')}}">
-                                    <input style="float: right;" class="btn btn-success mb-2" type="submit" value="Send Offer">
-                                    @csrf
-                        <table id="workers-table" class="table table-condensed">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Registered On</th>
-                                    <th>Last Modified</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Created At</th>
-                                    <th>Updated At</th>
+                                    <th>Passport</th>
+                                    <th>Country</th>
+                                    <th>Date of Birth</th>
+                                    <th>Marital Status</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -107,35 +84,12 @@
         columns: [
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
-            {data: 'email', name: 'email'},
-            {data: 'created_at', name: 'created_at'},
-            {data: 'updated_at', name: 'updated_at'},
-            {data: 'action', name: 'action', orderable: false, searchable: false}
-        ],
-        initComplete: function () {
-            this.api().columns().every(function () {
-                var column = this;
-                var input = document.createElement("input");
-                input.className = 'form-control';
-                $(input).appendTo($(column.footer()).empty())
-                .on('keyup change', function () {
-                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
-                    column.search(val ? val : '', true, false).draw();
-                });
-            });
-        }
-    });
-    $('#workers-table').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: '{{route('getAllWorkers')}}',
-        columns: [
-            {data: 'id', name: 'id'},
-            {data: 'name', name: 'name'},
-            {data: 'email', name: 'email'},
-            {data: 'created_at', name: 'created_at'},
-            {data: 'updated_at', name: 'updated_at'},
+            {data: 'passport', name: 'passport'},
+            {data: 'country', name: 'country'},
+            {data: 'date_of_birth', name: 'date_of_birth'},
+            {data: 'marital_status', name: 'marital_status'},
+            {data: 'role', name: 'role'},
+            {data: 'status', name: 'status'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ],
         initComplete: function () {
@@ -159,19 +113,21 @@
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["Domestic Maids", "General Workers", "Agents"],
+                labels: ["Domestic Maids Registered","Domestic Maids Hired", "General Workers Registered","General Workers Hired"],
                 datasets: [{
                     label: '',
-                    data: [856, 725, 95],
+                    data: [856,330, 725,295],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.5)',
                         'rgba(54, 162, 235, 0.2)',
-                        'rgba(54, 32, 235, 0.2)',
+                        'rgba(54, 162, 235, 0.5)',
                     ],
                     borderColor: [
                         'rgba(255,99,132,1)',
+                        'rgba(255,99,132,1)',
                         'rgba(54, 162, 235, 1)',
-                        'rgba(54, 32, 235, 1)',
+                        'rgba(54, 162, 235, 1)',
                     ],
                     borderWidth: 1
                 }]

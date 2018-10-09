@@ -40,6 +40,8 @@ class MaidSeeder extends Seeder
             $profile->user_id = $user->id;
             $profile->agent_code = 'agent';
             $profile->name = $user->name;
+            $profile->nationality = 1;
+            $profile->marital_status = 'Single';
             $profile->phone = $user->phone;
             $profile->save();
         }

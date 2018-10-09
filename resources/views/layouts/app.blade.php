@@ -12,6 +12,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <style>
+        body{
+            padding-top: 50px;
+        }
         tfoot {
             display: table-header-group;
         }
@@ -19,7 +22,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow fixed-top">
         <div class="container">
             <a class="navbar-brand" href="{{route('home')}}"> <img src="{{asset('images/onlinejobs-logo.png')}}" class="img-fluid"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,23 +63,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('workers')}}">General Workers</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Employers Area
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @guest
-                            <a class="dropdown-item" href="{{route('employer.register')}}">Employer Registration</a>
-                            @endguest
-                            @auth
-                            @if(Auth::user()->hasRole('employer'))
-                            <a class="dropdown-item" href="{{route('employer.show')}}">Dashboard</a>
-                            @endif
-                            @endauth
-                            
-                        </div>
+                    <li class="nav-item">
+                        @guest
+                        <a class="nav-link" href="{{route('employer.index')}}">Employers Area</a>
+                        @endguest
+                        @auth
+                        @if(Auth::user()->hasRole('employer'))
+                        <a class="nav-link" href="{{route('employer.show')}}">Employers Area</a>
+                        @endif
+                        @endauth
                     </li>
-                    
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     @guest                               

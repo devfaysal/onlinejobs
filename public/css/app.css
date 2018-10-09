@@ -2263,11 +2263,6 @@ pre code {
   opacity: 1;
 }
 
-.form-control:-ms-input-placeholder {
-  color: #6c757d;
-  opacity: 1;
-}
-
 .form-control::-ms-input-placeholder {
   color: #6c757d;
   opacity: 1;
@@ -13589,6 +13584,10 @@ a.text-dark:focus {
   border-bottom: 3px solid #0099CC;
 }
 
+.modal-backdrop {
+  z-index: 999;
+}
+
 .modal-content {
   border-radius: 0 !important;
 }
@@ -13795,7 +13794,7 @@ article h6 {
 .footer_top {
   background: #2E3339;
   padding: 2em 0;
-  margin: 2em 0 0 0;
+  /*margin: 2em 0 0 0;*/
   color: #BCE1ED;
 }
 

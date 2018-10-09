@@ -41,6 +41,9 @@
 
  .nav-pills .nav-link { border-radius: 0 !important; color: #eeeeee; font-size: .8em; padding: .5rem 4rem }
  .nav-pills .nav-link.active, .nav-pills .show>.nav-link { background: #000 !important; border-bottom:3px solid #0099CC }
+ .modal-backdrop{
+     z-index: 999;
+ }
  .modal-content { border-radius: 0 !important }
  .modal-content .iim { padding: 5em 0 }
  .modal-content .close { color: #ffffff !important }
@@ -158,7 +161,7 @@ article h6 {
  .footer_top {
  	background: #2E3339;
  	padding: 2em 0;
- 	margin: 2em 0 0 0;
+ 	/*margin: 2em 0 0 0;*/
  	color: #BCE1ED;
  }
  .footer_top li { padding: 3px 0; }
