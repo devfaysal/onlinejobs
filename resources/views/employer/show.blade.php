@@ -19,13 +19,16 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <h1>Welcome {{$employer->name}}</h1>
+                                @if(Auth::user()->status == 1)
                                 <p>Offer Sent: 25 <br/> Hired: 18</p>
+                                @else
+                                <p class="text-danger">Your Employer Applications under review</p>
+                                @endif
                             </div>
                             <div class="col-md-6">
                                 <span>Address</span><br/>
                                 <span>{{$employer->employer_profile->address ?? 'N/A'}}</span><br/>
                                 <span>{{$employer->employer_profile->country_data->name ?? 'N/A'}}</span>
-                                
                             </div>
                         </div>
                     </div><!--/.panel-body-->
@@ -35,6 +38,7 @@
                             <canvas id="myChart" width="75%" height="20vh"></canvas>
                     </div>
                 </div>
+                @if(Auth::user()->status == 1)
                 <div class="card mt-4">
                         <h4 class="card-title text-center mt-3">All Domestic Maids and General Workers</h4>
                     <div class="card-body">
@@ -71,6 +75,7 @@
                     </form>
                     </div>
                 </div>
+                @endif
             </div><!--/.col-md-12-->
         </div>
     </div>

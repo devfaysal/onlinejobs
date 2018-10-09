@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use Storage;
+use Session;
 use App\User;
 use App\Profile;
 use App\AgentProfile;
 use App\EmployerProfile;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -33,7 +35,15 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    //protected $redirectTo = '/';
+    public function redirectTo()
+    {
+        if(Auth::user()->hasRole('employer')){
+            return '/employer/profile';
+        }else{
+            return '/';
+        }
+    }
 
     /**
      * Create a new controller instance.
@@ -111,6 +121,8 @@ class RegisterController extends Controller
             $employer->company_country = $data['company_country'];
 
             $employer->save();
+            Session::flash('message', 'Your Employer Application Submitted Successfully!!'); 
+            Session::flash('alert-class', 'alert-success');
         }
 
         if($role == 'agent'){
