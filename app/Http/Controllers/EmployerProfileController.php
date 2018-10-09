@@ -78,7 +78,7 @@ class EmployerProfileController extends Controller
         return DataTables::of($users)
         ->addColumn('action', function ($user) {
             //return '<a href="'.route('admin.worker.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-            $string =  '<a target="_blank" class="btn btn-xs btn-primary" href="'.route('profile.public', $user->public_id).'">View</a>';
+            $string =  '<a class="btn btn-xs btn-primary" href="'.route('profile.public', $user->public_id).'">View</a>';
             if($user->applicants()->first()['id']){
                 $string .= ' <input style="width: 38px;height: 38px;vertical-align: middle;" type="checkbox" name="id[]" value="'.$user->id.'" disabled>';
             }else{
@@ -107,7 +107,11 @@ class EmployerProfileController extends Controller
         ->addColumn('marital_status', function($user) {
             return $user->profile->marital_status;
         })
-        ->editColumn('id', 'ID: {{$id}}')
+        ->addColumn('image', function($user) {
+            $img = $user->profile->image != '' ? asset('storage/'.$user->profile->image) :  asset('images/dummy.jpg');
+            return '<img src="'.$img.'" border="0" width="40" class="img-rounded" align="center" />';
+        })
+        ->rawColumns(['image', 'action'])
         ->make(true);
     }
     public function getAllWorkers(){

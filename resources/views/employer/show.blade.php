@@ -49,6 +49,7 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
+                                    <th>Image</th>
                                     <th>Name</th>
                                     <th>Passport</th>
                                     <th>Country</th>
@@ -62,6 +63,7 @@
                             <tfoot>
                                 <tr>
                                     <th>Id</th>
+                                    <th>Image</th>
                                     <th>Name</th>
                                     <th>Passport</th>
                                     <th>Country</th>
@@ -88,6 +90,7 @@
         ajax: '{{route('getAllMaids')}}',
         columns: [
             {data: 'id', name: 'id'},
+            {data: 'image', name: 'image',orderable: false, searchable: false},
             {data: 'name', name: 'name'},
             {data: 'passport', name: 'passport'},
             {data: 'country', name: 'country'},

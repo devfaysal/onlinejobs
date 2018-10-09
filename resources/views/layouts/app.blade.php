@@ -292,7 +292,7 @@
     </div>
     </section>
 
-    <section class="footer_middle tex-center hidefromprint"> 
+    {{-- <section class="footer_middle tex-center hidefromprint"> 
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-12">
@@ -389,7 +389,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <section class="footer_bottom hidefromprint"> 
         <div class="container tex-center">
             <div class="row">
