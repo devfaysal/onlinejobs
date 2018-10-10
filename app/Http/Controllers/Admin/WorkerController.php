@@ -46,7 +46,7 @@ class WorkerController extends Controller
             return $user->profile->nationality_data['name'];
         })
         ->addColumn('date_of_birth', function($user) {
-            return $user->profile->date_of_birth;
+            return $user->profile->date_of_birth ? \Carbon\Carbon::parse($user->profile->date_of_birth)->format('d/m/Y') : '';
         })
         ->addColumn('passport', function($user) {
             return '';
