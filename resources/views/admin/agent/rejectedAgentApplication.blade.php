@@ -2,7 +2,7 @@
 @section('content')
 <article class="content dashboard-page">
     <div class="title-block">
-        <h1 class="title"> Agent Applications </h1>
+        <h1 class="title">Pending Agent Applications </h1>
     </div>
     <section class="section">
             @if(Session::has('message'))

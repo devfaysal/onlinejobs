@@ -54,7 +54,11 @@ class WorkerController extends Controller
         ->addColumn('marital_status', function($user) {
             return $user->profile->marital_status;
         })
-        ->editColumn('id', 'ID: {{$id}}')
+        ->addColumn('image', function($user) {
+            $img = $user->profile->image != '' ? asset('storage/'.$user->profile->image) :  asset('images/dummy.jpg');
+            return '<img src="'.$img.'" border="0" width="40" class="img-rounded" align="center" />';
+        })
+        ->rawColumns(['image', 'action'])
         ->removeColumn('password')
         ->make(true);
     }

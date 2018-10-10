@@ -9,6 +9,7 @@
             <thead>
                 <tr>
                     <th>Id</th>
+                    <th>Image</th>
                     <th>Name</th>
                     <th>Passport</th>
                     <th>Country</th>
@@ -21,6 +22,7 @@
             <tfoot>
                 <tr>
                     <th>Id</th>
+                    <th>Image</th>
                     <th>Name</th>
                     <th>Passport</th>
                     <th>Country</th>
@@ -41,6 +43,7 @@
         ajax: '{{route('admin.getWorkersData')}}',
         columns: [
             {data: 'id', name: 'id'},
+            {data: 'image', name: 'image'},
             {data: 'name', name: 'name'},
             {data: 'passport', name: 'passport'},
             {data: 'country', name: 'country'},

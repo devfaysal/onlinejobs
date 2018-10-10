@@ -16,8 +16,8 @@
             @auth
             @if(Auth::user()->can('print'))
                 <div class="col-md-12 hidefromprint mb-3">
-                    <a class="btn btn-success" href="" onclick="window.print();return false;">Print profile</a>
                     <a class="btn btn-info" href="{{url()->previous()}}">Back</a>
+                    <a class="btn btn-success pull-right" href="" onclick="window.print();return false;">Print profile</a>
                 </div>
             @endif
             @endauth

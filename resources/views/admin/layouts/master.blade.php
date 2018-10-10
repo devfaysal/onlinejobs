@@ -167,7 +167,7 @@
                                             <a href="{{route('admin.agentApplication')}}"> Agent Apllications </a>
                                         </li>
                                         <li>
-                                            <a href="{{route('admin.rejectedAgentApplication')}}">Rejected Apllications </a>
+                                            <a href="{{route('admin.rejectedAgentApplication')}}">Pending Apllications </a>
                                         </li>
                                     </ul>
                                 </li>
