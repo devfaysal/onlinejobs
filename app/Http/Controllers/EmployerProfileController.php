@@ -87,7 +87,7 @@ class EmployerProfileController extends Controller
             return $string;
         })
         ->addColumn('role', function($user) {
-            return $user->roles()->first()['name'];
+            return $user->roles()->first()['display_name'];
         })
         ->addColumn('status', function($user) {
             if($user->applicants()->first()['id']){

@@ -1,4 +1,5 @@
 <?php
+use App\Role;
 use App\User;
 use App\Profile;
 use Illuminate\Database\Seeder;
@@ -14,6 +15,11 @@ class WorkerSeeder extends Seeder
      */
     public function run()
     {
+        $worker = Role::where('name', 'worker')->first();
+        $worker->display_name = 'GW';
+        $worker->description = 'General Worker';
+        $worker->save();
+
         $user = User::where('email', 'worker@app.com')->first();
         $profile = new Profile;
         $profile->user_id = $user->id;

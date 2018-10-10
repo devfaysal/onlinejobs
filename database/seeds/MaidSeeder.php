@@ -1,4 +1,5 @@
 <?php
+use App\Role;
 use App\User;
 use App\Profile;
 use Illuminate\Database\Seeder;
@@ -14,6 +15,11 @@ class MaidSeeder extends Seeder
      */
     public function run()
     {
+        $maid = Role::where('name', 'maid')->first();
+        $maid->display_name = 'DM';
+        $maid->description = 'Domestic Maid';
+        $maid->save();
+
         $user = User::where('email', 'maid@app.com')->first();
         $profile = new Profile;
         $profile->user_id = $user->id;

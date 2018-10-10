@@ -86,73 +86,60 @@
                 </div><!--/.col-md-8-->
                 <div class="col-md-12 mt-2">
                     <div class="card">
-                        <h4 class="card-title text-uppercase text-center mt-2">Other Information</h4>
+                            <h4 class="card-title text-center mt-3">Other Information</h4>
                         <div class="card-body">
-                            <div class="col-md-12">
-                                <div class="row border-bottom">
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Willing to work on off days with compensation
-                                        </p>
-                                        <p class="profile-content">{{$profile->work_on_off_days_with_compensation == 1 ? 'Yes' : 'No'}}</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Able to handle pork</p>
-                                        <p class="profile-content">{{$profile->able_to_handle_pork == 1 ? 'Yes' : 'No'}}</p>
-                                    </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <th>Willing to work on off days with compensation :</th>
+                                            <td>{{$profile->work_on_off_days_with_compensation == 1 ? 'Yes' : 'No'}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Able to gardening :</th>
+                                            <td>{{$profile->able_to_gardening == 1 ? 'Yes' : 'No'}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Able to care dog/cat :</th>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Able to simple sewing :</th>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Care of disabled :</th>
+                                            <td>Yes</td>
+                                        </tr>
+                                    </table>
                                 </div>
-                                <div class="row border-bottom">
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Able to gardening</p>
-                                        <p class="profile-content">{{$profile->able_to_gardening == 1 ? 'Yes' : 'No'}}</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Able to care dog/cat</p>
-                                        <p class="profile-content">{{$profile->able_to_care_dog_cat == 1 ? 'Yes' : 'No'}}</p>
-                                    </div>
-                                </div>
-                                <div class="row border-bottom">
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Able to simple sewing</p>
-                                        <p class="profile-content">{{$profile->able_to_simple_sewing == 1 ? 'Yes' : 'No'}}</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Able to car wash</p>
-                                        <p class="profile-content">{{$profile->able_to_wash_car == 1 ? 'Yes' : 'No'}}</p>
-                                    </div>
-                                </div>
-                                <div class="row border-bottom">
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Able to eat pork</p>
-                                        <p class="profile-content">{{$profile->able_to_eat_pork == 1 ? 'Yes' : 'No'}}</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Care of infants/children</p>
-                                        <p class="profile-content">{{$profile->able_to_care_infants == 1 ? 'Yes' : 'No'}}</p>
-                                    </div>
-                                </div>
-                                <div class="row border-bottom">
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Care of elderly</p>
-                                        <p class="profile-content">{{$profile->able_to_care_elderly == 1 ? 'Yes' : 'No'}}</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Care of disabled</p>
-                                        <p class="profile-content">{{$profile->able_to_care_disabled == 1 ? 'Yes' : 'No'}}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <p class="profile-title">General housework</p>
-                                        <p class="profile-content">{{$profile->able_to_do_general_housework == 1 ? 'Yes' : 'No'}}</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p class="profile-title">Cooking</p>
-                                        <p class="profile-content">{{$profile->able_to_cook == 1 ? 'Yes' : 'No'}}</p>
-                                    </div>
+                                <div class="col-md-6">
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <th>Able to handle pork :</th>
+                                            <td>{{$profile->able_to_handle_pork == 1 ? 'Yes' : 'No'}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Able to car wash :</th>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Care of infants/children :</th>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Care of elderly :</th>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr>
+                                            <th>General housework :</th>
+                                            <td>Yes</td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
-                        </div><!--/.panel-body-->
-                    </div><!--/.panel panel-default-->
+                        </div>
+                    </div>
                 </div>
         </div><!--/.row-->
     </div><!--/.container-->
