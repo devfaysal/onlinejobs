@@ -65,11 +65,20 @@
                                 <a href="" data-toggle="dropdown">
                                     <i class="fa fa-commenting fa-2x text-danger"></i>
                                     <sup>
-                                        <span class="counter text-warning">{{count($agent_applications)}}</span>
+                                        <span class="counter text-warning">{{count($agent_applications)+count($all_offers)}}</span>
                                     </sup>
                                 </a>
                                 <div class="dropdown-menu notifications-dropdown-menu">
                                     <ul class="notifications-container">
+                                        @foreach ($all_offers as $offer)
+                                            <li>
+                                                <a href="#" class="notification-item">
+                                                    <div class="body-col">
+                                                        <p><span class="accent">{{$offer->employer->name}} has Sent an Offer</span></p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        @endforeach
                                         @foreach ($agent_applications as $aaps)
                                         <li>
                                             <a href="{{route('admin.agentApplication')}}" class="notification-item">
