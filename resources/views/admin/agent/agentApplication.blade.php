@@ -1,6 +1,5 @@
 @extends('admin.layouts.master')
 @section('content')
-<article class="content dashboard-page">
     <div class="title-block">
         <h1 class="title"> Agent Applications </h1>
     </div>
@@ -43,7 +42,6 @@
             </tfoot>
         </table>
     </section>
-<article>
 @endsection
 @section('javascript')
 <script>

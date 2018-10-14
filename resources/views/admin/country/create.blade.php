@@ -1,6 +1,5 @@
 @extends('admin.layouts.master')
 @section('content')
-<article class="content dashboard-page">
     <div class="title-block">
         <h1 class="title"> Add country <a class="btn btn-primary btn-sm" href="{{route('admin.country.index')}}">Back</a></h1>
     </div>
@@ -31,6 +30,5 @@
     </div>
 </div>
 </div>
-    </section>
-<article>
+</section>
 @endsection

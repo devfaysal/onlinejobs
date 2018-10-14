@@ -1,6 +1,5 @@
 @extends('admin.layouts.master')
 @section('content')
-<article class="content dashboard-page">
     <div class="title-block">
         <h1 class="title"> Countries <a class="btn btn-primary btn-sm" href="{{route('admin.country.create')}}">Add New</a></h1>
     </div>
@@ -27,7 +26,6 @@
             </tfoot>
         </table>
     </section>
-<article>
 @endsection
 @section('javascript')
 <script>
