@@ -79,11 +79,10 @@ class EmployerProfileController extends Controller
         ->addColumn('action', function ($user) {
             //return '<a href="'.route('admin.worker.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
             $string =  '<a class="btn btn-xs btn-primary" href="'.route('profile.public', $user->public_id).'">View</a>';
-            if($user->applicants()->first()['id']){
-                $string .= ' <input style="width: 38px;height: 38px;vertical-align: middle;" type="checkbox" name="id[]" value="'.$user->id.'" disabled>';
-            }else{
+            if ( ! $user->applicants()->first()['id'] ) {
                 $string .= ' <input style="width: 38px;height: 38px;vertical-align: middle;" type="checkbox" name="id[]" value="'.$user->id.'">';
             }
+
             return $string;
         })
         ->addColumn('role', function($user) {
