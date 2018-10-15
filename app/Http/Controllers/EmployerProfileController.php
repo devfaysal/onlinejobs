@@ -86,12 +86,12 @@ class EmployerProfileController extends Controller
             return $string;
         })
         ->addColumn('role', function($user) {
-            return $user->roles()->first()['display_name'];
+            return '<span title="'. $user->roles()->first()['description'] .'">'. $user->roles()->first()['display_name'] .'</span>';
         })
         ->addColumn('status', function($user) {
             if($user->applicants()->first()['id']){
                 return 'Offered';
-            };
+            }
             return 'Active';
         })
         ->addColumn('country', function($user) {
@@ -110,7 +110,7 @@ class EmployerProfileController extends Controller
             $img = $user->profile->image != '' ? asset('storage/'.$user->profile->image) :  asset('images/dummy.jpg');
             return '<img src="'.$img.'" border="0" width="40" class="img-rounded" align="center" />';
         })
-        ->rawColumns(['image', 'action'])
+        ->rawColumns(['role', 'image', 'action'])
         ->make(true);
     }
     public function getAllWorkers(){
