@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use Session;
-use App\Country;
+use App\Gender;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
 
-class CountryController extends Controller
+class GenderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,18 +17,18 @@ class CountryController extends Controller
      */
     public function index()
     {
-        return view('admin.country.index');
+        return view('admin.gender.index');
     }
-    public function getCountryData()
+    public function getgenderData()
     {
-        $countries = Country::select(['id', 'name', 'status', 'created_at', 'updated_at'])->get();
-        return DataTables::of($countries)
-        ->addColumn('action', function ($country) {
-            $string  = '<a href="'.route('admin.skillLevel.edit', $country->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-            if($country->status == 0){
-                $string .= ' <a href="'.route('admin.publish', [$country->getTable(), $country->id]).'" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Publish</a>';
+        $genders = Gender::select(['id', 'name', 'status', 'created_at', 'updated_at'])->get();
+        return DataTables::of($genders)
+        ->addColumn('action', function ($gender) {
+            $string  = '<a href="'.route('admin.skillLevel.edit', $gender->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            if($gender->status == 0){
+                $string .= ' <a href="'.route('admin.publish', [$gender->getTable(), $gender->id]).'" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Publish</a>';
             }else{
-                $string .= ' <a href="'.route('admin.unpublish', [$country->getTable(), $country->id]).'" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Unublish</a>';
+                $string .= ' <a href="'.route('admin.unpublish', [$gender->getTable(), $gender->id]).'" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Unublish</a>';
             }
             return $string;
         })
@@ -42,7 +42,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        return view('admin.country.create');
+        return view('admin.gender.create');
     }
 
     /**
@@ -53,14 +53,15 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        $country = new Country;
-        $country->name = $request->name;
-        $country->save();
+        $gender = new Gender;
+        $gender->name = $request->name;
+        $gender->save();
 
-        Session::flash('message', 'Country added Successfully!!'); 
+        
+        Session::flash('message', 'gender added Successfully!!'); 
         Session::flash('alert-class', 'alert-success');
 
-        return redirect()->route('admin.country.index');
+        return redirect()->route('admin.gender.index');
     }
 
     /**
@@ -80,9 +81,9 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Country $country)
+    public function edit(Gender $gender)
     {
-        return view('admin.country.edit', compact('country'));
+        return view('admin.gender.edit', compact('gender'));
     }
 
     /**
@@ -92,15 +93,15 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Country $country, Request $request)
+    public function update(Gender $gender, Request $request)
     {
-        $country->name = $request->name;
-        $country->save();
+        $gender->name = $request->name;
+        $gender->save();
 
-        Session::flash('message', 'Country updates Successfully!!'); 
+        Session::flash('message', 'gender updated Successfully!!'); 
         Session::flash('alert-class', 'alert-success');
 
-        return redirect()->route('admin.country.index');
+        return redirect()->route('admin.gender.index');
     }
 
     /**

@@ -1,6 +1,5 @@
 @extends('admin.layouts.master')
 @section('content')
-<article class="content dashboard-page">
     <section class="section">
         <div class="title-block">
             <h1 class="title"> General Workers @if(Auth::user()->hasRole('agent'))<a class="btn btn-success" href="/agent/createuser">Add General Worker</a>@endif</h1>
@@ -33,7 +32,6 @@
             </tfoot>
         </table>
     </section>
-<article>
 @endsection
 @section('javascript')
 <script>

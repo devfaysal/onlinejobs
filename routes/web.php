@@ -24,6 +24,10 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
         return view('admin.index');
     })->name('home');
 
+    /*Publish Unpublish*/
+    Route::get('/publish/{table}/{id}', 'Admin\StatusController@publish')->name('publish');
+    Route::get('/unpublish/{table}/{id}', 'Admin\StatusController@unpublish')->name('unpublish');
+
     /*Employer*/
     Route::get('/employer/approve/{id}', 'Admin\EmployerController@approve')->name('employer.approve');
     Route::get('/employer/reject/{id}', 'Admin\EmployerController@reject')->name('employer.reject');
@@ -53,6 +57,21 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
     /*Settings*/
     Route::resource('/country', 'Admin\CountryController');
     Route::get('/getCountryData', 'Admin\CountryController@getCountryData')->name('getCountryData');
+
+    Route::resource('/religion', 'Admin\ReligionController');
+    Route::get('/getReligionData', 'Admin\ReligionController@getReligionData')->name('getReligionData');
+
+    Route::resource('/language', 'Admin\LanguageController');
+    Route::get('/getLanguageData', 'Admin\LanguageController@getLanguageData')->name('getLanguageData');
+
+    Route::resource('/gender', 'Admin\GenderController');
+    Route::get('/getGenderData', 'Admin\GenderController@getGenderData')->name('getGenderData');
+
+    Route::resource('/maritalStatus', 'Admin\MaritalStatusController');
+    Route::get('/getMaritalStatusData', 'Admin\MaritalStatusController@getMaritalStatusData')->name('getMaritalStatusData');
+    
+    Route::resource('/skillLevel', 'Admin\SkillLevelController');
+    Route::get('/getSkillLevelData', 'Admin\SkillLevelController@getSkillLevelData')->name('getSkillLevelData');
 });
 
 Route::get('/', 'HomeController@index')->name('home');

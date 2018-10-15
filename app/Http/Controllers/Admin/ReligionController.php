@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use Session;
-use App\Country;
+use App\Religion;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
 
-class CountryController extends Controller
+class ReligionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,18 +17,18 @@ class CountryController extends Controller
      */
     public function index()
     {
-        return view('admin.country.index');
+        return view('admin.religion.index');
     }
-    public function getCountryData()
+    public function getReligionData()
     {
-        $countries = Country::select(['id', 'name', 'status', 'created_at', 'updated_at'])->get();
-        return DataTables::of($countries)
-        ->addColumn('action', function ($country) {
-            $string  = '<a href="'.route('admin.skillLevel.edit', $country->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-            if($country->status == 0){
-                $string .= ' <a href="'.route('admin.publish', [$country->getTable(), $country->id]).'" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Publish</a>';
+        $religions = Religion::select(['id', 'name', 'status', 'created_at', 'updated_at'])->get();
+        return DataTables::of($religions)
+        ->addColumn('action', function ($religion) {
+            $string  = '<a href="'.route('admin.skillLevel.edit', $religion->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            if($religion->status == 0){
+                $string .= ' <a href="'.route('admin.publish', [$religion->getTable(), $religion->id]).'" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Publish</a>';
             }else{
-                $string .= ' <a href="'.route('admin.unpublish', [$country->getTable(), $country->id]).'" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Unublish</a>';
+                $string .= ' <a href="'.route('admin.unpublish', [$religion->getTable(), $religion->id]).'" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Unublish</a>';
             }
             return $string;
         })
@@ -42,7 +42,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        return view('admin.country.create');
+        return view('admin.religion.create');
     }
 
     /**
@@ -53,14 +53,15 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        $country = new Country;
-        $country->name = $request->name;
-        $country->save();
+        $religion = new Religion;
+        $religion->name = $request->name;
+        $religion->save();
 
-        Session::flash('message', 'Country added Successfully!!'); 
+        
+        Session::flash('message', 'Religion added Successfully!!'); 
         Session::flash('alert-class', 'alert-success');
 
-        return redirect()->route('admin.country.index');
+        return redirect()->route('admin.religion.index');
     }
 
     /**
@@ -80,9 +81,9 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Country $country)
+    public function edit(Religion $religion)
     {
-        return view('admin.country.edit', compact('country'));
+        return view('admin.religion.edit', compact('religion'));
     }
 
     /**
@@ -92,15 +93,15 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Country $country, Request $request)
+    public function update(Religion $religion, Request $request)
     {
-        $country->name = $request->name;
-        $country->save();
+        $religion->name = $request->name;
+        $religion->save();
 
-        Session::flash('message', 'Country updates Successfully!!'); 
+        Session::flash('message', 'Religion updated Successfully!!'); 
         Session::flash('alert-class', 'alert-success');
 
-        return redirect()->route('admin.country.index');
+        return redirect()->route('admin.religion.index');
     }
 
     /**

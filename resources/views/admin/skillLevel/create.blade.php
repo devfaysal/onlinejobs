@@ -1,17 +1,17 @@
 @extends('admin.layouts.master')
 @section('content')
     <div class="title-block">
-        <h1 class="title"> Add country <a class="btn btn-primary btn-sm" href="{{route('admin.country.index')}}">Back</a></h1>
+        <h1 class="title"> Add Skill Level <a class="btn btn-primary btn-sm" href="{{route('admin.skillLevel.index')}}">Back</a></h1>
     </div>
     <section class="section">
         <div class="row sameheight-container">
             <div class="col-md-6">
                 <div class="card card-block sameheight-item" style="height: 307px;"> 
-                    <form method="POST" action="{{ route('admin.country.store') }}">
+                    <form method="POST" action="{{ route('admin.skillLevel.store') }}">
                         @csrf
 
                         <div class="form-group">
-                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="Country Name" required>
+                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="skillLevel Name" required>
 
                             @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">

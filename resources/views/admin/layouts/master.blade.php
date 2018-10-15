@@ -199,6 +199,21 @@
                                         <li>
                                             <a href="{{route('admin.country.index')}}"> Countries </a>
                                         </li>
+                                        <li>
+                                            <a href="{{route('admin.religion.index')}}"> Religions </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('admin.language.index')}}"> Languages </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('admin.gender.index')}}"> Gender </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('admin.maritalStatus.index')}}"> Marital Status </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('admin.skillLevel.index')}}"> Skill Level </a>
+                                        </li>
                                         {{-- <li>
                                             <a href="#"> Employer Apllications </a>
                                         </li> --}}
@@ -425,8 +440,25 @@
                 <div class="sidebar-mobile-menu-handle" id="sidebar-mobile-menu-handle"></div>
                 <div class="mobile-menu-handle"></div>
                 
-                @yield('content')
+                <article class="content dashboard-page">
+                    @if(Session::has('message'))
+                    <section>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="alert {{ Session::get('alert-class', 'alert-info') }} alert-dismissible fade show" role="alert">
+                                    <strong>{{ Session::get('message') }}</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    @endif
 
+                    @yield('content')
+                </article>
+                
                 <footer class="footer">
                     
                     <div class="footer-block buttons">
