@@ -9,3 +9,8 @@
 .social-icons .btn-social {
 	height: 45px;
 }
+
+.table th,
+.table td {
+  vertical-align: middle;
+}
