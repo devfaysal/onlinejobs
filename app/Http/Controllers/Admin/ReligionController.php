@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use Session;
-use App\Country;
+use App\Religion;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
 
-class CountryController extends Controller
+class ReligionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,14 +17,14 @@ class CountryController extends Controller
      */
     public function index()
     {
-        return view('admin.country.index');
+        return view('admin.religion.index');
     }
-    public function getCountryData()
+    public function getReligionData()
     {
-        $countries = Country::select(['id', 'name', 'status', 'created_at', 'updated_at'])->get();
-        return DataTables::of($countries)
-        ->addColumn('action', function ($country) {
-            return '<a href="'.route('admin.country.edit', $country->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+        $religions = Religion::select(['id', 'name', 'status', 'created_at', 'updated_at'])->get();
+        return DataTables::of($religions)
+        ->addColumn('action', function ($religion) {
+            return '<a href="'.route('admin.religion.edit', $religion->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
         })
         ->make(true);
     }
@@ -36,7 +36,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        return view('admin.country.create');
+        return view('admin.religion.create');
     }
 
     /**
@@ -47,14 +47,15 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        $country = new Country;
-        $country->name = $request->name;
-        $country->save();
+        $religion = new Religion;
+        $religion->name = $request->name;
+        $religion->save();
 
-        Session::flash('message', 'Country added Successfully!!'); 
+        
+        Session::flash('message', 'Religion added Successfully!!'); 
         Session::flash('alert-class', 'alert-success');
 
-        return redirect()->route('admin.country.index');
+        return redirect()->route('admin.religion.index');
     }
 
     /**
@@ -74,9 +75,9 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Country $country)
+    public function edit(Religion $religion)
     {
-        return view('admin.country.edit', compact('country'));
+        return view('admin.religion.edit', compact('religion'));
     }
 
     /**
@@ -86,15 +87,15 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Country $country, Request $request)
+    public function update(Religion $religion, Request $request)
     {
-        $country->name = $request->name;
-        $country->save();
+        $religion->name = $request->name;
+        $religion->save();
 
-        Session::flash('message', 'Country updates Successfully!!'); 
+        Session::flash('message', 'Religion updated Successfully!!'); 
         Session::flash('alert-class', 'alert-success');
 
-        return redirect()->route('admin.country.index');
+        return redirect()->route('admin.religion.index');
     }
 
     /**

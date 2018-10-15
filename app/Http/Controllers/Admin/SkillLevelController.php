@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use Session;
-use App\Country;
+use App\skillLevel;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
 
-class CountryController extends Controller
+class SkillLevelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,14 +17,14 @@ class CountryController extends Controller
      */
     public function index()
     {
-        return view('admin.country.index');
+        return view('admin.skillLevel.index');
     }
-    public function getCountryData()
+    public function getskillLevelData()
     {
-        $countries = Country::select(['id', 'name', 'status', 'created_at', 'updated_at'])->get();
-        return DataTables::of($countries)
-        ->addColumn('action', function ($country) {
-            return '<a href="'.route('admin.country.edit', $country->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+        $skillLevels = SkillLevel::select(['id', 'name', 'status', 'created_at', 'updated_at'])->get();
+        return DataTables::of($skillLevels)
+        ->addColumn('action', function ($skillLevel) {
+            return '<a href="'.route('admin.skillLevel.edit', $skillLevel->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
         })
         ->make(true);
     }
@@ -36,7 +36,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        return view('admin.country.create');
+        return view('admin.skillLevel.create');
     }
 
     /**
@@ -47,14 +47,15 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        $country = new Country;
-        $country->name = $request->name;
-        $country->save();
+        $skillLevel = new SkillLevel;
+        $skillLevel->name = $request->name;
+        $skillLevel->save();
 
-        Session::flash('message', 'Country added Successfully!!'); 
+        
+        Session::flash('message', 'skillLevel added Successfully!!'); 
         Session::flash('alert-class', 'alert-success');
 
-        return redirect()->route('admin.country.index');
+        return redirect()->route('admin.skillLevel.index');
     }
 
     /**
@@ -74,9 +75,9 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Country $country)
+    public function edit(SkillLevel $skillLevel)
     {
-        return view('admin.country.edit', compact('country'));
+        return view('admin.skillLevel.edit', compact('skillLevel'));
     }
 
     /**
@@ -86,15 +87,15 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Country $country, Request $request)
+    public function update(SkillLevel $skillLevel, Request $request)
     {
-        $country->name = $request->name;
-        $country->save();
+        $skillLevel->name = $request->name;
+        $skillLevel->save();
 
-        Session::flash('message', 'Country updates Successfully!!'); 
+        Session::flash('message', 'skillLevel updated Successfully!!'); 
         Session::flash('alert-class', 'alert-success');
 
-        return redirect()->route('admin.country.index');
+        return redirect()->route('admin.skillLevel.index');
     }
 
     /**

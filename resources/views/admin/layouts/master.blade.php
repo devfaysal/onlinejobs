@@ -199,6 +199,21 @@
                                         <li>
                                             <a href="{{route('admin.country.index')}}"> Countries </a>
                                         </li>
+                                        <li>
+                                            <a href="{{route('admin.religion.index')}}"> Religions </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('admin.language.index')}}"> Languages </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('admin.gender.index')}}"> Gender </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('admin.maritalStatus.index')}}"> Marital Status </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('admin.skillLevel.index')}}"> Skill Level </a>
+                                        </li>
                                         {{-- <li>
                                             <a href="#"> Employer Apllications </a>
                                         </li> --}}

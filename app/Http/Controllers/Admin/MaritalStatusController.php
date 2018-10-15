@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use Session;
-use App\Country;
+use App\MaritalStatus;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
 
-class CountryController extends Controller
+class MaritalStatusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,14 +17,14 @@ class CountryController extends Controller
      */
     public function index()
     {
-        return view('admin.country.index');
+        return view('admin.maritalStatus.index');
     }
-    public function getCountryData()
+    public function getmaritalStatusData()
     {
-        $countries = Country::select(['id', 'name', 'status', 'created_at', 'updated_at'])->get();
-        return DataTables::of($countries)
-        ->addColumn('action', function ($country) {
-            return '<a href="'.route('admin.country.edit', $country->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+        $maritalStatuss = MaritalStatus::select(['id', 'name', 'status', 'created_at', 'updated_at'])->get();
+        return DataTables::of($maritalStatuss)
+        ->addColumn('action', function ($maritalStatus) {
+            return '<a href="'.route('admin.maritalStatus.edit', $maritalStatus->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
         })
         ->make(true);
     }
@@ -36,7 +36,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        return view('admin.country.create');
+        return view('admin.maritalStatus.create');
     }
 
     /**
@@ -47,14 +47,15 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        $country = new Country;
-        $country->name = $request->name;
-        $country->save();
+        $maritalStatus = new MaritalStatus;
+        $maritalStatus->name = $request->name;
+        $maritalStatus->save();
 
-        Session::flash('message', 'Country added Successfully!!'); 
+        
+        Session::flash('message', 'maritalStatus added Successfully!!'); 
         Session::flash('alert-class', 'alert-success');
 
-        return redirect()->route('admin.country.index');
+        return redirect()->route('admin.maritalStatus.index');
     }
 
     /**
@@ -74,9 +75,9 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Country $country)
+    public function edit(MaritalStatus $maritalStatus)
     {
-        return view('admin.country.edit', compact('country'));
+        return view('admin.maritalStatus.edit', compact('maritalStatus'));
     }
 
     /**
@@ -86,15 +87,15 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Country $country, Request $request)
+    public function update(MaritalStatus $maritalStatus, Request $request)
     {
-        $country->name = $request->name;
-        $country->save();
+        $maritalStatus->name = $request->name;
+        $maritalStatus->save();
 
-        Session::flash('message', 'Country updates Successfully!!'); 
+        Session::flash('message', 'maritalStatus updated Successfully!!'); 
         Session::flash('alert-class', 'alert-success');
 
-        return redirect()->route('admin.country.index');
+        return redirect()->route('admin.maritalStatus.index');
     }
 
     /**
