@@ -271,9 +271,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="passport" class="col-sm-4 col-form-label">{{ __('Passport') }}</label>
+                            <label for="passport" class="col-sm-4 col-form-label">{{ __('Passport/NIC') }}</label>
                             <div class="col-sm-8">
-                                <input id="passport" type="text" class="form-control{{ $errors->has('passport') ? ' is-invalid' : '' }}" name="passport" value="{{ old('passport') }}" placeholder="Passport">
+                                <input id="passport" type="text" class="form-control{{ $errors->has('passport') ? ' is-invalid' : '' }}" name="passport" value="{{ old('passport') }}" placeholder="Passport/NIC">
 
                             @if ($errors->has('passport'))
                                 <span class="invalid-feedback" role="alert">
@@ -282,7 +282,7 @@
                             @endif
                             </div>
                         </div>
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label for="nic" class="col-sm-4 col-form-label">{{ __('NIC') }}</label>
                             <div class="col-sm-8">
                                 <input id="nic" type="text" class="form-control{{ $errors->has('nic') ? ' is-invalid' : '' }}" name="nic" value="{{ old('nic') }}" placeholder="NIC" >
@@ -293,7 +293,7 @@
                                 </span>
                             @endif
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group row">
                             <label for="passport_file" class="col-sm-4 col-form-label">{{ __('Passport/NIC (Upload Scanned copy) *') }}</label>
                             <div class="col-sm-8">

@@ -65,6 +65,17 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $request = request();
+        if($request->file('license_file')){
+            $this->validate($request, [
+                'license_file' => 'image|max:250',
+            ]);
+        }
+        if($request->file('passport_file')){
+            $this->validate($request, [
+                'passport_file' => 'image|max:250',
+            ]);
+        }
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -73,6 +84,7 @@ class RegisterController extends Controller
             'role' => 'required',
         ]);
     }
+    
 
     /**
      * Create a new user instance after a valid registration.
@@ -146,7 +158,7 @@ class RegisterController extends Controller
 
             if($request->file('license_file')){
                 $this->validate($request, [
-                    'license_file' => 'image|max:250',
+                    'license_file' => 'image|max:2500',
                 ]);
                 
                 $image_basename = explode('.',$request->file('license_file')->getClientOriginalName())[0];
@@ -170,7 +182,25 @@ class RegisterController extends Controller
             $agent->address = $data['address'];
             $agent->nationality = $data['nationality'];
             $agent->passport = $data['passport'];
-            $agent->nic = $data['nic'];
+            if($request->file('passport_file')){
+                $this->validate($request, [
+                    'passport_file' => 'image|max:2500',
+                ]);
+                
+                $image_basename = explode('.',$request->file('passport_file')->getClientOriginalName())[0];
+                $image = $image_basename . '-' . time() . '.' . $request->file('passport_file')->getClientOriginalExtension();
+    
+                $img = Image::make($request->file('passport_file')->getRealPath());
+                $img->stream();
+    
+                //Upload image
+                Storage::disk('local')->put('public/'.$image, $img);
+    
+                //add new image path to database
+                $agent->passport_file = $image;
+                
+            }
+            //$agent->nic = $data['nic'];
             $agent->phone = $data['contact_phone'];
             $agent->email = $data['contact_email'];
             $agent->save();

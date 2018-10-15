@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 @section('content')
     <div class="title-block">
-        <h1 class="title"> Domestic Maids @if(Auth::user()->hasRole('agent'))<a class="btn btn-success" href="/agent/createuser">Add Domestic Maid</a>@endif</h1>
+        <h1 class="title"> Domestic Maids @if(Auth::user()->hasRole('agent') && Auth::user()->status == 1)<a class="btn btn-success" href="/agent/createuser">Add Domestic Maid</a>@endif</h1>
     </div>
     <section class="section">
         <table id="users-table" class="table table-condensed">
