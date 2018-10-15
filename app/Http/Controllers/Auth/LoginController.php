@@ -28,8 +28,14 @@ class LoginController extends Controller
      */
     //protected $redirectTo = '/';
     public function redirectTo(){
-        if(Auth::user()->hasRole(['superadministrator', 'administrator','agent'])){
+        if(Auth::user()->hasRole(['superadministrator', 'administrator'])){
             return '/admin';
+        }elseif(Auth::user()->hasRole('agent')){
+            if(Auth::user()->status == 1){
+                return '/admin';
+            }else{
+                return '/agent';
+            }
         }elseif(Auth::user()->hasRole('employer')){
             return '/employer/profile';
         }else{
