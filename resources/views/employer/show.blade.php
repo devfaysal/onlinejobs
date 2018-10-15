@@ -25,8 +25,8 @@
                                 <p class="text-danger">Your Employer Applications under review</p>
                                 @endif
                             </div>
-                            <div class="col-md-6">
-                                <span>Address</span><br/>
+                            <div class="col-md-6 text-right">
+                                <strong>Address</strong><br/>
                                 <span>{{$employer->employer_profile->address ?? 'N/A'}}</span><br/>
                                 <span>{{$employer->employer_profile->country_data->name ?? 'N/A'}}</span>
                             </div>
@@ -41,7 +41,7 @@
                 @if(Auth::user()->status == 1)
                 <div class="card mt-4">
                         <h4 class="card-title text-center mt-3">All Domestic Maids and General Workers</h4>
-                    <div class="card-body">
+                    <div class="card-body" id="empdash-table">
                         <form method="post" action="{{route('sendOffer')}}">
                             <input onclick="return confirm('Are you sure?')" style="float: right;" class="btn btn-success mb-2" type="submit" value="Send Offer">
                             @csrf
@@ -90,7 +90,7 @@
         ajax: '{{route('getAllMaids')}}',
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'image', name: 'image',orderable: false, searchable: false},
+            {data: 'image', name: 'image', orderable: false, searchable: false},
             {data: 'name', name: 'name'},
             {data: 'passport', name: 'passport'},
             {data: 'country', name: 'country'},
