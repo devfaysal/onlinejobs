@@ -128,41 +128,41 @@
                           <img src="images/companies/permaju.jpg" class="img-fluid adsImg">
                           <img src="images/media/30.gif" class="img-fluid adsImg">
 
-                          <img src="images/media/31.gif" class="img-fluid adsImg">
-                          <img src="images/media/32.gif" class="img-fluid adsImg">
-                          <img src="images/media/33.gif" class="img-fluid adsImg">
-                          <img src="images/media/34.gif" class="img-fluid adsImg">
-                          <img src="images/media/35.gif" class="img-fluid adsImg">
-                          <img src="images/media/36.gif" class="img-fluid adsImg">
-                          <img src="images/media/37.gif" class="img-fluid adsImg">
-                          <img src="images/media/38.gif" class="img-fluid adsImg">
-                          <img src="images/media/39.gif" class="img-fluid adsImg">
-                          <img src="images/media/40.gif" class="img-fluid adsImg">
-                          <img src="images/media/41.gif" class="img-fluid adsImg">
-                          <img src="images/media/42.gif" class="img-fluid adsImg">
-                          <img src="images/media/43.gif" class="img-fluid adsImg">
-                          <img src="images/media/44.gif" class="img-fluid adsImg">
-                          <img src="images/media/45.gif" class="img-fluid adsImg">
-                          <img src="images/media/46.gif" class="img-fluid adsImg">
-                          <img src="images/media/47.gif" class="img-fluid adsImg">
-                          <img src="images/media/48.gif" class="img-fluid adsImg">
-                          <img src="images/media/49.gif" class="img-fluid adsImg">
-                          <img src="images/media/50.gif" class="img-fluid adsImg">
-                          <img src="images/media/51.gif" class="img-fluid adsImg">
-                          <img src="images/media/52.gif" class="img-fluid adsImg">
-                          <img src="images/media/53.gif" class="img-fluid adsImg">
-                          <img src="images/media/54.gif" class="img-fluid adsImg">
-                          <img src="images/media/55.gif" class="img-fluid adsImg">
-                          <img src="images/media/56.gif" class="img-fluid adsImg">
-                          <img src="images/media/57.gif" class="img-fluid adsImg">
-                          <img src="images/media/58.gif" class="img-fluid adsImg">
-                          <img src="images/media/59.gif" class="img-fluid adsImg">
-                          <img src="images/media/60.gif" class="img-fluid adsImg">
+                          <img src="images/companies/gadang-holdings.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/pinehill-pacific.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/greenpacket.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/zelan-berhad.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/tasco.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/yoong-onn.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/kpj-berhad.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/top-glove.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/boustead.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/shin-yang.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/samchem-holdings.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/ancom-berhad.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/hexza.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/magni-tech.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/supermax.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/kpj-berhad.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/top-glove.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/boustead.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/shin-yang.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/industronics.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/excel-force.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/mitrajaya.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/gadang-holdings.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/pinehill-pacific.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/mesiniaga.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/boustead.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/ancom-berhad.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/hexza.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/magni-tech.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/permaju.jpg" class="img-fluid adsImg">
                       </div>
 
-                      <div class="whitebg">
+                      <!-- <div class="whitebg">
                           <img src="images/media/61.gif" class="img-fluid adsImg">
-                      </div>
+                      </div> -->
                     </div>
 
                       <div class="col-md-9 col-sm-9">
