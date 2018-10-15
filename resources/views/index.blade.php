@@ -65,18 +65,18 @@
                     <div class="row">
                         <div class="col-sm-6 col-md-5 col-lg-6 ">
                             <div class="whitebg text-center banner_equal">
-                                <p> Need Jobs ? </p>
-                                <a class="btn btn-warning  btn-large btn-block" href="{{route('register')}}"> Register with us  </a>
+                                <p style="line-height: 20px;"> Looking for General Worker or Domestic Maid?</p>
+                                <a class="btn btn-warning  btn-large btn-block" href="{{route('register')}}"> Quick Registration  </a>
                                 <hr class="hr-text" data-content="or">
-                                <h5><a href=""> Upload CV </a> </h5>
+                                <h5><a href="#"> Upload Demand Letter </a> </h5>
                                 <p class="small_TxT2"> Max 2 MB, doc, docx, rtf, pdf </p> 
-                                <p>We will fill your details </p>
+                                <p>Our team will contact you.</p>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-5 col-lg-6">
                         <div class="whitebg align-middle banner_equal row align-items-center">
-                                <h6> Get best matched Jobs on your Email. <br/> No Registration needed</h6>
-                                <h5 class="col  align-self-center banner_uppercase"><a href=""> Create Job alert </a> </h5>
+                                <h6>Hiring Packages are available. Choose the best suited for you.</h6>
+                                <h5 class="col  align-self-center banner_uppercase"><a href="#"> View the Packages </a> </h5>
                             </div>
                         </div>
                     </div> 
@@ -91,41 +91,41 @@
         <div class="row">
             <div class="col-sm-12 col-md-9 col-lg-9">
                   <div class="whitebg">
-                      <img src="images/media/1.gif" class="img-fluid">
-                      <img src="images/media/2.gif" class="img-fluid">
-                      <img src="images/media/3.gif" class="img-fluid">
-                      <img src="images/media/4.gif" class="img-fluid">
-                      <img src="images/media/5.gif" class="img-fluid">
-                      <img src="images/media/15.gif" class="img-fluid">
+                      <img alt="prestar" src="images/companies/prestar.jpg" class="img-fluid">
+                      <img alt="hovid" src="images/companies/hovid.jpg" class="img-fluid">
+                      <img alt="masteel" src="images/companies/masteel.jpg" class="img-fluid">
+                      <img alt="nestle" src="images/companies/nestle.jpg" class="img-fluid">
+                      <img alt="litrak" src="images/companies/litrak.jpg" class="img-fluid">
+                      <img alt="caring pharmacy" src="images/companies/caring-pharmacy.jpg" class="img-fluid">
                   </div>
 
                   <div class="row">
                     <div class="col-sm-12 col-md-3 text-center">
                       <div class="whitebg">
-                          <img src="images/media/6.gif" class="img-fluid adsImg">
-                          <img src="images/media/7.gif" class="img-fluid adsImg">
-                          <img src="images/media/8.gif" class="img-fluid adsImg">
-                          <img src="images/media/9.gif" class="img-fluid adsImg">
-                          <img src="images/media/10.gif" class="img-fluid adsImg">
-                          <img src="images/media/11.gif" class="img-fluid adsImg">
-                          <img src="images/media/12.gif" class="img-fluid adsImg">
-                          <img src="images/media/13.gif" class="img-fluid adsImg">
-                          <img src="images/media/14.gif" class="img-fluid adsImg">
-                          <img src="images/media/15.gif" class="img-fluid adsImg">
-                          <img src="images/media/16.gif" class="img-fluid adsImg">
-                          <img src="images/media/17.gif" class="img-fluid adsImg">
-                          <img src="images/media/18.gif" class="img-fluid adsImg">
-                          <img src="images/media/19.gif" class="img-fluid adsImg">
-                          <img src="images/media/20.gif" class="img-fluid adsImg">
-                          <img src="images/media/21.gif" class="img-fluid adsImg">
-                          <img src="images/media/22.gif" class="img-fluid adsImg">
-                          <img src="images/media/23.gif" class="img-fluid adsImg">
-                          <img src="images/media/24.gif" class="img-fluid adsImg">
-                          <img src="images/media/25.gif" class="img-fluid adsImg">
-                          <img src="images/media/26.gif" class="img-fluid adsImg">
-                          <img src="images/media/27.gif" class="img-fluid adsImg">
-                          <img src="images/media/28.gif" class="img-fluid adsImg">
-                          <img src="images/media/29.gif" class="img-fluid adsImg">
+                          <img src="images/companies/supermax.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/kpj-berhad.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/top-glove.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/boustead.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/shin-yang.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/industronics.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/excel-force.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/mycron-steel.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/mitrajaya.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/gadang-holdings.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/pinehill-pacific.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/mesiniaga.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/pantech-group.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/datasonic.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/greenpacket.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/zelan-berhad.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/tasco.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/yoong-onn.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/toyo-ink.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/samchem-holdings.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/ancom-berhad.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/hexza.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/magni-tech.jpg" class="img-fluid adsImg">
+                          <img src="images/companies/permaju.jpg" class="img-fluid adsImg">
                           <img src="images/media/30.gif" class="img-fluid adsImg">
 
                           <img src="images/media/31.gif" class="img-fluid adsImg">
