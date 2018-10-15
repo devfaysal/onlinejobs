@@ -13639,10 +13639,12 @@ a.text-dark:focus {
   font-size: 1.4em;
   font-weight: 400;
   color: #888;
+  line-height: 30px;
 }
 
 .banner_uppercase {
   text-transform: uppercase;
+  padding: 0;
 }
 
 .hr-text {
