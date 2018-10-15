@@ -24,7 +24,13 @@ class LanguageController extends Controller
         $languages = Language::select(['id', 'name', 'status', 'created_at', 'updated_at'])->get();
         return DataTables::of($languages)
         ->addColumn('action', function ($language) {
-            return '<a href="'.route('admin.language.edit', $language->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            $string  = '<a href="'.route('admin.skillLevel.edit', $language->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            if($language->status == 0){
+                $string .= ' <a href="'.route('admin.publish', [$language->getTable(), $language->id]).'" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Publish</a>';
+            }else{
+                $string .= ' <a href="'.route('admin.unpublish', [$language->getTable(), $language->id]).'" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Unublish</a>';
+            }
+            return $string;
         })
         ->make(true);
     }

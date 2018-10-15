@@ -24,6 +24,10 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
         return view('admin.index');
     })->name('home');
 
+    /*Publish Unpublish*/
+    Route::get('/publish/{table}/{id}', 'Admin\StatusController@publish')->name('publish');
+    Route::get('/unpublish/{table}/{id}', 'Admin\StatusController@unpublish')->name('unpublish');
+
     /*Employer*/
     Route::get('/employer/approve/{id}', 'Admin\EmployerController@approve')->name('employer.approve');
     Route::get('/employer/reject/{id}', 'Admin\EmployerController@reject')->name('employer.reject');

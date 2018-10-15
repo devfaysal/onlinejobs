@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 @section('content')
     <div class="title-block">
-        <h1 class="title"> skillLevels <a class="btn btn-primary btn-sm" href="{{route('admin.skillLevel.create')}}">Add New</a></h1>
+        <h1 class="title"> Skill Levels <a class="btn btn-primary btn-sm" href="{{route('admin.skillLevel.create')}}">Add New</a></h1>
     </div>
     <section class="section">
         <table id="users-table" class="table table-condensed">

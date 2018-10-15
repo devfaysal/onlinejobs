@@ -24,7 +24,13 @@ class MaritalStatusController extends Controller
         $maritalStatuss = MaritalStatus::select(['id', 'name', 'status', 'created_at', 'updated_at'])->get();
         return DataTables::of($maritalStatuss)
         ->addColumn('action', function ($maritalStatus) {
-            return '<a href="'.route('admin.maritalStatus.edit', $maritalStatus->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            $string  = '<a href="'.route('admin.skillLevel.edit', $maritalStatus->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            if($maritalStatus->status == 0){
+                $string .= ' <a href="'.route('admin.publish', [$maritalStatus->getTable(), $maritalStatus->id]).'" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Publish</a>';
+            }else{
+                $string .= ' <a href="'.route('admin.unpublish', [$maritalStatus->getTable(), $maritalStatus->id]).'" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Unublish</a>';
+            }
+            return $string;
         })
         ->make(true);
     }

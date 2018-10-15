@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 @section('content')
     <div class="title-block">
-        <h1 class="title"> Add skillLevel <a class="btn btn-primary btn-sm" href="{{route('admin.skillLevel.index')}}">Back</a></h1>
+        <h1 class="title"> Add Skill Level <a class="btn btn-primary btn-sm" href="{{route('admin.skillLevel.index')}}">Back</a></h1>
     </div>
     <section class="section">
         <div class="row sameheight-container">

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Session;
-use App\skillLevel;
+use App\SkillLevel;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
@@ -19,12 +19,18 @@ class SkillLevelController extends Controller
     {
         return view('admin.skillLevel.index');
     }
-    public function getskillLevelData()
+    public function getSkillLevelData()
     {
         $skillLevels = SkillLevel::select(['id', 'name', 'status', 'created_at', 'updated_at'])->get();
         return DataTables::of($skillLevels)
         ->addColumn('action', function ($skillLevel) {
-            return '<a href="'.route('admin.skillLevel.edit', $skillLevel->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            $string  = '<a href="'.route('admin.skillLevel.edit', $skillLevel->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            if($skillLevel->status == 0){
+                $string .= ' <a href="'.route('admin.publish', [$skillLevel->getTable(), $skillLevel->id]).'" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Publish</a>';
+            }else{
+                $string .= ' <a href="'.route('admin.unpublish', [$skillLevel->getTable(), $skillLevel->id]).'" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Unublish</a>';
+            }
+            return $string;
         })
         ->make(true);
     }
@@ -52,7 +58,7 @@ class SkillLevelController extends Controller
         $skillLevel->save();
 
         
-        Session::flash('message', 'skillLevel added Successfully!!'); 
+        Session::flash('message', 'Skill Level added Successfully!!'); 
         Session::flash('alert-class', 'alert-success');
 
         return redirect()->route('admin.skillLevel.index');
@@ -92,7 +98,7 @@ class SkillLevelController extends Controller
         $skillLevel->name = $request->name;
         $skillLevel->save();
 
-        Session::flash('message', 'skillLevel updated Successfully!!'); 
+        Session::flash('message', 'Skill Level updated Successfully!!'); 
         Session::flash('alert-class', 'alert-success');
 
         return redirect()->route('admin.skillLevel.index');
