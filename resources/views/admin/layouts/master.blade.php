@@ -145,75 +145,75 @@
                         </div>
                         <nav class="menu">
                             <ul class="sidebar-menu metismenu" id="sidebar-menu">
-                                <li class="active">
+                                <li class="{{ ( (Route::currentRouteName() === "admin.home") ? "active" : "") }}">
                                     <a href="/admin">
                                         <i class="fa fa-home"></i> Dashboard </a>
                                 </li>
                                 @if(Auth::user()->hasRole('superadministrator'))
-                                <li>
+                                <li class="{{ ( (Route::currentRouteName() === "admin.employer.index") || (Route::currentRouteName() === "admin.employerApplication") ? "active open" : "") }}">
                                     <a href="">
                                         <i class="fa fa-users"></i> Employers
                                         <i class="fa arrow"></i>
                                     </a>
                                     <ul class="sidebar-nav">
-                                        <li>
+                                        <li class="{{ ( (Route::currentRouteName() === "admin.employer.index") ? "active" : "" ) }}">
                                             <a href="{{route('admin.employer.index')}}"> Active Employers </a>
                                         </li>
-                                        <li>
+                                        <li class="{{ ( (Route::currentRouteName() === "admin.employerApplication") ? "active" : "" ) }}">
                                             <a href="{{route('admin.employerApplication')}}"> Employer Apllications </a>
                                         </li>
                                     </ul>
                                 </li>
                                 
-                                <li>
+                                <li class="{{ ( (Route::currentRouteName() === "admin.agent.index") || (Route::currentRouteName() === "admin.agentApplication") || (Route::currentRouteName() === "admin.rejectedAgentApplication") ? "active open" : "") }}">
                                     <a href="">
                                         <i class="fa fa-users"></i> Agents
                                         <i class="fa arrow"></i>
                                     </a>
                                     <ul class="sidebar-nav">
-                                        <li>
+                                        <li class="{{ ( (Route::currentRouteName() === "admin.agent.index") ? "active" : "") }}">
                                             <a href="{{route('admin.agent.index')}}"> Active Agents </a>
                                         </li>
-                                        <li>
+                                        <li class="{{ ( (Route::currentRouteName() === "admin.agentApplication") ? "active" : "") }}">
                                             <a href="{{route('admin.agentApplication')}}"> Agent Apllications </a>
                                         </li>
-                                        <li>
+                                        <li class="{{ ( (Route::currentRouteName() === "admin.rejectedAgentApplication") ? "active" : "") }}">
                                             <a href="{{route('admin.rejectedAgentApplication')}}">Pending Apllications </a>
                                         </li>
                                     </ul>
                                 </li>
                                 @endif
-                                <li>
+                                <li class="{{ ( (Route::currentRouteName() === "admin.worker.index") ? "active" : "") }}">
                                     <a href="{{route('admin.worker.index')}}">
                                         <i class="fa fa-pencil-square-o"></i> General Workers </a>
                                 </li>
-                                <li>
+                                <li class="{{ ( (Route::currentRouteName() === "admin.maid.index") ? "active" : "") }}">
                                     <a href="{{route('admin.maid.index')}}">
                                         <i class="fa fa-pencil-square-o"></i> Domestic Maids </a>
                                 </li>
                                 @if(Auth::user()->hasRole('superadministrator'))
-                                <li>
+                                <li class="{{ ( (Route::currentRouteName() === "admin.country.index") || (Route::currentRouteName() === "admin.religion.index") || (Route::currentRouteName() === "admin.language.index") || (Route::currentRouteName() === "admin.gender.index") || (Route::currentRouteName() === "admin.maritalStatus.index") || (Route::currentRouteName() === "admin.skillLevel.index") ? "active open" : "") }}">
                                     <a href="">
                                         <i class="fa fa-users"></i> Settings
                                         <i class="fa arrow"></i>
                                     </a>
                                     <ul class="sidebar-nav">
-                                        <li>
+                                        <li class="{{ ( (Route::currentRouteName() === "admin.country.index") ? "active" : "") }}">
                                             <a href="{{route('admin.country.index')}}"> Countries </a>
                                         </li>
-                                        <li>
+                                        <li class="{{ ( (Route::currentRouteName() === "admin.religion.index") ? "active" : "") }}">
                                             <a href="{{route('admin.religion.index')}}"> Religions </a>
                                         </li>
-                                        <li>
+                                        <li class="{{ ( (Route::currentRouteName() === "admin.language.index") ? "active" : "") }}">
                                             <a href="{{route('admin.language.index')}}"> Languages </a>
                                         </li>
-                                        <li>
+                                        <li class="{{ ( (Route::currentRouteName() === "admin.gender.index") ? "active" : "") }}">
                                             <a href="{{route('admin.gender.index')}}"> Gender </a>
                                         </li>
-                                        <li>
+                                        <li class="{{ ( (Route::currentRouteName() === "admin.maritalStatus.index") ? "active" : "") }}">
                                             <a href="{{route('admin.maritalStatus.index')}}"> Marital Status </a>
                                         </li>
-                                        <li>
+                                        <li class="{{ ( (Route::currentRouteName() === "admin.skillLevel.index") ? "active" : "") }}">
                                             <a href="{{route('admin.skillLevel.index')}}"> Skill Level </a>
                                         </li>
                                         {{-- <li>
