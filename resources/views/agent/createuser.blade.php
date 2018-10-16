@@ -18,11 +18,14 @@
                 <div class="card-header">
                     <h3 class="text-center mt-2">
                         @if ( request()->t == 'gw' )
+                            <a href="{{route('admin.worker.index')}}" class="btn btn-danger pull-left">Back</a>
                             Create General Worker
                         @elseif ( request()->t == 'dm' )
+                            <a href="{{route('admin.maid.index')}}" class="btn btn-danger pull-left">Back</a>
                             Create Domestic Maid
                         @else
-                            Create General Worker/ Domestic Maid
+                            Create General Worker / Domestic Maid
+                            <a href="/admin" class="btn btn-danger pull-left">Back</a>
                         @endif
                     </h3>
                 </div>
@@ -445,7 +448,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group mb-0 text-center">
-                                    <button type="submit" class="btn btn-warning btn-block">
+                                    <button type="submit" class="btn btn-success btn-block">
                                         {{ __('Save Information') }}
                                     </button>
                                 </div>
