@@ -1,11 +1,16 @@
-#empdash-table table.dataTable tfoot th {
+table.dataTable tfoot th {
 	padding: 6px 1px 6px 0;
 }
 
-#empdash-table table.dataTable tbody td {
+table.dataTable tbody td {
 	padding: 5px 5px;
 }
 
 .social-icons .btn-social {
 	height: 45px;
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
 }

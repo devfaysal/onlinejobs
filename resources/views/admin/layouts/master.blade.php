@@ -22,6 +22,8 @@
                 padding: 10px 18px 6px 0;
             }
         </style>
+        <!-- Custom Styles -->
+        <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
         
         <!-- Theme initialization -->
         {{-- <script>
