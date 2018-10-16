@@ -16,14 +16,29 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="card mt-3">
                 <div class="card-header">
-                    <h3 class="text-center mt-2">Create General Worker/ Domestic Maid</h3>
+                    <h3 class="text-center mt-2">
+                        @if ( request()->t == 'gw' )
+                            Create General Worker
+                        @elseif ( request()->t == 'dm' )
+                            Create Domestic Maid
+                        @else
+                            Create General Worker/ Domestic Maid
+                        @endif
+                    </h3>
                 </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('agent.saveuser') }}" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="agent_code" value="{{Auth::user()->agent_profile->agent_code}}">
+
                         <div class="row">
+                            @if ( (request()->t == 'gw') || (request()->t == 'dm') )
+
+                            <!-- Hidden field for GW/DM user type -->
+                            <input type="hidden" name="role" value="{{ (request()->t == 'gw') ? "worker" : "maid" }}">
+
+                            @else
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="row">
@@ -40,6 +55,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="name">{{ __('Name *') }}</label>
