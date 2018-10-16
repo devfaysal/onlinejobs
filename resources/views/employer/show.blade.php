@@ -40,7 +40,7 @@
                 </div>
                 @if(Auth::user()->status == 1)
                 <div class="card mt-4">
-                        <h4 class="card-title text-center mt-3">All Domestic Maids and General Workers</h4>
+                        <h4 class="card-title text-center mt-3">General Workers</h4>
                     <div class="card-body">
                         <form method="post" action="{{route('sendOffer')}}">
                             <input onclick="return confirm('Are you sure?')" style="float: right;" class="btn btn-success mb-2" type="submit" value="Send Offer">
@@ -55,7 +55,6 @@
                                     <th>Country</th>
                                     <th>Date of Birth</th>
                                     <th>Marital Status</th>
-                                    <th>Role</th>
                                     <th>Status</th>
                                     <th>Offer</th>
                                 </tr>
@@ -69,8 +68,8 @@
                                     <th>Country</th>
                                     <th>Date of Birth</th>
                                     <th>Marital Status</th>
-                                    <th>Role</th>
                                     <th>Status</th>
+                                    <th>Offer</th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -87,7 +86,7 @@
     $('#maids-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{{route('getAllMaids')}}',
+        ajax: '{{route('getAllWorkers')}}',
         columns: [
             {data: 'id', name: 'id'},
             {data: 'image', name: 'image', orderable: false, searchable: false},
@@ -96,7 +95,6 @@
             {data: 'country', name: 'country'},
             {data: 'date_of_birth', name: 'date_of_birth'},
             {data: 'marital_status', name: 'marital_status'},
-            {data: 'role', name: 'role'},
             {data: 'status', name: 'status'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ],
