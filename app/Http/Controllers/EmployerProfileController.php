@@ -69,24 +69,18 @@ class EmployerProfileController extends Controller
 
         return view('employer.show', compact('employer','total_maids','total_workers', 'total_agents','offer_sent'));
     }
-    public function getAllMaids(){
+    public function getAllWorkers(){
 
-        $users = User::where('status', 1)->whereRoleIs('maid')->select(['id','public_id', 'name'])->get();
-        $workers = User::where('status', 1)->whereRoleIs('worker')->select(['id','public_id', 'name'])->get();
-        $users = $users->merge($workers);
+        $users = User::where('status', 1)->whereRoleIs('worker')->select(['id','public_id', 'name'])->get();
 
         return DataTables::of($users)
         ->addColumn('action', function ($user) {
-            //return '<a href="'.route('admin.worker.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
             $string =  '<a class="btn btn-xs btn-primary" href="'.route('profile.public', $user->public_id).'">View</a>';
             if ( ! $user->applicants()->first()['id'] ) {
                 $string .= ' <input style="width: 38px;height: 38px;vertical-align: middle;" type="checkbox" name="id[]" value="'.$user->id.'">';
             }
 
             return $string;
-        })
-        ->addColumn('role', function($user) {
-            return '<span title="'. $user->roles()->first()['description'] .'">'. $user->roles()->first()['display_name'] .'</span>';
         })
         ->addColumn('status', function($user) {
             if($user->applicants()->first()['id']){
@@ -110,21 +104,21 @@ class EmployerProfileController extends Controller
             $img = $user->profile->image != '' ? asset('storage/'.$user->profile->image) :  asset('images/dummy.jpg');
             return '<img src="'.$img.'" border="0" width="40" class="img-rounded" align="center" />';
         })
-        ->rawColumns(['role', 'image', 'action'])
+        ->rawColumns(['image', 'action'])
         ->make(true);
     }
-    public function getAllWorkers(){
+    // public function getAllWorkers(){
 
-        $users = User::where('status', 1)->whereRoleIs('worker')->select(['id','public_id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
+    //     $users = User::where('status', 1)->whereRoleIs('worker')->select(['id','public_id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
         
-        return DataTables::of($users)
-        ->addColumn('action', function ($user) {
-            //return '<a href="'.route('admin.worker.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-            return '<a target="_blank" class="btn btn-xs btn-primary" href="'.route('profile.public', $user->public_id).'">View</a> <input style="width: 38px;height: 38px;vertical-align: middle;" type="checkbox" name="id[]" value="'.$user->id.'">';
-        })
-        ->removeColumn('password')
-        ->make(true);
-    }
+    //     return DataTables::of($users)
+    //     ->addColumn('action', function ($user) {
+    //         //return '<a href="'.route('admin.worker.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+    //         return '<a target="_blank" class="btn btn-xs btn-primary" href="'.route('profile.public', $user->public_id).'">View</a> <input style="width: 38px;height: 38px;vertical-align: middle;" type="checkbox" name="id[]" value="'.$user->id.'">';
+    //     })
+    //     ->removeColumn('password')
+    //     ->make(true);
+    // }
 
     /**
      * Show the form for editing the specified resource.

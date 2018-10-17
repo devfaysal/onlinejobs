@@ -35,15 +35,15 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="#">Jobs <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle {{ ( (Route::currentRouteName() === "agent.create") ? "active" : "") }}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Agent
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('agent.create')}}">Agent Registration</a>
+                            <a class="dropdown-item {{ ( (Route::currentRouteName() === "agent.create") ? "active" : "") }}" href="{{route('agent.create')}}">Agent Registration</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Agent Status View</a>
                         </div>
@@ -63,14 +63,14 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('maids')}}">Domestic Maids</a>
+                        <a class="nav-link {{ ( (Route::currentRouteName() === "maids") ? "active" : "") }}" href="{{route('maids')}}">Domestic Maids</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('workers')}}">General Workers</a>
+                        <a class="nav-link {{ ( (Route::currentRouteName() === "workers") ? "active" : "") }}" href="{{route('workers')}}">General Workers</a>
                     </li>
                     <li class="nav-item">
                         @guest
-                        <a class="nav-link" href="{{route('employer.index')}}">Employers Area</a>
+                        <a class="nav-link {{ ( (Route::currentRouteName() === "employer.index") ? "active" : "") }}" href="{{route('employer.index')}}">Employers Area</a>
                         @endguest
                         @auth
                         @if(Auth::user()->hasRole('employer'))

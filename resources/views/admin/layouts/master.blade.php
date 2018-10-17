@@ -150,7 +150,7 @@
                                         <i class="fa fa-home"></i> Dashboard </a>
                                 </li>
                                 @if(Auth::user()->hasRole('superadministrator'))
-                                <li class="{{ ( (Route::currentRouteName() === "admin.employer.index") || (Route::currentRouteName() === "admin.employerApplication") ? "active open" : "") }}">
+                                <li class="{{ ( (Route::currentRouteName() === "admin.employer.index") || (Route::currentRouteName() === "admin.employerApplication") || (Route::currentRouteName() === "admin.employerDemands") ? "active open" : "") }}">
                                     <a href="">
                                         <i class="fa fa-users"></i> Employers
                                         <i class="fa arrow"></i>
@@ -161,6 +161,9 @@
                                         </li>
                                         <li class="{{ ( (Route::currentRouteName() === "admin.employerApplication") ? "active" : "" ) }}">
                                             <a href="{{route('admin.employerApplication')}}"> Employer Apllications </a>
+                                        </li>
+                                        <li class="{{ ( (Route::currentRouteName() === "admin.employerDemands") ? "active" : "" ) }}">
+                                            <a href="{{route('admin.employerDemands')}}"> Employer Demands </a>
                                         </li>
                                     </ul>
                                 </li>
@@ -191,6 +194,13 @@
                                     <a href="{{route('admin.maid.index')}}">
                                         <i class="fa fa-pencil-square-o"></i> Domestic Maids </a>
                                 </li>
+                                @if(Auth::user()->hasRole('agent'))
+                                <li class="{{ ( (Route::currentRouteName() === "admin.employerDemands") ? "active" : "") }}">
+                                    <a href="{{route('admin.employerDemands')}}">
+                                        <i class="fa fa-pencil-square-o"></i> Employer Demands </a>
+                                </li>
+                                @endif
+
                                 @if(Auth::user()->hasRole('superadministrator'))
                                 <li class="{{ ( (Route::currentRouteName() === "admin.country.index") || (Route::currentRouteName() === "admin.religion.index") || (Route::currentRouteName() === "admin.language.index") || (Route::currentRouteName() === "admin.gender.index") || (Route::currentRouteName() === "admin.maritalStatus.index") || (Route::currentRouteName() === "admin.skillLevel.index") ? "active open" : "") }}">
                                     <a href="">

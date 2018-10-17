@@ -6,7 +6,7 @@
         <div class="row verticle-center">
             <div class="col-md-8">
                 <h1 class="text-white">
-                    <strong>Online Jobs <br/>Employer<br/> Zone</strong>
+                    <strong><small>Online Jobs</small><br/>Employer Area</strong>
                 </h1>
             </div>
             <div class="col-md-4">

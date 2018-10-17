@@ -51,6 +51,11 @@ class EmployerController extends Controller
         ->make(true);
     }
 
+    public function employerDemands()
+    {
+        return view('admin.employer.employerDemands');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -39,13 +39,117 @@
                     </div>
                 </div>
                 @if(Auth::user()->status == 1)
+                <!-- Demands list -->
                 <div class="card mt-4">
-                        <h4 class="card-title text-center mt-3">All Domestic Maids and General Workers</h4>
+                    <h4 class="card-title text-center mt-3">Demand Requests</h4>
+                    <div class="card-body">
+                        <a class="btn btn-warning mb-2 pull-right" data-toggle="modal" data-target="#demandModal" href="#">Send a Demand</a>
+                        <table id="demands-table" class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>DLN</th>
+                                    <th>Company</th>
+                                    <th>Issue Date</th>
+                                    <th title="Expected Join Date">EJ Date</th>
+                                    <th title="Demand Quantity">D. Qty</th>
+                                    <th title="Proposed Quantity">Proposed Qty</th>
+                                    <th>Day Pending</th>
+                                    <th title="Selected Quantity">Selected Qty</th>
+                                    <th title="Final Quantity">Final Qty</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <!-- <tfoot>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>DLN</th>
+                                    <th>Company</th>
+                                    <th>Issue Date</th>
+                                    <th title="Expected Join Date">EJ Date</th>
+                                    <th title="Demand Quantity">D. Qty</th>
+                                    <th>Proposed Qty</th>
+                                    <th>Day Pending</th>
+                                    <th>Selected Qty</th>
+                                    <th>Final Qty</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </tfoot> -->
+                        </table>
+                    </div>
+                </div>
+                <!-- Demand Entry Modal -->
+                <div class="modal fade" id="demandModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content tex-center">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-center" id="exampleModalLongTitle"> Send a Demand Request </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <div class="row justify-content-md-center">
+                                    <div class="col-md-10">
+                                        <form method="POST" action="#">
+                                            @csrf
+                                            <div class="form-group">
+                                                <select id="HiringPackage" class="form-control" name="HiringPackage">
+                                                    <option>--- Hiring Package ---</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="CompanyName" type="text" class="form-control" name="CompanyName" value="{{ old('CompanyName') }}" placeholder="Company Name*" required>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <input id="IssueDate" type="text" class="form-control" name="IssueDate" value="{{ old('IssueDate') }}" placeholder="Issue Date*" required>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <input id="DemandLetterNo" type="text" class="form-control" name="DemandLetterNo" value="{{ old('DemandLetterNo') }}" placeholder="Demand Letter No*" required>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <input id="ExpectedJoinDate" type="text" class="form-control" name="ExpectedJoinDate" value="{{ old('ExpectedJoinDate') }}" placeholder="Expected Join Date*" required>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <input id="DemandQuantity" type="text" class="form-control" name="DemandQuantity" value="{{ old('DemandQuantity') }}" placeholder="Demand Quantity*" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <select id="PreferredCountry" class="form-control" name="PreferredCountry">
+                                                    <option>--- Preferred Country* ---</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <textarea id="Comments" class="form-control" name="Comments" value="{{ old('Comments') }}" placeholder="Comments"></textarea>
+                                            </div>
+                    
+                                            <div class="form-group mb-0 text-center">
+                                                <button type="submit" class="btn btn-warning btn-block">
+                                                    {{ __('Send Request') }}
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--  /.modal-dialog modal-dialog-centered  -->
+                </div><!--  /.modal fade  -->
+                <!-- /.Login Modal -->
+
+                <!-- GW list for Employer -->
+                <div class="card mt-4">
+                    <h4 class="card-title text-center mt-3">General Workers</h4>
                     <div class="card-body">
                         <form method="post" action="{{route('sendOffer')}}">
-                            <input onclick="return confirm('Are you sure?')" style="float: right;" class="btn btn-success mb-2" type="submit" value="Send Offer">
+                            <input onclick="return confirm('Are you sure?')" class="btn btn-success mb-2 pull-right" type="submit" value="Send Offer">
                             @csrf
-                        <table id="maids-table" class="table table-condensed">
+                        <table id="workers-table" class="table table-condensed">
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -55,7 +159,6 @@
                                     <th>Country</th>
                                     <th>Date of Birth</th>
                                     <th>Marital Status</th>
-                                    <th>Role</th>
                                     <th>Status</th>
                                     <th>Offer</th>
                                 </tr>
@@ -69,8 +172,8 @@
                                     <th>Country</th>
                                     <th>Date of Birth</th>
                                     <th>Marital Status</th>
-                                    <th>Role</th>
                                     <th>Status</th>
+                                    <th>Offer</th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -84,10 +187,10 @@
 @endsection
 @section('script')
 <script>
-    $('#maids-table').DataTable({
+    $('#workers-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{{route('getAllMaids')}}',
+        ajax: '{{route('getAllWorkers')}}',
         columns: [
             {data: 'id', name: 'id'},
             {data: 'image', name: 'image', orderable: false, searchable: false},
@@ -96,7 +199,6 @@
             {data: 'country', name: 'country'},
             {data: 'date_of_birth', name: 'date_of_birth'},
             {data: 'marital_status', name: 'marital_status'},
-            {data: 'role', name: 'role'},
             {data: 'status', name: 'status'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ],
