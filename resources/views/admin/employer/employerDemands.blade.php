@@ -17,29 +17,23 @@
         <table id="users-table" class="table table-condensed">
             <thead>
                 <tr>
-                    <th>Id</th>
                     <th title="Employer Name">Emp. Name</th>
-                    <th>Phone</th>
-                    <th>Entry</th>
-                    <th>DNL</th>
+                    <th title="Demand Letter No">DLN</th>
                     <th title="Expected Join Date">EJD</th>
                     <th title="Demand Quantity">D. Qty</th>
                     <th title="Proposed Quantity">Proposed Qty</th>
-                    <th>Day Pending</th>
-                    <th>Selected Qty</th>
-                    <th>Final Qty</th>
-                    <th>Status</th>
-                    <th>Assigned Agent</th>
-                    <th></th>
+                    <th title="Day Pending">Day Pending</th>
+                    <th title="Selected Quantity">Selected Qty</th>
+                    <th title="Final Quantity">Final Qty</th>
+                    <th title="Status">Status</th>
+                    <th title="Assigned Agent">Assigned Agent</th>
+                    <th title=""></th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
-                    <th>Id</th>
                     <th title="Employer Name">Emp. Name</th>
-                    <th>Phone</th>
-                    <th>Entry</th>
-                    <th>DNL</th>
+                    <th title="Demand Letter No">DLN</th>
                     <th title="Expected Join Date">EJD</th>
                     <th title="Demand Quantity">D. Qty</th>
                     <th title="Proposed Quantity">Proposed Qty</th>

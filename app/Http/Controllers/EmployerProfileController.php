@@ -69,9 +69,9 @@ class EmployerProfileController extends Controller
 
         return view('employer.show', compact('employer','total_maids','total_workers', 'total_agents','offer_sent'));
     }
-    public function getAllWorkers(){
+    public function getAllMaids(){
 
-        $users = User::where('status', 1)->whereRoleIs('worker')->select(['id','public_id', 'name'])->get();
+        $users = User::where('status', 1)->whereRoleIs('maid')->select(['id','public_id', 'name'])->get();
 
         return DataTables::of($users)
         ->addColumn('action', function ($user) {

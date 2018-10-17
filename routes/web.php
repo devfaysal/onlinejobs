@@ -103,7 +103,7 @@ Route::prefix('employer')->group(function(){
     Route::get('/', 'EmployerProfileController@index')->name('employer.index');
     Route::get('/register', 'EmployerProfileController@create')->name('employer.register');
     Route::get('/profile', 'EmployerProfileController@show')->name('employer.show');
-    Route::get('/getAllWorkers', 'EmployerProfileController@getAllWorkers')->name('getAllWorkers');
+    Route::get('/getAllMaids', 'EmployerProfileController@getAllMaids')->name('getAllMaids');
     Route::post('/sendOffer', 'EmployerProfileController@sendOffer')->name('sendOffer');
 });
 

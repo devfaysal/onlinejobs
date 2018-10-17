@@ -41,40 +41,38 @@
                 @if(Auth::user()->status == 1)
                 <!-- Demands list -->
                 <div class="card mt-4">
-                    <h4 class="card-title text-center mt-3">Demand Requests</h4>
+                    <h4 class="card-title text-center mt-3">Demand Letters</h4>
                     <div class="card-body">
                         <a class="btn btn-warning mb-2 pull-right" data-toggle="modal" data-target="#demandModal" href="#">Send a Demand</a>
                         <table id="demands-table" class="table table-condensed">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>DLN</th>
-                                    <th>Company</th>
-                                    <th>Issue Date</th>
+                                    <th title="Demand Letter No">DLN</th>
+                                    <th title="Company">Company</th>
+                                    <th title="Issue Date">Issue Date</th>
                                     <th title="Expected Join Date">EJ Date</th>
                                     <th title="Demand Quantity">D. Qty</th>
                                     <th title="Proposed Quantity">Proposed Qty</th>
-                                    <th>Day Pending</th>
+                                    <th title="Day Pending">Day Pending</th>
                                     <th title="Selected Quantity">Selected Qty</th>
                                     <th title="Final Quantity">Final Qty</th>
-                                    <th>Status</th>
-                                    <th></th>
+                                    <th title="Status">Status</th>
+                                    <th title=""></th>
                                 </tr>
                             </thead>
                             <!-- <tfoot>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>DLN</th>
-                                    <th>Company</th>
-                                    <th>Issue Date</th>
+                                    <th title="Demand Letter No">DLN</th>
+                                    <th title="Company">Company</th>
+                                    <th title="Issue Date">Issue Date</th>
                                     <th title="Expected Join Date">EJ Date</th>
                                     <th title="Demand Quantity">D. Qty</th>
-                                    <th>Proposed Qty</th>
-                                    <th>Day Pending</th>
-                                    <th>Selected Qty</th>
-                                    <th>Final Qty</th>
-                                    <th>Status</th>
-                                    <th></th>
+                                    <th title="Proposed Quantity">Proposed Qty</th>
+                                    <th title="Day Pending">Day Pending</th>
+                                    <th title="Selected Quantity">Selected Qty</th>
+                                    <th title="Final Quantity">Final Qty</th>
+                                    <th title="Status">Status</th>
+                                    <th title=""></th>
                                 </tr>
                             </tfoot> -->
                         </table>
@@ -85,23 +83,25 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content tex-center">
                             <div class="modal-header">
-                                <h5 class="modal-title text-center" id="exampleModalLongTitle"> Send a Demand Request </h5>
+                                <h5 class="modal-title text-center" id="exampleModalLongTitle"> Send a Demand Letter </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body text-center">
                                 <div class="row justify-content-md-center">
-                                    <div class="col-md-10">
+                                    <div class="col-md-11">
                                         <form method="POST" action="#">
                                             @csrf
-                                            <div class="form-group">
-                                                <select id="HiringPackage" class="form-control" name="HiringPackage">
-                                                    <option>--- Hiring Package ---</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <input id="CompanyName" type="text" class="form-control" name="CompanyName" value="{{ old('CompanyName') }}" placeholder="Company Name*" required>
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <select id="HiringPackage" class="form-control" name="HiringPackage">
+                                                        <option>Hiring Package</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <input id="CompanyName" type="text" class="form-control" name="CompanyName" value="{{ old('CompanyName') }}" placeholder="Company Name*" required>
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-md-6">
@@ -127,10 +127,20 @@
                                             <div class="form-group">
                                                 <textarea id="Comments" class="form-control" name="Comments" value="{{ old('Comments') }}" placeholder="Comments"></textarea>
                                             </div>
+                                            <div class="row">
+                                                <div class="form-group col-md-8">
+                                                    <input onchange="previewFile('#image_preview', '#image')" id="image" type="file" class="form-control-file{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image" title="Upload demand letter">
+                                                    <p class="text-left small">To get best view, upload a square size image and must be less than 1MB</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label for="image">{{ __('Preview') }}</label>
+                                                    <img id="image_preview" style="width: 100px;" src="" class="img-thumbnail" height="">
+                                                </div>
+                                            </div>
                     
                                             <div class="form-group mb-0 text-center">
                                                 <button type="submit" class="btn btn-warning btn-block">
-                                                    {{ __('Send Request') }}
+                                                    {{ __('Send') }}
                                                 </button>
                                             </div>
                                         </form>
@@ -144,7 +154,7 @@
 
                 <!-- GW list for Employer -->
                 <div class="card mt-4">
-                    <h4 class="card-title text-center mt-3">General Workers</h4>
+                    <h4 class="card-title text-center mt-3">Domestic Maids</h4>
                     <div class="card-body">
                         <form method="post" action="{{route('sendOffer')}}">
                             <input onclick="return confirm('Are you sure?')" class="btn btn-success mb-2 pull-right" type="submit" value="Send Offer">
@@ -190,7 +200,7 @@
     $('#workers-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{{route('getAllWorkers')}}',
+        ajax: '{{route('getAllMaids')}}',
         columns: [
             {data: 'id', name: 'id'},
             {data: 'image', name: 'image', orderable: false, searchable: false},
@@ -219,41 +229,58 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 <script>
-        var ctx = document.getElementById("myChart").getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ["Domestic Maids Registered","Domestic Maids Hired", "General Workers Registered","General Workers Hired"],
-                datasets: [{
-                    label: '',
-                    data: [856,330, 725,295],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.5)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(54, 162, 235, 0.5)',
-                    ],
-                    borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(54, 162, 235, 1)',
-                    ],
-                    borderWidth: 1
+    function previewFile(preview, source) {
+        var preview = document.querySelector(preview);
+        var file    = document.querySelector(source).files[0];
+        var reader  = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "";
+        }
+        console.log(preview.src);
+    }
+
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["Domestic Maids Registered","Domestic Maids Hired", "General Workers Registered","General Workers Hired"],
+            datasets: [{
+                label: '',
+                data: [856,330, 725,295],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(54, 162, 235, 0.5)',
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
                 }]
             },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero:true
-                        }
-                    }]
-                },
-                legend: { 
-                    display: false 
-                }
+            legend: { 
+                display: false 
             }
-        });
-        </script>
+        }
+    });
+</script>
 @endsection
