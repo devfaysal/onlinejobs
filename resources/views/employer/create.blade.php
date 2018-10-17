@@ -8,7 +8,7 @@
                 <div class="card-header"><h2>{{ __('Employer!!! Sign up today, its easy!') }}</h2>Already have account?<a class="btn btn-default" href="{{route('employer.index')}}">Login</a></div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('demand') }}" aria-label="{{ __('Demand') }}" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="role" value="employer">
                         <div class="form-group">

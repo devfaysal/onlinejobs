@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Session;
+use Image; /* https://github.com/Intervention/image */
+use Storage;
 use App\User;
 use App\Offer;
 use App\Country;
@@ -62,13 +64,75 @@ class EmployerProfileController extends Controller
         }else{
             abort(404);
         }
+
+        $countrys = Country::where('status', 1)->get();
         $total_maids = User::whereRoleIs('maid')->count();
         $total_workers = User::whereRoleIs('worker')->count();
         $total_agents = User::whereRoleIs('agent')->count();
         $offer_sent = Offer::where('employer_id', auth()->user()->id)->count();
 
-        return view('employer.show', compact('employer','total_maids','total_workers', 'total_agents','offer_sent'));
+        return view('employer.show', compact('employer','total_maids','total_workers', 'total_agents','offer_sent', 'countrys'));
     }
+
+    public function getAllDemands(){
+
+        $demands = Offer::where('status', 1)->get();
+
+        return DataTables::of($demands)
+        ->addColumn('action', function ($demand) {
+            $string =  '<a class="btn btn-xs btn-primary" href="#">View</a>';
+
+            return $string;
+        })
+        ->addColumn('status', function($demand) {
+            $status = '';
+
+            if ($demand->status == 1) {
+                $status = 'Submitted';
+            } elseif ($demand->status == 2) {
+                $status = 'In Progress';
+            } elseif ($demand->status == 3) {
+                $status = 'Closed';
+            } else {
+                $status = '';
+            }
+
+            return $status;
+            // Status >
+            // 1=>Submitted
+            // 2=>In Progress
+            // 3=>Closed
+        })
+        ->addColumn('issue_date', function($demand) {
+            return $demand->issue_date ? \Carbon\Carbon::parse($demand->issue_date)->format('d/m/Y') : '';
+        })
+        ->addColumn('expexted_date', function($demand) {
+            return $demand->expexted_date ? \Carbon\Carbon::parse($demand->expexted_date)->format('d/m/Y') : '';
+        })
+        ->addColumn('proposed_qty', function($demand) {
+            return "...";
+        })
+        ->addColumn('day_pending', function($demand) {
+            $date1 = date_create(date('Y-m-d'));
+            $date2 = date_create($demand->expexted_date);
+
+            //difference between two dates
+            $diff = date_diff($date1,$date2);
+
+            //count days
+            $diff = $diff->format("%a");
+            return $diff;
+        })
+        ->addColumn('selected_qty', function($demand) {
+            return "...";
+        })
+        ->addColumn('final_qty', function($demand) {
+            return "...";
+        })
+        ->rawColumns(['action'])
+        ->make(true);
+    }
+
     public function getAllMaids(){
 
         $users = User::where('status', 1)->whereRoleIs('maid')->select(['id','public_id', 'name'])->get();
@@ -107,18 +171,6 @@ class EmployerProfileController extends Controller
         ->rawColumns(['image', 'action'])
         ->make(true);
     }
-    // public function getAllWorkers(){
-
-    //     $users = User::where('status', 1)->whereRoleIs('worker')->select(['id','public_id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
-        
-    //     return DataTables::of($users)
-    //     ->addColumn('action', function ($user) {
-    //         //return '<a href="'.route('admin.worker.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-    //         return '<a target="_blank" class="btn btn-xs btn-primary" href="'.route('profile.public', $user->public_id).'">View</a> <input style="width: 38px;height: 38px;vertical-align: middle;" type="checkbox" name="id[]" value="'.$user->id.'">';
-    //     })
-    //     ->removeColumn('password')
-    //     ->make(true);
-    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -152,6 +204,55 @@ class EmployerProfileController extends Controller
     public function destroy(EmployerProfile $employerProfile)
     {
         //
+    }
+
+    public function saveDemand(Request $request)
+    {
+
+        $offer = new Offer;
+        $offer->employer_id = auth()->user()->id;
+        $offer->title = 'Demand Letter';
+        $offer->hiring_package = $request->HiringPackage;
+        $offer->company_name = $request->CompanyName;
+        $offer->demand_letter_no = $request->DemandLetterNo;
+        $offer->issue_date = $request->IssueDate;
+        $offer->expexted_date = $request->ExpectedJoinDate;
+        $offer->demand_qty = $request->DemandQuantity;
+        $offer->preferred_country = $request->PreferredCountry;
+
+        // DemandFile upload
+        if($request->file('DemandFile')){
+            $this->validate($request, [
+                'file' => 'max:1024',
+            ]);
+            
+            $file_basename = explode('.',$request->file('DemandFile')->getClientOriginalName())[0];
+            $file_name = $file_basename . '-' . time() . '.' . $request->file('DemandFile')->getClientOriginalExtension();
+
+            $file_path = Image::make($request->file('DemandFile')->getRealPath());
+            $file_path->stream();
+
+            //Upload image
+            Storage::disk('local')->put('public/deman_letter/'.$file_name, $file_path);
+
+            //Remove if there was any old image
+            if($offer->demand_file != ''){
+                Storage::disk('local')->delete('public/deman_letter/'.$offer->demand_file);
+            }
+
+            //add new demand_file path to database
+            $offer->demand_file = $file_name;
+            
+        }
+
+
+        $offer->comments = $request->agency_address;
+        $offer->save();
+
+        Session::flash('message', 'Deman sent successfully!'); 
+        Session::flash('alert-class', 'alert-success');
+
+        return redirect()->route('employer.show');
     }
 
     public function sendOffer(Request $request)
