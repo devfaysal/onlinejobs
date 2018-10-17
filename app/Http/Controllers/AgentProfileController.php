@@ -39,7 +39,8 @@ class AgentProfileController extends Controller
             $q->where('agent_code', $user->agent_profile->agent_code);
         })->get();
 
-        return view('agent.show', compact('user', 'workers_maids'));
+        return redirect('/admin');
+        //return view('agent.show', compact('user', 'workers_maids'));
     }
 
     /**
@@ -264,9 +265,29 @@ class AgentProfileController extends Controller
 
         $profile->save();
 
+        if(count($request->employer_name)>0){
+            for($i=0; $i< count($request->employer_name); $i++){
+                $experience = new Experience;
+                $experience->user_id = $user->id;
+                $experience->employer_name = $request->employer_name[$i];
+                $experience->country = $request->country[$i];
+                $experience->from_date = $request->from_date[$i];
+                $experience->to_date = $request->to_date[$i];
+                $experience->remark = $request->remark[$i];
+                $experience->save();
+            }
+        }
+        
         Session::flash('message', ucfirst($role).' Created successfully!! now update profile'); 
         Session::flash('alert-class', 'alert-success');
 
         return redirect()->route('admin.home');
+    }
+
+
+    public function print($data)
+    {
+        $profile = auth()->user()->agent_profile;
+        return view('agent.print', compact('data', 'profile'));
     }
 }

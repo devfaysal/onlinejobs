@@ -97,7 +97,7 @@
                                 <a class="dropdown-item" href="{{route('profile.index')}}">Profile</a>
                             @endif
                             @if(Auth::user()->hasRole('agent') )
-                                <a class="dropdown-item" href="{{route('agent.index')}}">Profile</a>
+                                <a class="dropdown-item" href="{{route('agent.index')}}">Dashboard</a>
                             @endif
 
                             <a class="dropdown-item" href="#">Change Password</a>

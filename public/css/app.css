@@ -1930,7 +1930,7 @@ pre code {
 .table th,
 .table td {
   padding: 0.75rem;
-  vertical-align: middle;
+  vertical-align: top;
   border-top: 1px solid #dee2e6;
 }
 
@@ -2259,6 +2259,11 @@ pre code {
 }
 
 .form-control::-webkit-input-placeholder {
+  color: #6c757d;
+  opacity: 1;
+}
+
+.form-control:-ms-input-placeholder {
   color: #6c757d;
   opacity: 1;
 }
@@ -13639,12 +13644,10 @@ a.text-dark:focus {
   font-size: 1.4em;
   font-weight: 400;
   color: #888;
-  line-height: 30px;
 }
 
 .banner_uppercase {
   text-transform: uppercase;
-  padding: 0;
 }
 
 .hr-text {

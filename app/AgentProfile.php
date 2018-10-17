@@ -12,4 +12,7 @@ class AgentProfile extends Model
     public function country_data(){
         return $this->belongsTo(Country::class, 'agency_country');
     }
+    public function nationality_data(){
+        return $this->belongsTo(Country::class, 'nationality');
+    }
 }

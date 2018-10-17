@@ -2,6 +2,19 @@
 @section('content')
     <section class="section">
         <div class="row sameheight-container">
+            @if(Auth::user()->hasRole('agent'))
+            <div class="col-md-12">
+                <div class="card pt-3 pb-2 pl-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="btn btn-success" href="{{route('agent.print', 'details')}}">Print Details</a>
+                            <a class="btn btn-success" href="{{route('agent.print', 'license')}}">Print License</a>
+                            <a class="btn btn-success" href="{{route('agent.print', 'passport')}}">Print Passport/NIC</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
             <div class="col col-12 col-sm-12 col-md-6 col-xl-5 stats-col">
                 <div class="card sameheight-item stats" data-exclude="xs">
                     <div class="card-block">

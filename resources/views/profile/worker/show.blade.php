@@ -96,41 +96,36 @@
                         </h4>
                     </div>
                     <div class="card-body">
-                        @foreach ($experiences as $experience)
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <div class="row verticle-center">
-                                    <div class="col-md-2">
-                                        <p class="profile-title">Employer Name</p>
-                                        <p class="profile-content">{{$experience->employer_name ?? 'N/A'}}</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p class="profile-title">Country</p>
-                                        <p class="profile-content">{{$experience->country_data->name ?? 'N/A'}}</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p class="profile-title">From Date</p>
-                                        <p class="profile-content">{{$experience->from_date ?? 'N/A'}}</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p class="profile-title">To Date</p>
-                                        <p class="profile-content">{{$experience->to_date ?? 'N/A'}}</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p class="profile-title">Remark</p>
-                                        <p class="profile-content">{{$experience->remark ?? 'N/A'}}</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        @auth
-                                            @if(Auth::user()->id == $profile->user->id)
-                                                <a href="{{route('experience.edit', $experience->id)}}" class="btn btn-warning">Edit</a>
-                                            @endif
-                                        @endauth
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Employer Name</th>
+                                    <th>Country</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Remark</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $i=1;
+                                @endphp
+                                @foreach ($experiences as $experience)
+                                <tr>
+                                    <td>{{$i}}</td>
+                                    <td>{{$experience->employer_name}}</td>
+                                    <td>{{$experience->country_data->name ?? ''}}</td>
+                                    <td>{{\Carbon\Carbon::parse($experience->from_date)->format('d/m/Y')}}</td>
+                                    <td>{{\Carbon\Carbon::parse($experience->to_date)->format('d/m/Y')}}</td>
+                                    <td>{{$experience->remark}}</td>
+                                </tr>
+                                @php
+                                    $i++;
+                                @endphp
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

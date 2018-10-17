@@ -16,11 +16,11 @@ class CreateExperiencesTable extends Migration
         Schema::create('experiences', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->string('employer_name');
+            $table->string('employer_name')->nullable();
             $table->string('country')->nullable();
-            $table->date('from_date');
-            $table->date('to_date');
-            $table->string('remark');
+            $table->date('from_date')->nullable();
+            $table->date('to_date')->nullable();
+            $table->string('remark')->nullable();
 
             $table->foreign('user_id')
                   ->references('id')->on('users')
