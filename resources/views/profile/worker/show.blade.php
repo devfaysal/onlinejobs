@@ -30,7 +30,7 @@
                     @endauth
                     <h1 class="card-title">{{$profile->name}}</h1>
                     <div class="card-body">
-                        <img class="thumbnail center-thumbnail-image" src="{{$profile->full_image != '' ? asset('storage/'.$profile->full_image) :  asset('images/avatar_full.jpg')}}" alt="avatar">
+                        <img style="max-width: 100%;" class="thumbnail center-thumbnail-image" src="{{$profile->image != '' ? asset('storage/'.$profile->image) :  asset('images/dummy.jpg')}}" alt="avatar">
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                 <div class="card">
                     <h4 class="card-title text-center mt-3">Basic Information</h4>
                     <div class="card-body">
-                        <table class="table table-striped">
+                        <table class="table table-striped table-sm">
                             <tr>
                                 <th>Name :</th>
                                 <td>{{$profile->name ?? 'N/A'}}</td>
@@ -86,17 +86,51 @@
             </div><!--/.col-md-8-->
             <div class="col-md-12 mt-2">
                 <div class="card">
+                        <h4 class="card-title text-center mt-3">Language</h4>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table table-striped table-sm">
+                                    @if($language_set)
+                                        @foreach($languages as $language)
+                                        <tr>
+                                            <th>{{$language->name}}</th>
+                                            <td>{{$language_set[$language->slug]}}</td>
+                                        </tr>
+                                        @endforeach
+                                    @endif
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mt-2">
+                <div class="card">
                     <div class="card-heading">
-                        <h4 class="text-uppercase text-center mt-2">Work Experience 
-                            @auth
-                                @if(Auth::user()->id == $profile->user->id)
-                                    <a class="btn btn-warning" href="{{route('experience.create')}}">Add Experience</a>
-                                @endif
-                            @endauth
-                        </h4>
+                        <h4 class="text-uppercase text-center mt-2">Skills</h4>
                     </div>
                     <div class="card-body">
-                        <table class="table">
+                        <table class="table table-striped table-sm">
+                            @if($skill_set)
+                                @foreach($skills as $skill)
+                                <tr>
+                                    <th>{{$skill->name}}</th>
+                                    <td>{{$skill_set[$skill->slug]}}</td>
+                                </tr>
+                                @endforeach
+                            @endif
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mt-2">
+                <div class="card">
+                    <div class="card-heading">
+                        <h4 class="text-uppercase text-center mt-2">Work Experience</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-sm">
                             <thead>
                                 <tr>
                                     <th>#</th>

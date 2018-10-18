@@ -32,6 +32,8 @@ class CreateProfilesTable extends Migration
             $table->string('weight')->nullable();
             $table->string('highest_education')->nullable();
             $table->string('skill_level')->nullable();
+            $table->json('skill_set')->nullable();
+            $table->json('language_set')->nullable();
             //Maid Other Information
             $table->boolean('work_on_off_days_with_compensation')->nullable();
             $table->boolean('able_to_handle_pork')->nullable();

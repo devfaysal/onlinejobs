@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Profile;
-use Illuminate\Http\Request;
-use App\User;
 use Session;
-use Image; /* https://github.com/Intervention/image */
 use Storage;
-use App\Religion;
+use App\User;
+use App\Skill;
+use App\Gender;
 use App\Country;
+use App\Profile;
 use App\Language;
+use App\Religion;
+use App\Experience;
 use App\SkillLevel;
 use App\MaritalStatus;
-use App\Gender;
-use App\Experience;
+use Illuminate\Http\Request;
+use Image; /* https://github.com/Intervention/image */
 
 class ProfileController extends Controller
 {
@@ -222,12 +223,18 @@ class ProfileController extends Controller
         $experiences = Experience::get();
 
         $profile = $user->profile;
+        $skill_set = (array) json_decode($profile->skill_set);
+        $language_set = (array) json_decode($profile->language_set);
         if($user->hasRole('professional')){
             return view('profile.professional.show', compact('profile'));
         }elseif($user->hasRole('worker')){
-            return view('profile.worker.show', compact('profile','experiences'));
+            $skills = Skill::where('status', '=', 1)->where('for', 'gw')->where('type','Skill')->get();
+            $languages = Skill::where('status', '=', 1)->where('for', 'gw')->where('type','Language')->get();
+            return view('profile.worker.show', compact('profile','skill_set','language_set','skills','languages','experiences'));
         }elseif($user->hasRole('maid')){
-            return view('profile.maid.show', compact('profile'));
+            $skills = Skill::where('status', '=', 1)->where('for', 'dm')->where('type','Skill')->get();
+            $languages = Skill::where('status', '=', 1)->where('for', 'dm')->where('type','Language')->get();
+            return view('profile.maid.show', compact('profile','skill_set','language_set','skills','languages'));
         };
     }
 }

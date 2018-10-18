@@ -75,6 +75,9 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
     
     Route::resource('/skillLevel', 'Admin\SkillLevelController');
     Route::get('/getSkillLevelData', 'Admin\SkillLevelController@getSkillLevelData')->name('getSkillLevelData');
+
+    Route::resource('/skill', 'Admin\SkillController');
+    Route::get('/getSkillData', 'Admin\SkillController@getSkillData')->name('getSkillData');
 });
 
 Route::get('/', 'HomeController@index')->name('home');

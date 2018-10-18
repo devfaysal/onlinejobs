@@ -260,7 +260,7 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            {{-- <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="able_to_handle_pork">{{ __('Able to handle pork') }}</label>
                                     <select name="able_to_handle_pork" id="able_to_handle_pork" class="form-control{{ $errors->has('able_to_handle_pork') ? ' is-invalid' : '' }}">
@@ -412,6 +412,40 @@
                                             <strong>{{ $errors->first('able_to_cook') }}</strong>
                                         </span>
                                     @endif
+                                </div>
+                            </div> --}}
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h1>Languages</h1>
+                                    </div>
+                                    @foreach($skills as $skill)
+                                        @if ( $skill->for == request()->t && $skill->type == 'Language')
+                                            <div class="col-md-6">
+                                                <div class="form-group" style="display:flex;">
+                                                    <input style="height:30px;width:30px;" type="checkbox" id="" name="{{ $skill->slug }}" value="Yes">
+                                                    <label style="padding-top: 3px;padding-left: 5px;" for="able_to_cook">{{ $skill->name }}</label>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h1>Skills</h1>
+                                    </div>
+                                    @foreach($skills as $skill)
+                                        @if ( $skill->for == request()->t && $skill->type == 'Skill')
+                                            <div class="col-md-6">
+                                                <div class="form-group" style="display:flex;">
+                                                    <input style="height:30px;width:30px;" type="checkbox" id="" name="{{ $skill->slug }}" value="Yes">
+                                                    <label style="padding-top: 3px;padding-left: 5px;" for="able_to_cook">{{ $skill->name }}</label>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="col-md-12">

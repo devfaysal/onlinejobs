@@ -226,6 +226,9 @@
                                         <li class="{{ ( (Route::currentRouteName() === "admin.skillLevel.index") ? "active" : "") }}">
                                             <a href="{{route('admin.skillLevel.index')}}"> Skill Level </a>
                                         </li>
+                                        <li class="{{ ( (Route::currentRouteName() === "admin.skill.index") ? "active" : "") }}">
+                                            <a href="{{route('admin.skill.index')}}"> Skill </a>
+                                        </li>
                                         {{-- <li>
                                             <a href="#"> Employer Apllications </a>
                                         </li> --}}

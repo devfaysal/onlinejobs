@@ -30,7 +30,7 @@
                         @endauth
                         <h1 class="card-title">{{$profile->name}}</h1>
                         <div class="card-body">
-                            <img class="thumbnail center-thumbnail-image" src="{{$profile->full_image != '' ? asset('storage/'.$profile->full_image) :  asset('images/avatar_full.jpg')}}" alt="avatar">
+                            <img style="max-width: 100%;" class="thumbnail center-thumbnail-image" src="{{$profile->image != '' ? asset('storage/'.$profile->image) :  asset('images/dummy.jpg')}}" alt="avatar">
                         </div>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                     <div class="card">
                         <h4 class="card-title text-center mt-3">Basic Information</h4>
                         <div class="card-body">
-                            <table class="table table-striped">
+                            <table class="table table-striped table-sm">
                                 <tr>
                                     <th>Name :</th>
                                     <td>{{$profile->name ?? 'N/A'}}</td>
@@ -86,55 +86,40 @@
                 </div><!--/.col-md-8-->
                 <div class="col-md-12 mt-2">
                     <div class="card">
+                            <h4 class="card-title text-center mt-3">Language</h4>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table class="table table-striped table-sm">
+                                        @if($language_set)
+                                            @foreach($languages as $language)
+                                            <tr>
+                                                <th>{{$language->name}}</th>
+                                                <td>{{$language_set[$language->slug]}}</td>
+                                            </tr>
+                                            @endforeach
+                                        @endif
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <div class="card">
                             <h4 class="card-title text-center mt-3">Other Information</h4>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <table class="table table-striped">
-                                        <tr>
-                                            <th>Willing to work on off days with compensation :</th>
-                                            <td>{{$profile->work_on_off_days_with_compensation == 1 ? 'Yes' : 'No'}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Able to gardening :</th>
-                                            <td>{{$profile->able_to_gardening == 1 ? 'Yes' : 'No'}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Able to care dog/cat :</th>
-                                            <td>Yes</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Able to simple sewing :</th>
-                                            <td>Yes</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Care of disabled :</th>
-                                            <td>Yes</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="col-md-6">
-                                    <table class="table table-striped">
-                                        <tr>
-                                            <th>Able to handle pork :</th>
-                                            <td>{{$profile->able_to_handle_pork == 1 ? 'Yes' : 'No'}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Able to car wash :</th>
-                                            <td>Yes</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Care of infants/children :</th>
-                                            <td>Yes</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Care of elderly :</th>
-                                            <td>Yes</td>
-                                        </tr>
-                                        <tr>
-                                            <th>General housework :</th>
-                                            <td>Yes</td>
-                                        </tr>
+                                <div class="col-md-12">
+                                    <table class="table table-striped table-sm">
+                                        @if($skill_set)
+                                            @foreach($skills as $skill)
+                                            <tr>
+                                                <th>{{$skill->name}}</th>
+                                                <td>{{$skill_set[$skill->slug]}}</td>
+                                            </tr>
+                                            @endforeach
+                                        @endif
                                     </table>
                                 </div>
                             </div>

@@ -24,7 +24,7 @@ class ReligionController extends Controller
         $religions = Religion::select(['id', 'name', 'status', 'created_at', 'updated_at'])->get();
         return DataTables::of($religions)
         ->addColumn('action', function ($religion) {
-            $string  = '<a href="'.route('admin.skillLevel.edit', $religion->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            $string  = '<a href="'.route('admin.religion.edit', $religion->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
             if($religion->status == 0){
                 $string .= ' <a href="'.route('admin.publish', [$religion->getTable(), $religion->id]).'" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Publish</a>';
             }else{

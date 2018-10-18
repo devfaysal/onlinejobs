@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\AgentProfile;
-use Illuminate\Http\Request;
-use App\Country;
-use App\User;
-use Illuminate\Support\Facades\Hash;
-use App\Profile;
 use Session;
-use Image; /* https://github.com/Intervention/image */
 use Storage;
-use App\Religion;
-use App\Language;
-use App\SkillLevel;
-use App\MaritalStatus;
+use App\User;
+use App\Skill;
 use App\Gender;
+use App\Country;
+use App\Profile;
+use App\Language;
+use App\Religion;
 use App\Experience;
+use App\SkillLevel;
+use App\AgentProfile;
+use App\MaritalStatus;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Image; /* https://github.com/Intervention/image */
 
 class AgentProfileController extends Controller
 {
@@ -168,24 +169,59 @@ class AgentProfileController extends Controller
         $skill_levels = SkillLevel::where('status', '=', 1)->get();
         $marital_statuses = MaritalStatus::where('status', '=', 1)->get();
         $genders = Gender::where('status', '=', 1)->get();
-        return view('agent.createuser', compact('religions','nationalitys','languages','skill_levels','marital_statuses','genders'));
+        $skills = Skill::where('status', '=', 1)->get();
+        return view('agent.createuser', compact('religions','nationalitys','languages','skill_levels','marital_statuses','genders','skills'));
     }
 
     public function saveuser( Request $request)
     {
+        //return request('Drill');
+        //return var_dump($request->Welding);
+        // $skills = Skill::where('status', '=', 1)->get();
+        // foreach($skills as $skill){
+        //     $arr[$skill->slug] = request($skill->slug) ?? 'No';
+        // }
+        // //return $arr;
+        // $var = json_encode($arr);
+        // $vars= json_decode($var);
+        //  $arrs = (array) $vars;
+        // foreach($skills as $skill){
+        //     $checked = $arrs[$skill->slug] == 'Yes'?  'checked': '';
+        //     echo '<label for="able_to_cook">'.$skill->name.'</label>';
+        //     echo '<input type="checkbox" id="" name="'.$skill->slug.'" value="Yes"'.$checked.'>';
+        // }
+
+        // die();
+
         $user = new User;
         $user->name = $request->name;
-        $user->email = $request->email ?? 'test@test.com';
+        $user->email = $request->email ?? time().'@test.com';
         $user->phone = $request->phone;
         $user->password = Hash::make('password');
         $user->public_id = time().md5($request->email);
         $user->status = 1;
         $role = $request->role;
-
+        
+        if($role == 'maid'){
+            $skills = Skill::where('status', '=', 1)->where('for', 'dm')->where('type','Skill')->get();
+            $languages = Skill::where('status', '=', 1)->where('for', 'dm')->where('type','Language')->get();
+        }else if($role == 'worker'){
+            $skills = Skill::where('status', '=', 1)->where('for', 'gw')->where('type','Skill')->get();
+            $languages = Skill::where('status', '=', 1)->where('for', 'gw')->where('type','Language')->get();
+        }
         $user->save();
         $user->attachRole($role);
 
         $profile = new Profile;
+        foreach($skills as $skill){
+            $skill_arr[$skill->slug] = request($skill->slug) ?? 'No';
+        }
+        $profile->skill_set = json_encode($skill_arr);
+
+        foreach($languages as $language){
+            $lang_arr[$language->slug] = request($language->slug) ?? 'No';
+        }
+        $profile->language_set = json_encode($lang_arr);
 
         if($request->file('image')){
             $this->validate($request, [
@@ -265,7 +301,7 @@ class AgentProfileController extends Controller
 
         $profile->save();
 
-        if(count($request->employer_name)>0){
+        if($request->employer_name){
             for($i=0; $i< count($request->employer_name); $i++){
                 $experience = new Experience;
                 $experience->user_id = $user->id;

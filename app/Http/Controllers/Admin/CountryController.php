@@ -24,7 +24,7 @@ class CountryController extends Controller
         $countries = Country::select(['id', 'name', 'status', 'created_at', 'updated_at'])->get();
         return DataTables::of($countries)
         ->addColumn('action', function ($country) {
-            $string  = '<a href="'.route('admin.skillLevel.edit', $country->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            $string  = '<a href="'.route('admin.country.edit', $country->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
             if($country->status == 0){
                 $string .= ' <a href="'.route('admin.publish', [$country->getTable(), $country->id]).'" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Publish</a>';
             }else{
