@@ -220,7 +220,7 @@ class ProfileController extends Controller
     public function public($public)
     {
         $user = User::where('public_id', '=', $public)->first();
-        $experiences = Experience::get();
+        $experiences = Experience::where('user_id', $user->id)->get();
 
         $profile = $user->profile;
         $skill_set = (array) json_decode($profile->skill_set);
