@@ -18,10 +18,20 @@ class CreateOffersTable extends Migration
             $table->unsignedInteger('employer_id');
             $table->string('title')->nullable();
             $table->text('description')->nullable();
+            $table->string('hiring_package', 20)->nullable();
+            $table->string('company_name', 100)->nullable();
+            $table->string('demand_letter_no', 50)->nullable();
+            $table->date('issue_date')->nullable();
+            $table->date('expexted_date')->nullable();
+            $table->string('demand_qty', 20)->nullable();
+            $table->unsignedInteger('preferred_country')->default(0);
+            $table->text('comments')->nullable();
+            $table->string('demand_file', 200)->nullable();
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
 
             $table->foreign('employer_id')->references('id')->on('users');
+            // $table->foreign('preferred_country')->references('id')->on('countries');
         });
     }
 
