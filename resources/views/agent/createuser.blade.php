@@ -13,7 +13,16 @@
             </div>
         </div>
         @endif
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-2">
+            <div style="position:fixed; top:75px;">
+                <a class="btn btn-success btn-sm mb-1" href="#General-Info">General Info</a><br/>
+                <a class="btn btn-success btn-sm mb-1" href="#Languages">Languages</a><br/>
+                <a class="btn btn-success btn-sm mb-1" href="#Skills">Skills</a><br/>
+                <a class="btn btn-success btn-sm mb-1" href="#Images">Images</a><br/>
+                <a class="btn btn-success btn-sm mb-1" href="#Experience">Experience</a><br/>
+            </div>
+        </div>
+        <div class="col-md-8">
             <div class="card mt-4 mb-4">
                 <div class="card-header">
                     <h3 class="text-center mt-2">
@@ -59,6 +68,9 @@
                                 </div>
                             </div>
                             @endif
+                            <div class="col-md-12" id="General-Info">
+                                <h3 class="mt-4">General Information</h3>
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="name">{{ __('Name *') }}</label>
@@ -260,164 +272,10 @@
                                     @endif
                                 </div>
                             </div>
-                            {{-- <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="able_to_handle_pork">{{ __('Able to handle pork') }}</label>
-                                    <select name="able_to_handle_pork" id="able_to_handle_pork" class="form-control{{ $errors->has('able_to_handle_pork') ? ' is-invalid' : '' }}">
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
-                                    </select>
-                                    @if ($errors->has('able_to_handle_pork'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('able_to_handle_pork') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="able_to_gardening">{{ __('Able to gardening') }}</label>
-                                    <select name="able_to_gardening" id="able_to_gardening" class="form-control{{ $errors->has('able_to_gardening') ? ' is-invalid' : '' }}">
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
-                                    </select>
-                                    @if ($errors->has('able_to_gardening'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('able_to_handle_pork') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="able_to_care_dog_cat">{{ __('Able to care dog/cat') }}</label>
-                                    <select name="able_to_care_dog_cat" id="able_to_care_dog_cat" class="form-control{{ $errors->has('able_to_care_dog_cat') ? ' is-invalid' : '' }}">
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
-                                    </select>
-                                    @if ($errors->has('able_to_care_dog_cat'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('able_to_care_dog_cat') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="able_to_simple_sewing">{{ __('Able to simple sewing') }}</label>
-                                    <select name="able_to_simple_sewing" id="able_to_simple_sewing" class="form-control{{ $errors->has('able_to_simple_sewing') ? ' is-invalid' : '' }}">
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
-                                    </select>
-                                    @if ($errors->has('able_to_simple_sewing'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('able_to_simple_sewing') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="able_to_wash_car">{{ __('Able to wash car') }}</label>
-                                    <select name="able_to_wash_car" id="able_to_wash_car" class="form-control{{ $errors->has('able_to_wash_car') ? ' is-invalid' : '' }}">
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
-                                    </select>
-                                    @if ($errors->has('able_to_wash_car'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('able_to_wash_car') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="able_to_eat_pork">{{ __('Able to eat pork') }}</label>
-                                    <select name="able_to_eat_pork" id="able_to_eat_pork" class="form-control{{ $errors->has('able_to_eat_pork') ? ' is-invalid' : '' }}">
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
-                                    </select>
-                                    @if ($errors->has('able_to_eat_pork'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('able_to_eat_pork') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="able_to_care_infants">{{ __('Able to care infants') }}</label>
-                                    <select name="able_to_care_infants" id="able_to_care_infants" class="form-control{{ $errors->has('able_to_care_infants') ? ' is-invalid' : '' }}">
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
-                                    </select>
-                                    @if ($errors->has('able_to_care_infants'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('able_to_care_infants') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="able_to_care_elderly">{{ __('Able to care elderly') }}</label>
-                                    <select name="able_to_care_elderly" id="able_to_care_elderly" class="form-control{{ $errors->has('able_to_care_elderly') ? ' is-invalid' : '' }}">
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
-                                    </select>
-                                    @if ($errors->has('able_to_care_elderly'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('able_to_care_elderly') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="able_to_care_disabled">{{ __('Able to care Disabled') }}</label>
-                                    <select name="able_to_care_disabled" id="able_to_care_disabled" class="form-control{{ $errors->has('able_to_care_disabled') ? ' is-invalid' : '' }}">
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
-                                    </select>
-                                    @if ($errors->has('able_to_care_disabled'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('able_to_care_disabled') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="able_to_do_general_housework">{{ __('Able to do general housework') }}</label>
-                                    <select name="able_to_do_general_housework" id="able_to_do_general_housework" class="form-control{{ $errors->has('able_to_do_general_housework') ? ' is-invalid' : '' }}">
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
-                                    </select>
-                                    @if ($errors->has('able_to_do_general_housework'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('able_to_do_general_housework') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="able_to_cook">{{ __('Able to cook') }}</label>
-                                    <select name="able_to_cook" id="able_to_cook" class="form-control{{ $errors->has('able_to_cook') ? ' is-invalid' : '' }}">
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
-                                    </select>
-                                    @if ($errors->has('able_to_cook'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('able_to_cook') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div> --}}
-                            <div class="col-md-12">
+                            <div class="col-md-12" id="Languages">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h1>Languages</h1>
+                                        <h3 class="mb-4 mt-4">Languages</h3>
                                     </div>
                                     @foreach($skills as $skill)
                                         @if ( $skill->for == request()->t && $skill->type == 'Language')
@@ -431,10 +289,10 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12" id="Skills">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h1>Skills</h1>
+                                        <h3 class="mb-4 mt-4">Skills</h3>
                                     </div>
                                     @foreach($skills as $skill)
                                         @if ( $skill->for == request()->t && $skill->type == 'Skill')
@@ -448,8 +306,11 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12" id="Images">
                                 <div class="row">
+                                    <div class="col-md-12">
+                                        <h3 class="mb-4 mt-4">Images</h3>
+                                    </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="image">{{ __('Half Image') }}</label>
@@ -480,8 +341,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12 mb-4">
-                                <h1>Experience</h1>
+                            <div class="col-md-12 mb-4" id="Experience">
+                                <h3 class="mb-4 mt-4">Experience</h3>
                                 <div id="czContainer">
                                     <div id="first">
                                         <div class="recordset">
