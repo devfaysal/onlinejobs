@@ -7,9 +7,9 @@
                 <div class="card pt-3 pb-2 pl-3">
                     <div class="row">
                         <div class="col-md-12">
-                            <a class="btn btn-success" href="{{route('agent.print', 'details')}}">Print Details</a>
-                            <a class="btn btn-success" href="{{route('agent.print', 'license')}}">Print License</a>
-                            <a class="btn btn-success" href="{{route('agent.print', 'passport')}}">Print Passport/NIC</a>
+                            <a class="btn btn-success" href="{{route('agent.print', [Auth::user()->id, 'details'])}}">Print Details</a>
+                            <a class="btn btn-success" href="{{route('agent.print', [Auth::user()->id,'license'])}}">Print License</a>
+                            <a class="btn btn-success" href="{{route('agent.print', [Auth::user()->id,'passport'])}}">Print Passport/NIC</a>
                         </div>
                     </div>
                 </div>

@@ -19,6 +19,7 @@ class AgentSeeder extends Seeder
         $user->name = 'Agent Bangla';
         $user->save();
         $profile = new AgentProfile;
+        $profile->agency_registered_name = 'Agent Bangla';
         $profile->agent_code = 'agent';
         $profile->agency_country = 1;
         $profile->user_id = $user->id;
@@ -42,6 +43,7 @@ class AgentSeeder extends Seeder
 
             $profile = new AgentProfile;
             $profile->agent_code = time();
+            $profile->agency_registered_name = $name . ' Agency';
             $profile->agency_country = 1;
             $profile->user_id = $user->id;
             $profile->first_name = $name;

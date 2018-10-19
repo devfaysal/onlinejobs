@@ -39,7 +39,7 @@ class AgentController extends Controller
         return DataTables::of($users)
         ->addColumn('action', function ($user) {
             //return '<a href="'.route('admin.agent.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-            return '<a class="btn btn-xs btn-primary" href="#">View</a>';
+            return '<a href="'.route('admin.agent.show', $user->id).'" class="btn btn-xs btn-primary">View</a>';
         })
         ->addColumn('country', function($user) {
             return $user->agent_profile['country_data']['name'];
@@ -66,7 +66,7 @@ class AgentController extends Controller
 
         return DataTables::of($users)
         ->addColumn('action', function ($user) {
-            return '<a href="#" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a><a class="ml-1 btn btn-success" href="'.route('admin.agent.approve', $user->id).'" onclick="return confirm(\'Are you sure?\')">Approve</a><a class="ml-1 btn btn-danger" href="'.route('admin.agent.reject', $user->id).'" onclick="return confirm(\'Are you sure?\')">Reject</a>';
+            return '<a href="'.route('admin.agent.show', $user->id).'" class="btn btn-xs btn-primary">View</a><a class="ml-1 btn btn-success" href="'.route('admin.agent.approve', $user->id).'" onclick="return confirm(\'Are you sure?\')">Approve</a><a class="ml-1 btn btn-danger" href="'.route('admin.agent.reject', $user->id).'" onclick="return confirm(\'Are you sure?\')">Reject</a>';
         })
         ->addColumn('country', function($user) {
             return $user->agent_profile['country_data']['name'];
@@ -93,7 +93,7 @@ class AgentController extends Controller
 
         return DataTables::of($users)
         ->addColumn('action', function ($user) {
-            return '<a href="#" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a><a class="ml-1 btn btn-success" href="'.route('admin.agent.restore', $user->id).'" onclick="return confirm(\'Are you sure?\')">Restore</a>';
+            return '<a href="'.route('admin.agent.show', $user->id).'" class="btn btn-xs btn-primary">View</a><a class="ml-1 btn btn-success" href="'.route('admin.agent.restore', $user->id).'" onclick="return confirm(\'Are you sure?\')">Restore</a>';
         })
         ->addColumn('country', function($user) {
             return $user->agent_profile['country_data']['name'];
@@ -170,7 +170,10 @@ class AgentController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::where('id', $id)->first();
+        $profile = $user->agent_profile;
+        $data = 'details';
+        return view('agent.print', compact('data', 'profile'));
     }
 
     /**

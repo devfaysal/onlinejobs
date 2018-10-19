@@ -321,9 +321,10 @@ class AgentProfileController extends Controller
     }
 
 
-    public function print($data)
+    public function print($id, $data)
     {
-        $profile = auth()->user()->agent_profile;
+        $user = User::where('id', $id)->first();
+        $profile = $user->agent_profile;
         return view('agent.print', compact('data', 'profile'));
     }
 }

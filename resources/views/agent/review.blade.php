@@ -8,9 +8,9 @@
                     <h1 class="display-4">Hello, Agent!</h1>
                     <hr class="my-4">
                     <p>Your account need to be approved by admin for further action</p>
-                    <a class="btn btn-success" href="{{route('agent.print', 'details')}}">Print Details</a>
-                    <a class="btn btn-success" href="{{route('agent.print', 'license')}}">Print License</a>
-                    <a class="btn btn-success" href="{{route('agent.print', 'passport')}}">Print Passport/NIC</a>
+                    <a class="btn btn-success" href="{{route('agent.print', [Auth::user()->id, 'details'])}}">Print Details</a>
+                    <a class="btn btn-success" href="{{route('agent.print', [Auth::user()->id,'license'])}}">Print License</a>
+                    <a class="btn btn-success" href="{{route('agent.print', [Auth::user()->id,'passport'])}}">Print Passport/NIC</a>
                 </div>
             </div>
         </div>

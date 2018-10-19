@@ -5,8 +5,15 @@
         <div class="row justify-content-md-center">
             <div class="col-12">
                 <div class="hidefromprint mt-4 mb-3">
+                    @if(Auth::user()->hasRole('agent'))
                     <a class="btn btn-info" href="{{url()->previous()}}">Back</a>
+                    @endif
                     <a class="btn btn-success pull-right" href="" onclick="window.print();return false;">Print</a>
+                    @if(Auth::user()->hasRole('superadministrator'))
+                    <a class="btn btn-info" href="/admin">Back</a>
+                    <a class="btn btn-success" href="{{route('agent.print', [$profile->user->id,'license'])}}">Print License</a>
+                    <a class="btn btn-success" href="{{route('agent.print', [$profile->user->id,'passport'])}}">Print Passport/NIC</a>
+                    @endif
                 </div>
                 @if($data == 'license')
                     <p class="text-center">
@@ -121,15 +128,23 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <p>License</p>
+                                    <h4 class="card-title text-center mt-3">License</h4>
                                     <p class="text-center">
+                                        @if($profile->license_file != null)
                                         <img src="{{asset('storage/'.$profile->license_file)}}" alt="">
+                                        @else
+                                        No License File Found
+                                        @endif
                                     </p>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>Passport/NIC</p>
+                                    <h4 class="card-title text-center mt-3">Passport/NIC</h4>
                                     <p class="text-center">
+                                        @if($profile->passport_file != null)
                                         <img src="{{asset('storage/'.$profile->passport_file)}}" alt="">
+                                        @else
+                                        No Passport/NIC File Found
+                                        @endif
                                     </p>
                                 </div>
                             </div>

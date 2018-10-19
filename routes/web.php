@@ -88,7 +88,7 @@ Route::group(['middleware' => 'auth'], function(){
 });
 Route::get('agent/createuser', 'AgentProfileController@createuser')->name('agent.createuser');
 Route::post('agent/saveuser', 'AgentProfileController@saveuser')->name('agent.saveuser');
-Route::get('agent/print/{data}', 'AgentProfileController@print')->name('agent.print');
+Route::get('agent/print/{id}/{data}', 'AgentProfileController@print')->name('agent.print');
 Route::resource('agent', 'AgentProfileController')->except('destroy');
 
 Route::get('/maids', 'HomeController@maids')->name('maids');
