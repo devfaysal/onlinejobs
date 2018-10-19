@@ -31,6 +31,8 @@
                     <h1 class="card-title">{{$profile->name}}</h1>
                     <div class="card-body">
                         <img style="max-width: 100%;" class="thumbnail center-thumbnail-image" src="{{$profile->image != '' ? asset('storage/'.$profile->image) :  asset('images/dummy.jpg')}}" alt="avatar">
+                        <hr>
+                        <img style="max-height: 300px" class="thumbnail center-thumbnail-image" src="{{$profile->full_image != '' ? asset('storage/'.$profile->full_image) :  asset('images/avatar_full.jpg')}}" alt="avatar">
                     </div>
                 </div>
             </div>
@@ -53,6 +55,26 @@
                                 <td>{{ \Carbon\Carbon::parse($profile->date_of_birth)->diff(\Carbon\Carbon::now())->format('%y years %m months')}}</td>
                             </tr>
                             <tr>
+                                <th>Address :</th>
+                                <td>{{$profile->address ?? 'N/A'}}</td>
+                            </tr>
+                            <tr>
+                                <th>District :</th>
+                                <td>{{$profile->district ?? 'N/A'}}</td>
+                            </tr>
+                            <tr>
+                                <th>City :</th>
+                                <td>{{$profile->city ?? 'N/A'}}</td>
+                            </tr>
+                            <tr>
+                                <th>State :</th>
+                                <td>{{$profile->state ?? 'N/A'}}</td>
+                            </tr>
+                            <tr>
+                                <th>Nationality :</th>
+                                <td>{{$profile->nationality_data->name ?? 'N/A'}}</td>
+                            </tr>
+                            <tr>
                                 <th>Gender :</th>
                                 <td>{{$profile->gender_data->name ?? 'N/A'}}</td>
                             </tr>
@@ -61,12 +83,12 @@
                                 <td>{{$profile->marital_status ?? 'N/A'}}</td>
                             </tr>
                             <tr>
-                                <th>Nationality :</th>
-                                <td>{{$profile->nationality_data->name ?? 'N/A'}}</td>
+                                <th>Children :</th>
+                                <td>{{$profile->children ?? 'N/A'}}</td>
                             </tr>
                             <tr>
-                                <th>Highest Education :</th>
-                                <td>{{$profile->highest_education ?? 'N/A'}}</td>
+                                <th>Siblings :</th>
+                                <td>{{$profile->siblings ?? 'N/A'}}</td>
                             </tr>
                             <tr>
                                 <th>Religion :</th>
@@ -80,10 +102,84 @@
                                 <th>Weight :</th>
                                 <td>{{$profile->weight ?? 'N/A'}}</td>
                             </tr>
+                            <tr>
+                                <th>Father Name :</th>
+                                <td>{{$profile->father_name ?? 'N/A'}}</td>
+                            </tr>
+                            <tr>
+                                <th>Mother Name :</th>
+                                <td>{{$profile->mother_name ?? 'N/A'}}</td>
+                            </tr>
                         </table>
                     </div><!--/.panel-body-->
                 </div><!--/.panel panel-default-->
             </div><!--/.col-md-8-->
+            <div class="col-md-12 mt-2">
+                <div class="card">
+                        <h4 class="card-title text-center mt-3">Emergency Contact</h4>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <table class="table table-sm">
+                                    <tr>
+                                        <th>Emergency Contact Name :</th>
+                                        <td>{{$profile->emergency_contact_name ?? 'N/A'}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Relationship :</th>
+                                        <td>{{$profile->emergency_contact_relationship ?? 'N/A'}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="table table-sm">
+                                    <tr>
+                                        <th>Phone :</th>
+                                        <td>{{$profile->emergency_contact_phone ?? 'N/A'}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Address :</th>
+                                        <td>{{$profile->emergency_contact_address ?? 'N/A'}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mt-2">
+                <div class="card">
+                        <h4 class="card-title text-center mt-3">Passport Details</h4>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <table class="table table-sm">
+                                    <tr>
+                                        <th>Passport Number :</th>
+                                        <td>{{$profile->passport_number ?? 'N/A'}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Issue Date :</th>
+                                        <td>{{$profile->passport_issue_date ?? 'N/A'}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="table table-sm">
+                                    <tr>
+                                        <th>Issue Place :</th>
+                                        <td>{{$profile->passport_issue_place ?? 'N/A'}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Expire Date :</th>
+                                        <td>{{$profile->passport_expire_date ?? 'N/A'}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-12 mt-2">
                 <div class="card">
                         <h4 class="card-title text-center mt-3">Language</h4>
@@ -120,6 +216,39 @@
                                 </tr>
                                 @endforeach
                             @endif
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mt-2">
+                <div class="card">
+                    <div class="card-heading">
+                        <h4 class="text-uppercase text-center mt-2">Education</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Education Level</th>
+                                    <th>Education Remark</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $i=1;
+                                @endphp
+                                @foreach ($educations as $education)
+                                <tr>
+                                    <td>{{$i}}</td>
+                                    <td>{{$education->education_level}}</td>
+                                    <td>{{$education->education_remark}}</td>
+                                </tr>
+                                @php
+                                    $i++;
+                                @endphp
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>

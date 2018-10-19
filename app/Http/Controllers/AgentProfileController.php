@@ -11,6 +11,7 @@ use App\Country;
 use App\Profile;
 use App\Language;
 use App\Religion;
+use App\Education;
 use App\Experience;
 use App\SkillLevel;
 use App\AgentProfile;
@@ -271,33 +272,112 @@ class AgentProfileController extends Controller
             
         }
 
+        if($request->file('passport_file')){
+            $this->validate($request, [
+                'passport_file' => 'image|max:250',
+            ]);
+            
+            $image_basename = explode('.',$request->file('passport_file')->getClientOriginalName())[0];
+            $image = $image_basename . '-' . time() . '.' . $request->file('passport_file')->getClientOriginalExtension();
+
+            $img = Image::make($request->file('passport_file')->getRealPath());
+            $img->stream();
+
+            //Upload image
+            Storage::disk('local')->put('public/'.$image, $img);
+
+            //Remove if there was any old image
+            if($profile->passport_file != ''){
+                Storage::disk('local')->delete('public/'.$profile->passport_file);
+            }
+
+            //add new image path to database
+            $profile->passport_file = $image;
+            
+        }
+
+        if($request->file('medical_certificate')){
+            $this->validate($request, [
+                'medical_certificate' => 'image|max:250',
+            ]);
+            
+            $image_basename = explode('.',$request->file('medical_certificate')->getClientOriginalName())[0];
+            $image = $image_basename . '-' . time() . '.' . $request->file('medical_certificate')->getClientOriginalExtension();
+
+            $img = Image::make($request->file('medical_certificate')->getRealPath());
+            $img->stream();
+
+            //Upload image
+            Storage::disk('local')->put('public/'.$image, $img);
+
+            //Remove if there was any old image
+            if($profile->medical_certificate != ''){
+                Storage::disk('local')->delete('public/'.$profile->medical_certificate);
+            }
+
+            //add new image path to database
+            $profile->medical_certificate = $image;
+            
+        }
+
+        if($request->file('immigration_security_clearence')){
+            $this->validate($request, [
+                'immigration_security_clearence' => 'image|max:250',
+            ]);
+            
+            $image_basename = explode('.',$request->file('immigration_security_clearence')->getClientOriginalName())[0];
+            $image = $image_basename . '-' . time() . '.' . $request->file('immigration_security_clearence')->getClientOriginalExtension();
+
+            $img = Image::make($request->file('immigration_security_clearence')->getRealPath());
+            $img->stream();
+
+            //Upload image
+            Storage::disk('local')->put('public/'.$image, $img);
+
+            //Remove if there was any old image
+            if($profile->immigration_security_clearence != ''){
+                Storage::disk('local')->delete('public/'.$profile->immigration_security_clearence);
+            }
+
+            //add new image path to database
+            $profile->immigration_security_clearence = $image;
+            
+        }
+
         $profile->user_id = $user->id;
         $profile->agent_code = $request->agent_code;
         $profile->name = $request->name;
-        $profile->phone = $request->phone;
-        $profile->gender = $request->gender;
         $profile->date_of_birth = $request->date_of_birth;
+        $profile->address = $request->address;
+        $profile->district = $request->district;
+        $profile->city = $request->city;
+        $profile->state = $request->state;
         $profile->nationality = $request->nationality;
-        $profile->religion = $request->religion;
-        $profile->native_language = $request->native_language;
-        $profile->other_languages = $request->other_languages;
+        $profile->gender = $request->gender;
         $profile->marital_status = $request->marital_status;
+        $profile->children = $request->children;
+        $profile->siblings = $request->siblings;
+        $profile->religion = $request->religion;
         $profile->height = $request->height;
         $profile->weight = $request->weight;
-        $profile->highest_education = $request->highest_education;
-        $profile->skill_level = $request->skill_level;
-        $profile->work_on_off_days_with_compensation = $request->work_on_off_days_with_compensation;
-        $profile->able_to_handle_pork = $request->able_to_handle_pork;
-        $profile->able_to_gardening = $request->able_to_gardening;
-        $profile->able_to_care_dog_cat = $request->able_to_care_dog_cat;
-        $profile->able_to_simple_sewing = $request->able_to_simple_sewing;
-        $profile->able_to_wash_car = $request->able_to_wash_car;
-        $profile->able_to_eat_pork = $request->able_to_eat_pork;
-        $profile->able_to_care_infants = $request->able_to_care_infants;
-        $profile->able_to_care_elderly = $request->able_to_care_elderly;
-        $profile->able_to_care_disabled = $request->able_to_care_disabled;
-        $profile->able_to_do_general_housework = $request->able_to_do_general_housework;
-        $profile->able_to_cook = $request->able_to_cook;
+        $profile->email = $request->email;
+        $profile->phone = $request->phone;
+        $profile->father_name = $request->father_name;
+        $profile->mother_name = $request->mother_name;
+        $profile->father_contact_number = $request->father_contact_number;
+
+        /*Emergency Contact*/
+        $profile->emergency_contact_name = $request->emergency_contact_name;
+        $profile->emergency_contact_relationship = $request->emergency_contact_relationship;
+        $profile->emergency_contact_phone = $request->emergency_contact_phone;
+        $profile->emergency_contact_address = $request->emergency_contact_address;
+
+        /*Passport Info*/
+        $profile->passport_number = $request->passport_number;
+        $profile->passport_issue_date = $request->passport_issue_date;
+        $profile->passport_issue_place = $request->passport_issue_place;
+        $profile->passport_expire_date = $request->passport_expire_date;
+        
 
         $profile->save();
 
@@ -311,6 +391,15 @@ class AgentProfileController extends Controller
                 $experience->to_date = $request->to_date[$i];
                 $experience->remark = $request->remark[$i];
                 $experience->save();
+            }
+        }
+        if($request->education_level){
+            for($i=0; $i< count($request->education_level); $i++){
+                $education = new Education;
+                $education->user_id = $user->id;
+                $education->education_level = $request->education_level[$i];
+                $education->education_remark = $request->education_remark[$i];
+                $education->save();
             }
         }
         

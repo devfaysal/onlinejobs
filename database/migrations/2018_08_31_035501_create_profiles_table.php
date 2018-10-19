@@ -17,38 +17,45 @@ class CreateProfilesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('agent_code')->nullable();
-            $table->string('name');
-            $table->string('phone')->nullable();
-            $table->string('image')->nullable();
-            $table->string('full_image')->nullable();
-            $table->integer('gender')->nullable();
+            $table->string('name')->nullable();
             $table->date('date_of_birth')->nullable();
+            $table->string('address')->nullable();
+            $table->string('district')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
             $table->integer('nationality')->nullable();
-            $table->integer('religion')->nullable();
-            $table->integer('native_language')->nullable();
-            $table->string('other_languages')->nullable();
+            $table->integer('gender')->nullable();
             $table->string('marital_status')->nullable();
+            $table->string('children')->nullable();
+            $table->string('siblings')->nullable();
+            $table->integer('religion')->nullable();
             $table->string('height')->nullable();
             $table->string('weight')->nullable();
-            $table->string('highest_education')->nullable();
-            $table->string('skill_level')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('father_name')->nullable();
+            $table->string('mother_name')->nullable();
+            $table->string('father_contact_number')->nullable();
+            $table->string('image')->nullable();
+            $table->string('full_image')->nullable();
             $table->text('skill_set')->nullable();
             $table->text('language_set')->nullable();
-            //Maid Other Information
-            $table->boolean('work_on_off_days_with_compensation')->nullable();
-            $table->boolean('able_to_handle_pork')->nullable();
-            $table->boolean('able_to_gardening')->nullable();
-            $table->boolean('able_to_care_dog_cat')->nullable();
-            $table->boolean('able_to_simple_sewing')->nullable();
-            $table->boolean('able_to_wash_car')->nullable();
-            $table->boolean('able_to_eat_pork')->nullable();
-            //Maid Skill Work Area
-            $table->boolean('able_to_care_infants')->nullable();
-            $table->boolean('able_to_care_elderly')->nullable();
-            $table->boolean('able_to_care_disabled')->nullable();
-            $table->boolean('able_to_do_general_housework')->nullable();
-            $table->boolean('able_to_cook')->nullable();
 
+            /*Emergency Contact*/
+            $table->string('emergency_contact_name')->nullable();
+            $table->string('emergency_contact_relationship')->nullable();
+            $table->string('emergency_contact_phone')->nullable();
+            $table->string('emergency_contact_address')->nullable();
+
+            /*Passport Info*/
+            $table->string('passport_number')->nullable();
+            $table->date('passport_issue_date')->nullable();
+            $table->string('passport_issue_place')->nullable();
+            $table->string('passport_expire_date')->nullable();
+            $table->string('passport_file')->nullable();
+
+            $table->string('medical_certificate')->nullable();
+            $table->string('immigration_security_clearence')->nullable();
 
             $table->timestamps();
 

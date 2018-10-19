@@ -11,6 +11,7 @@ use App\Country;
 use App\Profile;
 use App\Language;
 use App\Religion;
+use App\Education;
 use App\Experience;
 use App\SkillLevel;
 use App\MaritalStatus;
@@ -221,6 +222,7 @@ class ProfileController extends Controller
     {
         $user = User::where('public_id', '=', $public)->first();
         $experiences = Experience::where('user_id', $user->id)->get();
+        $educations = Education::where('user_id', $user->id)->get();
 
         $profile = $user->profile;
         $skill_set = (array) json_decode($profile->skill_set);
@@ -230,11 +232,11 @@ class ProfileController extends Controller
         }elseif($user->hasRole('worker')){
             $skills = Skill::where('status', '=', 1)->where('for', 'gw')->where('type','Skill')->get();
             $languages = Skill::where('status', '=', 1)->where('for', 'gw')->where('type','Language')->get();
-            return view('profile.worker.show', compact('profile','skill_set','language_set','skills','languages','experiences'));
+            return view('profile.worker.show', compact('profile','skill_set','language_set','skills','languages','experiences','educations'));
         }elseif($user->hasRole('maid')){
             $skills = Skill::where('status', '=', 1)->where('for', 'dm')->where('type','Skill')->get();
             $languages = Skill::where('status', '=', 1)->where('for', 'dm')->where('type','Language')->get();
-            return view('profile.maid.show', compact('profile','skill_set','language_set','skills','languages'));
+            return view('profile.maid.show', compact('profile','skill_set','language_set','skills','languages','experiences','educations'));
         };
     }
 }
