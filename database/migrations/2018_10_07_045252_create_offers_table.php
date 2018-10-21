@@ -24,7 +24,7 @@ class CreateOffersTable extends Migration
             $table->date('issue_date')->nullable();
             $table->date('expexted_date')->nullable();
             $table->string('demand_qty', 20)->nullable();
-            $table->unsignedInteger('preferred_country')->default(0);
+            $table->unsignedInteger('preferred_country')->nullable();
             $table->text('comments')->nullable();
             $table->string('demand_file', 200)->nullable();
             $table->tinyInteger('status')->default(1);

@@ -80,7 +80,7 @@ class EmployerProfileController extends Controller
 
         return DataTables::of($demands)
         ->addColumn('action', function ($demand) {
-            $string =  '<a class="btn btn-xs btn-primary" href="#">View</a>';
+            $string =  '<a class="btn btn-xs btn-primary" href="'.route('demand', $demand->id).'">View</a>';
 
             return $string;
         })
@@ -279,5 +279,13 @@ class EmployerProfileController extends Controller
         Session::flash('alert-class', 'alert-success');
 
         return redirect()->route('employer.show');
+    }
+
+    public function viewDemand ($id)
+    {
+        $offer = Offer::where('id', '=', $id)->first();
+        $applicants = Applicant::where('offer_id', $offer->id)->get();
+
+        return view('demand.show', compact('offer','applicants'));
     }
 }
