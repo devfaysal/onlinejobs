@@ -67,7 +67,7 @@
                                 <a href="" data-toggle="dropdown">
                                     <i class="fa fa-commenting fa-2x text-danger"></i>
                                     <sup>
-                                        <span class="counter text-warning">{{count($agent_applications)+count($all_offers)}}</span>
+                                        <span class="counter text-warning">{{count($agent_applications)+count($all_offers)+count($all_demands)}}</span>
                                     </sup>
                                 </a>
                                 <div class="dropdown-menu notifications-dropdown-menu">
@@ -82,13 +82,22 @@
                                             </li>
                                         @endforeach
                                         @foreach ($agent_applications as $aaps)
-                                        <li>
-                                            <a href="{{route('admin.agentApplication')}}" class="notification-item">
-                                                <div class="body-col">
-                                                    <p><span class="accent">{{$aaps->name}} has applied to become Agent</span></p>
-                                                </div>
-                                            </a>
-                                        </li>
+                                            <li>
+                                                <a href="{{route('admin.agentApplication')}}" class="notification-item">
+                                                    <div class="body-col">
+                                                        <p><span class="accent">{{$aaps->name}} has applied to become Agent</span></p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                        @foreach ($all_demands as $demand)
+                                            <li>
+                                                <a href="#" class="notification-item">
+                                                    <div class="body-col">
+                                                        <p><span class="accent">{{$demand->employer->name}} has sent a demand letter</span></p>
+                                                    </div>
+                                                </a>
+                                            </li>
                                         @endforeach
                                     </ul>
                                     <footer>

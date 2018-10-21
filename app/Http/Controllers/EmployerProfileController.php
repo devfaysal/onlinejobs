@@ -76,7 +76,7 @@ class EmployerProfileController extends Controller
 
     public function getAllDemands(){
 
-        $demands = Offer::where('status', 1)->get();
+        $demands = Offer::where('status', 2)->get();
 
         return DataTables::of($demands)
         ->addColumn('action', function ($demand) {
@@ -87,11 +87,11 @@ class EmployerProfileController extends Controller
         ->addColumn('status', function($demand) {
             $status = '';
 
-            if ($demand->status == 1) {
+            if ($demand->status == 2) {
                 $status = 'Submitted';
-            } elseif ($demand->status == 2) {
-                $status = 'In Progress';
             } elseif ($demand->status == 3) {
+                $status = 'In Progress';
+            } elseif ($demand->status == 4) {
                 $status = 'Closed';
             } else {
                 $status = '';
@@ -99,9 +99,9 @@ class EmployerProfileController extends Controller
 
             return $status;
             // Status >
-            // 1=>Submitted
-            // 2=>In Progress
-            // 3=>Closed
+            // 2=>Demand Submitted
+            // 3=>Demand In Progress
+            // 4=>Demand Closed
         })
         ->addColumn('issue_date', function($demand) {
             return $demand->issue_date ? \Carbon\Carbon::parse($demand->issue_date)->format('d/m/Y') : '';
@@ -247,6 +247,7 @@ class EmployerProfileController extends Controller
 
 
         $offer->comments = $request->agency_address;
+        $offer->status = 2;
         $offer->save();
 
         Session::flash('message', 'Deman sent successfully!'); 
