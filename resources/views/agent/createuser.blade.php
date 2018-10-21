@@ -13,16 +13,7 @@
             </div>
         </div>
         @endif
-        <div class="col-md-2">
-            <div style="position:fixed; top:75px;">
-                <a class="btn btn-success btn-sm mb-1" href="#General-Info">General Info</a><br/>
-                <a class="btn btn-success btn-sm mb-1" href="#Languages">Languages</a><br/>
-                <a class="btn btn-success btn-sm mb-1" href="#Skills">Skills</a><br/>
-                <a class="btn btn-success btn-sm mb-1" href="#Images">Images</a><br/>
-                <a class="btn btn-success btn-sm mb-1" href="#Experience">Experience</a><br/>
-            </div>
-        </div>
-        <div class="col-md-8">
+        <div class="col-md-8 col-md-offset-2">
             <div class="card mt-4 mb-4">
                 <div class="card-header">
                     <h3 class="text-center mt-2">
@@ -68,8 +59,8 @@
                                 </div>
                             </div>
                             @endif
-                            <div class="col-md-12" id="General-Info">
-                                <h3 class="mt-4">General Information</h3>
+                            <div class="col-md-12 pt-5" id="General-Info">
+                                <h3 class="">General Information</h3>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -310,16 +301,16 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="col-md-12" id="Images">
+                            <div class="col-md-12 pt-5 page-section" id="Images">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h3 class="mb-4 mt-4">Images</h3>
+                                        <h3 class="">Images</h3>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="image">{{ __('Half Image') }}</label>
                                             <input onchange="previewFile('#image_preview', '#image')" id="image" type="file" class="form-control-file{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image">
-                                            <p class="text-danger">To get best view, upload a square size image and must be less than 250KB</p>
+                                            <p class="text-danger">Supported file format JPG, PNG. Maximum file size: 1MB</p>
                                             <img id="image_preview" style="width: 100px;" src="" class="img-thumbnail" height="">
                 
                                             @if ($errors->has('image'))
@@ -333,7 +324,7 @@
                                         <div class="form-group">
                                             <label for="full_image">{{ __('Full Image') }}</label>
                                             <input onchange="previewFile('#full_image_preview','#full_image')" id="full_image" type="file" class="form-control-file{{ $errors->has('full_image') ? ' is-invalid' : '' }}" name="full_image">
-                                            <p class="text-danger">To get best view, upload a square size image and must be less than 250KB</p>
+                                            <p class="text-danger">Supported file format JPG, PNG. Maximum file size: 1MB</p>
                                             <img id="full_image_preview" style="width: 100px;" src="" class="img-thumbnail" height="">
                 
                                             @if ($errors->has('full_image'))
@@ -345,10 +336,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12 pt-5 page-section" id="Emergency-Contact">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h3 class="mb-4 mt-4">Emergency Contact</h3>
+                                        <h3 class="">Emergency Contact</h3>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -400,10 +391,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12 pt-5 page-section" id="Passport-Details">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h3 class="mb-4 mt-4">Passport Details</h3>
+                                        <h3 class="">Passport Details</h3>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -457,7 +448,7 @@
                                         <div class="form-group">
                                             <label for="passport_file">{{ __('Passport File') }}</label>
                                             <input id="passport_file" type="file" class="form-control-file{{ $errors->has('passport_file') ? ' is-invalid' : '' }}" name="passport_file" value="{{ old('passport_file') }}" placeholder="Passport File">
-                
+                                            <p class="text-danger">Supported file format PDF, JPG, PNG and Docs. Maximum file size: 1MB</p>
                                             @if ($errors->has('passport_file'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('passport_file') }}</strong>
@@ -467,16 +458,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12 pt-5 page-section" id="Other-Files">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h3 class="mb-4 mt-4">Other Files</h3>
+                                        <h3 class="">Other Files</h3>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="medical_certificate">{{ __('Medical Certificate') }}</label>
                                             <input id="medical_certificate" type="file" class="form-control-file{{ $errors->has('medical_certificate') ? ' is-invalid' : '' }}" name="medical_certificate" value="{{ old('medical_certificate') }}" placeholder="Medical Certificate">
-                
+                                            <p class="text-danger">Supported file format PDF, JPG, PNG and Docs. Maximum file size: 1MB</p>
                                             @if ($errors->has('medical_certificate'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('medical_certificate') }}</strong>
@@ -488,7 +479,7 @@
                                         <div class="form-group">
                                             <label for="immigration_security_clearence">{{ __('Immigration Security Clearence') }}</label>
                                             <input id="immigration_security_clearence" type="file" class="form-control-file{{ $errors->has('immigration_security_clearence') ? ' is-invalid' : '' }}" name="immigration_security_clearence" value="{{ old('immigration_security_clearence') }}" placeholder="Immigration Security Clearence">
-                
+                                            <p class="text-danger">Supported file format PDF, JPG, PNG and Docs. Maximum file size: 1MB</p>
                                             @if ($errors->has('immigration_security_clearence'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('immigration_security_clearence') }}</strong>
@@ -498,10 +489,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12" id="Languages">
+                            <div class="col-md-12 pt-5 page-section" id="Languages">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h3 class="mb-4 mt-4">Languages</h3>
+                                        <h3 class="">Languages</h3>
                                     </div>
                                     @foreach($skills as $skill)
                                         @if ( $skill->for == request()->t && $skill->type == 'Language')
@@ -515,10 +506,10 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <div class="col-md-12" id="Skills">
+                            <div class="col-md-12 pt-5 page-section" id="Skills">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h3 class="mb-4 mt-4">Skills</h3>
+                                        <h3 class="">Skills</h3>
                                     </div>
                                     @foreach($skills as $skill)
                                         @if ( $skill->for == request()->t && $skill->type == 'Skill')
@@ -533,8 +524,8 @@
                                 </div>
                             </div>
                             
-                            <div class="col-md-12 mb-4" id="Experience">
-                                <h3 class="mb-4 mt-4">Experience</h3>
+                            <div class="col-md-12 pt-5 page-section" id="Experience">
+                                <h3 class="">Experience</h3>
                                 <div id="czContainer">
                                     <div id="first">
                                         <div class="recordset">
@@ -549,7 +540,12 @@
                                                     <div class="col-md-6">
                                                         <div id="div_id_1_employer_country" class="form-group">
                                                             <label for="id_1_employer_country">{{ __('Employer Country') }}</label>
-                                                            <input id="id_1_employer_country" type="text" class="form-control" name="country[]" placeholder="Country">
+                                                            <select name="country[]" id="id_1_employer_country" class="form-control">
+                                                                <option value="">--Select Country--</option>
+                                                                @foreach ($nationalitys as $nationality)
+                                                                    <option value="{{$nationality->id}}" {{$nationality->id == old('nationality') ? 'selected':''}}>{{$nationality->name}}</option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -576,8 +572,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12 mb-4" id="Experience">
-                                <h3 class="mb-4 mt-4">Education</h3>
+                            <div class="col-md-12 pt-5 page-section" id="Education">
+                                <h3 class="">Education</h3>
                                 <div id="czContainerEducation">
                                     <div id="first">
                                         <div class="recordset">
@@ -586,7 +582,13 @@
                                                     <div class="col-md-6">
                                                         <div id="div_id_1_education_level" class="form-group">
                                                             <label for="id_1_education_level">{{ __('Education Level') }}</label>
-                                                            <input id="id_1_education_level" type="text" class="form-control" name="education_level[]" placeholder="Education Level">
+                                                            {{-- <input id="id_1_education_level" type="text" class="form-control" name="education_level[]" placeholder="Education Level"> --}}
+                                                            <select name="education_level[]" id="id_1_education_level" class="form-control">
+                                                                <option value="">--Select Education Level--</option>
+                                                                @foreach ($education_levels as $education_level)
+                                                                    <option value="{{$education_level->id}}" {{$education_level->id == old('nationality') ? 'selected':''}}>{{$education_level->name}}</option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -615,8 +617,32 @@
         </div>
     </div>
 </div>
+    <div class="bottom-menu" style="position:fixed; bottom:0;text-align: center;width: 100%;z-index: 2;padding: 10px 0 5px 0;background: #fff;">
+        <a class="btn btn-success btn-danger btn-sm mb-1" href="#General-Info">General Info</a>
+        <a class="btn btn-success btn-sm mb-1" href="#Images">Images</a>
+        <a class="btn btn-success btn-sm mb-1" href="#Emergency-Contact">Emergency Contact</a>
+        <a class="btn btn-success btn-sm mb-1" href="#Passport-Details">Passport Details</a>
+        <a class="btn btn-success btn-sm mb-1" href="#Other-Files">Other Files</a>
+        <a class="btn btn-success btn-sm mb-1" href="#Languages">Languages</a>
+        <a class="btn btn-success btn-sm mb-1" href="#Skills">Skills</a>
+        <a class="btn btn-success btn-sm mb-1" href="#Experience">Experience</a>
+        <a class="btn btn-success btn-sm mb-1" href="#Education">Education</a>
+    </div>
 @endsection
 @section('script')
+    <script>
+        $(window).scroll(function() {
+        var scrollDistance = $(window).scrollTop();
+
+        // Assign active class to nav links while scolling
+        $('.page-section').each(function(i) {
+                if ($(this).position().top <= scrollDistance+250) {
+                        $('.bottom-menu a.btn-danger').removeClass('btn-danger');
+                        $('.bottom-menu a').eq(i).addClass('btn-danger');
+                }
+        });
+    }).scroll();
+    </script>
     <script>
         function previewFile(preview, source) {
             var preview = document.querySelector(preview);

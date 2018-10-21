@@ -16,8 +16,8 @@ class CreateEducationTable extends Migration
         Schema::create('education', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->string('education_level');
-            $table->string('education_remark');
+            $table->string('education_level')->nullable();
+            $table->string('education_remark')->nullable();
 
             $table->foreign('user_id')
                   ->references('id')->on('users')

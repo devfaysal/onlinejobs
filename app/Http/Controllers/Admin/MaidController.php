@@ -52,7 +52,7 @@ class MaidController extends Controller
             return '';
         })
         ->addColumn('marital_status', function($user) {
-            return $user->profile->marital_status;
+            return $user->profile->marital_status_data['name'];
         })
         ->addColumn('image', function($user) {
             $img = $user->profile->image != '' ? asset('storage/'.$user->profile->image) :  asset('images/dummy.jpg');

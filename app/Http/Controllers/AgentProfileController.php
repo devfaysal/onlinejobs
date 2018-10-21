@@ -16,6 +16,7 @@ use App\Experience;
 use App\SkillLevel;
 use App\AgentProfile;
 use App\MaritalStatus;
+use App\EducationLevel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Image; /* https://github.com/Intervention/image */
@@ -171,7 +172,8 @@ class AgentProfileController extends Controller
         $marital_statuses = MaritalStatus::where('status', '=', 1)->get();
         $genders = Gender::where('status', '=', 1)->get();
         $skills = Skill::where('status', '=', 1)->get();
-        return view('agent.createuser', compact('religions','nationalitys','languages','skill_levels','marital_statuses','genders','skills'));
+        $education_levels = EducationLevel::where('status', '=', 1)->get();
+        return view('agent.createuser', compact('religions','nationalitys','languages','skill_levels','marital_statuses','genders','skills','education_levels'));
     }
 
     public function saveuser( Request $request)

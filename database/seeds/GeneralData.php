@@ -67,6 +67,14 @@ class GeneralData extends Seeder
             ]);
         }
 
+        //Add EducationLevel
+        $educationlevel_names = array( "PSC", "JSC", "SSC", "HSC");
+        foreach($educationlevel_names as $educationlevel_name){
+            $educationlevel = \App\EducationLevel::create([
+                'name' => $educationlevel_name,
+            ]);
+        }
+
         //Permission
         $print = new Permission;
         $print->name = 'print';

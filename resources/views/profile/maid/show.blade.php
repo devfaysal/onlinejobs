@@ -38,7 +38,7 @@
             </div>
             <div class="col-md-8">
                 <div class="card">
-                    <h4 class="card-title text-center mt-3">Basic Information</h4>
+                    <h4 class="card-title text-center mt-3 text-uppercase">Basic Information</h4>
                     <div class="card-body">
                         <table class="table table-striped table-sm">
                             <tr>
@@ -96,11 +96,11 @@
                             </tr>
                             <tr>
                                 <th>Height :</th>
-                                <td>{{$profile->height ?? 'N/A'}}</td>
+                                <td>{{$profile->height ? $profile->height . ' CM' : 'N/A'}}</td>
                             </tr>
                             <tr>
                                 <th>Weight :</th>
-                                <td>{{$profile->weight ?? 'N/A'}}</td>
+                                <td>{{$profile->weight ? $profile->weight . ' Pound': 'N/A'}}</td>
                             </tr>
                             <tr>
                                 <th>Father Name :</th>
@@ -116,7 +116,7 @@
             </div><!--/.col-md-8-->
             <div class="col-md-12 mt-2">
                 <div class="card">
-                        <h4 class="card-title text-center mt-3">Emergency Contact</h4>
+                        <h4 class="card-title text-center mt-3 text-uppercase">Emergency Contact</h4>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
@@ -149,7 +149,7 @@
             </div>
             <div class="col-md-12 mt-2">
                 <div class="card">
-                        <h4 class="card-title text-center mt-3">Passport Details</h4>
+                        <h4 class="card-title text-center mt-3 text-uppercase">Passport Details</h4>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
@@ -182,7 +182,7 @@
             </div>
             <div class="col-md-12 mt-2">
                 <div class="card">
-                        <h4 class="card-title text-center mt-3">Language</h4>
+                        <h4 class="card-title text-center mt-3 text-uppercase">Language</h4>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
@@ -204,7 +204,7 @@
             <div class="col-md-12 mt-2">
                 <div class="card">
                     <div class="card-heading">
-                        <h4 class="text-uppercase text-center mt-2">Skills</h4>
+                        <h4 class="text-uppercase text-center mt-2 ">Skills</h4>
                     </div>
                     <div class="card-body">
                         <table class="table table-striped table-sm">
@@ -241,7 +241,7 @@
                                 @foreach ($educations as $education)
                                 <tr>
                                     <td>{{$i}}</td>
-                                    <td>{{$education->education_level}}</td>
+                                    <td>{{$education->education_level_data->name}}</td>
                                     <td>{{$education->education_remark}}</td>
                                 </tr>
                                 @php

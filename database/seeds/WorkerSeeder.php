@@ -47,7 +47,7 @@ class WorkerSeeder extends Seeder
             $profile->agent_code = 'agent';
             $profile->name = $user->name;
             $profile->nationality = 2;
-            $profile->marital_status = 'Married';
+            $profile->marital_status = 1;
             $profile->phone = $user->phone;
             $profile->save();
         }
