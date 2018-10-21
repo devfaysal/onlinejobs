@@ -37,6 +37,7 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
     Route::resource('/employer', 'Admin\EmployerController');
 
     Route::get('/employer-demands', 'Admin\EmployerController@employerDemands')->name('employerDemands');
+    Route::get('/getEmployersDemandData', 'Admin\EmployerController@getEmployersDemandData')->name('getEmployersDemandData');
 
     /*Agent*/
     Route::get('/agent/approve/{id}', 'Admin\AgentController@approve')->name('agent.approve');

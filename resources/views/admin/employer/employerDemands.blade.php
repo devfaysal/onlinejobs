@@ -14,7 +14,7 @@
                 </div>
             </div>
             @endif
-        <table id="users-table" class="table table-condensed">
+        <table id="demands-table" class="table table-condensed">
             <thead>
                 <tr>
                     <th title="Employer Name">Emp. Name</th>
@@ -37,12 +37,12 @@
                     <th title="Expected Join Date">EJD</th>
                     <th title="Demand Quantity">D. Qty</th>
                     <th title="Proposed Quantity">Proposed Qty</th>
-                    <th>Day Pending</th>
-                    <th>Selected Qty</th>
-                    <th>Final Qty</th>
-                    <th>Status</th>
-                    <th>Assigned Agent</th>
-                    <th></th>
+                    <th title="Day Pending">Day Pending</th>
+                    <th title="Selected Quantity">Selected Qty</th>
+                    <th title="Final Quantity">Final Qty</th>
+                    <th title="Status">Status</th>
+                    <th title="Assigned Agent">Assigned Agent</th>
+                    <th title=""></th>
                 </tr>
             </tfoot>
         </table>
@@ -50,31 +50,36 @@
 @endsection
 @section('javascript')
 <script>
-    // $('#users-table').DataTable({
-    //     processing: true,
-    //     serverSide: true,
-    //     ajax: '{{route('admin.getEmployersApplicationData')}}',
-    //     columns: [
-    //         {data: 'id', name: 'id'},
-    //         {data: 'name', name: 'name'},
-    //         {data: 'email', name: 'email'},
-    //         {data: 'created_at', name: 'created_at'},
-    //         {data: 'updated_at', name: 'updated_at'},
-    //         {data: 'action', name: 'action', orderable: false, searchable: false}
-    //     ],
-    //     initComplete: function () {
-    //         this.api().columns().every(function () {
-    //             var column = this;
-    //             var input = document.createElement("input");
-    //             input.className = 'form-control';
-    //             $(input).appendTo($(column.footer()).empty())
-    //             .on('keyup change', function () {
-    //                 var val = $.fn.dataTable.util.escapeRegex($(this).val());
+    $('#demands-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{{route('admin.getEmployersDemandData')}}',
+        columns: [
+            {data: 'employer_name', name: 'employer_name'},
+            {data: 'demand_letter_no', name: 'demand_letter_no'},
+            {data: 'expexted_date', name: 'expexted_date', "className": "text-center"},
+            {data: 'demand_qty', name: 'demand_qty', "className": "text-right"},
+            {data: 'proposed_qty', name: 'proposed_qty', "className": "text-right"},
+            {data: 'day_pending', name: 'day_pending', "className": "text-right"},
+            {data: 'selected_qty', name: 'selected_qty', "className": "text-right"},
+            {data: 'final_qty', name: 'final_qty', "className": "text-right"},
+            {data: 'status', name: 'status', "className": "text-center"},
+            {data: 'assigned_agent', name: 'assigned_agent', "className": "text-center"},
+            {data: 'action', name: 'action', orderable: false, searchable: false, "className": "text-center"}
+        ],
+        initComplete: function () {
+            this.api().columns().every(function () {
+                var column = this;
+                var input = document.createElement("input");
+                input.className = 'form-control';
+                $(input).appendTo($(column.footer()).empty())
+                .on('keyup change', function () {
+                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
 
-    //                 column.search(val ? val : '', true, false).draw();
-    //             });
-    //         });
-    //     }
-    // });
+                    column.search(val ? val : '', true, false).draw();
+                });
+            });
+        }
+    });
 </script>
 @endsection
