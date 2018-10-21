@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Session;
 use App\User;
 use App\Offer;
+use App\Country;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
@@ -55,13 +57,16 @@ class EmployerController extends Controller
     // Demand
     public function employerDemands()
     {
-        return view('admin.employer.employerDemands');
+        // get all agetns
+        $agents = User::with('agent_profile')->where('status', 1)->whereRoleIs('agent')->select(['id', 'name', 'email'])->get();
+        // return to demand view
+        return view('admin.employer.employerDemands', compact('agents'));
     }
 
     public function getEmployersDemandData()
     {
 
-        $demands = Offer::where('status', 2)->get();
+        $demands = Offer::whereIn('status', [2, 3, 4])->get();
 
         return DataTables::of($demands)
         ->addColumn('employer_name', function($demand) {
@@ -110,15 +115,39 @@ class EmployerController extends Controller
             // 4=>Demand Closed
         })
         ->addColumn('assigned_agent', function($demand) {
-            return "...";
+            if ($demand->assigned_agent) {
+                return $demand->agent->name;
+            } else {
+                return '<a class="btn btn-sm btn-warning btn-assign-agent" data-toggle="modal" emp_id="'. $demand->id .'" data-backdrop="static" data-keyboard="false" data-target="#assignDemandAgentModal" href="#">Assign</a>';
+            }
+        })
+        ->addColumn('proposed_gw', function($demand) {
+            // if ($demand->assigned_agent) {
+            //     return $demand->agent->name;
+            // } else {
+                return '<a class="btn btn-sm btn-warning" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#selectGWModal" href="#">Select GW</a>';
+            // }
         })
         ->addColumn('action', function ($demand) {
-            $string =  '<a class="btn btn-xs btn-primary" href="'.route('demand', $demand->id).'">View</a>';
+            $string =  '<a class="btn btn-sm btn-primary" href="'.route('demand', $demand->id).'">View</a>';
 
             return $string;
         })
-        ->rawColumns(['action'])
+        ->rawColumns(['assigned_agent', 'proposed_gw', 'action'])
         ->make(true);
+    }
+
+    public function assignDemandAgent(Request $request)
+    {
+        $demandUpdate = Offer::where('id', $request->Emp_Id)->first();
+        $demandUpdate->assigned_agent = $request->AgentAssign;
+        $demandUpdate->status = 3;
+        $demandUpdate->save();
+
+        Session::flash('message', 'Deman agent assigned successfully!'); 
+        Session::flash('alert-class', 'alert-success');
+
+        return redirect('/admin/employer-demands');
     }
 
     /**

@@ -76,7 +76,7 @@ class EmployerProfileController extends Controller
 
     public function getAllDemands(){
 
-        $demands = Offer::where('status', 2)->get();
+        $demands = Offer::whereIn('status', [2, 3, 4])->get();
 
         return DataTables::of($demands)
         ->addColumn('action', function ($demand) {

@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with([
                 'agent_applications'=> User::where('status', 0)->whereRoleIs('agent')->get(),
                 'all_offers' => Offer::where('status', 1)->get(),
-                'all_demands' => Offer::where('status', 2)->get()
+                'all_demands' => Offer::whereIn('status', [2, 3, 4])->get()
             ]);
         });
     }
