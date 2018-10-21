@@ -53,7 +53,7 @@
                             <tr>
                                 <th>Preferred Country</th>
                                 <th>:</th>
-                                <td>{{$offer->preferred_country->name ?? 'N/A'}}</td>
+                                <td>{{$offer->preferred_country_data->name ?? 'N/A'}}</td>
                                 <th>Comments</th>
                                 <th>:</th>
                                 <td>{{$offer->comments ?? 'N/A'}}</td>

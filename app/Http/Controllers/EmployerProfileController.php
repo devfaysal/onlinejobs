@@ -245,8 +245,7 @@ class EmployerProfileController extends Controller
             
         }
 
-
-        $offer->comments = $request->agency_address;
+        $offer->comments = $request->comments;
         $offer->status = 2;
         $offer->save();
 

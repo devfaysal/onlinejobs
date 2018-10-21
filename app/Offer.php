@@ -10,4 +10,7 @@ class Offer extends Model
     {
         return $this->belongsTo(User::class, 'employer_id');
     }
+    public function preferred_country_data(){
+        return $this->belongsTo(Country::class, 'preferred_country');
+    }
 }
