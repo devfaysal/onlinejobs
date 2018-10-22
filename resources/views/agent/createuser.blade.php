@@ -448,7 +448,7 @@
                                         <div class="form-group">
                                             <label for="passport_file">{{ __('Passport File') }}</label>
                                             <input id="passport_file" type="file" class="form-control-file{{ $errors->has('passport_file') ? ' is-invalid' : '' }}" name="passport_file" value="{{ old('passport_file') }}" placeholder="Passport File">
-                                            <p class="text-danger">Supported file format PDF, JPG, PNG and Docs. Maximum file size: 1MB</p>
+                                            <p class="text-danger">Supported file format PDF, JPG and PNG. Maximum file size: 1MB</p>
                                             @if ($errors->has('passport_file'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('passport_file') }}</strong>
@@ -467,7 +467,7 @@
                                         <div class="form-group">
                                             <label for="medical_certificate">{{ __('Medical Certificate') }}</label>
                                             <input id="medical_certificate" type="file" class="form-control-file{{ $errors->has('medical_certificate') ? ' is-invalid' : '' }}" name="medical_certificate" value="{{ old('medical_certificate') }}" placeholder="Medical Certificate">
-                                            <p class="text-danger">Supported file format PDF, JPG, PNG and Docs. Maximum file size: 1MB</p>
+                                            <p class="text-danger">Supported file format PDF, JPG and PNG. Maximum file size: 1MB</p>
                                             @if ($errors->has('medical_certificate'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('medical_certificate') }}</strong>
@@ -479,7 +479,7 @@
                                         <div class="form-group">
                                             <label for="immigration_security_clearence">{{ __('Immigration Security Clearence') }}</label>
                                             <input id="immigration_security_clearence" type="file" class="form-control-file{{ $errors->has('immigration_security_clearence') ? ' is-invalid' : '' }}" name="immigration_security_clearence" value="{{ old('immigration_security_clearence') }}" placeholder="Immigration Security Clearence">
-                                            <p class="text-danger">Supported file format PDF, JPG, PNG and Docs. Maximum file size: 1MB</p>
+                                            <p class="text-danger">Supported file format PDF, JPG and PNG. Maximum file size: 1MB</p>
                                             @if ($errors->has('immigration_security_clearence'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('immigration_security_clearence') }}</strong>
@@ -572,7 +572,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12 pt-5 page-section" id="Education">
+                            <div class="col-md-12 pb-5 pt-5 page-section" id="Education">
                                 <h3 class="">Education</h3>
                                 <div id="czContainerEducation">
                                     <div id="first">
@@ -603,7 +603,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12 pt-5">
                                 <div class="form-group mb-0 text-center">
                                     <button type="submit" class="btn btn-success btn-block">
                                         {{ __('Save Information') }}
