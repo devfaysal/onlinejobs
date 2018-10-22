@@ -22,7 +22,8 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('admin.layouts.master', function ($view){
             $view->with([
                 'agent_applications'=> User::where('status', 0)->whereRoleIs('agent')->get(),
-                'all_offers' => Offer::where('status', 1)->get()
+                'all_offers' => Offer::where('status', 1)->get(),
+                'all_demands' => Offer::whereIn('status', [2, 3, 4])->get()
             ]);
         });
     }

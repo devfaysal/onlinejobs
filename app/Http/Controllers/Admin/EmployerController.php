@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Session;
 use App\User;
+use App\Offer;
+use App\Country;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
@@ -51,9 +54,100 @@ class EmployerController extends Controller
         ->make(true);
     }
 
+    // Demand
     public function employerDemands()
     {
-        return view('admin.employer.employerDemands');
+        // get all agetns
+        $agents = User::with('agent_profile')->where('status', 1)->whereRoleIs('agent')->select(['id', 'name', 'email'])->get();
+        // return to demand view
+        return view('admin.employer.employerDemands', compact('agents'));
+    }
+
+    public function getEmployersDemandData()
+    {
+
+        $demands = Offer::whereIn('status', [2, 3, 4])->get();
+
+        return DataTables::of($demands)
+        ->addColumn('employer_name', function($demand) {
+            return $demand->employer->name;
+        })
+        ->addColumn('expexted_date', function($demand) {
+            return $demand->expexted_date ? \Carbon\Carbon::parse($demand->expexted_date)->format('d/m/Y') : '';
+        })
+        ->addColumn('proposed_qty', function($demand) {
+            return "...";
+        })
+        ->addColumn('day_pending', function($demand) {
+            $date1 = date_create(date('Y-m-d'));
+            $date2 = date_create($demand->expexted_date);
+
+            //difference between two dates
+            $diff = date_diff($date1,$date2);
+
+            //count days
+            $diff = $diff->format("%a");
+            return $diff;
+        })
+        ->addColumn('selected_qty', function($demand) {
+            return "...";
+        })
+        ->addColumn('final_qty', function($demand) {
+            return "...";
+        })
+        ->addColumn('status', function($demand) {
+            $status = '';
+
+            if ($demand->status == 2) {
+                $status = 'Submitted';
+            } elseif ($demand->status == 3) {
+                $status = 'In Progress';
+            } elseif ($demand->status == 4) {
+                $status = 'Closed';
+            } else {
+                $status = '';
+            }
+
+            return $status;
+            // Status >
+            // 2=>Demand Submitted
+            // 3=>Demand In Progress
+            // 4=>Demand Closed
+        })
+        ->addColumn('assigned_agent', function($demand) {
+            if ($demand->assigned_agent) {
+                return $demand->agent->name;
+            } else {
+                return '<a class="btn btn-sm btn-warning btn-assign-agent" data-toggle="modal" emp_id="'. $demand->id .'" data-backdrop="static" data-keyboard="false" data-target="#assignDemandAgentModal" href="#">Assign</a>';
+            }
+        })
+        ->addColumn('proposed_gw', function($demand) {
+            // if ($demand->assigned_agent) {
+            //     return $demand->agent->name;
+            // } else {
+                return '<a class="btn btn-sm btn-warning" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#selectGWModal" href="#">Select GW</a>';
+            // }
+        })
+        ->addColumn('action', function ($demand) {
+            $string =  '<a class="btn btn-sm btn-primary" href="'.route('demand', $demand->id).'">View</a>';
+
+            return $string;
+        })
+        ->rawColumns(['assigned_agent', 'proposed_gw', 'action'])
+        ->make(true);
+    }
+
+    public function assignDemandAgent(Request $request)
+    {
+        $demandUpdate = Offer::where('id', $request->Emp_Id)->first();
+        $demandUpdate->assigned_agent = $request->AgentAssign;
+        $demandUpdate->status = 3;
+        $demandUpdate->save();
+
+        Session::flash('message', 'Deman agent assigned successfully!'); 
+        Session::flash('alert-class', 'alert-success');
+
+        return redirect('/admin/employer-demands');
     }
 
     /**

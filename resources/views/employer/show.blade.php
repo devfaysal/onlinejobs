@@ -195,9 +195,9 @@
                                                     <img id="image_preview" style="width: 100px;" src="" class="img-thumbnail" height="">
                                                 </div>
 
-                                                @if ($errors->has('PreferredCountry'))
+                                                @if ($errors->has('DemandFile'))
                                                     <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $errors->first('PreferredCountry') }}</strong>
+                                                        <strong>{{ $errors->first('DemandFile') }}</strong>
                                                     </span>
                                                 @endif
                                             </div>

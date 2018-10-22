@@ -76,22 +76,22 @@ class EmployerProfileController extends Controller
 
     public function getAllDemands(){
 
-        $demands = Offer::where('status', 1)->get();
+        $demands = Offer::whereIn('status', [2, 3, 4])->get();
 
         return DataTables::of($demands)
         ->addColumn('action', function ($demand) {
-            $string =  '<a class="btn btn-xs btn-primary" href="#">View</a>';
+            $string =  '<a class="btn btn-xs btn-primary" href="'.route('demand', $demand->id).'">View</a>';
 
             return $string;
         })
         ->addColumn('status', function($demand) {
             $status = '';
 
-            if ($demand->status == 1) {
+            if ($demand->status == 2) {
                 $status = 'Submitted';
-            } elseif ($demand->status == 2) {
-                $status = 'In Progress';
             } elseif ($demand->status == 3) {
+                $status = 'In Progress';
+            } elseif ($demand->status == 4) {
                 $status = 'Closed';
             } else {
                 $status = '';
@@ -99,9 +99,9 @@ class EmployerProfileController extends Controller
 
             return $status;
             // Status >
-            // 1=>Submitted
-            // 2=>In Progress
-            // 3=>Closed
+            // 2=>Demand Submitted
+            // 3=>Demand In Progress
+            // 4=>Demand Closed
         })
         ->addColumn('issue_date', function($demand) {
             return $demand->issue_date ? \Carbon\Carbon::parse($demand->issue_date)->format('d/m/Y') : '';
@@ -245,8 +245,8 @@ class EmployerProfileController extends Controller
             
         }
 
-
-        $offer->comments = $request->agency_address;
+        $offer->comments = $request->comments;
+        $offer->status = 2;
         $offer->save();
 
         Session::flash('message', 'Deman sent successfully!'); 
@@ -279,5 +279,13 @@ class EmployerProfileController extends Controller
         Session::flash('alert-class', 'alert-success');
 
         return redirect()->route('employer.show');
+    }
+
+    public function viewDemand ($id)
+    {
+        $offer = Offer::where('id', '=', $id)->first();
+        $applicants = Applicant::where('offer_id', $offer->id)->get();
+
+        return view('demand.show', compact('offer','applicants'));
     }
 }

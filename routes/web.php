@@ -37,6 +37,8 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
     Route::resource('/employer', 'Admin\EmployerController');
 
     Route::get('/employer-demands', 'Admin\EmployerController@employerDemands')->name('employerDemands');
+    Route::get('/getEmployersDemandData', 'Admin\EmployerController@getEmployersDemandData')->name('getEmployersDemandData');
+    Route::post('/assignDemandAgent', 'Admin\EmployerController@assignDemandAgent')->name('assignDemandAgent');
 
     /*Agent*/
     Route::get('/agent/approve/{id}', 'Admin\AgentController@approve')->name('agent.approve');
@@ -111,7 +113,9 @@ Route::prefix('employer')->group(function(){
     Route::get('/profile', 'EmployerProfileController@show')->name('employer.show');
     Route::get('/getAllMaids', 'EmployerProfileController@getAllMaids')->name('getAllMaids');
     Route::post('/sendOffer', 'EmployerProfileController@sendOffer')->name('sendOffer');
+    // Demand section
     Route::post('/saveDemand', 'EmployerProfileController@saveDemand')->name('saveDemand');
     Route::get('/getAllDemands', 'EmployerProfileController@getAllDemands')->name('getAllDemands');
+    Route::get('/demand/{id}', 'EmployerProfileController@viewDemand')->name('demand');
 });
 
