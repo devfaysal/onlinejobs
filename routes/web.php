@@ -19,6 +19,9 @@ Auth::routes();
 Route::get('/admin/login', function(){
     return view('admin.login');
 });
+Route::get('/logout', function(){
+    return view('admin.login');
+});
 Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadministrator|agent')->group(function () {
     Route::get('/', function(){
         return view('admin.index');
