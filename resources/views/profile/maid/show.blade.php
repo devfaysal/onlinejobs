@@ -17,6 +17,15 @@
             @if(Auth::user()->can('print'))
                 <div class="col-md-12 hidefromprint mb-3">
                     <a class="btn btn-info" href="{{url()->previous()}}">Back</a>
+                    @if($profile->passport_file)
+                    <a class="btn btn-success" href="" onclick="printJS('{{asset('storage/'.$profile->passport_file)}}');return false;">Print Passport</a>
+                    @endif
+                    @if($profile->medical_certificate)
+                    <a class="btn btn-success" href="" onclick="printJS('{{asset('storage/'.$profile->medical_certificate)}}');return false;">Print Medical Certificate</a>
+                    @endif
+                    @if($profile->immigration_security_clearence)
+                    <a class="btn btn-success" href="" onclick="printJS('{{asset('storage/'.$profile->immigration_security_clearence)}}');return false;">Print Immigration Security Clearence</a>
+                    @endif
                     <a class="btn btn-success pull-right" href="" onclick="window.print();return false;">Print profile</a>
                 </div>
             @endif
@@ -32,7 +41,7 @@
                     <div class="card-body">
                         <img style="max-width: 100%;" class="thumbnail center-thumbnail-image" src="{{$profile->image != '' ? asset('storage/'.$profile->image) :  asset('images/dummy.jpg')}}" alt="avatar">
                         <hr>
-                        <img style="max-height: 300px" class="thumbnail center-thumbnail-image" src="{{$profile->full_image != '' ? asset('storage/'.$profile->full_image) :  asset('images/avatar_full.jpg')}}" alt="avatar">
+                        <img style="max-height: 300px; max-width: 100%;" class="thumbnail center-thumbnail-image" src="{{$profile->full_image != '' ? asset('storage/'.$profile->full_image) :  asset('images/avatar_full.jpg')}}" alt="avatar">
                     </div>
                 </div>
             </div>
@@ -294,4 +303,7 @@
             </div>
         </div><!--/.row-->
     </div><!--/.container-->
+@endsection
+@section('script')
+    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
 @endsection

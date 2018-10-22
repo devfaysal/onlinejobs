@@ -178,6 +178,38 @@ class AgentProfileController extends Controller
 
     public function saveuser( Request $request)
     {
+        /*Validation*/
+        $this->validate($request, [
+            'date_of_birth' => 'date',
+            'passport_issue_date' => 'date',
+            'passport_expire_date' => 'date',
+        ]);
+
+        if($request->file('image')){
+            $this->validate($request, [
+                'image' => 'image|max:1024',
+            ]);
+        }
+        if($request->file('full_image')){
+            $this->validate($request, [
+                'full_image' => 'image|max:1024',
+            ]);
+        }
+        if($request->file('passport_file')){
+            $this->validate($request, [
+                'passport_file' => 'mimes:pdf,jpg,jpeg,png|max:1024',
+            ]);
+        }
+        if($request->file('medical_certificate')){
+            $this->validate($request, [
+                'medical_certificate' => 'mimes:pdf,jpg,jpeg,png|max:1024',
+            ]);
+        }
+        if($request->file('immigration_security_clearence')){
+            $this->validate($request, [
+                'immigration_security_clearence' => "mimes:pdf,jpg,jpeg,png|max:1024"
+            ]);
+        }
         //return request('Drill');
         //return var_dump($request->Welding);
         // $skills = Skill::where('status', '=', 1)->get();
@@ -201,7 +233,7 @@ class AgentProfileController extends Controller
         $user->email = $request->email ?? time().'@test.com';
         $user->phone = $request->phone;
         $user->password = Hash::make('password');
-        $user->public_id = time().md5($request->email);
+        $user->public_id = time().md5($user->email);
         $user->status = 1;
         $role = $request->role;
         
@@ -227,10 +259,6 @@ class AgentProfileController extends Controller
         $profile->language_set = json_encode($lang_arr);
 
         if($request->file('image')){
-            $this->validate($request, [
-                'image' => 'image|max:250',
-            ]);
-            
             $image_basename = explode('.',$request->file('image')->getClientOriginalName())[0];
             $image = $image_basename . '-' . time() . '.' . $request->file('image')->getClientOriginalExtension();
 
@@ -251,10 +279,6 @@ class AgentProfileController extends Controller
         }
 
         if($request->file('full_image')){
-            $this->validate($request, [
-                'full_image' => 'image|max:250',
-            ]);
-            
             $image_basename = explode('.',$request->file('full_image')->getClientOriginalName())[0];
             $image = $image_basename . '-' . time() . '.' . $request->file('full_image')->getClientOriginalExtension();
 
@@ -274,48 +298,43 @@ class AgentProfileController extends Controller
             
         }
 
-        if($request->file('passport_file')){
-            $this->validate($request, [
-                'passport_file' => 'image|max:250',
-            ]);
-            
+        if($request->file('passport_file')){            
             $image_basename = explode('.',$request->file('passport_file')->getClientOriginalName())[0];
             $image = $image_basename . '-' . time() . '.' . $request->file('passport_file')->getClientOriginalExtension();
 
-            $img = Image::make($request->file('passport_file')->getRealPath());
-            $img->stream();
+            $request->passport_file->storeAs('public', $image);
+            // $img = Image::make($request->file('passport_file')->getRealPath());
+            // $img->stream();
 
-            //Upload image
-            Storage::disk('local')->put('public/'.$image, $img);
+            // //Upload image
+            // Storage::disk('local')->put('public/'.$image, $img);
 
-            //Remove if there was any old image
-            if($profile->passport_file != ''){
-                Storage::disk('local')->delete('public/'.$profile->passport_file);
-            }
+            // //Remove if there was any old image
+            // if($profile->passport_file != ''){
+            //     Storage::disk('local')->delete('public/'.$profile->passport_file);
+            // }
 
             //add new image path to database
             $profile->passport_file = $image;
             
         }
 
-        if($request->file('medical_certificate')){
-            $this->validate($request, [
-                'medical_certificate' => 'image|max:250',
-            ]);
-            
+        if($request->file('medical_certificate')){          
             $image_basename = explode('.',$request->file('medical_certificate')->getClientOriginalName())[0];
             $image = $image_basename . '-' . time() . '.' . $request->file('medical_certificate')->getClientOriginalExtension();
 
-            $img = Image::make($request->file('medical_certificate')->getRealPath());
-            $img->stream();
+            $request->medical_certificate->storeAs('public', $image);
+            //$request->file('medical_certificate')->move('storage/public', $request->file('medical_certificate')->getRealPath());
+            // $img = Image::make($request->file('medical_certificate')->getRealPath());
+            // $img->stream();
 
-            //Upload image
-            Storage::disk('local')->put('public/'.$image, $img);
+            // //Upload image
+            // Storage::disk('local')->put('public/'.$image, $img);
 
-            //Remove if there was any old image
-            if($profile->medical_certificate != ''){
-                Storage::disk('local')->delete('public/'.$profile->medical_certificate);
-            }
+            // //Remove if there was any old image
+            // if($profile->medical_certificate != ''){
+            //     Storage::disk('local')->delete('public/'.$profile->medical_certificate);
+            // }
 
             //add new image path to database
             $profile->medical_certificate = $image;
@@ -323,23 +342,20 @@ class AgentProfileController extends Controller
         }
 
         if($request->file('immigration_security_clearence')){
-            $this->validate($request, [
-                'immigration_security_clearence' => 'image|max:250',
-            ]);
-            
             $image_basename = explode('.',$request->file('immigration_security_clearence')->getClientOriginalName())[0];
             $image = $image_basename . '-' . time() . '.' . $request->file('immigration_security_clearence')->getClientOriginalExtension();
 
-            $img = Image::make($request->file('immigration_security_clearence')->getRealPath());
-            $img->stream();
+            $request->immigration_security_clearence->storeAs('public', $image);
+            // $img = Image::make($request->file('immigration_security_clearence')->getRealPath());
+            // $img->stream();
 
-            //Upload image
-            Storage::disk('local')->put('public/'.$image, $img);
+            // //Upload image
+            // Storage::disk('local')->put('public/'.$image, $img);
 
-            //Remove if there was any old image
-            if($profile->immigration_security_clearence != ''){
-                Storage::disk('local')->delete('public/'.$profile->immigration_security_clearence);
-            }
+            // //Remove if there was any old image
+            // if($profile->immigration_security_clearence != ''){
+            //     Storage::disk('local')->delete('public/'.$profile->immigration_security_clearence);
+            // }
 
             //add new image path to database
             $profile->immigration_security_clearence = $image;
