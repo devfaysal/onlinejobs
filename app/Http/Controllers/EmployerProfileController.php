@@ -246,7 +246,7 @@ class EmployerProfileController extends Controller
             $file_basename = explode('.',$request->file('DemandFile')->getClientOriginalName())[0];
             $file_name = $file_basename . '-' . time() . '.' . $request->file('DemandFile')->getClientOriginalExtension();
 
-            $request->DemandFile->storeAs('public/deman_letter', $file_name);
+            $request->DemandFile->storeAs('public/demand_letter', $file_name);
             //add new image path to database
             $offer->demand_file = $file_name;
             
