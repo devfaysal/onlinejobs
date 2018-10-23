@@ -81,10 +81,10 @@ class EmployerProfileController extends Controller
             // Demand letters employer wise
             $loggedInUserId = auth()->user()->id;
 
-            $demands = Offer::whereIn('status', [2, 3, 4])->where('employer_id', $loggedInUserId)->get();
+            $demands = Offer::whereIn('status', [2, 3, 4, 5, 6, 7])->where('employer_id', $loggedInUserId)->get();
         } else {
             // all demand letters for super admin
-            $demands = Offer::whereIn('status', [2, 3, 4])->get();
+            $demands = Offer::whereIn('status', [2, 3, 4, 5, 6, 7])->get();
         }
 
         return DataTables::of($demands)
@@ -99,18 +99,20 @@ class EmployerProfileController extends Controller
             if ($demand->status == 2) {
                 $status = 'Submitted';
             } elseif ($demand->status == 3) {
-                $status = 'In Progress';
+                $status = 'Assigned Agent';
             } elseif ($demand->status == 4) {
+                $status = 'Selected GW';
+            } elseif ($demand->status == 5) {
+                $status = 'Confirmed GW';
+            } elseif ($demand->status == 6) {
+                $status = 'Finalized GW';
+            } elseif ($demand->status == 7) {
                 $status = 'Closed';
             } else {
                 $status = '';
             }
 
             return $status;
-            // Status >
-            // 2=>Demand Submitted
-            // 3=>Demand In Progress
-            // 4=>Demand Closed
         })
         ->addColumn('issue_date', function($demand) {
             return $demand->issue_date ? \Carbon\Carbon::parse($demand->issue_date)->format('d/m/Y') : '';

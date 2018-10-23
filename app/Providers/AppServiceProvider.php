@@ -26,8 +26,8 @@ class AppServiceProvider extends ServiceProvider
             $view->with([
                 'agent_applications'=> User::where('status', 0)->whereRoleIs('agent')->get(),
                 'all_offers' => Offer::where('status', 1)->get(),
-                'all_demands' => Offer::whereIn('status', [2, 3, 4])->get(),
-                // 'agent_demands' => Offer::whereIn('status', [2, 3, 4])->where('assigned_agent', $loggedInUserId)->get(),
+                'all_demands' => Offer::whereIn('status', [2, 3, 4, 5, 6, 7])->get(),
+                // 'agent_demands' => Offer::whereIn('status', [2, 3, 4, 5, 6, 7])->where('assigned_agent', $loggedInUserId)->get(),
             ]);
         });
     }

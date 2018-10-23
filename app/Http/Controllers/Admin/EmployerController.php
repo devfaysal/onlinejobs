@@ -71,10 +71,10 @@ class EmployerController extends Controller
             // Demand letters agent wise
             $loggedInUserId = auth()->user()->id;
 
-            $demands = Offer::whereIn('status', [2, 3, 4])->where('assigned_agent', $loggedInUserId)->get();
+            $demands = Offer::whereIn('status', [2, 3, 4, 5, 6, 7])->where('assigned_agent', $loggedInUserId)->get();
         } else {
             // all demand letters for super admin
-            $demands = Offer::whereIn('status', [2, 3, 4])->get();
+            $demands = Offer::whereIn('status', [2, 3, 4, 5, 6, 7])->get();
         }
 
         return DataTables::of($demands)
@@ -112,18 +112,20 @@ class EmployerController extends Controller
             if ($demand->status == 2) {
                 $status = 'Submitted';
             } elseif ($demand->status == 3) {
-                $status = 'In Progress';
+                $status = 'Assigned Agent';
             } elseif ($demand->status == 4) {
+                $status = 'Selected GW';
+            } elseif ($demand->status == 5) {
+                $status = 'Confirmed GW';
+            } elseif ($demand->status == 6) {
+                $status = 'Finalized GW';
+            } elseif ($demand->status == 7) {
                 $status = 'Closed';
             } else {
                 $status = '';
             }
 
             return $status;
-            // Status >
-            // 2=>Demand Submitted
-            // 3=>Demand In Progress
-            // 4=>Demand Closed
         })
         ->addColumn('assigned_agent', function($demand) {
             if ($demand->assigned_agent) {
