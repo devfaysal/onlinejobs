@@ -74,9 +74,18 @@ class EmployerProfileController extends Controller
         return view('employer.show', compact('employer','total_maids','total_workers', 'total_agents','offer_sent', 'countrys'));
     }
 
-    public function getAllDemands(){
+    public function getAllDemands()
+    {
+        if(auth()->user()->hasRole('employer'))
+        {
+            // Demand letters employer wise
+            $loggedInUserId = auth()->user()->id;
 
-        $demands = Offer::whereIn('status', [2, 3, 4])->get();
+            $demands = Offer::whereIn('status', [2, 3, 4])->where('employer_id', $loggedInUserId)->get();
+        } else {
+            // all demand letters for super admin
+            $demands = Offer::whereIn('status', [2, 3, 4])->get();
+        }
 
         return DataTables::of($demands)
         ->addColumn('action', function ($demand) {

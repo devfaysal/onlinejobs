@@ -67,7 +67,16 @@
                                 <a href="" data-toggle="dropdown">
                                     <i class="fa fa-commenting fa-2x text-danger"></i>
                                     <sup>
-                                        <span class="counter text-warning">{{count($agent_applications)+count($all_offers)+count($all_demands)}}</span>
+                                        <span class="counter text-warning">
+                                        <?php
+                                            if(Auth::user()->hasRole('agent')):
+                                                echo count($all_offers);
+                                                // echo count($all_offers)+count($agent_demands);
+                                            else:
+                                                echo count($agent_applications)+count($all_offers)+count($all_demands);
+                                            endif;
+                                        ?>
+                                        </span>
                                     </sup>
                                 </a>
                                 <div class="dropdown-menu notifications-dropdown-menu">
@@ -90,15 +99,32 @@
                                                 </a>
                                             </li>
                                         @endforeach
-                                        @foreach ($all_demands as $demand)
-                                            <li>
-                                                <a href="#" class="notification-item">
-                                                    <div class="body-col">
-                                                        <p><span class="accent">{{$demand->employer->name}} has sent a demand letter</span></p>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        @endforeach
+
+                                        <!-- Only for Super Admin -->
+                                        @if(Auth::user()->hasRole('superadministrator'))
+                                            @foreach ($all_demands as $demand)
+                                                <li>
+                                                    <a href="#" class="notification-item">
+                                                        <div class="body-col">
+                                                            <p><span class="accent">{{$demand->employer->name}} has sent a demand letter</span></p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        @endif
+
+                                        <!-- For Agent Only -->
+                                       {{--  @if(Auth::user()->hasRole('agent'))
+                                            @foreach ($agent_demands as $demand)
+                                                <li>
+                                                    <a href="#" class="notification-item">
+                                                        <div class="body-col">
+                                                            <p><span class="accent">You are assigned a demand letter.</span></p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        @endif --}}
                                     </ul>
                                     <footer>
                                         <ul>

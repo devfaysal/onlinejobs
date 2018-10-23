@@ -65,8 +65,16 @@ class EmployerController extends Controller
 
     public function getEmployersDemandData()
     {
+        if(auth()->user()->hasRole('agent'))
+        {
+            // Demand letters agent wise
+            $loggedInUserId = auth()->user()->id;
 
-        $demands = Offer::whereIn('status', [2, 3, 4])->get();
+            $demands = Offer::whereIn('status', [2, 3, 4])->where('assigned_agent', $loggedInUserId)->get();
+        } else {
+            // all demand letters for super admin
+            $demands = Offer::whereIn('status', [2, 3, 4])->get();
+        }
 
         return DataTables::of($demands)
         ->addColumn('employer_name', function($demand) {
