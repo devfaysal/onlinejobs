@@ -208,6 +208,17 @@ class EmployerProfileController extends Controller
 
     public function saveDemand(Request $request)
     {
+        /*Validation*/
+        $this->validate($request, [
+            'IssueDate' => 'date',
+            'ExpectedJoinDate' => 'date',
+        ]);
+
+        if($request->file('DemandFile')){
+            $this->validate($request, [
+                'DemandFile' => 'mimes:pdf,jpg,jpeg,png|max:5024',
+            ]);
+        }
 
         $offer = new Offer;
         $offer->employer_id = auth()->user()->id;
@@ -220,27 +231,12 @@ class EmployerProfileController extends Controller
         $offer->demand_qty = $request->DemandQuantity;
         $offer->preferred_country = $request->PreferredCountry;
 
-        // DemandFile upload
-        if($request->file('DemandFile')){
-            $this->validate($request, [
-                'file' => 'max:1024',
-            ]);
-            
+        if($request->file('DemandFile')){            
             $file_basename = explode('.',$request->file('DemandFile')->getClientOriginalName())[0];
             $file_name = $file_basename . '-' . time() . '.' . $request->file('DemandFile')->getClientOriginalExtension();
 
-            $file_path = Image::make($request->file('DemandFile')->getRealPath());
-            $file_path->stream();
-
-            //Upload image
-            Storage::disk('local')->put('public/deman_letter/'.$file_name, $file_path);
-
-            //Remove if there was any old image
-            if($offer->demand_file != ''){
-                Storage::disk('local')->delete('public/deman_letter/'.$offer->demand_file);
-            }
-
-            //add new demand_file path to database
+            $request->DemandFile->storeAs('public/deman_letter', $file_name);
+            //add new image path to database
             $offer->demand_file = $file_name;
             
         }
