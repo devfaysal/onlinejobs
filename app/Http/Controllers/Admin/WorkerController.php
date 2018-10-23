@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\User;
+use App\Applicant;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
@@ -34,7 +35,19 @@ class WorkerController extends Controller
         return DataTables::of($users)
         ->addColumn('action', function ($user) {
             //return '<a href="'.route('admin.worker.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-            return '<a target="_blank" class="btn btn-xs btn-primary" href="'.route('profile.public', $user->public_id).'">View</a>';
+
+            $string =  '<a target="_blank" class="btn btn-xs btn-primary" href="'.route('profile.public', $user->public_id).'">View</a>';
+
+            return $string;
+        })
+        ->addColumn('selectQW', function ($user) {
+            if ( ! $user->applicants()->first()['user_id'] ) {
+                $string = '<input style="width: 38px;height: 38px;vertical-align: middle;" type="checkbox" name="id[]" value="'.$user->id.'">';
+            } else {
+                $string = '';
+            }
+
+            return $string;
         })
         ->addColumn('status', function($user) {
             if($user->applicants()->first()['id']){
@@ -58,7 +71,7 @@ class WorkerController extends Controller
             $img = $user->profile->image != '' ? asset('storage/'.$user->profile->image) :  asset('images/dummy.jpg');
             return '<img src="'.$img.'" border="0" width="40" class="img-rounded" align="center" />';
         })
-        ->rawColumns(['image', 'action'])
+        ->rawColumns(['image', 'action', 'selectQW'])
         ->removeColumn('password')
         ->make(true);
     }

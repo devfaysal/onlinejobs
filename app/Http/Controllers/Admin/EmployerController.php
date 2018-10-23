@@ -6,6 +6,7 @@ use Session;
 use App\User;
 use App\Offer;
 use App\Country;
+use App\Applicant;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
@@ -128,14 +129,14 @@ class EmployerController extends Controller
             if ($demand->assigned_agent) {
                 return $demand->agent->name;
             } else {
-                return '<a class="btn btn-sm btn-warning btn-assign-agent" data-toggle="modal" emp_id="'. $demand->id .'" data-backdrop="static" data-keyboard="false" data-target="#assignDemandAgentModal" href="#">Assign</a>';
+                return '<a class="btn btn-sm btn-warning btn-assign-agent" data-toggle="modal" demandID="'. $demand->id .'" data-backdrop="static" data-keyboard="false" data-target="#assignDemandAgentModal" href="#">Assign</a>';
             }
         })
         ->addColumn('proposed_gw', function($demand) {
             // if ($demand->assigned_agent) {
             //     return $demand->agent->name;
             // } else {
-                return '<a class="btn btn-sm btn-warning" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#selectGWModal" href="#">Select GW</a>';
+                return '<a class="btn btn-sm btn-warning btn-selectGW" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#selectGWModal" href="#" demandID="'. $demand->id .'">Select GW</a>';
             // }
         })
         ->addColumn('action', function ($demand) {
@@ -149,12 +150,40 @@ class EmployerController extends Controller
 
     public function assignDemandAgent(Request $request)
     {
-        $demandUpdate = Offer::where('id', $request->Emp_Id)->first();
+        $demandUpdate = Offer::where('id', $request->demandID)->first();
         $demandUpdate->assigned_agent = $request->AgentAssign;
-        $demandUpdate->status = 3;
+        $demandUpdate->status = 3;  // assigned agent
         $demandUpdate->save();
 
         Session::flash('message', 'Deman agent assigned successfully!'); 
+        Session::flash('alert-class', 'alert-success');
+
+        return redirect('/admin/employer-demands');
+    }
+
+    public function selectGWToDemand(Request $request)
+    {
+        if(!$request->id) {
+            Session::flash('message', 'No Domestic Maid or Worker Selected!'); 
+            Session::flash('alert-class', 'alert-danger');
+
+            return redirect()->back();
+        }
+
+        // update demand
+        $demandUpdate = Offer::where('id', $request->demandID)->first();
+        $demandUpdate->status = 4;  // selected GW
+        $demandUpdate->save();
+
+        $ids = $request->id;
+        foreach($ids as $id){
+            $applicant = new Applicant;
+            $applicant->offer_id = $request->demandID;
+            $applicant->user_id = $id;
+            $applicant->save();
+        }
+
+        Session::flash('message', 'Offer sent successfully!'); 
         Session::flash('alert-class', 'alert-success');
 
         return redirect('/admin/employer-demands');
