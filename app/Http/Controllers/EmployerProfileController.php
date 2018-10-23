@@ -113,15 +113,17 @@ class EmployerProfileController extends Controller
             return "...";
         })
         ->addColumn('day_pending', function($demand) {
-            $date1 = date_create(date('Y-m-d'));
-            $date2 = date_create($demand->expexted_date);
+            // $date1 = date_create(date('Y-m-d'));
+            // $date2 = date_create($demand->expexted_date);
 
-            //difference between two dates
-            $diff = date_diff($date1,$date2);
+            // //difference between two dates
+            // $diff = date_diff($date1,$date2);
 
-            //count days
-            $diff = $diff->format("%a");
-            return $diff;
+            // //count days
+            // $diff = $diff->format("%a");
+            // return $diff;
+            
+            return "...";
         })
         ->addColumn('selected_qty', function($demand) {
             return "...";
