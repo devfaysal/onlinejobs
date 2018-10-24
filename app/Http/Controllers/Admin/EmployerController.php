@@ -86,7 +86,7 @@ class EmployerController extends Controller
         })
         ->addColumn('proposed_qty', function($demand) {
 
-            $countSelectedGW = count( $demand->applicants()->where('status', 1)->get() );
+            $countSelectedGW = count( $demand->applicants()->where('selected', 1)->get() );
 
             $string = '<span title="Proposed Date: '. (($demand->proposed_date != '') ? \Carbon\Carbon::parse($demand->proposed_date)->format('d/m/Y') : 'N/A') .'">'. $countSelectedGW .'</span>';
 
@@ -105,10 +105,10 @@ class EmployerController extends Controller
 
         })
         ->addColumn('selected_qty', function($demand) {
-            return count( $demand->applicants()->where('status', 2)->get() );
+            return count( $demand->applicants()->where('confirmed', 1)->get() );
         })
         ->addColumn('final_qty', function($demand) {
-            return "...";
+            return count( $demand->applicants()->where('finalized', 1)->get() );
         })
         ->addColumn('status', function($demand) {
             $status = '';
@@ -187,6 +187,7 @@ class EmployerController extends Controller
             $applicant = new Applicant;
             $applicant->offer_id = $request->demandID;
             $applicant->user_id = $id;
+            $applicant->selected = 1; // Proposed GW
             $applicant->status = 1; // Proposed GW
             $applicant->save();
         }
@@ -214,6 +215,7 @@ class EmployerController extends Controller
         $ids = $request->id;
         foreach($ids as $id){
             $applicantUpdate = Applicant::where('id', $request->id)->first();
+            $applicantUpdate->finalized = 1;  // finalized GW
             $applicantUpdate->status = 3;  // finalized GW
             $applicantUpdate->save();
         }

@@ -123,7 +123,7 @@ class EmployerProfileController extends Controller
         })
         ->addColumn('proposed_qty', function($demand) {
 
-            $countSelectedGW = count( $demand->applicants()->where('status', 1)->get() );
+            $countSelectedGW = count( $demand->applicants()->where('selected', 1)->get() );
 
             $string = '<span title="Proposed Date: '. (($demand->proposed_date != '') ? \Carbon\Carbon::parse($demand->proposed_date)->format('d/m/Y') : 'N/A') .'">'. $countSelectedGW .'</span>';
 
@@ -141,10 +141,10 @@ class EmployerProfileController extends Controller
             return $diff;
         })
         ->addColumn('selected_qty', function($demand) {
-            return count( $demand->applicants()->where('status', 2)->get() );
+            return count( $demand->applicants()->where('confirmed', 1)->get() );
         })
         ->addColumn('final_qty', function($demand) {
-            return "...";
+            return count( $demand->applicants()->where('finalized', 1)->get() );
         })
         ->rawColumns(['proposed_qty', 'action'])
         ->make(true);
@@ -195,7 +195,7 @@ class EmployerProfileController extends Controller
                         ->with('applicants')
                         ->where('status', 1)
                         ->whereHas('applicants', function($query) use($damand_id){
-                            $query->whereIn('status', [1, 2, 3, 4])->where('offer_id', $damand_id);
+                            $query->whereIn('status', [1, 2, 3])->where('offer_id', $damand_id);
                         })->get();
 
         // datatable return
@@ -229,8 +229,6 @@ class EmployerProfileController extends Controller
             } elseif ($status == 2) {
                 $statusLabel = 'Confirmed';
             } elseif ($status == 3) {
-                $statusLabel = 'Finalized';
-            } elseif ($status == 4) {
                 $statusLabel = 'Hired';
             } else {
                 $statusLabel = '';
@@ -275,6 +273,7 @@ class EmployerProfileController extends Controller
         $ids = $request->id;
         foreach($ids as $id){
             $applicantUpdate = Applicant::where('id', $request->id)->first();
+            $applicantUpdate->confirmed = 1;  // confirmed GW
             $applicantUpdate->status = 2;  // confirmed GW
             $applicantUpdate->save();
         }

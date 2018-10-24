@@ -17,6 +17,9 @@ class CreateApplicantsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('offer_id');
             $table->unsignedInteger('user_id');
+            $table->tinyInteger('selected')->default(0);
+            $table->tinyInteger('confirmed')->default(0);
+            $table->tinyInteger('finalized')->default(0);
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
