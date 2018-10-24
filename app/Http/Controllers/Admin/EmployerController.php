@@ -105,7 +105,7 @@ class EmployerController extends Controller
 
         })
         ->addColumn('selected_qty', function($demand) {
-            return "...";
+            return count( $demand->applicants()->where('status', 2)->get() );
         })
         ->addColumn('final_qty', function($demand) {
             return "...";

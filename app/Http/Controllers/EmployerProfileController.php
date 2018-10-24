@@ -141,7 +141,7 @@ class EmployerProfileController extends Controller
             return $diff;
         })
         ->addColumn('selected_qty', function($demand) {
-            return "...";
+            return count( $demand->applicants()->where('status', 2)->get() );
         })
         ->addColumn('final_qty', function($demand) {
             return "...";
@@ -195,7 +195,7 @@ class EmployerProfileController extends Controller
                         ->with('applicants')
                         ->where('status', 1)
                         ->whereHas('applicants', function($query) use($damand_id){
-                            $query->whereIn('status', [1, 2, 3])->where('offer_id', $damand_id)->select(['offer_id','status as app_status']);
+                            $query->whereIn('status', [1, 2, 3, 4])->where('offer_id', $damand_id);
                         })->get();
 
         // datatable return
@@ -206,6 +206,9 @@ class EmployerProfileController extends Controller
                 $string .= ' <input class="pull-right" style="width: 38px;height: 38px;vertical-align: middle;" type="checkbox" name="id[]" value="'.$data->applicants()->first()['id'].'">';
             }
 
+            // hidden input
+            $string .= '<input type="hidden" name="demandID" value="'.$data->applicants()->first()['offer_id'].'">';
+
             return $string;
         })
         ->addColumn('status', function($data) {
@@ -213,10 +216,12 @@ class EmployerProfileController extends Controller
             $statusLabel = '';
 
             if ($status == 1) {
-                $statusLabel = 'Proposed';
+                $statusLabel = 'Proposed';  // selected
             } elseif ($status == 2) {
-                $statusLabel = 'Selected';
+                $statusLabel = 'Confirmed';
             } elseif ($status == 3) {
+                $statusLabel = 'Finalized';
+            } elseif ($status == 4) {
                 $statusLabel = 'Hired';
             } else {
                 $statusLabel = '';
@@ -242,6 +247,33 @@ class EmployerProfileController extends Controller
         })
         ->rawColumns(['image', 'action'])
         ->make(true);
+    }
+
+    public function confirmGWToDemand(Request $request)
+    {
+        if(!$request->id) {
+            Session::flash('message', 'No General Worker were Selected!'); 
+            Session::flash('alert-class', 'alert-danger');
+
+            return redirect()->back();
+        }
+
+        // update demand
+        $demandUpdate = Offer::where('id', $request->demandID)->first();
+        $demandUpdate->status = 5;  // confirmed GW
+        $demandUpdate->save();
+
+        $ids = $request->id;
+        foreach($ids as $id){
+            $applicantUpdate = Applicant::where('id', $request->id)->first();
+            $applicantUpdate->status = 2;  // confirmed GW
+            $applicantUpdate->save();
+        }
+
+        Session::flash('message', 'Worker(s) confirmed successfully!'); 
+        Session::flash('alert-class', 'alert-success');
+
+        return redirect()->route('employer.show');
     }
 
     /**

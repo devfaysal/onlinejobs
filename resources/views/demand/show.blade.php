@@ -74,7 +74,7 @@
 
                     <h4 class="card-title text-center mt-3 text-uppercase">Workers Details</h4>
                     <div class="card-body">
-                        <form method="post" action="#">
+                        <form method="post" action="{{route('confirmGWToDemand')}}">
                             @csrf
                             <table id="workers-table" class="table table-condensed">
                                 <thead>
