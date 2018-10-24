@@ -74,27 +74,21 @@
                                 <table id="workers-table" class="table table-condensed">
                                     <thead>
                                         <tr>
-                                            <!-- <th>Id</th> -->
                                             <th>Image</th>
                                             <th>Name</th>
                                             <th>Passport</th>
                                             <th>Country</th>
-                                            <!-- <th>Date of Birth</th> -->
-                                            <!-- <th>Marital Status</th> -->
                                             <th>Status</th>
                                             <th></th>
-                                            <th><input onclick="return confirm('Are you sure?')" class="btn btn-success btn-sm pull-right" type="submit" value="Send Offer"></th>
+                                            <th><input onclick="return confirm('Are you sure?')" class="btn btn-success btn-sm pull-right" type="submit" value="Propose GW"></th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <!-- <th>Id</th> -->
                                             <th>Image</th>
                                             <th>Name</th>
                                             <th>Passport</th>
                                             <th>Country</th>
-                                            <!-- <th>Date of Birth</th> -->
-                                            <!-- <th>Marital Status</th> -->
                                             <th>Status</th>
                                             <th></th>
                                             <th></th>
@@ -103,32 +97,6 @@
                                 </table>
                             </form>
 
-
-
-
-                            {{--<form method="POST" action="{{ route('saveDemand') }}" aria-label="{{ __('Save Demand') }}" enctype="multipart/form-data">
-                                @csrf
-                                <div class="form-group">
-                                    <select name="AgentAssign" id="AgentAssign" class="form-control{{ $errors->has('AgentAssign') ? ' is-invalid' : '' }}">
-                                        <option value="">-- Select an Agent --</option>
-                                        @foreach ($agents as $agent)
-                                            <option value="{{$agent->id}}" {{$agent->id == old('AgentAssign') ? 'selected':''}}>{{$agent->name}}</option>
-                                        @endforeach
-                                    </select>
-
-                                    @if ($errors->has('AgentAssign'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('AgentAssign') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-        
-                                <div class="form-group mb-0 text-center">
-                                    <button type="submit" class="btn btn-warning btn-block">
-                                        {{ __('Assign') }}
-                                    </button>
-                                </div>
-                            </form>--}}
                         </div>
                     </div>
                 </div>
@@ -238,16 +206,13 @@
         serverSide: true,
         ajax: '{{route('admin.getWorkersData')}}',
         columns: [
-            // {data: 'id', name: 'id'},
             {data: 'image', name: 'image', orderable: false, searchable: false},
             {data: 'name', name: 'name'},
             {data: 'passport', name: 'passport'},
             {data: 'country', name: 'country'},
-            // {data: 'date_of_birth', name: 'date_of_birth'},
-            // {data: 'marital_status', name: 'marital_status'},
-            {data: 'status', name: 'status'},
-            {data: 'action', name: 'action', orderable: false, searchable: false},
-            {data: 'selectQW', name: 'selectQW', orderable: false, searchable: false}
+            {data: 'status', name: 'status', "className": "text-center"},
+            {data: 'action', name: 'action', orderable: false, searchable: false, "className": "text-center"},
+            {data: 'selectQW', name: 'selectQW', orderable: false, searchable: false, "className": "text-center"}
         ],
         initComplete: function () {
             this.api().columns().every(function () {

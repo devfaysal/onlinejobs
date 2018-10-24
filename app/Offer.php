@@ -17,4 +17,8 @@ class Offer extends Model
     {
         return $this->belongsTo(User::class, 'assigned_agent');
     }
+
+    public function applicants(){
+        return $this->hasMany(Applicant::class);
+    }
 }

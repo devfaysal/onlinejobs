@@ -29,6 +29,7 @@ class CreateOffersTable extends Migration
             $table->string('demand_file', 200)->nullable();
             $table->tinyInteger('status')->default(1);
             $table->unsignedInteger('assigned_agent')->nullable();
+            $table->date('proposed_date')->nullable();
             $table->timestamps();
 
             $table->foreign('employer_id')->references('id')->on('users');

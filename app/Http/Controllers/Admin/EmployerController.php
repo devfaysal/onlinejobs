@@ -85,20 +85,24 @@ class EmployerController extends Controller
             return $demand->expexted_date ? \Carbon\Carbon::parse($demand->expexted_date)->format('d/m/Y') : '';
         })
         ->addColumn('proposed_qty', function($demand) {
-            return "...";
+
+            $countSelectedGW = count( $demand->applicants()->where('status', 1)->get() );
+
+            $string = '<span title="Proposed Date: '. (($demand->proposed_date != '') ? \Carbon\Carbon::parse($demand->proposed_date)->format('d/m/Y') : 'N/A') .'">'. $countSelectedGW .'</span>';
+
+            return $string;
         })
         ->addColumn('day_pending', function($demand) {
-            // $date1 = date_create(date('Y-m-d'));
-            // $date2 = date_create($demand->expexted_date);
+            $date1 = date_create(date('Y-m-d'));
+            $date2 = date_create($demand->proposed_date);
 
-            // //difference between two dates
-            // $diff = date_diff($date1,$date2);
+            //difference between two dates
+            $diff = date_diff($date1, $date2);
 
-            // //count days
-            // $diff = $diff->format("%a");
-            // return $diff;
-            
-            return "...";
+            //count days
+            $diff = $diff->format("%a");
+            return $diff;
+
         })
         ->addColumn('selected_qty', function($demand) {
             return "...";
@@ -146,7 +150,7 @@ class EmployerController extends Controller
 
             return $string;
         })
-        ->rawColumns(['assigned_agent', 'proposed_gw', 'action'])
+        ->rawColumns(['proposed_qty', 'assigned_agent', 'proposed_gw', 'action'])
         ->make(true);
     }
 
@@ -175,6 +179,7 @@ class EmployerController extends Controller
         // update demand
         $demandUpdate = Offer::where('id', $request->demandID)->first();
         $demandUpdate->status = 4;  // selected GW
+        $demandUpdate->proposed_date = date('Y-m-d');  // selected GW
         $demandUpdate->save();
 
         $ids = $request->id;
@@ -182,6 +187,7 @@ class EmployerController extends Controller
             $applicant = new Applicant;
             $applicant->offer_id = $request->demandID;
             $applicant->user_id = $id;
+            $applicant->status = 1; // Proposed GW
             $applicant->save();
         }
 
