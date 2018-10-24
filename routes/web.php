@@ -43,6 +43,7 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
     Route::get('/getEmployersDemandData', 'Admin\EmployerController@getEmployersDemandData')->name('getEmployersDemandData');
     Route::post('/assignDemandAgent', 'Admin\EmployerController@assignDemandAgent')->name('assignDemandAgent');
     Route::post('/selectGWToDemand', 'Admin\EmployerController@selectGWToDemand')->name('selectGWToDemand');
+    Route::post('/finalizeGWToDemand', 'Admin\EmployerController@finalizeGWToDemand')->name('finalizeGWToDemand');
 
     /*Agent*/
     Route::get('/agent/approve/{id}', 'Admin\AgentController@approve')->name('agent.approve');

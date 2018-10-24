@@ -74,7 +74,12 @@
 
                     <h4 class="card-title text-center mt-3 text-uppercase">Workers Details</h4>
                     <div class="card-body">
+
+                    @if(Auth::user()->hasRole('agent') && Auth::user()->status == 1)
+                        <form method="post" action="{{route('admin.finalizeGWToDemand')}}">
+                    @else
                         <form method="post" action="{{route('confirmGWToDemand')}}">
+                    @endif;
                             @csrf
                             <table id="workers-table" class="table table-condensed">
                                 <thead>
@@ -87,7 +92,11 @@
                                         <th>Date of Birth</th>
                                         <th>Marital Status</th>
                                         <th>Status</th>
-                                        <th><input onclick="return confirm('Are you sure?')" class="btn btn-success btn-sm pull-right" type="submit" value="Confirm"></th>
+                                        @if(Auth::user()->hasRole('agent') && Auth::user()->status == 1)
+                                            <th><input onclick="return confirm('Are you sure?')" class="btn btn-success btn-sm pull-right" type="submit" value="Finalize"></th>
+                                        @else
+                                            <th><input onclick="return confirm('Are you sure?')" class="btn btn-success btn-sm pull-right" type="submit" value="Confirm"></th>
+                                        @endif;
                                     </tr>
                                 </thead>
                                 <tfoot>

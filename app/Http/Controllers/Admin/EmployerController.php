@@ -197,6 +197,33 @@ class EmployerController extends Controller
         return redirect('/admin/employer-demands');
     }
 
+    public function finalizeGWToDemand(Request $request)
+    {
+        if(!$request->id) {
+            Session::flash('message', 'No General Worker were Selected!'); 
+            Session::flash('alert-class', 'alert-danger');
+
+            return redirect()->back();
+        }
+
+        // update demand
+        $demandUpdate = Offer::where('id', $request->demandID)->first();
+        $demandUpdate->status = 6;  // finalized GW
+        $demandUpdate->save();
+
+        $ids = $request->id;
+        foreach($ids as $id){
+            $applicantUpdate = Applicant::where('id', $request->id)->first();
+            $applicantUpdate->status = 3;  // finalized GW
+            $applicantUpdate->save();
+        }
+
+        Session::flash('message', 'Worker(s) finalized successfully!'); 
+        Session::flash('alert-class', 'alert-success');
+
+        return redirect('/admin/employer-demands');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
