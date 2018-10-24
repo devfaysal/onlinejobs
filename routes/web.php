@@ -42,7 +42,7 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
     Route::get('/employer-demands', 'Admin\EmployerController@employerDemands')->name('employerDemands');
     Route::get('/getEmployersDemandData', 'Admin\EmployerController@getEmployersDemandData')->name('getEmployersDemandData');
     Route::post('/assignDemandAgent', 'Admin\EmployerController@assignDemandAgent')->name('assignDemandAgent');
-    Route::post('/selectGWToDemand', 'Admin\EmployerController@selectGWToDemand')->name('selectGWToDemand');
+    Route::post('/proposeGWToDemand', 'Admin\EmployerController@proposeGWToDemand')->name('proposeGWToDemand');
     Route::post('/finalizeGWToDemand', 'Admin\EmployerController@finalizeGWToDemand')->name('finalizeGWToDemand');
 
     /*Agent*/
@@ -122,7 +122,7 @@ Route::prefix('employer')->group(function(){
     Route::post('/saveDemand', 'EmployerProfileController@saveDemand')->name('saveDemand');
     Route::get('/getAllDemands', 'EmployerProfileController@getAllDemands')->name('getAllDemands');
     Route::get('/demand/{id}', 'EmployerProfileController@viewDemand')->name('demand');
-    Route::get('/selectedGW/{damand_id}', 'EmployerProfileController@selectedGW')->name('selectedGW');
+    Route::get('/proposedGW/{damand_id}', 'EmployerProfileController@proposedGW')->name('proposedGW');
     Route::post('/confirmGWToDemand', 'EmployerProfileController@confirmGWToDemand')->name('confirmGWToDemand');
 });
 

@@ -86,25 +86,34 @@ class EmployerController extends Controller
         })
         ->addColumn('proposed_qty', function($demand) {
 
-            $countSelectedGW = count( $demand->applicants()->where('selected', 1)->get() );
+            $countProposedGW = count( $demand->applicants()->where('proposed', 1)->get() );
 
-            $string = '<span title="Proposed Date: '. (($demand->proposed_date != '') ? \Carbon\Carbon::parse($demand->proposed_date)->format('d/m/Y') : 'N/A') .'">'. $countSelectedGW .'</span>';
+            $string = '<span title="Proposed Date: '. (($demand->proposed_date != '') ? \Carbon\Carbon::parse($demand->proposed_date)->format('d/m/Y') : 'N/A') .'">'. $countProposedGW .'</span>';
 
             return $string;
         })
         ->addColumn('day_pending', function($demand) {
-            $date1 = date_create(date('Y-m-d'));
-            $date2 = date_create($demand->proposed_date);
 
-            //difference between two dates
-            $diff = date_diff($date1, $date2);
+            if ($demand->proposed_date)
+            {
+                $date1 = date_create(date('Y-m-d'));
+                
+                $proposed_date = strtotime($demand->proposed_date);
+                $proposed_date7 = strtotime("+6 day", $proposed_date);
+                $date2 = date_create(date('Y-m-d', $proposed_date7));
 
-            //count days
-            $diff = $diff->format("%a");
-            return $diff;
+                //difference between two dates
+                $diff = date_diff($date1,$date2);
+
+                //count days
+                $diff = $diff->format("%a");
+                return $diff;
+            } else {
+                return '...';
+            }
 
         })
-        ->addColumn('selected_qty', function($demand) {
+        ->addColumn('confirmed_qty', function($demand) {
             return count( $demand->applicants()->where('confirmed', 1)->get() );
         })
         ->addColumn('final_qty', function($demand) {
@@ -118,7 +127,7 @@ class EmployerController extends Controller
             } elseif ($demand->status == 3) {
                 $status = 'Assigned Agent';
             } elseif ($demand->status == 4) {
-                $status = 'Selected GW';
+                $status = 'Proposed GW';
             } elseif ($demand->status == 5) {
                 $status = 'Confirmed GW';
             } elseif ($demand->status == 6) {
@@ -167,10 +176,10 @@ class EmployerController extends Controller
         return redirect('/admin/employer-demands');
     }
 
-    public function selectGWToDemand(Request $request)
+    public function proposeGWToDemand(Request $request)
     {
         if(!$request->id) {
-            Session::flash('message', 'No Domestic Maid or Worker Selected!'); 
+            Session::flash('message', 'No General Worker Selected!'); 
             Session::flash('alert-class', 'alert-danger');
 
             return redirect()->back();
@@ -178,8 +187,8 @@ class EmployerController extends Controller
 
         // update demand
         $demandUpdate = Offer::where('id', $request->demandID)->first();
-        $demandUpdate->status = 4;  // selected GW
-        $demandUpdate->proposed_date = date('Y-m-d');  // selected GW
+        $demandUpdate->status = 4;  // proposed GW
+        $demandUpdate->proposed_date = date('Y-m-d');  // proposed GW
         $demandUpdate->save();
 
         $ids = $request->id;
@@ -187,12 +196,12 @@ class EmployerController extends Controller
             $applicant = new Applicant;
             $applicant->offer_id = $request->demandID;
             $applicant->user_id = $id;
-            $applicant->selected = 1; // Proposed GW
+            $applicant->proposed = 1; // Proposed GW
             $applicant->status = 1; // Proposed GW
             $applicant->save();
         }
 
-        Session::flash('message', 'Offer sent successfully!'); 
+        Session::flash('message', 'Proposed GW successfully!'); 
         Session::flash('alert-class', 'alert-success');
 
         return redirect('/admin/employer-demands');
@@ -214,7 +223,7 @@ class EmployerController extends Controller
 
         $ids = $request->id;
         foreach($ids as $id){
-            $applicantUpdate = Applicant::where('id', $request->id)->first();
+            $applicantUpdate = Applicant::where('id', $id)->first();
             $applicantUpdate->finalized = 1;  // finalized GW
             $applicantUpdate->status = 3;  // finalized GW
             $applicantUpdate->save();

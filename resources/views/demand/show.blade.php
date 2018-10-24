@@ -130,7 +130,7 @@
     $('#workers-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{{route('selectedGW', ['damand_id' => $offer->id])}}',
+        ajax: '{{route('proposedGW', ['damand_id' => $offer->id])}}',
         columns: [
             {data: 'id', name: 'id'},
             {data: 'image', name: 'image', orderable: false, searchable: false},

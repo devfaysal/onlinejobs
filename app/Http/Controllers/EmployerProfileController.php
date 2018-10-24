@@ -102,7 +102,7 @@ class EmployerProfileController extends Controller
             } elseif ($demand->status == 3) {
                 $status = 'Assigned Agent';
             } elseif ($demand->status == 4) {
-                $status = 'Selected GW';
+                $status = 'Proposed GW';
             } elseif ($demand->status == 5) {
                 $status = 'Confirmed GW';
             } elseif ($demand->status == 6) {
@@ -123,24 +123,33 @@ class EmployerProfileController extends Controller
         })
         ->addColumn('proposed_qty', function($demand) {
 
-            $countSelectedGW = count( $demand->applicants()->where('selected', 1)->get() );
+            $countProposedGW = count( $demand->applicants()->where('proposed', 1)->get() );
 
-            $string = '<span title="Proposed Date: '. (($demand->proposed_date != '') ? \Carbon\Carbon::parse($demand->proposed_date)->format('d/m/Y') : 'N/A') .'">'. $countSelectedGW .'</span>';
+            $string = '<span title="Proposed Date: '. (($demand->proposed_date != '') ? \Carbon\Carbon::parse($demand->proposed_date)->format('d/m/Y') : 'N/A') .'">'. $countProposedGW .'</span>';
 
             return $string;
         })
         ->addColumn('day_pending', function($demand) {
-            $date1 = date_create(date('Y-m-d'));
-            $date2 = date_create($demand->proposed_date);
 
-            //difference between two dates
-            $diff = date_diff($date1,$date2);
+            if ($demand->proposed_date)
+            {
+                $date1 = date_create(date('Y-m-d'));
+                
+                $proposed_date = strtotime($demand->proposed_date);
+                $proposed_date7 = strtotime("+6 day", $proposed_date);
+                $date2 = date_create(date('Y-m-d', $proposed_date7));
 
-            //count days
-            $diff = $diff->format("%a");
-            return $diff;
+                //difference between two dates
+                $diff = date_diff($date1,$date2);
+
+                //count days
+                $diff = $diff->format("%a");
+                return $diff;
+            } else {
+                return '...';
+            }
         })
-        ->addColumn('selected_qty', function($demand) {
+        ->addColumn('confirmed_qty', function($demand) {
             return count( $demand->applicants()->where('confirmed', 1)->get() );
         })
         ->addColumn('final_qty', function($demand) {
@@ -189,7 +198,7 @@ class EmployerProfileController extends Controller
         ->make(true);
     }
 
-    public function selectedGW($damand_id){
+    public function proposedGW($damand_id){
 
         $users = User::whereRoleIs('worker')
                         ->with('applicants')
@@ -225,7 +234,7 @@ class EmployerProfileController extends Controller
             $statusLabel = '';
 
             if ($status == 1) {
-                $statusLabel = 'Proposed';  // selected
+                $statusLabel = 'Proposed';
             } elseif ($status == 2) {
                 $statusLabel = 'Confirmed';
             } elseif ($status == 3) {
@@ -272,7 +281,7 @@ class EmployerProfileController extends Controller
 
         $ids = $request->id;
         foreach($ids as $id){
-            $applicantUpdate = Applicant::where('id', $request->id)->first();
+            $applicantUpdate = Applicant::where('id', $id)->first();
             $applicantUpdate->confirmed = 1;  // confirmed GW
             $applicantUpdate->status = 2;  // confirmed GW
             $applicantUpdate->save();
@@ -366,7 +375,7 @@ class EmployerProfileController extends Controller
     public function sendOffer(Request $request)
     {
         if(!$request->id){
-            Session::flash('message', 'No Domestic Maid or Worker Selected!'); 
+            Session::flash('message', 'No Domestic Maid Selected!'); 
             Session::flash('alert-class', 'alert-danger');
 
             return redirect()->back();
