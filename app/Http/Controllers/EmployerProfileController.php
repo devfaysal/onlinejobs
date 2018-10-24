@@ -74,9 +74,18 @@ class EmployerProfileController extends Controller
         return view('employer.show', compact('employer','total_maids','total_workers', 'total_agents','offer_sent', 'countrys'));
     }
 
-    public function getAllDemands(){
+    public function getAllDemands()
+    {
+        if(auth()->user()->hasRole('employer'))
+        {
+            // Demand letters employer wise
+            $loggedInUserId = auth()->user()->id;
 
-        $demands = Offer::whereIn('status', [2, 3, 4])->get();
+            $demands = Offer::whereIn('status', [2, 3, 4, 5, 6, 7])->where('employer_id', $loggedInUserId)->get();
+        } else {
+            // all demand letters for super admin
+            $demands = Offer::whereIn('status', [2, 3, 4, 5, 6, 7])->get();
+        }
 
         return DataTables::of($demands)
         ->addColumn('action', function ($demand) {
@@ -90,18 +99,20 @@ class EmployerProfileController extends Controller
             if ($demand->status == 2) {
                 $status = 'Submitted';
             } elseif ($demand->status == 3) {
-                $status = 'In Progress';
+                $status = 'Assigned Agent';
             } elseif ($demand->status == 4) {
+                $status = 'Selected GW';
+            } elseif ($demand->status == 5) {
+                $status = 'Confirmed GW';
+            } elseif ($demand->status == 6) {
+                $status = 'Finalized GW';
+            } elseif ($demand->status == 7) {
                 $status = 'Closed';
             } else {
                 $status = '';
             }
 
             return $status;
-            // Status >
-            // 2=>Demand Submitted
-            // 3=>Demand In Progress
-            // 4=>Demand Closed
         })
         ->addColumn('issue_date', function($demand) {
             return $demand->issue_date ? \Carbon\Carbon::parse($demand->issue_date)->format('d/m/Y') : '';
@@ -110,11 +121,16 @@ class EmployerProfileController extends Controller
             return $demand->expexted_date ? \Carbon\Carbon::parse($demand->expexted_date)->format('d/m/Y') : '';
         })
         ->addColumn('proposed_qty', function($demand) {
-            return "...";
+
+            $countSelectedGW = count( $demand->applicants()->where('status', 1)->get() );
+
+            $string = '<span title="Proposed Date: '. (($demand->proposed_date != '') ? \Carbon\Carbon::parse($demand->proposed_date)->format('d/m/Y') : 'N/A') .'">'. $countSelectedGW .'</span>';
+
+            return $string;
         })
         ->addColumn('day_pending', function($demand) {
             $date1 = date_create(date('Y-m-d'));
-            $date2 = date_create($demand->expexted_date);
+            $date2 = date_create($demand->proposed_date);
 
             //difference between two dates
             $diff = date_diff($date1,$date2);
@@ -129,7 +145,7 @@ class EmployerProfileController extends Controller
         ->addColumn('final_qty', function($demand) {
             return "...";
         })
-        ->rawColumns(['action'])
+        ->rawColumns(['proposed_qty', 'action'])
         ->make(true);
     }
 
@@ -208,6 +224,17 @@ class EmployerProfileController extends Controller
 
     public function saveDemand(Request $request)
     {
+        /*Validation*/
+        $this->validate($request, [
+            'IssueDate' => 'date',
+            'ExpectedJoinDate' => 'date',
+        ]);
+
+        if($request->file('DemandFile')){
+            $this->validate($request, [
+                'DemandFile' => 'mimes:pdf,jpg,jpeg,png|max:5024',
+            ]);
+        }
 
         $offer = new Offer;
         $offer->employer_id = auth()->user()->id;
@@ -220,27 +247,12 @@ class EmployerProfileController extends Controller
         $offer->demand_qty = $request->DemandQuantity;
         $offer->preferred_country = $request->PreferredCountry;
 
-        // DemandFile upload
-        if($request->file('DemandFile')){
-            $this->validate($request, [
-                'file' => 'max:1024',
-            ]);
-            
+        if($request->file('DemandFile')){            
             $file_basename = explode('.',$request->file('DemandFile')->getClientOriginalName())[0];
             $file_name = $file_basename . '-' . time() . '.' . $request->file('DemandFile')->getClientOriginalExtension();
 
-            $file_path = Image::make($request->file('DemandFile')->getRealPath());
-            $file_path->stream();
-
-            //Upload image
-            Storage::disk('local')->put('public/deman_letter/'.$file_name, $file_path);
-
-            //Remove if there was any old image
-            if($offer->demand_file != ''){
-                Storage::disk('local')->delete('public/deman_letter/'.$offer->demand_file);
-            }
-
-            //add new demand_file path to database
+            $request->DemandFile->storeAs('public/demand_letter', $file_name);
+            //add new image path to database
             $offer->demand_file = $file_name;
             
         }

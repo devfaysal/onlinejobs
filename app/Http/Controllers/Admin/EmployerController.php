@@ -6,6 +6,7 @@ use Session;
 use App\User;
 use App\Offer;
 use App\Country;
+use App\Applicant;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
@@ -65,8 +66,16 @@ class EmployerController extends Controller
 
     public function getEmployersDemandData()
     {
+        if(auth()->user()->hasRole('agent'))
+        {
+            // Demand letters agent wise
+            $loggedInUserId = auth()->user()->id;
 
-        $demands = Offer::whereIn('status', [2, 3, 4])->get();
+            $demands = Offer::whereIn('status', [2, 3, 4, 5, 6, 7])->where('assigned_agent', $loggedInUserId)->get();
+        } else {
+            // all demand letters for super admin
+            $demands = Offer::whereIn('status', [2, 3, 4, 5, 6, 7])->get();
+        }
 
         return DataTables::of($demands)
         ->addColumn('employer_name', function($demand) {
@@ -76,18 +85,24 @@ class EmployerController extends Controller
             return $demand->expexted_date ? \Carbon\Carbon::parse($demand->expexted_date)->format('d/m/Y') : '';
         })
         ->addColumn('proposed_qty', function($demand) {
-            return "...";
+
+            $countSelectedGW = count( $demand->applicants()->where('status', 1)->get() );
+
+            $string = '<span title="Proposed Date: '. (($demand->proposed_date != '') ? \Carbon\Carbon::parse($demand->proposed_date)->format('d/m/Y') : 'N/A') .'">'. $countSelectedGW .'</span>';
+
+            return $string;
         })
         ->addColumn('day_pending', function($demand) {
             $date1 = date_create(date('Y-m-d'));
-            $date2 = date_create($demand->expexted_date);
+            $date2 = date_create($demand->proposed_date);
 
             //difference between two dates
-            $diff = date_diff($date1,$date2);
+            $diff = date_diff($date1, $date2);
 
             //count days
             $diff = $diff->format("%a");
             return $diff;
+
         })
         ->addColumn('selected_qty', function($demand) {
             return "...";
@@ -101,31 +116,33 @@ class EmployerController extends Controller
             if ($demand->status == 2) {
                 $status = 'Submitted';
             } elseif ($demand->status == 3) {
-                $status = 'In Progress';
+                $status = 'Assigned Agent';
             } elseif ($demand->status == 4) {
+                $status = 'Selected GW';
+            } elseif ($demand->status == 5) {
+                $status = 'Confirmed GW';
+            } elseif ($demand->status == 6) {
+                $status = 'Finalized GW';
+            } elseif ($demand->status == 7) {
                 $status = 'Closed';
             } else {
                 $status = '';
             }
 
             return $status;
-            // Status >
-            // 2=>Demand Submitted
-            // 3=>Demand In Progress
-            // 4=>Demand Closed
         })
         ->addColumn('assigned_agent', function($demand) {
             if ($demand->assigned_agent) {
                 return $demand->agent->name;
             } else {
-                return '<a class="btn btn-sm btn-warning btn-assign-agent" data-toggle="modal" emp_id="'. $demand->id .'" data-backdrop="static" data-keyboard="false" data-target="#assignDemandAgentModal" href="#">Assign</a>';
+                return '<a class="btn btn-sm btn-warning btn-assign-agent" data-toggle="modal" demandID="'. $demand->id .'" data-backdrop="static" data-keyboard="false" data-target="#assignDemandAgentModal" href="#">Assign</a>';
             }
         })
         ->addColumn('proposed_gw', function($demand) {
             // if ($demand->assigned_agent) {
             //     return $demand->agent->name;
             // } else {
-                return '<a class="btn btn-sm btn-warning" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#selectGWModal" href="#">Select GW</a>';
+                return '<a class="btn btn-sm btn-warning btn-selectGW" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#selectGWModal" href="#" demandID="'. $demand->id .'">Select GW</a>';
             // }
         })
         ->addColumn('action', function ($demand) {
@@ -133,18 +150,48 @@ class EmployerController extends Controller
 
             return $string;
         })
-        ->rawColumns(['assigned_agent', 'proposed_gw', 'action'])
+        ->rawColumns(['proposed_qty', 'assigned_agent', 'proposed_gw', 'action'])
         ->make(true);
     }
 
     public function assignDemandAgent(Request $request)
     {
-        $demandUpdate = Offer::where('id', $request->Emp_Id)->first();
+        $demandUpdate = Offer::where('id', $request->demandID)->first();
         $demandUpdate->assigned_agent = $request->AgentAssign;
-        $demandUpdate->status = 3;
+        $demandUpdate->status = 3;  // assigned agent
         $demandUpdate->save();
 
         Session::flash('message', 'Deman agent assigned successfully!'); 
+        Session::flash('alert-class', 'alert-success');
+
+        return redirect('/admin/employer-demands');
+    }
+
+    public function selectGWToDemand(Request $request)
+    {
+        if(!$request->id) {
+            Session::flash('message', 'No Domestic Maid or Worker Selected!'); 
+            Session::flash('alert-class', 'alert-danger');
+
+            return redirect()->back();
+        }
+
+        // update demand
+        $demandUpdate = Offer::where('id', $request->demandID)->first();
+        $demandUpdate->status = 4;  // selected GW
+        $demandUpdate->proposed_date = date('Y-m-d');  // selected GW
+        $demandUpdate->save();
+
+        $ids = $request->id;
+        foreach($ids as $id){
+            $applicant = new Applicant;
+            $applicant->offer_id = $request->demandID;
+            $applicant->user_id = $id;
+            $applicant->status = 1; // Proposed GW
+            $applicant->save();
+        }
+
+        Session::flash('message', 'Offer sent successfully!'); 
         Session::flash('alert-class', 'alert-success');
 
         return redirect('/admin/employer-demands');

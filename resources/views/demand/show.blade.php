@@ -54,9 +54,20 @@
                                 <th>Preferred Country</th>
                                 <th>:</th>
                                 <td>{{$offer->preferred_country_data->name ?? 'N/A'}}</td>
+                                <th>Attachment</th>
+                                <th>:</th>
+                                <td>
+                                    @if ($offer->demand_file != '')
+                                        <a href="{{ asset('storage/app/public/demand_letter/' . $offer->demand_file) }}" target="_blank">{{ $offer->demand_file }}</a>
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr>
                                 <th>Comments</th>
                                 <th>:</th>
-                                <td>{{$offer->comments ?? 'N/A'}}</td>
+                                <td colspan="4">{{$offer->comments ?? 'N/A'}}</td>
                             </tr>
                         </table>
                     </div><!--/.panel-body-->

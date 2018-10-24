@@ -186,13 +186,9 @@
                                                 @endif
                                             </div>
                                             <div class="row">
-                                                <div class="form-group col-md-8">
+                                                <div class="form-group col-md-12">
                                                     <input onchange="previewFile('#image_preview', '#image')" id="DemandFile" type="file" class="form-control-file{{ $errors->has('DemandFile') ? ' is-invalid' : '' }}" name="DemandFile" title="Upload demand letter">
-                                                    <p class="text-left small">To get best view, upload a square size image and must be less than 1MB</p>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label for="DemandFile">{{ __('Preview') }}</label>
-                                                    <img id="image_preview" style="width: 100px;" src="" class="img-thumbnail" height="">
+                                                    <p class="text-left small">Supported file format PDF, JPG, JPEG and PNG. Maximum file size: 1MB</p>
                                                 </div>
 
                                                 @if ($errors->has('DemandFile'))
@@ -265,15 +261,15 @@
         serverSide: true,
         ajax: '{{route('getAllDemands')}}',
         columns: [
-            {data: 'demand_letter_no', name: 'demand_letter_no', "className": "text-center"},
+            {data: 'demand_letter_no', name: 'demand_letter_no', "className": "text-left"},
             {data: 'company_name', name: 'company_name'},
             {data: 'issue_date', name: 'issue_date', "className": "text-center"},
             {data: 'expexted_date', name: 'expexted_date', "className": "text-center"},
-            {data: 'demand_qty', name: 'demand_qty', "className": "text-right"},
-            {data: 'proposed_qty', name: 'proposed_qty', "className": "text-right"},
-            {data: 'day_pending', name: 'day_pending', "className": "text-right"},
-            {data: 'selected_qty', name: 'selected_qty', "className": "text-right"},
-            {data: 'final_qty', name: 'final_qty', "className": "text-right"},
+            {data: 'demand_qty', name: 'demand_qty', "className": "text-center"},
+            {data: 'proposed_qty', name: 'proposed_qty', "className": "text-center"},
+            {data: 'day_pending', name: 'day_pending', "className": "text-center"},
+            {data: 'selected_qty', name: 'selected_qty', "className": "text-center"},
+            {data: 'final_qty', name: 'final_qty', "className": "text-center"},
             {data: 'status', name: 'status', "className": "text-center"},
             {data: 'action', name: 'action', orderable: false, searchable: false, "className": "text-center"}
         ],
@@ -325,22 +321,6 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 <script>
-    function previewFile(preview, source) {
-        var preview = document.querySelector(preview);
-        var file    = document.querySelector(source).files[0];
-        var reader  = new FileReader();
-
-        reader.onloadend = function () {
-            preview.src = reader.result;
-        }
-
-        if (file) {
-            reader.readAsDataURL(file);
-        } else {
-            preview.src = "";
-        }
-        console.log(preview.src);
-    }
 
     var ctx = document.getElementById("myChart").getContext('2d');
     var myChart = new Chart(ctx, {

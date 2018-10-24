@@ -19,6 +19,9 @@ Auth::routes();
 Route::get('/admin/login', function(){
     return view('admin.login');
 });
+Route::get('/logout', function(){
+    return view('admin.login');
+});
 Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadministrator|agent')->group(function () {
     Route::get('/', function(){
         return view('admin.index');
@@ -39,6 +42,7 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
     Route::get('/employer-demands', 'Admin\EmployerController@employerDemands')->name('employerDemands');
     Route::get('/getEmployersDemandData', 'Admin\EmployerController@getEmployersDemandData')->name('getEmployersDemandData');
     Route::post('/assignDemandAgent', 'Admin\EmployerController@assignDemandAgent')->name('assignDemandAgent');
+    Route::post('/selectGWToDemand', 'Admin\EmployerController@selectGWToDemand')->name('selectGWToDemand');
 
     /*Agent*/
     Route::get('/agent/approve/{id}', 'Admin\AgentController@approve')->name('agent.approve');
