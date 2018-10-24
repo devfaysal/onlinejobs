@@ -121,5 +121,6 @@ Route::prefix('employer')->group(function(){
     Route::post('/saveDemand', 'EmployerProfileController@saveDemand')->name('saveDemand');
     Route::get('/getAllDemands', 'EmployerProfileController@getAllDemands')->name('getAllDemands');
     Route::get('/demand/{id}', 'EmployerProfileController@viewDemand')->name('demand');
+    Route::get('/selectedGW/{damand_id}', 'EmployerProfileController@selectedGW')->name('selectedGW');
 });
 

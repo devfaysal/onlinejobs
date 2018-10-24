@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use App\EmployerProfile;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\DB;
 
 class EmployerProfileController extends Controller
 {
@@ -182,6 +183,61 @@ class EmployerProfileController extends Controller
         })
         ->addColumn('image', function($user) {
             $img = $user->profile->image != '' ? asset('storage/'.$user->profile->image) :  asset('images/dummy.jpg');
+            return '<img src="'.$img.'" border="0" width="40" class="img-rounded" align="center" />';
+        })
+        ->rawColumns(['image', 'action'])
+        ->make(true);
+    }
+
+    public function selectedGW($damand_id){
+
+        $users = User::whereRoleIs('worker')
+                        ->with('applicants')
+                        ->where('status', 1)
+                        ->whereHas('applicants', function($query) use($damand_id){
+                            $query->whereIn('status', [1, 2, 3])->where('offer_id', $damand_id)->select(['offer_id','status as app_status']);
+                        })->get();
+
+        // datatable return
+        return DataTables::of($users)
+        ->addColumn('action', function ($data) {
+            $string =  '<a class="btn btn-xs btn-primary" href="'.route('profile.public', $data->public_id).'">View</a>';
+            if ( $data->applicants()->first()['status'] == 1 ) {
+                $string .= ' <input class="pull-right" style="width: 38px;height: 38px;vertical-align: middle;" type="checkbox" name="id[]" value="'.$data->applicants()->first()['id'].'">';
+            }
+
+            return $string;
+        })
+        ->addColumn('status', function($data) {
+            $status = $data->applicants()->first()['status'];
+            $statusLabel = '';
+
+            if ($status == 1) {
+                $statusLabel = 'Proposed';
+            } elseif ($status == 2) {
+                $statusLabel = 'Selected';
+            } elseif ($status == 3) {
+                $statusLabel = 'Hired';
+            } else {
+                $statusLabel = '';
+            }
+
+            return $statusLabel;
+        })
+        ->addColumn('country', function($data) {
+            return $data->profile->nationality_data['name'];
+        })
+        ->addColumn('date_of_birth', function($data) {
+            return $data->profile->date_of_birth ? \Carbon\Carbon::parse($data->profile->date_of_birth)->format('d/m/Y') : '';
+        })
+        ->addColumn('passport', function($data) {
+            return $data->profile->passport_number;
+        })
+        ->addColumn('marital_status', function($data) {
+            return $data->profile->marital_status_data->name;
+        })
+        ->addColumn('image', function($data) {
+            $img = $data->profile->image != '' ? asset('storage/'.$data->profile->image) :  asset('images/dummy.jpg');
             return '<img src="'.$img.'" border="0" width="40" class="img-rounded" align="center" />';
         })
         ->rawColumns(['image', 'action'])
