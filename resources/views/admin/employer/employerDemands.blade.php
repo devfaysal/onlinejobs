@@ -13,7 +13,7 @@
                     <th title="Demand Quantity">D. Qty</th>
                     <th title="Proposed Quantity">Proposed Qty</th>
                     <th title="Day Pending">Day Pending</th>
-                    <th title="Selected Quantity">Selected Qty</th>
+                    <th title="Confirmed Quantity">Confirmed Qty</th>
 
                     @if(Auth::user()->hasRole('agent') && Auth::user()->status == 1)
                         <th title="Hired Quantity">Hired Qty</th>
@@ -35,7 +35,7 @@
                     <th title="Demand Quantity">D. Qty</th>
                     <th title="Proposed Quantity">Proposed Qty</th>
                     <th title="Day Pending">Day Pending</th>
-                    <th title="Selected Quantity">Selected Qty</th>
+                    <th title="Confirmed Quantity">Confirmed Qty</th>
 
                     @if(Auth::user()->hasRole('agent') && Auth::user()->status == 1)
                         <th title="Hired Quantity">Hired Qty</th>
@@ -67,7 +67,7 @@
                     <div class="row justify-content-md-center">
                         <div class="col-md-12">
 
-                            <form method="post" action="{{route('admin.selectGWToDemand')}}">
+                            <form method="post" action="{{route('admin.proposeGWToDemand')}}">
                             @csrf
 
                                 <input type="hidden" id="demandID" name="demandID" value="">
@@ -172,7 +172,7 @@
             {data: 'demand_qty', name: 'demand_qty', "className": "text-center"},
             {data: 'proposed_qty', name: 'proposed_qty', "className": "text-center"},
             {data: 'day_pending', name: 'day_pending', "className": "text-center"},
-            {data: 'selected_qty', name: 'selected_qty', "className": "text-center"},
+            {data: 'confirmed_qty', name: 'confirmed_qty', "className": "text-center"},
             {data: 'final_qty', name: 'final_qty', "className": "text-center"},
             {data: 'status', name: 'status', "className": "text-center"},
 

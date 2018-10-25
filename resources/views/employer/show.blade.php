@@ -56,7 +56,7 @@
                                     <th title="Demand Quantity">D. Qty</th>
                                     <th title="Proposed Quantity">Proposed Qty</th>
                                     <th title="Day Pending">Day Pending</th>
-                                    <th title="Selected Quantity">Selected Qty</th>
+                                    <th title="Confirmed Quantity">Confirmed Qty</th>
                                     <th title="Final Quantity">Final Qty</th>
                                     <th title="Status">Status</th>
                                     <th title=""></th>
@@ -71,7 +71,7 @@
                                     <th title="Demand Quantity">D. Qty</th>
                                     <th title="Proposed Quantity">Proposed Qty</th>
                                     <th title="Day Pending">Day Pending</th>
-                                    <th title="Selected Quantity">Selected Qty</th>
+                                    <th title="Confirmed Quantity">Confirmed Qty</th>
                                     <th title="Final Quantity">Final Qty</th>
                                     <th title="Status">Status</th>
                                     <th title=""></th>
@@ -268,7 +268,7 @@
             {data: 'demand_qty', name: 'demand_qty', "className": "text-center"},
             {data: 'proposed_qty', name: 'proposed_qty', "className": "text-center"},
             {data: 'day_pending', name: 'day_pending', "className": "text-center"},
-            {data: 'selected_qty', name: 'selected_qty', "className": "text-center"},
+            {data: 'confirmed_qty', name: 'confirmed_qty', "className": "text-center"},
             {data: 'final_qty', name: 'final_qty', "className": "text-center"},
             {data: 'status', name: 'status', "className": "text-center"},
             {data: 'action', name: 'action', orderable: false, searchable: false, "className": "text-center"}

@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use App\EmployerProfile;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\DB;
 
 class EmployerProfileController extends Controller
 {
@@ -101,7 +102,7 @@ class EmployerProfileController extends Controller
             } elseif ($demand->status == 3) {
                 $status = 'Assigned Agent';
             } elseif ($demand->status == 4) {
-                $status = 'Selected GW';
+                $status = 'Proposed GW';
             } elseif ($demand->status == 5) {
                 $status = 'Confirmed GW';
             } elseif ($demand->status == 6) {
@@ -122,28 +123,37 @@ class EmployerProfileController extends Controller
         })
         ->addColumn('proposed_qty', function($demand) {
 
-            $countSelectedGW = count( $demand->applicants()->where('status', 1)->get() );
+            $countProposedGW = count( $demand->applicants()->where('proposed', 1)->get() );
 
-            $string = '<span title="Proposed Date: '. (($demand->proposed_date != '') ? \Carbon\Carbon::parse($demand->proposed_date)->format('d/m/Y') : 'N/A') .'">'. $countSelectedGW .'</span>';
+            $string = '<span title="Proposed Date: '. (($demand->proposed_date != '') ? \Carbon\Carbon::parse($demand->proposed_date)->format('d/m/Y') : 'N/A') .'">'. $countProposedGW .'</span>';
 
             return $string;
         })
         ->addColumn('day_pending', function($demand) {
-            $date1 = date_create(date('Y-m-d'));
-            $date2 = date_create($demand->proposed_date);
 
-            //difference between two dates
-            $diff = date_diff($date1,$date2);
+            if ($demand->proposed_date)
+            {
+                $date1 = date_create(date('Y-m-d'));
+                
+                $proposed_date = strtotime($demand->proposed_date);
+                $proposed_date7 = strtotime("+6 day", $proposed_date);
+                $date2 = date_create(date('Y-m-d', $proposed_date7));
 
-            //count days
-            $diff = $diff->format("%a");
-            return $diff;
+                //difference between two dates
+                $diff = date_diff($date1,$date2);
+
+                //count days
+                $diff = $diff->format("%a");
+                return $diff;
+            } else {
+                return '...';
+            }
         })
-        ->addColumn('selected_qty', function($demand) {
-            return "...";
+        ->addColumn('confirmed_qty', function($demand) {
+            return count( $demand->applicants()->where('confirmed', 1)->get() );
         })
         ->addColumn('final_qty', function($demand) {
-            return "...";
+            return count( $demand->applicants()->where('finalized', 1)->get() );
         })
         ->rawColumns(['proposed_qty', 'action'])
         ->make(true);
@@ -186,6 +196,101 @@ class EmployerProfileController extends Controller
         })
         ->rawColumns(['image', 'action'])
         ->make(true);
+    }
+
+    public function proposedGW($damand_id){
+
+        $users = User::whereRoleIs('worker')
+                        ->with('applicants')
+                        ->where('status', 1)
+                        ->whereHas('applicants', function($query) use($damand_id){
+                            $query->whereIn('status', [1, 2, 3])->where('offer_id', $damand_id);
+                        })->get();
+
+        // datatable return
+        return DataTables::of($users)
+        ->addColumn('action', function ($data) {
+            $string =  '<a class="btn btn-xs btn-primary" href="'.route('profile.public', $data->public_id).'">View</a>';
+
+            // only for agent
+            if(auth()->user()->hasRole('agent'))
+            {
+                if ( $data->applicants()->first()['status'] == 2 ) {
+                    $string .= ' <input class="pull-right" style="width: 38px;height: 38px;vertical-align: middle;" type="checkbox" name="id[]" value="'.$data->applicants()->first()['id'].'">';
+                }
+            } else {
+                if ( $data->applicants()->first()['status'] == 1 ) {
+                    $string .= ' <input class="pull-right" style="width: 38px;height: 38px;vertical-align: middle;" type="checkbox" name="id[]" value="'.$data->applicants()->first()['id'].'">';
+                }                
+            }
+
+            // hidden input
+            $string .= '<input type="hidden" name="demandID" value="'.$data->applicants()->first()['offer_id'].'">';
+
+            return $string;
+        })
+        ->addColumn('status', function($data) {
+            $status = $data->applicants()->first()['status'];
+            $statusLabel = '';
+
+            if ($status == 1) {
+                $statusLabel = 'Proposed';
+            } elseif ($status == 2) {
+                $statusLabel = 'Confirmed';
+            } elseif ($status == 3) {
+                $statusLabel = 'Hired';
+            } else {
+                $statusLabel = '';
+            }
+
+            return $statusLabel;
+        })
+        ->addColumn('country', function($data) {
+            return $data->profile->nationality_data['name'];
+        })
+        ->addColumn('date_of_birth', function($data) {
+            return $data->profile->date_of_birth ? \Carbon\Carbon::parse($data->profile->date_of_birth)->format('d/m/Y') : '';
+        })
+        ->addColumn('passport', function($data) {
+            return $data->profile->passport_number;
+        })
+        ->addColumn('marital_status', function($data) {
+            return $data->profile->marital_status_data->name;
+        })
+        ->addColumn('image', function($data) {
+            $img = $data->profile->image != '' ? asset('storage/'.$data->profile->image) :  asset('images/dummy.jpg');
+            return '<img src="'.$img.'" border="0" width="40" class="img-rounded" align="center" />';
+        })
+        ->rawColumns(['image', 'action'])
+        ->make(true);
+    }
+
+    public function confirmGWToDemand(Request $request)
+    {
+        if(!$request->id) {
+            Session::flash('message', 'No General Worker were Selected!'); 
+            Session::flash('alert-class', 'alert-danger');
+
+            return redirect()->back();
+        }
+
+        // update demand
+        $demandUpdate = Offer::where('id', $request->demandID)->first();
+        $demandUpdate->status = 5;  // confirmed GW
+        $demandUpdate->save();
+
+        $ids = $request->id;
+        foreach($ids as $id){
+            $applicantUpdate = Applicant::where('id', $id)->first();
+            $applicantUpdate->confirmed = 1;  // confirmed GW
+            $applicantUpdate->status = 2;  // confirmed GW
+            $applicantUpdate->save();
+        }
+
+        Session::flash('message', 'Worker(s) confirmed successfully!'); 
+        Session::flash('alert-class', 'alert-success');
+
+        return redirect()->route('employer.show');
     }
 
     /**
@@ -270,7 +375,7 @@ class EmployerProfileController extends Controller
     public function sendOffer(Request $request)
     {
         if(!$request->id){
-            Session::flash('message', 'No Domestic Maid or Worker Selected!'); 
+            Session::flash('message', 'No Domestic Maid Selected!'); 
             Session::flash('alert-class', 'alert-danger');
 
             return redirect()->back();
