@@ -143,13 +143,15 @@
                                     @endauth
                                 </a>
                                 <div class="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    @if(Auth::user()->hasRole('agent'))
+                                    <a class="dropdown-item" href="{{route('agent.edit', Auth::user()->id)}}">
+                                        <i class="fa fa-user icon"></i>Edit Profile </a>
+                                    @endif
                                     {{-- <a class="dropdown-item" href="#">
-                                        <i class="fa fa-user icon"></i> Profile </a>
-                                    <a class="dropdown-item" href="#">
                                         <i class="fa fa-bell icon"></i> Notifications </a>
                                     <a class="dropdown-item" href="#">
-                                        <i class="fa fa-gear icon"></i> Settings </a>
-                                    <div class="dropdown-divider"></div> --}}
+                                        <i class="fa fa-gear icon"></i> Settings </a> --}}
+                                    <div class="dropdown-divider"></div>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();

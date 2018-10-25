@@ -86,12 +86,13 @@ class AgentProfileController extends Controller
      * @param  \App\Agent  $agent
      * @return \Illuminate\Http\Response
      */
-    public function edit($agent)
+    public function edit(User $agent)
     {
+        //return $agent->agent_profile;
         $countrys = Country::where('status', 1)->get();
         $nationalitys = $countrys;
-        $agentProfile = AgentProfile::where('id', $agent)->first();
-        return view('agent.edit', compact('agentProfile','countrys','nationalitys'));
+        $agentProfile = $agent->agent_profile;
+        return view('agent.edit', compact('agent','agentProfile','countrys','nationalitys'));
     }
 
     /**
@@ -101,19 +102,21 @@ class AgentProfileController extends Controller
      * @param  \App\Agent  $agent
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $agent)
+    public function update(Request $request, User $agent)
     {
-        $agent = AgentProfile::where('id', $agent)->first();
-        $agent->agency_registered_name = $request->agency_registered_name;
-        $agent->agency_address = $request->agency_address;
-        $agent->agency_city = $request->agency_city;
-        $agent->agency_country = $request->agency_country;
-        $agent->agency_phone = $request->agency_phone;
-        $agent->agency_fax = $request->agency_fax;
-        $agent->agency_email = $request->agency_email;
-        $agent->license_no = $request->license_no;
-        $agent->license_issue_date = $request->license_issue_date;
-        $agent->license_expire_date = $request->license_expire_date;
+        //return $agent;
+        $agent_profile = $agent->agent_profile;
+
+        $agent_profile->agency_registered_name = $request->agency_registered_name;
+        $agent_profile->agency_address = $request->agency_address;
+        $agent_profile->agency_city = $request->agency_city;
+        $agent_profile->agency_country = $request->agency_country;
+        $agent_profile->agency_phone = $request->agency_phone;
+        $agent_profile->agency_fax = $request->agency_fax;
+        $agent_profile->agency_email = $request->agency_email;
+        $agent_profile->license_no = $request->license_no;
+        $agent_profile->license_issue_date = $request->license_issue_date;
+        $agent_profile->license_expire_date = $request->license_expire_date;
 
         if($request->file('license_file')){
             $this->validate($request, [
@@ -134,17 +137,17 @@ class AgentProfileController extends Controller
             
         }
         //Point of Contact
-        $agent->first_name = $request->name;
-        $agent->middle_name = $request->middle_name;
-        $agent->last_name = $request->last_name;
-        $agent->designation = $request->designation;
-        $agent->address = $request->address;
-        $agent->nationality = $request->nationality;
-        $agent->passport = $request->passport;
-        $agent->nic = $request->nic;
-        $agent->phone = $request->phone;
-        $agent->email = $request->email;
-        $agent->save();
+        $agent_profile->first_name = $request->name;
+        $agent_profile->middle_name = $request->middle_name;
+        $agent_profile->last_name = $request->last_name;
+        $agent_profile->designation = $request->designation;
+        $agent_profile->address = $request->address;
+        $agent_profile->nationality = $request->nationality;
+        $agent_profile->passport = $request->passport;
+        $agent_profile->nic = $request->nic;
+        $agent_profile->phone = $request->phone;
+        $agent_profile->email = $request->email;
+        $agent_profile->save();
 
         Session::flash('message', 'Profile Updated Successfully!!'); 
         Session::flash('alert-class', 'alert-success');
