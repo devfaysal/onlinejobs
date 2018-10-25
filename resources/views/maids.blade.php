@@ -2,6 +2,13 @@
 
 @section('content')
 @include('layouts.banner')
+
+<style type="text/css">
+    .hover-box:hover {
+        box-shadow: 0 5px 65px 0 rgba(0, 0, 0, 0.3);
+    }
+</style>
+
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -11,22 +18,17 @@
                         <div class="card-body">
                             <div class="row verticle-center">
                                 @foreach ($users as $user)
-                                <div class="col-md-2">
+                                <div class="col-md-2 mb-2" style="border: 1px solid #e6edee; height: 210px; padding-top: 10px;">
                                     <img class="img-thumbnail" src="{{$user->profile->image != '' ? asset('storage/'.$user->profile->image) : asset('images/avatar.jpg')}}" alt="">
                                     <br>
                                     <a href="{{route('profile.public', $user->public_id)}}" class="btn btn-block btn-primary">Details</a>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mb-2" style="border: 1px solid #e6edee; border-left: none; height: 210px; padding-top: 10px;">
                                     <table class="table table-sm table-borderless">
                                         <tr>
                                             <th>Name</th>
                                             <th>:</th>
-                                            <td>{{$user->profile->name ?? 'N/A'}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Date of birth</th>
-                                            <th>:</th>
-                                            <td>{{ (($user->profile->date_of_birth != '') ? \Carbon\Carbon::parse($user->profile->date_of_birth)->format('d/m/Y') : 'N/A') }}</td>
+                                            <td>{{$user->profile->name ?? '(Nill)'}}</td>
                                         </tr>
                                         <tr>
                                             <th>Age</th>
@@ -34,15 +36,34 @@
                                             <td>{{ \Carbon\Carbon::parse($user->profile->date_of_birth)->diff(\Carbon\Carbon::now())->format('%y years %m months')}}</td>
                                         </tr>
                                         <tr>
+                                            <th>Religion</th>
+                                            <th>:</th>
+                                            <td>{{$user->profile->religion_data->name ?? '(Nill)'}}</td>
+                                        </tr>
+                                        <tr>
                                             <th>Nationality</th>
                                             <th>:</th>
-                                            <td>{{$user->profile->nationality_data->name ?? 'N/A'}}</td>
+                                            <td>{{$user->profile->nationality_data->name ?? '(Nill)'}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Language<small>(s)</small></th>
+                                            <th>:</th>
+                                            <td>
+                                                <?php $language_set = (array) json_decode($user->profile->language_set); ?>
+
+                                                @if($language_set)
+                                                    @foreach($languages as $language)
+                                                        @if ($language_set[$language->slug] == 'Yes')
+                                                            {{$language->name}},
+                                                        @endif
+                                                    @endforeach
+                                                @else
+                                                    (Nill)
+                                                @endif
+
+                                            </td>
                                         </tr>
                                     </table>
-                                    {{--<p class="profile-title"><strong>Name : </strong>{{$user->profile->name ?? 'N/A'}}</p>
-                                    <p class="profile-title"><strong>Date of birth: </strong>{{ (($user->profile->date_of_birth != '') ? \Carbon\Carbon::parse($user->profile->date_of_birth)->format('d/m/Y') : 'N/A') }}</p>
-                                    <p class="profile-title"><strong>Age: </strong>{{ \Carbon\Carbon::parse($user->profile->date_of_birth)->diff(\Carbon\Carbon::now())->format('%y years %m months')}}</p>
-                                    <p class="profile-title"><strong>Nationality: </strong>{{$user->profile->nationality_data->name ?? 'N/A'}}</p>--}}
                                 </div>
                                 @endforeach
                             </div>
