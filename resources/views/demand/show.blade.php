@@ -17,7 +17,7 @@
             @if(Auth::user()->can('print'))
                 <div class="col-md-12 hidefromprint mb-3">
                     <a class="btn btn-info" href="{{url()->previous()}}">Back</a>
-                    <a class="btn btn-success pull-right" href="" onclick="window.print();return false;">Print profile</a>
+                    <a class="btn btn-success pull-right" href="" onclick="window.print();return false;">Print</a>
                 </div>
             @endif
             @endauth
@@ -29,7 +29,7 @@
                             <tr>
                                 <th>Hiring Package</th>
                                 <th>:</th>
-                                <td>{{$offer->hiring_package ?? 'N/A'}}</td>
+                                <td width="25%">{{$offer->hiring_package ?? 'N/A'}}</td>
                                 <th>Company Name</th>
                                 <th>:</th>
                                 <td>{{$offer->company_name ?? 'N/A'}}</td>
@@ -58,7 +58,7 @@
                                 <th>:</th>
                                 <td>
                                     @if ($offer->demand_file != '')
-                                        <a href="{{ asset('storage/app/public/demand_letter/' . $offer->demand_file) }}" target="_blank">{{ $offer->demand_file }}</a>
+                                        <a href="{{ asset('storage/demand_letter/' . $offer->demand_file) }}" target="_blank">{{ $offer->demand_file }}</a>
                                     @else
                                         N/A
                                     @endif
@@ -79,7 +79,7 @@
                         <form method="post" action="{{route('admin.finalizeGWToDemand')}}">
                     @else
                         <form method="post" action="{{route('confirmGWToDemand')}}">
-                    @endif;
+                    @endif
                             @csrf
                             <table id="workers-table" class="table table-condensed">
                                 <thead>
@@ -96,7 +96,7 @@
                                             <th><input onclick="return confirm('Are you sure?')" class="btn btn-success btn-sm pull-right" type="submit" value="Finalize"></th>
                                         @else
                                             <th><input onclick="return confirm('Are you sure?')" class="btn btn-success btn-sm pull-right" type="submit" value="Confirm"></th>
-                                        @endif;
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tfoot>
