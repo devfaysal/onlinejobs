@@ -125,6 +125,8 @@ class EmployerProfileController extends Controller
 
             $countProposedGW = count( $demand->applicants()->where('proposed', 1)->get() );
 
+            $countProposedGW = $countProposedGW ?: '...';
+
             $string = '<span title="Proposed Date: '. (($demand->proposed_date != '') ? \Carbon\Carbon::parse($demand->proposed_date)->format('d/m/Y') : 'N/A') .'">'. $countProposedGW .'</span>';
 
             return $string;
@@ -150,10 +152,10 @@ class EmployerProfileController extends Controller
             }
         })
         ->addColumn('confirmed_qty', function($demand) {
-            return count( $demand->applicants()->where('confirmed', 1)->get() );
+            return count( $demand->applicants()->where('confirmed', 1)->get() ) ?: '...';
         })
         ->addColumn('final_qty', function($demand) {
-            return count( $demand->applicants()->where('finalized', 1)->get() );
+            return count( $demand->applicants()->where('finalized', 1)->get() ) ?: '...';
         })
         ->rawColumns(['proposed_qty', 'action'])
         ->make(true);
