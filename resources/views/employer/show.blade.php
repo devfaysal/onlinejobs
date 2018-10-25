@@ -259,6 +259,7 @@
     $('#demands-table').DataTable({
         processing: true,
         serverSide: true,
+        order: [[ 1, 'asc' ]],
         ajax: '{{route('getAllDemands')}}',
         columns: [
             {data: 'demand_letter_no', name: 'demand_letter_no', "className": "text-left"},

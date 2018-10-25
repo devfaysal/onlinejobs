@@ -130,6 +130,7 @@
     $('#workers-table').DataTable({
         processing: true,
         serverSide: true,
+        order: [[ 2, 'asc' ]],
         ajax: '{{route('proposedGW', ['damand_id' => $offer->id])}}',
         columns: [
             {data: 'id', name: 'id'},
