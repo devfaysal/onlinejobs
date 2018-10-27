@@ -91,8 +91,8 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
 });
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/profile/{public}', 'ProfileController@public')->name('profile.public');
 Route::group(['middleware' => 'auth'], function(){
+    Route::get('/profile/{public}', 'ProfileController@public')->name('profile.public');
     Route::resource('profile', 'ProfileController')->except('destroy');
     Route::resource('experience', 'ExperienceController')->except('destroy');
 });

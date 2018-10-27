@@ -4,7 +4,7 @@
 <div class="container mt-3">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card auth-form">
+            <div class="card auth-form mb-5">
                 <div class="card-header"><h2>{{ __('Agent!!! Sign up today, its easy!') }}</h2></div>
 
                 <div class="card-body">
@@ -123,7 +123,7 @@
                                 <div class="form-group row">
                                     <label for="license_issue_date" class="col-sm-4 col-form-label">{{ __('License Issue Date') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="license_issue_date" type="date" class="form-control{{ $errors->has('license_issue_date') ? ' is-invalid' : '' }}" name="license_issue_date" value="{{ old('license_issue_date') }}" placeholder="license_issue_date">
+                                        <input id="license_issue_date" type="date" class="form-control{{ $errors->has('license_issue_date') ? ' is-invalid' : '' }}" name="license_issue_date" min="1900-01-01" max="2200-01-01" value="{{\Carbon\Carbon::parse(old('license_issue_date'))->format('Y-m-d')}}" placeholder="license_issue_date">
 
                                     @if ($errors->has('license_issue_date'))
                                         <span class="invalid-feedback" role="alert">
@@ -135,7 +135,7 @@
                                 <div class="form-group row">
                                     <label for="license_expire_date" class="col-sm-4 col-form-label">{{ __('License Expire Date') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="license_expire_date" type="date" class="form-control{{ $errors->has('license_expire_date') ? ' is-invalid' : '' }}" name="license_expire_date" value="{{ old('license_expire_date') }}" placeholder="license_expire_date">
+                                        <input id="license_expire_date" type="date" class="form-control{{ $errors->has('license_expire_date') ? ' is-invalid' : '' }}" name="license_expire_date" min="1900-01-01" max="2200-01-01" value="{{\Carbon\Carbon::parse(old('license_expire_date'))->format('Y-m-d')}}" placeholder="license_expire_date">
 
                                     @if ($errors->has('license_expire_date'))
                                         <span class="invalid-feedback" role="alert">
