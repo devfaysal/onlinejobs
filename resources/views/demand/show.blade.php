@@ -27,10 +27,10 @@
                     <div class="card-body">
                         <table class="table table-striped table-sm">
                             <tr>
-                                <th>Hiring Package</th>
+                                <th width="15%">Hiring Package</th>
                                 <th>:</th>
                                 <td width="25%">{{$offer->hiring_package ?? 'N/A'}}</td>
-                                <th>Company Name</th>
+                                <th width="15%">Company Name</th>
                                 <th>:</th>
                                 <td>{{$offer->company_name ?? 'N/A'}}</td>
                             </tr>
@@ -130,6 +130,7 @@
     $('#workers-table').DataTable({
         processing: true,
         serverSide: true,
+        order: [[ 2, 'asc' ]],
         ajax: '{{route('proposedGW', ['damand_id' => $offer->id])}}',
         columns: [
             {data: 'id', name: 'id'},

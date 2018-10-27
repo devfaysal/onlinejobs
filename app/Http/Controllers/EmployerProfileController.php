@@ -82,10 +82,10 @@ class EmployerProfileController extends Controller
             // Demand letters employer wise
             $loggedInUserId = auth()->user()->id;
 
-            $demands = Offer::whereIn('status', [2, 3, 4, 5, 6, 7])->where('employer_id', $loggedInUserId)->get();
+            $demands = Offer::whereIn('status', [2, 3, 4, 5, 6, 7])->where('employer_id', $loggedInUserId)->orderBy('created_at', 'desc')->get();
         } else {
             // all demand letters for super admin
-            $demands = Offer::whereIn('status', [2, 3, 4, 5, 6, 7])->get();
+            $demands = Offer::whereIn('status', [2, 3, 4, 5, 6, 7])->orderBy('created_at', 'desc')->get();
         }
 
         return DataTables::of($demands)
@@ -125,6 +125,8 @@ class EmployerProfileController extends Controller
 
             $countProposedGW = count( $demand->applicants()->where('proposed', 1)->get() );
 
+            $countProposedGW = $countProposedGW ?: '...';
+
             $string = '<span title="Proposed Date: '. (($demand->proposed_date != '') ? \Carbon\Carbon::parse($demand->proposed_date)->format('d/m/Y') : 'N/A') .'">'. $countProposedGW .'</span>';
 
             return $string;
@@ -150,10 +152,10 @@ class EmployerProfileController extends Controller
             }
         })
         ->addColumn('confirmed_qty', function($demand) {
-            return count( $demand->applicants()->where('confirmed', 1)->get() );
+            return count( $demand->applicants()->where('confirmed', 1)->get() ) ?: '...';
         })
         ->addColumn('final_qty', function($demand) {
-            return count( $demand->applicants()->where('finalized', 1)->get() );
+            return count( $demand->applicants()->where('finalized', 1)->get() ) ?: '...';
         })
         ->rawColumns(['proposed_qty', 'action'])
         ->make(true);
@@ -255,7 +257,7 @@ class EmployerProfileController extends Controller
             return $data->profile->passport_number;
         })
         ->addColumn('marital_status', function($data) {
-            return $data->profile->marital_status_data->name;
+            return $data->profile->marital_status_data['name'];
         })
         ->addColumn('image', function($data) {
             $img = $data->profile->image != '' ? asset('storage/'.$data->profile->image) :  asset('images/dummy.jpg');

@@ -42,8 +42,11 @@
                 <!-- Demands list -->
                 <div class="card mt-4">
                     <h4 class="card-title text-center mt-3">
+                        <a class="btn btn-info btn-sm mb-2 ml-2 pull-left" href="{{ asset('storage/demand_letter/demand-letter-sample.docx') }}" target="_blank"> <i class="fa fa-download"></i> Download demand letter sample</a>
+                        
                         Demand Letters
-                        <a class="btn btn-warning mb-2 mr-2 pull-right" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#demandModal" href="#">Send a Demand</a>
+                        
+                        <a class="btn btn-warning btn-sm mb-2 mr-2 pull-right" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#demandModal" href="#">Send a Demand</a>
                     </h4>
                     <div class="card-body">
                         <table id="demands-table" class="table table-condensed">
@@ -259,6 +262,7 @@
     $('#demands-table').DataTable({
         processing: true,
         serverSide: true,
+        order: [[ 1, 'asc' ]],
         ajax: '{{route('getAllDemands')}}',
         columns: [
             {data: 'demand_letter_no', name: 'demand_letter_no', "className": "text-left"},

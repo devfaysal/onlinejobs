@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Skill;
 use App\Religion;
 use App\Country;
 use App\Language;
@@ -34,7 +35,7 @@ class HomeController extends Controller
     {
         $religions = Religion::where('status', '=', 1)->get();
         $nationalitys = Country::where('status', '=', 1)->get();
-        $languages = Language::where('status', '=', 1)->get();
+        $languages = Skill::where('status', '=', 1)->where('for', 'dm')->where('type','Language')->get();
         $page = 'maids';
 
         $users = User::whereRoleIs('maid')
@@ -50,7 +51,7 @@ class HomeController extends Controller
     public function maidsearch(Request $request){
         $religions = Religion::where('status', '=', 1)->get();
         $nationalitys = Country::where('status', '=', 1)->get();
-        $languages = Language::where('status', '=', 1)->get();
+        $languages = Skill::where('status', '=', 1)->where('for', 'dm')->where('type','Language')->get();
         $page = 'maids';
 
         $users = User::whereRoleIs('maid')
@@ -69,7 +70,7 @@ class HomeController extends Controller
     {
         $religions = Religion::where('status', '=', 1)->get();
         $nationalitys = Country::where('status', '=', 1)->get();
-        $languages = Language::where('status', '=', 1)->get();
+        $languages = Skill::where('status', '=', 1)->where('for', 'dm')->where('type','Language')->get();
         $page = 'workers';
 
         $users = User::whereRoleIs('worker')
@@ -85,7 +86,7 @@ class HomeController extends Controller
     public function workersearch(Request $request){
         $religions = Religion::where('status', '=', 1)->get();
         $nationalitys = Country::where('status', '=', 1)->get();
-        $languages = Language::where('status', '=', 1)->get();
+        $languages = Skill::where('status', '=', 1)->where('for', 'dm')->where('type','Language')->get();
         $page = 'workers';
 
         $users = User::whereRoleIs('worker')
