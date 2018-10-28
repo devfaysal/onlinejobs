@@ -409,6 +409,23 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+    <script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
+    <!-- WayPoints JS -->
+    <script src="{{ asset('js/waypoints.min.js') }}"></script>
+    <!-- Counter UP JS -->
+    <script src="{{ asset('js/jquery.counterup.min.js') }}"></script>
+
+    <script type="text/javascript">
+      /*----------------------------
+      START - Counter Up JS activation
+      ------------------------------ */
+      $('.counter').counterUp({
+          delay: 10,
+          time: 1000
+
+      });
+    </script>
     @yield('script')
 </body>
 </html>

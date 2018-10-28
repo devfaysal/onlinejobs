@@ -9,10 +9,10 @@
                     <h1 class="mt-3 text-primary text-uppercase text-center" style="border-bottom: 1px solid;">
                         @if (Route::currentRouteName() == 'maids' || Route::currentRouteName() == 'maids.search')
                             Domestic Maids
-                            <span class="pull-right"><small style="font-size: 14px;">Registered:</small> {{$total_maids}}</span>
+                            <span class="pull-right"><small style="font-size: 14px;">Registered:</small> <span class="counter">{{$total_maids}}</span></span>
                         @elseif(Route::currentRouteName() == 'workers' || Route::currentRouteName() == 'workers.search')
                             General Workers
-                            <span class="pull-right"><small style="font-size: 14px;">Registered:</small> {{$total_workers}}</span>
+                            <span class="pull-right"><small style="font-size: 14px;">Registered:</small> <span class="counter">{{$total_workers}}</span></span>
                         @endif
                     </h1>
                 </div>
