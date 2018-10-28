@@ -37,6 +37,7 @@ class HomeController extends Controller
         $nationalitys = Country::where('status', '=', 1)->get();
         $languages = Skill::where('status', '=', 1)->where('for', 'dm')->where('type','Language')->get();
         $page = 'maids';
+        $total_maids = User::whereRoleIs('maid')->count();
 
         $users = User::whereRoleIs('maid')
                         ->with('Profile')
@@ -45,7 +46,7 @@ class HomeController extends Controller
                         ->take(20)
                         ->get();
 
-        return view('maids', compact('users', 'religions','nationalitys','languages','page'));
+        return view('maids', compact('users', 'religions','nationalitys','languages','page','total_maids'));
     }
 
     public function maidsearch(Request $request){
@@ -53,6 +54,7 @@ class HomeController extends Controller
         $nationalitys = Country::where('status', '=', 1)->get();
         $languages = Skill::where('status', '=', 1)->where('for', 'dm')->where('type','Language')->get();
         $page = 'maids';
+        $total_maids = User::whereRoleIs('maid')->count();
 
         $users = User::whereRoleIs('maid')
                         ->with('Profile')
@@ -63,7 +65,7 @@ class HomeController extends Controller
                                     /*->orWhere('language_set', $request->native_language ?  $request->native_language : 0)*/;
                         })->get();
 
-        return view('maids', compact('users','religions','nationalitys','languages','page'));
+        return view('maids', compact('users','religions','nationalitys','languages','page','total_maids'));
     }
 
     public function workers()
@@ -72,6 +74,7 @@ class HomeController extends Controller
         $nationalitys = Country::where('status', '=', 1)->get();
         $languages = Skill::where('status', '=', 1)->where('for', 'dm')->where('type','Language')->get();
         $page = 'workers';
+        $total_workers = User::whereRoleIs('worker')->count();
 
         $users = User::whereRoleIs('worker')
                         ->with('Profile')
@@ -80,7 +83,7 @@ class HomeController extends Controller
                         ->take(20)
                         ->get();
 
-        return view('workers', compact('users', 'religions','nationalitys','languages','page'));
+        return view('workers', compact('users', 'religions','nationalitys','languages','page','total_workers'));
     }
 
     public function workersearch(Request $request){
@@ -88,6 +91,7 @@ class HomeController extends Controller
         $nationalitys = Country::where('status', '=', 1)->get();
         $languages = Skill::where('status', '=', 1)->where('for', 'dm')->where('type','Language')->get();
         $page = 'workers';
+        $total_workers = User::whereRoleIs('worker')->count();
 
         $users = User::whereRoleIs('worker')
                         ->with('Profile')
@@ -98,6 +102,6 @@ class HomeController extends Controller
                                     /*->orWhere('native_language', $request->native_language ?  $request->native_language : 0)*/;
                         })->get();
 
-        return view('workers', compact('users','religions','nationalitys','languages','page'));
+        return view('workers', compact('users','religions','nationalitys','languages','page','total_workers'));
     }
 }
