@@ -63,10 +63,10 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ ( (Route::currentRouteName() === "maids") ? "active" : "") }}" href="{{route('maids')}}">Domestic Maids</a>
+                        <a class="nav-link {{ ( (Route::currentRouteName() === "maids") || (Route::currentRouteName() === "maids.search") ? "active" : "") }}" href="{{route('maids')}}">Domestic Maids</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ ( (Route::currentRouteName() === "workers") ? "active" : "") }}" href="{{route('workers')}}">General Workers</a>
+                        <a class="nav-link {{ ( (Route::currentRouteName() === "workers") || (Route::currentRouteName() === "workers.search") ? "active" : "") }}" href="{{route('workers')}}">General Workers</a>
                     </li>
                     <li class="nav-item">
                         @guest
