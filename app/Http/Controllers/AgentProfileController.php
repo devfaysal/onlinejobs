@@ -145,8 +145,8 @@ class AgentProfileController extends Controller
         $agent_profile->nationality = $request->nationality;
         $agent_profile->passport = $request->passport;
         $agent_profile->nic = $request->nic;
-        $agent_profile->phone = $request->phone;
-        $agent_profile->email = $request->email;
+        $agent_profile->phone = $request->contact_phone;
+        $agent_profile->email = $request->contact_email;
         $agent_profile->save();
 
         Session::flash('message', 'Profile Updated Successfully!!'); 
