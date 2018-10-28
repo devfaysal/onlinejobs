@@ -68,12 +68,12 @@ class RegisterController extends Controller
         $request = request();
         if($request->file('license_file')){
             $this->validate($request, [
-                'license_file' => 'image|max:250',
+                'license_file' => 'mimes:pdf,jpg,jpeg,png|max:1024',
             ]);
         }
         if($request->file('passport_file')){
             $this->validate($request, [
-                'passport_file' => 'image|max:250',
+                'passport_file' => 'mimes:pdf,jpg,jpeg,png|max:1024',
             ]);
         }
         return Validator::make($data, [
@@ -97,7 +97,7 @@ class RegisterController extends Controller
         $user = new User;
         $user->name = $data['name'];
         $user->email = $data['email'];
-        $user->phone = $data['phone'];
+        $user->phone = $data['phone'] ?? '';
         $user->password = Hash::make($data['password']);
         $user->public_id = time().md5($data['email']);
 
@@ -147,7 +147,7 @@ class RegisterController extends Controller
             $agent->agency_address = $data['agency_address'];
             $agent->agency_city = $data['agency_city'];
             $agent->agency_country = $data['agency_country'];
-            $agent->agency_phone = $data['phone'];
+            $agent->agency_phone = $data['agency_phone'];
             $agent->agency_fax = $data['agency_fax'];
             $agent->agency_email = $data['email'];
             $agent->license_no = $data['license_no'];
@@ -157,18 +157,16 @@ class RegisterController extends Controller
             $request = request();
 
             if($request->file('license_file')){
-                $this->validate($request, [
-                    'license_file' => 'image|max:2500',
-                ]);
-                
                 $image_basename = explode('.',$request->file('license_file')->getClientOriginalName())[0];
                 $image = $image_basename . '-' . time() . '.' . $request->file('license_file')->getClientOriginalExtension();
+
+                $request->license_file->storeAs('public', $image);
     
-                $img = Image::make($request->file('license_file')->getRealPath());
-                $img->stream();
+                // $img = Image::make($request->file('license_file')->getRealPath());
+                // $img->stream();
     
-                //Upload image
-                Storage::disk('local')->put('public/'.$image, $img);
+                // //Upload image
+                // Storage::disk('local')->put('public/'.$image, $img);
     
                 //add new image path to database
                 $agent->license_file = $image;
@@ -183,26 +181,23 @@ class RegisterController extends Controller
             $agent->nationality = $data['nationality'];
             $agent->passport = $data['passport'];
             if($request->file('passport_file')){
-                $this->validate($request, [
-                    'passport_file' => 'image|max:2500',
-                ]);
-                
                 $image_basename = explode('.',$request->file('passport_file')->getClientOriginalName())[0];
                 $image = $image_basename . '-' . time() . '.' . $request->file('passport_file')->getClientOriginalExtension();
+
+                $request->passport_file->storeAs('public', $image);
+                // $img = Image::make($request->file('passport_file')->getRealPath());
+                // $img->stream();
     
-                $img = Image::make($request->file('passport_file')->getRealPath());
-                $img->stream();
-    
-                //Upload image
-                Storage::disk('local')->put('public/'.$image, $img);
+                // //Upload image
+                // Storage::disk('local')->put('public/'.$image, $img);
     
                 //add new image path to database
                 $agent->passport_file = $image;
                 
             }
             //$agent->nic = $data['nic'];
-            $agent->phone = $data['contact_phone'];
-            $agent->email = $data['contact_email'];
+            $agent->contact_phone = $data['contact_phone'];
+            $agent->contact_email = $data['contact_email'];
             $agent->save();
         }
 

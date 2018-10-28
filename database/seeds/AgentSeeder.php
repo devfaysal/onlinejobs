@@ -24,7 +24,6 @@ class AgentSeeder extends Seeder
         $profile->agency_country = 1;
         $profile->user_id = $user->id;
         $profile->first_name = 'Agent';
-        $profile->phone = $user->phone;
         $profile->save();
 
         $names = array( "Dewalt", "Ebner", "Frick", "Hancock", "Haworth", "Hesch", "Hoffman", "Kassing", "Knutson", "Lawless" );
@@ -47,7 +46,6 @@ class AgentSeeder extends Seeder
             $profile->agency_country = 1;
             $profile->user_id = $user->id;
             $profile->first_name = $name;
-            $profile->phone = $user->phone;
             $profile->save();
         }
     }

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card auth-form mb-5">
-                <div class="card-header"><h2>{{ __('Agent!!! Sign up today, its easy!') }}</h2></div>
+                <div class="card-header"><h2 class="text-center">{{ __('Agent!!! Sign up today, its easy!') }}</h2></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}" enctype="multipart/form-data">
@@ -85,13 +85,13 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="phone" class="col-sm-4 col-form-label">{{ __('Agency Phone *') }}</label>
+                                    <label for="agency_phone" class="col-sm-4 col-form-label">{{ __('Agency Phone *') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" placeholder="Agency Phone" required>
+                                        <input id="agency_phone" type="text" class="form-control{{ $errors->has('agency_phone') ? ' is-invalid' : '' }}" name="agency_phone" value="{{ old('agency_phone') }}" placeholder="Agency Phone" required>
 
-                                    @if ($errors->has('phone'))
+                                    @if ($errors->has('agency_phone'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('phone') }}</strong>
+                                            <strong>{{ $errors->first('agency_phone') }}</strong>
                                         </span>
                                     @endif
                                     </div>
@@ -123,7 +123,7 @@
                                 <div class="form-group row">
                                     <label for="license_issue_date" class="col-sm-4 col-form-label">{{ __('License Issue Date') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="license_issue_date" type="date" class="form-control{{ $errors->has('license_issue_date') ? ' is-invalid' : '' }}" name="license_issue_date" min="1900-01-01" max="2200-01-01" value="{{\Carbon\Carbon::parse(old('license_issue_date'))->format('Y-m-d')}}" placeholder="license_issue_date">
+                                        <input id="license_issue_date" type="date" class="form-control{{ $errors->has('license_issue_date') ? ' is-invalid' : '' }}" name="license_issue_date" min="1900-01-01" max="2200-01-01" value="{{old('license_expire_date') ? \Carbon\Carbon::parse(old('license_issue_date'))->format('Y-m-d') : ''}}" placeholder="license_issue_date">
 
                                     @if ($errors->has('license_issue_date'))
                                         <span class="invalid-feedback" role="alert">
@@ -135,7 +135,7 @@
                                 <div class="form-group row">
                                     <label for="license_expire_date" class="col-sm-4 col-form-label">{{ __('License Expire Date') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="license_expire_date" type="date" class="form-control{{ $errors->has('license_expire_date') ? ' is-invalid' : '' }}" name="license_expire_date" min="1900-01-01" max="2200-01-01" value="{{\Carbon\Carbon::parse(old('license_expire_date'))->format('Y-m-d')}}" placeholder="license_expire_date">
+                                        <input id="license_expire_date" type="date" class="form-control{{ $errors->has('license_expire_date') ? ' is-invalid' : '' }}" name="license_expire_date" min="1900-01-01" max="2200-01-01" value="{{old('license_expire_date') ? \Carbon\Carbon::parse(old('license_expire_date'))->format('Y-m-d') : ''}}" placeholder="license_expire_date">
 
                                     @if ($errors->has('license_expire_date'))
                                         <span class="invalid-feedback" role="alert">
@@ -148,7 +148,7 @@
                                     <label for="license_file" class="col-sm-4 col-form-label">{{ __('Upload License') }}</label>
                                     <div class="col-sm-8">
                                         <input id="license_file" type="file" class="form-control-file{{ $errors->has('license_file') ? ' is-invalid' : '' }}" name="license_file" value="{{ old('license_file') }}" placeholder="license_file">
-
+                                        <p class="text-danger">Supported file format JPG, PNG & PDF. Maximum file size: 1MB</p>
                                     @if ($errors->has('license_file'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('license_file') }}</strong>
@@ -303,7 +303,7 @@
                                     <label for="passport_file" class="col-sm-4 col-form-label">{{ __('Passport/NIC (Upload Scanned copy) *') }}</label>
                                     <div class="col-sm-8">
                                         <input id="passport_file" type="file" class="form-control-file{{ $errors->has('passport_file') ? ' is-invalid' : '' }}" name="passport_file" value="{{ old('passport_file') }}">
-
+                                        <p class="text-danger">Supported file format JPG, PNG & PDF. Maximum file size: 1MB</p>
                                     @if ($errors->has('passport_file'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('passport_file') }}</strong>

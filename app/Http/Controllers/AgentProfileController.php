@@ -41,7 +41,10 @@ class AgentProfileController extends Controller
             $user = auth()->user();
             $q->where('agent_code', $user->agent_profile->agent_code);
         })->get();
-
+        if(Session::has('message')){
+            Session::flash('message', Session::get('message')); 
+            Session::flash('alert-class', Session::get('alert-class'));
+        }
         return redirect('/admin');
         //return view('agent.show', compact('user', 'workers_maids'));
     }
@@ -120,20 +123,45 @@ class AgentProfileController extends Controller
 
         if($request->file('license_file')){
             $this->validate($request, [
-                'license_file' => 'image|max:250',
+                'license_file' => 'mimes:pdf,jpg,jpeg,png|max:1024',
             ]);
             
             $image_basename = explode('.',$request->file('license_file')->getClientOriginalName())[0];
             $image = $image_basename . '-' . time() . '.' . $request->file('license_file')->getClientOriginalExtension();
 
-            $img = Image::make($request->file('license_file')->getRealPath());
-            $img->stream();
+            $request->license_file->storeAs('public', $image);
 
-            //Upload image
-            Storage::disk('local')->put('public/'.$image, $img);
+            // $img = Image::make($request->file('license_file')->getRealPath());
+            // $img->stream();
 
+            // //Upload image
+            // Storage::disk('local')->put('public/'.$image, $img);
+
+            //remove existing file
+            if($agent_profile->license_file != ''){
+                Storage::disk('local')->delete('public/'.$agent_profile->license_file);
+            }
             //add new image path to database
-            $agent->license_file = $image;
+            $agent_profile->license_file = $image;
+            
+        }
+        if($request->file('passport_file')){
+            $image_basename = explode('.',$request->file('passport_file')->getClientOriginalName())[0];
+            $image = $image_basename . '-' . time() . '.' . $request->file('passport_file')->getClientOriginalExtension();
+
+            $request->passport_file->storeAs('public', $image);
+            // $img = Image::make($request->file('passport_file')->getRealPath());
+            // $img->stream();
+
+            // //Upload image
+            // Storage::disk('local')->put('public/'.$image, $img);
+
+            //remove existing file
+            if($agent_profile->passport_file != ''){
+                Storage::disk('local')->delete('public/'.$agent_profile->passport_file);
+            }
+            //add new image path to database
+            $agent_profile->passport_file = $image;
             
         }
         //Point of Contact
@@ -145,13 +173,16 @@ class AgentProfileController extends Controller
         $agent_profile->nationality = $request->nationality;
         $agent_profile->passport = $request->passport;
         $agent_profile->nic = $request->nic;
-        $agent_profile->phone = $request->contact_phone;
-        $agent_profile->email = $request->contact_email;
+        $agent_profile->contact_phone = $request->contact_phone;
+        $agent_profile->contact_email = $request->contact_email;
         $agent_profile->save();
 
         Session::flash('message', 'Profile Updated Successfully!!'); 
         Session::flash('alert-class', 'alert-success');
 
+        if(auth()->user()->hasRole('superadministrator')){
+            return redirect()->route('admin.agent.index');
+        }
         return redirect()->route('agent.index');
     }
 
