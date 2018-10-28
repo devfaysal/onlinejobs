@@ -45,7 +45,7 @@
             {data: 'email', name: 'email'},
             {data: 'country', name: 'country'},
             {data: 'first_name', name: 'first_name'},
-            {data: 'phone', name: 'phone'},
+            {data: 'phone', name: 'contact_phone'},
             {data: 'created_at', name: 'created_at'},
             {data: 'updated_at', name: 'updated_at'},
             {data: 'action', name: 'action', orderable: false, searchable: false}

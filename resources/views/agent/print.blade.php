@@ -5,14 +5,11 @@
         <div class="row justify-content-md-center">
             <div class="col-12">
                 <div class="hidefromprint mt-4 mb-3">
-                    @if(Auth::user()->hasRole('agent'))
+                    @if(Auth::user()->hasRole(['superadministrator','agent']))
                     <a class="btn btn-info" href="{{url()->previous()}}">Back</a>
-                    @endif
+                    <a class="btn btn-success {{$profile->license_file ? '' : 'disabled'}}" href="" onclick="printJS('{{asset('storage/'.$profile->license_file)}}');return false;">Print License</a>
+                    <a class="btn btn-success {{$profile->passport_file ? '' : 'disabled'}}" href="" onclick="printJS('{{asset('storage/'.$profile->passport_file)}}');return false;">Print Passport/NIC</a>
                     <a class="btn btn-success pull-right" href="" onclick="window.print();return false;">Print</a>
-                    @if(Auth::user()->hasRole('superadministrator'))
-                    <a class="btn btn-info" href="/admin">Back</a>
-                    <a class="btn btn-success" href="{{route('agent.print', [$profile->user->id,'license'])}}">Print License</a>
-                    <a class="btn btn-success" href="{{route('agent.print', [$profile->user->id,'passport'])}}">Print Passport/NIC</a>
                     @endif
                 </div>
                 @if($data == 'license')
@@ -126,12 +123,16 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row hidefromprint">
                                 <div class="col-md-6">
                                     <h4 class="card-title text-center mt-3">License</h4>
                                     <p class="text-center">
                                         @if($profile->license_file != null)
-                                        <img src="{{asset('storage/'.$profile->license_file)}}" alt="">
+                                            @if(pathinfo($profile->license_file, PATHINFO_EXTENSION) == 'pdf')
+                                            <a class="btn btn-sm btn-secondary mt-2" target="_blank" href="{{asset('storage/'.$profile->license_file)}}">View Passport File</a>
+                                            @else
+                                            <img style="max-width:100%" src="{{asset('storage/'.$profile->license_file)}}" alt="">
+                                            @endif
                                         @else
                                         No License File Found
                                         @endif
@@ -141,7 +142,11 @@
                                     <h4 class="card-title text-center mt-3">Passport/NIC</h4>
                                     <p class="text-center">
                                         @if($profile->passport_file != null)
-                                        <img src="{{asset('storage/'.$profile->passport_file)}}" alt="">
+                                            @if(pathinfo($profile->passport_file, PATHINFO_EXTENSION) == 'pdf')
+                                            <a class="btn btn-sm btn-secondary mt-2" target="_blank" href="{{asset('storage/'.$profile->passport_file)}}">View Passport File</a>
+                                            @else
+                                            <img style="max-width:100%" src="{{asset('storage/'.$profile->passport_file)}}" alt="">
+                                            @endif
                                         @else
                                         No Passport/NIC File Found
                                         @endif
@@ -154,4 +159,7 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
 @endsection

@@ -37,8 +37,8 @@ class CreateAgentProfilesTable extends Migration
             $table->string('passport')->nullable();
             $table->string('passport_file')->nullable();
             $table->string('nic')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('email')->nullable();
+            $table->string('contact_phone')->nullable();
+            $table->string('contact_email')->nullable();
             $table->timestamps();
         });
     }

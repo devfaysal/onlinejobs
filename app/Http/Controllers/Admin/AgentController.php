@@ -39,7 +39,11 @@ class AgentController extends Controller
         return DataTables::of($users)
         ->addColumn('action', function ($user) {
             //return '<a href="'.route('admin.agent.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-            return '<a href="'.route('admin.agent.show', $user->id).'" class="btn btn-xs btn-primary">View</a>';
+            $string = '<a href="'.route('admin.agent.show', $user->id).'" class="btn btn-xs btn-primary">View</a> ';
+            if(auth()->user()->hasRole('superadministrator')){
+                $string .= '<a href="'.route('agent.edit', $user->id).'" class="btn btn-xs btn-info">Edit</a> ';
+            }
+            return $string;
         })
         ->addColumn('country', function($user) {
             return $user->agent_profile['country_data']['name'];
@@ -48,7 +52,7 @@ class AgentController extends Controller
             return $user->agent_profile['first_name'];
         })
         ->addColumn('phone', function($user) {
-            return $user->agent_profile['phone'];
+            return $user->agent_profile['contact_phone'];
         })
         ->editColumn('id', 'ID: {{$id}}')
         ->removeColumn('password')
@@ -75,7 +79,7 @@ class AgentController extends Controller
             return $user->agent_profile['first_name'];
         })
         ->addColumn('phone', function($user) {
-            return $user->agent_profile['phone'];
+            return $user->agent_profile['contact_phone'];
         })
         ->editColumn('id', 'ID: {{$id}}')
         ->removeColumn('password')
@@ -102,7 +106,7 @@ class AgentController extends Controller
             return $user->agent_profile['first_name'];
         })
         ->addColumn('phone', function($user) {
-            return $user->agent_profile['phone'];
+            return $user->agent_profile['contact_phone'];
         })
         ->editColumn('id', 'ID: {{$id}}')
         ->removeColumn('password')

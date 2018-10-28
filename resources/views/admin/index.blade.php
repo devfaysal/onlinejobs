@@ -8,8 +8,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <a class="btn btn-success" href="{{route('agent.print', [Auth::user()->id, 'details'])}}">Print Details</a>
-                            <a class="btn btn-success" href="{{route('agent.print', [Auth::user()->id,'license'])}}">Print License</a>
-                            <a class="btn btn-success" href="{{route('agent.print', [Auth::user()->id,'passport'])}}">Print Passport/NIC</a>
+                            <a class="btn btn-success {{Auth::user()->agent_profile->license_file ? '' : 'disabled'}}" href="" onclick="printJS('{{asset('storage/'.Auth::user()->agent_profile->license_file)}}');return false;">Print License</a>
+                            <a class="btn btn-success {{Auth::user()->agent_profile->passport_file ? '' : 'disabled'}}" href="" onclick="printJS('{{asset('storage/'.Auth::user()->agent_profile->passport_file)}}');return false;">Print Passport/NIC</a>
                         </div>
                     </div>
                 </div>
@@ -158,4 +158,7 @@
             </div>
         </div>
     </section>
+@endsection
+@section('javascript')
+    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
 @endsection

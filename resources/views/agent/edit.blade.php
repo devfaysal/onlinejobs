@@ -5,7 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card auth-form mb-5">
-                <div class="card-header"><h2>{{$agent->name}}!! Edit Your Profile</h2></div>
+                <div class="card-header">
+                    <h3 class="text-center mt-2">
+                        @if(Auth::user()->hasRole('agent'))
+                        <a href="{{route('agent.index')}}" class="btn btn-danger pull-left">Back </a>
+                        @elseif(Auth::user()->hasRole('superadministrator'))
+                        <a href="{{route('admin.agent.index')}}" class="btn btn-danger pull-left">Back </a>
+                        @endif
+                    </h3>
+                    <h2 class="text-center"> {{$agent->name}}!! Edit Your Profile</h2>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('agent.update', $agent->id) }}" enctype="multipart/form-data">
@@ -74,7 +83,7 @@
                                 <div class="form-group row">
                                     <label for="phone" class="col-sm-4 col-form-label">{{ __('Agency Phone *') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ $agentProfile->phone }}" placeholder="Agency Phone" required>
+                                        <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="agency_phone" value="{{ $agentProfile->agency_phone }}" placeholder="Agency Phone" required>
 
                                     @if ($errors->has('phone'))
                                         <span class="invalid-feedback" role="alert">
@@ -110,7 +119,7 @@
                                 <div class="form-group row">
                                     <label for="license_issue_date" class="col-sm-4 col-form-label">{{ __('License Issue Date') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="license_issue_date" type="date" class="form-control{{ $errors->has('license_issue_date') ? ' is-invalid' : '' }}" name="license_issue_date" min="1900-01-01" max="2200-01-01" value="{{\Carbon\Carbon::parse($agentProfile->license_issue_date)->format('Y-m-d')}}" placeholder="license_issue_date">
+                                        <input id="license_issue_date" type="date" class="form-control{{ $errors->has('license_issue_date') ? ' is-invalid' : '' }}" name="license_issue_date" min="1900-01-01" max="2200-01-01" value="{{$agentProfile->license_issue_date ? \Carbon\Carbon::parse($agentProfile->license_issue_date)->format('Y-m-d') : ''}}" placeholder="license_issue_date">
 
                                     @if ($errors->has('license_issue_date'))
                                         <span class="invalid-feedback" role="alert">
@@ -122,7 +131,7 @@
                                 <div class="form-group row">
                                     <label for="license_expire_date" class="col-sm-4 col-form-label">{{ __('License Expire Date') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="license_expire_date" type="date" class="form-control{{ $errors->has('license_expire_date') ? ' is-invalid' : '' }}" name="license_expire_date" min="1900-01-01" max="2200-01-01" value="{{\Carbon\Carbon::parse($agentProfile->license_expire_date)->format('Y-m-d')}}" placeholder="license_expire_date">
+                                        <input id="license_expire_date" type="date" class="form-control{{ $errors->has('license_expire_date') ? ' is-invalid' : '' }}" name="license_expire_date" min="1900-01-01" max="2200-01-01" value="{{$agentProfile->license_expire_date ? \Carbon\Carbon::parse($agentProfile->license_expire_date)->format('Y-m-d') : ''}}" placeholder="license_expire_date">
 
                                     @if ($errors->has('license_expire_date'))
                                         <span class="invalid-feedback" role="alert">
@@ -135,7 +144,10 @@
                                     <label for="license_file" class="col-sm-4 col-form-label">{{ __('Upload License') }}</label>
                                     <div class="col-sm-8">
                                         <input id="license_file" type="file" class="form-control-file{{ $errors->has('license_file') ? ' is-invalid' : '' }}" name="license_file" value="{{ $agentProfile->license_file}}" placeholder="license_file">
-
+                                        @if($agentProfile->license_file)
+                                            <a class="btn btn-sm btn-secondary mt-2" target="_blank" href="{{asset('storage/'.$agentProfile->license_file)}}">View License File</a>
+                                        @endif
+                                        <p class="text-danger">Supported file format JPG, PNG & PDF. Maximum file size: 1MB</p>
                                     @if ($errors->has('license_file'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('license_file') }}</strong>
@@ -241,7 +253,10 @@
                                     <label for="passport_file" class="col-sm-4 col-form-label">{{ __('Passport/NIC (Upload Scanned copy) *') }}</label>
                                     <div class="col-sm-8">
                                         <input id="passport_file" type="file" class="form-control-file{{ $errors->has('passport_file') ? ' is-invalid' : '' }}" name="passport_file" value="{{ $agentProfile->passport_file }}">
-
+                                        @if($agentProfile->passport_file)
+                                            <a class="btn btn-sm btn-secondary mt-2" target="_blank" href="{{asset('storage/'.$agentProfile->passport_file)}}">View Passport File</a>
+                                        @endif
+                                        <p class="text-danger">Supported file format JPG, PNG & PDF. Maximum file size: 1MB</p>
                                     @if ($errors->has('passport_file'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('passport_file') }}</strong>
@@ -252,7 +267,7 @@
                                 <div class="form-group row">
                                     <label for="contact_phone" class="col-sm-4 col-form-label">{{ __('Phone Number *') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="contact_phone" type="text" class="form-control{{ $errors->has('contact_phone') ? ' is-invalid' : '' }}" name="contact_phone" value="{{ $agentProfile->phone }}" placeholder="Phone Number">
+                                        <input id="contact_phone" type="text" class="form-control{{ $errors->has('contact_phone') ? ' is-invalid' : '' }}" name="contact_phone" value="{{ $agentProfile->contact_phone }}" placeholder="Phone Number">
 
                                     @if ($errors->has('contact_phone'))
                                         <span class="invalid-feedback" role="alert">
@@ -265,7 +280,7 @@
                                 <div class="form-group row">
                                     <label for="contact_email" class="col-sm-4 col-form-label">{{ __('E-Mail Address *') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="contact_email" type="email" class="form-control{{ $errors->has('contact_email') ? ' is-invalid' : '' }}" name="contact_email" value="{{ $agentProfile->email }}" placeholder="E-Mail">
+                                        <input id="contact_email" type="email" class="form-control{{ $errors->has('contact_email') ? ' is-invalid' : '' }}" name="contact_email" value="{{ $agentProfile->contact_email }}" placeholder="E-Mail">
 
                                     @if ($errors->has('contact_email'))
                                         <span class="invalid-feedback" role="alert">
