@@ -56,16 +56,22 @@ class HomeController extends Controller
         $page = 'maids';
         $total_maids = User::whereRoleIs('maid')->count();
 
+        // date filter related
+        $age_term = $request->age_term;
+        $age_value = $request->age_value;
+        $today = date('Y-m-d');
+        $birthdate = date("Y-m-d", strtotime("-$age_value years", strtotime($today)));
+
         $users = User::whereRoleIs('maid')
                         ->with('Profile')
                         ->where('status', 1)
-                        ->whereHas('Profile', function($query) use($request){
+                        ->whereHas('Profile', function($query) use($request, $age_term, $birthdate){
                             $query->where('religion', $request->religion ? $request->religion : 0)
                                     ->orWhere('nationality', $request->nationality ? $request->nationality : 0)
-                                    /*->orWhere('language_set', $request->native_language ?  $request->native_language : 0)*/;
+                                    ->orWhere('date_of_birth', $age_term, $birthdate );
                         })->get();
 
-        return view('maids', compact('users','religions','nationalitys','languages','page','total_maids'));
+        return view('maids', compact('users','religions','nationalitys','languages','page','total_maids', 'request'));
     }
 
     public function workers()
@@ -93,15 +99,21 @@ class HomeController extends Controller
         $page = 'workers';
         $total_workers = User::whereRoleIs('worker')->count();
 
+        // date filter related
+        $age_term = $request->age_term;
+        $age_value = $request->age_value;
+        $today = date('Y-m-d');
+        $birthdate = date("Y-m-d", strtotime("-$age_value years", strtotime($today)));
+
         $users = User::whereRoleIs('worker')
                         ->with('Profile')
                         ->where('status', 1)
-                        ->whereHas('Profile', function($query) use($request){
+                        ->whereHas('Profile', function($query) use($request, $age_term, $birthdate){
                             $query->where('religion', $request->religion ? $request->religion : 0)
                                     ->orWhere('nationality', $request->nationality ? $request->nationality : 0)
-                                    /*->orWhere('native_language', $request->native_language ?  $request->native_language : 0)*/;
+                                    ->orWhere('date_of_birth', $age_term, $birthdate );
                         })->get();
 
-        return view('workers', compact('users','religions','nationalitys','languages','page','total_workers'));
+        return view('workers', compact('users','religions','nationalitys','languages','page','total_workers', 'request'));
     }
 }

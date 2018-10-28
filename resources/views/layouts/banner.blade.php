@@ -26,25 +26,25 @@
                                     <select name="religion" id="religion" class="form-control">
                                         <option value="">-- Religion --</option>
                                         @foreach ($religions as $religion)
-                                            <option value="{{$religion->id}}">{{$religion->name}}</option>
+                                            <option value="{{$religion->id}}" @if(isset($request->religion) && $request->religion==$religion->id){{"selected"}} @endif >{{$religion->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="col-3">
-                                    <label class="sr-only" for="native_language">Language</label>
-                                    <select name="native_language" id="native_language" class="form-control">
-                                        <option value="">-- Language --</option>
-                                        @foreach ($languages as $language)
-                                            <option value="{{$language->id}}" >{{$language->name}}</option>
-                                        @endforeach
+                                    <label class="sr-only" for="age_term">Age</label>
+                                    <select name="age_term" id="age_term" class="form-control" style="width: 49%; display: inline;">
+                                        <option value="<" @if(isset($request->age_term) && $request->age_term=="<"){{"selected"}} @endif >Age ></option>
+                                        <option value="=" @if(isset($request->age_term) && $request->age_term=="="){{"selected"}} @endif >Age =</option>
+                                        <option value=">" @if(isset($request->age_term) && $request->age_term==">"){{"selected"}} @endif >Age <</option>
                                     </select>
+                                    <input type="text" class="form-control" name="age_value" value="@if(isset($request->age_value)){{old('age_value', $request->age_value)}}@endif" style="width: 49%; display: inline;">
                                 </div>
                                 <div class="col-3">
                                     <label class="sr-only" for="nationality">Nationality</label>
                                     <select name="nationality" id="nationality" class="form-control">
                                         <option value="">-- Nationality --</option>
                                         @foreach ($nationalitys as $nationality)
-                                            <option value="{{$nationality->id}}" >{{$nationality->name}}</option>
+                                            <option value="{{$nationality->id}}" @if(isset($request->nationality) && $request->nationality==$nationality->id){{"selected"}} @endif >{{$nationality->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>

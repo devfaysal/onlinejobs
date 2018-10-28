@@ -27,7 +27,15 @@
                                         <tr>
                                             <th>Age</th>
                                             <th>:</th>
-                                            <td>{{ \Carbon\Carbon::parse($user->profile->date_of_birth)->diff(\Carbon\Carbon::now())->format('%y years %m months')}}</td>
+                                            <td>
+                                            <?php
+                                                $birthday = $user->profile->date_of_birth;
+                                                $date = new DateTime($birthday);
+                                                $now = new DateTime();
+                                                $interval = $now->diff($date);
+                                                echo $interval->y;
+                                            ?>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>Religion</th>
