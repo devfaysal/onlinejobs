@@ -50,7 +50,7 @@
                             </tr>
                             <tr>
                                 <th>Date of Birth :</th>
-                                <td>{{\Carbon\Carbon::parse($profile->date_of_birth)->format('d/m/Y')}}</td>
+                                <td>{{$profile->date_of_birth ? \Carbon\Carbon::parse($profile->date_of_birth)->format('d/m/Y') : 'N/A'}}</td>
                             </tr>
                             <tr>
                                 <th>Age :</th>
@@ -163,7 +163,7 @@
                                     </tr>
                                     <tr>
                                         <th>Issue Date :</th>
-                                        <td>{{\Carbon\Carbon::parse($profile->passport_issue_date)->format('d/m/Y')}}</td>
+                                        <td>{{$profile->passport_issue_date ? \Carbon\Carbon::parse($profile->passport_issue_date)->format('d/m/Y') : 'N/A'}}</td>
                                     </tr>
                                 </table>
                             </div>
@@ -175,7 +175,7 @@
                                     </tr>
                                     <tr>
                                         <th>Expire Date :</th>
-                                        <td>{{\Carbon\Carbon::parse($profile->passport_expire_date)->format('d/m/Y')}}</td>
+                                        <td>{{$profile->passport_expire_date ? \Carbon\Carbon::parse($profile->passport_expire_date)->format('d/m/Y') : 'N/A'}}</td>
                                     </tr>
                                 </table>
                             </div>

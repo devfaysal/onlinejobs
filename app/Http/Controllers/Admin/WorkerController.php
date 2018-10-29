@@ -36,8 +36,8 @@ class WorkerController extends Controller
         ->addColumn('action', function ($user) {
             //return '<a href="'.route('admin.worker.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
 
-            $string =  '<a target="_blank" class="btn btn-xs btn-primary" href="'.route('profile.public', $user->public_id).'">View</a>';
-
+            $string =  '<a target="_blank" class="btn btn-xs btn-primary" href="'.route('profile.public', $user->public_id).'">View </a> ';
+            $string .= '<a target="_blank" class="btn btn-xs btn-info" href="'.route('profile.edit', $user->id).'">Edit</a>';
             return $string;
         })
         ->addColumn('selectQW', function ($user) {

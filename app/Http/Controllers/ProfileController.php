@@ -15,6 +15,7 @@ use App\Education;
 use App\Experience;
 use App\SkillLevel;
 use App\MaritalStatus;
+use App\EducationLevel;
 use Illuminate\Http\Request;
 use Image; /* https://github.com/Intervention/image */
 
@@ -79,28 +80,22 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //$logged_user = auth()->user();
-        //$user = User::where('id', $id)->first();
-        
-        // if($logged_user->id != $id || $logged_user->agent_profile->agent_code != $editable_user->profile->agent_code){
-        //     die();
-        // }
-        $profile = Profile::where('id', $id)->first();
-        //$profile = $user->profile;
+        $user = User::where('id', $id)->first();
+        $role = $user->roles->first();
+        $skill_for = strtolower($role->display_name);
+        $profile = $user->profile;
         $religions = Religion::where('status', '=', 1)->get();
         $nationalitys = Country::where('status', '=', 1)->get();
         $languages = Language::where('status', '=', 1)->get();
         $skill_levels = SkillLevel::where('status', '=', 1)->get();
         $marital_statuses = MaritalStatus::where('status', '=', 1)->get();
         $genders = Gender::where('status', '=', 1)->get();
+        $skills = Skill::where('status', '=', 1)->get();
+        $skill_set = (array) json_decode($profile->skill_set);
+        $language_set = (array) json_decode($profile->language_set);
+        $education_levels = EducationLevel::where('status', '=', 1)->get();
+        return view('profile.edit', compact('user','profile','religions','nationalitys','languages','skill_levels','marital_statuses','genders','language_set','skill_set','skills','skill_for','education_levels'));
 
-        // echo $profile->user_id;
-        // die();
-        if($profile->user->hasRole('worker')){
-            return view('profile.worker.edit', compact('profile','religions','nationalitys','languages','skill_levels','marital_statuses','genders'));
-        }elseif($profile->user->hasRole('maid')){
-            return view('profile.maid.edit', compact('profile','religions','nationalitys','languages','skill_levels','marital_statuses','genders'));
-        };
     }
 
     /**
@@ -112,18 +107,100 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $logged_user = auth()->user();
-        //$user = User::where('id', $id)->first();
-        $profile = Profile::where('id', $id)->first();
-        // if($user->profile->id != $id){
-        //     die();
-        // }
+        $user = User::where('id', $id)->first();
+        $profile = $user->profile;
+
+        /*Validation*/
+        $this->validate($request, [
+            'date_of_birth' => 'date',
+            'passport_issue_date' => 'date',
+            'passport_expire_date' => 'date',
+        ]);
 
         if($request->file('image')){
             $this->validate($request, [
-                'image' => 'image|max:250',
+                'image' => 'image|max:1024',
             ]);
-            
+        }
+        if($request->file('full_image')){
+            $this->validate($request, [
+                'full_image' => 'image|max:1024',
+            ]);
+        }
+        if($request->file('passport_file')){
+            $this->validate($request, [
+                'passport_file' => 'mimes:pdf,jpg,jpeg,png|max:1024',
+            ]);
+        }
+        if($request->file('medical_certificate')){
+            $this->validate($request, [
+                'medical_certificate' => 'mimes:pdf,jpg,jpeg,png|max:1024',
+            ]);
+        }
+        if($request->file('immigration_security_clearence')){
+            $this->validate($request, [
+                'immigration_security_clearence' => "mimes:pdf,jpg,jpeg,png|max:1024"
+            ]);
+        }
+
+        $role = $user->roles->first();
+        
+        //Fetch all skils for role
+        if($role->name == 'maid'){
+            $skills = Skill::where('status', '=', 1)->where('for', 'dm')->where('type','Skill')->get();
+            $languages = Skill::where('status', '=', 1)->where('for', 'dm')->where('type','Language')->get();
+        }else if($role->name == 'worker'){
+            $skills = Skill::where('status', '=', 1)->where('for', 'gw')->where('type','Skill')->get();
+            $languages = Skill::where('status', '=', 1)->where('for', 'gw')->where('type','Language')->get();
+        }
+
+        //Loop through and save skills
+        foreach($skills as $skill){
+            $skill_arr[$skill->slug] = request($skill->slug) ?? 'No';
+        }
+        $profile->skill_set = json_encode($skill_arr);
+
+        foreach($languages as $language){
+            $lang_arr[$language->slug] = request($language->slug) ?? 'No';
+        }
+        $profile->language_set = json_encode($lang_arr);
+
+        //Save Other data
+        $profile->name = $request->name;
+        $profile->date_of_birth = $request->date_of_birth;
+        $profile->address = $request->address;
+        $profile->district = $request->district;
+        $profile->city = $request->city;
+        $profile->state = $request->state;
+        $profile->nationality = $request->nationality;
+        $profile->gender = $request->gender;
+        $profile->marital_status = $request->marital_status;
+        $profile->children = $request->children;
+        $profile->siblings = $request->siblings;
+        $profile->religion = $request->religion;
+        $profile->height = $request->height;
+        $profile->weight = $request->weight;
+        $profile->email = $request->email;
+        $profile->phone = $request->phone;
+        $profile->father_name = $request->father_name;
+        $profile->mother_name = $request->mother_name;
+        $profile->father_contact_number = $request->father_contact_number;
+
+        /*Emergency Contact*/
+        $profile->emergency_contact_name = $request->emergency_contact_name;
+        $profile->emergency_contact_relationship = $request->emergency_contact_relationship;
+        $profile->emergency_contact_phone = $request->emergency_contact_phone;
+        $profile->emergency_contact_address = $request->emergency_contact_address;
+
+        /*Passport Info*/
+        $profile->passport_number = $request->passport_number;
+        $profile->passport_issue_date = $request->passport_issue_date;
+        $profile->passport_issue_place = $request->passport_issue_place;
+        $profile->passport_expire_date = $request->passport_expire_date;
+        
+        //Upload and save files
+
+        if($request->file('image')){
             $image_basename = explode('.',$request->file('image')->getClientOriginalName())[0];
             $image = $image_basename . '-' . time() . '.' . $request->file('image')->getClientOriginalExtension();
 
@@ -144,10 +221,6 @@ class ProfileController extends Controller
         }
 
         if($request->file('full_image')){
-            $this->validate($request, [
-                'full_image' => 'image|max:250',
-            ]);
-            
             $image_basename = explode('.',$request->file('full_image')->getClientOriginalName())[0];
             $image = $image_basename . '-' . time() . '.' . $request->file('full_image')->getClientOriginalExtension();
 
@@ -167,39 +240,60 @@ class ProfileController extends Controller
             
         }
 
+        if($request->file('passport_file')){            
+            $image_basename = explode('.',$request->file('passport_file')->getClientOriginalName())[0];
+            $image = $image_basename . '-' . time() . '.' . $request->file('passport_file')->getClientOriginalExtension();
 
-        $profile->name = $request->name;
-        $profile->phone = $request->phone;
-        $profile->gender = $request->gender;
-        $profile->date_of_birth = $request->date_of_birth;
-        $profile->nationality = $request->nationality;
-        $profile->religion = $request->religion;
-        $profile->native_language = $request->native_language;
-        $profile->other_languages = $request->other_languages;
-        $profile->marital_status = $request->marital_status;
-        $profile->height = $request->height;
-        $profile->weight = $request->weight;
-        $profile->highest_education = $request->highest_education;
-        $profile->skill_level = $request->skill_level;
-        $profile->work_on_off_days_with_compensation = $request->work_on_off_days_with_compensation;
-        $profile->able_to_handle_pork = $request->able_to_handle_pork;
-        $profile->able_to_gardening = $request->able_to_gardening;
-        $profile->able_to_care_dog_cat = $request->able_to_care_dog_cat;
-        $profile->able_to_simple_sewing = $request->able_to_simple_sewing;
-        $profile->able_to_wash_car = $request->able_to_wash_car;
-        $profile->able_to_eat_pork = $request->able_to_eat_pork;
-        $profile->able_to_care_infants = $request->able_to_care_infants;
-        $profile->able_to_care_elderly = $request->able_to_care_elderly;
-        $profile->able_to_care_disabled = $request->able_to_care_disabled;
-        $profile->able_to_do_general_housework = $request->able_to_do_general_housework;
-        $profile->able_to_cook = $request->able_to_cook;
+            $request->passport_file->storeAs('public', $image);
+
+            //Remove if there was any old image
+            if($profile->passport_file != ''){
+                Storage::disk('local')->delete('public/'.$profile->passport_file);
+            }
+
+            //add new image path to database
+            $profile->passport_file = $image;
+            
+        }
+
+        if($request->file('medical_certificate')){          
+            $image_basename = explode('.',$request->file('medical_certificate')->getClientOriginalName())[0];
+            $image = $image_basename . '-' . time() . '.' . $request->file('medical_certificate')->getClientOriginalExtension();
+
+            $request->medical_certificate->storeAs('public', $image);
+
+            //Remove if there was any old image
+            if($profile->medical_certificate != ''){
+                Storage::disk('local')->delete('public/'.$profile->medical_certificate);
+            }
+
+            //add new image path to database
+            $profile->medical_certificate = $image;
+            
+        }
+
+        if($request->file('immigration_security_clearence')){
+            $image_basename = explode('.',$request->file('immigration_security_clearence')->getClientOriginalName())[0];
+            $image = $image_basename . '-' . time() . '.' . $request->file('immigration_security_clearence')->getClientOriginalExtension();
+
+            $request->immigration_security_clearence->storeAs('public', $image);
+
+            //Remove if there was any old image
+            if($profile->immigration_security_clearence != ''){
+                Storage::disk('local')->delete('public/'.$profile->immigration_security_clearence);
+            }
+
+            //add new image path to database
+            $profile->immigration_security_clearence = $image;
+            
+        }
 
         $profile->save();
 
         Session::flash('message', 'Information saved successfully!'); 
         Session::flash('alert-class', 'alert-success');
 
-        if($logged_user->hasRole('agent')){
+        if(auth()->user()->hasRole('agent')){
             return redirect()->route('agent.index');
         }
         return redirect()->route('profile.index');
