@@ -232,11 +232,11 @@ class ProfileController extends Controller
         }elseif($user->hasRole('worker')){
             $skills = Skill::where('status', '=', 1)->where('for', 'gw')->where('type','Skill')->get();
             $languages = Skill::where('status', '=', 1)->where('for', 'gw')->where('type','Language')->get();
-            return view('profile.worker.show', compact('profile','skill_set','language_set','skills','languages','experiences','educations'));
+            return view('profile.show', compact('profile','skill_set','language_set','skills','languages','experiences','educations'));
         }elseif($user->hasRole('maid')){
             $skills = Skill::where('status', '=', 1)->where('for', 'dm')->where('type','Skill')->get();
             $languages = Skill::where('status', '=', 1)->where('for', 'dm')->where('type','Language')->get();
-            return view('profile.maid.show', compact('profile','skill_set','language_set','skills','languages','experiences','educations'));
+            return view('profile.show', compact('profile','skill_set','language_set','skills','languages','experiences','educations'));
         };
     }
 }
