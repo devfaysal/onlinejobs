@@ -280,7 +280,7 @@
                                             <label for="image">{{ __('Half Image') }}</label>
                                             <input onchange="previewFile('#image_preview', '#image')" id="image" type="file" class="form-control-file{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image">
                                             <p class="text-danger">Supported file format JPG, PNG. Maximum file size: 1MB</p>
-                                            <img id="image_preview" style="width: 100px;" src="" class="img-thumbnail" height="">
+                                            <img id="image_preview" style="width: 100px;" src="{{$profile->image != '' ? asset('storage/'.$profile->image) :  asset('images/dummy.jpg')}}" class="img-thumbnail" height="">
                 
                                             @if ($errors->has('image'))
                                                 <span class="invalid-feedback" role="alert">
@@ -294,7 +294,7 @@
                                             <label for="full_image">{{ __('Full Image') }}</label>
                                             <input onchange="previewFile('#full_image_preview','#full_image')" id="full_image" type="file" class="form-control-file{{ $errors->has('full_image') ? ' is-invalid' : '' }}" name="full_image">
                                             <p class="text-danger">Supported file format JPG, PNG. Maximum file size: 1MB</p>
-                                            <img id="full_image_preview" style="width: 100px;" src="" class="img-thumbnail" height="">
+                                            <img id="full_image_preview" style="width: 100px;" src="{{$profile->full_image != '' ? asset('storage/'.$profile->full_image) :  asset('images/avatar_full.jpg')}}" class="img-thumbnail" height="">
                 
                                             @if ($errors->has('full_image'))
                                                 <span class="invalid-feedback" role="alert">
