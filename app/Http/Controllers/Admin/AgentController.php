@@ -70,7 +70,13 @@ class AgentController extends Controller
 
         return DataTables::of($users)
         ->addColumn('action', function ($user) {
-            return '<a href="'.route('admin.agent.show', $user->id).'" class="btn btn-xs btn-primary">View</a><a class="ml-1 btn btn-success" href="'.route('admin.agent.approve', $user->id).'" onclick="return confirm(\'Are you sure?\')">Approve</a><a class="ml-1 btn btn-danger" href="'.route('admin.agent.reject', $user->id).'" onclick="return confirm(\'Are you sure?\')">Reject</a>';
+            $string  = '<a href="'.route('admin.agent.show', $user->id).'" class="btn btn-xs btn-primary">View </a> ';
+            $string .= '<a class="ml-1 btn btn-success" href="'.route('admin.agent.approve', $user->id).'" onclick="return confirm(\'Are you sure?\')">Approve </a> ';
+            $string .= '<a class="ml-1 btn btn-danger" href="'.route('admin.agent.reject', $user->id).'" onclick="return confirm(\'Are you sure?\')">Reject </a> ';
+            if(auth()->user()->hasRole('superadministrator')){
+                $string .= '<a href="'.route('agent.edit', $user->id).'" class="btn btn-xs btn-info">Edit</a> ';
+            }
+            return $string;
         })
         ->addColumn('country', function($user) {
             return $user->agent_profile['country_data']['name'];
@@ -97,7 +103,12 @@ class AgentController extends Controller
 
         return DataTables::of($users)
         ->addColumn('action', function ($user) {
-            return '<a href="'.route('admin.agent.show', $user->id).'" class="btn btn-xs btn-primary">View</a><a class="ml-1 btn btn-success" href="'.route('admin.agent.restore', $user->id).'" onclick="return confirm(\'Are you sure?\')">Restore</a>';
+            $string  = '<a href="'.route('admin.agent.show', $user->id).'" class="btn btn-xs btn-primary">View </a> ';
+            $string .= '<a class="ml-1 btn btn-success" href="'.route('admin.agent.restore', $user->id).'" onclick="return confirm(\'Are you sure?\')">Restore </a> ';
+            if(auth()->user()->hasRole('superadministrator')){
+                $string .= '<a href="'.route('agent.edit', $user->id).'" class="btn btn-xs btn-info">Edit</a> ';
+            }
+            return $string;
         })
         ->addColumn('country', function($user) {
             return $user->agent_profile['country_data']['name'];

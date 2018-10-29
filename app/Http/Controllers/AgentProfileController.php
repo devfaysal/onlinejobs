@@ -146,6 +146,9 @@ class AgentProfileController extends Controller
             
         }
         if($request->file('passport_file')){
+            $this->validate($request, [
+                'passport_file' => 'mimes:pdf,jpg,jpeg,png|max:1024',
+            ]);
             $image_basename = explode('.',$request->file('passport_file')->getClientOriginalName())[0];
             $image = $image_basename . '-' . time() . '.' . $request->file('passport_file')->getClientOriginalExtension();
 
