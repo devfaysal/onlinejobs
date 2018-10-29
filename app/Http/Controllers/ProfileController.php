@@ -295,6 +295,8 @@ class ProfileController extends Controller
 
         if(auth()->user()->hasRole('agent')){
             return redirect()->route('agent.index');
+        }elseif(auth()->user()->hasRole('superadministrator')){
+            return redirect()->route('admin.home');
         }
         return redirect()->route('profile.index');
 
