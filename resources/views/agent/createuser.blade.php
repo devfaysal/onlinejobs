@@ -77,7 +77,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="date_of_birth">{{ __('Date of Birth *') }}</label>
-                                    <input id="date_of_birth" type="date" class="form-control{{ $errors->has('date_of_birth') ? ' is-invalid' : '' }}" name="date_of_birth" value="{{ old('date_of_birth')}}" placeholder="Date of Birth" required>
+                                    <input id="date_of_birth" type="date" class="form-control{{ $errors->has('date_of_birth') ? ' is-invalid' : '' }}" name="date_of_birth" min="1900-01-01" max="2200-01-01" value="{{ old('date_of_birth') ? \Carbon\Carbon::parse(old('date_of_birth'))->format('Y-m-d') : ''}}" placeholder="Date of Birth" required>
         
                                     @if ($errors->has('date_of_birth'))
                                         <span class="invalid-feedback" role="alert">
@@ -356,7 +356,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="emergency_contact_relationship">{{ __('Relationship *') }}</label>
-                                            <input id="emergency_contact_relationship" type="text" class="form-control{{ $errors->has('emergency_contact_relationship') ? ' is-invalid' : '' }}" name="emergency_contact_relationship" value="{{ old('emergency_contact_relationshipe') }}" placeholder="Relationship" required>
+                                            <input id="emergency_contact_relationship" type="text" class="form-control{{ $errors->has('emergency_contact_relationship') ? ' is-invalid' : '' }}" name="emergency_contact_relationship" value="{{ old('emergency_contact_relationship') }}" placeholder="Relationship" required>
                 
                                             @if ($errors->has('emergency_contact_relationship'))
                                                 <span class="invalid-feedback" role="alert">
@@ -411,7 +411,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="passport_issue_date">{{ __('Passport Issue Date *') }}</label>
-                                            <input id="passport_issue_date" type="date" class="form-control{{ $errors->has('passport_issue_date') ? ' is-invalid' : '' }}" name="passport_issue_date" value="{{ old('passport_issue_date') }}" placeholder="Passport Issue Date" required>
+                                            <input id="passport_issue_date" type="date" class="form-control{{ $errors->has('passport_issue_date') ? ' is-invalid' : '' }}" name="passport_issue_date" min="1900-01-01" max="2200-01-01" value="{{ old('passport_issue_date') ? \Carbon\Carbon::parse(old('passport_issue_date'))->format('Y-m-d') : ''}}" placeholder="Passport Issue Date" required>
                 
                                             @if ($errors->has('passport_issue_date'))
                                                 <span class="invalid-feedback" role="alert">
@@ -435,7 +435,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="passport_expire_date">{{ __('Passport Expire Date *') }}</label>
-                                            <input id="passport_expire_date" type="date" class="form-control{{ $errors->has('passport_expire_date') ? ' is-invalid' : '' }}" name="passport_expire_date" value="{{ old('passport_expire_date') }}" placeholder="Passport Expire Date" required>
+                                            <input id="passport_expire_date" type="date" class="form-control{{ $errors->has('passport_expire_date') ? ' is-invalid' : '' }}" name="passport_expire_date" min="1900-01-01" max="2200-01-01" value="{{ old('passport_expire_date') ? \Carbon\Carbon::parse(old('passport_expire_date'))->format('Y-m-d') : ''}}" placeholder="Passport Expire Date" required>
                 
                                             @if ($errors->has('passport_expire_date'))
                                                 <span class="invalid-feedback" role="alert">
@@ -551,13 +551,13 @@
                                                     <div class="col-md-6">
                                                         <div id="div_id_1_from_date" class="form-group">
                                                             <label for="id_1_from_date">{{ __('From Date') }}</label>
-                                                            <input id="id_1_from_date" type="date" class="form-control" name="from_date[]">
+                                                            <input id="id_1_from_date" type="date" class="form-control" min="1900-01-01" max="2200-01-01" name="from_date[]">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div id="div_id_1_to_date" class="form-group">
                                                             <label for="id_1_to_date">{{ __('To Date') }}</label>
-                                                            <input id="id_1_to_date" type="date" class="form-control" name="to_date[]">
+                                                            <input id="id_1_to_date" type="date" class="form-control" min="1900-01-01" max="2200-01-01" name="to_date[]">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">

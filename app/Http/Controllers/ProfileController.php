@@ -290,6 +290,36 @@ class ProfileController extends Controller
 
         $profile->save();
 
+        if($request->employer_name){
+            foreach($user->experiences as $experience){
+                $experience->delete();
+            }
+
+            for($i=0; $i< count($request->employer_name); $i++){
+                $experience = new Experience;
+                $experience->user_id = $user->id;
+                $experience->employer_name = $request->employer_name[$i];
+                $experience->country = $request->country[$i];
+                $experience->from_date = $request->from_date[$i];
+                $experience->to_date = $request->to_date[$i];
+                $experience->remark = $request->remark[$i];
+                $experience->save();
+            }
+        }
+        
+        if($request->education_level){
+            foreach($user->educations as $education){
+                $education->delete();
+            }
+            for($i=0; $i< count($request->education_level); $i++){
+                $education = new Education;
+                $education->user_id = $user->id;
+                $education->education_level = $request->education_level[$i];
+                $education->education_remark = $request->education_remark[$i];
+                $education->save();
+            }
+        }
+
         Session::flash('message', 'Information saved successfully!'); 
         Session::flash('alert-class', 'alert-success');
 

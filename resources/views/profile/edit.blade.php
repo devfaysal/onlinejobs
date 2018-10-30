@@ -508,6 +508,45 @@
                             
                             <div class="col-md-12 pt-5 page-section" id="Experience">
                                 <h3 class="">Experience</h3>
+                                @foreach ($user->experiences as $experience)
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div id="div_id_1_employer_name" class="form-group">
+                                            <label for="id_1_employer_name">{{ __('Employer Name') }}</label>
+                                            <input id="id_1_employer_name" type="text" class="form-control" name="employer_name[]" placeholder="Employers Name" value="{{$experience->employer_name}}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div id="div_id_1_employer_country" class="form-group">
+                                            <label for="id_1_employer_country">{{ __('Employer Country') }}</label>
+                                            <select name="country[]" id="id_1_employer_country" class="form-control">
+                                                <option value="">--Select Country--</option>
+                                                @foreach ($nationalitys as $nationality)
+                                                    <option value="{{$nationality->id}}" {{$nationality->id == $experience->country ? 'selected':''}}>{{$nationality->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div id="div_id_1_from_date" class="form-group">
+                                            <label for="id_1_from_date">{{ __('From Date') }}</label>
+                                            <input id="id_1_from_date" type="date" class="form-control" min="1900-01-01" max="2200-01-01" value="{{$experience->from_date ? \Carbon\Carbon::parse($experience->from_date)->format('Y-m-d') : ''}}" name="from_date[]">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div id="div_id_1_to_date" class="form-group">
+                                            <label for="id_1_to_date">{{ __('To Date') }}</label>
+                                            <input id="id_1_to_date" type="date" class="form-control" min="1900-01-01" max="2200-01-01" value="{{$experience->to_date ? \Carbon\Carbon::parse($experience->to_date)->format('Y-m-d') : ''}}" name="to_date[]">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div id="div_id_1_remark" class="form-group">
+                                            <label for="id_1_remark">{{ __('Remark') }}</label>
+                                            <input id="id_1_remark" type="text" class="form-control" name="remark[]" value="{{$experience->remark}}" placeholder="Remark">
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
                                 <div id="czContainer">
                                     <div id="first">
                                         <div class="recordset">
@@ -556,6 +595,27 @@
                             </div>
                             <div class="col-md-12 pb-5 pt-5 page-section" id="Education">
                                 <h3 class="">Education</h3>
+                                @foreach ($user->educations as $education)
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div id="div_id_1_education_level" class="form-group">
+                                            <label for="id_1_education_level">{{ __('Education Level') }}</label>
+                                            <select name="education_level[]" id="id_1_education_level" class="form-control">
+                                                <option value="">--Select Education Level--</option>
+                                                @foreach ($education_levels as $education_level)
+                                                    <option value="{{$education_level->id}}" {{$education_level->id == $education->education_level ? 'selected':''}}>{{$education_level->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div id="div_id_1_education_remark" class="form-group">
+                                            <label for="id_1_education_remark">{{ __('Education Remark') }}</label>
+                                            <input id="id_1_education_remark" type="text" class="form-control" name="education_remark[]" value="{{$education->education_remark}}" placeholder="Education Remark">
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
                                 <div id="czContainerEducation">
                                     <div id="first">
                                         <div class="recordset">
