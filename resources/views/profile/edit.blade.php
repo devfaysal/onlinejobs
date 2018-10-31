@@ -477,7 +477,14 @@
                                         @if ( $skill->for == $skill_for && $skill->type == 'Language')
                                             <div class="col-md-6">
                                                 <div class="form-group" style="display:flex;">
-                                                    <input style="height:30px;width:30px;" type="checkbox" id="" name="{{ $skill->slug }}" {{$language_set[$skill->slug] == 'Yes'?  'checked': ''}} value="Yes">
+                                                    @php
+                                                        if(isset($language_set[$skill->slug])){
+                                                            $checked = $language_set[$skill->slug] == 'Yes'?  'checked': '';
+                                                        }else{
+                                                            $checked = '';
+                                                        }
+                                                    @endphp
+                                                    <input style="height:30px;width:30px;" type="checkbox" id="" name="{{ $skill->slug }}" {{$checked}} value="Yes">
                                                     <label style="padding-top: 3px;padding-left: 5px;" for="able_to_cook">{{ $skill->name }}</label>
                                                 </div>
                                             </div>
@@ -496,7 +503,14 @@
                                         @if ( $skill->for == $skill_for && $skill->type == 'Skill')
                                             <div class="col-md-6">
                                                 <div class="form-group" style="display:flex;">
-                                                    <input style="height:30px;width:30px;" type="checkbox" id="" name="{{ $skill->slug }}" {{$skill_set[$skill->slug] == 'Yes'?  'checked': ''}} value="Yes">
+                                                    @php
+                                                        if(isset($skill_set[$skill->slug])){
+                                                            $checked = $skill_set[$skill->slug] == 'Yes'?  'checked': '';
+                                                        }else{
+                                                            $checked = '';
+                                                        }
+                                                    @endphp
+                                                    <input style="height:30px;width:30px;" type="checkbox" id="" name="{{ $skill->slug }}" {{$checked}} value="Yes">
                                                     <label style="padding-top: 3px;padding-left: 5px;" for="able_to_cook">{{ $skill->name }}</label>
                                                 </div>
                                             </div>

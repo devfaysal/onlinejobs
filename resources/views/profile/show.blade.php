@@ -194,7 +194,7 @@
                                         @foreach($languages as $language)
                                         <tr>
                                             <th>{{$language->name}}</th>
-                                            <td>{{$language_set[$language->slug]}}</td>
+                                            <td>{{$language_set[$language->slug] ?? 'no'}}</td>
                                         </tr>
                                         @endforeach
                                     @endif
@@ -215,7 +215,7 @@
                                 @foreach($skills as $skill)
                                 <tr>
                                     <th>{{$skill->name}}</th>
-                                    <td>{{$skill_set[$skill->slug]}}</td>
+                                    <td>{{$skill_set[$skill->slug] ?? 'no'}}</td>
                                 </tr>
                                 @endforeach
                             @endif
