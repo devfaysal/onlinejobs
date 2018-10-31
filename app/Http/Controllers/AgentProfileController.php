@@ -168,14 +168,13 @@ class AgentProfileController extends Controller
             
         }
         //Point of Contact
-        $agent_profile->first_name = $request->name;
+        $agent_profile->first_name = $request->first_name;
         $agent_profile->middle_name = $request->middle_name;
         $agent_profile->last_name = $request->last_name;
         $agent_profile->designation = $request->designation;
         $agent_profile->address = $request->address;
         $agent_profile->nationality = $request->nationality;
         $agent_profile->passport = $request->passport;
-        $agent_profile->nic = $request->nic;
         $agent_profile->contact_phone = $request->contact_phone;
         $agent_profile->contact_email = $request->contact_email;
         $agent_profile->save();
