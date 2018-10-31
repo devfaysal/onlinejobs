@@ -55,7 +55,7 @@
 
                                                 @if($language_set)
                                                     @foreach($languages as $language)
-                                                        @if ($language_set[$language->slug] == 'Yes')
+                                                        @if (isset($language_set[$language->slug]) && $language_set[$language->slug] == 'Yes')
                                                             {{$language->name}},
                                                         @endif
                                                     @endforeach
