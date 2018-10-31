@@ -77,7 +77,7 @@ class RegisterController extends Controller
             ]);
         }
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'name' => 'sometimes|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'agreement' => 'required',
@@ -95,7 +95,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $user = new User;
-        $user->name = $data['name'];
+        $user->name = $data['name'] ?? '';
         $user->email = $data['email'];
         $user->phone = $data['phone'] ?? '';
         $user->password = Hash::make($data['password']);
@@ -143,13 +143,13 @@ class RegisterController extends Controller
             $agent = new AgentProfile;
             $agent->user_id = $user->id;
             $agent->agent_code = time();
-            $agent->agency_registered_name = $data['name'];
+            $agent->agency_registered_name = $data['agency_registered_name'];
             $agent->agency_address = $data['agency_address'];
             $agent->agency_city = $data['agency_city'];
             $agent->agency_country = $data['agency_country'];
             $agent->agency_phone = $data['agency_phone'];
             $agent->agency_fax = $data['agency_fax'];
-            $agent->agency_email = $data['email'];
+            $agent->agency_email = $data['agency_email'];
             $agent->license_no = $data['license_no'];
             $agent->license_issue_date = $data['license_issue_date'];
             $agent->license_expire_date = $data['license_expire_date'];

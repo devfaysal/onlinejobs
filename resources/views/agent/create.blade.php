@@ -31,13 +31,13 @@
                                     <h3>Company Information</h3>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="name" class="col-sm-4 col-form-label">{{ __('Agency Registered Name *') }}</label>
+                                    <label for="agency_registered_name" class="col-sm-4 col-form-label">{{ __('Agency Registered Name *') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="Agency Registered Name" required>
+                                        <input id="agency_registered_name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="agency_registered_name" value="{{ old('agency_registered_name') }}" placeholder="Agency Registered Name" required>
 
-                                        @if ($errors->has('name'))
+                                        @if ($errors->has('agency_registered_name'))
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('name') }}</strong>
+                                                <strong>{{ $errors->first('agency_registered_name') }}</strong>
                                             </span>
                                         @endif
                                     </div>                            
@@ -92,6 +92,18 @@
                                     @if ($errors->has('agency_phone'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('agency_phone') }}</strong>
+                                        </span>
+                                    @endif
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="agency_email" class="col-sm-4 col-form-label">{{ __('Agency Email *') }}</label>
+                                    <div class="col-sm-8">
+                                        <input id="agency_email" type="email" class="form-control{{ $errors->has('agency_email') ? ' is-invalid' : '' }}" name="agency_email" value="{{ old('agency_email') }}" placeholder="Agency Email" required>
+
+                                    @if ($errors->has('agency_email'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('agency_email') }}</strong>
                                         </span>
                                     @endif
                                     </div>
@@ -160,9 +172,9 @@
                                     <h3>Sign Up Information</h3>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="email" class="col-sm-4 col-form-label">{{ __('Agency Email *') }}</label>
+                                    <label for="email" class="col-sm-4 col-form-label">{{ __('Email *') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Agency Email" required>
+                                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email" required>
 
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">

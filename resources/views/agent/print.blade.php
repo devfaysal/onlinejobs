@@ -101,10 +101,6 @@
                                             <td>{{$profile->address}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Address:</th>
-                                            <td>{{$profile->address}}</td>
-                                        </tr>
-                                        <tr>
                                             <th>Nationality:</th>
                                             <td>{{$profile->nationality_data->name ?? ''}}</td>
                                         </tr>
@@ -114,11 +110,11 @@
                                         </tr>
                                         <tr>
                                             <th>Phone Number:</th>
-                                            <td>{{$profile->phone}}</td>
+                                            <td>{{$profile->contact_phone}}</td>
                                         </tr>
                                         <tr>
                                             <th>Email Address :</th>
-                                            <td>{{$profile->email}}</td>
+                                            <td>{{$profile->contact_email}}</td>
                                         </tr>
                                     </table>
                                 </div>

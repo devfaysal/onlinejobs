@@ -13,7 +13,7 @@
                         <a href="{{route('admin.agent.index')}}" class="btn btn-danger pull-left">Back </a>
                         @endif
                     </h3>
-                    <h2 class="text-center"> {{$agent->name}}!! Edit Your Profile</h2>
+                    <h2 class="text-center"> {{$agentProfile->agency_registered_name}}!! Update Information</h2>
                 </div>
 
                 <div class="card-body">
@@ -27,13 +27,13 @@
                                     <h3>Company Information</h3>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="name" class="col-sm-4 col-form-label">{{ __('Agency Registered Name *') }}</label>
+                                    <label for="agency_registered_name" class="col-sm-4 col-form-label">{{ __('Agency Registered Name *') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $agent->name }}" placeholder="Agency Registered Name" required>
+                                        <input id="agency_registered_name" type="text" class="form-control{{ $errors->has('agency_registered_name') ? ' is-invalid' : '' }}" name="agency_registered_name" value="{{ $agentProfile->agency_registered_name }}" placeholder="Agency Registered Name" required>
 
-                                        @if ($errors->has('name'))
+                                        @if ($errors->has('agency_registered_name'))
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('name') }}</strong>
+                                                <strong>{{ $errors->first('agency_registered_name') }}</strong>
                                             </span>
                                         @endif
                                     </div>                            
@@ -88,6 +88,18 @@
                                     @if ($errors->has('phone'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('phone') }}</strong>
+                                        </span>
+                                    @endif
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="agency_email" class="col-sm-4 col-form-label">{{ __('Agency Email *') }}</label>
+                                    <div class="col-sm-8">
+                                        <input id="agency_email" type="email" class="form-control{{ $errors->has('agency_email') ? ' is-invalid' : '' }}" name="agency_email" value="{{ $agentProfile->agency_email }}" placeholder="Agency Email" required>
+
+                                    @if ($errors->has('agency_email'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('agency_email') }}</strong>
                                         </span>
                                     @endif
                                     </div>
