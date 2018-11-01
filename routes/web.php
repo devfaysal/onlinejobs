@@ -88,6 +88,9 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
     
     Route::resource('/educationLevel', 'Admin\EducationLevelController');
     Route::get('/getEducationLevelData', 'Admin\EducationLevelController@getEducationLevelData')->name('getEducationLevelData');
+    
+    Route::resource('downloads', 'Admin\DownloadsController');
+    Route::get('/getDownloadsData', 'Admin\DownloadsController@getDownloadsData')->name('getDownloadsData');
 });
 
 Route::get('/', 'HomeController@index')->name('home');
