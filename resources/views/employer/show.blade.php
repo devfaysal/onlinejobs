@@ -261,9 +261,9 @@
                         <table id="files-table" class="table table-condensed">
                             <thead>
                                 <tr>
-                                    <th title="File Title">Title</th>
-                                    <th title=""></th>
-                                    <th title="Updated">Updated</th>
+                                    <th width="50%" title="File Title">Title</th>
+                                    <th width="30%" title=""></th>
+                                    <th width="20%" title="Updated">Updated</th>
                                 </tr>
                             </thead>
                             <tfoot>
