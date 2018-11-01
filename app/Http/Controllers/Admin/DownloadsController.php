@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Session;
+use Storage;
 use App\Downloads;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -32,6 +33,9 @@ class DownloadsController extends Controller
             }
             return $string;
         })
+        ->addColumn('user_type', function ($downloads) {
+            return strtoupper($downloads->user_type);
+        })
         ->make(true);
     }
 
@@ -53,12 +57,24 @@ class DownloadsController extends Controller
      */
     public function store(Request $request)
     {
-        $downloads = new downloads;
-        $downloads->name = $request->name;
+        $downloads = new Downloads;
+        $downloads->title = $request->title;
+
+        if($request->file('file_name')){            
+            $file_basename = explode('.',$request->file('file_name')->getClientOriginalName())[0];
+            $file_name = $file_basename . '-' . time() . '.' . $request->file('file_name')->getClientOriginalExtension();
+
+            $request->file_name->storeAs('public/downloads', $file_name);
+            //add new image path to database
+            $downloads->file_name = $file_name;
+            
+        }
+        $downloads->user_type = $request->user_type;
+        $downloads->comments = $request->comments;
         $downloads->save();
 
         
-        Session::flash('message', 'downloads added Successfully!!'); 
+        Session::flash('message', 'Downloads file added Successfully!!'); 
         Session::flash('alert-class', 'alert-success');
 
         return redirect()->route('admin.downloads.index');
@@ -95,10 +111,13 @@ class DownloadsController extends Controller
      */
     public function update(Downloads $downloads, Request $request)
     {
-        $downloads->name = $request->name;
+        $downloads->title = $request->title;
+        $downloads->file_name = $request->file_name;
+        $downloads->user_type = $request->user_type;
+        $downloads->comments = $request->comments;
         $downloads->save();
 
-        Session::flash('message', 'downloads updated Successfully!!'); 
+        Session::flash('message', 'Downloads file updated Successfully!!'); 
         Session::flash('alert-class', 'alert-success');
 
         return redirect()->route('admin.downloads.index');
