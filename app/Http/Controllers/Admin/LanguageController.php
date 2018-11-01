@@ -26,9 +26,9 @@ class LanguageController extends Controller
         ->addColumn('action', function ($language) {
             $string  = '<a href="'.route('admin.language.edit', $language->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
             if($language->status == 0){
-                $string .= ' <a href="'.route('admin.publish', [$language->getTable(), $language->id]).'" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Publish</a>';
+                $string .= ' <a href="'.route('admin.publish', [$language->getTable(), $language->id]).'" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Active</a>';
             }else{
-                $string .= ' <a href="'.route('admin.unpublish', [$language->getTable(), $language->id]).'" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Unublish</a>';
+                $string .= ' <a href="'.route('admin.unpublish', [$language->getTable(), $language->id]).'" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Inactive</a>';
             }
             return $string;
         })

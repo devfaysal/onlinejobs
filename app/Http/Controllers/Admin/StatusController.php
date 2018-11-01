@@ -15,7 +15,7 @@ class StatusController extends Controller
             ->where('id', $id)
             ->update(['status' => 1]);
 
-        Session::flash('message', ' Published!!'); 
+        Session::flash('message', ' Activated!!'); 
         Session::flash('alert-class', 'alert-success');
 
         return redirect()->back();
@@ -27,7 +27,7 @@ class StatusController extends Controller
             ->where('id', $id)
             ->update(['status' => 0]);
 
-        Session::flash('message', ' Unpublished!!'); 
+        Session::flash('message', ' Inactivated!!'); 
         Session::flash('alert-class', 'alert-success');
 
         return redirect()->back();
