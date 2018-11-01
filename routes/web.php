@@ -127,5 +127,7 @@ Route::prefix('employer')->group(function(){
     Route::get('/demand/{id}', 'EmployerProfileController@viewDemand')->name('demand');
     Route::get('/proposedGW/{damand_id}', 'EmployerProfileController@proposedGW')->name('proposedGW');
     Route::post('/confirmGWToDemand', 'EmployerProfileController@confirmGWToDemand')->name('confirmGWToDemand');
+
+    Route::get('/getDownloadsFile/{type}', 'EmployerProfileController@getDownloadsFile')->name('getDownloadsFile');
 });
 
