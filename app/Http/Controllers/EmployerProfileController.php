@@ -9,6 +9,7 @@ use App\User;
 use App\Offer;
 use App\Country;
 use App\Applicant;
+use App\Downloads;
 use Carbon\Carbon;
 use App\EmployerProfile;
 use Illuminate\Http\Request;
@@ -293,6 +294,22 @@ class EmployerProfileController extends Controller
         Session::flash('alert-class', 'alert-success');
 
         return redirect()->route('employer.show');
+    }
+
+    public function getDownloadsFile($type)
+    {
+        $downloads = Downloads::where('user_type', $type)
+                        ->where('status', 1)->get();
+
+        // datatable return
+        return DataTables::of($downloads)
+        ->addColumn('action', function ($data) {
+            $string =  '<a class="btn btn-sm btn-info" href="'. asset('storage/demand_letter/'.$data->file_name ) .'" target="_blank"><i class="fa fa-download"></i> Download</a>';
+
+            return $string;
+        })
+        ->rawColumns(['action'])
+        ->make(true);
     }
 
     /**

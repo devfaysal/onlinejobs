@@ -21,6 +21,8 @@
                                 <h1>Welcome {{$employer->name}}</h1>
                                 @if(Auth::user()->status == 1)
                                 <p>Offer Sent: 25 <br/> Hired: 18</p>
+
+                                <a class="btn btn-info btn-sm pull-left" href="#downloads"> <i class="fa fa-download"></i> Download sample files</a>
                                 @else
                                 <p class="text-danger">Your Employer Applications under review</p>
                                 @endif
@@ -35,14 +37,13 @@
                 </div><!--/.panel panel-default-->
                 <div class="card mt-4">
                     <div class="card-body">
-                            <canvas id="myChart" width="75%" height="20vh"></canvas>
+                        <canvas id="myChart" width="75%" height="20vh"></canvas>
                     </div>
                 </div>
                 @if(Auth::user()->status == 1)
                 <!-- Demands list -->
                 <div class="card mt-4">
                     <h4 class="card-title text-center mt-3">
-                        <a class="btn btn-info btn-sm mb-2 ml-2 pull-left" href="{{ asset('storage/demand_letter/demand-letter-sample.docx') }}" target="_blank"> <i class="fa fa-download"></i> Download demand letter sample</a>
                         
                         Demand Letters
                         
@@ -190,7 +191,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-md-12">
-                                                    <input onchange="previewFile('#image_preview', '#image')" id="DemandFile" type="file" class="form-control-file{{ $errors->has('DemandFile') ? ' is-invalid' : '' }}" name="DemandFile" title="Upload demand letter">
+                                                    <input id="DemandFile" type="file" class="form-control-file{{ $errors->has('DemandFile') ? ' is-invalid' : '' }}" name="DemandFile" title="Upload demand letter">
                                                     <p class="text-left small">Supported file format PDF, JPG, JPEG and PNG. Maximum file size: 1MB</p>
                                                 </div>
 
@@ -221,35 +222,58 @@
                     <div class="card-body">
                         <form method="post" action="{{route('sendOffer')}}">
                             @csrf
-                        <table id="maids-table" class="table table-condensed">
+                            <table id="maids-table" class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Passport</th>
+                                        <th>Country</th>
+                                        <th>Date of Birth</th>
+                                        <th>Marital Status</th>
+                                        <th>Status</th>
+                                        <th><input onclick="return confirm('Are you sure?')" class="btn btn-success btn-sm pull-right" type="submit" value="Send Offer"></th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Passport</th>
+                                        <th>Country</th>
+                                        <th>Date of Birth</th>
+                                        <th>Marital Status</th>
+                                        <th>Status</th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Downloads list -->
+                <div class="card mt-4" id="downloads">
+                    <h4 class="card-title text-center mt-3">Download files</h4>
+                    <div class="card-body">
+                        <table id="files-table" class="table table-condensed">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Passport</th>
-                                    <th>Country</th>
-                                    <th>Date of Birth</th>
-                                    <th>Marital Status</th>
-                                    <th>Status</th>
-                                    <th><input onclick="return confirm('Are you sure?')" class="btn btn-success btn-sm pull-right" type="submit" value="Send Offer"></th>
+                                    <th width="50%" title="File Title">Title</th>
+                                    <th width="30%" title=""></th>
+                                    <th width="20%" title="Updated">Updated</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Passport</th>
-                                    <th>Country</th>
-                                    <th>Date of Birth</th>
-                                    <th>Marital Status</th>
-                                    <th>Status</th>
-                                    <th></th>
+                                    <th title="File Title">Title</th>
+                                    <th title=""></th>
+                                    <th title="Updated">Updated</th>
                                 </tr>
                             </tfoot>
                         </table>
-                    </form>
                     </div>
                 </div>
                 @endif
@@ -307,6 +331,31 @@
             {data: 'marital_status', name: 'marital_status'},
             {data: 'status', name: 'status'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
+        ],
+        initComplete: function () {
+            this.api().columns().every(function () {
+                var column = this;
+                var input = document.createElement("input");
+                input.className = 'form-control';
+                $(input).appendTo($(column.footer()).empty())
+                .on('keyup change', function () {
+                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
+
+                    column.search(val ? val : '', true, false).draw();
+                });
+            });
+        }
+    });
+
+    // Files table
+    $('#files-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{{route('getDownloadsFile', 'emp')}}',
+        columns: [
+            {data: 'title', name: 'title'},
+            {data: 'action', name: 'action', orderable: false, searchable: false, "className": "text-center"},
+            {data: 'updated_at', name: 'updated_at'}
         ],
         initComplete: function () {
             this.api().columns().every(function () {

@@ -26,9 +26,9 @@ class SkillLevelController extends Controller
         ->addColumn('action', function ($skillLevel) {
             $string  = '<a href="'.route('admin.skillLevel.edit', $skillLevel->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
             if($skillLevel->status == 0){
-                $string .= ' <a href="'.route('admin.publish', [$skillLevel->getTable(), $skillLevel->id]).'" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Publish</a>';
+                $string .= ' <a href="'.route('admin.publish', [$skillLevel->getTable(), $skillLevel->id]).'" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Active</a>';
             }else{
-                $string .= ' <a href="'.route('admin.unpublish', [$skillLevel->getTable(), $skillLevel->id]).'" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Unublish</a>';
+                $string .= ' <a href="'.route('admin.unpublish', [$skillLevel->getTable(), $skillLevel->id]).'" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Inactive</a>';
             }
             return $string;
         })

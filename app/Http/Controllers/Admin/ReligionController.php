@@ -26,9 +26,9 @@ class ReligionController extends Controller
         ->addColumn('action', function ($religion) {
             $string  = '<a href="'.route('admin.religion.edit', $religion->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
             if($religion->status == 0){
-                $string .= ' <a href="'.route('admin.publish', [$religion->getTable(), $religion->id]).'" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Publish</a>';
+                $string .= ' <a href="'.route('admin.publish', [$religion->getTable(), $religion->id]).'" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Active</a>';
             }else{
-                $string .= ' <a href="'.route('admin.unpublish', [$religion->getTable(), $religion->id]).'" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Unublish</a>';
+                $string .= ' <a href="'.route('admin.unpublish', [$religion->getTable(), $religion->id]).'" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Inactive</a>';
             }
             return $string;
         })
