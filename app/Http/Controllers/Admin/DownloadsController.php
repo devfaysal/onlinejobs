@@ -98,8 +98,9 @@ class DownloadsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Downloads $downloads)
+    public function edit($id)
     {
+        $downloads = Downloads::where('id', $id)->first();
         return view('admin.downloads.edit', compact('downloads'));
     }
 
@@ -110,10 +111,20 @@ class DownloadsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Downloads $downloads, Request $request)
+    public function update($id, Request $request)
     {
+        $downloads = Downloads::where('id', $id)->first();
+        
         $downloads->title = $request->title;
-        $downloads->file_name = $request->file_name;
+        if($request->file('file_name')){            
+            $file_basename = explode('.',$request->file('file_name')->getClientOriginalName())[0];
+            $file_name = $file_basename . '-' . time() . '.' . $request->file('file_name')->getClientOriginalExtension();
+
+            $request->file_name->storeAs('public/downloads', $file_name);
+            //add new image path to database
+            $downloads->file_name = $file_name;
+            
+        }
         $downloads->user_type = $request->user_type;
         $downloads->comments = $request->comments;
         $downloads->save();
