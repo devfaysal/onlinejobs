@@ -64,8 +64,8 @@
                         </div>
                         <div class="col-sm-6 col-md-5 col-lg-6">
                         <div class="whitebg align-middle banner_equal row align-items-center">
-                                <h6>Hiring Packages are available. Choose the best suited for you.</h6>
-                                <h5 class="col  align-self-center banner_uppercase"><a href="#"> View the Packages </a> </h5>
+                                <h6 style="text-align: justify;">Hiring Packages are available. Choose the best suited for you.</h6>
+                                <h5 class="col text-center banner_uppercase" style="font-size: 16px; font-weight: 700;"><a href="#"> View the Packages </a> </h5>
                             </div>
                         </div>
                     </div> 
