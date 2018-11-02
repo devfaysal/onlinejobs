@@ -24,12 +24,13 @@ class DownloadsController extends Controller
     {
         $downloadRecords = Downloads::select(['id', 'title', 'file_name', 'user_type', 'comments', 'status'])->get();
         return DataTables::of($downloadRecords)
-        ->addColumn('action', function ($downloads) {
-            $string  = '<a href="'.route('admin.downloads.edit', $downloads->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-            if ($downloads->status == 0) {
-                $string .= ' <a href="'.route('admin.publish', [$downloads->getTable(), $downloads->id]).'" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Active</a>';
+        ->addColumn('action', function ($data) {
+            $string  = '<a href="'. asset('storage/downloads/' . $data->file_name) .'" class="btn btn-xs btn-info" target="_blank"><i class="fa fa-download"></i></a>';
+            $string  .= ' <a href="'.route('admin.downloads.edit', $data->id).'" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>';
+            if ($data->status == 0) {
+                $string .= ' <a href="'.route('admin.publish', [$data->getTable(), $data->id]).'" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Active</a>';
             } else {
-                $string .= ' <a href="'.route('admin.unpublish', [$downloads->getTable(), $downloads->id]).'" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Inactive</a>';
+                $string .= ' <a href="'.route('admin.unpublish', [$data->getTable(), $data->id]).'" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Inactive</a>';
             }
             return $string;
         })

@@ -22,7 +22,6 @@
                                 @if(Auth::user()->status == 1)
                                 <p>Offer Sent: 25 <br/> Hired: 18</p>
 
-                                <a class="btn btn-info btn-sm pull-left" href="#downloads"> <i class="fa fa-download"></i> Download sample files</a>
                                 @else
                                 <p class="text-danger">Your Employer Applications under review</p>
                                 @endif
@@ -32,6 +31,13 @@
                                 <span>{{$employer->employer_profile->address ?? 'N/A'}}</span><br/>
                                 <span>{{$employer->employer_profile->country_data->name ?? 'N/A'}}</span>
                             </div>
+
+                            @if(Auth::user()->status == 1)
+                            <div class="col-md-12">
+                                <hr>
+                                <a class="btn btn-info btn-sm pull-left" href="#downloads"> <i class="fa fa-download"></i> Download files</a>
+                            </div>
+                            @endif
                         </div>
                     </div><!--/.panel-body-->
                 </div><!--/.panel panel-default-->

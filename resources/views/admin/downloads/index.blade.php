@@ -11,7 +11,7 @@
                     <th>File Name</th>
                     <th>For</th>
                     <th>Comments</th>
-                    <th>Action</th>
+                    <th width="170px">Action</th>
                 </tr>
             </thead>
             <tfoot>
