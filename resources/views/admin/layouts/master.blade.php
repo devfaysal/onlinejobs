@@ -245,6 +245,9 @@
                                         <i class="fa arrow"></i>
                                     </a>
                                     <ul class="sidebar-nav">
+                                        <li class="{{ ( (Route::currentRouteName() === "admin.downloads.index") ? "active" : "") }}">
+                                            <a href="{{route('admin.downloads.index')}}"> Downloads </a>
+                                        </li>
                                         <li class="{{ ( (Route::currentRouteName() === "admin.country.index") ? "active" : "") }}">
                                             <a href="{{route('admin.country.index')}}"> Countries </a>
                                         </li>
@@ -268,9 +271,6 @@
                                         </li>
                                         <li class="{{ ( (Route::currentRouteName() === "admin.educationLevel.index") ? "active" : "") }}">
                                             <a href="{{route('admin.educationLevel.index')}}"> Education Level </a>
-                                        </li>
-                                        <li class="{{ ( (Route::currentRouteName() === "admin.downloads.index") ? "active" : "") }}">
-                                            <a href="{{route('admin.downloads.index')}}"> Downloads </a>
                                         </li>
                                         {{-- <li>
                                             <a href="#"> Employer Apllications </a>

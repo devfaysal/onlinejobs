@@ -304,7 +304,7 @@ class EmployerProfileController extends Controller
         // datatable return
         return DataTables::of($downloads)
         ->addColumn('action', function ($data) {
-            $string =  '<a class="btn btn-sm btn-info" href="'. asset('storage/demand_letter/'.$data->file_name ) .'" target="_blank"><i class="fa fa-download"></i> Download</a>';
+            $string =  '<a class="btn btn-sm btn-info" href="'. asset('storage/downloads/'.$data->file_name ) .'" target="_blank"><i class="fa fa-download"></i> Download</a>';
 
             return $string;
         })
