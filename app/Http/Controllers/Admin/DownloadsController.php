@@ -23,6 +23,8 @@ class DownloadsController extends Controller
     public function getDownloadsData()
     {
         $downloadRecords = Downloads::select(['id', 'title', 'file_name', 'user_type', 'comments', 'status'])->get();
+
+        // Generate Datatables
         return DataTables::of($downloadRecords)
         ->addColumn('action', function ($data) {
             $string  = '<a href="'. asset('storage/downloads/' . $data->file_name) .'" class="btn btn-xs btn-info" target="_blank"><i class="fa fa-download"></i></a>';

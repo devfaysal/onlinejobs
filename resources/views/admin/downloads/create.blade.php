@@ -33,7 +33,7 @@
 
                         <div class="form-group">
                             <select name="user_type" id="user_type" class="form-control" required="required">
-                                <option value="">-- Select User --</option>
+                                <option value="">-- Select User Type --</option>
                                 <option value="agent">For Agent</option>
                                 <option value="emp">For Employer</option>
                             </select>
