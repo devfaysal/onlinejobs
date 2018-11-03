@@ -36,7 +36,7 @@
 
                         <div class="form-group">
                             <select name="user_type" id="user_type" class="form-control" required="required">
-                                <option value="">-- Select User --</option>
+                                <option value="">-- Select User Type --</option>
                                 <option value="agent" {{$downloads->user_type == 'agent' ? 'selected' : ''}}>For Agent</option>
                                 <option value="emp" {{$downloads->user_type == 'emp' ? 'selected' : ''}}>For Employer</option>
                             </select>

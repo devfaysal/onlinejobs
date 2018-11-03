@@ -156,6 +156,11 @@ class AgentController extends Controller
         return redirect()->back();
     }
 
+    public function downloadFiles()
+    {
+        return view('admin.agent.downloadFiles');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -236,6 +236,10 @@
                                     <a href="{{route('admin.employerDemands')}}">
                                         <i class="fa fa-pencil-square-o"></i> Employer Demands </a>
                                 </li>
+                                <li class="{{ ( (Route::currentRouteName() === "admin.downloadFiles") ? "active" : "") }}">
+                                    <a href="{{route('admin.downloadFiles')}}">
+                                        <i class="fa fa-download"></i> Download Files </a>
+                                </li>
                                 @endif
 
                                 @if(Auth::user()->hasRole('superadministrator'))

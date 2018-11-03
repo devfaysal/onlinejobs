@@ -55,6 +55,7 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
     Route::get('/rejected-agent-application', 'Admin\AgentController@rejectedAgentApplication')->name('rejectedAgentApplication');
     Route::get('/getRejectedAgentApplicationData', 'Admin\AgentController@getRejectedAgentApplicationData')->name('getRejectedAgentApplicationData');
     Route::resource('/agent', 'Admin\AgentController');
+    Route::get('/downloadFiles', 'Admin\AgentController@downloadFiles')->name('downloadFiles');
 
     /*Worker*/
     Route::get('/getWorkersData', 'Admin\WorkerController@getWorkersData')->name('getWorkersData');
@@ -128,6 +129,6 @@ Route::prefix('employer')->group(function(){
     Route::get('/proposedGW/{damand_id}', 'EmployerProfileController@proposedGW')->name('proposedGW');
     Route::post('/confirmGWToDemand', 'EmployerProfileController@confirmGWToDemand')->name('confirmGWToDemand');
 
-    Route::get('/getDownloadsFile/{type}', 'EmployerProfileController@getDownloadsFile')->name('getDownloadsFile');
+    Route::get('/getDownloadsFile/{type}', 'CommonController@getDownloadsFile')->name('getDownloadsFile');
 });
 
