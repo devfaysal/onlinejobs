@@ -559,6 +559,9 @@
                                             <input id="id_1_remark" type="text" class="form-control" name="remark[]" value="{{$experience->remark}}" placeholder="Remark">
                                         </div>
                                     </div>
+                                    <div class="col-md-12">
+                                        <hr class="mt-4 mb-4"/>
+                                    </div>
                                 </div>
                                 @endforeach
                                 <div id="czContainer">
@@ -601,6 +604,9 @@
                                                             <input id="id_1_remark" type="text" class="form-control" name="remark[]" placeholder="Remark">
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-12">
+                                                        <hr class="mt-4 mb-4"/>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -628,6 +634,9 @@
                                             <input id="id_1_education_remark" type="text" class="form-control" name="education_remark[]" value="{{$education->education_remark}}" placeholder="Education Remark">
                                         </div>
                                     </div>
+                                    <div class="col-md-12">
+                                        <hr class="mt-4 mb-4"/>
+                                    </div>
                                 </div>
                                 @endforeach
                                 <div id="czContainerEducation">
@@ -652,6 +661,9 @@
                                                             <label for="id_1_education_remark">{{ __('Education Remark') }}</label>
                                                             <input id="id_1_education_remark" type="text" class="form-control" name="education_remark[]" placeholder="Education Remark">
                                                         </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <hr class="mt-4 mb-4"/>
                                                     </div>
                                                 </div>
                                             </div>

@@ -498,7 +498,10 @@
                                         @if ( $skill->for == request()->t && $skill->type == 'Language')
                                             <div class="col-md-6">
                                                 <div class="form-group" style="display:flex;">
-                                                    <input style="height:30px;width:30px;" type="checkbox" id="" name="{{ $skill->slug }}" value="Yes">
+                                                    @php
+                                                        $checked = old($skill->slug) ?  'checked': '';
+                                                    @endphp
+                                                    <input style="height:30px;width:30px;" type="checkbox" id="" name="{{ $skill->slug }}" {{$checked}} value="Yes">
                                                     <label style="padding-top: 3px;padding-left: 5px;" for="able_to_cook">{{ $skill->name }}</label>
                                                 </div>
                                             </div>
@@ -515,7 +518,10 @@
                                         @if ( $skill->for == request()->t && $skill->type == 'Skill')
                                             <div class="col-md-6">
                                                 <div class="form-group" style="display:flex;">
-                                                    <input style="height:30px;width:30px;" type="checkbox" id="" name="{{ $skill->slug }}" value="Yes">
+                                                    @php
+                                                        $checked = old($skill->slug) ?  'checked': '';
+                                                    @endphp
+                                                    <input style="height:30px;width:30px;" type="checkbox" id="" name="{{ $skill->slug }}" {{$checked}} value="Yes">
                                                     <label style="padding-top: 3px;padding-left: 5px;" for="able_to_cook">{{ $skill->name }}</label>
                                                 </div>
                                             </div>
@@ -526,6 +532,49 @@
                             
                             <div class="col-md-12 pt-5 page-section" id="Experience">
                                 <h3 class="">Experience</h3>
+                                @for ($i = 0; $i < count(old('employer_name')); $i++)
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div id="div_id_1_employer_name" class="form-group">
+                                            <label for="id_1_employer_name">{{ __('Employer Name') }}</label>
+                                            <input id="id_1_employer_name" type="text" class="form-control" name="employer_name[]" placeholder="Employers Name" value="{{old('employer_name')[$i]}}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div id="div_id_1_employer_country" class="form-group">
+                                            <label for="id_1_employer_country">{{ __('Employer Country') }}</label>
+                                            <select name="country[]" id="id_1_employer_country" class="form-control">
+                                                <option value="">--Select Country--</option>
+                                                @foreach ($nationalitys as $nationality)
+                                                    <option value="{{$nationality->id}}" {{$nationality->id == old('country')[$i] ? 'selected':''}}>{{$nationality->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div id="div_id_1_from_date" class="form-group">
+                                            <label for="id_1_from_date">{{ __('From Date') }}</label>
+                                            <input id="id_1_from_date" type="date" class="form-control" min="1900-01-01" max="2200-01-01" value="{{old('from_date')[$i] ? \Carbon\Carbon::parse(old('from_date')[$i])->format('Y-m-d') : ''}}" name="from_date[]">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div id="div_id_1_to_date" class="form-group">
+                                            <label for="id_1_to_date">{{ __('To Date') }}</label>
+                                            <input id="id_1_to_date" type="date" class="form-control" min="1900-01-01" max="2200-01-01" value="{{old('to_date')[$i] ? \Carbon\Carbon::parse(old('to_date')[$i])->format('Y-m-d') : ''}}" name="to_date[]">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div id="div_id_1_remark" class="form-group">
+                                            <label for="id_1_remark">{{ __('Remark') }}</label>
+                                            <input id="id_1_remark" type="text" class="form-control" name="remark[]" value="{{old('remark')[$i]}}" placeholder="Remark">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <hr class="mt-4 mb-4"/>
+                                    </div>
+                                </div>
+                                @endfor
+                                
                                 <div id="czContainer">
                                     <div id="first">
                                         <div class="recordset">
@@ -566,6 +615,9 @@
                                                             <input id="id_1_remark" type="text" class="form-control" name="remark[]" placeholder="Remark">
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-12">
+                                                        <hr class="mt-4 mb-4"/>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -574,6 +626,30 @@
                             </div>
                             <div class="col-md-12 pb-5 pt-5 page-section" id="Education">
                                 <h3 class="">Education</h3>
+                                @for ($i = 0; $i < count(old('education_level')); $i++)
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div id="div_id_1_education_level" class="form-group">
+                                            <label for="id_1_education_level">{{ __('Education Level') }}</label>
+                                            <select name="education_level[]" id="id_1_education_level" class="form-control">
+                                                <option value="">--Select Education Level--</option>
+                                                @foreach ($education_levels as $education_level)
+                                                    <option value="{{$education_level->id}}" {{$education_level->id == old('education_level')[$i] ? 'selected':''}}>{{$education_level->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div id="div_id_1_education_remark" class="form-group">
+                                            <label for="id_1_education_remark">{{ __('Education Remark') }}</label>
+                                            <input id="id_1_education_remark" type="text" class="form-control" name="education_remark[]" value="{{old('education_remark')[$i]}}" placeholder="Education Remark">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <hr class="mt-4 mb-4"/>
+                                    </div>
+                                </div>
+                                @endfor
                                 <div id="czContainerEducation">
                                     <div id="first">
                                         <div class="recordset">
@@ -596,6 +672,9 @@
                                                             <label for="id_1_education_remark">{{ __('Education Remark') }}</label>
                                                             <input id="id_1_education_remark" type="text" class="form-control" name="education_remark[]" placeholder="Education Remark">
                                                         </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <hr class="mt-4 mb-4"/>
                                                     </div>
                                                 </div>
                                             </div>
