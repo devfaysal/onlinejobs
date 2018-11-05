@@ -48,6 +48,12 @@ class AgentController extends Controller
         ->addColumn('country', function($user) {
             return $user->agent_profile['country_data']['name'];
         })
+        ->addColumn('agency_registered_name', function($user) {
+            return $user->agent_profile['agency_registered_name'];
+        })
+        ->addColumn('agency_email', function($user) {
+            return $user->agent_profile['agency_email'];
+        })
         ->addColumn('first_name', function($user) {
             return $user->agent_profile['first_name'];
         })
@@ -81,6 +87,12 @@ class AgentController extends Controller
         ->addColumn('country', function($user) {
             return $user->agent_profile['country_data']['name'];
         })
+        ->addColumn('agency_registered_name', function($user) {
+            return $user->agent_profile['agency_registered_name'];
+        })
+        ->addColumn('agency_email', function($user) {
+            return $user->agent_profile['agency_email'];
+        })
         ->addColumn('first_name', function($user) {
             return $user->agent_profile['first_name'];
         })
@@ -112,6 +124,12 @@ class AgentController extends Controller
         })
         ->addColumn('country', function($user) {
             return $user->agent_profile['country_data']['name'];
+        })
+        ->addColumn('agency_registered_name', function($user) {
+            return $user->agent_profile['agency_registered_name'];
+        })
+        ->addColumn('agency_email', function($user) {
+            return $user->agent_profile['agency_email'];
         })
         ->addColumn('first_name', function($user) {
             return $user->agent_profile['first_name'];

@@ -56,6 +56,9 @@ class AgentProfileController extends Controller
      */
     public function create()
     {
+        if(auth()->user()){
+            return redirect('/');
+        }
         $countrys = Country::where('status', 1)->get();
         $nationalitys = $countrys;
         return view('agent.create', compact('countrys','nationalitys'));

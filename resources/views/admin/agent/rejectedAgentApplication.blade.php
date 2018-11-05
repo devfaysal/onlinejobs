@@ -41,8 +41,8 @@
         ajax: '{{route('admin.getRejectedAgentApplicationData')}}',
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'name', name: 'name'},
-            {data: 'email', name: 'email'},
+            {data: 'agency_registered_name', name: 'agency_registered_name'},
+            {data: 'agency_email', name: 'agency_email'},
             {data: 'country', name: 'country'},
             {data: 'first_name', name: 'first_name'},
             {data: 'phone', name: 'contact_phone'},

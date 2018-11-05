@@ -43,8 +43,10 @@
                             Agent
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @guest
                             <a class="dropdown-item {{ ( (Route::currentRouteName() === "agent.create") ? "active" : "") }}" href="{{route('agent.create')}}">Agent Registration</a>
                             <div class="dropdown-divider"></div>
+                            @endguest
                             <a class="dropdown-item" href="#">Agent Status View</a>
                         </div>
                     </li>
