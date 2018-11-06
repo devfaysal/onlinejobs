@@ -68,68 +68,36 @@
                                     <i class="fa fa-commenting fa-2x text-danger"></i>
                                     <sup>
                                         <span class="counter text-warning">
-                                        <?php
-                                            if(Auth::user()->hasRole('agent')):
-                                                echo count($all_offers);
-                                                // echo count($all_offers)+count($agent_demands);
-                                            else:
-                                                echo count($agent_applications)+count($all_offers)+count($all_demands);
-                                            endif;
-                                        ?>
+                                            {{Auth::user()->unreadNotifications->count()}}
                                         </span>
                                     </sup>
                                 </a>
                                 <div class="dropdown-menu notifications-dropdown-menu">
                                     <ul class="notifications-container">
-                                        @foreach ($all_offers as $offer)
+                                        @if(Auth::user()->unreadNotifications->count() > 0)
+                                        @foreach (Auth::user()->unreadNotifications as $notification)
                                             <li>
-                                                <a href="#" class="notification-item">
+                                                <a href="{{route('admin.readSingleNotification',$notification->id)}}" class="notification-item">
                                                     <div class="body-col">
-                                                        <p><span class="accent">{{$offer->employer->name}} has Sent an Offer</span></p>
+                                                        <p><span class="accent">{{$notification->data['message']}}</span></p>
                                                     </div>
                                                 </a>
                                             </li>
                                         @endforeach
-                                        @foreach ($agent_applications as $aaps)
+                                        @else 
                                             <li>
-                                                <a href="{{route('admin.agentApplication')}}" class="notification-item">
+                                                <a href="" class="notification-item">
                                                     <div class="body-col">
-                                                        <p><span class="accent">{{$aaps->name}} has applied to become Agent</span></p>
+                                                        <p><span class="accent">No new Notification!!</span></p>
                                                     </div>
                                                 </a>
                                             </li>
-                                        @endforeach
-
-                                        <!-- Only for Super Admin -->
-                                        @if(Auth::user()->hasRole('superadministrator'))
-                                            @foreach ($all_demands as $demand)
-                                                <li>
-                                                    <a href="#" class="notification-item">
-                                                        <div class="body-col">
-                                                            <p><span class="accent">{{$demand->employer->name}} has sent a demand letter</span></p>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            @endforeach
                                         @endif
-
-                                        <!-- For Agent Only -->
-                                       {{--  @if(Auth::user()->hasRole('agent'))
-                                            @foreach ($agent_demands as $demand)
-                                                <li>
-                                                    <a href="#" class="notification-item">
-                                                        <div class="body-col">
-                                                            <p><span class="accent">You are assigned a demand letter.</span></p>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            @endforeach
-                                        @endif --}}
                                     </ul>
                                     <footer>
                                         <ul>
                                             <li>
-                                                <a href="{{route('admin.agentApplication')}}"> View All </a>
+                                                <a href="{{route('admin.showAllNotification')}}"> View All </a>
                                             </li>
                                         </ul>
                                     </footer>

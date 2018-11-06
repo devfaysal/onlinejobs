@@ -27,6 +27,13 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
         return view('admin.index');
     })->name('home');
 
+    /*Notification*/
+    Route::get('/notifications/all', 'Admin\NotificationController@showAllNotification')->name('showAllNotification');
+    Route::get('/notifications/mark-all-as-read', 'Admin\NotificationController@markAllAsRead')->name('markAllAsRead');
+    Route::get('/notifications/read/{id}', 'Admin\NotificationController@readSingleNotification')->name('readSingleNotification');
+    Route::get('/notifications/delete/{id}', 'Admin\NotificationController@deleteSingleNotification')->name('deleteSingleNotification');
+    
+
     /*Publish Unpublish*/
     Route::get('/publish/{table}/{id}', 'Admin\StatusController@publish')->name('publish');
     Route::get('/unpublish/{table}/{id}', 'Admin\StatusController@unpublish')->name('unpublish');

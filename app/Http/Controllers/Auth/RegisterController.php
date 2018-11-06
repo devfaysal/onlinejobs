@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Storage;
 use Session;
+use Storage;
 use App\User;
 use App\Profile;
 use App\AgentProfile;
@@ -11,7 +11,9 @@ use App\EmployerProfile;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Notifications\AgentApplication;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Image; /* https://github.com/Intervention/image */
 
@@ -199,6 +201,11 @@ class RegisterController extends Controller
             $agent->contact_phone = $data['contact_phone'];
             $agent->contact_email = $data['contact_email'];
             $agent->save();
+            
+            //Send notification to admins
+            $data = $agent;
+            $admins = User::whereRoleIs('superadministrator')->get();
+            Notification::send($admins, new AgentApplication($data));
         }
 
         // Session::flash('message', ucfirst($role).' Registered successfully!!'); 

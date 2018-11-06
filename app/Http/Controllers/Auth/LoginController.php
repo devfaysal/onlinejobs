@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\AgentApplication;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -32,6 +35,10 @@ class LoginController extends Controller
             return '/admin';
         }elseif(Auth::user()->hasRole('agent')){
             if(Auth::user()->status == 1){
+                //Send notification to admins [Test Purpose]
+                // $data = auth()->user()->agent_profile;
+                // $admins = User::whereRoleIs('superadministrator')->get();
+                // Notification::send($admins, new AgentApplication($data));
                 return '/admin';
             }else{
                 return '/agent';
