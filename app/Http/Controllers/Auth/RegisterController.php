@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Notifications\AgentApplication;
 use Illuminate\Support\Facades\Validator;
+use App\Notifications\EmployerApplication;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Image; /* https://github.com/Intervention/image */
@@ -139,6 +140,11 @@ class RegisterController extends Controller
             $employer->save();
             Session::flash('message', 'Your Employer Application Submitted Successfully!!'); 
             Session::flash('alert-class', 'alert-success');
+
+            //Send notification to admins
+            $data = $employer;
+            $admins = User::whereRoleIs('superadministrator')->get();
+            Notification::send($admins, new EmployerApplication($data));
         }
 
         if($role == 'agent'){

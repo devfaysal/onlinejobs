@@ -532,6 +532,7 @@
                             
                             <div class="col-md-12 pt-5 page-section" id="Experience">
                                 <h3 class="">Experience</h3>
+                                @if(old('employer_name'))
                                 @for ($i = 0; $i < count(old('employer_name')); $i++)
                                 <div class="row">
                                     <div class="col-md-6">
@@ -574,6 +575,7 @@
                                     </div>
                                 </div>
                                 @endfor
+                                @endif
                                 
                                 <div id="czContainer">
                                     <div id="first">
@@ -626,6 +628,7 @@
                             </div>
                             <div class="col-md-12 pb-5 pt-5 page-section" id="Education">
                                 <h3 class="">Education</h3>
+                                @if(old('education_level'))
                                 @for ($i = 0; $i < count(old('education_level')); $i++)
                                 <div class="row">
                                     <div class="col-md-6">
@@ -650,6 +653,7 @@
                                     </div>
                                 </div>
                                 @endfor
+                                @endif
                                 <div id="czContainerEducation">
                                     <div id="first">
                                         <div class="recordset">

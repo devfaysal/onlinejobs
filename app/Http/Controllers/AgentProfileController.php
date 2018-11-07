@@ -19,6 +19,9 @@ use App\MaritalStatus;
 use App\EducationLevel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Notifications\AgentDataUpdate;
+use App\Notifications\MaidWorkerEntry;
+use Illuminate\Support\Facades\Notification;
 use Image; /* https://github.com/Intervention/image */
 
 class AgentProfileController extends Controller
@@ -184,6 +187,11 @@ class AgentProfileController extends Controller
 
         Session::flash('message', 'Profile Updated Successfully!!'); 
         Session::flash('alert-class', 'alert-success');
+
+        //Send notification to admins
+        $data = $agent_profile;
+        $admins = User::whereRoleIs('superadministrator')->get();
+        Notification::send($admins, new AgentDataUpdate($data));
 
         if(auth()->user()->hasRole('superadministrator')){
             return redirect()->route('admin.agent.index');
@@ -462,6 +470,11 @@ class AgentProfileController extends Controller
         
         Session::flash('message', ucfirst($role).' Created successfully!! now update profile'); 
         Session::flash('alert-class', 'alert-success');
+
+        //Send notification to admins
+        $data = $user;
+        $admins = User::whereRoleIs('superadministrator')->get();
+        Notification::send($admins, new MaidWorkerEntry($data));
 
         return redirect()->route('admin.home');
     }

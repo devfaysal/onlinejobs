@@ -7,6 +7,9 @@ use App\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\AgentApplicationApproved;
+use App\Notifications\AgentApplicationRejected;
 
 class AgentController extends Controller
 {
@@ -148,6 +151,11 @@ class AgentController extends Controller
 
         $agent->status = 1;
         $agent->save();
+
+        //Send notification to the agent
+        $data = $agent->agent_profile;
+        Notification::send($agent, new AgentApplicationApproved($data));
+
         Session::flash('message', 'Application Approved!!'); 
         Session::flash('alert-class', 'alert-success');
         return redirect()->back();
@@ -159,6 +167,11 @@ class AgentController extends Controller
 
         $agent->status = -1;
         $agent->save();
+
+        //Send notification to the agent
+        $data = $agent->agent_profile;
+        Notification::send($agent, new AgentApplicationRejected($data));
+
         Session::flash('message', 'Application Rejected!!'); 
         Session::flash('alert-class', 'alert-danger');
         return redirect()->back();
