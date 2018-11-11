@@ -408,4 +408,11 @@ class EmployerProfileController extends Controller
 
         return view('demand.show', compact('offer','applicants'));
     }
+
+    public function public($public_id)
+    {
+        $employer = User::where('public_id', '=', $public_id)->first();
+
+        return view('employer.public', compact('employer'));
+    }
 }
