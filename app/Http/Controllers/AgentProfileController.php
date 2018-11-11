@@ -121,7 +121,7 @@ class AgentProfileController extends Controller
         $agent_profile->agency_city = $request->agency_city;
         $agent_profile->agency_country = $request->agency_country;
         $agent_profile->agency_phone = $request->agency_phone;
-        $agent_profile->agency_fax = $request->agency_fax;
+        // $agent_profile->agency_fax = $request->agency_fax;
         $agent_profile->agency_email = $request->agency_email;
         $agent_profile->license_no = $request->license_no;
         $agent_profile->license_issue_date = $request->license_issue_date;
@@ -175,10 +175,10 @@ class AgentProfileController extends Controller
         }
         //Point of Contact
         $agent_profile->first_name = $request->first_name;
-        $agent_profile->middle_name = $request->middle_name;
+        // $agent_profile->middle_name = $request->middle_name;
         $agent_profile->last_name = $request->last_name;
         $agent_profile->designation = $request->designation;
-        $agent_profile->address = $request->address;
+        // $agent_profile->address = $request->address;
         $agent_profile->nationality = $request->nationality;
         $agent_profile->passport = $request->passport;
         $agent_profile->contact_phone = $request->contact_phone;

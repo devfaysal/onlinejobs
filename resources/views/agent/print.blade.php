@@ -36,7 +36,7 @@
                                     <h4 class="card-title text-center mt-3">Agency Information</h4>
                                     <table class="table table-striped">
                                         <tr>
-                                            <th>Agency Registered Name :</th>
+                                            <th>Registered Name :</th>
                                             <td>{{$profile->agency_registered_name ?? 'N/A'}}</td>
                                         </tr>
                                         <tr>
@@ -59,12 +59,12 @@
                                             <th>Agency Email :</th>
                                             <td>{{$profile->agency_email}}</td>
                                         </tr>
-                                        <tr>
+                                        {{-- <tr>
                                             <th>Agency Fax :</th>
                                             <td>{{$profile->agency_fax}}</td>
-                                        </tr>
+                                        </tr> --}}
                                         <tr>
-                                            <th>License No :</th>
+                                            <th>Agency License No :</th>
                                             <td>{{$profile->license_no}}</td>
                                         </tr>
                                         <tr>
@@ -84,10 +84,10 @@
                                             <th>First Name :</th>
                                             <td>{{$profile->first_name}}</td>
                                         </tr>
-                                        <tr>
+                                        {{-- <tr>
                                             <th>Middle Name :</th>
                                             <td>{{$profile->middle_name}}</td>
-                                        </tr>
+                                        </tr> --}}
                                         <tr>
                                             <th>Last Name :</th>
                                             <td>{{$profile->last_name}}</td>
@@ -96,10 +96,10 @@
                                             <th>Designation:</th>
                                             <td>{{$profile->designation}}</td>
                                         </tr>
-                                        <tr>
+                                        {{-- <tr>
                                             <th>Address:</th>
                                             <td>{{$profile->address}}</td>
-                                        </tr>
+                                        </tr> --}}
                                         <tr>
                                             <th>Nationality:</th>
                                             <td>{{$profile->nationality_data->name ?? ''}}</td>
@@ -109,7 +109,7 @@
                                             <td>{{$profile->passport}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Phone Number:</th>
+                                            <th>Mobile Number:</th>
                                             <td>{{$profile->contact_phone}}</td>
                                         </tr>
                                         <tr>

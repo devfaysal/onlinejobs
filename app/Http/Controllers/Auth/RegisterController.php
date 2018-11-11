@@ -156,7 +156,7 @@ class RegisterController extends Controller
             $agent->agency_city = $data['agency_city'];
             $agent->agency_country = $data['agency_country'];
             $agent->agency_phone = $data['agency_phone'];
-            $agent->agency_fax = $data['agency_fax'];
+            // $agent->agency_fax = $data['agency_fax'];
             $agent->agency_email = $data['agency_email'];
             $agent->license_no = $data['license_no'];
             $agent->license_issue_date = $data['license_issue_date'];
@@ -182,10 +182,10 @@ class RegisterController extends Controller
             }
             //Point of Contact
             $agent->first_name = $data['first_name'];
-            $agent->middle_name = $data['middle_name'];
+            // $agent->middle_name = $data['middle_name'];
             $agent->last_name = $data['last_name'];
             $agent->designation = $data['designation'];
-            $agent->address = $data['address'];
+            // $agent->address = $data['address'];
             $agent->nationality = $data['nationality'];
             $agent->passport = $data['passport'];
             if($request->file('passport_file')){

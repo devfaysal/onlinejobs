@@ -31,9 +31,9 @@
                                     <h3>Company Information</h3>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="agency_registered_name" class="col-sm-4 col-form-label">{{ __('Agency Registered Name *') }}</label>
+                                    <label for="agency_registered_name" class="col-sm-4 col-form-label">{{ __('Registered Name *') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="agency_registered_name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="agency_registered_name" value="{{ old('agency_registered_name') }}" placeholder="Agency Registered Name" required>
+                                        <input id="agency_registered_name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="agency_registered_name" value="{{ old('agency_registered_name') }}" placeholder="Registered Name" required>
 
                                         @if ($errors->has('agency_registered_name'))
                                             <span class="invalid-feedback" role="alert">
@@ -108,7 +108,7 @@
                                     @endif
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                {{-- <div class="form-group row">
                                     <label for="agency_fax" class="col-sm-4 col-form-label">{{ __('Agency Fax') }}</label>
                                     <div class="col-sm-8">
                                         <input id="agency_fax" type="text" class="form-control{{ $errors->has('agency_fax') ? ' is-invalid' : '' }}" name="agency_fax" value="{{ old('agency_fax') }}" placeholder="Agency Fax">
@@ -119,11 +119,11 @@
                                         </span>
                                     @endif
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="form-group row">
-                                    <label for="license_no" class="col-sm-4 col-form-label">{{ __('License No *') }}</label>
+                                    <label for="license_no" class="col-sm-4 col-form-label">{{ __('Agency License No *') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="license_no" type="text" class="form-control{{ $errors->has('license_no') ? ' is-invalid' : '' }}" name="license_no" value="{{ old('license_no') }}" placeholder="License No" required>
+                                        <input id="license_no" type="text" class="form-control{{ $errors->has('license_no') ? ' is-invalid' : '' }}" name="license_no" value="{{ old('license_no') }}" placeholder="Agency License No" required>
 
                                     @if ($errors->has('license_no'))
                                         <span class="invalid-feedback" role="alert">
@@ -145,9 +145,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="license_expire_date" class="col-sm-4 col-form-label">{{ __('License Expire Date') }}</label>
+                                    <label for="license_expire_date" class="col-sm-4 col-form-label">{{ __('License Expire Date *') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="license_expire_date" type="date" class="form-control{{ $errors->has('license_expire_date') ? ' is-invalid' : '' }}" name="license_expire_date" min="1900-01-01" max="2200-01-01" value="{{old('license_expire_date') ? \Carbon\Carbon::parse(old('license_expire_date'))->format('Y-m-d') : ''}}" placeholder="license_expire_date">
+                                        <input id="license_expire_date" type="date" class="form-control{{ $errors->has('license_expire_date') ? ' is-invalid' : '' }}" name="license_expire_date" min="1900-01-01" max="2200-01-01" value="{{old('license_expire_date') ? \Carbon\Carbon::parse(old('license_expire_date'))->format('Y-m-d') : ''}}" placeholder="license_expire_date" required>
 
                                     @if ($errors->has('license_expire_date'))
                                         <span class="invalid-feedback" role="alert">
@@ -223,7 +223,7 @@
                                     @endif
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                {{-- <div class="form-group row">
                                     <label for="middle_name" class="col-sm-4 col-form-label">{{ __('Middle Name') }}</label>
                                     <div class="col-sm-8">
                                         <input id="middle_name" type="text" class="form-control{{ $errors->has('middle_name') ? ' is-invalid' : '' }}" name="middle_name" value="{{ old('middle_name') }}" placeholder="Middle Name">
@@ -234,7 +234,7 @@
                                         </span>
                                     @endif
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="form-group row">
                                     <label for="last_name" class="col-sm-4 col-form-label">{{ __('Last Name') }}</label>
                                     <div class="col-sm-8">
@@ -259,7 +259,7 @@
                                     @endif
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                {{-- <div class="form-group row">
                                     <label for="address" class="col-sm-4 col-form-label">{{ __('Address') }}</label>
                                     <div class="col-sm-8">
                                         <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" placeholder="Address">
@@ -270,7 +270,7 @@
                                         </span>
                                     @endif
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="form-group row">
                                     <label for="nationality" class="col-sm-4 col-form-label">{{ __('Nationality *') }}</label>
                                     <div class="col-sm-8">
@@ -324,9 +324,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="contact_phone" class="col-sm-4 col-form-label">{{ __('Phone Number *') }}</label>
+                                    <label for="contact_phone" class="col-sm-4 col-form-label">{{ __('Mobile Number *') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="contact_phone" type="text" class="form-control{{ $errors->has('contact_phone') ? ' is-invalid' : '' }}" name="contact_phone" value="{{ old('contact_phone') }}" placeholder="Phone Number">
+                                        <input id="contact_phone" type="text" class="form-control{{ $errors->has('contact_phone') ? ' is-invalid' : '' }}" name="contact_phone" value="{{ old('contact_phone') }}" placeholder="Mobile Number">
 
                                     @if ($errors->has('contact_phone'))
                                         <span class="invalid-feedback" role="alert">
