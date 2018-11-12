@@ -88,8 +88,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="address">{{ __('Address') }}</label>
-                                    <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" placeholder="Address">
+                                    <label for="address">{{ __('Address *') }}</label>
+                                    <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" placeholder="Address" required>
         
                                     @if ($errors->has('address'))
                                         <span class="invalid-feedback" role="alert">
@@ -100,8 +100,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="district">{{ __('District') }}</label>
-                                    <input id="district" type="text" class="form-control{{ $errors->has('district') ? ' is-invalid' : '' }}" name="district" value="{{ old('district') }}" placeholder="District">
+                                    <label for="district">{{ __('District *') }}</label>
+                                    <input id="district" type="text" class="form-control{{ $errors->has('district') ? ' is-invalid' : '' }}" name="district" value="{{ old('district') }}" placeholder="District" required>
         
                                     @if ($errors->has('district'))
                                         <span class="invalid-feedback" role="alert">
@@ -112,8 +112,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="city">{{ __('City') }}</label>
-                                    <input id="city" type="text" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" value="{{ old('city') }}" placeholder="City">
+                                    <label for="city">{{ __('City *') }}</label>
+                                    <input id="city" type="text" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" value="{{ old('city') }}" placeholder="City" required>
         
                                     @if ($errors->has('city'))
                                         <span class="invalid-feedback" role="alert">
@@ -124,8 +124,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="state">{{ __('State/Proviace') }}</label>
-                                    <input id="state" type="text" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}" name="state" value="{{ old('state') }}" placeholder="State/Proviace">
+                                    <label for="state">{{ __('State/Proviace *') }}</label>
+                                    <input id="state" type="text" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}" name="state" value="{{ old('state') }}" placeholder="State/Proviace" required>
         
                                     @if ($errors->has('state'))
                                         <span class="invalid-feedback" role="alert">
@@ -147,8 +147,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="gender">{{ __('Gender') }}</label>
-                                    <select name="gender" id="gender" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}">
+                                    <label for="gender">{{ __('Gender *') }}</label>
+                                    <select name="gender" id="gender" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" required>
                                         <option value="">--Select Gender--</option>
                                         @foreach ($genders as $gender)
                                             <option value="{{$gender->id}}" {{$gender->id == old('gender') ? 'selected':''}}>{{$gender->name}}</option>
