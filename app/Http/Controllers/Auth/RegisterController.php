@@ -148,6 +148,10 @@ class RegisterController extends Controller
         }
 
         if($role == 'agent'){
+
+            // Mail::to('devfaysal@gmail.com')
+            // ->send(new SendPasswordAfterRegistration());
+
             $agent = new AgentProfile;
             $agent->user_id = $user->id;
             $agent->agent_code = time();
