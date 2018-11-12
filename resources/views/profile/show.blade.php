@@ -17,9 +17,11 @@
             @if(Auth::user()->can('print'))
                 <div class="col-md-12 hidefromprint mb-3">
                     <a class="btn btn-info" href="{{url()->previous()}}">Back</a>
+                    @if(!Auth::user()->hasRole('employer'))
                     <a class="btn btn-success {{$profile->passport_file ? '' : 'disabled'}}" href="" onclick="printJS('{{asset('storage/'.$profile->passport_file)}}');return false;">Print Passport</a>
                     <a class="btn btn-success {{$profile->medical_certificate ? '' : 'disabled'}}" href="" onclick="printJS('{{asset('storage/'.$profile->medical_certificate)}}');return false;">Print Medical Certificate</a>
                     <a class="btn btn-success {{$profile->immigration_security_clearence ? '' : 'disabled'}}" href="" onclick="printJS('{{asset('storage/'.$profile->immigration_security_clearence)}}');return false;">Print Immigration Security Clearence</a>
+                    @endif
                     <a class="btn btn-success pull-right" href="" onclick="window.print();return false;">Print profile</a>
                 </div>
             @endif
@@ -117,6 +119,7 @@
                     </div><!--/.panel-body-->
                 </div><!--/.panel panel-default-->
             </div><!--/.col-md-8-->
+            @if(!Auth::user()->hasRole('employer'))
             <div class="col-md-12 mt-2">
                 <div class="card">
                         <h4 class="card-title text-center mt-3 text-uppercase">Emergency Contact</h4>
@@ -150,6 +153,7 @@
                     </div>
                 </div>
             </div>
+            @endif
             <div class="col-md-12 mt-2">
                 <div class="card">
                         <h4 class="card-title text-center mt-3 text-uppercase">Passport Details</h4>

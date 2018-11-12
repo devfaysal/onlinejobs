@@ -20,7 +20,8 @@ class AgentController extends Controller
      */
     public function index()
     {
-        return view('admin.agent.index');
+        $active_agent_count = User::with('agent_profile')->where('status', 1)->whereRoleIs('agent')->count();
+        return view('admin.agent.index', compact('active_agent_count'));
     }
 
     public function getAgentsData()

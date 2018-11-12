@@ -124,11 +124,7 @@
                                     <h4 class="card-title text-center mt-3">License</h4>
                                     <p class="text-center">
                                         @if($profile->license_file != null)
-                                            @if(pathinfo($profile->license_file, PATHINFO_EXTENSION) == 'pdf')
                                             <a class="btn btn-sm btn-secondary mt-2" target="_blank" href="{{asset('storage/'.$profile->license_file)}}">View Passport File</a>
-                                            @else
-                                            <img style="max-width:100%" src="{{asset('storage/'.$profile->license_file)}}" alt="">
-                                            @endif
                                         @else
                                         No License File Found
                                         @endif
@@ -138,11 +134,7 @@
                                     <h4 class="card-title text-center mt-3">Passport/NIC</h4>
                                     <p class="text-center">
                                         @if($profile->passport_file != null)
-                                            @if(pathinfo($profile->passport_file, PATHINFO_EXTENSION) == 'pdf')
                                             <a class="btn btn-sm btn-secondary mt-2" target="_blank" href="{{asset('storage/'.$profile->passport_file)}}">View Passport File</a>
-                                            @else
-                                            <img style="max-width:100%" src="{{asset('storage/'.$profile->passport_file)}}" alt="">
-                                            @endif
                                         @else
                                         No Passport/NIC File Found
                                         @endif
