@@ -141,3 +141,5 @@ Route::prefix('employer')->group(function(){
     Route::get('/getDownloadsFile/{type}', 'CommonController@getDownloadsFile')->name('getDownloadsFile');
 });
 
+/*Professional*/
+route::resource('/professional', 'ProfessionalProfileController');

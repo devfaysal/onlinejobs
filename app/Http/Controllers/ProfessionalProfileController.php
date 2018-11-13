@@ -14,7 +14,7 @@ class ProfessionalProfileController extends Controller
      */
     public function index()
     {
-        //
+        return view('professional.index');
     }
 
     /**
