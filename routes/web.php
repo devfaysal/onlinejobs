@@ -22,7 +22,7 @@ Route::get('/admin/login', function(){
 Route::get('/logout', function(){
     return view('admin.login');
 });
-Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadministrator|agent')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadministrator|agent|employer')->group(function () {
     Route::get('/', function(){
         return view('admin.index');
     })->name('home');

@@ -75,9 +75,9 @@
                         <a class="nav-link {{ ( (Route::currentRouteName() === "employer.index") ? "active" : "") }}" href="{{route('employer.index')}}">Employers Area</a>
                         @endguest
                         @auth
-                        @if(Auth::user()->hasRole('employer'))
+                        {{-- @if(Auth::user()->hasRole('employer'))
                         <a class="nav-link" href="{{route('employer.show')}}">Employers Area</a>
-                        @endif
+                        @endif --}}
                         @endauth
                     </li>
                 </ul>
@@ -120,8 +120,10 @@
                             Welcome
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Logged in as {{Auth::user()->name}}</a>
-
+                            <a class="dropdown-item" href="{{route('employer.show')}}">Logged in as {{Auth::user()->name}}</a>
+                            @if(Auth::user()->hasRole('employer'))
+                            <a class="dropdown-item" href="{{route('employer.show')}}">Employers Area</a>
+                            @endif
                             @if(Auth::user()->hasRole(['maid', 'worker']) )
                                 <a class="dropdown-item" href="{{route('profile.index')}}">Profile</a>
                             @endif

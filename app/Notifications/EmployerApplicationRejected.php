@@ -58,7 +58,7 @@ class EmployerApplicationRejected extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => 'Congratulation! Your application rejected',
+            'message' => 'Your application rejected!!',
             'link' => route('employer.show'),
         ];
     }
