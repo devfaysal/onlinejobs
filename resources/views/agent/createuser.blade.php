@@ -164,7 +164,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="marital_status">{{ __('Marital Status') }}</label>
-                                    <select name="marital_status" id="marital_status" class="form-control{{ $errors->has('marital_status') ? ' is-invalid' : '' }}">
+                                    <select onChange="displayChildren(this.value)" name="marital_status" id="marital_status" class="form-control{{ $errors->has('marital_status') ? ' is-invalid' : '' }}">
                                         <option value="">--Select Marital Status--</option>
                                         @foreach ($marital_statuses as $marital_status)
                                             <option value="{{$marital_status->id}}" {{$marital_status->id == old('marital_status')? 'selected':''}}>{{$marital_status->name}}</option>
@@ -177,7 +177,7 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 d-none" id="children-div">
                                 <div class="form-group">
                                     <label for="children">{{ __('Children') }}</label>
                                     <input id="children" type="children" class="form-control{{ $errors->has('children') ? ' is-invalid' : '' }}" name="children" value="{{ old('children') }}" placeholder="Children">
@@ -885,5 +885,17 @@
         //One-to-many relationship plugin by Yasir O. Atabani. Copyrights Reserved.
         $("#czContainer").czMore();
         $("#czContainerEducation").czMore();
+    </script>
+    <script>
+        function displayChildren(value)
+        {
+            if(value == 2 || value == 3){
+                element = document.querySelector('#children-div');
+                element.classList.remove("d-none");
+            }else if(value == 1){
+                element = document.querySelector('#children-div');
+                element.classList.add("d-none");
+            }
+        }
     </script>
 @endsection
