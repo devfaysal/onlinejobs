@@ -125,7 +125,7 @@
                                     <select name="AgentAssign" id="AgentAssign" class="form-control{{ $errors->has('AgentAssign') ? ' is-invalid' : '' }}">
                                         <option value="">-- Select an Agent --</option>
                                         @foreach ($agents as $agent)
-                                            <option value="{{$agent->id}}" {{$agent->id == old('AgentAssign') ? 'selected':''}}>{{$agent->name}}</option>
+                                            <option value="{{$agent->id}}" {{$agent->id == old('AgentAssign') ? 'selected':''}}>{{$agent->agent_profile->agency_registered_name}}</option>
                                         @endforeach
                                     </select>
 

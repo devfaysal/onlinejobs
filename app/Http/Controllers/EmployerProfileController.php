@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Session;
-use Image; /* https://github.com/Intervention/image */
 use Storage;
 use App\User;
 use App\Offer;
@@ -15,6 +14,10 @@ use App\EmployerProfile;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
+use App\Notifications\DemandLetterSent;
+use App\Notifications\GWConfirmedByEmployer;
+use Illuminate\Support\Facades\Notification;
+use Image; /* https://github.com/Intervention/image */
 
 class EmployerProfileController extends Controller
 {
@@ -293,6 +296,11 @@ class EmployerProfileController extends Controller
         Session::flash('message', 'Worker(s) confirmed successfully!'); 
         Session::flash('alert-class', 'alert-success');
 
+        //Send notification to the Agent
+        $agent = $demandUpdate->agent;
+        $data = $demandUpdate;
+        Notification::send($agent, new GWConfirmedByEmployer($data));
+
         return redirect()->route('employer.show');
     }
 
@@ -369,8 +377,13 @@ class EmployerProfileController extends Controller
         $offer->status = 2;
         $offer->save();
 
-        Session::flash('message', 'Deman sent successfully!'); 
+        Session::flash('message', 'Demand sent successfully!'); 
         Session::flash('alert-class', 'alert-success');
+
+        //Send notification to the Admins
+        $admins = User::whereRoleIs('superadministrator')->get();
+        $data = $offer;
+        Notification::send($admins, new DemandLetterSent($data));
 
         return redirect()->route('employer.show');
     }

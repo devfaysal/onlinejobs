@@ -41,6 +41,7 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
     /*Employer*/
     Route::get('/employer/approve/{id}', 'Admin\EmployerController@approve')->name('employer.approve');
     Route::get('/employer/reject/{id}', 'Admin\EmployerController@reject')->name('employer.reject');
+    Route::get('/agent/restore/{id}', 'Admin\AgentController@restore')->name('agent.restore');
     Route::get('/getEmployersData', 'Admin\EmployerController@getEmployersData')->name('getEmployersData');
     Route::get('/employer-application', 'Admin\EmployerController@employerApplication')->name('employerApplication');
     Route::get('/getEmployersApplicationData', 'Admin\EmployerController@getEmployersApplicationData')->name('getEmployersApplicationData');

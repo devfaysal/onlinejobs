@@ -10,6 +10,11 @@ use App\Applicant;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
+use App\Notifications\GWProposedByAgent;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\DemandLetterIssueToAgent;
+use App\Notifications\EmployerApplicationApproved;
+use App\Notifications\EmployerApplicationRejected;
 
 class EmployerController extends Controller
 {
@@ -48,7 +53,7 @@ class EmployerController extends Controller
 
         return DataTables::of($users)
         ->addColumn('action', function ($user) {
-            return '<a href="#" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a><a class="ml-1 btn btn-success" href="'.route('admin.agent.approve', $user->id).'" onclick="return confirm(\'Are you sure?\')">Approve</a><a class="ml-1 btn btn-danger" href="'.route('admin.agent.reject', $user->id).'" onclick="return confirm(\'Are you sure?\')">Reject</a>';
+            return '<a href="#" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a><a class="ml-1 btn btn-success" href="'.route('admin.employer.approve', $user->id).'" onclick="return confirm(\'Are you sure?\')">Approve</a><a class="ml-1 btn btn-danger" href="'.route('admin.employer.reject', $user->id).'" onclick="return confirm(\'Are you sure?\')">Reject</a>';
         })
         ->editColumn('id', 'ID: {{$id}}')
         ->removeColumn('password')
@@ -172,8 +177,13 @@ class EmployerController extends Controller
         $demandUpdate->status = 3;  // assigned agent
         $demandUpdate->save();
 
-        Session::flash('message', 'Deman agent assigned successfully!'); 
+        Session::flash('message', 'Demand letter assigned to agent successfully!'); 
         Session::flash('alert-class', 'alert-success');
+
+        //Send notification to the Agent
+        $agent = User::where('id', $request->AgentAssign)->first();
+        $data = $demandUpdate;
+        Notification::send($agent, new DemandLetterIssueToAgent($data));
 
         return redirect('/admin/employer-demands');
     }
@@ -206,6 +216,11 @@ class EmployerController extends Controller
         Session::flash('message', 'Proposed GW successfully!'); 
         Session::flash('alert-class', 'alert-success');
 
+        //Send notification to the Employer
+        $employer = $demandUpdate->employer;
+        $data = $demandUpdate;
+        Notification::send($employer, new GWProposedByAgent($data));
+
         return redirect('/admin/employer-demands');
     }
 
@@ -235,6 +250,48 @@ class EmployerController extends Controller
         Session::flash('alert-class', 'alert-success');
 
         return redirect('/admin/employer-demands');
+    }
+
+    public function approve($id)
+    {
+        $employer = User::where('id', $id)->first();
+
+        $employer->status = 1;
+        $employer->save();
+
+        //Send notification to the employer
+        $data = $employer->employer_profile;
+        Notification::send($employer, new EmployerApplicationApproved($data));
+
+        Session::flash('message', 'Application Approved!!'); 
+        Session::flash('alert-class', 'alert-success');
+        return redirect()->back();
+    }
+
+    public function reject($id)
+    {
+        $employer = User::where('id', $id)->first();
+
+        $employer->status = -1;
+        $employer->save();
+
+        //Send notification to the Employer
+        $data = $employer->employer_profile;
+        Notification::send($employer, new EmployerApplicationRejected($data));
+
+        Session::flash('message', 'Application Rejected!!'); 
+        Session::flash('alert-class', 'alert-danger');
+        return redirect()->back();
+    }
+
+    public function restore($id){
+        $agent = User::where('id', $id)->first();
+
+        $agent->status = 0;
+        $agent->save();
+        Session::flash('message', 'Application Restored!!'); 
+        Session::flash('alert-class', 'alert-warning');
+        return redirect()->back();
     }
 
     /**

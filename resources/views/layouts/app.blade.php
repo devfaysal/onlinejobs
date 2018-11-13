@@ -88,6 +88,33 @@
                     </li>
                     @endguest
                     @auth
+                    @if(Auth::user()->hasRole('employer'))
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-commenting text-danger"></i>
+                            <sup>
+                                <span class="counter text-danger">
+                                    {{Auth::user()->unreadNotifications->count()}}
+                                </span>
+                            </sup>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @if(Auth::user()->unreadNotifications->count() > 0)
+                                @foreach (Auth::user()->unreadNotifications as $notification)
+                                    <a class="dropdown-item" href="{{route('admin.readSingleNotification',$notification->id)}}">
+                                        {{$notification->data['message']}}
+                                    </a>
+                                @endforeach
+                            @else 
+                                <a href="" class="dropdown-item">
+                                    <div class="body-col">
+                                        <p><span class="accent">No new Notification!!</span></p>
+                                    </div>
+                                </a>
+                            @endif
+                        </div>
+                    </li>
+                    @endif
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Welcome
