@@ -10,17 +10,17 @@
                     <th title="Employer Name">Emp. Name</th>
                     <th title="Demand Letter No">DLN</th>
                     <th title="Expected Join Date">EJD</th>
-                    <th title="Demand Quantity">D. Qty</th>
-                    <th title="Proposed Quantity">Proposed Qty</th>
+                    <th title="Demand Quantity">D.</th>
+                    <th title="Proposed Quantity">Proposed</th>
                     <th title="Day Pending">Day Pending</th>
-                    <th title="Confirmed Quantity">Confirmed Qty</th>
+                    <th title="Confirmed Quantity">Confirmed</th>
 
                     @if(Auth::user()->hasRole('agent') && Auth::user()->status == 1)
-                        <th title="Hired Quantity">Hired Qty</th>
+                        <th title="Hired Quantity">Hired</th>
                         <th title="Status">Status</th>
                         <th title="Proposed General Worker">Proposed GW</th>
                     @else
-                        <th title="Final Quantity">Final Qty</th>
+                        <th title="Final Quantity">Final</th>
                         <th title="Status">Status</th>
                         <th title="Assigned Agent">Assigned Agent</th>
                     @endif
