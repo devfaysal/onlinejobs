@@ -24,7 +24,7 @@ class ProfessionalProfileController extends Controller
      */
     public function create()
     {
-        //
+        return view('professional.create');
     }
 
     /**

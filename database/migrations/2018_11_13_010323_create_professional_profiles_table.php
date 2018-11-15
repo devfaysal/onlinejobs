@@ -15,6 +15,7 @@ class CreateProfessionalProfilesTable extends Migration
     {
         Schema::create('professional_profiles', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
         });
     }

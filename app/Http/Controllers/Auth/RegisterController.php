@@ -8,6 +8,7 @@ use App\User;
 use App\Profile;
 use App\AgentProfile;
 use App\EmployerProfile;
+use App\ProfessionalProfile;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -216,6 +217,11 @@ class RegisterController extends Controller
             $data = $agent;
             $admins = User::whereRoleIs('superadministrator')->get();
             Notification::send($admins, new AgentApplication($data));
+        }
+
+        if($role == 'professional'){
+            $user->attachRole($role);
+            $professional = new ProfessionalProfile;
         }
 
         // Session::flash('message', ucfirst($role).' Registered successfully!!'); 
