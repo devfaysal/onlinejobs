@@ -18,7 +18,7 @@
                         @method('PATCH')
                         @if(count($user->qualifications)>0)
                             @foreach ($user->qualifications as $qualification)
-                            <div class="col-md-12">
+                            <div class="col-md-11">
                                 <div class="form-group row">
                                     <label for="qualification" class="col-sm-4 col-form-label text-right">{{ __('Qualification *') }}</label>
                                     <div class="col-sm-8">

@@ -49,7 +49,7 @@ class RegisterController extends Controller
         }elseif(Auth::user()->hasRole('professional')){
             Session::flash('message', 'Information saved successfully!!'); 
             Session::flash('alert-class', 'alert-success');
-            return route('professional.edit', Auth::user()->id);
+            return route('qualification.edit', Auth::user()->id);
         }else{
             return '/';
         }
@@ -233,11 +233,14 @@ class RegisterController extends Controller
             $user->attachRole($role);
             $professional = new ProfessionalProfile;
             $professional->user_id = $user->id;
+            $professional->name = $request->name;
+            $professional->email = $request->email;
+            $professional->phone = $request->phone;
             if($request->file('resume_file')){
                 $image_basename = explode('.',$request->file('resume_file')->getClientOriginalName())[0];
                 $image = $image_basename . '-' . time() . '.' . $request->file('resume_file')->getClientOriginalExtension();
 
-                $request->license_file->storeAs('public/resume', $image);
+                $request->resume_file->storeAs('public/resume', $image);
     
                 //add new image path to database
                 $professional->resume_file = $image;

@@ -18,7 +18,7 @@
                         @method('PATCH')
                         @if(count($user->professional_experiences)>0)
                             @foreach ($user->professional_experiences as $professional_experience)
-                            <div class="col-md-12">
+                            <div class="col-md-11">
                                 <div class="form-group row">
                                     <label for="designation" class="col-sm-4 col-form-label text-right">{{ __('Designation *') }}</label>
                                     <div class="col-sm-8">

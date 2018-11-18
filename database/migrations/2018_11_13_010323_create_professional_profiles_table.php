@@ -16,6 +16,9 @@ class CreateProfessionalProfilesTable extends Migration
         Schema::create('professional_profiles', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
+            $table->string('name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
             $table->string('resume_file')->nullable();
             $table->string('current_designation')->nullable();
             $table->string('current_company')->nullable();

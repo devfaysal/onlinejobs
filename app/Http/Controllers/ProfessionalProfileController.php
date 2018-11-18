@@ -60,7 +60,9 @@ class ProfessionalProfileController extends Controller
      */
     public function edit(User $professional)
     {
-        //
+        return view('professional.edit',[
+            'user' => $professional
+        ]);
     }
 
     /**
@@ -139,7 +141,7 @@ class ProfessionalProfileController extends Controller
                 $professional_experience->save();
             }
 
-            return 'Saved';
+            return redirect()->route('professional.edit', $user->id);
         }
     }
 }
