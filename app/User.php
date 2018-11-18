@@ -58,4 +58,14 @@ class User extends Authenticatable
     public function applicants(){
         return $this->hasMany(Applicant::class);
     }
+
+    public function professional_profile(){
+        return $this->hasOne(ProfessionalProfile::class);
+    }
+    public function professional_experiences(){
+        return $this->hasMany(ProfessionalExperience::class);
+    }
+    public function qualifications(){
+        return $this->hasMany(Qualification::class);
+    }
 }

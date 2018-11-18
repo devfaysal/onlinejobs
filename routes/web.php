@@ -143,3 +143,8 @@ Route::prefix('employer')->group(function(){
 
 /*Professional*/
 route::resource('/professional', 'ProfessionalProfileController');
+route::get('/qualification/{user}/edit', 'ProfessionalProfileController@editQualification')->name('qualification.edit');
+route::patch('/qualification/{user}', 'ProfessionalProfileController@updateQualification')->name('qualification.update');
+
+route::get('/professionalExperience/{user}/edit', 'ProfessionalProfileController@editProfessionalExperience')->name('professionalExperience.edit');
+route::patch('/professionalExperience/{user}', 'ProfessionalProfileController@updateProfessionalExperience')->name('professionalExperience.update');

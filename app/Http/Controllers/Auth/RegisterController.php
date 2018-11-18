@@ -46,6 +46,10 @@ class RegisterController extends Controller
             return '/employer/profile';
         }elseif(Auth::user()->hasRole('agent')){
             return '/agent';
+        }elseif(Auth::user()->hasRole('professional')){
+            Session::flash('message', 'Information saved successfully!!'); 
+            Session::flash('alert-class', 'alert-success');
+            return route('professional.edit', Auth::user()->id);
         }else{
             return '/';
         }
@@ -78,6 +82,11 @@ class RegisterController extends Controller
         if($request->file('passport_file')){
             $this->validate($request, [
                 'passport_file' => 'mimes:pdf,jpg,jpeg,png|max:1024',
+            ]);
+        }
+        if($request->file('resume_file')){
+            $this->validate($request, [
+                'resume_file' => 'mimes:pdf,doc,docx|max:1024',
             ]);
         }
         return Validator::make($data, [
@@ -220,8 +229,21 @@ class RegisterController extends Controller
         }
 
         if($role == 'professional'){
+            $request = request();
             $user->attachRole($role);
             $professional = new ProfessionalProfile;
+            $professional->user_id = $user->id;
+            if($request->file('resume_file')){
+                $image_basename = explode('.',$request->file('resume_file')->getClientOriginalName())[0];
+                $image = $image_basename . '-' . time() . '.' . $request->file('resume_file')->getClientOriginalExtension();
+
+                $request->license_file->storeAs('public/resume', $image);
+    
+                //add new image path to database
+                $professional->resume_file = $image;
+                
+            }
+            $professional->save();
         }
 
         // Session::flash('message', ucfirst($role).' Registered successfully!!'); 

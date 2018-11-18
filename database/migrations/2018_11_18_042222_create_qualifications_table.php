@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProfessionalProfilesTable extends Migration
+class CreateQualificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,14 @@ class CreateProfessionalProfilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('professional_profiles', function (Blueprint $table) {
+        Schema::create('qualifications', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->string('resume_file')->nullable();
-            $table->string('current_designation')->nullable();
-            $table->string('current_company')->nullable();
-            $table->string('annual_salary')->nullable();
-            $table->date('working_from')->nullable();
-            $table->date('working_to')->nullable();
-            $table->string('highest_qualification')->nullable();
+            $table->string('qualification')->nullable();
             $table->string('subject')->nullable();
             $table->string('specialization')->nullable();
             $table->string('university')->nullable();
-            $table->date('passing_year')->nullable();
+            $table->year('passing_year')->nullable();
             $table->timestamps();
         });
     }
@@ -38,6 +32,6 @@ class CreateProfessionalProfilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('professional_profiles');
+        Schema::dropIfExists('qualifications');
     }
 }
