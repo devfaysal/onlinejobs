@@ -130,6 +130,9 @@
                             @if(Auth::user()->hasRole('agent') )
                                 <a class="dropdown-item" href="{{route('agent.index')}}">Dashboard</a>
                             @endif
+                            @if(Auth::user()->hasRole('professional') )
+                                <a class="dropdown-item" href="{{route('professional.index')}}">Profile</a>
+                            @endif
 
                             <a class="dropdown-item" href="#">Change Password</a>
                             <div class="dropdown-divider"></div>
@@ -210,7 +213,7 @@
     </nav>
 
     <main>
-        {{-- @if(Session::has('message'))
+        @if(Session::has('message'))
         <div class="col-md-12">
             <div class="alert {{ Session::get('alert-class', 'alert-info') }} alert-dismissible fade show" role="alert">
                 <strong>{{ Session::get('message') }}</strong>
@@ -219,7 +222,7 @@
                 </button>
             </div>
         </div>
-        @endif --}}
+        @endif
         @yield('content')
     </main>
 

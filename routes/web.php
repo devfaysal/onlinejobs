@@ -141,6 +141,9 @@ Route::prefix('employer')->group(function(){
     Route::get('/getDownloadsFile/{type}', 'CommonController@getDownloadsFile')->name('getDownloadsFile');
 });
 
+/*Job*/
+route::resource('/job', 'JobController');
+
 /*Professional*/
 route::resource('/professional', 'ProfessionalProfileController');
 route::get('/qualification/{user}/edit', 'ProfessionalProfileController@editQualification')->name('qualification.edit');

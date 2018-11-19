@@ -13,8 +13,9 @@
         <div class="col-md-8">
             <div class="card auth-form mb-5">
                 <div class="card-body">
-                    <form method="POST" action="{{ route('professional.store', $user->id) }}" aria-label="{{ __('Register') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('professional.update', $user->id) }}" aria-label="{{ __('Register') }}" enctype="multipart/form-data">
                         @csrf
+                        @method('PATCH')
                         <input type="hidden" name="role" value="professional">
                         <div class="form-group row">
                             <label for="name" class="col-sm-4 col-form-label text-right">{{ __('Name *') }}</label>
@@ -67,7 +68,22 @@
                             @endif
                             </div>
                         </div>
-                        <div class="form-group mb-0">
+                        <div class="form-group row">
+                            <label for="profile_image" class="col-sm-4 col-form-label text-right">{{ __('Upload Resume') }}</label>
+                            <div class="col-sm-8">
+                                <input id="profile_image" type="file" class="form-control-file{{ $errors->has('profile_image') ? ' is-invalid' : '' }}" name="profile_image" value="{{ old('profile_image') }}">
+                                <p class="text-danger">Supported file format JPG, PNG & PDF. Maximum file size: 1MB</p>
+                                @if($user->professional_profile->profile_image)
+                                    <a class="btn btn-sm btn-secondary mt-2" target="_blank" href="{{asset('storage/resume/'.$user->professional_profile->profile_image)}}">View Profile Image</a>
+                                @endif
+                            @if ($errors->has('profile_image'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('profile_image') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="form-group row mb-0">
                             <button type="submit" class="btn btn-warning btn-block">
                                 {{ __('Save') }}
                             </button>

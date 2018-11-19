@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
-    <div class="row bg-dark">
-        <div class="col-12">
-            <h4 class="text-center text-white pb-3 pt-4">Tell us about yourself</h4>
+@guest
+    <div class="container-fluid">
+        <div class="row bg-dark">
+            <div class="col-12">
+                <h4 class="text-center text-white pb-3 pt-4">Tell us about yourself</h4>
+            </div>
         </div>
     </div>
-</div>
     <div class="container mt-4 mb-5">
         <div class="row justify-content-md-center">
             <div class="col-12">
@@ -37,4 +38,25 @@
             </div>
         </div>
     </div>
- @endsection
+@else
+<div class="container mt-4 mb-5">
+    <div class="row justify-content-md-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h4 class="card-title mt-3">Hello, {{$user->name}}</h4>
+                    <img class="img-thumbnail" style="width: 200px; height:200px;" src="{{asset('storage/resume/'.$user->professional_profile->profile_image)}}" alt="">
+                </div>
+                <div class="card-body">
+                    @if($user->professional_profile->resume_file)
+                        <a class="btn btn-sm btn-secondary" target="_blank" href="{{asset('storage/resume/'.$user->professional_profile->resume_file)}}">View Resume</a>
+                    @endif
+                    <a class="btn btn-sm btn-info" href="{{route('qualification.edit', $user->id)}}">Edit Eduction</a>
+                    <a class="btn btn-sm btn-info" href="{{route('professional.edit', $user->id)}}">Edit Basic Information</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endguest
+@endsection

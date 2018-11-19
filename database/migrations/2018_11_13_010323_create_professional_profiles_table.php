@@ -19,6 +19,7 @@ class CreateProfessionalProfilesTable extends Migration
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
+            $table->string('profile_image')->nullable();
             $table->string('resume_file')->nullable();
             $table->string('current_designation')->nullable();
             $table->string('current_company')->nullable();

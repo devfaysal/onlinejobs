@@ -7,6 +7,7 @@ use App\Qualification;
 use App\ProfessionalProfile;
 use Illuminate\Http\Request;
 use App\ProfessionalExperience;
+use Illuminate\Support\Facades\Auth;
 
 class ProfessionalProfileController extends Controller
 {
@@ -17,6 +18,12 @@ class ProfessionalProfileController extends Controller
      */
     public function index()
     {
+        if(Auth::user()){
+            $user = Auth::user();
+            return view('professional.index', [
+                'user' => $user
+            ]);
+        }
         return view('professional.index');
     }
 
@@ -74,7 +81,41 @@ class ProfessionalProfileController extends Controller
      */
     public function update(Request $request, User $professional)
     {
-        return $request;
+        if($request->file('resume_file')){
+            $this->validate($request, [
+                'resume_file' => 'mimes:pdf,doc,docx|max:1024',
+            ]);
+        }
+        if($request->file('profile_image')){
+            $this->validate($request, [
+                'profile_image' => 'image|max:1024',
+            ]);
+        }
+        $professional = $professional->professional_profile;
+        $professional->name = $request->name;
+        $professional->email = $request->email;
+        $professional->phone = $request->phone;
+        if($request->file('resume_file')){
+            $image_basename = explode('.',$request->file('resume_file')->getClientOriginalName())[0];
+            $image = $image_basename . '-' . time() . '.' . $request->file('resume_file')->getClientOriginalExtension();
+
+            $request->resume_file->storeAs('public/resume', $image);
+
+            //add new image path to database
+            $professional->resume_file = $image;
+            
+        }
+        if($request->file('profile_image')){
+            $image_basename = explode('.',$request->file('profile_image')->getClientOriginalName())[0];
+            $image = $image_basename . '-' . time() . '.' . $request->file('profile_image')->getClientOriginalExtension();
+
+            $request->profile_image->storeAs('public/resume', $image);
+
+            //add new image path to database
+            $professional->profile_image = $image;
+            
+        }
+        $professional->save();
     }
 
     /**
@@ -141,7 +182,7 @@ class ProfessionalProfileController extends Controller
                 $professional_experience->save();
             }
 
-            return redirect()->route('professional.edit', $user->id);
+            return redirect()->route('professional.index');
         }
     }
 }
