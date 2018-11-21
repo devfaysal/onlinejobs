@@ -36,6 +36,7 @@
                             <div class="col-md-12">
                                 <hr>
                                 <a class="btn btn-info btn-sm pull-left" href="#downloads"> <i class="fa fa-download"></i> Download files</a>
+                                <a class="btn btn-success btn-sm ml-3" href="{{route('job.create')}}">Post a Job</a>
                             </div>
                             @endif
                         </div>
