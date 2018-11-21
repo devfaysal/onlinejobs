@@ -43,7 +43,7 @@
                             <a class="dropdown-item" href="{{route('job.index')}}">All Jobs</a>
                             @guest
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{route('professional.create')}}">Register as Professional</a>
+                            <a class="dropdown-item" href="{{route('professional.index')}}">Register as Professional</a>
                             @endguest
                         </div>
                     </li>
