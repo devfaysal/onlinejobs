@@ -31,7 +31,7 @@
                                     <h3>Company Information</h3>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="agency_registered_name" class="col-sm-4 col-form-label">{{ __('Registered Name *') }}</label>
+                                    <label for="agency_registered_name" class="col-sm-4 col-form-label">{{ __('Agency Registered Name *') }}</label>
                                     <div class="col-sm-8">
                                         <input id="agency_registered_name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="agency_registered_name" value="{{ old('agency_registered_name') }}" placeholder="Registered Name" required>
 
@@ -44,9 +44,9 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="agency_address" class="col-sm-4 col-form-label">{{ __('Agency Address') }}</label>
+                                    <label for="agency_address" class="col-sm-4 col-form-label">{{ __('Address') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="agency_address" type="text" class="form-control{{ $errors->has('agency_address') ? ' is-invalid' : '' }}" name="agency_address" value="{{ old('agency_address') }}" placeholder="Agency Address">
+                                        <input id="agency_address" type="text" class="form-control{{ $errors->has('agency_address') ? ' is-invalid' : '' }}" name="agency_address" value="{{ old('agency_address') }}" placeholder="Address">
 
                                         @if ($errors->has('agency_address'))
                                             <span class="invalid-feedback" role="alert">
@@ -57,9 +57,9 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="agency_city" class="col-sm-4 col-form-label">{{ __('Agency City') }}</label>
+                                    <label for="agency_city" class="col-sm-4 col-form-label">{{ __('City') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="agency_city" type="text" class="form-control{{ $errors->has('agency_city') ? ' is-invalid' : '' }}" name="agency_city" value="{{ old('agency_city') }}" placeholder="Agency City">
+                                        <input id="agency_city" type="text" class="form-control{{ $errors->has('agency_city') ? ' is-invalid' : '' }}" name="agency_city" value="{{ old('agency_city') }}" placeholder="City">
 
                                     @if ($errors->has('agency_city'))
                                         <span class="invalid-feedback" role="alert">
@@ -69,7 +69,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="agency_country" class="col-sm-4 col-form-label">{{ __('Agency Country *') }}</label>
+                                    <label for="agency_country" class="col-sm-4 col-form-label">{{ __('Country *') }}</label>
                                     <div class="col-sm-8">
                                         <select name="agency_country" id="agency_country" class="form-control{{ $errors->has('agency_country') ? ' is-invalid' : '' }}" required>
                                             <option value="">--Select Country--</option>
@@ -85,9 +85,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="agency_phone" class="col-sm-4 col-form-label">{{ __('Agency Phone *') }}</label>
+                                    <label for="agency_phone" class="col-sm-4 col-form-label">{{ __('Phone *') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="agency_phone" type="text" class="form-control{{ $errors->has('agency_phone') ? ' is-invalid' : '' }}" name="agency_phone" value="{{ old('agency_phone') }}" placeholder="Agency Phone" required>
+                                        <input id="agency_phone" type="text" class="form-control{{ $errors->has('agency_phone') ? ' is-invalid' : '' }}" name="agency_phone" value="{{ old('agency_phone') }}" placeholder="Phone" required>
 
                                     @if ($errors->has('agency_phone'))
                                         <span class="invalid-feedback" role="alert">
@@ -97,9 +97,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="agency_email" class="col-sm-4 col-form-label">{{ __('Agency Email *') }}</label>
+                                    <label for="agency_email" class="col-sm-4 col-form-label">{{ __('Email *') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="agency_email" type="email" class="form-control{{ $errors->has('agency_email') ? ' is-invalid' : '' }}" name="agency_email" value="{{ old('agency_email') }}" placeholder="Agency Email" required>
+                                        <input id="agency_email" type="email" class="form-control{{ $errors->has('agency_email') ? ' is-invalid' : '' }}" name="agency_email" value="{{ old('agency_email') }}" placeholder="Email" required>
 
                                     @if ($errors->has('agency_email'))
                                         <span class="invalid-feedback" role="alert">
@@ -168,13 +168,14 @@
                                     @endif
                                     </div>
                                 </div>
-                                <div class="form-group">
+
+                                {{-- <div class="form-group">
                                     <h3>Sign Up Information</h3>
                                 </div>
                                 <div class="form-group row">
                                     <label for="email" class="col-sm-4 col-form-label">{{ __('Email *') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email" required>
+                                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email">
 
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
@@ -186,7 +187,7 @@
                                 <div class="form-group row">
                                     <label for="password" class="col-sm-4 col-form-label">{{ __('Password *') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password" required>
+                                        <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password">
 
                                     @if ($errors->has('password'))
                                         <span class="invalid-feedback" role="alert">
@@ -200,9 +201,9 @@
                                     <label for="password-confirm" class="col-sm-4 col-form-label">{{ __('Confirm Password *') }}</label>
 
                                     <div class="col-sm-8">
-                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" required>
+                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
                                     </div>
-                                </div>
+                                </div> --}}
 
                             </div>
                             <div class="col-md-6">
@@ -336,7 +337,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
+                                {{-- <div class="form-group row">
                                     <label for="contact_email" class="col-sm-4 col-form-label">{{ __('E-Mail Address *') }}</label>
                                     <div class="col-sm-8">
                                         <input id="contact_email" type="contact_email" class="form-control{{ $errors->has('contact_email') ? ' is-invalid' : '' }}" name="contact_email" value="{{ old('contact_email') }}" placeholder="E-Mail">
@@ -347,7 +348,7 @@
                                         </span>
                                     @endif
                                     </div>
-                                </div>                        
+                                </div> --}}                
                                 <div class="form-group row">
                                         <div class="col-sm-1 ml-auto">
                                             <input id="agreement" class="checkbox" type="checkbox" name="agreement" required>

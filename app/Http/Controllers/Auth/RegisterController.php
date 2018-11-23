@@ -89,6 +89,19 @@ class RegisterController extends Controller
                 'resume_file' => 'mimes:pdf,doc,docx|max:1024',
             ]);
         }
+
+
+        // If agent set defailt values for sign-up
+        $role = $data['role'];
+
+        if ($role == 'agent') {
+            $data['name'] = $data['agency_registered_name'];
+            $data['email'] = $data['agency_email'];
+            $data['password'] = "DefPassAgent";
+            $data['password_confirmation'] = "DefPassAgent";
+            $data['phone'] = $data['agency_phone'] ?? '';
+        }
+
         return Validator::make($data, [
             'name' => 'sometimes|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -107,6 +120,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // If agent set defailt values for sign-up
+        $role = $data['role'];
+
+        if ($role == 'agent') {
+            $data['name'] = $data['agency_registered_name'];
+            $data['email'] = $data['agency_email'];
+            $data['password'] = "DefPassAgent";
+            $data['password_confirmation'] = "DefPassAgent";
+            $data['phone'] = $data['agency_phone'] ?? '';
+        }
+
+        // Create use
         $user = new User;
         $user->name = $data['name'] ?? '';
         $user->email = $data['email'];
@@ -114,7 +139,7 @@ class RegisterController extends Controller
         $user->password = Hash::make($data['password']);
         $user->public_id = time().md5($data['email']);
 
-        $role = $data['role'];
+        // User wise status
         if($role == 'maid' || $role == 'worker'){
             $user->status = 1;
         }elseif($role == 'agent'){
@@ -219,7 +244,7 @@ class RegisterController extends Controller
             }
             //$agent->nic = $data['nic'];
             $agent->contact_phone = $data['contact_phone'];
-            $agent->contact_email = $data['contact_email'];
+            // $agent->contact_email = $data['contact_email'];
             $agent->save();
             
             //Send notification to admins
