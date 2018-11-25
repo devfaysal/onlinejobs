@@ -139,6 +139,9 @@
                             @if(Auth::user()->hasRole('agent') )
                                 <a class="dropdown-item" href="{{route('agent.index')}}">Dashboard</a>
                             @endif
+                            @if(Auth::user()->hasRole('superadministrator') )
+                                <a class="dropdown-item" href="{{route('admin.home')}}">Dashboard</a>
+                            @endif
                             @if(Auth::user()->hasRole('professional') )
                                 <a class="dropdown-item" href="{{route('professional.index')}}">Profile</a>
                             @endif

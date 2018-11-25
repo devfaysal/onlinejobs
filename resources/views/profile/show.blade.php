@@ -26,99 +26,117 @@
                 </div>
             @endif
             @endauth
-            <div class="col-md-4 text-center">
-                <div class="card">
-                    @auth
-                    @if(Auth::user()->id == $profile->user->id)
-                        <a href="{{route('profile.edit', $profile->id)}}" class="btn btn-primary">Edit information</a>
-                    @endif
-                    @endauth
-                    <h1 class="card-title">{{$profile->name}}</h1>
-                    <div class="card-body">
-                        <img style="max-width: 100%;" class="thumbnail center-thumbnail-image" src="{{$profile->image != '' ? asset('storage/'.$profile->image) :  asset('images/dummy.jpg')}}" alt="avatar">
-                        <hr>
-                        <img style="max-height: 300px; max-width: 100%;" class="thumbnail center-thumbnail-image" src="{{$profile->full_image != '' ? asset('storage/'.$profile->full_image) :  asset('images/avatar_full.jpg')}}" alt="avatar">
-                    </div>
-                </div>
+            <div class="col-md-12 d-none d-print-block pb-3">
+               <h3 class="text-center"> Online Jobs Sdn. Bhd.</h3>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-7">
                 <div class="card">
                     <h4 class="card-title text-center mt-3 text-uppercase">Basic Information</h4>
                     <div class="card-body">
                         <table class="table table-striped table-sm">
                             <tr>
-                                <th>Name :</th>
-                                <td>{{$profile->name ?? 'N/A'}}</td>
+                                <th width="25%">Name</th>
+                                <td width="5%">:</td>
+                                <td width="70%">{{$profile->name ?? 'N/A'}}</td>
                             </tr>
                             <tr>
-                                <th>Date of Birth :</th>
+                                <th>Date of Birth</th>
+                                <td>:</td>
                                 <td>{{$profile->date_of_birth ? \Carbon\Carbon::parse($profile->date_of_birth)->format('d/m/Y') : 'N/A'}}</td>
                             </tr>
                             <tr>
-                                <th>Age :</th>
+                                <th>Age</th>
+                                <td>:</td>
                                 {{-- <td>{{ \Carbon\Carbon::parse($profile->date_of_birth)->diffForHumans() }}</td> --}}
                                 <td>{{ \Carbon\Carbon::parse($profile->date_of_birth)->diff(\Carbon\Carbon::now())->format('%y years %m months')}}</td>
                             </tr>
                             <tr>
-                                <th>Address :</th>
+                                <th>Address</th>
+                                <td>:</td>
                                 <td>{{$profile->address ?? 'N/A'}}</td>
                             </tr>
                             <tr>
-                                <th>District :</th>
+                                <th>District</th>
+                                <td>:</td>
                                 <td>{{$profile->district ?? 'N/A'}}</td>
                             </tr>
                             <tr>
-                                <th>City :</th>
+                                <th>City</th>
+                                <td>:</td>
                                 <td>{{$profile->city ?? 'N/A'}}</td>
                             </tr>
                             <tr>
-                                <th>State :</th>
+                                <th>State</th>
+                                <td>:</td>
                                 <td>{{$profile->state ?? 'N/A'}}</td>
                             </tr>
                             <tr>
-                                <th>Nationality :</th>
+                                <th>Nationality</th>
+                                <td>:</td>
                                 <td>{{$profile->nationality_data->name ?? 'N/A'}}</td>
                             </tr>
                             <tr>
-                                <th>Gender :</th>
+                                <th>Gender</th>
+                                <td>:</td>
                                 <td>{{$profile->gender_data->name ?? 'N/A'}}</td>
                             </tr>
                             <tr>
-                                <th>Marital Status :</th>
+                                <th>Marital Status</th>
+                                <td>:</td>
                                 <td>{{$profile->marital_status_data->name ?? 'N/A'}}</td>
                             </tr>
                             <tr>
-                                <th>Children :</th>
+                                <th>Children</th>
+                                <td>:</td>
                                 <td>{{$profile->children ?? 'N/A'}}</td>
                             </tr>
                             <tr>
-                                <th>Siblings :</th>
+                                <th>Siblings</th>
+                                <td>:</td>
                                 <td>{{$profile->siblings ?? 'N/A'}}</td>
                             </tr>
                             <tr>
-                                <th>Religion :</th>
+                                <th>Religion</th>
+                                <td>:</td>
                                 <td>{{$profile->religion_data->name ?? 'N/A'}}</td>
                             </tr>
                             <tr>
-                                <th>Height :</th>
+                                <th>Height</th>
+                                <td>:</td>
                                 <td>{{$profile->height ? $profile->height . ' CM' : 'N/A'}}</td>
                             </tr>
                             <tr>
-                                <th>Weight :</th>
+                                <th>Weight</th>
+                                <td>:</td>
                                 <td>{{$profile->weight ? $profile->weight . ' Pound': 'N/A'}}</td>
                             </tr>
                             <tr>
-                                <th>Father Name :</th>
+                                <th>Father Name</th>
+                                <td>:</td>
                                 <td>{{$profile->father_name ?? 'N/A'}}</td>
                             </tr>
                             <tr>
-                                <th>Mother Name :</th>
+                                <th>Mother Name</th>
+                                <td>:</td>
                                 <td>{{$profile->mother_name ?? 'N/A'}}</td>
                             </tr>
                         </table>
                     </div><!--/.panel-body-->
                 </div><!--/.panel panel-default-->
             </div><!--/.col-md-8-->
+            <div class="col-md-5 text-center">
+                <div class="card">
+                    @auth
+                    @if(Auth::user()->id == $profile->user->id)
+                        <a href="{{route('profile.edit', $profile->id)}}" class="btn btn-primary">Edit information</a>
+                    @endif
+                    @endauth
+                    <h4 class="card-title text-center mt-3 text-uppercase">{{$profile->name}}</h4>
+                    <div class="card-body">
+                        <img style="width: 100%;" class="thumbnail center-thumbnail-image" src="{{$profile->image != '' ? asset('storage/'.$profile->image) :  asset('images/dummy.jpg')}}" alt="avatar">
+                    </div>
+                </div>
+            </div>
             @if(!Auth::user()->hasRole('employer'))
             <div class="col-md-12 mt-2">
                 <div class="card">
@@ -128,11 +146,13 @@
                             <div class="col-md-6">
                                 <table class="table table-sm">
                                     <tr>
-                                        <th>Emergency Contact Name :</th>
-                                        <td>{{$profile->emergency_contact_name ?? 'N/A'}}</td>
+                                        <th width="45%">Emergency Contact Name</th>
+                                        <td width="5%">:</td>
+                                        <td width="50%">{{$profile->emergency_contact_name ?? 'N/A'}}</td>
                                     </tr>
                                     <tr>
-                                        <th>Relationship :</th>
+                                        <th>Relationship</th>
+                                        <td>:</td>
                                         <td>{{$profile->emergency_contact_relationship ?? 'N/A'}}</td>
                                     </tr>
                                 </table>
@@ -140,11 +160,13 @@
                             <div class="col-md-6">
                                 <table class="table table-sm">
                                     <tr>
-                                        <th>Phone :</th>
-                                        <td>{{$profile->emergency_contact_phone ?? 'N/A'}}</td>
+                                        <th width="25%">Phone</th>
+                                        <td width="5%">:</td>
+                                        <td width="70%">{{$profile->emergency_contact_phone ?? 'N/A'}}</td>
                                     </tr>
                                     <tr>
-                                        <th>Address :</th>
+                                        <th>Address</th>
+                                        <td>:</td>
                                         <td>{{$profile->emergency_contact_address ?? 'N/A'}}</td>
                                     </tr>
                                 </table>
@@ -162,11 +184,13 @@
                             <div class="col-md-6">
                                 <table class="table table-sm">
                                     <tr>
-                                        <th>Passport Number :</th>
-                                        <td>{{$profile->passport_number ?? 'N/A'}}</td>
+                                        <th width="30%">Passport Number</th>
+                                        <td width="5%">:</td>
+                                        <td width="65%">{{$profile->passport_number ?? 'N/A'}}</td>
                                     </tr>
                                     <tr>
-                                        <th>Issue Date :</th>
+                                        <th>Issue Date</th>
+                                        <td>:</td>
                                         <td>{{$profile->passport_issue_date ? \Carbon\Carbon::parse($profile->passport_issue_date)->format('d/m/Y') : 'N/A'}}</td>
                                     </tr>
                                 </table>
@@ -174,11 +198,13 @@
                             <div class="col-md-6">
                                 <table class="table table-sm">
                                     <tr>
-                                        <th>Issue Place :</th>
-                                        <td>{{$profile->passport_issue_place ?? 'N/A'}}</td>
+                                        <th width="25%">Issue Place</th>
+                                        <td width="5%">:</td>
+                                        <td width="70%">{{$profile->passport_issue_place ?? 'N/A'}}</td>
                                     </tr>
                                     <tr>
-                                        <th>Expire Date :</th>
+                                        <th>Expire Date</th>
+                                        <td>:</td>
                                         <td>{{$profile->passport_expire_date ? \Carbon\Carbon::parse($profile->passport_expire_date)->format('d/m/Y') : 'N/A'}}</td>
                                     </tr>
                                 </table>
@@ -197,8 +223,8 @@
                                     @if($language_set)
                                         @foreach($languages as $language)
                                         <tr>
-                                            <th>{{$language->name}}</th>
-                                            <td>{{$language_set[$language->slug] ?? 'no'}}</td>
+                                            <th width="50%">{{$language->name}}</th>
+                                            <td width="50%">{{$language_set[$language->slug] ?? 'no'}}</td>
                                         </tr>
                                         @endforeach
                                     @endif
@@ -218,8 +244,8 @@
                             @if($skill_set)
                                 @foreach($skills as $skill)
                                 <tr>
-                                    <th>{{$skill->name}}</th>
-                                    <td>{{$skill_set[$skill->slug] ?? 'no'}}</td>
+                                    <th width="50%">{{$skill->name}}</th>
+                                    <td width="50%">{{$skill_set[$skill->slug] ?? 'no'}}</td>
                                 </tr>
                                 @endforeach
                             @endif
@@ -236,9 +262,9 @@
                         <table class="table table-sm">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Education Level</th>
-                                    <th>Education Remark</th>
+                                    <th width="5%">#</th>
+                                    <th width="45%">Education Level</th>
+                                    <th width="50%">Education Remark</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -269,12 +295,12 @@
                         <table class="table table-sm">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Employer Name</th>
-                                    <th>Country</th>
-                                    <th>From</th>
-                                    <th>To</th>
-                                    <th>Remark</th>
+                                    <th width="5%">#</th>
+                                    <th width="20%">Employer Name</th>
+                                    <th width="15%">Country</th>
+                                    <th width="15%">From</th>
+                                    <th width="15%">To</th>
+                                    <th width="30%">Remark</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -298,6 +324,9 @@
                         </table>
                     </div>
                 </div>
+            </div>
+            <div class="col-md-12">
+                    <img class="rounded mx-auto d-block" src="{{$profile->full_image != '' ? asset('storage/'.$profile->full_image) :  asset('images/avatar_full.jpg')}}" alt="avatar">
             </div>
         </div><!--/.row-->
     </div><!--/.container-->

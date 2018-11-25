@@ -5,10 +5,12 @@
         <div class="row justify-content-md-center">
             <div class="col-12">
                 <div class="hidefromprint mt-4 mb-3">
-                    @if(Auth::user()->hasRole(['superadministrator','agent']))
                     <a class="btn btn-info" href="{{url()->previous()}}">Back</a>
+                    @if(Auth::user()->hasRole(['agent']))
                     <a class="btn btn-success {{$profile->license_file ? '' : 'disabled'}}" href="" onclick="printJS('{{asset('storage/'.$profile->license_file)}}');return false;">Print License</a>
                     <a class="btn btn-success {{$profile->passport_file ? '' : 'disabled'}}" href="" onclick="printJS('{{asset('storage/'.$profile->passport_file)}}');return false;">Print Passport/NIC</a>
+                    @endif
+                    @if(Auth::user()->hasRole(['superadministrator','agent']))
                     <a class="btn btn-success pull-right" href="" onclick="window.print();return false;">Print</a>
                     @endif
                 </div>
@@ -36,27 +38,33 @@
                                     <h4 class="card-title text-center mt-3">Agency Information</h4>
                                     <table class="table table-striped">
                                         <tr>
-                                            <th>Registered Name :</th>
-                                            <td>{{$profile->agency_registered_name ?? 'N/A'}}</td>
+                                            <th width="45%">Agency Registered Name</th>
+                                            <td width="5%">:</td>
+                                            <td width="50%">{{$profile->agency_registered_name ?? 'N/A'}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Agency Address :</th>
+                                            <th>Agency Address</th>
+                                            <td>:</td>
                                             <td>{{$profile->agency_address}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Agency City :</th>
+                                            <th>Agency City</th>
+                                            <td>:</td>
                                             <td>{{$profile->agency_city}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Agency Country :</th>
+                                            <th>Agency Country</th>
+                                            <td>:</td>
                                             <td>{{$profile->country_data->name ?? ''}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Agency Phone :</th>
+                                            <th>Agency Phone</th>
+                                            <td>:</td>
                                             <td>{{$profile->agency_phone}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Agency Email :</th>
+                                            <th>Agency Email</th>
+                                            <td>:</td>
                                             <td>{{$profile->agency_email}}</td>
                                         </tr>
                                         {{-- <tr>
@@ -64,15 +72,18 @@
                                             <td>{{$profile->agency_fax}}</td>
                                         </tr> --}}
                                         <tr>
-                                            <th>Agency License No :</th>
+                                            <th>Agency License No</th>
+                                            <td>:</td>
                                             <td>{{$profile->license_no}}</td>
                                         </tr>
                                         <tr>
-                                            <th>License Issue Date :</th>
+                                            <th>License Issue Date</th>
+                                            <td>:</td>
                                             <td>{{ \Carbon\Carbon::parse($profile->license_issue_date)->format('d/m/Y')}}</td>
                                         </tr>
                                         <tr>
-                                            <th>License Expire Date :</th>
+                                            <th>License Expire Date</th>
+                                            <td>:</td>
                                             <td>{{ \Carbon\Carbon::parse($profile->license_expire_date)->format('d/m/Y')}}</td>
                                         </tr>
                                     </table>
@@ -81,19 +92,22 @@
                                     <h4 class="card-title text-center mt-3">Contact Information</h4>
                                     <table class="table table-striped">
                                         <tr>
-                                            <th>First Name :</th>
-                                            <td>{{$profile->first_name}}</td>
+                                            <th width="45%">First Name</th>
+                                            <td width="5%">:</td>
+                                            <td width="50%">{{$profile->first_name}}</td>
                                         </tr>
                                         {{-- <tr>
                                             <th>Middle Name :</th>
                                             <td>{{$profile->middle_name}}</td>
                                         </tr> --}}
                                         <tr>
-                                            <th>Last Name :</th>
+                                            <th>Last Name</th>
+                                            <td>:</td>
                                             <td>{{$profile->last_name}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Designation:</th>
+                                            <th>Designation</th>
+                                            <td>:</td>
                                             <td>{{$profile->designation}}</td>
                                         </tr>
                                         {{-- <tr>
@@ -101,19 +115,23 @@
                                             <td>{{$profile->address}}</td>
                                         </tr> --}}
                                         <tr>
-                                            <th>Nationality:</th>
+                                            <th>Nationality</th>
+                                            <td>:</td>
                                             <td>{{$profile->nationality_data->name ?? ''}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Passport/NIC:</th>
+                                            <th>Passport/NIC</th>
+                                            <td>:</td>
                                             <td>{{$profile->passport}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Mobile Number:</th>
+                                            <th>Mobile Number</th>
+                                            <td>:</td>
                                             <td>{{$profile->contact_phone}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Email Address :</th>
+                                            <th>Email Address</th>
+                                            <td>:</td>
                                             <td>{{$profile->contact_email}}</td>
                                         </tr>
                                     </table>
