@@ -301,6 +301,39 @@
                                     @endif
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="sector">{{ __('Sector') }}</label>
+                                    <select name="sector" id="sector" class="form-control{{ $errors->has('sector') ? ' is-invalid' : '' }}" >
+                                        <option value="">--Select Sector--</option>
+                                        {{-- @foreach ($sectors as $sector)
+                                            <option value="{{$sector->id}}" {{$sector->id == old('sector')? 'selected':''}}>{{$sector->name}}</option>
+                                        @endforeach --}}
+                                    </select>
+                                    @if ($errors->has('sector'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('sector') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="sub_sector">{{ __('Sub Sector') }}</label>
+                                    <select name="sub_sector" id="sub_sector" class="form-control{{ $errors->has('sub_sector') ? ' is-invalid' : '' }}" >
+                                        <option value="">--Select Sub Sector--</option>
+                                        {{-- @foreach ($sub_sectors as $sub_sector)
+                                            <option value="{{$sub_sector->id}}" {{$sub_sector->id == old('sub_sector')? 'selected':''}}>{{$sub_sector->name}}</option>
+                                        @endforeach --}}
+                                    </select>
+                                    @if ($errors->has('sub_sector'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('sub_sector') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+
                             <div class="col-md-12 pt-5 page-section" id="Images">
                                 <div class="row">
                                     <div class="col-md-12">

@@ -7,7 +7,6 @@
         <table id="users-table" class="table table-condensed">
             <thead>
                 <tr>
-                    <th>Id</th>
                     <th>Agency Name</th>
                     <th>Email</th>
                     <th>Country</th>
@@ -20,7 +19,6 @@
             </thead>
             <tfoot>
                 <tr>
-                    <th>Id</th>
                     <th>Agency Name</th>
                     <th>Email</th>
                     <th>Country</th>
@@ -40,7 +38,6 @@
         serverSide: true,
         ajax: '{{route('admin.getAgentsData')}}',
         columns: [
-            {data: 'id', name: 'id'},
             {data: 'agency_registered_name', name: 'agency_registered_name'},
             {data: 'agency_email', name: 'agency_email'},
             {data: 'country', name: 'country'},

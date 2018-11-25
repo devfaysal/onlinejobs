@@ -7,7 +7,6 @@
         <table id="users-table" class="table table-condensed">
             <thead>
                 <tr>
-                    <th>Id</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Registered On</th>
@@ -17,7 +16,6 @@
             </thead>
             <tfoot>
                 <tr>
-                    <th>Id</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Created At</th>
@@ -34,7 +32,6 @@
         serverSide: true,
         ajax: '{{route('admin.getEmployersData')}}',
         columns: [
-            {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},
             {data: 'created_at', name: 'created_at'},

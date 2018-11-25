@@ -7,7 +7,6 @@
         <table id="users-table" class="table table-condensed">
             <thead>
                 <tr>
-                    <th>Id</th>
                     <th>Image</th>
                     <th>Name</th>
                     <th>Passport</th>
@@ -20,7 +19,6 @@
             </thead>
             <tfoot>
                 <tr>
-                    <th>Id</th>
                     <th>Image</th>
                     <th>Name</th>
                     <th>Passport</th>
@@ -40,7 +38,6 @@
         serverSide: true,
         ajax: '{{route('admin.getWorkersData')}}',
         columns: [
-            {data: 'id', name: 'id'},
             {data: 'image', name: 'image'},
             {data: 'name', name: 'name'},
             {data: 'passport', name: 'passport'},

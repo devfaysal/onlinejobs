@@ -60,7 +60,7 @@
                         <table id="demands-table" class="table table-condensed">
                             <thead>
                                 <tr>
-                                    <th title="Demand Letter No">DLN</th>
+                                    <th title="Approval KDN No">KDN No</th>
                                     <th title="Company">Company</th>
                                     <th title="Issue Date">Issue Date</th>
                                     <th title="Expected Join Date">EJ Date</th>
@@ -75,7 +75,7 @@
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th title="Demand Letter No">DLN</th>
+                                    <th title="Approval KDN No">KDN No</th>
                                     <th title="Company">Company</th>
                                     <th title="Issue Date">Issue Date</th>
                                     <th title="Expected Join Date">EJ Date</th>
@@ -155,7 +155,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-md-6">
-                                                    <input id="DemandLetterNo" type="text" class="form-control{{ $errors->has('DemandLetterNo') ? ' is-invalid' : '' }}" name="DemandLetterNo" value="{{ old('DemandLetterNo') }}" placeholder="Demand Letter No*" required>
+                                                    <input id="DemandLetterNo" type="text" class="form-control{{ $errors->has('DemandLetterNo') ? ' is-invalid' : '' }}" name="DemandLetterNo" value="{{ old('DemandLetterNo') }}" placeholder="Approval KDN No*" required>
 
                                                     @if ($errors->has('DemandLetterNo'))
                                                         <span class="invalid-feedback" role="alert">
