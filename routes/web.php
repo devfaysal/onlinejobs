@@ -100,6 +100,12 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
     
     Route::resource('/downloads', 'Admin\DownloadsController');
     Route::get('/getDownloadsData', 'Admin\DownloadsController@getDownloadsData')->name('getDownloadsData');
+
+    Route::resource('/sector', 'Admin\SectorController');
+    Route::get('/getSectorData', 'Admin\SectorController@getSectorData')->name('getSectorData');
+    Route::get('/getSubsectors/{id}', 'Admin\SectorController@getSubsectors')->name('getSubsectors');
+
+    Route::resource('/subSector', 'Admin\SubSectorController');
 });
 
 Route::get('/', 'HomeController@index')->name('home');

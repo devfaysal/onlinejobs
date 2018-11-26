@@ -220,6 +220,9 @@
                                         <li class="{{ ( (Route::currentRouteName() === "admin.downloads.index") ? "active" : "") }}">
                                             <a href="{{route('admin.downloads.index')}}"> Downloads </a>
                                         </li>
+                                        <li class="{{ ( (Route::currentRouteName() === "admin.sector.index") ? "active" : "") }}">
+                                            <a href="{{route('admin.sector.index')}}"> Sectors </a>
+                                        </li>
                                         <li class="{{ ( (Route::currentRouteName() === "admin.country.index") ? "active" : "") }}">
                                             <a href="{{route('admin.country.index')}}"> Countries </a>
                                         </li>

@@ -301,14 +301,15 @@
                                     @endif
                                 </div>
                             </div>
+                            @if ( request()->t == 'gw' )
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="sector">{{ __('Sector') }}</label>
                                     <select name="sector" id="sector" class="form-control{{ $errors->has('sector') ? ' is-invalid' : '' }}" >
                                         <option value="">--Select Sector--</option>
-                                        {{-- @foreach ($sectors as $sector)
+                                        @foreach ($sectors as $sector)
                                             <option value="{{$sector->id}}" {{$sector->id == old('sector')? 'selected':''}}>{{$sector->name}}</option>
-                                        @endforeach --}}
+                                        @endforeach
                                     </select>
                                     @if ($errors->has('sector'))
                                         <span class="invalid-feedback" role="alert">
@@ -322,9 +323,6 @@
                                     <label for="sub_sector">{{ __('Sub Sector') }}</label>
                                     <select name="sub_sector" id="sub_sector" class="form-control{{ $errors->has('sub_sector') ? ' is-invalid' : '' }}" >
                                         <option value="">--Select Sub Sector--</option>
-                                        {{-- @foreach ($sub_sectors as $sub_sector)
-                                            <option value="{{$sub_sector->id}}" {{$sub_sector->id == old('sub_sector')? 'selected':''}}>{{$sub_sector->name}}</option>
-                                        @endforeach --}}
                                     </select>
                                     @if ($errors->has('sub_sector'))
                                         <span class="invalid-feedback" role="alert">
@@ -333,6 +331,7 @@
                                     @endif
                                 </div>
                             </div>
+                            @endif
 
                             <div class="col-md-12 pt-5 page-section" id="Images">
                                 <div class="row">
@@ -992,5 +991,19 @@
                 element.classList.add("d-none");
             }
         }
+    </script>
+    <script>
+        $('#sector').on('change', function() {
+            //console.log( this.value );
+            $('#sub_sector').empty()
+            $.ajax({
+                url: '/admin/getSubsectors/'+this.value,
+                success: data => {
+                    data.sub_sectors.forEach(sub_sector =>
+                        $('#sub_sector').append('<option value="'+sub_sector.id + '">' + sub_sector.name + '</option>')
+                    )
+                }
+            })
+        });
     </script>
 @endsection

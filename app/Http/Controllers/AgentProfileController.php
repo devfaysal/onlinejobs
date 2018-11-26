@@ -7,6 +7,7 @@ use Storage;
 use App\User;
 use App\Skill;
 use App\Gender;
+use App\Sector;
 use App\Country;
 use App\Profile;
 use App\Language;
@@ -220,7 +221,8 @@ class AgentProfileController extends Controller
         $genders = Gender::where('status', '=', 1)->get();
         $skills = Skill::where('status', '=', 1)->get();
         $education_levels = EducationLevel::where('status', '=', 1)->get();
-        return view('agent.createuser', compact('religions','nationalitys','languages','skill_levels','marital_statuses','genders','skills','education_levels'));
+        $sectors = Sector::where('status', '=', 1)->get();
+        return view('agent.createuser', compact('religions','nationalitys','languages','skill_levels','marital_statuses','genders','skills','education_levels','sectors'));
     }
 
     public function saveuser( Request $request)
@@ -430,6 +432,8 @@ class AgentProfileController extends Controller
         $profile->father_name = $request->father_name;
         $profile->mother_name = $request->mother_name;
         $profile->father_contact_number = $request->father_contact_number;
+        $profile->sector_id = $request->sector;
+        $profile->sub_sector_id = $request->sub_sector;
 
         /*Emergency Contact*/
         $profile->emergency_contact_name = $request->emergency_contact_name;
