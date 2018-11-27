@@ -146,7 +146,7 @@
                                 <a class="dropdown-item" href="{{route('professional.index')}}">Profile</a>
                             @endif
 
-                            <a class="dropdown-item" href="#">Change Password</a>
+                            <a class="dropdown-item" href="{{route('changePassword')}}">Change Password</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();

@@ -22,6 +22,10 @@ Route::get('/admin/login', function(){
 Route::get('/logout', function(){
     return view('admin.login');
 });
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/changePassword', 'UserController@showPasswordChangeForm')->name('changePassword');
+    Route::patch('/changePassword', 'UserController@changePassword')->name('updatePassword');
+});
 Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadministrator|agent|employer')->group(function () {
     Route::get('/', function(){
         return view('admin.index');
