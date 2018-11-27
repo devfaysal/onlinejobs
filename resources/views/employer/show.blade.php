@@ -93,7 +93,7 @@
                 </div>
                 <!-- Demand Entry Modal -->
                 <div class="modal fade" id="demandModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                         <div class="modal-content tex-center">
                             <div class="modal-header">
                                 <h5 class="modal-title text-center" id="exampleModalLongTitle"> Send a Demand Letter </h5>
@@ -173,19 +173,49 @@
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <select name="PreferredCountry" id="PreferredCountry" class="form-control{{ $errors->has('PreferredCountry') ? ' is-invalid' : '' }}">
-                                                    <option value="">-- Preferred Country --</option>
-                                                    @foreach ($countrys as $country)
-                                                        <option value="{{$country->id}}" {{$country->id == old('country') ? 'selected':''}}>{{$country->name}}</option>
-                                                    @endforeach
-                                                </select>
-
-                                                @if ($errors->has('PreferredCountry'))
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $errors->first('PreferredCountry') }}</strong>
-                                                    </span>
-                                                @endif
+                                            <div class="row">
+                                                <div class="form-group col-md-4">
+                                                    <select name="PreferredCountry" id="PreferredCountry" class="form-control{{ $errors->has('PreferredCountry') ? ' is-invalid' : '' }}">
+                                                        <option value="">-- Preferred Country --</option>
+                                                        @foreach ($countrys as $country)
+                                                            <option value="{{$country->id}}" {{$country->id == old('country') ? 'selected':''}}>{{$country->name}}</option>
+                                                        @endforeach
+                                                    </select>
+    
+                                                    @if ($errors->has('PreferredCountry'))
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $errors->first('PreferredCountry') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <select name="PreferredCountry" id="PreferredCountry" class="form-control{{ $errors->has('PreferredCountry') ? ' is-invalid' : '' }}">
+                                                        <option value="">-- Preferred Country --</option>
+                                                        @foreach ($countrys as $country)
+                                                            <option value="{{$country->id}}" {{$country->id == old('country') ? 'selected':''}}>{{$country->name}}</option>
+                                                        @endforeach
+                                                    </select>
+    
+                                                    @if ($errors->has('PreferredCountry'))
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $errors->first('PreferredCountry') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <select name="PreferredCountry" id="PreferredCountry" class="form-control{{ $errors->has('PreferredCountry') ? ' is-invalid' : '' }}">
+                                                        <option value="">-- Preferred Country --</option>
+                                                        @foreach ($countrys as $country)
+                                                            <option value="{{$country->id}}" {{$country->id == old('country') ? 'selected':''}}>{{$country->name}}</option>
+                                                        @endforeach
+                                                    </select>
+    
+                                                    @if ($errors->has('PreferredCountry'))
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $errors->first('PreferredCountry') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <textarea id="Comments" class="form-control{{ $errors->has('Comments') ? ' is-invalid' : '' }}" name="Comments" value="{{ old('Comments') }}" placeholder="Comments"></textarea>
@@ -197,9 +227,21 @@
                                                 @endif
                                             </div>
                                             <div class="row">
-                                                <div class="form-group col-md-12">
+                                                <div class="form-group col-md-6">
+                                                    <label class="pull-left" for="">Approval copy kdn</label>
                                                     <input id="DemandFile" type="file" class="form-control-file{{ $errors->has('DemandFile') ? ' is-invalid' : '' }}" name="DemandFile" title="Upload demand letter">
-                                                    <p class="text-left small">Supported file format PDF, JPG, JPEG and PNG. Maximum file size: 1MB</p>
+                                                    <p class="text-left small">Supported file PDF, JPG and PNG. Max file size: 1MB</p>
+                                                </div>
+
+                                                @if ($errors->has('DemandFile'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('DemandFile') }}</strong>
+                                                    </span>
+                                                @endif
+                                                <div class="form-group col-md-6">
+                                                    <label class="pull-left" for="">Approval quota and levy receipt payment</label>
+                                                    <input id="DemandFile" type="file" class="form-control-file{{ $errors->has('DemandFile') ? ' is-invalid' : '' }}" name="DemandFile" title="Upload demand letter">
+                                                    <p class="text-left small">Supported file PDF, JPG and PNG. Max file size: 1MB</p>
                                                 </div>
 
                                                 @if ($errors->has('DemandFile'))
