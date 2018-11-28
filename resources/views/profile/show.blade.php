@@ -274,7 +274,7 @@
                                 @foreach ($educations as $education)
                                 <tr>
                                     <td>{{$i}}</td>
-                                    <td>{{$education->education_level_data->name}}</td>
+                                    <td>{{$education->education_level_data->name ?? ''}}</td>
                                     <td>{{$education->education_remark}}</td>
                                 </tr>
                                 @php
