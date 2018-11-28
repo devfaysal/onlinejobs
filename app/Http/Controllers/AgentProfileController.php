@@ -450,7 +450,7 @@ class AgentProfileController extends Controller
 
         $profile->save();
 
-        if($request->employer_name){
+        if($request->employer_name && $request->employer_name[0] != null){
             for($i=0; $i< count($request->employer_name); $i++){
                 $experience = new Experience;
                 $experience->user_id = $user->id;
@@ -462,7 +462,7 @@ class AgentProfileController extends Controller
                 $experience->save();
             }
         }
-        if($request->education_level){
+        if($request->education_level && $request->education_level[0] != null){
             for($i=0; $i< count($request->education_level); $i++){
                 $education = new Education;
                 $education->user_id = $user->id;
