@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mt-4">
         <div class="row">
-            @if(Session::has('message'))
+            {{-- @if(Session::has('message'))
                 <div class="col-md-12">
                     <div class="alert {{ Session::get('alert-class', 'alert-info') }} alert-dismissible fade show" role="alert">
                         <strong>{{ Session::get('message') }}</strong>
@@ -12,7 +12,7 @@
                         </button>
                     </div>
                 </div>
-            @endif
+            @endif --}}
             <div class="col-md-12 ml-auto mr-auto">
                 <div class="card">
                     <div class="card-body">
@@ -189,30 +189,30 @@
                                                     @endif
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <select name="PreferredCountry" id="PreferredCountry" class="form-control{{ $errors->has('PreferredCountry') ? ' is-invalid' : '' }}">
-                                                        <option value="">-- Preferred Country --</option>
+                                                    <select name="PreferredCountry2" id="PreferredCountry2" class="form-control{{ $errors->has('PreferredCountry2') ? ' is-invalid' : '' }}">
+                                                        <option value="">-- Preferred Country 2 --</option>
                                                         @foreach ($countrys as $country)
                                                             <option value="{{$country->id}}" {{$country->id == old('country') ? 'selected':''}}>{{$country->name}}</option>
                                                         @endforeach
                                                     </select>
     
-                                                    @if ($errors->has('PreferredCountry'))
+                                                    @if ($errors->has('PreferredCountry2'))
                                                         <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $errors->first('PreferredCountry') }}</strong>
+                                                            <strong>{{ $errors->first('PreferredCountry2') }}</strong>
                                                         </span>
                                                     @endif
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <select name="PreferredCountry" id="PreferredCountry" class="form-control{{ $errors->has('PreferredCountry') ? ' is-invalid' : '' }}">
-                                                        <option value="">-- Preferred Country --</option>
+                                                    <select name="PreferredCountry3" id="PreferredCountry3" class="form-control{{ $errors->has('PreferredCountry3') ? ' is-invalid' : '' }}">
+                                                        <option value="">-- Preferred Country 3 --</option>
                                                         @foreach ($countrys as $country)
                                                             <option value="{{$country->id}}" {{$country->id == old('country') ? 'selected':''}}>{{$country->name}}</option>
                                                         @endforeach
                                                     </select>
     
-                                                    @if ($errors->has('PreferredCountry'))
+                                                    @if ($errors->has('PreferredCountry3'))
                                                         <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $errors->first('PreferredCountry') }}</strong>
+                                                            <strong>{{ $errors->first('PreferredCountry3') }}</strong>
                                                         </span>
                                                     @endif
                                                 </div>
@@ -240,13 +240,13 @@
                                                 @endif
                                                 <div class="form-group col-md-6">
                                                     <label class="pull-left" for="">Approval quota and levy receipt payment</label>
-                                                    <input id="DemandFile" type="file" class="form-control-file{{ $errors->has('DemandFile') ? ' is-invalid' : '' }}" name="DemandFile" title="Upload demand letter">
+                                                    <input id="approvalQuotaAndLevy" type="file" class="form-control-file{{ $errors->has('approvalQuotaAndLevy') ? ' is-invalid' : '' }}" name="approvalQuotaAndLevy" title="Approval quota and levy receipt payment">
                                                     <p class="text-left small">Supported file PDF, JPG and PNG. Max file size: 1MB</p>
                                                 </div>
 
-                                                @if ($errors->has('DemandFile'))
+                                                @if ($errors->has('approvalQuotaAndLevy'))
                                                     <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $errors->first('DemandFile') }}</strong>
+                                                        <strong>{{ $errors->first('approvalQuotaAndLevy') }}</strong>
                                                     </span>
                                                 @endif
                                             </div>

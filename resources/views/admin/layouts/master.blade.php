@@ -75,7 +75,7 @@
                                 <div class="dropdown-menu notifications-dropdown-menu">
                                     <ul class="notifications-container">
                                         @if(Auth::user()->unreadNotifications->count() > 0)
-                                        @foreach (Auth::user()->unreadNotifications as $notification)
+                                        @foreach (Auth::user()->unreadNotifications->take(10) as $notification)
                                             <li>
                                                 <a href="{{route('admin.readSingleNotification',$notification->id)}}" class="notification-item">
                                                     <div class="body-col">

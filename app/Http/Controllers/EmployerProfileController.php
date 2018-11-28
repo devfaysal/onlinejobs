@@ -348,7 +348,12 @@ class EmployerProfileController extends Controller
 
         if($request->file('DemandFile')){
             $this->validate($request, [
-                'DemandFile' => 'mimes:pdf,jpg,jpeg,png|max:5024',
+                'DemandFile' => 'mimes:pdf,jpg,jpeg,png|max:1024',
+            ]);
+        }
+        if($request->file('approvalQuotaAndLevy')){
+            $this->validate($request, [
+                'approvalQuotaAndLevy' => 'mimes:pdf,jpg,jpeg,png|max:1024',
             ]);
         }
 
@@ -362,6 +367,8 @@ class EmployerProfileController extends Controller
         $offer->expexted_date = $request->ExpectedJoinDate;
         $offer->demand_qty = $request->DemandQuantity;
         $offer->preferred_country = $request->PreferredCountry;
+        $offer->preferred_country2 = $request->PreferredCountry2;
+        $offer->preferred_country3 = $request->PreferredCountry3;
 
         if($request->file('DemandFile')){            
             $file_basename = explode('.',$request->file('DemandFile')->getClientOriginalName())[0];
@@ -370,6 +377,15 @@ class EmployerProfileController extends Controller
             $request->DemandFile->storeAs('public/demand_letter', $file_name);
             //add new image path to database
             $offer->demand_file = $file_name;
+            
+        }
+        if($request->file('approvalQuotaAndLevy')){            
+            $file_basename = explode('.',$request->file('approvalQuotaAndLevy')->getClientOriginalName())[0];
+            $file_name = $file_basename . '-' . time() . '.' . $request->file('approvalQuotaAndLevy')->getClientOriginalExtension();
+
+            $request->approvalQuotaAndLevy->storeAs('public/demand_letter', $file_name);
+            //add new image path to database
+            $offer->approvalQuotaAndLevy = $file_name;
             
         }
 
