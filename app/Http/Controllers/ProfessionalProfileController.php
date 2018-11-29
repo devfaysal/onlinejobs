@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Country;
 use App\Qualification;
 use App\ProfessionalProfile;
 use Illuminate\Http\Request;
@@ -34,7 +35,8 @@ class ProfessionalProfileController extends Controller
      */
     public function create()
     {
-        return view('professional.create');
+        $countrys = Country::where('status', 1)->get();
+        return view('professional.create', compact('countrys'));
     }
 
     /**

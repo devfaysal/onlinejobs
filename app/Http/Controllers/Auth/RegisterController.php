@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Session;
 use Storage;
 use App\User;
+use App\Country;
 use App\Profile;
 use App\AgentProfile;
 use App\EmployerProfile;
@@ -145,7 +146,14 @@ class RegisterController extends Controller
         }elseif($role == 'agent'){
             $user->status = 0;
         }
-
+        
+        if(isset($data['country'])){
+            $user_country = $data['country'];
+        }elseif(isset($data['agency_country'])){
+            $user_country = $data['agency_country'];
+        }
+        
+        $user->code = $this->user_code($user_country);
         $user->save();
   
         if($role == 'maid' || $role == 'worker' || $role == 'agent'){
@@ -277,5 +285,33 @@ class RegisterController extends Controller
         // Session::flash('message', ucfirst($role).' Registered successfully!!'); 
         // Session::flash('alert-class', 'alert-success');
         return $user;
+    }
+
+    public function user_code($country_id)
+    {
+        $country = Country::where('id', $country_id)->first();
+        for($i=1; $i<10000; $i++){
+            if($i < 10){
+                //00009
+                $j = '0000' . $i;
+            }elseif($i >= 10 && $i < 100){
+                //00099
+                $j = '000' . $i;
+            }elseif($i >= 100 && $i < 1000){
+                //00999
+                $j = '00' . $i;
+            }elseif($i >= 1000 && $i < 10000){
+                //09999
+                $j = '0' . $i;
+            }else{
+                //99999
+                $j = $i;
+            }
+            $user_code = $country->code . $j;
+            if(!User::where('code', '=', $user_code)->exists()){
+                break;
+            }
+        }
+        return $user_code;
     }
 }

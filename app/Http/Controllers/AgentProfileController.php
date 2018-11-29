@@ -293,6 +293,8 @@ class AgentProfileController extends Controller
             $skills = Skill::where('status', '=', 1)->where('for', 'gw')->where('type','Skill')->get();
             $languages = Skill::where('status', '=', 1)->where('for', 'gw')->where('type','Language')->get();
         }
+        $user_country = $request->nationality;
+        $user->code = $this->user_code($user_country);
         $user->save();
         $user->attachRole($role);
 
@@ -481,6 +483,34 @@ class AgentProfileController extends Controller
         Notification::send($admins, new MaidWorkerEntry($data));
 
         return redirect()->route('admin.home');
+    }
+
+    public function user_code($country_id)
+    {
+        $country = Country::where('id', $country_id)->first();
+        for($i=1; $i<10000; $i++){
+            if($i < 10){
+                //00009
+                $j = '0000' . $i;
+            }elseif($i >= 10 && $i < 100){
+                //00099
+                $j = '000' . $i;
+            }elseif($i >= 100 && $i < 1000){
+                //00999
+                $j = '00' . $i;
+            }elseif($i >= 1000 && $i < 10000){
+                //09999
+                $j = '0' . $i;
+            }else{
+                //99999
+                $j = $i;
+            }
+            $user_code = $country->code . $j;
+            if(!User::where('code', '=', $user_code)->exists()){
+                break;
+            }
+        }
+        return $user_code;
     }
 
 

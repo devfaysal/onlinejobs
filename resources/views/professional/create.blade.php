@@ -53,6 +53,22 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="country" class="col-sm-4 col-form-label text-right">{{ __('Country *') }}</label>
+                            <div class="col-sm-8">
+                                <select name="country" id="country" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" required>
+                                    <option value="">--Select Country--</option>
+                                    @foreach ($countrys as $country)
+                                        <option value="{{$country->id}}" {{$country->id == old('country') ? 'selected':''}}>{{$country->name}}</option>
+                                    @endforeach
+                                </select>
+                            @if ($errors->has('country'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('country') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="password" class="col-sm-4 col-form-label text-right">{{ __('Password *') }}</label>
                             <div class="col-sm-8">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password" required>

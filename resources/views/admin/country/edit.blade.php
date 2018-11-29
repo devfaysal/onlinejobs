@@ -20,6 +20,16 @@
                                 </span>
                             @endif
                         </div>
+                        <div class="form-group">
+                            <p><a target="_blank" href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3">Check this link for Country Code</a></p>
+                            <input id="code" type="text" class="form-control{{ $errors->has('code') ? ' is-invalid' : '' }}" name="code" value="{{ $country->code }}" placeholder="Country code" required>
+
+                            @if ($errors->has('code'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('code') }}</strong>
+                                </span>
+                            @endif
+                        </div>
 
                         <div class="form-group mb-0 text-center">
                             <button type="submit" class="btn btn-warning btn-block">

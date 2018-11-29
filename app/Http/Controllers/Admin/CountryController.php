@@ -21,7 +21,7 @@ class CountryController extends Controller
     }
     public function getCountryData()
     {
-        $countries = Country::select(['id', 'name', 'status', 'created_at', 'updated_at'])->get();
+        $countries = Country::select(['id', 'name','code', 'status', 'created_at', 'updated_at'])->get();
         return DataTables::of($countries)
         ->addColumn('action', function ($country) {
             $string  = '<a href="'.route('admin.country.edit', $country->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
@@ -55,6 +55,7 @@ class CountryController extends Controller
     {
         $country = new Country;
         $country->name = $request->name;
+        $country->code = $request->code;
         $country->save();
 
         Session::flash('message', 'Country added Successfully!!'); 
@@ -95,6 +96,7 @@ class CountryController extends Controller
     public function update(Country $country, Request $request)
     {
         $country->name = $request->name;
+        $country->code = $request->code;
         $country->save();
 
         Session::flash('message', 'Country updates Successfully!!'); 

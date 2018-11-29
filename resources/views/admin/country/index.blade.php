@@ -9,6 +9,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
+                    <th>Code</th>
                     <th>Status</th>
                     <th>Created At</th>
                     <th>Updated At</th>
@@ -19,6 +20,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
+                    <th>Code</th>
                     <th>Status</th>
                     <th>Created At</th>
                     <th>Updated At</th>
@@ -36,6 +38,7 @@
         columns: [
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
+            {data: 'code', name: 'code'},
             {data: 'status', name: 'status'},
             {data: 'created_at', name: 'created_at'},
             {data: 'updated_at', name: 'updated_at'},
