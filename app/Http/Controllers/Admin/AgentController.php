@@ -26,7 +26,7 @@ class AgentController extends Controller
 
     public function getAgentsData()
     {
-        $users = User::with('agent_profile')->where('status', 1)->whereRoleIs('agent')->select(['id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
+        $users = User::with('agent_profile')->where('status', 1)->whereRoleIs('agent')->get();
         //$users = User::with('agent_profile')->where('status', 1)->whereRoleIs('agent')->select('users.*')->get();
         //$users = User::with('agent_profile')->select('users.*')->get();
         // echo '<pre>';
@@ -76,7 +76,7 @@ class AgentController extends Controller
 
     public function getAgentsApplicationData()
     {
-        $users = User::where('status', 0)->whereRoleIs('agent')->select(['id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
+        $users = User::where('status', 0)->whereRoleIs('agent')->get();
 
         return DataTables::of($users)
         ->addColumn('action', function ($user) {
@@ -115,7 +115,7 @@ class AgentController extends Controller
 
     public function getRejectedAgentApplicationData()
     {
-        $users = User::where('status', -1)->whereRoleIs('agent')->select(['id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
+        $users = User::where('status', -1)->whereRoleIs('agent')->get();
 
         return DataTables::of($users)
         ->addColumn('action', function ($user) {
