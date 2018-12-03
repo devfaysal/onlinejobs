@@ -214,7 +214,7 @@
                                 @endif
 
                                 @if(Auth::user()->hasRole('superadministrator'))
-                                <li class="{{ ( (Route::currentRouteName() === "admin.country.index") || (Route::currentRouteName() === "admin.religion.index") || (Route::currentRouteName() === "admin.language.index") || (Route::currentRouteName() === "admin.gender.index") || (Route::currentRouteName() === "admin.maritalStatus.index") || (Route::currentRouteName() === "admin.skillLevel.index") || (Route::currentRouteName() === "admin.educationLevel.index") || (Route::currentRouteName() === "admin.downloads.index") ? "active open" : "") }}">
+                                <li class="{{ ( (Route::currentRouteName() === "admin.country.index") || (Route::currentRouteName() === "admin.religion.index") || (Route::currentRouteName() === "admin.language.index") || (Route::currentRouteName() === "admin.gender.index") || (Route::currentRouteName() === "admin.maritalStatus.index") || (Route::currentRouteName() === "admin.skillLevel.index") || (Route::currentRouteName() === "admin.educationLevel.index") || (Route::currentRouteName() === "admin.downloads.index") || (Route::currentRouteName() === "admin.skill.index") || (Route::currentRouteName() === "admin.sector.index") ? "active open" : "")  }}">
                                     <a href="">
                                         <i class="fa fa-users"></i> Settings
                                         <i class="fa arrow"></i>

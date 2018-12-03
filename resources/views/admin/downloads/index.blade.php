@@ -29,6 +29,7 @@
 @section('javascript')
 <script>
     $('#downloads-table').DataTable({
+        searching: false,
         processing: true,
         serverSide: true,
         ajax: '{{route('admin.getDownloadsData')}}',

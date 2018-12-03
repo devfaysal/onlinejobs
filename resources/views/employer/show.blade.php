@@ -333,6 +333,7 @@
 @section('script')
 <script>
     $('#demands-table').DataTable({
+        searching: false,
         processing: true,
         serverSide: true,
         order: [[ 1, 'asc' ]],
@@ -367,6 +368,7 @@
 
     // maids table
     $('#maids-table').DataTable({
+        searching: false,
         processing: true,
         serverSide: true,
         ajax: '{{route('getAllMaids')}}',
@@ -398,6 +400,7 @@
 
     // Files table
     $('#files-table').DataTable({
+        searching: false,
         processing: true,
         serverSide: true,
         ajax: '{{route('getDownloadsFile', 'emp')}}',

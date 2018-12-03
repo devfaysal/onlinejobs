@@ -28,6 +28,7 @@
                     <th>Phone</th>
                     <th>Created At</th>
                     <th>Updated At</th>
+                    <th class="hide">Action</th>
                 </tr>
             </tfoot>
         </table>
@@ -36,6 +37,7 @@
 @section('javascript')
 <script>
     $('#users-table').DataTable({
+        searching: false,
         processing: true,
         serverSide: true,
         ajax: '{{route('admin.getAgentsData')}}',
@@ -62,6 +64,7 @@
                     column.search(val ? val : '', true, false).draw();
                 });
             });
+            $('.hide input').hide();
         }
     });
 </script>
