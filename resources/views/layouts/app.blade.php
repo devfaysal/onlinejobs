@@ -79,21 +79,19 @@
                     <li class="nav-item">
                         <a class="nav-link {{ ( (Route::currentRouteName() === "workers") || (Route::currentRouteName() === "workers.search") ? "active" : "") }}" href="{{route('workers')}}">General Workers</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         @guest
                         <a class="nav-link {{ ( (Route::currentRouteName() === "employer.index") ? "active" : "") }}" href="{{route('employer.index')}}">Employers Area</a>
                         @endguest
                         @auth
-                        {{-- @if(Auth::user()->hasRole('employer'))
-                        <a class="nav-link" href="{{route('employer.show')}}">Employers Area</a>
-                        @endif --}}
                         @endauth
-                    </li>
+                    </li> --}}
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     @guest                               
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="modal" data-target="#loginModal" href="#"> Login </a> 
+                        {{-- <a class="nav-link" data-toggle="modal" data-target="#loginModal" href="#"> Login </a>  --}}
+                        <a class="nav-link" href="{{route('login')}}"> Login </a> 
                     </li>
                     @endguest
                     @auth

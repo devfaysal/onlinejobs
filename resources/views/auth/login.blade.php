@@ -15,6 +15,9 @@
                     <div class="form-group">
                         <a class="btn btn-warning btn-lg btn-block" href="{{route('agent.create')}}">Register as Agent</a>
                     </div>
+                    <div class="form-group">
+                        <a class="btn btn-info btn-lg btn-block" href="{{route('professional.index')}}">Register as Professional</a>
+                    </div>
                 </div>
             </div>
         </div>
