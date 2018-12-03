@@ -7,19 +7,24 @@
         <table id="users-table" class="table table-condensed">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>ID</th>
+                    <th>Company Name</th>
                     <th>Email</th>
+                    <th>Name</th>
+                    <th>Location</th>
                     <th>Registered On</th>
-                    <th>Last Modified</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
-                    <th>Name</th>
+                    <th class="hide">ID</th>
+                    <th>Company Name</th>
                     <th>Email</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th class="hide">Created At</th>
+                    <th class="hide">Action</th>
                 </tr>
             </tfoot>
         </table>
@@ -28,15 +33,18 @@
 @section('javascript')
 <script>
     $('#users-table').DataTable({
+        order: [[ 5, "desc" ]],
         searching: false,
         processing: true,
         serverSide: true,
         ajax: '{{route('admin.getEmployersData')}}',
         columns: [
-            {data: 'name', name: 'name'},
+            {data: 'code', name: 'code'},
+            {data: 'company_name', name: 'company_name'},
             {data: 'email', name: 'email'},
+            {data: 'name', name: 'name'},
+            {data: 'company_country', name: 'company_country'},
             {data: 'created_at', name: 'created_at'},
-            {data: 'updated_at', name: 'updated_at'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ],
         initComplete: function () {
@@ -51,6 +59,7 @@
                     column.search(val ? val : '', true, false).draw();
                 });
             });
+            $('.hide input').hide();
         }
     });
 </script>

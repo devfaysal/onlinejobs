@@ -27,18 +27,6 @@ class AgentController extends Controller
     public function getAgentsData()
     {
         $users = User::with('agent_profile')->where('status', 1)->whereRoleIs('agent')->get();
-        //$users = User::with('agent_profile')->where('status', 1)->whereRoleIs('agent')->select('users.*')->get();
-        //$users = User::with('agent_profile')->select('users.*')->get();
-        // echo '<pre>';
-        // print_r($users);
-        // echo '</pre>';
-        // foreach ($users as $user){
-        //     // echo '<pre>';
-        //     // print_r($user->agent_profile);
-        //     // echo '</pre>';
-        //     echo $user->agent_profile['country_data']['name'];
-        //     echo '<br/>';
-        // }
 
         return DataTables::of($users)
         ->addColumn('action', function ($user) {
@@ -57,6 +45,9 @@ class AgentController extends Controller
         })
         ->addColumn('agency_email', function($user) {
             return $user->agent_profile['agency_email'];
+        })
+        ->addColumn('city', function($user) {
+            return $user->agent_profile['city'];
         })
         ->addColumn('first_name', function($user) {
             return $user->agent_profile['first_name'];
@@ -97,6 +88,9 @@ class AgentController extends Controller
         ->addColumn('agency_email', function($user) {
             return $user->agent_profile['agency_email'];
         })
+        ->addColumn('city', function($user) {
+            return $user->agent_profile['city'];
+        })
         ->addColumn('first_name', function($user) {
             return $user->agent_profile['first_name'];
         })
@@ -134,6 +128,9 @@ class AgentController extends Controller
         })
         ->addColumn('agency_email', function($user) {
             return $user->agent_profile['agency_email'];
+        })
+        ->addColumn('city', function($user) {
+            return $user->agent_profile['city'];
         })
         ->addColumn('first_name', function($user) {
             return $user->agent_profile['first_name'];

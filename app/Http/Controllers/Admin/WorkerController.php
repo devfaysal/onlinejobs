@@ -26,9 +26,9 @@ class WorkerController extends Controller
             $users = User::whereRoleIs('worker')->whereHas('profile', function ($q) {
                 $agent = auth()->user();
                 $q->where('agent_code', $agent->agent_profile->agent_code);
-            })->select(['id','public_id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
+            })->get();
         }else{
-            $users = User::where('status', 1)->whereRoleIs('worker')->select(['id','public_id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
+            $users = User::where('status', 1)->whereRoleIs('worker')->get();
         }
         
 

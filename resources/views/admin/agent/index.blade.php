@@ -10,24 +10,22 @@
                     <th>ID</th>
                     <th>Agency Name</th>
                     <th>Email</th>
+                    <th>Person Incharge</th>
                     <th>Country</th>
-                    <th>Person Name</th>
-                    <th>Phone</th>
+                    <th>City</th>
                     <th>Registered On</th>
-                    <th>Last Modified</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
-                    <th>ID</th>
+                    <th class="hide">ID</th>
                     <th>Agency Name</th>
                     <th>Email</th>
+                    <th>Person Incharge</th>
                     <th>Country</th>
-                    <th>Person Name</th>
-                    <th>Phone</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
+                    <th>City</th>
+                    <th class="hide">Created At</th>
                     <th class="hide">Action</th>
                 </tr>
             </tfoot>
@@ -37,6 +35,7 @@
 @section('javascript')
 <script>
     $('#users-table').DataTable({
+        order: [[ 6, "desc" ]],
         searching: false,
         processing: true,
         serverSide: true,
@@ -45,11 +44,10 @@
             {data: 'code', name: 'code'},
             {data: 'agency_registered_name', name: 'agency_registered_name'},
             {data: 'agency_email', name: 'agency_email'},
-            {data: 'country', name: 'country'},
             {data: 'first_name', name: 'first_name'},
-            {data: 'phone', name: 'contact_phone'},
+            {data: 'country', name: 'country'},
+            {data: 'city', name: 'city'},
             {data: 'created_at', name: 'created_at'},
-            {data: 'updated_at', name: 'updated_at'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ],
         initComplete: function () {

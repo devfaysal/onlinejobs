@@ -162,6 +162,7 @@
 
     // demand table list
     $('#demands-table').DataTable({
+        order: [[ 0, "desc" ]],
         searching: false,
         processing: true,
         serverSide: true,
@@ -196,6 +197,7 @@
                     column.search(val ? val : '', true, false).draw();
                 });
             });
+            $('.hide input').hide();
         }
     });
 

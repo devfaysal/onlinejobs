@@ -30,14 +30,19 @@ class EmployerController extends Controller
 
     public function getEmployersData()
     {
-        $users = User::with('employer_profile')->where('status', 1)->whereRoleIs('employer')->select(['id','public_id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
+        $users = User::with('employer_profile')->where('status', 1)->whereRoleIs('employer')->get();
 
         return DataTables::of($users)
+        ->addColumn('company_name', function ($user) {
+            return $user->employer_profile->company_name;
+        })
+        ->addColumn('company_country', function ($user) {
+            return $user->employer_profile->company_country_data['name'];
+        })
         ->addColumn('action', function ($user) {
             //return '<a href="'.route('admin.agent.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
             return '<a class="btn btn-xs btn-primary" href="'.route('employer.public', $user->public_id).'">View</a>';
         })
-        ->editColumn('id', 'ID: {{$id}}')
         ->removeColumn('password')
         ->make(true);
     }
@@ -49,9 +54,15 @@ class EmployerController extends Controller
 
     public function getEmployersApplicationData()
     {
-        $users = User::where('status', 0)->whereRoleIs('employer')->select(['id', 'name', 'email', 'password', 'created_at', 'updated_at'])->get();
+        $users = User::where('status', 0)->whereRoleIs('employer')->get();
 
         return DataTables::of($users)
+        ->addColumn('company_name', function ($user) {
+            return $user->employer_profile->company_name;
+        })
+        ->addColumn('company_country', function ($user) {
+            return $user->employer_profile->company_country_data['name'];
+        })
         ->addColumn('action', function ($user) {
             return '<a href="#" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a><a class="ml-1 btn btn-success" href="'.route('admin.employer.approve', $user->id).'" onclick="return confirm(\'Are you sure?\')">Approve</a><a class="ml-1 btn btn-danger" href="'.route('admin.employer.reject', $user->id).'" onclick="return confirm(\'Are you sure?\')">Reject</a>';
         })
@@ -64,7 +75,7 @@ class EmployerController extends Controller
     public function employerDemands()
     {
         // get all agetns
-        $agents = User::with('agent_profile')->where('status', 1)->whereRoleIs('agent')->select(['id', 'name', 'email'])->get();
+        $agents = User::with('agent_profile')->where('status', 1)->whereRoleIs('agent')->get();
         // return to demand view
         return view('admin.employer.employerDemands', compact('agents'));
     }

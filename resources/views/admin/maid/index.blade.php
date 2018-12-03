@@ -7,11 +7,11 @@
         <table id="users-table" class="table table-condensed">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Image</th>
                     <th>Name</th>
                     <th>Passport</th>
                     <th>Country</th>
-                    <th>Date of Birth</th>
                     <th>Marital Status</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -19,13 +19,14 @@
             </thead>
             <tfoot>
                 <tr>
-                    <th>Image</th>
+                    <th class="hide">ID</th>
+                    <th class="hide">Image</th>
                     <th>Name</th>
                     <th>Passport</th>
                     <th>Country</th>
-                    <th>Date of Birth</th>
                     <th>Marital Status</th>
                     <th>Status</th>
+                    <th class="hide">Action</th>
                 </tr>
             </tfoot>
         </table>
@@ -39,11 +40,11 @@
         serverSide: true,
         ajax: '{{route('admin.getMaidsData')}}',
         columns: [
+            {data: 'code', name: 'code'},
             {data: 'image', name: 'image'},
             {data: 'name', name: 'name'},
             {data: 'passport', name: 'passport'},
             {data: 'country', name: 'country'},
-            {data: 'date_of_birth', name: 'date_of_birth'},
             {data: 'marital_status', name: 'marital_status'},
             {data: 'status', name: 'status'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
@@ -60,6 +61,7 @@
                     column.search(val ? val : '', true, false).draw();
                 });
             });
+            $('.hide input').hide();
         }
     });
 </script>
