@@ -72,10 +72,10 @@
                                         </span>
                                     </sup>
                                 </a>
-                                <div class="dropdown-menu notifications-dropdown-menu">
-                                    <ul class="notifications-container">
+                                <div style="height:370px;" class="dropdown-menu notifications-dropdown-menu">
+                                    <ul style="height:325px; overflow:scroll;" class="notifications-container">
                                         @if(Auth::user()->unreadNotifications->count() > 0)
-                                        @foreach (Auth::user()->unreadNotifications->take(10) as $notification)
+                                        @foreach (Auth::user()->unreadNotifications as $notification)
                                             <li>
                                                 <a href="{{route('admin.readSingleNotification',$notification->id)}}" class="notification-item">
                                                     <div class="body-col">
@@ -94,13 +94,13 @@
                                             </li>
                                         @endif
                                     </ul>
-                                    <footer>
                                         <ul>
                                             <li>
-                                                <a href="{{route('admin.showAllNotification')}}"> View All </a>
+                                                <div class="body-col text-center">
+                                                    <a href="{{route('admin.showAllNotification')}}"> View All </a>
+                                                </div>
                                             </li>
                                         </ul>
-                                    </footer>
                                 </div>
                             </li>
                             <li class="profile dropdown">
