@@ -147,8 +147,10 @@ class RegisterController extends Controller
             $user->status = 0;
         }
         
-        if(isset($data['country'])){
+        if(isset($data['company_country'])){
             $user_country = $data['country'];
+        }elseif(isset($data['country'])){
+            $user_country = $data['agency_country'];
         }elseif(isset($data['agency_country'])){
             $user_country = $data['agency_country'];
         }
