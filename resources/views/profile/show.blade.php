@@ -31,8 +31,8 @@
             </div>
             <div class="col-md-7">
                 <div class="card">
-                    <h4 class="card-title text-center mt-3 text-uppercase">Basic Information</h4>
-                    <div class="card-body">
+                    <h4 class="card-title text-center mt-3 mb-0 text-uppercase">Basic Information</h4>
+                    <div class="card-body pb-0">
                         <table class="table table-striped table-sm">
                             <tr>
                                 <th width="25%">Name</th>
@@ -140,8 +140,8 @@
             @if(!Auth::user()->hasRole('employer'))
             <div class="col-md-12 mt-2">
                 <div class="card">
-                        <h4 class="card-title text-center mt-3 text-uppercase">Emergency Contact</h4>
-                    <div class="card-body">
+                        <h4 class="card-title text-center mb-0 mt-3 text-uppercase">Emergency Contact</h4>
+                    <div class="card-body pb-0">
                         <div class="row">
                             <div class="col-md-6">
                                 <table class="table table-sm">
@@ -178,15 +178,15 @@
             @endif
             <div class="col-md-12 mt-2">
                 <div class="card">
-                        <h4 class="card-title text-center mt-3 text-uppercase">Passport Details</h4>
-                    <div class="card-body">
+                        <h4 class="card-title text-center mt-3 mb-0 text-uppercase">Passport Details</h4>
+                    <div class="card-body pb-0">
                         <div class="row">
                             <div class="col-md-6">
                                 <table class="table table-sm">
                                     <tr>
-                                        <th width="30%">Passport Number</th>
+                                        <th width="45%">Passport Number</th>
                                         <td width="5%">:</td>
-                                        <td width="65%">{{$profile->passport_number ?? 'N/A'}}</td>
+                                        <td width="50%">{{$profile->passport_number ?? 'N/A'}}</td>
                                     </tr>
                                     <tr>
                                         <th>Issue Date</th>
@@ -215,17 +215,20 @@
             </div>
             <div class="col-md-12 mt-2">
                 <div class="card">
-                        <h4 class="card-title text-center mt-3 text-uppercase">Language</h4>
-                    <div class="card-body">
+                        <h4 class="card-title text-center mt-3 mb-0 text-uppercase">Language</h4>
+                    <div class="card-body pb-0">
                         <div class="row">
                             <div class="col-md-12">
                                 <table class="table table-striped table-sm">
                                     @if($language_set)
                                         @foreach($languages as $language)
-                                        <tr>
+                                        @if($language_set[$language->slug] == 'Yes')
+                                            <span class="d-inline-block pl-2 pr-2 pt-1 pb-1 mr-2 mb-2 border border-secondary">{{$language->name}}</span>
+                                        @endif
+                                        {{-- <tr>
                                             <th width="50%">{{$language->name}}</th>
                                             <td width="50%">{{$language_set[$language->slug] ?? 'no'}}</td>
-                                        </tr>
+                                        </tr> --}}
                                         @endforeach
                                     @endif
                                 </table>
@@ -237,28 +240,33 @@
             <div class="col-md-12 mt-2">
                 <div class="card">
                     <div class="card-heading">
-                        <h4 class="text-uppercase text-center mt-2 ">Skills</h4>
+                        <h4 class="text-uppercase text-center mt-2 mb-0 ">Skills</h4>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body pb-0">
                         <table class="table table-striped table-sm">
                             @if($skill_set)
                                 @foreach($skills as $skill)
-                                <tr>
+                                @if($skill_set[$skill->slug] == 'Yes')
+                                    <span class="d-inline-block pl-2 pr-2 pt-1 pb-1 mr-2 mb-2 border border-secondary">{{$skill->name}}</span>
+                                @endif
+                                {{-- {{$skill_set[$skill->slug] == 'yes' ? $skill->name}} --}}
+                                {{-- <tr>
                                     <th width="50%">{{$skill->name}}</th>
                                     <td width="50%">{{$skill_set[$skill->slug] ?? 'no'}}</td>
-                                </tr>
+                                </tr> --}}
                                 @endforeach
                             @endif
                         </table>
                     </div>
                 </div>
             </div>
+            @if($educations->count() > 0)
             <div class="col-md-12 mt-2">
                 <div class="card">
                     <div class="card-heading">
                         <h4 class="text-uppercase text-center mt-2">Education</h4>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body pb-0">
                         <table class="table table-sm">
                             <thead>
                                 <tr>
@@ -286,12 +294,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 mt-2">
+            @endif
+            @if($experiences->count() > 0)
+            <div class="col-md-12 mt-2 mb-2">
                 <div class="card">
                     <div class="card-heading">
                         <h4 class="text-uppercase text-center mt-2">Work Experience</h4>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body ">
                         <table class="table table-sm">
                             <thead>
                                 <tr>
@@ -325,6 +335,7 @@
                     </div>
                 </div>
             </div>
+            @endif
             <div class="col-md-12">
                     <img class="rounded mx-auto d-block" src="{{$profile->full_image != '' ? asset('storage/'.$profile->full_image) :  asset('images/avatar_full.jpg')}}" alt="avatar">
             </div>
