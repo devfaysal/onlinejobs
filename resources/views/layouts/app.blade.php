@@ -59,39 +59,18 @@
                             <a class="dropdown-item" href="#">Agent Status View</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Organizations
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">All Registered Organizations</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Review Organizations</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Sample Interview Questions</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">How to Write a CV</a>
-                        </div>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link {{ ( (Route::currentRouteName() === "maids") || (Route::currentRouteName() === "maids.search") ? "active" : "") }}" href="{{route('maids')}}">Domestic Maids</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ ( (Route::currentRouteName() === "workers") || (Route::currentRouteName() === "workers.search") ? "active" : "") }}" href="{{route('workers')}}">General Workers</a>
                     </li>
-                    {{-- <li class="nav-item">
-                        @guest
-                        <a class="nav-link {{ ( (Route::currentRouteName() === "employer.index") ? "active" : "") }}" href="{{route('employer.index')}}">Employers Area</a>
-                        @endguest
-                        @auth
-                        @endauth
-                    </li> --}}
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     @guest                               
                     <li class="nav-item">
                         {{-- <a class="nav-link" data-toggle="modal" data-target="#loginModal" href="#"> Login </a>  --}}
-                        <a class="nav-link" href="{{route('login')}}"> Login </a> 
+                        <a class="nav-link" href="{{route('login')}}"> Login / Register </a> 
                     </li>
                     @endguest
                     @auth
@@ -341,105 +320,6 @@
       </div>
     </div>
     </section>
-
-    {{-- <section class="footer_middle tex-center hidefromprint"> 
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-md-12">
-                    Partner Sites 
-                    <div id="blogCarousel" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#blogCarousel" data-slide-to="1"></li>
-                        </ol>
-                        <!-- Carousel items -->
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{{asset('images/slider/1.jpg')}}" alt="Image">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{{asset('images/slider/2.jpg')}}" alt="Image"  >
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{{asset('images/slider/3.jpg')}}" alt="Image"  >
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{{asset('images/slider/4.jpg')}}" alt="Image" >
-                                        </a>
-                                    </div>
-                                </div>
-                                <!--.row-->
-                            </div>
-                            <!--.item-->
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{{asset('images/slider/5.jpg')}}" alt="Image"  >
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{{asset('images/slider/6.jpg')}}" alt="Image"  >
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{{asset('images/slider/7.jpg')}}" alt="Image"  >
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{{asset('images/slider/8.jpg')}}" alt="Image" >
-                                        </a>
-                                    </div>
-                                </div>
-                                <!--.row-->
-                            </div>
-                            <!--.item-->
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{{asset('images/slider/9.jpg')}}" alt="Image" >
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{{asset('images/slider/10.jpg')}}" alt="Image" >
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{{asset('images/slider/11.jpg')}}" alt="Image" >
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{{asset('images/slider/12.jpg')}}" alt="Image" >
-                                        </a>
-                                    </div>
-                                </div>
-                                <!--.row-->
-                            </div>
-                            <!--.item-->
-                        </div>
-                        <!--.carousel-inner-->
-                    </div>
-                    <!--.Carousel-->
-                </div>
-            </div>
-        </div>
-    </section> --}}
     <section class="footer_bottom hidefromprint"> 
         <div class="container tex-center">
             <div class="row">
