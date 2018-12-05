@@ -178,7 +178,18 @@
                                 @endif
                             </div>                            
                         </div>
+                        <div class="form-group row">
+                            <label for="email" class="col-sm-4 col-form-label">{{ __('Email *') }}</label>
+                            <div class="col-sm-8">
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email" required>
 
+                            @if ($errors->has('email'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <label for="company_address" class="col-sm-4 col-form-label">{{ __('Company Address') }}</label>
                             <div class="col-sm-8">

@@ -95,12 +95,19 @@ class RegisterController extends Controller
         // If agent set defailt values for sign-up
         $role = $data['role'];
 
-        if ($role == 'agent' || $role == 'employer') {
+        if ($role == 'agent') {
             $data['name'] = $data['agency_registered_name'];
             $data['email'] = $data['agency_email'];
             $data['password'] = "DefPassAgent";
             $data['password_confirmation'] = "DefPassAgent";
             $data['phone'] = $data['agency_phone'] ?? '';
+        }
+        if ($role == 'employer') {
+            $data['name'] = $data['name'];
+            $data['email'] = $data['email'];
+            $data['password'] = "DefPassAgent";
+            $data['password_confirmation'] = "DefPassAgent";
+            $data['phone'] = $data['phone'] ?? '';
         }
 
         return Validator::make($data, [
@@ -124,12 +131,19 @@ class RegisterController extends Controller
         // If agent set defailt values for sign-up
         $role = $data['role'];
 
-        if ($role == 'agent' || $role == 'employer') {
+        if ($role == 'agent') {
             $data['name'] = $data['agency_registered_name'];
             $data['email'] = $data['agency_email'];
             $data['password'] = "DefPassAgent";
             $data['password_confirmation'] = "DefPassAgent";
             $data['phone'] = $data['agency_phone'] ?? '';
+        }
+        if ($role == 'employer') {
+            $data['name'] = $data['name'];
+            $data['email'] = $data['email'];
+            $data['password'] = "DefPassAgent";
+            $data['password_confirmation'] = "DefPassAgent";
+            $data['phone'] = $data['phone'] ?? '';
         }
 
         // Create use
