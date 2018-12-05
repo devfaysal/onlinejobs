@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Notification;
 use App\Notifications\DemandLetterIssueToAgent;
 use App\Notifications\EmployerApplicationApproved;
 use App\Notifications\EmployerApplicationRejected;
+use App\Notifications\EmployersSelectedGWConfirmByAgent;
 
 class EmployerController extends Controller
 {
@@ -229,8 +230,10 @@ class EmployerController extends Controller
 
         //Send notification to the Employer
         $employer = $demandUpdate->employer;
+        $admins = User::whereRoleIs('superadministrator')->get();
         $data = $demandUpdate;
         Notification::send($employer, new GWProposedByAgent($data));
+        Notification::send($admins, new GWProposedByAgent($data));
 
         return redirect('/admin/employer-demands');
     }
@@ -259,6 +262,13 @@ class EmployerController extends Controller
 
         Session::flash('message', 'Worker(s) finalized successfully!'); 
         Session::flash('alert-class', 'alert-success');
+
+        //Send notification to the Employer
+        $employer = $demandUpdate->employer;
+        $admins = User::whereRoleIs('superadministrator')->get();
+        $data = $demandUpdate;
+        Notification::send($employer, new EmployersSelectedGWConfirmByAgent($data));
+        Notification::send($admins, new EmployersSelectedGWConfirmByAgent($data));
 
         return redirect('/admin/employer-demands');
     }

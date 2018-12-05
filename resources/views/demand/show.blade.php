@@ -101,15 +101,15 @@
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                        <th>Id</th>
-                                        <th>Image</th>
+                                        <th class="hide">Id</th>
+                                        <th class="hide">Image</th>
                                         <th>Name</th>
                                         <th>Passport</th>
                                         <th>Country</th>
                                         <th>Date of Birth</th>
                                         <th>Marital Status</th>
                                         <th>Status</th>
-                                        <th></th>
+                                        <th class="hide"></th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -128,6 +128,7 @@
 
     // maids table
     $('#workers-table').DataTable({
+        searching: false,
         processing: true,
         serverSide: true,
         order: [[ 2, 'asc' ]],
@@ -155,6 +156,7 @@
                     column.search(val ? val : '', true, false).draw();
                 });
             });
+            $('.hide input').hide();
         }
     });
 </script>

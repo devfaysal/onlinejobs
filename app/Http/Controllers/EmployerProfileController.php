@@ -298,8 +298,10 @@ class EmployerProfileController extends Controller
 
         //Send notification to the Agent
         $agent = $demandUpdate->agent;
+        $admins = User::whereRoleIs('superadministrator')->get();
         $data = $demandUpdate;
         Notification::send($agent, new GWConfirmedByEmployer($data));
+        Notification::send($admins, new GWConfirmedByEmployer($data));
 
         return redirect()->route('employer.show');
     }
