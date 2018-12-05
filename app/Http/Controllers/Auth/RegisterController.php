@@ -95,7 +95,7 @@ class RegisterController extends Controller
         // If agent set defailt values for sign-up
         $role = $data['role'];
 
-        if ($role == 'agent') {
+        if ($role == 'agent' || $role == 'employer') {
             $data['name'] = $data['agency_registered_name'];
             $data['email'] = $data['agency_email'];
             $data['password'] = "DefPassAgent";
@@ -124,7 +124,7 @@ class RegisterController extends Controller
         // If agent set defailt values for sign-up
         $role = $data['role'];
 
-        if ($role == 'agent') {
+        if ($role == 'agent' || $role == 'employer') {
             $data['name'] = $data['agency_registered_name'];
             $data['email'] = $data['agency_email'];
             $data['password'] = "DefPassAgent";

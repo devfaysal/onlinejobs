@@ -3,6 +3,7 @@
 @section('content')
     
 <section class="banner">
+    @include('layouts.topbar')
         <!--  banner body and search   -->
         <div class="container">
             <div class="row">

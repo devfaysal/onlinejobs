@@ -5,13 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card auth-form">
-                <div class="card-header"><h2>{{ __('Employer!!! Sign up today, its easy!') }}</h2>Already have account?<a class="btn btn-default" href="{{route('employer.index')}}">Login</a></div>
+                <div class="card-header"><h2>{{ __('Employer!!! Sign up today, its easy!') }}</h2>Already have account?<a class="btn btn-default" href="{{route('login')}}">Login</a></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="role" value="employer">
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <h3>Sign Up Information</h3>
                         </div>
                         <div class="form-group row">
@@ -45,7 +45,7 @@
                             <div class="col-sm-8">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" required>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="form-group">
                             <h3>Contact Information</h3>
