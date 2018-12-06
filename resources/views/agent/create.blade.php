@@ -15,7 +15,6 @@
                             <label for="agent_code" class="col-sm-4 col-form-label">{{ __('Agent Code') }}</label>
                             <div class="col-sm-8">
                                 <input id="agent_code" type="text" class="form-control{{ $errors->has('agent_code') ? ' is-invalid' : '' }}" name="agent_code" value="{{ old('agent_code') }}" placeholder="Agent Code" required>
-
                                 @if ($errors->has('agent_code'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('agent_code') }}</strong>

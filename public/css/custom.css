@@ -18,3 +18,157 @@ table.dataTable tbody td {
 table.dataTable thead th {
 	padding: 10px 10px;
 }
+
+
+body{
+	font-family: 'Roboto', sans-serif;
+	background-color: #f7f7f7;
+}
+.banner{
+	background-size: initial;
+	min-height:auto;
+}
+#navbarSupportedContent li a{
+	color: #666;
+	font-size: 12px;
+}
+#navbarSupportedContent .navbar-nav > li > a {
+	font-size: 12px;
+	text-transform: uppercase;
+}
+.dropdown-menu{
+	border-radius: 0;
+}
+.dropdown-toggle::after{
+	display: none;
+}
+.nav-item{
+	padding: 0;
+	margin:0;
+}
+.nav-link{
+	padding: 0;
+}
+.navbar-brand{
+	padding: 0;
+}
+.navbar-brand{
+	font-size: auto;
+	line-height: auto;
+}
+.navbar-brand{
+	marig:0;
+	padding: 0;
+	list-style: none;
+	font-size: 12px;
+}
+#navbarSupportedContent .dropdown-menu{
+	border:none;
+	border-radius:none;
+	top:62px;
+}
+.navbar-nav > li{
+	padding: 28px 0 18px;
+}
+.navbar-nav > li:hover{
+	background: #f5f5f5;
+
+}
+#navbarSupportedContent .navbar-nav > li{
+	position: relative;
+}
+#navbarSupportedContent .navbar-nav > li > a{
+	line-height: 14px;
+}
+#navbarSupportedContent .navbar-nav > li > a:after{
+	content: '';
+	width: 100%;
+	height: 3px;
+	display: block;
+	background: #fff;
+}
+#navbarSupportedContent .navbar-nav > li:hover > a:after{
+	content: '';
+	width: 100%;
+	height: 3px;
+	display: block;
+	background: #4A90E2;
+}
+#navbarSupportedContent .navbar-nav > .nav-link{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.dropdown-toggle::after{
+	margin-left: 0;
+	margin-right: 0;
+	border-left: none;
+	border-right: none;
+	color: #fff;
+}
+#navbarSupportedContent .navbar-nav > li:hover > .dropdown-toggle::after{
+	margin-left: 0;
+	margin-right: 0;
+	border-left: none;
+	border-right: none;
+	color: #4A90E2;
+}
+.dropdown-divider{
+	display: none;
+}
+.banner-overlay{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.8);
+	max-height: 388px;
+	z-index: 2;
+}
+.banner .top_bar{
+	position: relative;
+	z-index: 3;
+}
+.banner .container{
+	position: relative;
+	z-index: 5;
+} 
+.nav-pills .nav-link{
+	padding-left: 0;
+	padding-right: 0;
+	margin-left: 45px;
+	margin-right: 45px;
+}
+.ext-form{
+	display: none;
+}
+.banner_tranparent .search-jobs{
+	box-shadow: none;
+	border-radius: 0;
+}
+.btn-primary.btn-search{
+	background:#09c;
+	border-radius:0;
+	color: #a5a3a3;
+}
+.btn-primary.btn-search:hover{
+	background:#0f89b2;
+}
+.form-search-outer{
+	margin-bottom: 5px!important;
+}
+
+.btn-primary{
+	background: #fec731;
+}
+.btn-primary:hover{
+	background:#E0B818;
+}
+/*.navbar-expand-lg .navbar-nav .nav-link{
+	border-bottom: 4px solid #fff;
+}
+.navbar-expand-lg .navbar-nav .nav-link:hover{
+	border-bottom: 4px solid #4A90E2;
+}*/
+
+.bg-white{
+	/*padding: 12px 0;*/
+}

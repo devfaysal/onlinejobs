@@ -31,10 +31,10 @@
                 <tr>
                     <th title="Employer Name">Emp. Name</th>
                     <th title="Demand Letter No">DLN</th>
-                    <th title="Expected Join Date">EJD</th>
-                    <th title="Demand Quantity">D. Qty</th>
-                    <th title="Proposed Quantity">Proposed Qty</th>
-                    <th title="Day Pending">Day Pending</th>
+                    <th class="hide" title="Expected Join Date">EJD</th>
+                    <th class="hide" title="Demand Quantity">D. Qty</th>
+                    <th class="hide" title="Proposed Quantity">Proposed Qty</th>
+                    <th class="hide" title="Day Pending">Day Pending</th>
                     <th title="Confirmed Quantity">Confirmed Qty</th>
 
                     @if(Auth::user()->hasRole('agent') && Auth::user()->status == 1)
@@ -42,11 +42,11 @@
                         <th title="Status">Status</th>
                         <th title="Proposed General Worker">Proposed GW</th>
                     @else
-                        <th title="Final Quantity">Final Qty</th>
+                        <th class="hide" title="Final Quantity">Final Qty</th>
                         <th title="Status">Status</th>
                         <th title="Assigned Agent">Assigned Agent</th>
                     @endif
-                    <th title=""></th>
+                    <th class="hide" title=""></th>
                 </tr>
             </tfoot>
         </table>
@@ -205,6 +205,8 @@
 
     // workers table
     $('#workers-table').DataTable({
+        order: [[ 0, "desc" ]],
+        searching: false,
         processing: true,
         serverSide: true,
         ajax: '{{route('admin.getWorkersData')}}',
@@ -229,6 +231,7 @@
                     column.search(val ? val : '', true, false).draw();
                 });
             });
+            $('.hide input').hide();
         }
     });
 </script>
