@@ -191,6 +191,9 @@ class RegisterController extends Controller
             $employer->user_id = $user->id;
             $employer->address = $data['address'];
             $employer->country = $data['country'];
+            $employer->nric = $data['nric'];
+            $employer->roc = $data['roc'];
+            $employer->state = $data['state'];
             $employer->company_name = $data['company_name'];
             $employer->company_address = $data['company_address'];
             $employer->company_city = $data['company_city'];

@@ -72,8 +72,8 @@
                                         </span>
                                     </sup>
                                 </a>
-                                <div style="height:370px;" class="dropdown-menu notifications-dropdown-menu">
-                                    <ul style="height:325px; overflow:scroll;" class="notifications-container">
+                                <div style="max-height:370px;" class="dropdown-menu notifications-dropdown-menu">
+                                    <ul style="max-height:325px; overflow:scroll;" class="notifications-container">
                                         @if(Auth::user()->unreadNotifications->count() > 0)
                                         @foreach (Auth::user()->unreadNotifications as $notification)
                                             <li>
