@@ -20,7 +20,7 @@
                     <div class="banner_tranparent">
                         <form method="POST" action="{{route($page.'.search')}}">
                             @csrf
-                            <div class="form-row justify-content-center">
+                            <div class="form-row justify-content-center ext-box">
                                 <div class="col-3">
                                     <label class="sr-only" for="religion">Religion</label>
                                     <select name="religion" id="religion" class="form-control">

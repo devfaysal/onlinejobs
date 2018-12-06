@@ -9,12 +9,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <style>
-        body{
-            padding-top: 50px;
-        }
+        /*body{
+            padding-top: 45px;
+        }*/
         tfoot {
             display: table-header-group;
         }
@@ -27,7 +28,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container">
             <a class="navbar-brand" href="{{route('home')}}"> <img src="{{asset('images/onlinejobs-logo.png')}}" class="img-fluid"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +50,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle {{ ( (Route::currentRouteName() === "agent.create") ? "active" : "") }}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Agent
+                            Consultants
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @guest
@@ -59,11 +60,31 @@
                             <a class="dropdown-item" href="#">Agent Status View</a>
                         </div>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle {{ ( (Route::currentRouteName() === "agent.create") ? "active" : "") }}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Employers
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle {{ ( (Route::currentRouteName() === "agent.create") ? "active" : "") }}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Services
+                        </a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link {{ ( (Route::currentRouteName() === "workers") || (Route::currentRouteName() === "workers.search") ? "active" : "") }}" href="{{route('workers')}}">General Workers</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link {{ ( (Route::currentRouteName() === "maids") || (Route::currentRouteName() === "maids.search") ? "active" : "") }}" href="{{route('maids')}}">Domestic Maids</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ ( (Route::currentRouteName() === "workers") || (Route::currentRouteName() === "workers.search") ? "active" : "") }}" href="{{route('workers')}}">General Workers</a>
+                   <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Notifications
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Packages
+                        </a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
