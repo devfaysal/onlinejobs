@@ -21,7 +21,7 @@
                         <form method="POST" action="{{route($page.'.search')}}">
                             @csrf
                             <div class="form-row justify-content-center ext-box">
-                                <div class="col-3">
+                                <div class="col-2">
                                     <label class="sr-only" for="religion">Religion</label>
                                     <select name="religion" id="religion" class="form-control">
                                         <option value="">-- Religion --</option>
@@ -30,14 +30,23 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-2">
                                     <label class="sr-only" for="age_term">Age</label>
-                                    <select name="age_term" id="age_term" class="form-control" style="width: 49%; display: inline;">
-                                        <option value="<" @if(isset($request->age_term) && $request->age_term=="<"){{"selected"}} @endif >Age ></option>
-                                        <option value="=" @if(isset($request->age_term) && $request->age_term=="="){{"selected"}} @endif >Age =</option>
-                                        <option value=">" @if(isset($request->age_term) && $request->age_term==">"){{"selected"}} @endif >Age <</option>
+                                    <select name="age_term" id="age_term" class="form-control">
+                                        <option value="">-- Age --</option>
+                                        <option value="18-24" @if(isset($request->age_term) && $request->age_term=="18-24"){{"selected"}} @endif>18-24</option>
+                                        <option value="25-35" @if(isset($request->age_term) && $request->age_term=="25-35"){{"selected"}} @endif>25-35</option>
+                                        <option value="36-45" @if(isset($request->age_term) && $request->age_term=="36-45"){{"selected"}} @endif>36-45</option>
                                     </select>
-                                    <input type="text" class="form-control" name="age_value" value="@if(isset($request->age_value)){{old('age_value', $request->age_value)}}@endif" style="width: 49%; display: inline;">
+                                </div>
+                                <div class="col-2">
+                                    <label class="sr-only" for="gender">Gender</label>
+                                    <select name="gender" id="gender" class="form-control">
+                                        <option value="">-- Gender --</option>
+                                        @foreach ($genders as $gender)
+                                            <option value="{{$gender->id}}" @if(isset($request->gender) && $request->gender==$gender->id){{"selected"}} @endif >{{$gender->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="col-3">
                                     <label class="sr-only" for="nationality">Nationality</label>

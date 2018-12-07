@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
 use App\Skill;
-use App\Religion;
+use App\Gender;
 use App\Country;
 use App\Language;
+use App\Religion;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -35,6 +36,7 @@ class HomeController extends Controller
     {
         $religions = Religion::where('status', '=', 1)->get();
         $nationalitys = Country::where('status', '=', 1)->get();
+        $genders = Gender::where('status', '=', 1)->get();
         $languages = Skill::where('status', '=', 1)->where('for', 'dm')->where('type','Language')->get();
         $page = 'maids';
         $total_maids = User::whereRoleIs('maid')->count();
@@ -46,15 +48,16 @@ class HomeController extends Controller
                         ->take(20)
                         ->get();
 
-        return view('maids', compact('users', 'religions','nationalitys','languages','page','total_maids'));
+        return view('maids', compact('users', 'religions','nationalitys','genders','languages','page','total_maids'));
     }
 
     public function maidsearch(Request $request){
+        //return $request;
         $religions = Religion::where('status', '=', 1)->get();
         $nationalitys = Country::where('status', '=', 1)->get();
+        $genders = Gender::where('status', '=', 1)->get();
         $languages = Skill::where('status', '=', 1)->where('for', 'dm')->where('type','Language')->get();
         $page = 'maids';
-        $total_maids = User::whereRoleIs('maid')->count();
 
         // date filter related
         $age_term = $request->age_term;
@@ -66,18 +69,20 @@ class HomeController extends Controller
                         ->with('Profile')
                         ->where('status', 1)
                         ->whereHas('Profile', function($query) use($request, $age_term, $birthdate){
-                            $query->where('religion', $request->religion ? $request->religion : 0)
-                                    ->orWhere('nationality', $request->nationality ? $request->nationality : 0)
-                                    ->orWhere('date_of_birth', $age_term, $birthdate );
+                            $query->where('nationality', $request->nationality ?? 0)
+                                    ->orWhere('religion', $request->religion ?? 0)
+                                    ->orWhere('gender', $request->gender ?? 0);
+                                    //->orWhere('date_of_birth', $age_term, $birthdate );
                         })->get();
-
-        return view('maids', compact('users','religions','nationalitys','languages','page','total_maids', 'request'));
+        $total_maids = $users->count();
+        return view('maids', compact('users','religions','nationalitys','genders','languages','page','total_maids', 'request'));
     }
 
     public function workers()
     {
         $religions = Religion::where('status', '=', 1)->get();
         $nationalitys = Country::where('status', '=', 1)->get();
+        $genders = Gender::where('status', '=', 1)->get();
         $languages = Skill::where('status', '=', 1)->where('for', 'dm')->where('type','Language')->get();
         $page = 'workers';
         $total_workers = User::whereRoleIs('worker')->count();
@@ -89,15 +94,15 @@ class HomeController extends Controller
                         ->take(20)
                         ->get();
 
-        return view('workers', compact('users', 'religions','nationalitys','languages','page','total_workers'));
+        return view('workers', compact('users', 'religions','nationalitys','genders','languages','page','total_workers'));
     }
 
     public function workersearch(Request $request){
         $religions = Religion::where('status', '=', 1)->get();
         $nationalitys = Country::where('status', '=', 1)->get();
+        $genders = Gender::where('status', '=', 1)->get();
         $languages = Skill::where('status', '=', 1)->where('for', 'dm')->where('type','Language')->get();
         $page = 'workers';
-        $total_workers = User::whereRoleIs('worker')->count();
 
         // date filter related
         $age_term = $request->age_term;
@@ -109,11 +114,12 @@ class HomeController extends Controller
                         ->with('Profile')
                         ->where('status', 1)
                         ->whereHas('Profile', function($query) use($request, $age_term, $birthdate){
-                            $query->where('religion', $request->religion ? $request->religion : 0)
-                                    ->orWhere('nationality', $request->nationality ? $request->nationality : 0)
-                                    ->orWhere('date_of_birth', $age_term, $birthdate );
+                            $query->where('nationality', $request->nationality ?? 0)
+                                    ->orWhere('religion', $request->religion ?? 0)
+                                    ->orWhere('gender', $request->gender ?? 0);
+                                    //->orWhere('date_of_birth', $age_term, $birthdate );
                         })->get();
-
-        return view('workers', compact('users','religions','nationalitys','languages','page','total_workers', 'request'));
+        $total_workers = $users->count();
+        return view('workers', compact('users','religions','nationalitys','genders','languages','page','total_workers', 'request'));
     }
 }
