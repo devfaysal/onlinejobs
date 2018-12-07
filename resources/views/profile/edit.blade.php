@@ -517,6 +517,18 @@
                                         @endif
                                     @endforeach
                                     @endif
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="other_skills">{{ __('Other Skills (Seperate with Comma)') }}</label>
+                                            <input id="other_skills" type="text" class="form-control{{ $errors->has('other_skills') ? ' is-invalid' : '' }}" name="other_skills" value="{{ $profile->other_skills }}" placeholder="Other Skills">
+                
+                                            @if ($errors->has('other_skills'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('other_skills') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             

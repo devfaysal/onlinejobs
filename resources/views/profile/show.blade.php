@@ -243,7 +243,6 @@
                         <h4 class="text-uppercase text-center mt-2 mb-0 ">Skills</h4>
                     </div>
                     <div class="card-body pb-0">
-                        <table class="table table-striped table-sm">
                             @if($skill_set)
                                 @foreach($skills as $skill)
                                 @if($skill_set[$skill->slug] == 'Yes')
@@ -256,7 +255,12 @@
                                 </tr> --}}
                                 @endforeach
                             @endif
-                        </table>
+                            @php
+                                $other_skills_array = explode(",",$profile->other_skills);
+                            @endphp
+                            @foreach ($other_skills_array as $other_skill)
+                            <span class="d-inline-block pl-2 pr-2 pt-1 pb-1 mr-2 mb-2 border border-secondary">{{$other_skill}}</span>
+                            @endforeach
                     </div>
                 </div>
             </div>

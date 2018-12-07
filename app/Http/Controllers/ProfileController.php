@@ -166,6 +166,7 @@ class ProfileController extends Controller
         $profile->language_set = json_encode($lang_arr);
 
         //Save Other data
+        $profile->other_skills = $request->other_skills;
         $profile->name = $request->name;
         $profile->date_of_birth = $request->date_of_birth;
         $profile->address = $request->address;

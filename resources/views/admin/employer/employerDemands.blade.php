@@ -7,7 +7,9 @@
         <table id="demands-table" class="table table-condensed">
             <thead>
                 <tr>
-                    <th title="Employer Name">Emp. Name</th>
+                    <th title="Company Name">Company Name</th>
+                    <th >ROC Number</th>
+                    <th >Person Incharge</th>
                     <th title="Demand Letter No">DLN</th>
                     <th title="Expected Join Date">EJD</th>
                     <th title="Demand Quantity">D.</th>
@@ -29,7 +31,9 @@
             </thead>
             <tfoot>
                 <tr>
-                    <th title="Employer Name">Emp. Name</th>
+                    <th title="Company Name">Company Name</th>
+                    <th>ROC Number</th>
+                    <th >Person Incharge</th>
                     <th title="Demand Letter No">DLN</th>
                     <th class="hide" title="Expected Join Date">EJD</th>
                     <th class="hide" title="Demand Quantity">D. Qty</th>
@@ -40,7 +44,7 @@
                     @if(Auth::user()->hasRole('agent') && Auth::user()->status == 1)
                         <th title="Hired Quantity">Hired Qty</th>
                         <th title="Status">Status</th>
-                        <th title="Proposed General Worker">Proposed GW</th>
+                        <th class="hide" title="Proposed General Worker">Proposed GW</th>
                     @else
                         <th class="hide" title="Final Quantity">Final Qty</th>
                         <th title="Status">Status</th>
@@ -85,13 +89,13 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Image</th>
+                                            <th class="hide">Image</th>
                                             <th>Name</th>
                                             <th>Passport</th>
                                             <th>Country</th>
                                             <th>Status</th>
-                                            <th></th>
-                                            <th></th>
+                                            <th class="hide"></th>
+                                            <th class="hide"></th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -168,7 +172,9 @@
         serverSide: true,
         ajax: '{{route('admin.getEmployersDemandData')}}',
         columns: [
-            {data: 'employer_name', name: 'employer_name'},
+            {data: 'company_name', name: 'company_name'},
+            {data: 'roc', name: 'roc'},
+            {data: 'person_incharge', name: 'person_incharge'},
             {data: 'demand_letter_no', name: 'demand_letter_no'},
             {data: 'expexted_date', name: 'expexted_date', "className": "text-center"},
             {data: 'demand_qty', name: 'demand_qty', "className": "text-center"},

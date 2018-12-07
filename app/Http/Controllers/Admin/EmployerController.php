@@ -95,7 +95,13 @@ class EmployerController extends Controller
         }
 
         return DataTables::of($demands)
-        ->addColumn('employer_name', function($demand) {
+        ->addColumn('company_name', function($demand) {
+            return $demand->employer->employer_profile->company_name;
+        })
+        ->addColumn('roc', function($demand) {
+            return $demand->employer->employer_profile->roc;
+        })
+        ->addColumn('person_incharge', function($demand) {
             return $demand->employer->name;
         })
         ->addColumn('expexted_date', function($demand) {

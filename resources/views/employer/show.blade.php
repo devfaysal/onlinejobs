@@ -228,7 +228,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-md-6">
-                                                    <label class="pull-left" for="">Approval copy kdn</label>
+                                                    <label class="pull-left" for="">Demand Letter</label>
                                                     <input id="DemandFile" type="file" class="form-control-file{{ $errors->has('DemandFile') ? ' is-invalid' : '' }}" name="DemandFile" title="Upload demand letter">
                                                     <p class="text-left small">Supported file PDF, JPG and PNG. Max file size: 1MB</p>
                                                 </div>
@@ -239,8 +239,8 @@
                                                     </span>
                                                 @endif
                                                 <div class="form-group col-md-6">
-                                                    <label class="pull-left" for="">Approval quota and levy receipt payment</label>
-                                                    <input id="approvalQuotaAndLevy" type="file" class="form-control-file{{ $errors->has('approvalQuotaAndLevy') ? ' is-invalid' : '' }}" name="approvalQuotaAndLevy" title="Approval quota and levy receipt payment">
+                                                    <label class="pull-left" for="">KDN, Quota Approval and Levy Receipt</label>
+                                                    <input id="approvalQuotaAndLevy" type="file" class="form-control-file{{ $errors->has('approvalQuotaAndLevy') ? ' is-invalid' : '' }}" name="approvalQuotaAndLevy" title="KDN, Quota Approval and Levy Receipt">
                                                     <p class="text-left small">Supported file PDF, JPG and PNG. Max file size: 1MB</p>
                                                 </div>
 
