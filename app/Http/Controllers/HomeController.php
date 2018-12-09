@@ -8,6 +8,7 @@ use App\Gender;
 use App\Country;
 use App\Language;
 use App\Religion;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -52,10 +53,7 @@ class HomeController extends Controller
     }
 
     public function maidsearch(Request $request){
-        if($request->nationality == null && $request->religion == null && $request->gender == null && $request->age_term == null){
-            return redirect()->back();
-        }
-        //return $request;
+
         $religions = Religion::where('status', '=', 1)->get();
         $nationalitys = Country::where('status', '=', 1)->get();
         $genders = Gender::where('status', '=', 1)->get();
@@ -63,21 +61,44 @@ class HomeController extends Controller
         $page = 'maids';
 
         // date filter related
-        $age_term = $request->age_term;
-        $age_value = $request->age_value;
-        $today = date('Y-m-d');
-        $birthdate = date("Y-m-d", strtotime("-$age_value years", strtotime($today)));
+        // $age_term = $request->age_term;
+        // $age_value = $request->age_value;
+        // $today = date('Y-m-d');
+        // $birthdate = date("Y-m-d", strtotime("-$age_value years", strtotime($today)));
+        if($request->age_term == '18-24'){
+            $birthdate_start = Carbon::now()->subYears(24)->toDateString();
+            $birthdate_end = Carbon::now()->subYears(18)->toDateString();
+        }elseif($request->age_term == '25-35'){
+            $birthdate_start = Carbon::now()->subYears(35)->toDateString();
+            $birthdate_end = Carbon::now()->subYears(25)->toDateString();
+        }elseif($request->age_term == '36-45'){
+            $birthdate_start = Carbon::now()->subYears(45)->toDateString();
+            $birthdate_end = Carbon::now()->subYears(36)->toDateString();
+        }else{
+            $birthdate_start = '';
+            $birthdate_end = '';
+        }
+        if($request->nationality == null && $request->religion == null && $request->gender == null && $request->age_term == null){
+            $total_maids = User::whereRoleIs('maid')->count();
 
         $users = User::whereRoleIs('maid')
                         ->with('Profile')
                         ->where('status', 1)
-                        ->whereHas('Profile', function($query) use($request, $age_term, $birthdate){
-                            $query->where('nationality', $request->nationality ?? 0)
+                        ->orderBy('created_at', 'desc')
+                        ->take(20)
+                        ->get();
+        }else{
+            $users = User::whereRoleIs('maid')
+                        ->with('Profile')
+                        ->where('status', 1)
+                        ->whereHas('Profile', function($query) use($request,$birthdate_start,$birthdate_end){
+                            $query->WhereBetween('date_of_birth', [$birthdate_start, $birthdate_end])
+                                    ->orWhere('nationality', $request->nationality ?? 0)
                                     ->orWhere('religion', $request->religion ?? 0)
                                     ->orWhere('gender', $request->gender ?? 0);
-                                    //->orWhere('date_of_birth', $age_term, $birthdate );
                         })->get();
-        $total_maids = $users->count();
+            $total_maids = $users->count();
+        }
         return view('maids', compact('users','religions','nationalitys','genders','languages','page','total_maids', 'request'));
     }
 
@@ -101,9 +122,7 @@ class HomeController extends Controller
     }
 
     public function workersearch(Request $request){
-        if($request->nationality == null && $request->religion == null && $request->gender == null && $request->age_term == null){
-            return redirect()->back();
-        }
+
         $religions = Religion::where('status', '=', 1)->get();
         $nationalitys = Country::where('status', '=', 1)->get();
         $genders = Gender::where('status', '=', 1)->get();
@@ -111,21 +130,44 @@ class HomeController extends Controller
         $page = 'workers';
 
         // date filter related
-        $age_term = $request->age_term;
-        $age_value = $request->age_value;
-        $today = date('Y-m-d');
-        $birthdate = date("Y-m-d", strtotime("-$age_value years", strtotime($today)));
+        // $age_term = $request->age_term;
+        // $age_value = $request->age_value;
+        // $today = date('Y-m-d');
+        // $birthdate = date("Y-m-d", strtotime("-$age_value years", strtotime($today)));
+        if($request->age_term == '18-24'){
+            $birthdate_start = Carbon::now()->subYears(24)->toDateString();
+            $birthdate_end = Carbon::now()->subYears(18)->toDateString();
+        }elseif($request->age_term == '25-35'){
+            $birthdate_start = Carbon::now()->subYears(35)->toDateString();
+            $birthdate_end = Carbon::now()->subYears(25)->toDateString();
+        }elseif($request->age_term == '36-45'){
+            $birthdate_start = Carbon::now()->subYears(45)->toDateString();
+            $birthdate_end = Carbon::now()->subYears(36)->toDateString();
+        }else{
+            $birthdate_start = '';
+            $birthdate_end = '';
+        }
+        if($request->nationality == null && $request->religion == null && $request->gender == null && $request->age_term == null){
+            $total_workers = User::whereRoleIs('worker')->count();
 
+            $users = User::whereRoleIs('worker')
+                        ->with('Profile')
+                        ->where('status', 1)
+                        ->orderBy('created_at', 'desc')
+                        ->take(20)
+                        ->get();
+        }else{
         $users = User::whereRoleIs('worker')
                         ->with('Profile')
                         ->where('status', 1)
-                        ->whereHas('Profile', function($query) use($request, $age_term, $birthdate){
-                            $query->where('nationality', $request->nationality ?? 0)
+                        ->whereHas('Profile', function($query) use($request,$birthdate_start,$birthdate_end){
+                            $query->WhereBetween('date_of_birth', [$birthdate_start, $birthdate_end])
+                                    ->orWhere('nationality', $request->nationality ?? 0)
                                     ->orWhere('religion', $request->religion ?? 0)
                                     ->orWhere('gender', $request->gender ?? 0);
-                                    //->orWhere('date_of_birth', $age_term, $birthdate );
                         })->get();
         $total_workers = $users->count();
+        }
         return view('workers', compact('users','religions','nationalitys','genders','languages','page','total_workers', 'request'));
     }
 }
