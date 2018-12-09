@@ -11,23 +11,22 @@
                         <div class="card-body">
                             <div class="row verticle-center">
                                 @foreach ($users as $user)
-                                <div class="col-md-2 mb-2" style="border: 1px solid #e6edee; height: 210px; padding-top: 10px;">
+                                <div class="col-md-2 mb-2 text-center" style="border: 1px solid #e6edee; height: 210px; padding-top: 10px;">
                                     <img class="img-thumbnail" src="{{$user->profile->image != '' ? asset('storage/'.$user->profile->image) : asset('images/avatar.jpg')}}" style="height: 130px; width: 130px; border-radius: 50%; margin-bottom: 10px;" alt="{{$user->profile->name ?? '( Nil )'}}">
                                     <br>
                                     <a href="{{route('profile.public', $user->public_id)}}" class="btn btn-block btn-primary" target="_blank">Details</a>
                                 </div>
                                 <div class="col-md-4 mb-2" style="border: 1px solid #e6edee; border-left: none; height: 210px; padding-top: 10px;">
                                     <table class="table table-sm table-borderless">
-                                    <table class="table table-sm table-borderless">
                                         <tr>
-                                            <th>Name</th>
-                                            <th>:</th>
-                                            <td>{{$user->profile->name ?? '( Nil )'}}</td>
+                                            <th width="35%">Name</th>
+                                            <th width="5%">:</th>
+                                            <td width="60%">{{$user->profile->name ?? '( Nil )'}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Age</th>
-                                            <th>:</th>
-                                            <td>
+                                            <th width="35%">Age</th>
+                                            <th width="5%">:</th>
+                                            <td width="60%">
                                             <?php
                                                 $birthday = $user->profile->date_of_birth;
                                                 $date = new DateTime($birthday);
@@ -38,19 +37,19 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Religion</th>
-                                            <th>:</th>
-                                            <td>{{$user->profile->religion_data->name ?? '( Nil )'}}</td>
+                                            <th width="35%">Religion</th>
+                                            <th width="5%">:</th>
+                                            <td width="60%">{{$user->profile->religion_data->name ?? '( Nil )'}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Nationality</th>
-                                            <th>:</th>
-                                            <td>{{$user->profile->nationality_data->name ?? '( Nil )'}}</td>
+                                            <th width="35%">Nationality</th>
+                                            <th width="5%">:</th>
+                                            <td width="60%">{{$user->profile->nationality_data->name ?? '( Nil )'}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Language<small>(s)</small></th>
-                                            <th>:</th>
-                                            <td>
+                                            <th width="35%">Language<small>(s)</small></th>
+                                            <th width="5%">:</th>
+                                            <td width="60%">
                                                 <?php $language_set = (array) json_decode($user->profile->language_set); ?>
 
                                                 @if($language_set)
