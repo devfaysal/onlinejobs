@@ -11,13 +11,12 @@
                         <div class="card-body">
                             <div class="row verticle-center">
                                 @foreach ($users as $user)
-                                <div class="col-md-2 mb-2" style="border: 1px solid #e6edee; height: 210px; padding-top: 10px;">
+                                <div class="col-md-2 mb-2 text-center" style="border: 1px solid #e6edee; height: 210px; padding-top: 10px;">
                                     <img class="img-thumbnail" src="{{$user->profile->image != '' ? asset('storage/'.$user->profile->image) : asset('images/avatar.jpg')}}" style="height: 130px; width: 130px; border-radius: 50%; margin-bottom: 10px;" alt="{{$user->profile->name ?? '( Nil )'}}">
                                     <br>
                                     <a href="{{route('profile.public', $user->public_id)}}" class="btn btn-block btn-primary" target="_blank">Details</a>
                                 </div>
                                 <div class="col-md-4 mb-2" style="border: 1px solid #e6edee; border-left: none; height: 210px; padding-top: 10px;">
-                                    <table class="table table-sm table-borderless">
                                     <table class="table table-sm table-borderless">
                                         <tr>
                                             <th width="35%">Name</th>
