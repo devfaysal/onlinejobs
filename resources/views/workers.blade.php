@@ -43,12 +43,12 @@
                                             <td width="60%">{{$user->profile->religion_data->name ?? '( Nil )'}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Nationality</th>
+                                            <th width="35%">Nationality</th>
                                             <th width="5%">:</th>
                                             <td width="60%">{{$user->profile->nationality_data->name ?? '( Nil )'}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Language<small>(s)</small></th>
+                                            <th width="35%">Language<small>(s)</small></th>
                                             <th width="5%">:</th>
                                             <td width="60%">
                                                 <?php $language_set = (array) json_decode($user->profile->language_set); ?>
