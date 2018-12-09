@@ -3,7 +3,6 @@
 @section('content')
 		
 <section class="banner">
-		<div class="banner-overlay"></div>
 		@include('layouts.topbar')
 				<!--  banner body and search   -->
 				<div class="container">
@@ -56,20 +55,20 @@
 								<div class="col-sm-6 col-md-5 col-lg-6">
 								<div class="banner_tranparent">
 										<div class="row">
-												<div class="col-sm-6 col-md-5 col-lg-6 ">
+												<div class="col-sm-6 col-md-5 col-lg-6 banner-left">
 													<div class="whitebg text-center banner_equal">
-															<p style="line-height: 20px;"> Looking for General Worker or Domestic Maid?</p>
-															<a class="btn btn-warning  btn-large btn-block" href="{{route('register')}}"> Quick Registration  </a>
-															<hr class="hr-text" data-content="or">
-															<h5><a href="#"> Upload Demand Letter </a> </h5>
-															<p class="small_TxT2"> Max 2 MB, doc, docx, rtf, pdf </p> 
-															<p>Our team will contact you.</p>
+														<p> Looking for General Worker<br>or Domestic Maid?</p>
+														<a class="btn btn-warning  btn-large btn-block" href="{{route('register')}}"> Quick Registration  </a>
+														<hr class="hr-text" data-content="or">
+														<h5><a href="#"> Upload Demand Letter </a> </h5>
+														<p class="small_TxT2"> Max 2 MB, doc, docx, rtf, pdf </p> 
+														<p>Our team will contact you.</p>
 													</div>
 												</div>
-												<div class="col-sm-6 col-md-5 col-lg-6">
+												<div class="col-sm-6 col-md-5 col-lg-6 banner-right">
 													<div class="whitebg align-middle banner_equal row align-items-center">
-														<h6 style="text-align: justify;">Hiring Packages are available. Choose the best suited for you.</h6>
-														<h5 class="col text-center banner_uppercase" style="font-size: 16px; font-weight: 700;"><a href="#"> View the Packages </a> </h5>
+														<h6>Hiring Packages are available. Choose the best suited for you.</h6>
+														<h5><a href="#"> View the Packages </a> </h5>
 													</div>
 												</div>
 										</div> 
@@ -83,13 +82,12 @@
 				<div class="container">
 				<div class="row">
 						<div class="col-sm-12 col-md-9 col-lg-9">
-									<div class="whitebg">
+									<div class="whitebg promo-1">
 											<img alt="prestar" src="images/companies/prestar.jpg" class="img-fluid">
 											<img alt="hovid" src="images/companies/hovid.jpg" class="img-fluid">
 											<img alt="masteel" src="images/companies/masteel.jpg" class="img-fluid">
 											<img alt="nestle" src="images/companies/nestle.jpg" class="img-fluid">
 											<img alt="litrak" src="images/companies/litrak.jpg" class="img-fluid">
-											<img alt="caring pharmacy" src="images/companies/caring-pharmacy.jpg" class="img-fluid">
 									</div>
 
 									<div class="row">
@@ -120,37 +118,6 @@
 													<img src="images/companies/magni-tech.jpg" class="img-fluid adsImg">
 													<img src="images/companies/permaju.jpg" class="img-fluid adsImg">
 													<img src="images/media/30.gif" class="img-fluid adsImg">
-
-													<img src="images/companies/gadang-holdings.jpg" class="img-fluid adsImg">
-													<img src="images/companies/pinehill-pacific.jpg" class="img-fluid adsImg">
-													<img src="images/companies/greenpacket.jpg" class="img-fluid adsImg">
-													<img src="images/companies/zelan-berhad.jpg" class="img-fluid adsImg">
-													<img src="images/companies/tasco.jpg" class="img-fluid adsImg">
-													<img src="images/companies/yoong-onn.jpg" class="img-fluid adsImg">
-													<img src="images/companies/kpj-berhad.jpg" class="img-fluid adsImg">
-													<img src="images/companies/top-glove.jpg" class="img-fluid adsImg">
-													<img src="images/companies/boustead.jpg" class="img-fluid adsImg">
-													<img src="images/companies/shin-yang.jpg" class="img-fluid adsImg">
-													<img src="images/companies/samchem-holdings.jpg" class="img-fluid adsImg">
-													<img src="images/companies/ancom-berhad.jpg" class="img-fluid adsImg">
-													<img src="images/companies/hexza.jpg" class="img-fluid adsImg">
-													<img src="images/companies/magni-tech.jpg" class="img-fluid adsImg">
-													<img src="images/companies/supermax.jpg" class="img-fluid adsImg">
-													<img src="images/companies/kpj-berhad.jpg" class="img-fluid adsImg">
-													<img src="images/companies/top-glove.jpg" class="img-fluid adsImg">
-													<img src="images/companies/boustead.jpg" class="img-fluid adsImg">
-													<img src="images/companies/shin-yang.jpg" class="img-fluid adsImg">
-													<img src="images/companies/industronics.jpg" class="img-fluid adsImg">
-													<img src="images/companies/excel-force.jpg" class="img-fluid adsImg">
-													<img src="images/companies/mitrajaya.jpg" class="img-fluid adsImg">
-													<img src="images/companies/gadang-holdings.jpg" class="img-fluid adsImg">
-													<img src="images/companies/pinehill-pacific.jpg" class="img-fluid adsImg">
-													<img src="images/companies/mesiniaga.jpg" class="img-fluid adsImg">
-													<img src="images/companies/boustead.jpg" class="img-fluid adsImg">
-													<img src="images/companies/ancom-berhad.jpg" class="img-fluid adsImg">
-													<img src="images/companies/hexza.jpg" class="img-fluid adsImg">
-													<img src="images/companies/magni-tech.jpg" class="img-fluid adsImg">
-													<img src="images/companies/permaju.jpg" class="img-fluid adsImg">
 											</div>
 
 											<!-- <div class="whitebg">
@@ -159,9 +126,14 @@
 										</div>
 
 											<div class="col-md-9 col-sm-9">
+													<div class="whitebg heading-text">
+														<p>FOREIGN WORKERS WELFARE MANAGEMENT CENTER Sdn Bhd (FWWMC) was formed mainly as a support organization to manage and attend to the welfare of all foreign workers working in Malaysian. Understandably, every country sending their valuable citizens abroad for Employment would like a guarantee that they (the worker) are well taken care of and their right protected, We at FWWMC are proud to say that we can Give you that GUARANTEE.</p>
+														<p>Every Workers will have to register for the service. Upon registering with us, FWWMC shall do everything necessary to protect the Rights and welfare of the registered foreign worker, thus ensuring that his/her stay in Malaysia would be one that is safe and hassle free. FWWMC is proud to stay that we work closely with the Ministry of Human Resources Malaysia on all matters relating to human resources development and management in Malaysia; hence workers who register with us can be confident that rights will be protected. Any abuse or injustice they may face during the course of employment will be reported to us and we shall then do the necessary to arbitrate and solve the problem with extreme urgency by taking the matter direct to the ministry if required.</p>
+														<p>FWWMC is proud to be equipped with a complete and effective Welfare and Third Party Service (TPS) Management System. Our client base speaks well of our achievements. The confidence and trust of all foreign workers associated with us is our best reference and asset. When FWWMC handles your workers welfare and management you can be rest assured that they are in good hands. We have the expertise, resources and management assurance to give you the highest level of efficiency that your organization requires.</p>
+														<p>FWWMC was established on the 7th of January 2009 to help the Government agency tasked with Protecting and Promoting the welfare and well-being of all foreign workers employed here in Malaysia. FWWMC is a Membership Welfare Institute FWWMC is Recognized and Supported by the Department of Labour Under Ministry of Human Resources Malaysia with the supporting letter (34) JTK/30/11/992 jld.8 signed by the Director General</p>
+													</div>
 													<div class="whitebg">
-														<p class="titleContent"> Best Places to Work </p> 
-															
+														<p class="titleContent top-title"> Best Places to Work </p> 
 													</div> 
 													<div class="whitetab">
 														<nav>
@@ -444,7 +416,7 @@
 
 							<div class="whitetab mar_top smallertxt">
 								<img src="images/onlinejobs-logo.png" class="img-fluid pad_10"> <hr/> 
-									<ul class="list_pad">
+									<ul class="list_pad ">
 											<li><a href=""> Onlinejobs Resume Score - Free </a>
 		Get your FREE resume feedback report and know the improvement areas in your resume within 30 seconds</li>
 											<li> <a href=""> Reach out to more recruiters </a>
@@ -485,7 +457,7 @@
 							 <div class="whitetab mar_top smallertxt">
 								<p class="whitebg"> Services for Recruiters </p>
 									<hr/> 
-									<ul class="">
+									<ul class="custom-list">
 											<li><a href="">Onlinejobs Employer Zone </a>
 		End your hunt for the perfect employee </li>
 											<li> <a href=""> Search CVs for Free now </a> 
@@ -502,90 +474,20 @@
 							</div>
 
 							<div class="whitetab mar_top smallertxt">
-								<p class="whitebg"> Onlinejobs JobSpeak </p>
-									<hr/> 
-									<p class="whitebg smallertxt">
-										A monthly Job Index that provides insight into hiring trends in your city, job function and industry. <br/> 
-									
-									
-									</p>
-									<div class="padding_bottom pad_10"><a href=""> View the latest edition  </a> </div> 
+								<p class="pad_10"> Onlinejobs JobSpeak </p>
 							</div>
 
 							<div class="whitetab mar_top smallertxt">
 								<p class="pad_10"> Premium Designations </p>
-									<hr/> 
-									<ul class="list-unstyled pad_10">
-										<li><a   href="" target="_blank">CEO Jobs</a></li>
-										<li><a   href="cfo-jobs" target="_blank">CFO Jobs</a></li>
-										<li><a   href="chief-marketing-officer-jobs" target="_blank">CMO Jobs</a></li>
-										<li><a  href="coo-jobs" target="_blank">COO Jobs</a></li>
-										<li><a title="Chief Technology Officer Jobs" href="chief-technology-officer-jobs" target="_blank">CTO Jobs</a></li>
-										<li><a  href="director-finance-jobs" target="_blank">Director Finance Jobs</a></li>
-										<li><a  href="vp-hr-jobs" target="_blank">VP HR Jobs</a></li>
-										<li><a title="Vice President Engineering Jobs" href="vp-engineering-jobs" target="_blank">VP Engineering Jobs</a></li>
-										<li><a href="vp-marketing-jobs" target="_blank">VP Marketing Jobs</a></li>
-										<li><a title="Vice President Sales Jobs" href="vp-sales-jobs" target="_blank">VP Sales Jobs</a></li>
-										<li><a  href="vice-president-business-development-jobs" target="_blank">VP Business Development Jobs</a></li>
-										<li><a  href="vice-president-sales-marketing-jobs" target="_blank">VP Sales &amp; Marketing Jobs</a></li>
-										<li><a  href="vp-finance-jobs" target="_blank">VP Finance Jobs</a></li>
-										<li><a  href="vp-operations-jobs" target="_blank">VP Operations Jobs</a></li>
-										<li><a  href="marketing-head-jobs" target="_blank">Marketing Head Jobs</a></li>
-										<li><a  href="sales-head-jobs" target="_blank">Sales Head Jobs</a></li>
-										<li><a  href="it-head-jobs" target="_blank">IT Head Jobs</a></li>
-										<li><a  href="hr-head-jobs" target="_blank">HR Head Jobs</a></li>
-										<li><a title="Digital Marketing Head Jobs" href="digital-marketing-head-jobs" target="_blank">Digital Marketing Head Jobs</a></li>
-										<li><a href="engineering-manager-jobs" target="_blank">Engineering Manager Jobs</a></li>
-										<li><a   href="marketing-manager-jobs" target="_blank">Marketing Manager Jobs</a></li>
-										<li><a   href="brand-manager-jobs" target="_blank">Brand Manager Jobs</a></li>
-										<li><a   href="product-manager-jobs" target="_blank">Product Manager Jobs</a></li>
-										<li><a  href="data-scientist-jobs" target="_blank">Data Scientist Jobs</a></li>
-										<li><a   href="business-analyst-jobs" target="_blank">Business Analyst Jobs</a></li>
-									</ul>
-									<div class="padding_bottom"> <a   href="top-jobs-by-designations" class="pad_10">View all Designations</a> </div>
 							</div>
 
 							<div class="whitetab mar_top smallertxt">
 								<p class="pad_10"> Premium Designations </p>
-									<hr/> 
-									<ul class="list-unstyled pad_10">
-										<li> <a href=""> Graphic Designer Jobs </a> </li>
-										<li> <a href="">Engineering Jobs </a> </li>
-										<li> <a href=""> Mainframe Jobs </a> </li>
-										<li> <a href=""> Legal Jobs </a> </li>
-										<li> <a href="">IT Jobs </a> </li>
-										<li> <a href=""> R&D Jobs </a> </li>
-										<li> <a href=""> Government Jobs </a> </li>
-										<li> <a href=""> PSU Jobs </a> </li>
-										<li> <a href=""> Oil and Gas Jobs </a> </li>
-										<li> <a href=""> Pharma Jobs </a> </li>
-										<li> <a href="">Telecom Jobs </a> </li>
-										<li> <a href=""> Media Jobs </a> </li>
-										<li> <a href=""> Automobile Jobs</a> </li>
-										
-									</ul>
-									<div class="padding_bottom"><a   href="top-jobs-by-designations" class="pad_10">View all categories </a> </div>
 							</div>
 
 							<div class="whitetab mar_top smallertxt">
 								<p class="pad_10"> Jobs by location </p>
-									<hr/> 
-									<ul class="list-unstyled pad_10">
-										<li> <a href=""> Jobs in Delhi </a> </li>
-										<li> <a href=""> Jobs in Mumbai </a> </li>
-										<li> <a href=""> Jobs in Chennai </a> </li>
-										<li> <a href=""> Jobs in Gurgaon </a> </li>
-										<li> <a href="">Jobs in Noida </a> </li>
-										<li> <a href=""> Jobs in Kolkata </a> </li>
-										<li> <a href=""> Jobs in Hyderabad </a> </li>
-										<li> <a href=""> Jobs in Pune </a> </li>
-										<li> <a href=""> Jobs in Bangalore </a> </li>
-										<li> <a href=""> Jobs in Ahmedabad </a> </li>
-										
-									</ul>
-									<div class="padding_bottom"><div class="padding_bottom"> <a   href="top-jobs-by-designations" class="pad_10">View all Locations </a> </div>
 							</div>
-
 
 						</div>
 				</div>

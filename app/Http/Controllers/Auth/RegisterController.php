@@ -162,9 +162,9 @@ class RegisterController extends Controller
         }
         
         if(isset($data['company_country'])){
-            $user_country = $data['country'];
+            $user_country = $data['company_country'];
         }elseif(isset($data['country'])){
-            $user_country = $data['agency_country'];
+            $user_country = $data['country'];
         }elseif(isset($data['agency_country'])){
             $user_country = $data['agency_country'];
         }
