@@ -52,6 +52,9 @@ class HomeController extends Controller
     }
 
     public function maidsearch(Request $request){
+        if($request->nationality == null && $request->religion == null && $request->gender == null && $request->age_term == null){
+            return redirect()->back();
+        }
         //return $request;
         $religions = Religion::where('status', '=', 1)->get();
         $nationalitys = Country::where('status', '=', 1)->get();
@@ -98,6 +101,9 @@ class HomeController extends Controller
     }
 
     public function workersearch(Request $request){
+        if($request->nationality == null && $request->religion == null && $request->gender == null && $request->age_term == null){
+            return redirect()->back();
+        }
         $religions = Religion::where('status', '=', 1)->get();
         $nationalitys = Country::where('status', '=', 1)->get();
         $genders = Gender::where('status', '=', 1)->get();
