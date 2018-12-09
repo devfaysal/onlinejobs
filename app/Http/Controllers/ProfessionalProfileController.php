@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\User;
 use App\Country;
 use App\Qualification;
@@ -118,6 +119,10 @@ class ProfessionalProfileController extends Controller
             
         }
         $professional->save();
+        Session::flash('message', 'Profile Updated Successfully!'); 
+        Session::flash('alert-class', 'alert-success');
+
+        return redirect()->route('professional.index');
     }
 
     /**

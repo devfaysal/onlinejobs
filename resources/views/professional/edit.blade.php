@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row bg-dark">
         <div class="col-12">
-            <h4 class="text-center text-white pb-3 pt-4">Personal Information</h4>
+            <h4 class="text-center text-white pb-3 pt-4"><span class="mr-3">Personal</span> <span class="mr-3 text-muted">Education</span> <span class="mr-3 text-muted">Experience</span></h4>
         </div>
     </div>
 </div>
@@ -13,7 +13,7 @@
         <div class="col-md-8">
             <div class="card auth-form mb-5">
                 <div class="card-body">
-                    <form method="POST" action="{{ route('professional.update', $user->id) }}" aria-label="{{ __('Register') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('professional.update', $user->id) }}" aria-label="{{ __('Update') }}" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <input type="hidden" name="role" value="professional">
