@@ -289,6 +289,116 @@ body{
 .custom-list{
 	padding-right: 15px
 }
-.banner_tranparent{
-	margin-top:50px;
+
+
+/*---------Shohaib CSS-----------*/
+.app{
+    padding-left: 0 !important;
 }
+.header{
+	position:relative !important;
+	left:0 !important;
+}
+.sidebar{
+	width:100% !important;
+	position:relative !important;
+	padding-bottom:0 !important;
+	float:left;
+	background-color: #ffffff !important;
+	border-top: 1px solid #d7dde485;
+}
+.sidebar .sidebar-container{
+	position:relative !Important;
+	padding: 0 40px;
+	overflow-y: inherit !important;
+    overflow-x: inherit !important;
+}
+.sidebar ul.sidebar-menu li{
+	width:auto;
+	float:left;
+}
+.sidebar ul.sidebar-menu li ul li{
+	width:auto;
+	float:none;
+}
+.sidebar-header .brand{
+	padding-left:40px !important;
+}
+.loaded .sidebar .sidebar-menu ul{
+    position: absolute;
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,.05), 0 3px 3px 0 rgba(0,0,0,.1), 0 12px 20px 0 rgba(0,0,0,.1);
+}
+.sidebar-footer ul.sidebar-menu li ul{
+	right:0;
+}
+.sidebar-footer ul.sidebar-menu li{
+	float:right;
+}
+.sidebar .sidebar-menu > li > .sidebar-nav > li a {
+    padding-left: 15px !important;
+}
+.sidebar .sidebar-menu > li > a i.arrow {
+    margin-left:15px;
+}
+.sidebar .sidebar-menu li a {
+    color: #666 !important;
+}
+.sidebar .sidebar-menu > li.active > a, .sidebar .sidebar-menu > li.active > a:hover {
+    background-color: #f5f5f5 !important;
+    color: #4A90E2 !important;
+	font-weight: 700;
+    border-bottom: 4px solid #4A90E2;
+}
+.sidebar .sidebar-menu li a:hover, .sidebar .sidebar-menu li.open > a, .sidebar .sidebar-menu li.open a:hover {
+    background-color: #f5f5f5 !important;
+    color: #4A90E2 !important;
+    border-bottom: 4px solid #4A90E2;
+}
+.sidebar .sidebar-menu li ul li a:hover, .sidebar .sidebar-menu li ul li.open > a, .sidebar .sidebar-menu li ul li.open a:hover {
+    background-color: #f5f5f5 !important;
+    color: #4A90E2 !important;
+    border-bottom: 0 !important;
+}
+.sidebar .sidebar-menu > li > .sidebar-nav > li.active a {
+    color: #4A90E2 !important;
+}
+#customize-menu > li > a {
+    background-color: #FFF !important;
+    border-top: 0 !important;
+}
+#customize-menu .customize {
+    color: #666 !important;
+    background-color: #f5f5f5 !important;
+}
+.sidebar .sidebar-menu > li > .sidebar-nav > li a {
+    background-color: #f5f5f5 !important;
+	color: #666 !important;
+}
+.sidebar-footer{
+	position:absolute;
+	right:40px;
+}
+#customize-menu{
+	position:relative !important;
+	left: inherit !important;
+}
+#customize-menu > li > a {
+    padding-top: 14px !important;
+}
+.loaded .sidebar .sidebar-menu ul li ul{
+    position: relative !important;
+}
+.footer{
+	left:0 !important;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+}
+.sidebar .sidebar-menu {
+    font-size: 12px !important;
+}
+
+
+
+
+
