@@ -7,6 +7,7 @@
         <table id="demands-table" class="table table-condensed">
             <thead>
                 <tr>
+                    <th >ID</th>
                     <th title="Company Name">Company Name</th>
                     <th >ROC Number</th>
                     <th >Person Incharge</th>
@@ -31,6 +32,7 @@
             </thead>
             <tfoot>
                 <tr>
+                    <th class="hide">ID</th>
                     <th title="Company Name">Company Name</th>
                     <th>ROC Number</th>
                     <th >Person Incharge</th>
@@ -172,6 +174,7 @@
         serverSide: true,
         ajax: '{{route('admin.getEmployersDemandData')}}',
         columns: [
+            {data: 'id', name: 'id'},
             {data: 'company_name', name: 'company_name'},
             {data: 'roc', name: 'roc'},
             {data: 'person_incharge', name: 'person_incharge'},
@@ -204,6 +207,8 @@
                 });
             });
             $('.hide input').hide();
+            $('tr td:nth-child(1)').hide();
+            $('tr th:nth-child(1)').hide();
         }
     });
 
