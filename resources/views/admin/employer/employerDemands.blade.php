@@ -12,7 +12,7 @@
                     <th >Person Incharge</th>
                     <th title="Demand Letter No">DLN</th>
                     <th title="Expected Join Date">EJD</th>
-                    <th title="Demand Quantity">D.</th>
+                    <th title="Total Demand">TD</th>
                     <th title="Proposed Quantity">Proposed</th>
                     <th title="Day Pending">Day Pending</th>
                     <th title="Confirmed Quantity">Confirmed</th>
@@ -36,7 +36,7 @@
                     <th >Person Incharge</th>
                     <th title="Demand Letter No">DLN</th>
                     <th class="hide" title="Expected Join Date">EJD</th>
-                    <th class="hide" title="Demand Quantity">D. Qty</th>
+                    <th class="hide" title="Total Demand">TD</th>
                     <th class="hide" title="Proposed Quantity">Proposed Qty</th>
                     <th class="hide" title="Day Pending">Day Pending</th>
                     <th title="Confirmed Quantity">Confirmed Qty</th>

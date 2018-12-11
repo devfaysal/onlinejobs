@@ -18,6 +18,8 @@ class AddColumnToProfessionalProfiles extends Migration
             $table->text('skills')->nullable();
             $table->string('city')->nullable();
             $table->string('country')->nullable();
+            $table->string('current_salary')->nullable();
+            $table->string('expected_salary')->nullable();
         });
     }
 
@@ -33,6 +35,8 @@ class AddColumnToProfessionalProfiles extends Migration
             $table->dropColumn('skills');
             $table->dropColumn('city');
             $table->dropColumn('country');
+            $table->dropColumn('current_salary');
+            $table->dropColumn('expected_salary');
         });
     }
 }

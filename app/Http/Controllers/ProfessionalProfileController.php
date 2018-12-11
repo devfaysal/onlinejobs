@@ -96,6 +96,12 @@ class ProfessionalProfileController extends Controller
         }
         $professional = $professional->professional_profile;
         $professional->name = $request->name;
+        $professional->resume_headline = $request->resume_headline;
+        $professional->skills = $request->skills;
+        $professional->city = $request->city;
+        $professional->country = $request->country;
+        $professional->current_salary = $request->current_salary;
+        $professional->expected_salary = $request->expected_salary;
         $professional->email = $request->email;
         $professional->phone = $request->phone;
         if($request->file('resume_file')){

@@ -18,6 +18,30 @@
                         @method('PATCH')
                         <input type="hidden" name="role" value="professional">
                         <div class="form-group row">
+                            <label for="resume_headline" class="col-sm-4 col-form-label text-right">{{ __('Resume Headline *') }}</label>
+                            <div class="col-sm-8">
+                                <input id="resume_headline" type="text" class="form-control{{ $errors->has('resume_headline') ? ' is-invalid' : '' }}" name="resume_headline" value="{{ $user->professional_profile->resume_headline }}" placeholder="Resume Headline" required>
+
+                            @if ($errors->has('resume_headline'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('resume_headline') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="skills" class="col-sm-4 col-form-label text-right">{{ __('Skills (Seperate with comma)') }}</label>
+                            <div class="col-sm-8">
+                                <input id="skills" type="text" class="form-control{{ $errors->has('skills') ? ' is-invalid' : '' }}" name="skills" value="{{ $user->professional_profile->skills }}" placeholder="Skills">
+
+                            @if ($errors->has('skills'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('skills') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="name" class="col-sm-4 col-form-label text-right">{{ __('Name *') }}</label>
                             <div class="col-sm-8">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->professional_profile->name }}" placeholder="Name" required>
@@ -25,6 +49,54 @@
                             @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="city" class="col-sm-4 col-form-label text-right">{{ __('City') }}</label>
+                            <div class="col-sm-8">
+                                <input id="city" type="text" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" value="{{ $user->professional_profile->city }}" placeholder="City" required>
+
+                            @if ($errors->has('city'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('city') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="country" class="col-sm-4 col-form-label text-right">{{ __('Country') }}</label>
+                            <div class="col-sm-8">
+                                <input id="country" type="text" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" name="country" value="{{ $user->professional_profile->country }}" placeholder="Country" required>
+
+                            @if ($errors->has('country'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('country') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="current_salary" class="col-sm-4 col-form-label text-right">{{ __('Current Salary') }}</label>
+                            <div class="col-sm-8">
+                                <input id="current_salary" type="text" class="form-control{{ $errors->has('current_salary') ? ' is-invalid' : '' }}" name="current_salary" value="{{ $user->professional_profile->current_salary }}" placeholder="Current Salary" required>
+
+                            @if ($errors->has('current_salary'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('current_salary') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="expected_salary" class="col-sm-4 col-form-label text-right">{{ __('Expected Salary') }}</label>
+                            <div class="col-sm-8">
+                                <input id="expected_salary" type="text" class="form-control{{ $errors->has('expected_salary') ? ' is-invalid' : '' }}" name="expected_salary" value="{{ $user->professional_profile->expected_salary }}" placeholder="Expected Salary" required>
+
+                            @if ($errors->has('expected_salary'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('expected_salary') }}</strong>
                                 </span>
                             @endif
                             </div>

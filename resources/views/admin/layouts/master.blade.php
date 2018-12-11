@@ -43,7 +43,7 @@
     <body>
         <div class="main-wrapper">
             <div class="app" id="app">
-                <header class="header bg-white">
+                <header class="header bg-white" style="z-index: 99;">
 					<div class="sidebar-header bg-white">
 						<div class="brand">
 							<img src="{{asset('images/onlinejobs-logo.png')}}" alt="">
@@ -158,7 +158,7 @@
                                         <i class="fa fa-home"></i> Dashboard </a>
                                 </li>
                                 @if(Auth::user()->hasRole('superadministrator'))
-                                <li class="{{ ( (Route::currentRouteName() === "admin.employer.index") || (Route::currentRouteName() === "admin.employerApplication") || (Route::currentRouteName() === "admin.employerDemands") ? "active open" : "") }}">
+                                <li class="mydropdown">
                                     <a href="">
                                         <i class="fa fa-users"></i> Employers
                                         <i class="fa arrow"></i>
@@ -176,7 +176,7 @@
                                     </ul>
                                 </li>
                                 
-                                <li class="{{ ( (Route::currentRouteName() === "admin.agent.index") || (Route::currentRouteName() === "admin.agentApplication") || (Route::currentRouteName() === "admin.rejectedAgentApplication") ? "active open" : "") }}">
+                                <li class="mydropdown1">
                                     <a href="">
                                         <i class="fa fa-users"></i> Agents
                                         <i class="fa arrow"></i>
@@ -214,7 +214,7 @@
                                 @endif
 
                                 @if(Auth::user()->hasRole('superadministrator'))
-                                <li class="{{ ( (Route::currentRouteName() === "admin.country.index") || (Route::currentRouteName() === "admin.religion.index") || (Route::currentRouteName() === "admin.language.index") || (Route::currentRouteName() === "admin.gender.index") || (Route::currentRouteName() === "admin.maritalStatus.index") || (Route::currentRouteName() === "admin.skillLevel.index") || (Route::currentRouteName() === "admin.educationLevel.index") || (Route::currentRouteName() === "admin.downloads.index") || (Route::currentRouteName() === "admin.skill.index") || (Route::currentRouteName() === "admin.sector.index") ? "active open" : "")  }}">
+                                <li class="mydropdown2">
                                     <a href="">
                                         <i class="fa fa-users"></i> Settings
                                         <i class="fa arrow"></i>
@@ -589,5 +589,22 @@
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
         @yield('javascript')
+        <script>
+            $(".mydropdown").mouseenter(function() {
+                $('.mydropdown .sidebar-nav').addClass('in').css("height", "auto");
+            }).mouseleave(function() {
+                $('.mydropdown .sidebar-nav').removeClass('in').css("height", "0");
+            });
+            $(".mydropdown1").mouseenter(function() {
+                $('.mydropdown1 .sidebar-nav').addClass('in').css("height", "auto");
+            }).mouseleave(function() {
+                $('.mydropdown1 .sidebar-nav').removeClass('in').css("height", "0");
+            });
+            $(".mydropdown2").mouseenter(function() {
+                $('.mydropdown2 .sidebar-nav').addClass('in').css("height", "auto");
+            }).mouseleave(function() {
+                $('.mydropdown2 .sidebar-nav').removeClass('in').css("height", "0");
+            });
+        </script>
     </body>
 </html>
