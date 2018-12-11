@@ -176,7 +176,7 @@
                                     </ul>
                                 </li>
                                 
-                                <li class="mydropdown1">
+                                <li class="mydropdown">
                                     <a href="">
                                         <i class="fa fa-users"></i> Agents
                                         <i class="fa arrow"></i>
@@ -214,7 +214,7 @@
                                 @endif
 
                                 @if(Auth::user()->hasRole('superadministrator'))
-                                <li class="mydropdown2">
+                                <li class="mydropdown">
                                     <a href="">
                                         <i class="fa fa-users"></i> Settings
                                         <i class="fa arrow"></i>
@@ -591,19 +591,11 @@
         @yield('javascript')
         <script>
             $(".mydropdown").mouseenter(function() {
-                $('.mydropdown .sidebar-nav').addClass('in').css("height", "auto");
+                $(this).addClass('active');
+                $(this).children('.sidebar-nav').addClass('in').css("height", "auto");
             }).mouseleave(function() {
-                $('.mydropdown .sidebar-nav').removeClass('in').css("height", "0");
-            });
-            $(".mydropdown1").mouseenter(function() {
-                $('.mydropdown1 .sidebar-nav').addClass('in').css("height", "auto");
-            }).mouseleave(function() {
-                $('.mydropdown1 .sidebar-nav').removeClass('in').css("height", "0");
-            });
-            $(".mydropdown2").mouseenter(function() {
-                $('.mydropdown2 .sidebar-nav').addClass('in').css("height", "auto");
-            }).mouseleave(function() {
-                $('.mydropdown2 .sidebar-nav').removeClass('in').css("height", "0");
+                $(this).removeClass('active')
+                $(this).children('.sidebar-nav').removeClass('in').css("height", "0");
             });
         </script>
     </body>
