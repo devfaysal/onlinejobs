@@ -44,6 +44,18 @@
         <div class="main-wrapper">
             <div class="app" id="app">
                 <header class="header bg-white">
+					<div class="sidebar-header bg-white">
+						<div class="brand">
+							<img src="{{asset('images/onlinejobs-logo.png')}}" alt="">
+							{{-- <div class="logo">
+								<span class="l l1"></span>
+								<span class="l l2"></span>
+								<span class="l l3"></span>
+								<span class="l l4"></span>
+								<span class="l l5"></span>
+							</div> Online Jobs Admin  --}}
+						</div>
+					</div>
                     <div class="header-block header-block-collapse d-lg-none d-xl-none">
                         <button class="collapse-btn" id="sidebar-collapse-btn">
                             <i class="fa fa-bars"></i>
@@ -139,18 +151,6 @@
                 </header>
                 <aside class="sidebar">
                     <div class="sidebar-container">
-                        <div class="sidebar-header bg-white">
-                            <div class="brand">
-                                <img src="{{asset('images/onlinejobs-logo.png')}}" alt="">
-                                {{-- <div class="logo">
-                                    <span class="l l1"></span>
-                                    <span class="l l2"></span>
-                                    <span class="l l3"></span>
-                                    <span class="l l4"></span>
-                                    <span class="l l5"></span>
-                                </div> Online Jobs Admin  --}}
-                            </div>
-                        </div>
                         <nav class="menu">
                             <ul class="sidebar-menu metismenu" id="sidebar-menu">
                                 <li class="{{ ( (Route::currentRouteName() === "admin.home") ? "active" : "") }}">
@@ -378,6 +378,7 @@
                     <footer class="sidebar-footer">
                         <ul class="sidebar-menu metismenu" id="customize-menu">
                             <li>
+                                <a href=""><i class="fa fa-cog"></i> Customize </a>
                                 <ul>
                                     <li class="customize">
                                         <div class="customize-item">
@@ -466,8 +467,6 @@
                                         </div>
                                     </li>
                                 </ul>
-                                <a href="">
-                                    <i class="fa fa-cog"></i> Customize </a>
                             </li>
                         </ul>
                     </footer>
