@@ -80,6 +80,7 @@
                                 <table id="workers-table" class="table table-condensed">
                                     <thead>
                                         <tr>
+                                            <th>ID</th>
                                             <th>Image</th>
                                             <th>Name</th>
                                             <th>Passport</th>
@@ -92,6 +93,7 @@
                                     <tfoot>
                                         <tr>
                                             <th class="hide">Image</th>
+                                            <th class="hide">ID</th>
                                             <th>Name</th>
                                             <th>Passport</th>
                                             <th>Country</th>
@@ -217,11 +219,13 @@
     // workers table
     $('#workers-table').DataTable({
         order: [[ 0, "desc" ]],
+        bPaginate: false,
         searching: false,
         processing: true,
         serverSide: true,
         ajax: '{{route('admin.getWorkersData')}}',
         columns: [
+            {data: 'id', name: 'id'},
             {data: 'image', name: 'image', orderable: false, searchable: false},
             {data: 'name', name: 'name'},
             {data: 'passport', name: 'passport'},
@@ -243,6 +247,8 @@
                 });
             });
             $('.hide input').hide();
+            $('tr td:nth-child(1)').hide();
+            $('tr th:nth-child(1)').hide();
         }
     });
 </script>
