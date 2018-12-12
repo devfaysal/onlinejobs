@@ -27,9 +27,9 @@
                     <hr class="my-4">
                     <p>Your account need to be approved by admin for further action</p>
                     <a class="btn btn-success" href="{{route('agent.edit', Auth::user()->id)}}">Edit Profile</a>
-                    <a class="btn btn-success" href="{{route('agent.print', [Auth::user()->id, 'details'])}}">Print Details</a>
+                    {{-- <a class="btn btn-success" href="{{route('agent.print', [Auth::user()->id, 'details'])}}">Print Details</a>
                     <a class="btn btn-success" href="" onclick="printJS('{{asset('storage/'.Auth::user()->agent_profile->license_file)}}');return false;">Print License</a>
-                    <a class="btn btn-success" href="" onclick="printJS('{{asset('storage/'.Auth::user()->agent_profile->passport_file)}}');return false;">Print Passport/NIC</a>
+                    <a class="btn btn-success" href="" onclick="printJS('{{asset('storage/'.Auth::user()->agent_profile->passport_file)}}');return false;">Print Passport/NIC</a> --}}
                 </div>
                 <div>
                     <p>All Notifications</p>

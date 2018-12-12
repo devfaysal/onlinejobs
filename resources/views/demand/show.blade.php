@@ -128,7 +128,6 @@
 
     // maids table
     $('#workers-table').DataTable({
-        searching: false,
         processing: true,
         serverSide: true,
         order: [[ 2, 'asc' ]],
@@ -160,4 +159,23 @@
         }
     });
 </script>
+<script type="text/javascript">
+    function KeepCount() {                    
+        var inputTags = document.getElementsByName('id[]');                  
+        var total = 0;
+
+        for (var i = 0; i < inputTags.length; i++) {
+
+            if (inputTags[i].checked) {                      
+                    total = total + 1;
+            }
+
+            if (total > {{$offer->demand_qty}}) {
+                alert('Please select {{$offer->demand_qty}} only')
+                inputTags[i].checked = false;
+                return false;
+            }
+        }
+    }
+</script> 
 @endsection

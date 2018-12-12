@@ -171,7 +171,6 @@
     // demand table list
     $('#demands-table').DataTable({
         order: [[ 0, "desc" ]],
-        searching: false,
         processing: true,
         serverSide: true,
         ajax: '{{route('admin.getEmployersDemandData')}}',
@@ -220,7 +219,6 @@
     $('#workers-table').DataTable({
         order: [[ 0, "desc" ]],
         bPaginate: false,
-        searching: false,
         processing: true,
         serverSide: true,
         ajax: '{{route('admin.getWorkersData')}}',

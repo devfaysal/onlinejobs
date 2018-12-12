@@ -20,7 +20,7 @@
                             <div class="col-md-6">
                                 <h1>Welcome {{$employer->name}}</h1>
                                 @if(Auth::user()->status == 1)
-                                <p>Offer Sent: 25 <br/> Hired: 18</p>
+                                {{-- <p>Offer Sent: 25 <br/> Hired: 18</p> --}}
 
                                 @else
                                 <p class="text-danger">Your Employer Applications under review</p>
@@ -333,7 +333,6 @@
 @section('script')
 <script>
     $('#demands-table').DataTable({
-        searching: false,
         processing: true,
         serverSide: true,
         order: [[ 1, 'asc' ]],
@@ -368,7 +367,6 @@
 
     // maids table
     $('#maids-table').DataTable({
-        searching: false,
         processing: true,
         serverSide: true,
         ajax: '{{route('getAllMaids')}}',
@@ -400,7 +398,6 @@
 
     // Files table
     $('#files-table').DataTable({
-        searching: false,
         processing: true,
         serverSide: true,
         ajax: '{{route('getDownloadsFile', 'emp')}}',

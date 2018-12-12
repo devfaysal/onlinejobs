@@ -92,10 +92,15 @@ class HomeController extends Controller
                         ->with('Profile')
                         ->where('status', 1)
                         ->whereHas('Profile', function($query) use($request,$birthdate_start,$birthdate_end){
-                            $query->WhereBetween('date_of_birth', [$birthdate_start, $birthdate_end])
-                                    ->orWhere('nationality', $request->nationality ?? 0)
-                                    ->orWhere('religion', $request->religion ?? 0)
-                                    ->orWhere('gender', $request->gender ?? 0);
+                            $query->when($request->nationality, function($query) use($request){
+                                return $query->where('nationality', $request->nationality);
+                            })->when($request->religion, function($query) use($request){
+                                return $query->where('religion', $request->religion);
+                            })->when($request->gender, function($query) use($request){
+                                return $query->where('gender', $request->gender);
+                            })->when($birthdate_start, function($query) use($birthdate_start, $birthdate_end){
+                                return $query->WhereBetween('date_of_birth', [$birthdate_start, $birthdate_end]);
+                            });
                         })->get();
             $total_maids = $users->count();
         }
@@ -161,10 +166,15 @@ class HomeController extends Controller
                         ->with('Profile')
                         ->where('status', 1)
                         ->whereHas('Profile', function($query) use($request,$birthdate_start,$birthdate_end){
-                            $query->WhereBetween('date_of_birth', [$birthdate_start, $birthdate_end])
-                                    ->orWhere('nationality', $request->nationality ?? 0)
-                                    ->orWhere('religion', $request->religion ?? 0)
-                                    ->orWhere('gender', $request->gender ?? 0);
+                            $query->when($request->nationality, function($query) use($request){
+                                return $query->where('nationality', $request->nationality);
+                            })->when($request->religion, function($query) use($request){
+                                return $query->where('religion', $request->religion);
+                            })->when($request->gender, function($query) use($request){
+                                return $query->where('gender', $request->gender);
+                            })->when($birthdate_start, function($query) use($birthdate_start, $birthdate_end){
+                                return $query->WhereBetween('date_of_birth', [$birthdate_start, $birthdate_end]);
+                            });
                         })->get();
         $total_workers = $users->count();
         }
