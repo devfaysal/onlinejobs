@@ -70,7 +70,7 @@
                                 <div class="form-group row">
                                     <label for="passing_year" class="col-sm-4 col-form-label text-right">{{ __('Passing Year *') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="passing_year" type="text" class="form-control{{ $errors->has('passing_year') ? ' is-invalid' : '' }}" name="passing_year[]" value="{{ $qualification->passing_year }}" placeholder="Passing Year" required>
+                                        <input id="passing_year" type="number" class="form-control{{ $errors->has('passing_year') ? ' is-invalid' : '' }}" name="passing_year[]" value="{{ $qualification->passing_year }}" placeholder="Passing Year" required>
         
                                     @if ($errors->has('passing_year'))
                                         <span class="invalid-feedback" role="alert">
@@ -137,7 +137,7 @@
                             <div class="form-group row">
                                 <label for="passing_year" class="col-sm-4 col-form-label text-right">{{ __('Passing Year *') }}</label>
                                 <div class="col-sm-8">
-                                    <input id="passing_year" type="text" class="form-control{{ $errors->has('passing_year') ? ' is-invalid' : '' }}" name="passing_year[]" value="{{ old('passing_year') }}" placeholder="Passing Year" required>
+                                    <input id="passing_year" type="number" class="form-control{{ $errors->has('passing_year') ? ' is-invalid' : '' }}" name="passing_year[]" value="{{ old('passing_year') }}" placeholder="Passing Year" required>
     
                                 @if ($errors->has('passing_year'))
                                     <span class="invalid-feedback" role="alert">

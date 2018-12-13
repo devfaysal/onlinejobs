@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row bg-dark">
         <div class="col-12">
-            <h4 class="text-center text-white pb-3 pt-4">Post Job</h4>
+            <h4 class="text-center text-white pb-3 pt-4">Post Job </h4>
         </div>
     </div>
 </div>
@@ -13,6 +13,7 @@
         <div class="col-md-8">
             <div class="card auth-form mb-5">
                 <div class="card-body">
+                        <a class="btn btn-info" href="{{route('employer.show')}}">Back</a>
                     <form method="POST" action="{{ route('job.store') }}">
                         @csrf
                         <div class="form-group row">

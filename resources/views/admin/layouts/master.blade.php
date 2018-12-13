@@ -21,6 +21,9 @@
             table.dataTable tfoot th, table.dataTable tfoot td{
                 padding: 10px 18px 6px 0;
             }
+            .dataTables_filter{
+                display: none;
+            }
         </style>
         <!-- Custom Styles -->
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
@@ -43,7 +46,7 @@
     <body>
         <div class="main-wrapper">
             <div class="app" id="app">
-                <header class="header bg-white">
+                <header class="header bg-white" style="z-index: 99;">
 					<div class="sidebar-header bg-white">
 						<div class="brand">
 							<img src="{{asset('images/onlinejobs-logo.png')}}" alt="">
@@ -77,7 +80,8 @@
                         <ul class="nav-profile">
                             <li class="notifications new">
                                 <a href="" data-toggle="dropdown">
-                                    <i class="fa fa-commenting fa-2x text-danger"></i>
+                                    {{-- <i class="fa fa-commenting fa-2x text-danger"></i> --}}
+                                    <small>NOTIFICATIONS</small>
                                     <sup>
                                         <span class="counter text-warning">
                                             {{Auth::user()->unreadNotifications->count()}}
@@ -158,7 +162,7 @@
                                         <i class="fa fa-home"></i> Dashboard </a>
                                 </li>
                                 @if(Auth::user()->hasRole('superadministrator'))
-                                <li class="{{ ( (Route::currentRouteName() === "admin.employer.index") || (Route::currentRouteName() === "admin.employerApplication") || (Route::currentRouteName() === "admin.employerDemands") ? "active open" : "") }}">
+                                <li class="mydropdown">
                                     <a href="">
                                         <i class="fa fa-users"></i> Employers
                                         <i class="fa arrow"></i>
@@ -176,7 +180,7 @@
                                     </ul>
                                 </li>
                                 
-                                <li class="{{ ( (Route::currentRouteName() === "admin.agent.index") || (Route::currentRouteName() === "admin.agentApplication") || (Route::currentRouteName() === "admin.rejectedAgentApplication") ? "active open" : "") }}">
+                                <li class="mydropdown">
                                     <a href="">
                                         <i class="fa fa-users"></i> Agents
                                         <i class="fa arrow"></i>
@@ -214,7 +218,7 @@
                                 @endif
 
                                 @if(Auth::user()->hasRole('superadministrator'))
-                                <li class="{{ ( (Route::currentRouteName() === "admin.country.index") || (Route::currentRouteName() === "admin.religion.index") || (Route::currentRouteName() === "admin.language.index") || (Route::currentRouteName() === "admin.gender.index") || (Route::currentRouteName() === "admin.maritalStatus.index") || (Route::currentRouteName() === "admin.skillLevel.index") || (Route::currentRouteName() === "admin.educationLevel.index") || (Route::currentRouteName() === "admin.downloads.index") || (Route::currentRouteName() === "admin.skill.index") || (Route::currentRouteName() === "admin.sector.index") ? "active open" : "")  }}">
+                                <li class="mydropdown">
                                     <a href="">
                                         <i class="fa fa-users"></i> Settings
                                         <i class="fa arrow"></i>
@@ -589,5 +593,14 @@
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
         @yield('javascript')
+        <script>
+            $(".mydropdown").mouseenter(function() {
+                $(this).addClass('active');
+                $(this).children('.sidebar-nav').addClass('in').css("height", "auto");
+            }).mouseleave(function() {
+                $(this).removeClass('active')
+                $(this).children('.sidebar-nav').removeClass('in').css("height", "0");
+            });
+        </script>
     </body>
 </html>

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-4 col-md-offset-4">
             <div class="card mt-4 mb-4">
-                <div class="card-header"><h1><i class="fa fa-user" aria-hidden="true"></i> {{ __('New User?') }}</h1></div>
+                <div class="card-header"><h2><i class="fa fa-user" aria-hidden="true"></i> {{ __('New Registration?') }}</h2></div>
 
                 <div class="card-body">
                     <div class="form-group">
@@ -23,7 +23,7 @@
         </div>
         <div class="col-md-4 col-md-offset-4">
             <div class="card mt-4 mb-4">
-                <div class="card-header"><h1><i class="fa fa-lock" aria-hidden="true"></i> {{ __('Login') }}</h1></div>
+                <div class="card-header"><h2><i class="fa fa-lock" aria-hidden="true"></i> {{ __('Login') }}</h2></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">

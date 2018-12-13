@@ -7,12 +7,13 @@
         <table id="demands-table" class="table table-condensed">
             <thead>
                 <tr>
+                    <th >ID</th>
                     <th title="Company Name">Company Name</th>
                     <th >ROC Number</th>
                     <th >Person Incharge</th>
                     <th title="Demand Letter No">DLN</th>
                     <th title="Expected Join Date">EJD</th>
-                    <th title="Demand Quantity">D.</th>
+                    <th title="Total Demand">TD</th>
                     <th title="Proposed Quantity">Proposed</th>
                     <th title="Day Pending">Day Pending</th>
                     <th title="Confirmed Quantity">Confirmed</th>
@@ -31,12 +32,13 @@
             </thead>
             <tfoot>
                 <tr>
+                    <th class="hide">ID</th>
                     <th title="Company Name">Company Name</th>
                     <th>ROC Number</th>
                     <th >Person Incharge</th>
                     <th title="Demand Letter No">DLN</th>
                     <th class="hide" title="Expected Join Date">EJD</th>
-                    <th class="hide" title="Demand Quantity">D. Qty</th>
+                    <th class="hide" title="Total Demand">TD</th>
                     <th class="hide" title="Proposed Quantity">Proposed Qty</th>
                     <th class="hide" title="Day Pending">Day Pending</th>
                     <th title="Confirmed Quantity">Confirmed Qty</th>
@@ -78,6 +80,7 @@
                                 <table id="workers-table" class="table table-condensed">
                                     <thead>
                                         <tr>
+                                            <th>ID</th>
                                             <th>Image</th>
                                             <th>Name</th>
                                             <th>Passport</th>
@@ -90,6 +93,7 @@
                                     <tfoot>
                                         <tr>
                                             <th class="hide">Image</th>
+                                            <th class="hide">ID</th>
                                             <th>Name</th>
                                             <th>Passport</th>
                                             <th>Country</th>
@@ -167,11 +171,11 @@
     // demand table list
     $('#demands-table').DataTable({
         order: [[ 0, "desc" ]],
-        searching: false,
         processing: true,
         serverSide: true,
         ajax: '{{route('admin.getEmployersDemandData')}}',
         columns: [
+            {data: 'id', name: 'id'},
             {data: 'company_name', name: 'company_name'},
             {data: 'roc', name: 'roc'},
             {data: 'person_incharge', name: 'person_incharge'},
@@ -204,6 +208,8 @@
                 });
             });
             $('.hide input').hide();
+            $('tr td:nth-child(1)').hide();
+            $('tr th:nth-child(1)').hide();
         }
     });
 
@@ -212,11 +218,12 @@
     // workers table
     $('#workers-table').DataTable({
         order: [[ 0, "desc" ]],
-        searching: false,
+        bPaginate: false,
         processing: true,
         serverSide: true,
         ajax: '{{route('admin.getWorkersData')}}',
         columns: [
+            {data: 'id', name: 'id'},
             {data: 'image', name: 'image', orderable: false, searchable: false},
             {data: 'name', name: 'name'},
             {data: 'passport', name: 'passport'},
@@ -238,6 +245,8 @@
                 });
             });
             $('.hide input').hide();
+            $('tr td:nth-child(1)').hide();
+            $('tr th:nth-child(1)').hide();
         }
     });
 </script>

@@ -222,11 +222,11 @@ class EmployerProfileController extends Controller
             if(auth()->user()->hasRole('agent'))
             {
                 if ( $data->applicants()->first()['status'] == 2 ) {
-                    $string .= ' <input class="pull-right" style="width: 38px;height: 38px;vertical-align: middle;" type="checkbox" name="id[]" value="'.$data->applicants()->first()['id'].'">';
+                    $string .= ' <input class="pull-right demand-checkbox" style="width: 38px;height: 38px;vertical-align: middle;" type="checkbox" name="id[]" value="'.$data->applicants()->first()['id'].'">';
                 }
             } else {
                 if ( $data->applicants()->first()['status'] == 1 ) {
-                    $string .= ' <input class="pull-right" style="width: 38px;height: 38px;vertical-align: middle;" type="checkbox" name="id[]" value="'.$data->applicants()->first()['id'].'">';
+                    $string .= ' <input class="pull-right demand-checkbox" onclick="KeepCount()" style="width: 38px;height: 38px;vertical-align: middle;" type="checkbox" name="id[]" value="'.$data->applicants()->first()['id'].'">';
                 }                
             }
 

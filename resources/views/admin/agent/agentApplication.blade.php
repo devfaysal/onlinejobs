@@ -36,7 +36,6 @@
 <script>
     $('#users-table').DataTable({
         order: [[ 6, "desc" ]],
-        searching: false,
         processing: true,
         serverSide: true,
         ajax: '{{route('admin.getAgentsApplicationData')}}',

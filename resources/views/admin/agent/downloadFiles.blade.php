@@ -26,7 +26,6 @@
 <script>
     // Files table
     $('#files-table').DataTable({
-        searching: false,
         processing: true,
         serverSide: true,
         ajax: '{{route('getDownloadsFile', 'agent')}}',

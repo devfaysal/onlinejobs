@@ -347,6 +347,13 @@ class ProfileController extends Controller
 
     public function public($public)
     {
+        if(auth()->user()->status != 1){
+            if(auth()->user()->hasRole('employer')){
+                return redirect()->route('employer.show');
+            }elseif(auth()->user()->hasRole('agent')){
+                return redirect()->route('agent.index');
+            }
+        }
         $user = User::where('public_id', '=', $public)->first();
         $experiences = Experience::where('user_id', $user->id)->get();
         $educations = Education::where('user_id', $user->id)->get();

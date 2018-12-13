@@ -34,7 +34,6 @@
 <script>
     $('#users-table').DataTable({
         order: [[ 5, "desc" ]],
-        searching: false,
         processing: true,
         serverSide: true,
         ajax: '{{route('admin.getEmployersData')}}',
