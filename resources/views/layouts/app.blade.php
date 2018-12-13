@@ -181,7 +181,7 @@
                                         <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                                             @csrf
                                             <div class="form-group">
-                                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="E-mail Address" required>
+                                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="E-mail Address12" required>
                                                 @if ($errors->has('email'))
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $errors->first('email') }}</strong>
@@ -228,10 +228,6 @@
             </div>
         </div>
     </nav>
-
-
-
-
     <main>
         @if(Session::has('message'))
         <div class="container">
@@ -379,11 +375,11 @@
     <script src="{{ asset('js/select2.min.js') }}"></script>
     <script type="text/javascript">
 
-$(".js-example-tags").select2({
-  tags: true
-});
+    $(".js-example-tags").select2({
+      tags: true
+    });
 
-</script>
+    </script>
     <script type="text/javascript">
       /*----------------------------
       START - Counter Up JS activation

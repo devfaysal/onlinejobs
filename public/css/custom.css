@@ -582,3 +582,15 @@ input.invalid {
 .tab{
 	width: 100%;
 }
+..select2-container{
+	width: 300px;
+}
+.invalid-feedback{
+    position: absolute;
+    right: 15px;
+    top: 36px;
+    width: auto;
+}
+.form-group{
+	margin-bottom: 1.6rem;
+}
