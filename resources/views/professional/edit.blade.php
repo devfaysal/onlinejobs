@@ -141,10 +141,10 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="profile_image" class="col-sm-4 col-form-label text-right">{{ __('Upload Resume') }}</label>
+                            <label for="profile_image" class="col-sm-4 col-form-label text-right">{{ __('Upload Profile Image') }}</label>
                             <div class="col-sm-8">
                                 <input id="profile_image" type="file" class="form-control-file{{ $errors->has('profile_image') ? ' is-invalid' : '' }}" name="profile_image" value="{{ old('profile_image') }}">
-                                <p class="text-danger">Supported file format JPG, PNG & PDF. Maximum file size: 1MB</p>
+                                <p class="text-danger">Supported file format JPG, PNG. Maximum file size: 1MB</p>
                                 @if($user->professional_profile->profile_image)
                                     <a class="btn btn-sm btn-secondary mt-2" target="_blank" href="{{asset('storage/resume/'.$user->professional_profile->profile_image)}}">View Profile Image</a>
                                 @endif

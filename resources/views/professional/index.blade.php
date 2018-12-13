@@ -78,7 +78,7 @@
                             </div>
 
                             @if($user->professional_profile->resume_file)
-                                <a class="btn btn-sm btn-secondary" target="_blank" href="{{asset('storage/resume/'.$user->professional_profile->resume_file)}}">View Resume</a>
+                                <a class="mt-2 btn btn-sm btn-secondary" target="_blank" href="{{asset('storage/resume/'.$user->professional_profile->resume_file)}}">View Resume</a>
                             @endif
                         </div>
                         <div class="col-md-3">
