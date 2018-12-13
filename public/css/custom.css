@@ -21,9 +21,12 @@ table.dataTable thead th {
 
 
 body{
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Roboto', sans-serif !important;
 	background-color: #f7f7f7;
 
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Roboto', sans-serif !important;
 }
 .banner{
 	/*background-size: initial;*/
@@ -400,5 +403,182 @@ body {
 
 
 
+/* Multi-Step Form */
+#regForm {
+  width: 100%;
+  min-width: 600px;
+}
+input.invalid {
+  background-color: #ffdddd;
+}
+.tab {
+  display: none;
+}
 
 
+#prevBtn {
+  background-color: #bbbbbb;
+}
+.step {
+  height:auto;
+  width:auto;
+  margin: 0 2px;
+  border-bottom: 2px solid #fff;  
+  display: inline-block;
+  opacity: 0.6;
+  font-weight: 200;
+  color: #FFF;
+  padding-bottom: 9px;
+  padding-right: 15px;
+  padding-left: 15px;
+  font-size: 17px;
+}
+.step.active {
+  opacity: 1;
+  font-weight: 400;
+}
+.step.finish {
+  color: #38c172;
+  border-color: #38c172;
+}
+
+.tab-banner{
+	width: 100%;
+	background: url(../images/backImg_v1.jpg);
+	text-align: center;
+	height: 60px;
+    padding: 13px 20px 5px 20px;
+}
+.padding-top-bottom-30{
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+.dis-cls{
+	display: flex;
+}
+.dis-cls sup {
+    top: -1.2em;
+    right: -6px;
+    color: red;
+}
+.dis-cls label{
+    flex-flow: column;
+    flex: 2;
+    text-align: right;
+    padding-right: 15px;
+    display: inherit;
+    color: #707070;
+    padding-top: 6px;
+}
+.dis-cls .form-control{
+    flex: 6;
+    display: inherit;
+    border-radius: 0;
+    border: 1px solid #DFDFDF;
+}
+.title-new-cls{
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	padding-bottom: 10px;
+	margin-bottom: 25px;
+	text-align: center;
+	font-size: 20px;
+}
+.tab-section{
+	background-color: #fcfcfc;
+	padding-bottom: 40px;
+}
+.upload-area{
+	position: relative;
+}
+.uploadfiles{
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 165px;
+    height: 42px;
+    overflow: hidden;
+}
+.uploadfiles input[type=file] {
+    width: 165px;
+    height: 42px;
+    cursor: pointer;
+    font-size: 0;
+    top: -5px;
+    position: absolute;
+}
+.upload-btn {
+    color: #FFF;
+    background-color: #1BBC9B;
+    border: none;
+    display: inline-block;
+    padding: 10px 25px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    overflow: hidden;
+    outline: 0;
+    width: 165px;
+    font-size: 15px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.upload-label{
+	display: flex;
+}
+.upload-label label{
+    flex-flow: column;
+    flex: 1.86;
+    text-align: right;
+    padding-right: 15px;
+    display: inherit;
+    color: #707070;
+    padding-top: 6px;
+}
+.upload-label .upload-area{
+	flex: 6;
+    flex-flow: column;
+}
+.text-short-mes{
+    color: #A7A7A7;
+    font-size: 13px;
+    margin-top: 5px;
+}
+.nonflex-cls .dis-cls label{
+	flex: inherit;
+}
+.primary-btn{
+    color: #FFF;
+    background-color: #27A7D4;
+    border: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    overflow: hidden;
+    outline: 0;
+    padding: 16px 130px;
+}
+.prev-btn{
+    color: #FFF;
+    background-color: #bbbbbb;
+    border: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    overflow: hidden;
+    outline: 0;
+    padding: 16px 130px;
+}
+.tab{
+	width: 100%;
+}

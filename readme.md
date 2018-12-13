@@ -1,5 +1,4 @@
 ## Jobnetwork
-## JobnetworkLocal
 
 Job Network website
 
