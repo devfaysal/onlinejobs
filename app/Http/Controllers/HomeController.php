@@ -103,6 +103,7 @@ class HomeController extends Controller
                             });
                         })->get();
             $total_maids = $users->count();
+            $users = $users->take(20);
         }
         return view('maids', compact('users','religions','nationalitys','genders','languages','page','total_maids', 'request'));
     }
@@ -177,6 +178,7 @@ class HomeController extends Controller
                             });
                         })->get();
         $total_workers = $users->count();
+        $users = $users->take(20);
         }
         return view('workers', compact('users','religions','nationalitys','genders','languages','page','total_workers', 'request'));
     }
