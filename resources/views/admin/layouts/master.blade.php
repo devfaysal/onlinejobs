@@ -80,7 +80,8 @@
                         <ul class="nav-profile">
                             <li class="notifications new">
                                 <a href="" data-toggle="dropdown">
-                                    <i class="fa fa-commenting fa-2x text-danger"></i>
+                                    {{-- <i class="fa fa-commenting fa-2x text-danger"></i> --}}
+                                    <small>NOTIFICATIONS</small>
                                     <sup>
                                         <span class="counter text-warning">
                                             {{Auth::user()->unreadNotifications->count()}}
