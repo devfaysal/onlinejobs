@@ -71,9 +71,18 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {{ ( (Route::currentRouteName() === "agent.create") ? "active" : "") }}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Employers
                         </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @guest
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{route('login')}}">Register Now</a>
+                            @endguest
+                            <a class="dropdown-item" href="#">Browse all companies</a>
+                            <a class="dropdown-item" href="#">Employer by location</a>
+                            <a class="dropdown-item" href="#">Company review</a>
+                        </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle {{ ( (Route::currentRouteName() === "agent.create") ? "active" : "") }}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
