@@ -28,6 +28,9 @@
     </style>
     <!-- Custom Styles -->
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <!---Multi Search----->
+    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -44,11 +47,15 @@
                             Jobs
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('job.index')}}">All Jobs</a>
                             @guest
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{route('professional.index')}}">Register as Professional</a>
+                            <a class="dropdown-item" href="{{route('professional.index')}}">Register Now</a>
                             @endguest
+                            <a class="dropdown-item" href="#">Jobs by Location</a>
+                            <a class="dropdown-item" href="#">Jobs by Skill</a>
+                            <a class="dropdown-item" href="#">Jobs by Designation</a>
+                            <a class="dropdown-item" href="#">Jobs by Category</a>
+                            <a class="dropdown-item" href="{{route('job.index')}}">Browse All Jobs</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -177,7 +184,7 @@
                                         <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                                             @csrf
                                             <div class="form-group">
-                                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="E-mail Address" required>
+                                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="E-mail Address12" required>
                                                 @if ($errors->has('email'))
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $errors->first('email') }}</strong>
@@ -224,7 +231,6 @@
             </div>
         </div>
     </nav>
-
     <main>
         @if(Session::has('message'))
         <div class="container">
@@ -362,12 +368,21 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
+
     <script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
     <!-- WayPoints JS -->
     <script src="{{ asset('js/waypoints.min.js') }}"></script>
     <!-- Counter UP JS -->
     <script src="{{ asset('js/jquery.counterup.min.js') }}"></script>
+    <!---Multi Search----->
+    <script src="{{ asset('js/select2.min.js') }}"></script>
+    <script type="text/javascript">
 
+    $(".js-example-tags").select2({
+      tags: true
+    });
+
+    </script>
     <script type="text/javascript">
       /*----------------------------
       START - Counter Up JS activation
