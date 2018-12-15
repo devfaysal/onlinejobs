@@ -7,10 +7,11 @@
         <table id="users-table" class="table table-condensed">
             <thead>
                 <tr>
+                    <th></th>
                     <th>ID</th>
                     <th>Company Name</th>
                     <th>Email</th>
-                    <th>Name</th>
+                    <th>Person Incharge</th>
                     <th>Location</th>
                     <th>Registered On</th>
                     <th>Action</th>
@@ -18,10 +19,11 @@
             </thead>
             <tfoot>
                 <tr>
-                    <th class="hide">ID</th>
+                    <th class="hide"></th>
+                    <th>ID</th>
                     <th>Company Name</th>
                     <th>Email</th>
-                    <th>Name</th>
+                    <th>Person Incharge</th>
                     <th>Location</th>
                     <th class="hide">Created At</th>
                     <th class="hide">Action</th>
@@ -33,11 +35,12 @@
 @section('javascript')
 <script>
     $('#users-table').DataTable({
-        order: [[ 5, "desc" ]],
+        order: [[ 0, "desc" ]],
         processing: true,
         serverSide: true,
         ajax: '{{route('admin.getEmployersData')}}',
         columns: [
+            {data: 'id', name: 'id'},
             {data: 'code', name: 'code'},
             {data: 'company_name', name: 'company_name'},
             {data: 'email', name: 'email'},

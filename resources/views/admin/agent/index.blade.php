@@ -7,6 +7,7 @@
         <table id="users-table" class="table table-condensed">
             <thead>
                 <tr>
+                    <th></th>
                     <th>ID</th>
                     <th>Agency Name</th>
                     <th>Email</th>
@@ -19,7 +20,8 @@
             </thead>
             <tfoot>
                 <tr>
-                    <th class="hide">ID</th>
+                    <th class="hide"></th>
+                    <th>ID</th>
                     <th>Agency Name</th>
                     <th>Email</th>
                     <th>Person Incharge</th>
@@ -35,17 +37,18 @@
 @section('javascript')
 <script>
     $('#users-table').DataTable({
-        order: [[ 6, "desc" ]],
+        order: [[ 0, "desc" ]],
         processing: true,
         serverSide: true,
         ajax: '{{route('admin.getAgentsData')}}',
         columns: [
+            {data: 'id', name: 'id'},
             {data: 'code', name: 'code'},
             {data: 'agency_registered_name', name: 'agency_registered_name'},
             {data: 'agency_email', name: 'agency_email'},
             {data: 'first_name', name: 'first_name'},
             {data: 'country', name: 'country'},
-            {data: 'city', name: 'city'},
+            {data: 'agency_city', name: 'agency_city'},
             {data: 'created_at', name: 'created_at'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ],

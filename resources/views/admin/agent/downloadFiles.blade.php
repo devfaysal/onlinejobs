@@ -7,6 +7,7 @@
         <table id="files-table" class="table table-condensed">
             <thead>
                 <tr>
+                    <th></th>
                     <th width="50%" title="File Title">Title</th>
                     <th width="30%" title=""></th>
                     <th width="20%" title="Updated">Updated</th>
@@ -14,6 +15,7 @@
             </thead>
             <tfoot>
                 <tr>
+                    <th></th>
                     <th title="File Title">Title</th>
                     <th title=""></th>
                     <th title="Updated">Updated</th>
@@ -26,10 +28,12 @@
 <script>
     // Files table
     $('#files-table').DataTable({
+        order: [[ 0, "desc" ]],
         processing: true,
         serverSide: true,
         ajax: '{{route('getDownloadsFile', 'agent')}}',
         columns: [
+            {data: 'id', name: 'id'},
             {data: 'title', name: 'title'},
             {data: 'action', name: 'action', orderable: false, searchable: false, "className": "text-center"},
             {data: 'updated_at', name: 'updated_at'}
@@ -46,6 +50,7 @@
                     column.search(val ? val : '', true, false).draw();
                 });
             });
+            $('.hide input').hide();
         }
     });
 </script>
