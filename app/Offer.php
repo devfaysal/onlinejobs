@@ -13,6 +13,12 @@ class Offer extends Model
     public function preferred_country_data(){
         return $this->belongsTo(Country::class, 'preferred_country');
     }
+    public function preferred_country_data2(){
+        return $this->belongsTo(Country::class, 'preferred_country2');
+    }
+    public function preferred_country_data3(){
+        return $this->belongsTo(Country::class, 'preferred_country3');
+    }
     public function agent()
     {
         return $this->belongsTo(User::class, 'assigned_agent');

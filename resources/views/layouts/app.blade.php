@@ -25,6 +25,12 @@
         .dataTables_filter{
             display: none;
         }
+        .my_datatable tr td:nth-child(1){
+            display: none;
+        }
+        .my_datatable tr th:nth-child(1){
+            display: none;
+        }
     </style>
     <!-- Custom Styles -->
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">

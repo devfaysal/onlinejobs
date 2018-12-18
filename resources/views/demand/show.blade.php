@@ -53,8 +53,8 @@
                             <tr>
                                 <th>Preferred Country</th>
                                 <th>:</th>
-                                <td>{{$offer->preferred_country_data->name ?? 'N/A'}}</td>
-                                <th>Attachment</th>
+                                <td>{{$offer->preferred_country_data->name}}, {{$offer->preferred_country_data2->name}}, {{$offer->preferred_country_data3->name}}</td>
+                                {{-- <th>Attachment</th>
                                 <th>:</th>
                                 <td>
                                     @if ($offer->demand_file != '')
@@ -62,7 +62,7 @@
                                     @else
                                         N/A
                                     @endif
-                                </td>
+                                </td> --}}
                             </tr>
                             <tr>
                                 <th>Comments</th>
