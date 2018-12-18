@@ -53,7 +53,7 @@
                             <tr>
                                 <th>Preferred Country</th>
                                 <th>:</th>
-                                <td>{{$offer->preferred_country_data->name}}, {{$offer->preferred_country_data2->name}}, {{$offer->preferred_country_data3->name}}</td>
+                                <td>{{$offer->preferred_country_data->name ?? ''}} {{$offer->preferred_country_data2 ? ', '.$offer->preferred_country_data2->name : ''}} {{$offer->preferred_country_data3? ', '.$offer->preferred_country_data3->name : ''}}</td>
                                 {{-- <th>Attachment</th>
                                 <th>:</th>
                                 <td>
