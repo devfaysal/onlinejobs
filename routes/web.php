@@ -73,6 +73,10 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
     Route::get('/getProfessionalsData', 'Admin\ProfessionalController@getProfessionalsData')->name('getProfessionalsData');
     Route::resource('/professional', 'Admin\ProfessionalController');
 
+    /*Jobs*/
+    Route::get('/getJobsData', 'Admin\JobController@getJobsData')->name('getJobsData');
+    Route::resource('/job', 'Admin\JobController');
+
     /*Worker*/
     Route::get('/getWorkersData', 'Admin\WorkerController@getWorkersData')->name('getWorkersData');
     Route::resource('/worker', 'Admin\WorkerController');
