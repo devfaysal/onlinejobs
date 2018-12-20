@@ -152,9 +152,11 @@
                             Welcome
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('employer.show')}}">Logged in as {{Auth::user()->name}}</a>
+                            <a class="dropdown-item">Logged in as {{Auth::user()->name}}</a>
                             @if(Auth::user()->hasRole('employer'))
                             <a class="dropdown-item" href="{{route('employer.show')}}">Employers Area</a>
+                            <a class="dropdown-item" href="{{route('employer.public', Auth::user()->public_id)}}">View Information</a>
+                            <a class="dropdown-item" href="{{route('employer.edit', Auth::user()->id)}}">Edit Information</a>
                             @endif
                             @if(Auth::user()->hasRole(['maid', 'worker']) )
                                 <a class="dropdown-item" href="{{route('profile.index')}}">Profile</a>
