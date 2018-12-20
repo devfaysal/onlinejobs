@@ -396,10 +396,12 @@
     <script type="text/javascript">
 
         $(".js-search-tags").select2({
+            tags: true,
           placeholder: "Skills, Designations, Companies"
         });
 
         $(".js-location-tags").select2({
+            tags: true,
           placeholder: "Location/Locality"
         });
 
