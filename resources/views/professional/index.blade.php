@@ -12,11 +12,11 @@
     <div class="container mt-4 mb-5">
         <div class="row justify-content-md-center">
             <div class="col-12">
-                <p class="text-center">Find the right job on Naukri.com. You are only few steps away from millions of jobs</p>
+                <p class="text-center">Find the right job on Online Jobs. You are only few steps away from millions of jobs</p>
             </div>
             <div class="col-3 text-center">
                 <p><img style="width:100px; height:100px" src="{{asset('images/fresher.png')}}" alt=""></p>
-                <p class="mt-2"><a class="btn btn-warning" href="{{route('professional.create')}}">I am Fresher</a></p>
+                <p class="mt-2"><a class="btn btn-warning" href="{{route('professional.create')}}">New Graduate</a></p>
                 <p>I have just graduated/I haven't worked after graduation</p>
             </div>
             <div class="col-3 text-center">

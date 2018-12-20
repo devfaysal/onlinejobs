@@ -65,7 +65,11 @@ class EmployerController extends Controller
             return $user->employer_profile->company_country_data['name'];
         })
         ->addColumn('action', function ($user) {
-            return '<a href="#" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a><a class="ml-1 btn btn-success" href="'.route('admin.employer.approve', $user->id).'" onclick="return confirm(\'Are you sure?\')">Approve</a><a class="ml-1 btn btn-danger" href="'.route('admin.employer.reject', $user->id).'" onclick="return confirm(\'Are you sure?\')">Reject</a>';
+            $string  = '<a class="btn btn-xs btn-primary" href="'.route('employer.public', $user->public_id).'">View</a>';
+            $string .= '<a class="ml-1 btn btn-xs btn-info" href="'.route('employer.edit', $user->id).'" ><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            $string .= '<a class="ml-1 btn btn-success" href="'.route('admin.employer.approve', $user->id).'" onclick="return confirm(\'Are you sure?\')">Approve</a>';
+            $string .= '<a class="ml-1 btn btn-danger" href="'.route('admin.employer.reject', $user->id).'" onclick="return confirm(\'Are you sure?\')">Reject</a>';
+            return $string;
         })
         ->editColumn('id', 'ID: {{$id}}')
         ->removeColumn('password')

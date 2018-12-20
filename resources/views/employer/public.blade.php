@@ -32,19 +32,28 @@
                                 <h4 class="card-title text-center mt-3">Contact Information</h4>
                                 <table class="table table-striped">
                                     <tr>
-                                        <th>Employer Name :</th>
-                                        <td>{{$employer->name ?? 'N/A'}}</td>
+                                        <th width="35%">Employer Name</th>
+                                        <th width="5%">:</th>
+                                        <td width="60%">{{$employer->name ?? 'N/A'}}</td>
                                     </tr>
                                     <tr>
-                                        <th>Employer Phone :</th>
+                                        <th>NRIC </th>
+                                        <th>:</th>
+                                        <td>{{$employer->employer_profile->nric ?? 'N/A'}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Employer Phone</th>
+                                        <th>:</th>
                                         <td>{{$employer->phone ?? 'N/A'}}</td>
                                     </tr>
                                     <tr>
-                                        <th>Employer Address :</th>
+                                        <th>Employer Address</th>
+                                        <th>:</th>
                                         <td>{{$employer->employer_profile->address ?? 'N/A'}}</td>
                                     </tr>
                                     <tr>
-                                        <th>Employer Country :</th>
+                                        <th>Employer Country</th>
+                                        <th>:</th>
                                         <td>{{$employer->employer_profile->country_data->name ?? 'N/A'}}</td>
                                     </tr>
                                 </table>
@@ -53,19 +62,38 @@
                                 <h4 class="card-title text-center mt-3">Company Information</h4>
                                 <table class="table table-striped">
                                     <tr>
-                                        <th>Company Name :</th>
-                                        <td>{{$employer->employer_profile->company_name ?? 'N/A'}}</td>
+                                        <th width="35%">Company Name</th>
+                                        <th width="5%">:</th>
+                                        <td width="60%">{{$employer->employer_profile->company_name ?? 'N/A'}}</td>
                                     </tr>
                                     <tr>
-                                        <th>Company Address :</th>
+                                        <th>ROC</th>
+                                        <th>:</th>
+                                        <td>{{$employer->employer_profile->roc ?? 'N/A'}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Email</th>
+                                        <th>:</th>
+                                        <td>{{$employer->email ?? 'N/A'}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Company Address</th>
+                                        <th>:</th>
                                         <td>{{$employer->employer_profile->company_address ?? 'N/A'}}</td>
                                     </tr>
                                     <tr>
-                                        <th>City :</th>
+                                        <th>City</th>
+                                        <th>:</th>
                                         <td>{{$employer->employer_profile->company_city ?? 'N/A'}}</td>
                                     </tr>
                                     <tr>
-                                        <th>Country :</th>
+                                        <th>State</th>
+                                        <th>:</th>
+                                        <td>{{$employer->employer_profile->state ?? 'N/A'}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Country</th>
+                                        <th>:</th>
                                         <td>{{$employer->employer_profile->company_country_data->name ?? 'N/A'}}</td>
                                     </tr>
                                 </table>

@@ -57,9 +57,10 @@
                         <a class="btn btn-warning btn-sm mb-2 mr-2 pull-right" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#demandModal" href="#">Send a Demand</a>
                     </h4>
                     <div class="card-body">
-                        <table id="demands-table" class="table table-condensed">
+                        <table id="demands-table" class="my_datatable table table-condensed">
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th title="Approval KDN No">KDN No</th>
                                     <th title="Company">Company</th>
                                     <th title="Issue Date">Issue Date</th>
@@ -75,6 +76,7 @@
                             </thead>
                             <tfoot>
                                 <tr>
+                                    <th class="hide"></th>
                                     <th title="Approval KDN No">KDN No</th>
                                     <th title="Company">Company</th>
                                     <th title="Issue Date">Issue Date</th>
@@ -218,7 +220,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <textarea id="Comments" class="form-control{{ $errors->has('Comments') ? ' is-invalid' : '' }}" name="Comments" value="{{ old('Comments') }}" placeholder="Comments"></textarea>
+                                                <textarea id="Comments" class="form-control{{ $errors->has('Comments') ? ' is-invalid' : '' }}" name="comments" value="{{ old('Comments') }}" placeholder="Comments"></textarea>
 
                                                 @if ($errors->has('Comments'))
                                                     <span class="invalid-feedback" role="alert">
@@ -271,7 +273,7 @@
                     <div class="card-body">
                         <form method="post" action="{{route('sendOffer')}}">
                             @csrf
-                            <table id="maids-table" class="table table-condensed">
+                            <table id="maids-table" class="my_datatable table table-condensed">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
@@ -287,15 +289,15 @@
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                        <th>Id</th>
-                                        <th>Image</th>
+                                        <th class="hide">Id</th>
+                                        <th class="hide">Image</th>
                                         <th>Name</th>
                                         <th>Passport</th>
                                         <th>Country</th>
                                         <th>Date of Birth</th>
                                         <th>Marital Status</th>
                                         <th>Status</th>
-                                        <th></th>
+                                        <th class="hide"></th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -307,9 +309,10 @@
                 <div class="card mt-4" id="downloads">
                     <h4 class="card-title text-center mt-3">Download files</h4>
                     <div class="card-body">
-                        <table id="files-table" class="table table-condensed">
+                        <table id="files-table" class="my_datatable table table-condensed">
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th width="50%" title="File Title">Title</th>
                                     <th width="30%" title=""></th>
                                     <th width="20%" title="Updated">Updated</th>
@@ -317,6 +320,7 @@
                             </thead>
                             <tfoot>
                                 <tr>
+                                    <th class="hide"></th>
                                     <th title="File Title">Title</th>
                                     <th title=""></th>
                                     <th title="Updated">Updated</th>
@@ -333,11 +337,12 @@
 @section('script')
 <script>
     $('#demands-table').DataTable({
+        order: [[ 0, 'desc' ]],
         processing: true,
         serverSide: true,
-        order: [[ 1, 'asc' ]],
         ajax: '{{route('getAllDemands')}}',
         columns: [
+            {data: 'id', name: 'id'},
             {data: 'demand_letter_no', name: 'demand_letter_no', "className": "text-left"},
             {data: 'company_name', name: 'company_name'},
             {data: 'issue_date', name: 'issue_date', "className": "text-center"},
@@ -362,11 +367,13 @@
                     column.search(val ? val : '', true, false).draw();
                 });
             });
+            $('.hide input').hide();
         }
     });
 
     // maids table
     $('#maids-table').DataTable({
+        order: [[ 0, 'desc' ]],
         processing: true,
         serverSide: true,
         ajax: '{{route('getAllMaids')}}',
@@ -393,15 +400,18 @@
                     column.search(val ? val : '', true, false).draw();
                 });
             });
+            $('.hide input').hide();
         }
     });
 
     // Files table
     $('#files-table').DataTable({
+        order: [[ 0, 'desc' ]],
         processing: true,
         serverSide: true,
         ajax: '{{route('getDownloadsFile', 'emp')}}',
         columns: [
+            {data: 'id', name: 'id'},
             {data: 'title', name: 'title'},
             {data: 'action', name: 'action', orderable: false, searchable: false, "className": "text-center"},
             {data: 'updated_at', name: 'updated_at'}
@@ -418,6 +428,7 @@
                     column.search(val ? val : '', true, false).draw();
                 });
             });
+            $('.hide input').hide();
         }
     });
 </script>

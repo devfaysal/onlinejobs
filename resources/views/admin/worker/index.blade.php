@@ -7,6 +7,7 @@
         <table id="users-table" class="table table-condensed">
             <thead>
                 <tr>
+                    <th></th>
                     <th>ID</th>
                     <th>Image</th>
                     <th>Name</th>
@@ -19,7 +20,8 @@
             </thead>
             <tfoot>
                 <tr>
-                    <th class="hide">ID</th>
+                    <th class="hide"></th>
+                    <th>ID</th>
                     <th class="hide">Image</th>
                     <th>Name</th>
                     <th>Passport</th>
@@ -35,10 +37,12 @@
 @section('javascript')
 <script>
     $('#users-table').DataTable({
+        order: [[ 0, "desc" ]],
         processing: true,
         serverSide: true,
         ajax: '{{route('admin.getWorkersData')}}',
         columns: [
+            {data: 'id', name: 'id'},
             {data: 'code', name: 'code'},
             {data: 'image', name: 'image'},
             {data: 'name', name: 'name'},

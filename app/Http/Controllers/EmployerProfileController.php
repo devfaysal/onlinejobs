@@ -312,9 +312,11 @@ class EmployerProfileController extends Controller
      * @param  \App\EmployerProfile  $employerProfile
      * @return \Illuminate\Http\Response
      */
-    public function edit(EmployerProfile $employerProfile)
+    public function edit($id)
     {
-        //
+        $employer = User::where('id', $id)->first();
+        $countrys = Country::where('status', 1)->get();
+        return view('employer.edit', compact('employer','countrys'));
     }
 
     /**
@@ -324,9 +326,40 @@ class EmployerProfileController extends Controller
      * @param  \App\EmployerProfile  $employerProfile
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EmployerProfile $employerProfile)
+    public function update(Request $request, $id)
     {
-        //
+        $employer = User::where('id', $id)->first();
+        $employer_profile = $employer->employer_profile;
+
+        $employer->name = $request->name;
+        $employer->email = $request->email;
+        $employer->phone = $request->phone;
+
+        $employer->save();
+
+        $employer_profile->nric = $request->nric;
+        $employer_profile->address = $request->address;
+        $employer_profile->country = $request->country;
+
+        $employer_profile->company_name = $request->company_name;
+        $employer_profile->roc = $request->roc;
+        $employer_profile->company_address = $request->company_address;
+        $employer_profile->company_city= $request->company_city;
+        $employer_profile->state= $request->state;
+        $employer_profile->company_country= $request->company_country;
+
+        $employer_profile->save();
+
+        Session::flash('message', 'Information Updated successfully!'); 
+        Session::flash('alert-class', 'alert-success');
+
+        if(auth()->user()->hasRole('superadministrator')){
+            return redirect()->route('admin.employerApplication');
+        }elseif(auth()->user()->hasRole('employer')){
+            return redirect()->route('employer.show');
+        }
+        
+
     }
 
     /**

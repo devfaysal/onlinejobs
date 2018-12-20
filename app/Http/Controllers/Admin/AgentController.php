@@ -46,8 +46,8 @@ class AgentController extends Controller
         ->addColumn('agency_email', function($user) {
             return $user->agent_profile['agency_email'];
         })
-        ->addColumn('city', function($user) {
-            return $user->agent_profile['city'];
+        ->addColumn('agency_city', function($user) {
+            return $user->agent_profile['agency_city'];
         })
         ->addColumn('first_name', function($user) {
             return $user->agent_profile['first_name'];
@@ -88,8 +88,8 @@ class AgentController extends Controller
         ->addColumn('agency_email', function($user) {
             return $user->agent_profile['agency_email'];
         })
-        ->addColumn('city', function($user) {
-            return $user->agent_profile['city'];
+        ->addColumn('agency_city', function($user) {
+            return $user->agent_profile['agency_city'];
         })
         ->addColumn('first_name', function($user) {
             return $user->agent_profile['first_name'];
@@ -129,8 +129,8 @@ class AgentController extends Controller
         ->addColumn('agency_email', function($user) {
             return $user->agent_profile['agency_email'];
         })
-        ->addColumn('city', function($user) {
-            return $user->agent_profile['city'];
+        ->addColumn('agency_city', function($user) {
+            return $user->agent_profile['agency_city'];
         })
         ->addColumn('first_name', function($user) {
             return $user->agent_profile['first_name'];

@@ -69,6 +69,14 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
     Route::resource('/agent', 'Admin\AgentController');
     Route::get('/downloadFiles', 'Admin\AgentController@downloadFiles')->name('downloadFiles');
 
+    /*Professional*/
+    Route::get('/getProfessionalsData', 'Admin\ProfessionalController@getProfessionalsData')->name('getProfessionalsData');
+    Route::resource('/professional', 'Admin\ProfessionalController');
+
+    /*Jobs*/
+    Route::get('/getJobsData', 'Admin\JobController@getJobsData')->name('getJobsData');
+    Route::resource('/job', 'Admin\JobController');
+
     /*Worker*/
     Route::get('/getWorkersData', 'Admin\WorkerController@getWorkersData')->name('getWorkersData');
     Route::resource('/worker', 'Admin\WorkerController');
@@ -138,6 +146,8 @@ Route::prefix('employer')->group(function(){
     Route::get('/', 'EmployerProfileController@index')->name('employer.index');
     Route::get('/register', 'EmployerProfileController@create')->name('employer.register');
     Route::get('/profile', 'EmployerProfileController@show')->name('employer.show');
+    Route::get('/{id}/edit', 'EmployerProfileController@edit')->name('employer.edit');
+    Route::patch('/{id}', 'EmployerProfileController@update')->name('employer.update');
     Route::get('/view/{public_id}', 'EmployerProfileController@public')->name('employer.public');
     Route::get('/getAllMaids', 'EmployerProfileController@getAllMaids')->name('getAllMaids');
     Route::post('/sendOffer', 'EmployerProfileController@sendOffer')->name('sendOffer');

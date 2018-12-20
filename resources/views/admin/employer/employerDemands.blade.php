@@ -208,8 +208,6 @@
                 });
             });
             $('.hide input').hide();
-            $('tr td:nth-child(1)').hide();
-            $('tr th:nth-child(1)').hide();
         }
     });
 

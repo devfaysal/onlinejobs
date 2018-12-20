@@ -24,6 +24,12 @@
             .dataTables_filter{
                 display: none;
             }
+            tr td:nth-child(1){
+                display: none;
+            }
+            tr th:nth-child(1){
+                display: none;
+            }
         </style>
         <!-- Custom Styles -->
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
@@ -177,6 +183,9 @@
                                         <li class="{{ ( (Route::currentRouteName() === "admin.employerDemands") ? "active" : "" ) }}">
                                             <a href="{{route('admin.employerDemands')}}"> Employer Demands </a>
                                         </li>
+                                        <li class="{{ ( (Route::currentRouteName() === "admin.job.index") ? "active" : "" ) }}">
+                                            <a href="{{route('admin.job.index')}}"> Jobs </a>
+                                        </li>
                                     </ul>
                                 </li>
                                 
@@ -196,6 +205,10 @@
                                             <a href="{{route('admin.rejectedAgentApplication')}}">Pending Apllications </a>
                                         </li>
                                     </ul>
+                                </li>
+                                <li class="{{ ( (Route::currentRouteName() === "admin.professional.index") ? "active" : "") }}">
+                                    <a href="{{route('admin.professional.index')}}">
+                                        <i class="fa fa-pencil-square-o"></i> Professionals </a>
                                 </li>
                                 @endif
                                 <li class="{{ ( (Route::currentRouteName() === "admin.worker.index") ? "active" : "") }}">

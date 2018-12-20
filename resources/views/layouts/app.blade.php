@@ -25,6 +25,12 @@
         .dataTables_filter{
             display: none;
         }
+        .my_datatable tr td:nth-child(1){
+            display: none;
+        }
+        .my_datatable tr th:nth-child(1){
+            display: none;
+        }
     </style>
     <!-- Custom Styles -->
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
@@ -71,9 +77,18 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {{ ( (Route::currentRouteName() === "agent.create") ? "active" : "") }}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Employers
                         </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @guest
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{route('login')}}">Register Now</a>
+                            @endguest
+                            <a class="dropdown-item" href="#">Browse all companies</a>
+                            <a class="dropdown-item" href="#">Employer by location</a>
+                            <a class="dropdown-item" href="#">Company review</a>
+                        </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle {{ ( (Route::currentRouteName() === "agent.create") ? "active" : "") }}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -137,9 +152,11 @@
                             Welcome
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('employer.show')}}">Logged in as {{Auth::user()->name}}</a>
+                            <a class="dropdown-item">Logged in as {{Auth::user()->name}}</a>
                             @if(Auth::user()->hasRole('employer'))
                             <a class="dropdown-item" href="{{route('employer.show')}}">Employers Area</a>
+                            <a class="dropdown-item" href="{{route('employer.public', Auth::user()->public_id)}}">View Information</a>
+                            <a class="dropdown-item" href="{{route('employer.edit', Auth::user()->id)}}">Edit Information</a>
                             @endif
                             @if(Auth::user()->hasRole(['maid', 'worker']) )
                                 <a class="dropdown-item" href="{{route('profile.index')}}">Profile</a>

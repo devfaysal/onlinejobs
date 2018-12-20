@@ -8,6 +8,7 @@
         <table class="table table-condensed">
             <thead>
                 <tr>
+                    <th></th>
                     <th>Notification</th>
                     <th>Action</th>
                 </tr>
@@ -15,6 +16,7 @@
             <tfoot>
                 @foreach (Auth::user()->notifications as $notification)
                 <tr>
+                    <th></th>
                     <th>{{$notification->data['message']}}</th>
                     <th>
                         <a href="{{route('admin.readSingleNotification',$notification->id)}}" class="btn btn-success"> Read</a> {{$notification->read_at ? '' : '(New)'}}
