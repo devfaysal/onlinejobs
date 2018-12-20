@@ -10,6 +10,6 @@ class ProfessionalProfile extends Model
         return $this->belongsTo(User::class);
     }
     public function country_data(){
-        return $this->belongsTo(Country::class, 'agency_country');
+        return $this->belongsTo(Country::class, 'country');
     }
 }
