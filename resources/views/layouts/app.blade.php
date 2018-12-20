@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Styles -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,400i,700,700i" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <style>
@@ -29,7 +29,7 @@
     <!-- Custom Styles -->
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <!---Multi Search----->
-    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/select2.css') }}" rel="stylesheet" />
 
 </head>
 
@@ -378,11 +378,32 @@
     <script src="{{ asset('js/select2.min.js') }}"></script>
     <script type="text/javascript">
 
-    $(".js-example-tags").select2({
-      tags: true
+        $(".js-search-tags").select2({
+          placeholder: "Skills, Designations, Companies"
+        });
+
+        $(".js-location-tags").select2({
+          placeholder: "Location/Locality"
+        });
+
+    </script>
+    <!----Toggle Home page search popup
+    <script type="text/javascript">
+
+      $(function() {
+      $("#clicksearch").on("click", function(e) {
+        $("#search_card").toggleClass("wide");
+      });
+      $(document).on("click", function(e) {
+        if ($(e.target).is("#search_card, #clicksearch") === false) {
+          $("#search_card").removeClass("wide");
+        }
+      });
     });
 
     </script>
+    ---->
+
     <script type="text/javascript">
       /*----------------------------
       START - Counter Up JS activation
