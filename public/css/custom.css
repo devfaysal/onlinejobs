@@ -31,6 +31,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .banner{
 	/*background-size: initial;*/
 	min-height:auto;
+	position: relative;
 }
 #navbarSupportedContent li a{
 	color: #666;
@@ -593,4 +594,156 @@ input.invalid {
 }
 .form-group{
 	margin-bottom: 1.6rem;
+}
+
+/*------Home page Search Bar css, that working for multi search area - click to open popup------*/
+
+.black-area{
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.2);
+	z-index: 10;
+}
+#search_card{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.9);
+	z-index: 10;
+}
+#search_card .select2-container--default .select2-search--inline .select2-search__field {
+    font-size: 12px;
+}
+#search_card .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+	padding: 0 5px 0 14px;
+    margin-top: 7px;
+}
+.select2-results__option {
+    padding: 3px 13px !important;
+    font-size: 14px;
+}
+#search_card .select2-container--default .select2-selection--multiple .select2-selection__choice{
+	background: none;
+	border-radius: 0;
+	border:0;
+	margin: 0;
+}
+#search_card .form-control{
+	border-radius: 0 !important;
+	min-height: 41px;
+	border:0;
+    font-size: 14px;
+}
+.clicksearch{cursor:pointer;}
+.srcJob {
+    opacity: 1;
+    display: block;
+    color: #fff;
+    position: absolute;
+    top: -40px;
+    font-size: 16px;
+    font-weight: 300;
+}
+.srcInput{
+	width: 100%;
+	margin:65px 0 0 0; 
+}
+.scrnBlr .qsbfield {
+    width: 878px\9;
+}
+/*.qsbSec */.qsbfield {
+    padding: 3px;
+    background-color: #dbdbdb;
+    background-color: rgba(219,219,219,.7);
+    float: left;
+    width: calc(100% - 112px);
+    width: 598px\9;
+    *background-color: #dbdbdb;
+}
+.qsbSrch {
+    width: 105px;
+    height: 50px;
+    margin-top: -1px;
+    *height: 51px;
+    background-color: #09c;
+    padding: 0 20px;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    line-height: 40px;
+    vertical-align: middle;
+    text-align: center;
+    overflow: visible;
+    border:0;
+}
+.qsbSrch:hover {
+    background-color: #0f89b2;
+}
+.suggest{
+	width: 48%;
+	position: relative;
+	float: left;
+    background-color: #fff;
+    border-right: 2px solid #dedede;
+}
+.suggest_location{
+	width: 20%;
+	position: relative;
+	float: left;
+    background-color: #fff;
+    border-right: 2px solid #dedede;
+}
+.singleDD{
+    width: 16%;
+	position: relative;
+	float: left;
+    background-color: #fff;
+    border-right: 2px solid #dedede;
+}
+.no-border{
+	border:0 !important; 
+}
+.close {
+    position: absolute;
+    right: 25px;
+    color: #fff;
+    top: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    font-family: monospace;
+    background: url(../images/comSprite_v4.png) no-repeat;
+}
+
+/*#search_card{
+  opacity: 0;
+}
+#search_card.wide {
+  opacity: 1 !important;
+}
+*/
+
+.tab-section .select2-container{
+	width: 100% !important;
+}
+.tab-section .suggest{
+	border: 1px solid #DFDFDF !important;
+	border-right: 1px solid #DFDFDF !important;
+}
+.tab-section .select2-container--default .select2-search--inline .select2-search__field {
+	width: 100% !important;
+}
+.tab-section .select2-container .select2-selection--multiple {
+    min-height: 36px;
+}
+.tab-section .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+    padding: 0 10px;
 }

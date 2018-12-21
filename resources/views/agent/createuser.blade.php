@@ -604,6 +604,18 @@
                                             </span>
                                         @endif
                                     </div>
+                                    <div class="form-group dis-cls">
+                                        <label for="other_skills">Other Skills (Seperate with Comma)</label>
+                                        
+                                        
+                                            <div class="suggest">
+                                                <select class="js-search-tags form-control" multiple="multiple">
+                                                  <option>orange</option>
+                                                  <option>white</option>
+                                                  <option>purple</option>
+                                                </select>
+                                            </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1162,5 +1174,13 @@
                 }
             })
         });
+    </script>
+    <script type="text/javascript">
+
+        $(".js-search-tags").select2({
+            tags: true,
+          placeholder: "Other Skills"
+        });
+
     </script>
 @endsection
