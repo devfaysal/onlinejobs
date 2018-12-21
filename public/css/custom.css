@@ -62,7 +62,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	line-height: auto;
 }
 .navbar-brand{
-	marig:0;
+	/* margin:0; */
 	padding: 0;
 	list-style: none;
 	font-size: 12px;
@@ -189,9 +189,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .whitebg {
 	margin-top: 0;
 }
-.bg-white{
-	/*padding: 12px 0;*/
-}
+
 .whitebg a:hover{
 	text-decoration: none;
 }
@@ -583,7 +581,7 @@ input.invalid {
 .tab{
 	width: 100%;
 }
-..select2-container{
+.select2-container{
 	width: 300px;
 }
 .invalid-feedback{
@@ -616,6 +614,9 @@ input.invalid {
 	bottom: 0;
 	background: rgba(0, 0, 0, 0.9);
 	z-index: 10;
+}
+.hide_search_card{
+	display: none;
 }
 #search_card .select2-container--default .select2-search--inline .select2-search__field {
     font-size: 12px;

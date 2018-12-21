@@ -6,25 +6,28 @@
 		@include('layouts.topbar')
 				<!--  banner body and search   -->
 				
-				<div id="search_card">
+				<div id="search_card" class="hide_search_card">
 				    <span class="close"></span>
 				    <div class="container">
 				    	<div class="srcJob">Search Jobs</div>
 				    	<div class="srcInput">
 				    		<div class="qsbfield">
+								
 				    			<div class="suggest">
-							        <select class="js-search-tags form-control" multiple="multiple">
+									<input class="js-search-tags form-control" type="text">
+							        {{-- <select class="js-search-tags form-control" multiple="multiple">
 							          <option>orange</option>
 							          <option>white</option>
 							          <option>purple</option>
-							        </select>
+							        </select> --}}
 					    		</div>
 				    			<div class="suggest_location">
-							        <select class="js-location-tags form-control" placeholder="123" multiple="multiple">
+									<input class="js-search-tags form-control" type="text" placeholder="Location">
+							        {{-- <select class="js-location-tags form-control" placeholder="123" multiple="multiple">
 							          <option>orange</option>
 							          <option>white</option>
 							          <option>purple</option>
-							        </select>
+							        </select> --}}
 					    		</div>
 					    		<div class="singleDD">
 					    			<select name="country" class="form-control">
@@ -109,7 +112,7 @@
 												<div class="col-sm-6 col-md-5 col-lg-6 banner-left">
 													<div class="whitebg text-center banner_equal">
 														<p> Looking for General Worker<br>or Domestic Maid?</p>
-														<a class="btn btn-warning  btn-large btn-block" href="{{route('register')}}"> Quick Registration  </a>
+														<a class="btn btn-warning  btn-large btn-block" href="{{route('login')}}"> Quick Registration  </a>
 														<hr class="hr-text" data-content="or">
 														<h5><a href="#"> Upload Demand Letter </a> </h5>
 														<p class="small_TxT2"> Max 2 MB, doc, docx, rtf, pdf </p> 
@@ -545,4 +548,14 @@
 		</div>  
 		</section>
  
+@endsection
+@section('script')
+	<script>
+		$("#search_card .close").click(function() {
+                $('#search_card').addClass('hide_search_card')
+		});
+		$(".search-jobs").click(function() {
+                $('#search_card').removeClass('hide_search_card');
+		});
+	</Script>
 @endsection
