@@ -87,7 +87,7 @@
                                     <th title="Confirmed Quantity">Confirmed Qty</th>
                                     <th title="Final Quantity">Final Qty</th>
                                     <th title="Status">Status</th>
-                                    <th title=""></th>
+                                    <th class="hide" title=""></th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -165,32 +165,84 @@
                                                         </span>
                                                     @endif
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <input id="DemandQuantity" type="text" class="form-control{{ $errors->has('DemandQuantity') ? ' is-invalid' : '' }}" name="DemandQuantity" value="{{ old('DemandQuantity') }}" placeholder="Demand Quantity*" required>
+                                                {{-- <div class="form-group col-md-6">
+                                                    <input id="demand_qty" type="text" class="form-control{{ $errors->has('demand_qty') ? ' is-invalid' : '' }}" name="demand_qty[]" value="{{ old('demand_qty') }}" placeholder="Demand Quantity*" required>
 
-                                                    @if ($errors->has('DemandQuantity'))
+                                                    @if ($errors->has('demand_qty'))
                                                         <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $errors->first('DemandQuantity') }}</strong>
+                                                            <strong>{{ $errors->first('demand_qty') }}</strong>
                                                         </span>
                                                     @endif
-                                                </div>
+                                                </div> --}}
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-md-4">
-                                                    <select name="PreferredCountry" id="PreferredCountry" class="form-control{{ $errors->has('PreferredCountry') ? ' is-invalid' : '' }}">
+                                                    <select name="preferred_country[]" id="preferred_country" class="form-control{{ $errors->has('preferred_country') ? ' is-invalid' : '' }}">
                                                         <option value="">-- Preferred Country --</option>
                                                         @foreach ($countrys as $country)
                                                             <option value="{{$country->id}}" {{$country->id == old('country') ? 'selected':''}}>{{$country->name}}</option>
                                                         @endforeach
                                                     </select>
     
-                                                    @if ($errors->has('PreferredCountry'))
+                                                    @if ($errors->has('preferred_country'))
                                                         <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $errors->first('PreferredCountry') }}</strong>
+                                                            <strong>{{ $errors->first('preferred_country') }}</strong>
+                                                        </span>
+                                                    @endif
+
+                                                    <input id="demand_qty" type="text" class="mt-3 form-control{{ $errors->has('demand_qty') ? ' is-invalid' : '' }}" name="demand_qty[]" value="{{ old('demand_qty') }}" placeholder="Demand Quantity*">
+
+                                                    @if ($errors->has('demand_qty'))
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $errors->first('demand_qty') }}</strong>
                                                         </span>
                                                     @endif
                                                 </div>
                                                 <div class="form-group col-md-4">
+                                                    <select name="preferred_country[]" id="preferred_country" class="form-control{{ $errors->has('preferred_country') ? ' is-invalid' : '' }}">
+                                                        <option value="">-- Preferred Country --</option>
+                                                        @foreach ($countrys as $country)
+                                                            <option value="{{$country->id}}" {{$country->id == old('country') ? 'selected':''}}>{{$country->name}}</option>
+                                                        @endforeach
+                                                    </select>
+    
+                                                    @if ($errors->has('preferred_country'))
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $errors->first('preferred_country') }}</strong>
+                                                        </span>
+                                                    @endif
+
+                                                    <input id="demand_qty" type="text" class="mt-3 form-control{{ $errors->has('demand_qty') ? ' is-invalid' : '' }}" name="demand_qty[]" value="{{ old('demand_qty') }}" placeholder="Demand Quantity*">
+
+                                                    @if ($errors->has('demand_qty'))
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $errors->first('demand_qty') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <select name="preferred_country[]" id="preferred_country" class="form-control{{ $errors->has('preferred_country') ? ' is-invalid' : '' }}">
+                                                        <option value="">-- Preferred Country --</option>
+                                                        @foreach ($countrys as $country)
+                                                            <option value="{{$country->id}}" {{$country->id == old('country') ? 'selected':''}}>{{$country->name}}</option>
+                                                        @endforeach
+                                                    </select>
+    
+                                                    @if ($errors->has('preferred_country'))
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $errors->first('preferred_country') }}</strong>
+                                                        </span>
+                                                    @endif
+
+                                                    <input id="demand_qty" type="text" class="mt-3 form-control{{ $errors->has('demand_qty') ? ' is-invalid' : '' }}" name="demand_qty[]" value="{{ old('demand_qty') }}" placeholder="Demand Quantity*">
+
+                                                    @if ($errors->has('demand_qty'))
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $errors->first('demand_qty') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                                {{-- <div class="form-group col-md-4">
                                                     <select name="PreferredCountry2" id="PreferredCountry2" class="form-control{{ $errors->has('PreferredCountry2') ? ' is-invalid' : '' }}">
                                                         <option value="">-- Preferred Country 2 --</option>
                                                         @foreach ($countrys as $country)
@@ -217,7 +269,7 @@
                                                             <strong>{{ $errors->first('PreferredCountry3') }}</strong>
                                                         </span>
                                                     @endif
-                                                </div>
+                                                </div> --}}
                                             </div>
                                             <div class="form-group">
                                                 <textarea id="Comments" class="form-control{{ $errors->has('Comments') ? ' is-invalid' : '' }}" name="comments" value="{{ old('Comments') }}" placeholder="Comments"></textarea>

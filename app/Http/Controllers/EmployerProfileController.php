@@ -392,49 +392,49 @@ class EmployerProfileController extends Controller
             ]);
         }
 
-        $offer = new Offer;
-        $offer->employer_id = auth()->user()->id;
-        $offer->title = 'Demand Letter';
-        $offer->hiring_package = $request->HiringPackage;
-        $offer->company_name = $request->CompanyName;
-        $offer->demand_letter_no = $request->DemandLetterNo;
-        $offer->issue_date = $request->IssueDate;
-        $offer->expexted_date = $request->ExpectedJoinDate;
-        $offer->demand_qty = $request->DemandQuantity;
-        $offer->preferred_country = $request->PreferredCountry;
-        $offer->preferred_country2 = $request->PreferredCountry2;
-        $offer->preferred_country3 = $request->PreferredCountry3;
+        for($i=0; $i<count($request->preferred_country); $i++){
+            $offer = new Offer;
+            $offer->employer_id = auth()->user()->id;
+            $offer->title = 'Demand Letter';
+            $offer->hiring_package = $request->HiringPackage;
+            $offer->company_name = $request->CompanyName;
+            $offer->demand_letter_no = $request->DemandLetterNo;
+            $offer->issue_date = $request->IssueDate;
+            $offer->expexted_date = $request->ExpectedJoinDate;
+            $offer->demand_qty = $request->demand_qty[$i];
+            $offer->preferred_country = $request->preferred_country[$i];
 
-        if($request->file('DemandFile')){            
-            $file_basename = explode('.',$request->file('DemandFile')->getClientOriginalName())[0];
-            $file_name = $file_basename . '-' . time() . '.' . $request->file('DemandFile')->getClientOriginalExtension();
+            if($request->file('DemandFile')){            
+                $file_basename = explode('.',$request->file('DemandFile')->getClientOriginalName())[0];
+                $file_name = $file_basename . '-' . time() . '.' . $request->file('DemandFile')->getClientOriginalExtension();
 
-            $request->DemandFile->storeAs('public/demand_letter', $file_name);
-            //add new image path to database
-            $offer->demand_file = $file_name;
-            
+                $request->DemandFile->storeAs('public/demand_letter', $file_name);
+                //add new image path to database
+                $offer->demand_file = $file_name;
+                
+            }
+            if($request->file('approvalQuotaAndLevy')){            
+                $file_basename = explode('.',$request->file('approvalQuotaAndLevy')->getClientOriginalName())[0];
+                $file_name = $file_basename . '-' . time() . '.' . $request->file('approvalQuotaAndLevy')->getClientOriginalExtension();
+
+                $request->approvalQuotaAndLevy->storeAs('public/demand_letter', $file_name);
+                //add new image path to database
+                $offer->approvalQuotaAndLevy = $file_name;
+                
+            }
+
+            $offer->comments = $request->comments;
+            $offer->status = 2;
+            $offer->save();
+
+            //Send notification to the Admins
+            $admins = User::whereRoleIs('superadministrator')->get();
+            $data = $offer;
+            Notification::send($admins, new DemandLetterSent($data));
         }
-        if($request->file('approvalQuotaAndLevy')){            
-            $file_basename = explode('.',$request->file('approvalQuotaAndLevy')->getClientOriginalName())[0];
-            $file_name = $file_basename . '-' . time() . '.' . $request->file('approvalQuotaAndLevy')->getClientOriginalExtension();
-
-            $request->approvalQuotaAndLevy->storeAs('public/demand_letter', $file_name);
-            //add new image path to database
-            $offer->approvalQuotaAndLevy = $file_name;
-            
-        }
-
-        $offer->comments = $request->comments;
-        $offer->status = 2;
-        $offer->save();
 
         Session::flash('message', 'Demand sent successfully!'); 
         Session::flash('alert-class', 'alert-success');
-
-        //Send notification to the Admins
-        $admins = User::whereRoleIs('superadministrator')->get();
-        $data = $offer;
-        Notification::send($admins, new DemandLetterSent($data));
 
         return redirect()->route('employer.show');
     }
