@@ -325,6 +325,34 @@ class EmployerController extends Controller
         return redirect()->back();
     }
 
+    public function demandFileForAgent($id, Request $request)
+    {
+        $offer = Offer::where('id', $id)->first();
+        if($request->file('demand_file_for_agent')){
+            $this->validate($request, [
+                'demand_file_for_agent' => 'mimes:pdf,jpg,jpeg,png|max:1024',
+            ]);
+
+            $file_basename = explode('.',$request->file('demand_file_for_agent')->getClientOriginalName())[0];
+            $file_name = $file_basename . '-' . time() . '.' . $request->file('demand_file_for_agent')->getClientOriginalExtension();
+
+            $request->demand_file_for_agent->storeAs('public/demand_letter', $file_name);
+            //add new image path to database
+            $offer->demand_file_for_agent = $file_name;
+
+            $offer->demand_file_for_agent_owner = auth()->user()->id;
+            $offer->save();
+
+            Session::flash('message', 'Demand file for agent added successfully!!'); 
+            Session::flash('alert-class', 'alert-success');
+            return redirect()->route('demand', $id);
+        }else{
+            Session::flash('message', 'No file Selected!!'); 
+            Session::flash('alert-class', 'alert-danger');
+            return redirect()->route('demand', $id);
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *

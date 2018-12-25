@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mt-4">
         <div class="row">
-            @if(Session::has('message'))
+            {{-- @if(Session::has('message'))
             <div class="col-md-12">
                 <div class="alert {{ Session::get('alert-class', 'alert-info') }} alert-dismissible fade show" role="alert">
                     <strong>{{ Session::get('message') }}</strong>
@@ -12,7 +12,7 @@
                     </button>
                 </div>
             </div>
-            @endif
+            @endif --}}
             @auth
             @if(Auth::user()->can('print'))
                 <div class="col-md-12 hidefromprint mb-3">
@@ -24,6 +24,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <h4 class="card-title text-center mt-3 text-uppercase">Demand Information</h4>
+                    @if(Auth::user()->hasRole('superadministrator'))
+                        <p class="text-center hidefromprint"><a class="btn btn-warning btn-sm" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#demandFileForAgent" href="#">Add Demand file for agent</a></p>
+                    @endif
                     <div class="card-body">
                         <table class="table table-striped table-sm">
                             <tr>
@@ -54,21 +57,47 @@
                                 <th>Preferred Country</th>
                                 <th>:</th>
                                 <td>{{$offer->preferred_country_data->name ?? ''}} {{$offer->preferred_country_data2 ? ', '.$offer->preferred_country_data2->name : ''}} {{$offer->preferred_country_data3? ', '.$offer->preferred_country_data3->name : ''}}</td>
-                                {{-- <th>Attachment</th>
-                                <th>:</th>
-                                <td>
-                                    @if ($offer->demand_file != '')
-                                        <a href="{{ asset('storage/demand_letter/' . $offer->demand_file) }}" target="_blank">{{ $offer->demand_file }}</a>
-                                    @else
-                                        N/A
-                                    @endif
-                                </td> --}}
                             </tr>
                             <tr>
                                 <th>Comments</th>
                                 <th>:</th>
                                 <td colspan="4">{{$offer->comments ?? 'N/A'}}</td>
                             </tr>
+                            @if(Auth::user()->hasRole(['superadministrator','employer']))
+                                <tr>
+                                    <th>Demand Letter</th>
+                                    <th>:</th>
+                                    <td>
+                                        @if ($offer->demand_file != '')
+                                            <a href="{{ asset('storage/demand_letter/' . $offer->demand_file) }}" target="_blank">{{ $offer->demand_file }}</a>
+                                        @else
+                                            N/A
+                                        @endif
+                                    </td>
+                                    <th>KDN, Quota Approval</th>
+                                    <th>:</th>
+                                    <td>
+                                        @if ($offer->approvalQuotaAndLevy != '')
+                                            <a href="{{ asset('storage/demand_letter/' . $offer->approvalQuotaAndLevy) }}" target="_blank">{{ $offer->approvalQuotaAndLevy }}</a>
+                                        @else
+                                            N/A
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endif
+                            @if(Auth::user()->hasRole(['superadministrator','agent']))
+                                <tr>
+                                    <th>Demand Letter for Agent</th>
+                                    <th>:</th>
+                                    <td colspan="4">
+                                        @if ($offer->demand_file_for_agent != '')
+                                            <a href="{{ asset('storage/demand_letter/' . $offer->demand_file_for_agent) }}" target="_blank">{{ $offer->demand_file_for_agent }}</a>
+                                        @else
+                                            N/A
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endif
                         </table>
                     </div><!--/.panel-body-->
 
@@ -119,6 +148,48 @@
             </div><!--/.col-md-8-->
         </div><!--/.row-->
     </div><!--/.container-->
+
+    <!-- Demand Entry Modal -->
+    <div class="modal fade" id="demandFileForAgent" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered role="document">
+            <div class="modal-content tex-center">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLongTitle"> Add Demand file for agent </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-11">
+                            <form method="POST" action="{{ route('admin.demandFileForAgent', $offer->id) }}" enctype="multipart/form-data">
+                                @csrf
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label class="pull-left" for="">Demand File for agent</label>
+                                        <input id="DemandFile" type="file" class="form-control-file{{ $errors->has('DemandFile') ? ' is-invalid' : '' }}" name="demand_file_for_agent">
+                                        <p class="text-left small">Supported file PDF, JPG and PNG. Max file size: 1MB</p>
+                                    </div>
+
+                                    @if ($errors->has('DemandFile'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('DemandFile') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+        
+                                <div class="form-group mb-0 text-center">
+                                    <button type="submit" class="btn btn-warning btn-block">
+                                        {{ __('Add') }}
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--  /.modal-dialog modal-dialog-centered  -->
+    </div><!--  /.modal fade  -->
 @endsection
 
 

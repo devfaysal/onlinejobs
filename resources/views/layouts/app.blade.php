@@ -55,7 +55,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @guest
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{route('professional.index')}}">Register Now</a>
+                            <a class="dropdown-item" href="{{route('login')}}">Register Now</a>
                             @endguest
                             <a class="dropdown-item" href="#">Jobs by Location</a>
                             <a class="dropdown-item" href="#">Jobs by Skill</a>
@@ -70,10 +70,10 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @guest
-                            <a class="dropdown-item {{ ( (Route::currentRouteName() === "agent.create") ? "active" : "") }}" href="{{route('agent.create')}}">Agent Registration</a>
+                            <a class="dropdown-item {{ ( (Route::currentRouteName() === "agent.create") ? "active" : "") }}" href="{{route('login')}}">Register Now</a>
                             <div class="dropdown-divider"></div>
                             @endguest
-                            <a class="dropdown-item" href="#">Agent Status View</a>
+                            <a class="dropdown-item" href="#">Status View</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">

@@ -56,7 +56,7 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
     Route::post('/assignDemandAgent', 'Admin\EmployerController@assignDemandAgent')->name('assignDemandAgent');
     Route::post('/proposeGWToDemand', 'Admin\EmployerController@proposeGWToDemand')->name('proposeGWToDemand');
     Route::post('/finalizeGWToDemand', 'Admin\EmployerController@finalizeGWToDemand')->name('finalizeGWToDemand');
-
+    ROute::post('/demandFileForAgent/{id}', 'Admin\EmployerController@demandFileForAgent')->name('demandFileForAgent');
     /*Agent*/
     Route::get('/agent/approve/{id}', 'Admin\AgentController@approve')->name('agent.approve');
     Route::get('/agent/reject/{id}', 'Admin\AgentController@reject')->name('agent.reject');
