@@ -101,29 +101,10 @@
                     <li class="nav-item">
                         <a class="nav-link {{ ( (Route::currentRouteName() === "maids") || (Route::currentRouteName() === "maids.search") ? "active" : "") }}" href="{{route('maids')}}">Domestic Maids</a>
                     </li>
-                   <li class="nav-item dropdown">
+                    @auth
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Notifications
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Packages
-                        </a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    @guest                               
-                    <li class="nav-item">
-                        {{-- <a class="nav-link" data-toggle="modal" data-target="#loginModal" href="#"> Login </a>  --}}
-                        <a class="nav-link" href="{{route('login')}}"> Login / Register </a> 
-                    </li>
-                    @endguest
-                    @auth
-                    @if(Auth::user()->hasRole('employer'))
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-commenting text-danger"></i>
                             <sup>
                                 <span class="counter text-danger">
                                     {{Auth::user()->unreadNotifications->count()}}
@@ -146,7 +127,26 @@
                             @endif
                         </div>
                     </li>
-                    @endif
+                    @else
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">Notifications</a>
+                    </li>
+                    @endauth
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Packages
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    @guest                               
+                    <li class="nav-item">
+                        {{-- <a class="nav-link" data-toggle="modal" data-target="#loginModal" href="#"> Login </a>  --}}
+                        <a class="nav-link" href="{{route('login')}}"> Login / Register </a> 
+                    </li>
+                    @endguest
+                    @auth
+                    
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Welcome
