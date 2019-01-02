@@ -57,10 +57,10 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{route('login')}}">Register Now</a>
                             @endguest
-                            <a class="dropdown-item" href="#">Jobs by Location</a>
-                            <a class="dropdown-item" href="#">Jobs by Skill</a>
-                            <a class="dropdown-item" href="#">Jobs by Designation</a>
-                            <a class="dropdown-item" href="#">Jobs by Category</a>
+                            <a class="dropdown-item" href="/job?q=location&c=Malaysia">Jobs by Location</a>
+                            <a class="dropdown-item" href="/job?q=skill">Jobs by Skill</a>
+                            <a class="dropdown-item" href="/job?q=designation">Jobs by Designation</a>
+                            <a class="dropdown-item" href="/job?q=category">Jobs by Category</a>
                             <a class="dropdown-item" href="{{route('job.index')}}">Browse All Jobs</a>
                         </div>
                     </li>

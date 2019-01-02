@@ -162,6 +162,7 @@ Route::prefix('employer')->group(function(){
 });
 
 /*Job*/
+route::get('/job/search', 'JobController@search')->name('job.search');
 route::resource('/job', 'JobController');
 
 /*Professional*/

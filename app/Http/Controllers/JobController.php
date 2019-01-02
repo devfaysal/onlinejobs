@@ -8,14 +8,45 @@ use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
+    public function search(Request $request)
+    {
+        $jobs = Job::where('status', 1)
+                    ->when($request->title, function($query) use($request){
+                        return $query->where('title', 'like', '%'.$request->title.'%');
+                    })
+                    ->when($request->location, function($query) use($request){
+                        return $query->where('location', $request->location);
+                    })
+                    ->when($request->experience, function($query) use($request){
+                        return $query->where('location', $request->location);
+                    })
+                    ->when($request->salary, function($query) use($request){
+                        return $query->where('salary_range_1','<', $request->salary);
+                    })->get();
+
+        return view('job.index', [
+            'jobs' => $jobs
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $jobs = Job::all();
+        if($request->q == 'location'){
+            $jobs = Job::where('location', $request->c)->get();
+        }elseif($request->q == 'skill'){
+            $jobs = Job::where('location', $request->c)->get();
+        }elseif($request->q == 'designation'){
+            $jobs = Job::where('location', $request->c)->get();
+        }elseif($request->q == 'category'){
+            $jobs = Job::where('location', $request->c)->get();
+        }else{
+            $jobs = Job::all();
+        }
+        
         return view('job.index', [
             'jobs' => $jobs
         ]);
