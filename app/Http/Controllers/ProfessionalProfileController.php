@@ -21,12 +21,17 @@ class ProfessionalProfileController extends Controller
     public function index()
     {
         if(Auth::user()){
-            $user = Auth::user();
-            return view('professional.index', [
-                'user' => $user
-            ]);
+            return redirect()->route('professional.profile');
         }
         return view('professional.index');
+    }
+
+    public function profile()
+    {
+        $user = Auth::user();
+        return view('professional.show', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -57,9 +62,12 @@ class ProfessionalProfileController extends Controller
      * @param  \App\ProfessionalProfile  $professionalProfile
      * @return \Illuminate\Http\Response
      */
-    public function show(ProfessionalProfile $professionalProfile)
+    public function show($id)
     {
-        //
+        $user = User::where('id', $id)->first();
+        return view('professional.show', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -128,7 +136,7 @@ class ProfessionalProfileController extends Controller
         Session::flash('message', 'Profile Updated Successfully!'); 
         Session::flash('alert-class', 'alert-success');
 
-        return redirect()->route('professional.index');
+        return redirect()->route('professional.profile');
     }
 
     /**
@@ -195,7 +203,7 @@ class ProfessionalProfileController extends Controller
                 $professional_experience->save();
             }
 
-            return redirect()->route('professional.index');
+            return redirect()->route('professional.profile');
         }
     }
 }

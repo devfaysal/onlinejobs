@@ -168,7 +168,7 @@
                                 <a class="dropdown-item" href="{{route('admin.home')}}">Dashboard</a>
                             @endif
                             @if(Auth::user()->hasRole('professional') )
-                                <a class="dropdown-item" href="{{route('professional.index')}}">Profile</a>
+                                <a class="dropdown-item" href="{{route('professional.profile')}}">Profile</a>
                             @endif
 
                             <a class="dropdown-item" href="{{route('changePassword')}}">Change Password</a>
