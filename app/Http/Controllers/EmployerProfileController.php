@@ -392,7 +392,7 @@ class EmployerProfileController extends Controller
             ]);
         }
 
-        for($i=0; $i<count($request->preferred_country); $i++){
+        for($i=0; $i < count(array_filter($request->preferred_country)); $i++){
             $offer = new Offer;
             $offer->employer_id = auth()->user()->id;
             $offer->title = 'Demand Letter';
