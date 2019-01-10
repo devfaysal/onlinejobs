@@ -340,8 +340,11 @@ class EmployerProfileController extends Controller
         $employer_profile->nric = $request->nric;
         $employer_profile->address = $request->address;
         $employer_profile->country = $request->country;
+        $employer_profile->contact_email = $request->contact_email;
 
         $employer_profile->company_name = $request->company_name;
+        $employer_profile->company_phone = $request->company_phone;
+        $employer_profile->website = $request->website;
         $employer_profile->roc = $request->roc;
         $employer_profile->company_address = $request->company_address;
         $employer_profile->company_city= $request->company_city;

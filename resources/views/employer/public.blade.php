@@ -37,12 +37,17 @@
                                         <td width="60%">{{$employer->name ?? 'N/A'}}</td>
                                     </tr>
                                     <tr>
+                                        <th>Contact Email </th>
+                                        <th>:</th>
+                                        <td>{{$employer->employer_profile->contact_email ?? 'N/A'}}</td>
+                                    </tr>
+                                    <tr>
                                         <th>NRIC </th>
                                         <th>:</th>
                                         <td>{{$employer->employer_profile->nric ?? 'N/A'}}</td>
                                     </tr>
                                     <tr>
-                                        <th>Employer Phone</th>
+                                        <th>Contact Number</th>
                                         <th>:</th>
                                         <td>{{$employer->phone ?? 'N/A'}}</td>
                                     </tr>
@@ -72,9 +77,19 @@
                                         <td>{{$employer->employer_profile->roc ?? 'N/A'}}</td>
                                     </tr>
                                     <tr>
-                                        <th>Email</th>
+                                        <th>Company Email</th>
                                         <th>:</th>
                                         <td>{{$employer->email ?? 'N/A'}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Website</th>
+                                        <th>:</th>
+                                        <td>{{$employer->employer_profile->website ?? 'N/A'}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Phone number</th>
+                                        <th>:</th>
+                                        <td>{{$employer->employer_profile->company_phone ?? 'N/A'}}</td>
                                     </tr>
                                     <tr>
                                         <th>Company Address</th>

@@ -63,6 +63,18 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="contact_email" class="col-sm-4 col-form-label">{{ __('Email *') }}</label>
+                            <div class="col-sm-8">
+                                <input id="contact_email" type="contact_email" class="form-control{{ $errors->has('contact_email') ? ' is-invalid' : '' }}" name="contact_email" value="{{ old('contact_email') }}" placeholder="Email" required>
+
+                            @if ($errors->has('contact_email'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('contact_email') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="nric" class="col-sm-4 col-form-label">{{ __('NRIC *') }}</label>
                             <div class="col-sm-8">
                                 <input id="nric" type="text" class="form-control{{ $errors->has('nric') ? ' is-invalid' : '' }}" name="nric" value="{{ old('nric') }}" placeholder="NRIC" required>
@@ -75,9 +87,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="phone" class="col-sm-4 col-form-label">{{ __('Phone *') }}</label>
+                            <label for="phone" class="col-sm-4 col-form-label">{{ __('Contact Number *') }}</label>
                             <div class="col-sm-8">
-                                <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" placeholder="Phone" required>
+                                <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" placeholder="Contact Number" required>
 
                             @if ($errors->has('phone'))
                                 <span class="invalid-feedback" role="alert">
@@ -180,9 +192,9 @@
                             <h3>Company Information</h3>
                         </div>
                         <div class="form-group row">
-                            <label for="company_name" class="col-sm-4 col-form-label">{{ __('Company Name') }}</label>
+                            <label for="company_name" class="col-sm-4 col-form-label">{{ __('Company Name *') }}</label>
                             <div class="col-sm-8">
-                                <input id="company_name" type="text" class="form-control{{ $errors->has('company_name') ? ' is-invalid' : '' }}" name="company_name" value="{{ old('name') }}" placeholder="Company Name">
+                                <input id="company_name" type="text" class="form-control{{ $errors->has('company_name') ? ' is-invalid' : '' }}" name="company_name" value="{{ old('name') }}" placeholder="Company Name" required>
 
                                 @if ($errors->has('company_name'))
                                     <span class="invalid-feedback" role="alert">
@@ -192,9 +204,9 @@
                             </div>                            
                         </div>
                         <div class="form-group row">
-                            <label for="roc" class="col-sm-4 col-form-label">{{ __('ROC') }}</label>
+                            <label for="roc" class="col-sm-4 col-form-label">{{ __('ROC *') }}</label>
                             <div class="col-sm-8">
-                                <input id="roc" type="text" class="form-control{{ $errors->has('roc') ? ' is-invalid' : '' }}" name="roc" value="{{ old('roc') }}" placeholder="ROC">
+                                <input id="roc" type="text" class="form-control{{ $errors->has('roc') ? ' is-invalid' : '' }}" name="roc" value="{{ old('roc') }}" placeholder="ROC" required>
 
                             @if ($errors->has('roc'))
                                 <span class="invalid-feedback" role="alert">
@@ -204,13 +216,37 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label">{{ __('Email *') }}</label>
+                            <label for="email" class="col-sm-4 col-form-label">{{ __('Company Email *') }}</label>
                             <div class="col-sm-8">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email" required>
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Company Email" required>
 
                             @if ($errors->has('email'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="website" class="col-sm-4 col-form-label">{{ __('Company Website') }}</label>
+                            <div class="col-sm-8">
+                                <input id="website" type="text" class="form-control{{ $errors->has('website') ? ' is-invalid' : '' }}" name="website" value="{{ old('website') }}" placeholder="Company Website">
+
+                            @if ($errors->has('website'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('website') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="company_phone" class="col-sm-4 col-form-label">{{ __('Company Phone ') }}</label>
+                            <div class="col-sm-8">
+                                <input id="company_phone" type="text" class="form-control{{ $errors->has('company_phone') ? ' is-invalid' : '' }}" name="company_phone" value="{{ old('company_phone') }}" placeholder="Company Phone">
+
+                            @if ($errors->has('company_phone'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('company_phone') }}</strong>
                                 </span>
                             @endif
                             </div>

@@ -194,10 +194,14 @@ class RegisterController extends Controller
             $employer->nric = $data['nric'];
             $employer->roc = $data['roc'];
             $employer->state = $data['state'];
+            $employer->company_email = $data['email'];
+            $employer->contact_email = $data['contact_email'];
             $employer->company_name = $data['company_name'];
             $employer->company_address = $data['company_address'];
             $employer->company_city = $data['company_city'];
             $employer->company_country = $data['company_country'];
+            $employer->company_phone = $data['company_phone'];
+            $employer->website = $data['website'];
 
             $employer->save();
             Session::flash('message', 'Your Employer Application Submitted Successfully!!'); 
