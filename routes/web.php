@@ -180,4 +180,9 @@ route::get('/professional/create', 'ProfessionalProfileController@create')->name
 route::post('/professional/store', 'ProfessionalProfileController@store')->name('professional.store');
 route::get('/professional/{id}', 'ProfessionalProfileController@show')->name('professional.show');
 
+/*Retired Personnel*/
+route::get('/retiredPersonnel', 'RetiredPersonnelController@index')->name('retiredPersonnel.index');
+route::get('/retiredPersonnel/create', 'RetiredPersonnelController@create')->name('retiredPersonnel.create');
+route::post('/retiredPersonnel/store', 'RetiredPersonnelController@store')->name('retiredPersonnel.store');
+
 

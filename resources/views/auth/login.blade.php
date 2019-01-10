@@ -18,6 +18,9 @@
                     <div class="form-group">
                         <a class="btn btn-info btn-lg btn-block" href="{{route('professional.index')}}">Register as Professional</a>
                     </div>
+                    <div class="form-group">
+                        <a class="btn btn-secondary btn-lg btn-block" href="{{route('retiredPersonnel.create')}}">Register as Retired Personnel</a>
+                    </div>
                 </div>
             </div>
         </div>
