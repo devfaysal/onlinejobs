@@ -153,15 +153,16 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="government_employee" class="col-sm-4 col-form-label text-right">{{ __('Government Employee *') }}</label>
-                            <div class="col-sm-8">
-                                <input id="government_employee" type="text" class="form-control{{ $errors->has('government_employee') ? ' is-invalid' : '' }}" name="government_employee" value="{{ old('government_employee') }}" placeholder="government_employee" required>
-
-                            @if ($errors->has('government_employee'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('government_employee') }}</strong>
-                                </span>
-                            @endif
+                            <label for="government_employee" class="col-sm-4 col-form-label text-right">{{ __('Were you government employee ?') }}</label>
+                            <div class="col-sm-8 ml-auto mt-3">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="government_employee1" name="government_employee" value="yes" class="custom-control-input">
+                                    <label class="custom-control-label" for="government_employee1">Yes</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="government_employee2" name="government_employee" value="no" class="custom-control-input">
+                                    <label class="custom-control-label" for="government_employee2">No</label>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -189,21 +190,28 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="full_time" class="col-sm-4 col-form-label text-right">{{ __('Full Time *') }}</label>
-                            <div class="col-sm-8">
-                                <input id="full_time" type="text" class="form-control{{ $errors->has('full_time') ? ' is-invalid' : '' }}" name="full_time" value="{{ old('full_time') }}" placeholder="full_time" required>
-
-                            @if ($errors->has('full_time'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('full_time') }}</strong>
-                                </span>
-                            @endif
+                            <label for="government_employee" class="col-sm-4 col-form-label text-right">{{ __('Prefer Working hours ?') }}</label>
+                            <div class="col-sm-8 ml-auto mt-2">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="full_time" name="full_time" value="yes" class="custom-control-input">
+                                        <label class="custom-control-label" for="full_time">Full Time</label>
+                                        </div>
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="part_time" name="full_time" value="no" class="custom-control-input">
+                                        <label class="custom-control-label" for="part_time">Part Time</label>
+                                </div>
                             </div>
+
+
+                            {{-- <label for="full_time" class="col-sm-4 col-form-label text-right">{{ __('Full Time ?') }}</label>
+                            <div class="col-sm-1 mr-auto">
+                                <input id="full_time" class="form-control checkbox" type="checkbox" name="full_time">
+                            </div> --}}
                         </div>
                         <div class="form-group row">
-                            <label for="describe_working_hours" class="col-sm-4 col-form-label text-right">{{ __('Describe Working Hours *') }}</label>
+                            <label for="describe_working_hours" class="col-sm-4 col-form-label text-right">{{ __('Describe Working Hours') }}</label>
                             <div class="col-sm-8">
-                                <input id="describe_working_hours" type="text" class="form-control{{ $errors->has('describe_working_hours') ? ' is-invalid' : '' }}" name="describe_working_hours" value="{{ old('describe_working_hours') }}" placeholder="describe_working_hours" required>
+                                <input id="describe_working_hours" type="text" class="form-control{{ $errors->has('describe_working_hours') ? ' is-invalid' : '' }}" name="describe_working_hours" value="{{ old('describe_working_hours') }}" placeholder="Describ Working Hours">
 
                             @if ($errors->has('describe_working_hours'))
                                 <span class="invalid-feedback" role="alert">

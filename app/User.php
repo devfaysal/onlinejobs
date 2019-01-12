@@ -62,6 +62,9 @@ class User extends Authenticatable
     public function professional_profile(){
         return $this->hasOne(ProfessionalProfile::class);
     }
+    public function retired_personnel(){
+        return $this->hasOne(RetiredPersonnel::class);
+    }
     public function professional_experiences(){
         return $this->hasMany(ProfessionalExperience::class);
     }
