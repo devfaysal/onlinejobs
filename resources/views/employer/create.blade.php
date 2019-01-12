@@ -304,76 +304,38 @@
                             @endif
                             </div>
                         </div>
-                        
-                        
-                        {{-- <div class="form-group row">
-                            <label for="agency_fax" class="col-sm-4 col-form-label">{{ __('Agency Fax') }}</label>
-                            <div class="col-sm-8">
-                                <input id="agency_fax" type="text" class="form-control{{ $errors->has('agency_fax') ? ' is-invalid' : '' }}" name="agency_fax" value="{{ old('agency_fax') }}" placeholder="Agency Fax">
-
-                            @if ($errors->has('agency_fax'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('agency_fax') }}</strong>
-                                </span>
-                            @endif
-                            </div>
-                        </div>
                         <div class="form-group row">
-                            <label for="license_no" class="col-sm-4 col-form-label">{{ __('License No *') }}</label>
+                            <label class="col-sm-4" for="">Looking For * </label>
                             <div class="col-sm-8">
-                                <input id="license_no" type="text" class="form-control{{ $errors->has('license_no') ? ' is-invalid' : '' }}" name="license_no" value="{{ old('license_no') }}" placeholder="License No" required>
-
-                            @if ($errors->has('license_no'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('license_no') }}</strong>
-                                </span>
-                            @endif
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="license_issue_date" class="col-sm-4 col-form-label">{{ __('License Issue Date') }}</label>
-                            <div class="col-sm-8">
-                                <input id="license_issue_date" type="date" class="form-control{{ $errors->has('license_issue_date') ? ' is-invalid' : '' }}" name="license_issue_date" value="{{ old('license_issue_date') }}" placeholder="license_issue_date">
-
-                            @if ($errors->has('license_issue_date'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('license_issue_date') }}</strong>
-                                </span>
-                            @endif
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="license_expire_date" class="col-sm-4 col-form-label">{{ __('License Expire Date') }}</label>
-                            <div class="col-sm-8">
-                                <input id="license_expire_date" type="date" class="form-control{{ $errors->has('license_expire_date') ? ' is-invalid' : '' }}" name="license_expire_date" value="{{ old('license_expire_date') }}" placeholder="license_expire_date">
-
-                            @if ($errors->has('license_expire_date'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('license_expire_date') }}</strong>
-                                </span>
-                            @endif
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="license_file" class="col-sm-4 col-form-label">{{ __('Upload License') }}</label>
-                            <div class="col-sm-8">
-                                <input id="license_file" type="file" class="form-control-file{{ $errors->has('license_file') ? ' is-invalid' : '' }}" name="license_file" value="{{ old('license_file') }}" placeholder="license_file">
-
-                            @if ($errors->has('license_file'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('license_file') }}</strong>
-                                </span>
-                            @endif
-                            </div>
-                        </div> --}}
-                        
-                                             
-                        <div class="form-group row">
-                                <div class="col-sm-1 ml-auto">
-                                    <input id="agreement" class="checkbox" type="checkbox" name="agreement" required>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="customRadio1" name="looking_for" class="custom-control-input" required>
+                                    <label class="custom-control-label" for="customRadio1">Professional</label>
                                 </div>
-                                <label for="agreement" class="col-sm-8">I have read and agree to the<a href="">Terms and Conditions</a> governing the use of onlinejobs.my</label>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="customRadio2" name="looking_for" class="custom-control-input" required>
+                                    <label class="custom-control-label" for="customRadio2">General Worker</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="customRadio3" name="looking_for" class="custom-control-input" required>
+                                    <label class="custom-control-label" for="customRadio3">Domestic Maid</label>
+                                </div>
+                            </div>
                         </div>
+                                 
+                        <div class="form-group row">
+                            <div class="col-sm-8 ml-auto">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="agreement" id="customCheck1" required checked>
+                                    <label class="custom-control-label" for="customCheck1">I have read and agree to the<a href="">Terms and Conditions</a> governing the use of onlinejobs.my</label>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- <div class="form-group">
+                            <div class="col-sm-1 ml-auto">
+                                <input id="agreement" class="checkbox" type="checkbox" name="agreement" required>
+                            </div>
+                            <label for="agreement" class="col-sm-7">I have read and agree to the<a href="">Terms and Conditions</a> governing the use of onlinejobs.my</label>
+                        </div> --}}
                         <div class="form-group mb-0">
                             <button type="submit" class="btn btn-warning btn-block">
                                 {{ __('Register') }}
