@@ -168,21 +168,23 @@ route::resource('/job', 'JobController');
 /*Professional*/
 
 Route::group(['middleware' => 'auth'], function(){
-    route::get('/professional/profile', 'ProfessionalProfileController@profile')->name('professional.profile');
-    route::resource('/professional', 'ProfessionalProfileController')->except(['index','create','store','show']);
-    route::get('/qualification/{user}/edit', 'ProfessionalProfileController@editQualification')->name('qualification.edit');
-    route::patch('/qualification/{user}', 'ProfessionalProfileController@updateQualification')->name('qualification.update');
-    route::get('/professionalExperience/{user}/edit', 'ProfessionalProfileController@editProfessionalExperience')->name('professionalExperience.edit');
-    route::patch('/professionalExperience/{user}', 'ProfessionalProfileController@updateProfessionalExperience')->name('professionalExperience.update');
+    Route::get('/professional/profile', 'ProfessionalProfileController@profile')->name('professional.profile');
+    Route::resource('/professional', 'ProfessionalProfileController')->except(['index','create','store','show']);
+    Route::get('/qualification/{user}/edit', 'ProfessionalProfileController@editQualification')->name('qualification.edit');
+    Route::patch('/qualification/{user}', 'ProfessionalProfileController@updateQualification')->name('qualification.update');
+    Route::get('/professionalExperience/{user}/edit', 'ProfessionalProfileController@editProfessionalExperience')->name('professionalExperience.edit');
+    Route::patch('/professionalExperience/{user}', 'ProfessionalProfileController@updateProfessionalExperience')->name('professionalExperience.update');
 });
-route::get('/professional', 'ProfessionalProfileController@index')->name('professional.index');
-route::get('/professional/create', 'ProfessionalProfileController@create')->name('professional.create');
-route::post('/professional/store', 'ProfessionalProfileController@store')->name('professional.store');
-route::get('/professional/{id}', 'ProfessionalProfileController@show')->name('professional.show');
+Route::get('/professional', 'ProfessionalProfileController@index')->name('professional.index');
+Route::get('/professional/create', 'ProfessionalProfileController@create')->name('professional.create');
+Route::post('/professional/store', 'ProfessionalProfileController@store')->name('professional.store');
+Route::get('/professional/{id}', 'ProfessionalProfileController@show')->name('professional.show');
 
 /*Retired Personnel*/
-route::get('/retiredPersonnel', 'RetiredPersonnelController@index')->name('retiredPersonnel.index');
-route::get('/retiredPersonnel/create', 'RetiredPersonnelController@create')->name('retiredPersonnel.create');
-route::post('/retiredPersonnel/store', 'RetiredPersonnelController@store')->name('retiredPersonnel.store');
+Route::get('/retiredPersonnel', 'RetiredPersonnelController@index')->name('retiredPersonnel.index');
+Route::get('/retiredPersonnel/create', 'RetiredPersonnelController@create')->name('retiredPersonnel.create');
+Route::post('/retiredPersonnel/store', 'RetiredPersonnelController@store')->name('retiredPersonnel.store');
+
+Route::get('/retiredPersonnel/experience/add', 'RetiredPersonnelController@addExperience')->name('retiredPersonnel.addExperience')->middleware('auth');
 
 

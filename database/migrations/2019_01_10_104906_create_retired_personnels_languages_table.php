@@ -15,7 +15,10 @@ class CreateRetiredPersonnelsLanguagesTable extends Migration
     {
         Schema::create('retired_personnels_languages', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('user_id');
             $table->string('language')->nullable();
+            $table->string('speaking')->nullable();
+            $table->string('writing')->nullable();
             $table->timestamps();
         });
     }

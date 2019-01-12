@@ -15,6 +15,7 @@ class CreateRetiredPersonnelsWorkExperiencesTable extends Migration
     {
         Schema::create('retired_personnels_work_experiences', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('user_id');
             $table->string('company_name')->nullable();
             $table->string('address')->nullable();
             $table->string('position')->nullable();

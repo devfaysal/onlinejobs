@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\User;
 use App\Country;
 use App\RetiredPersonnel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class RetiredPersonnelController extends Controller
@@ -50,6 +52,8 @@ class RetiredPersonnelController extends Controller
         $user->code = $this->user_code($user_country);
         $user->save();
 
+        $user->attachRole('retired');
+
         $retiredPersonnel = new RetiredPersonnel;
         $retiredPersonnel->user_id = $user->id;
         $retiredPersonnel->name = $request->name;
@@ -69,6 +73,11 @@ class RetiredPersonnelController extends Controller
         $retiredPersonnel->full_time = $request->full_time;
         $retiredPersonnel->describe_working_hours = $request->describe_working_hours;
         $retiredPersonnel->save();
+
+        Session::flash('message', 'Information saved successfully!'); 
+        Session::flash('alert-class', 'alert-success');
+        Auth::login($user);
+        return redirect()->route('retiredPersonnel.addExperience');
     }
 
     /**
@@ -114,6 +123,11 @@ class RetiredPersonnelController extends Controller
     public function destroy(RetiredPersonnel $retiredPersonnel)
     {
         //
+    }
+
+    public function addExperience()
+    {
+        return view('retired.addExperience');
     }
 
     public function user_code($country_id)

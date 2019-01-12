@@ -4,13 +4,13 @@
 <div class="container-fluid">
     <div class="row bg-dark">
         <div class="col-12">
-            <h4 class="text-center text-white pb-3 pt-4"><span class="mr-3">Personal</span> <span class="mr-3 text-muted">Education</span> <span class="mr-3 text-muted">Experience</span></h4>
+            <h4 class="text-center text-white pb-3 pt-4"><span class="mr-3">Personal</span> <span class="mr-3 text-muted">Experience</span> <span class="mr-3 text-muted">Language</span></h4>
         </div>
     </div>
 </div>
 <div class="container mt-3">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="card auth-form mb-5">
                 <div class="card-body">
                     <form method="POST" action="{{ route('retiredPersonnel.store') }}" enctype="multipart/form-data">
@@ -153,8 +153,8 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="government_employee" class="col-sm-4 col-form-label text-right">{{ __('Were you government employee ?') }}</label>
-                            <div class="col-sm-8 ml-auto mt-3">
+                            <label for="government_employee" class="col-sm-4 col-form-label text-right">{{ __('Were you government servent ?') }}</label>
+                            <div class="col-sm-8 ml-auto mt-2">
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input type="radio" id="government_employee1" name="government_employee" value="yes" class="custom-control-input">
                                     <label class="custom-control-label" for="government_employee1">Yes</label>
