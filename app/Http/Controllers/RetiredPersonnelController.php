@@ -19,7 +19,7 @@ class RetiredPersonnelController extends Controller
      */
     public function index()
     {
-        //
+        return view('retired.index');
     }
 
     /**
@@ -77,7 +77,7 @@ class RetiredPersonnelController extends Controller
         Session::flash('message', 'Information saved successfully!'); 
         Session::flash('alert-class', 'alert-success');
         Auth::login($user);
-        return redirect()->route('retiredPersonnel.addExperience');
+        return redirect()->route('retiredPersonnelExperience.create');
     }
 
     /**
@@ -123,11 +123,6 @@ class RetiredPersonnelController extends Controller
     public function destroy(RetiredPersonnel $retiredPersonnel)
     {
         //
-    }
-
-    public function addExperience()
-    {
-        return view('retired.addExperience');
     }
 
     public function user_code($country_id)

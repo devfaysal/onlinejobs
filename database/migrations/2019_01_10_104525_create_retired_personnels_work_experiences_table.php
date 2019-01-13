@@ -20,8 +20,8 @@ class CreateRetiredPersonnelsWorkExperiencesTable extends Migration
             $table->string('address')->nullable();
             $table->string('position')->nullable();
             $table->string('work_description')->nullable();
-            $table->string('from')->nullable();
-            $table->string('to')->nullable();
+            $table->date('from')->nullable();
+            $table->date('to')->nullable();
             $table->string('nature_of_company_business')->nullable();
             $table->timestamps();
         });
