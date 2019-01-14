@@ -70,6 +70,11 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'positions_name' => 'required',
+            'closing_date' => 'date',
+            'vacancies_description' => 'required',
+        ]);
         $job = new Job;
         $job->user_id = auth()->id();
         $job->positions_name = $request->positions_name;
