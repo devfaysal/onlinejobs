@@ -80,6 +80,7 @@
                                 <table id="workers-table" class="table table-condensed">
                                     <thead>
                                         <tr>
+                                            <th></th>
                                             <th>ID</th>
                                             <th>Image</th>
                                             <th>Name</th>
@@ -92,6 +93,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
+                                            <th>ID</th>
                                             <th class="hide">Image</th>
                                             <th class="hide">ID</th>
                                             <th>Name</th>
@@ -222,6 +224,7 @@
         ajax: '{{route('admin.getWorkersData')}}',
         columns: [
             {data: 'id', name: 'id'},
+            {data: 'code', name: 'code'},
             {data: 'image', name: 'image', orderable: false, searchable: false},
             {data: 'name', name: 'name'},
             {data: 'passport', name: 'passport'},
