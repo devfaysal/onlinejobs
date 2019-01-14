@@ -305,19 +305,18 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-4" for="">Looking For * </label>
-                            <div class="col-sm-8">
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="customRadio1" name="looking_for" class="custom-control-input" required>
-                                    <label class="custom-control-label" for="customRadio1">Professional</label>
+                            <div class="col-sm-8 ml-auto">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" name="looking_for_professional" class="custom-control-input" id="looking_for_professional">
+                                    <label class="custom-control-label" for="looking_for_professional">Looking For Professional</label>
                                 </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="customRadio2" name="looking_for" class="custom-control-input" required>
-                                    <label class="custom-control-label" for="customRadio2">General Worker</label>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" name="looking_for_gw" class="custom-control-input" id="looking_for_gw">
+                                    <label class="custom-control-label" for="looking_for_gw">Looking For General Worker</label>
                                 </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="customRadio3" name="looking_for" class="custom-control-input" required>
-                                    <label class="custom-control-label" for="customRadio3">Domestic Maid</label>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" name="looking_for_gw" class="custom-control-input" id="looking_for_dm">
+                                    <label class="custom-control-label" for="looking_for_dm">Looking For Domestic Maid</label>
                                 </div>
                             </div>
                         </div>
