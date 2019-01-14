@@ -23,7 +23,7 @@
             <div class="card auth-form mb-5">
                 <div class="card-body">
                     @forelse ($jobs as $job)
-                        <a href="{{route('job.show', $job->id)}}" target="_blank">{{$job->title}}</a><br/>
+                        <a href="{{route('job.show', $job->id)}}" target="_blank">{{$job->positions_name}}</a><br/>
                     @empty
                         No Jobs Found
                     @endforelse

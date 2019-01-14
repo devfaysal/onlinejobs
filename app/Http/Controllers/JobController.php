@@ -71,21 +71,46 @@ class JobController extends Controller
     public function store(Request $request)
     {
         $job = new Job;
-        $job->user_id = auth()->user()->id;
-        $job->title = $request->title;
-        $job->company = $request->company;
-        $job->description = $request->description;
-        $job->location = $request->location;
-        $job->salary_range_1 = $request->salary_range_1;
-        $job->salary_range_2 = $request->salary_range_2;
-        $job->vacancy = $request->vacancy;
-        $job->nature = $request->nature;
+        $job->user_id = auth()->id();
+        $job->positions_name = $request->positions_name;
+        $job->vacancies_description = $request->vacancies_description;
+        $job->scope_of_duties = $request->scope_of_duties;
+        $job->skills = $request->skills;
+        $job->related_experience_year = $request->related_experience_year;
+        $job->related_experience_month = $request->related_experience_month;
+        $job->job_vacancies_type = $request->job_vacancies_type;
+        $job->salary_offer_currency = $request->salary_offer_currency;
+        $job->salary_offer = $request->salary_offer;
+        $job->salary_offer_period = $request->salary_offer_period;
+        $job->postcode = $request->postcode;
+        $job->district = $request->district;
+        $job->town = $request->town;
+        $job->state = $request->state;
+        $job->total_number_of_vacancies = $request->total_number_of_vacancies;
+        $job->closing_date = $request->closing_date;
+        $job->working_hours = $request->working_hours;
+        $job->person_in_charge = $request->person_in_charge;
+        $job->telephone_number = $request->telephone_number;
+        $job->handphone_number = $request->handphone_number;
+        $job->email = $request->email;
+        $job->gender = $request->gender;
+        $job->marital_status = $request->marital_status;
+        $job->race = $request->race;
+        $job->age_eligibillity = $request->age_eligibillity;
+        $job->other_requirements = $request->other_requirements;
+        $job->facilities = $request->facilities;
+        $job->language = $request->language;
+        $job->minimum_academic_qualification = $request->minimum_academic_qualification;
+        $job->academic_field = $request->academic_field;
+        $job->driving_license = $request->driving_license;
+        $job->other_skills = $request->other_skills;
+        
         $job->save();
 
         Session::flash('message', 'Job Posted Successfully!!'); 
         Session::flash('alert-class', 'alert-success');
 
-        return redirect()->route('job.index');
+        return redirect()->route('employer.show');
     }
 
     /**

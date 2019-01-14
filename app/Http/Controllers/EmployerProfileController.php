@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Job;
 use Session;
 use Storage;
 use App\User;
@@ -75,8 +76,9 @@ class EmployerProfileController extends Controller
         $total_workers = User::whereRoleIs('worker')->count();
         $total_agents = User::whereRoleIs('agent')->count();
         $offer_sent = Offer::where('employer_id', auth()->user()->id)->count();
+        $jobs = Job::where('user_id', auth()->id())->get();
 
-        return view('employer.show', compact('employer','total_maids','total_workers', 'total_agents','offer_sent', 'countrys'));
+        return view('employer.show', compact('jobs','employer','total_maids','total_workers', 'total_agents','offer_sent', 'countrys'));
     }
 
     public function getAllDemands()

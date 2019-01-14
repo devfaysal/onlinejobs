@@ -6,14 +6,13 @@
         <div class="col-md-8">
             <div class="card mb-5">
                 <div class="card-header">
-                    <h4 class="card-title mt-3">{{$job->title}}</h4>
+                    <h4 class="card-title mt-3">{{$job->positions_name}}</h4>
                 </div>
                 <div class="card-body">
-                    <p><strong>Company: </strong>{{$job->company}}</p>
-                    <p><strong>Location: </strong>{{$job->location}}</p>
-                    <p><strong>Vacancy: </strong>{{$job->vacancy}}</p>
-                    <p><strong>Nature: </strong>{{$job->nature}}</p>
-                    <p><strong>Salary Range: </strong>{{$job->salary_range_1}} - {{$job->salary_range_2}}</p>
+                    <p><strong>Vacancies Description: </strong>{{$job->vacancies_description}}</p>
+                    <p><strong>Vacancy: </strong>{{$job->total_number_of_vacancies}}</p>
+                    <p><strong>Scope of Duties: </strong>{{$job->scope_of_duties}}</p>
+                    <p><strong>Salary: </strong>{{$job->salary_offer_currency}} {{$job->salary_offer}} {{$job->salary_offer_period}}</p>
                     <p><strong>Description: </strong>{{$job->description}}</p>
                 </div>
             </div>

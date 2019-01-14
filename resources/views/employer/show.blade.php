@@ -48,6 +48,19 @@
                     </div>
                 </div>
                 @if(Auth::user()->status == 1)
+                {{-- Jobs Posted --}}
+                <div class="card mt-4">
+                    <h4 class="card-title text-center mt-3">
+                        All Jobs
+                    </h4>
+                    <div class="card-body">
+                        @forelse ($jobs as $job)
+                            <a href="{{route('job.show', $job->id)}}" target="_blank">{{$job->positions_name}}</a><br/>
+                        @empty
+                            No Jobs Posted
+                        @endforelse
+                    </div>
+                </div>
                 <!-- Demands list -->
                 <div class="card mt-4">
                     <h4 class="card-title text-center mt-3">

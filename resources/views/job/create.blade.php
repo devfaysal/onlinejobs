@@ -12,8 +12,8 @@
 <div class="tab-banner">
     <span class="step">Vacancies Details</span>
     <span class="step">Contact Details</span>
-    <span class="step">Candidates Requirement & Facilities</span>
-    <span class="step">Academic Qualifications & Skills</span>
+    <span class="step">Candidates Requirement</span>
+    <span class="step">Academic Qualifications</span>
 </div>
 <div class="tab-section">
 <div class="container mt-3">
@@ -25,98 +25,141 @@
                         @csrf
                     <div class="tab">
                         <div class="form-group dis-cls">
-                            <label for="title" class="col-sm-4 col-form-label text-right">{{ __('Title *') }}</label>
+                            <label for="positions_name" class="col-sm-4 col-form-label text-right">{{ __('Position Name *') }}</label>
                             <div class="col-sm-8">
-                                <input id="title" type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ old('title') }}" placeholder="Title" required>
+                                <input id="positions_name" type="text" class="form-control{{ $errors->has('positions_name') ? ' is-invalid' : '' }}" name="positions_name" value="{{ old('positions_name') }}" required>
 
-                            @if ($errors->has('title'))
+                            @if ($errors->has('positions_name'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('title') }}</strong>
+                                    <strong>{{ $errors->first('positions_name') }}</strong>
                                 </span>
                             @endif
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="company" class="col-sm-4 col-form-label text-right">{{ __('Company *') }}</label>
+                            <label for="vacancies_description" class="col-sm-4 col-form-label text-right">{{ __('Vacancies Description *') }}</label>
                             <div class="col-sm-8">
-                                <input id="company" type="text" class="form-control{{ $errors->has('company') ? ' is-invalid' : '' }}" name="company" value="{{ old('company') }}" placeholder="Company" required>
-
-                            @if ($errors->has('company'))
+                                <textarea name="vacancies_description" id="vacancies_description" class="form-control{{ $errors->has('vacancies_description') ? ' is-invalid' : '' }}" cols="30" rows="6" required>{{ old('vacancies_description') }}</textarea>
+                            @if ($errors->has('vacancies_description'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('company') }}</strong>
+                                    <strong>{{ $errors->first('vacancies_description') }}</strong>
                                 </span>
                             @endif
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="description" class="col-sm-4 col-form-label text-right">{{ __('Job Description *') }}</label>
+                            <label for="scope_of_duties" class="col-sm-4 col-form-label text-right">{{ __('Scope of Duties *') }}</label>
                             <div class="col-sm-8">
-                                <textarea name="description" id="description" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" cols="30" rows="10" required>{{ old('description') }}</textarea>
-                            @if ($errors->has('description'))
+                                <textarea name="scope_of_duties" id="scope_of_duties" class="form-control{{ $errors->has('scope_of_duties') ? ' is-invalid' : '' }}" cols="30" rows="6" required>{{ old('scope_of_duties') }}</textarea>
+                            @if ($errors->has('scope_of_duties'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('description') }}</strong>
+                                    <strong>{{ $errors->first('scope_of_duties') }}</strong>
                                 </span>
                             @endif
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="location" class="col-sm-4 col-form-label text-right">{{ __('Location *') }}</label>
+                            <label for="skills" class="col-sm-4 col-form-label text-right">{{ __('Skills *') }}</label>
                             <div class="col-sm-8">
-                                <input id="location" type="text" class="form-control{{ $errors->has('location') ? ' is-invalid' : '' }}" name="location" value="{{ old('location') }}" placeholder="Location" required>
+                                <input id="skills" type="text" class="form-control{{ $errors->has('skills') ? ' is-invalid' : '' }}" name="skills" value="{{ old('skills') }}" required>
 
-                            @if ($errors->has('location'))
+                            @if ($errors->has('skills'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('location') }}</strong>
+                                    <strong>{{ $errors->first('skills') }}</strong>
                                 </span>
                             @endif
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="salary_range_1" class="col-sm-4 col-form-label text-right">{{ __('Salary Range *') }}</label>
+                            <label for="related_experience_year" class="col-sm-4 col-form-label text-right">{{ __('Related Experience *') }}</label>
+                            <div class="col-sm-4">
+                                <input id="related_experience_year" type="text" class="form-control{{ $errors->has('related_experience_year') ? ' is-invalid' : '' }}" name="related_experience_year" value="{{ old('related_experience_year') }}" placeholder="Year">
+                            </div>
+                            <div class="col-sm-4">
+                                <input id="related_experience_month" type="text" class="form-control{{ $errors->has('related_experience_month') ? ' is-invalid' : '' }}" name="related_experience_month" value="{{ old('related_experience_month') }}" placeholder="Month">
+                            </div>
+                        </div>
+                        <div class="form-group dis-cls">
+                            <label for="job_vacancies_type" class="col-sm-4 col-form-label text-right">{{ __('Job Vacancies Type *') }}</label>
                             <div class="col-sm-8">
-                                <input id="salary_range_1" type="text" class="form-control{{ $errors->has('salary_range_1') ? ' is-invalid' : '' }}" name="salary_range_1" value="{{ old('salary_range_1') }}" placeholder="Salary Range" required>
-
-                            @if ($errors->has('salary_range_1'))
+                                <select name="job_vacancies_type" id="job_vacancies_type" class="form-control{{ $errors->has('job_vacancies_type') ? ' is-invalid' : '' }}">
+                                    <option value="Permanent">Permanent</option>
+                                    <option value="Part-Time">Part-Time</option>
+                                    <option value="Contract">Contract</option>
+                                </select>
+                            @if ($errors->has('job_vacancies_type'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('salary_range_1') }}</strong>
+                                    <strong>{{ $errors->first('job_vacancies_type') }}</strong>
                                 </span>
                             @endif
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="salary_range_2" class="col-sm-4 col-form-label text-right">{{ __('Salary Range *') }}</label>
+                            <label for="salary_offer" class="col-sm-4 col-form-label text-right">{{ __('Salary Offer *') }}</label>
+                            <div class="col-sm-2">
+                                <select name="salary_offer_currency" id="salary_offer_currency" class="form-control{{ $errors->has('salary_offer_currency') ? ' is-invalid' : '' }}">
+                                    <option value="RM">RM</option>
+                                    <option value="BDT">BDT</option>
+                                    <option value="USD">USD</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <input id="salary_offer" type="text" class="form-control{{ $errors->has('salary_offer') ? ' is-invalid' : '' }}" name="salary_offer" value="{{ old('salary_offer') }}" required>
+                            </div>
+                            <div class="col-sm-3">
+                                <select name="salary_offer_period" id="salary_offer_period" class="form-control{{ $errors->has('salary_offer_period') ? ' is-invalid' : '' }}">
+                                    <option value="Monthly">Monthly</option>
+                                    <option value="Yearly">Yearly</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group dis-cls">
+                            <label for="postcode" class="col-sm-4 col-form-label text-right">{{ __('Job Location') }}</label>
+                            <div class="col-sm-2">
+                                    <input id="postcode" type="text" class="form-control{{ $errors->has('postcode') ? ' is-invalid' : '' }}" name="postcode" value="{{ old('postcode') }}" placeholder="Postcode">
+                            </div>
+                            <div class="col-sm-2">
+                                <input id="district" type="text" class="form-control{{ $errors->has('district') ? ' is-invalid' : '' }}" name="district" value="{{ old('district') }}" placeholder="District">
+                            </div>
+                            <div class="col-sm-2">
+                                <input id="town" type="text" class="form-control{{ $errors->has('town') ? ' is-invalid' : '' }}" name="town" value="{{ old('town') }}" placeholder="Town">
+                            </div>
+                            <div class="col-sm-2">
+                                <input id="state" type="text" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}" name="state" value="{{ old('state') }}" placeholder="State">
+                            </div>
+                        </div>
+                        <div class="form-group dis-cls">
+                            <label for="total_number_of_vacancies" class="col-sm-4 col-form-label text-right">{{ __('Total Number of Vacancies *') }}</label>
                             <div class="col-sm-8">
-                                <input id="salary_range_2" type="text" class="form-control{{ $errors->has('salary_range_1') ? ' is-invalid' : '' }}" name="salary_range_2" value="{{ old('salary_range_2') }}" placeholder="Salary Range" required>
+                                <input id="total_number_of_vacancies" type="text" class="form-control{{ $errors->has('total_number_of_vacancies') ? ' is-invalid' : '' }}" name="total_number_of_vacancies" value="{{ old('total_number_of_vacancies') }}" required>
 
-                            @if ($errors->has('salary_range_1'))
+                            @if ($errors->has('total_number_of_vacancies'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('salary_range_2') }}</strong>
+                                    <strong>{{ $errors->first('total_number_of_vacancies') }}</strong>
                                 </span>
                             @endif
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="vacancy" class="col-sm-4 col-form-label text-right">{{ __('Vacancy *') }}</label>
+                            <label for="closing_date" class="col-sm-4 col-form-label text-right">{{ __('Closing Date *') }}</label>
                             <div class="col-sm-8">
-                                <input id="vacancy" type="text" class="form-control{{ $errors->has('vacancy') ? ' is-invalid' : '' }}" name="vacancy" value="{{ old('vacancy') }}" placeholder="Vacancy" required>
+                                <input id="closing_date" type="date" class="form-control{{ $errors->has('closing_date') ? ' is-invalid' : '' }}" name="closing_date" value="{{ old('closing_date') }}">
 
-                            @if ($errors->has('vacancy'))
+                            @if ($errors->has('closing_date'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('vacancy') }}</strong>
+                                    <strong>{{ $errors->first('closing_date') }}</strong>
                                 </span>
                             @endif
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="nature" class="col-sm-4 col-form-label text-right">{{ __('Nature *') }}</label>
+                            <label for="working_hours" class="col-sm-4 col-form-label text-right">{{ __('Working Hours *') }}</label>
                             <div class="col-sm-8">
-                                <input id="nature" type="text" class="form-control{{ $errors->has('nature') ? ' is-invalid' : '' }}" name="nature" value="{{ old('nature') }}" placeholder="Nature" required>
-
-                            @if ($errors->has('nature'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('nature') }}</strong>
-                                </span>
-                            @endif
+                                <select name="working_hours" id="working_hours" class="form-control{{ $errors->has('working_hours') ? ' is-invalid' : '' }}">
+                                    <option value="Normal">Normal</option>
+                                    <option value="Shift">Shift</option>
+                                    <option value="Flexi-Time">Flexi-Time</option>
+                                </select>
                             </div>
                         </div>
                         
@@ -128,18 +171,183 @@
                         </div> --}}
                     </div>
                     <div class="tab">
-                        <div class="form-group mb-0">
-                            Page 2
+                        <div class="form-group dis-cls">
+                            <label for="person_in_charge" class="col-sm-4 col-form-label text-right">{{ __('Person in Charge *') }}</label>
+                            <div class="col-sm-8">
+                                <input id="person_in_charge" type="text" class="form-control{{ $errors->has('person_in_charge') ? ' is-invalid' : '' }}" name="person_in_charge" value="{{ old('person_in_charge') }}">
+
+                            @if ($errors->has('person_in_charge'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('person_in_charge') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="form-group dis-cls">
+                            <label for="telephone_number" class="col-sm-4 col-form-label text-right">{{ __('Telephone Number *') }}</label>
+                            <div class="col-sm-8">
+                                <input id="telephone_number" type="text" class="form-control{{ $errors->has('telephone_number') ? ' is-invalid' : '' }}" name="telephone_number" value="{{ old('telephone_number') }}">
+
+                            @if ($errors->has('telephone_number'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('telephone_number') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="form-group dis-cls">
+                            <label for="handphone_number" class="col-sm-4 col-form-label text-right">{{ __('Handphone Number *') }}</label>
+                            <div class="col-sm-8">
+                                <input id="handphone_number" type="text" class="form-control{{ $errors->has('handphone_number') ? ' is-invalid' : '' }}" name="handphone_number" value="{{ old('handphone_number') }}">
+
+                            @if ($errors->has('handphone_number'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('handphone_number') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="form-group dis-cls">
+                            <label for="email" class="col-sm-4 col-form-label text-right">{{ __('Email *') }}</label>
+                            <div class="col-sm-8">
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}">
+
+                            @if ($errors->has('email'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
+                            </div>
                         </div>
                     </div>
+                    {{-- //Candidate details --}}
                     <div class="tab">
-                        <div class="form-group mb-0">
-                            Page 3
+                        <div class="form-group dis-cls">
+                            <label for="gender" class="col-sm-4 col-form-label text-right">{{ __('Gender *') }}</label>
+                            <div class="col-sm-8">
+                                <select name="gender" id="gender" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group dis-cls">
+                            <label for="marital_status" class="col-sm-4 col-form-label text-right">{{ __('Marital Status *') }}</label>
+                            <div class="col-sm-8">
+                                <select name="marital_status" id="marital_status" class="form-control{{ $errors->has('marital_status') ? ' is-invalid' : '' }}">
+                                    <option value="Any">Any</option>
+                                    <option value="Single">Single</option>
+                                    <option value="Married">Married</option>
+                                    <option value="Divorced">Divorced</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group dis-cls">
+                            <label for="race" class="col-sm-4 col-form-label text-right">{{ __('Race *') }}</label>
+                            <div class="col-sm-8">
+                                <select name="race" id="race" class="form-control{{ $errors->has('race') ? ' is-invalid' : '' }}">
+                                    <option value="Malay">Malay</option>
+                                    <option value="Indian">Indian</option>
+                                    <option value="Chinese">Chinese</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group dis-cls">
+                            <label for="age_eligibillity" class="col-sm-4 col-form-label text-right">{{ __('Age Eligibillity *') }}</label>
+                            <div class="col-sm-8">
+                                <select name="age_eligibillity" id="age_eligibillity" class="form-control{{ $errors->has('age_eligibillity') ? ' is-invalid' : '' }}">
+                                    <option value="20-24">20-24</option>
+                                    <option value="25-30">25-30</option>
+                                    <option value="30-35">30-35</option>
+                                    <option value="35-40">35-40</option>
+                                    <option value="40+">40+</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group dis-cls">
+                            <label for="other_requirements" class="col-sm-4 col-form-label text-right">{{ __('Other Requirements *') }}</label>
+                            <div class="col-sm-8">
+                                <textarea name="other_requirements" id="other_requirements" class="form-control{{ $errors->has('other_requirements') ? ' is-invalid' : '' }}" cols="30" rows="6" required>{{ old('other_requirements') }}</textarea>
+                            @if ($errors->has('other_requirements'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('other_requirements') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="form-group dis-cls">
+                            <label for="facilities" class="col-sm-4 col-form-label text-right">{{ __('Facilities *') }}</label>
+                            <div class="col-sm-8">
+                                <input id="facilities" type="text" class="form-control{{ $errors->has('facilities') ? ' is-invalid' : '' }}" name="facilities" value="{{ old('facilities') }}">
+
+                            @if ($errors->has('facilities'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('facilities') }}</strong>
+                                </span>
+                            @endif
+                            </div>
                         </div>
                     </div>
+                    {{-- Academic --}}
                     <div class="tab">
-                        <div class="form-group mb-0">
-                            Page 4
+                        <div class="form-group dis-cls">
+                            <label for="language" class="col-sm-4 col-form-label text-right">{{ __('Language *') }}</label>
+                            <div class="col-sm-8">
+                                <input id="language" type="text" class="form-control{{ $errors->has('language') ? ' is-invalid' : '' }}" name="language" value="{{ old('language') }}">
+
+                            @if ($errors->has('language'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('language') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="form-group dis-cls">
+                            <label for="minimum_academic_qualification" class="col-sm-4 col-form-label text-right">{{ __('Minimum Academic Qualification *') }}</label>
+                            <div class="col-sm-8">
+                                <input id="minimum_academic_qualification" type="text" class="form-control{{ $errors->has('minimum_academic_qualification') ? ' is-invalid' : '' }}" name="minimum_academic_qualification" value="{{ old('minimum_academic_qualification') }}">
+
+                            @if ($errors->has('minimum_academic_qualification'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('minimum_academic_qualification') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="form-group dis-cls">
+                            <label for="academic_field" class="col-sm-4 col-form-label text-right">{{ __('Academic Field *') }}</label>
+                            <div class="col-sm-8">
+                                <input id="academic_field" type="text" class="form-control{{ $errors->has('academic_field') ? ' is-invalid' : '' }}" name="academic_field" value="{{ old('academic_field') }}">
+
+                            @if ($errors->has('academic_field'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('academic_field') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="form-group dis-cls">
+                            <label for="driving_license" class="col-sm-4 col-form-label text-right">{{ __('Driving License *') }}</label>
+                            <div class="col-sm-8">
+                                <input id="driving_license" type="text" class="form-control{{ $errors->has('driving_license') ? ' is-invalid' : '' }}" name="driving_license" value="{{ old('driving_license') }}">
+
+                            @if ($errors->has('driving_license'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('driving_license') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="form-group dis-cls">
+                            <label for="other_skills" class="col-sm-4 col-form-label text-right">{{ __('Other Skills *') }}</label>
+                            <div class="col-sm-8">
+                                <textarea name="other_skills" id="other_skills" class="form-control{{ $errors->has('other_skills') ? ' is-invalid' : '' }}" cols="30" rows="6" required>{{ old('other_skills') }}</textarea>
+                            @if ($errors->has('other_skills'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('other_skills') }}</strong>
+                                </span>
+                            @endif
+                            </div>
                         </div>
                     </div>
                         <div style="overflow:auto;">
