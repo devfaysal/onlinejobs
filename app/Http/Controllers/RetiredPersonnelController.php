@@ -22,6 +22,14 @@ class RetiredPersonnelController extends Controller
         return view('retired.index');
     }
 
+    public function profile()
+    {
+        $user = Auth::user();
+        return view('retired.show', [
+            'user' => $user
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -86,9 +94,12 @@ class RetiredPersonnelController extends Controller
      * @param  \App\RetiredPersonnel  $retiredPersonnel
      * @return \Illuminate\Http\Response
      */
-    public function show(RetiredPersonnel $retiredPersonnel)
+    public function show( $id)
     {
-        //
+        $user = User::where('id', $id)->first();
+        return view('retired.show', [
+            'user' => $user
+        ]);
     }
 
     /**

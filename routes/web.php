@@ -185,6 +185,8 @@ Route::get('/retiredPersonnel', 'RetiredPersonnelController@index')->name('retir
 Route::get('/retiredPersonnel/create', 'RetiredPersonnelController@create')->name('retiredPersonnel.create');
 Route::post('/retiredPersonnel/store', 'RetiredPersonnelController@store')->name('retiredPersonnel.store');
 
+Route::get('/retiredPersonnel/profile', 'RetiredPersonnelController@profile')->name('retiredPersonnel.profile')->middleware('auth');
+
 Route::get('/retiredPersonnel/experience/add', 'RetiredPersonnelsWorkExperienceController@create')->name('retiredPersonnelExperience.create')->middleware('auth');
 Route::post('/retiredPersonnel/experience/store', 'RetiredPersonnelsWorkExperienceController@store')->name('retiredPersonnelExperience.store')->middleware('auth');
 

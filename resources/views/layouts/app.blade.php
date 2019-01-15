@@ -170,6 +170,9 @@
                             @if(Auth::user()->hasRole('professional') )
                                 <a class="dropdown-item" href="{{route('professional.profile')}}">Profile</a>
                             @endif
+                            @if(Auth::user()->hasRole('retired') )
+                                <a class="dropdown-item" href="{{route('retiredPersonnel.profile')}}">Profile</a>
+                            @endif
 
                             <a class="dropdown-item" href="{{route('changePassword')}}">Change Password</a>
                             <div class="dropdown-divider"></div>

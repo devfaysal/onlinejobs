@@ -65,6 +65,12 @@ class User extends Authenticatable
     public function retired_personnel(){
         return $this->hasOne(RetiredPersonnel::class);
     }
+    public function retired_personnel_language(){
+        return $this->hasMany(RetiredPersonnelsLanguage::class);
+    }
+    public function retired_personnel_experiences(){
+        return $this->hasMany(RetiredPersonnelsWorkExperience::class);
+    }
     public function professional_experiences(){
         return $this->hasMany(ProfessionalExperience::class);
     }
