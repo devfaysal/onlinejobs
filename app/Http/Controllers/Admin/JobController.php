@@ -21,11 +21,16 @@ class JobController extends Controller
 
     public function getJobsData()
     {
-        $jobs = Job::all();
+        if(auth()->user()->hasRole('employer')){
+            $jobs = Job::where('user_id', auth()->id())->get();
+        }else{
+            $jobs = Job::all();
+        }
+
 
         return DataTables::of($jobs)
         ->addColumn('action', function ($job) {
-            $string = '<a href="'.route('job.show', $job->id).'" class="btn btn-xs btn-primary">View</a> ';
+            $string = '<a target="_blank" href="'.route('job.show', $job->id).'" class="btn btn-xs btn-primary">View</a> ';
             return $string;
         })
         ->make(true);

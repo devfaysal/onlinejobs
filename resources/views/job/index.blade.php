@@ -20,15 +20,27 @@
                 @else
                     <h4 class="text-center pb-3 pt-4">All Jobs</h4>
                 @endif
-            <div class="card auth-form mb-5">
-                <div class="card-body">
-                    @forelse ($jobs as $job)
-                        <a href="{{route('job.show', $job->id)}}" target="_blank">{{$job->positions_name}}</a><br/>
-                    @empty
+            
+                @forelse ($jobs as $job)
+                <a class="text-dark nav-link" href="{{route('job.show', $job->id)}}" target="_blank">
+                    <div class="card auth-form mb-3">
+                        <div class="card-body">
+                            <h4 class="text-success">{{$job->positions_name}}</h4>
+                            <p class="mb-0"><i class="mr-3 fa fa-map-marker" aria-hidden="true"></i> {{$job->district}}, {{$job->town}}, {{$job->state}}</p>
+                            <p class="mb-0"><i class="mr-2 fa fa-briefcase" aria-hidden="true"></i> {{$job->related_experience_year ?? 0 }} Year {{$job->related_experience_month ?? 0}} Month</p>
+                            <p class="mb-0"><i class="mr-2 fa fa-graduation-cap" aria-hidden="true"></i> {{$job->minimum_academic_qualification}}</p>
+                            <p class=" mb-0 text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Closing Date: {{$job->closing_date}}</p>
+                        </div>
+                    </div>
+                </a>
+                @empty
+                <div class="card auth-form mb-5">
+                    <div class="card-body">
                         No Jobs Found
-                    @endforelse
+                    </div>
                 </div>
-            </div>
+                @endforelse
+                
         </div>
     </div>
 </div>

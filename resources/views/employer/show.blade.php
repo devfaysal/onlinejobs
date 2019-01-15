@@ -54,11 +54,28 @@
                         All Jobs
                     </h4>
                     <div class="card-body">
-                        @forelse ($jobs as $job)
-                            <a href="{{route('job.show', $job->id)}}" target="_blank">{{$job->positions_name}}</a><br/>
-                        @empty
-                            No Jobs Posted
-                        @endforelse
+                        <table id="jobs-table" class="my_datatable table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Positions Name</th>
+                                    <th>Vacancies</th>
+                                    <th>Closing Date</th>
+                                    <th>Nature</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th class="hide"></th>
+                                    <th>Positions Name</th>
+                                    <th>Vacancies</th>
+                                    <th>Closing Date</th>
+                                    <th>Nature</th>
+                                    <th class="hide">Action</th>
+                                </tr>
+                            </tfoot>
+                        </table>
                     </div>
                 </div>
                 <!-- Demands list -->
@@ -480,6 +497,36 @@
             {data: 'title', name: 'title'},
             {data: 'action', name: 'action', orderable: false, searchable: false, "className": "text-center"},
             {data: 'updated_at', name: 'updated_at'}
+        ],
+        initComplete: function () {
+            this.api().columns().every(function () {
+                var column = this;
+                var input = document.createElement("input");
+                input.className = 'form-control';
+                $(input).appendTo($(column.footer()).empty())
+                .on('keyup change', function () {
+                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
+
+                    column.search(val ? val : '', true, false).draw();
+                });
+            });
+            $('.hide input').hide();
+        }
+    });
+</script>
+<script>
+    $('#jobs-table').DataTable({
+        order: [[ 0, "desc" ]],
+        processing: true,
+        serverSide: true,
+        ajax: '{{route('admin.getJobsData')}}',
+        columns: [
+            {data: 'id', name: 'id'},
+            {data: 'positions_name', name: 'positions_name'},
+            {data: 'total_number_of_vacancies', name: 'total_number_of_vacancies'},
+            {data: 'closing_date', name: 'closing_date'},
+            {data: 'job_vacancies_type', name: 'job_vacancies_type'},
+            {data: 'action', name: 'action', orderable: false, searchable: false}
         ],
         initComplete: function () {
             this.api().columns().every(function () {
