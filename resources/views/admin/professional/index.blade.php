@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 @section('content')
     <div class="title-block">
-        <h1 class="title">{{$professional_count}} Employers </h1>
+        <h1 class="title">{{$professional_count}} Candidates </h1>
     </div>
     <section class="section">
         <table id="users-table" class="table table-condensed">
@@ -13,7 +13,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Location</th>
-                    <th>Registered On</th>
+                    <th>Registered Date</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -25,7 +25,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Location</th>
-                    <th class="hide">Created At</th>
+                    <th class="hide">Registered Date</th>
                     <th class="hide">Action</th>
                 </tr>
             </tfoot>

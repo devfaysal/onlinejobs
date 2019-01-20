@@ -14,7 +14,7 @@
                     <th>Person Incharge</th>
                     <th>Country</th>
                     <th>City</th>
-                    <th>Registered On</th>
+                    <th>Registered Date</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -27,7 +27,7 @@
                     <th>Person Incharge</th>
                     <th>Country</th>
                     <th>City</th>
-                    <th class="hide">Created At</th>
+                    <th class="hide">Registered Date</th>
                     <th class="hide">Action</th>
                 </tr>
             </tfoot>

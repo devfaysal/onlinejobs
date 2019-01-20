@@ -82,7 +82,7 @@
                 <div class="card mt-4">
                     <h4 class="card-title text-center mt-3">
                         
-                        Demand Letters
+                        Demand for Foreign Workers
                         
                         <a class="btn btn-warning btn-sm mb-2 mr-2 pull-right" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#demandModal" href="#">Send a Demand</a>
                     </h4>

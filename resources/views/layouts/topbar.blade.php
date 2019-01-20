@@ -5,7 +5,7 @@
                     <nav class="nav nav-pills nav-fill">
                         <a class="nav-item nav-link" href="#">GLC</a>
                         <a class="nav-item nav-link" href="#">Govt. Jobs</a>
-                        <a class="nav-item nav-link" href="#">Retired personnel</a>
+                        <a class="nav-item nav-link" href="{{route('retiredPersonnel.create')}}">Retired personnel</a>
                         <a class="nav-item nav-link" href="#">International Jobs</a>
                         <a class="nav-item nav-link" href="#">Walk in jobs</a>
                         <a class="nav-item nav-link" href="#">Gallery</a>

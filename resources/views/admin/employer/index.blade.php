@@ -13,7 +13,7 @@
                     <th>Email</th>
                     <th>Person Incharge</th>
                     <th>Location</th>
-                    <th>Registered On</th>
+                    <th>Registered Date</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -25,7 +25,7 @@
                     <th>Email</th>
                     <th>Person Incharge</th>
                     <th>Location</th>
-                    <th class="hide">Created At</th>
+                    <th class="hide">Registered Date</th>
                     <th class="hide">Action</th>
                 </tr>
             </tfoot>
