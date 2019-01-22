@@ -17,19 +17,34 @@
                     <div class="col-md-6">
                         <div id="language" class="form-group dis-cls">
                             <label for="language">{{ __('Language *') }}</label>
-                            <input id="language" type="text" class="form-control" name="language[]" placeholder="Language" required>
+                            <select class="form-control" name="language[]" id="language">
+                                <option>--Select--</option>
+                                @foreach($languages as $language)
+                                    <option value="{{$language->id}}">{{$language->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div id="speaking" class="form-group dis-cls">
                             <label for="speaking">{{ __('Speaking') }}</label>
-                            <input id="speaking" type="text" class="form-control" name="speaking[]" placeholder="Speaking">
+                            <select class="form-control" name="speaking[]" id="speaking">
+                                <option>--Select--</option>
+                                <option value="Fluent">Fluent</option>
+                                <option value="Good">Good</option>
+                                <option value="Poor">Poor</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div id="writing" class="form-group dis-cls">
                             <label for="writing">{{ __('Writing') }}</label>
-                            <input id="writing" type="text" class="form-control" name="writing[]" placeholder="Writing">
+                            <select class="form-control" name="writing[]" id="writing">
+                                <option>--Select--</option>
+                                <option value="Fluent">Fluent</option>
+                                <option value="Good">Good</option>
+                                <option value="Poor">Poor</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -44,19 +59,34 @@
                                     <div class="col-md-6">
                                         <div id="language" class="form-group dis-cls">
                                             <label for="language">{{ __('Language *') }}</label>
-                                            <input id="language" type="text" class="form-control" name="language[]" placeholder="Language" required>
+                                            <select class="form-control" name="language[]" id="language">
+                                                <option>--Select--</option>
+                                                @foreach($languages as $language)
+                                                    <option value="{{$language->id}}">{{$language->name}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div id="speaking" class="form-group dis-cls">
                                             <label for="speaking">{{ __('Speaking') }}</label>
-                                            <input id="speaking" type="text" class="form-control" name="speaking[]" placeholder="Speaking">
+                                            <select class="form-control" name="speaking[]" id="speaking">
+                                                <option>--Select--</option>
+                                                <option value="Fluent">Fluent</option>
+                                                <option value="Good">Good</option>
+                                                <option value="Poor">Poor</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div id="writing" class="form-group dis-cls">
                                             <label for="writing">{{ __('Writing') }}</label>
-                                            <input id="writing" type="text" class="form-control" name="writing[]" placeholder="Writing">
+                                            <select class="form-control" name="writing[]" id="writing">
+                                                <option>--Select--</option>
+                                                <option value="Fluent">Fluent</option>
+                                                <option value="Good">Good</option>
+                                                <option value="Poor">Poor</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-12">

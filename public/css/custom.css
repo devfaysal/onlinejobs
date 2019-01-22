@@ -470,7 +470,7 @@ input.invalid {
     padding-top: 6px;
 }
 .dis-cls .form-control{
-    flex: 6;
+    flex: 4;
     display: inherit;
     border-radius: 0;
     border: 1px solid #DFDFDF;

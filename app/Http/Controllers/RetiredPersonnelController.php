@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use Session;
 use App\User;
 use App\Country;
+use App\MaritalStatus;
 use App\RetiredPersonnel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\RetiredPersonnelRegistration;
 
 class RetiredPersonnelController extends Controller
 {
@@ -37,8 +40,9 @@ class RetiredPersonnelController extends Controller
      */
     public function create()
     {
+        $marital_statuses = MaritalStatus::where('status', 1)->get();
         $countrys = Country::where('status', 1)->get();
-        return view('retired.create', compact('countrys'));
+        return view('retired.create', compact('countrys','marital_statuses'));
     }
 
     /**
@@ -85,6 +89,10 @@ class RetiredPersonnelController extends Controller
         Session::flash('message', 'Information saved successfully!'); 
         Session::flash('alert-class', 'alert-success');
         Auth::login($user);
+        //Send notification to admins
+        $data = $user;
+        $admins = User::whereRoleIs('superadministrator')->get();
+        Notification::send($admins, new RetiredPersonnelRegistration($data));
         return redirect()->route('retiredPersonnelExperience.create');
     }
 

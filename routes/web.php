@@ -184,6 +184,7 @@ Route::get('/professional/{id}', 'ProfessionalProfileController@show')->name('pr
 Route::get('/retiredPersonnel', 'RetiredPersonnelController@index')->name('retiredPersonnel.index');
 Route::get('/retiredPersonnel/create', 'RetiredPersonnelController@create')->name('retiredPersonnel.create');
 Route::post('/retiredPersonnel/store', 'RetiredPersonnelController@store')->name('retiredPersonnel.store');
+Route::post('/retiredPersonnel/show/{id}', 'RetiredPersonnelController@show')->name('retiredPersonnel.show');
 
 Route::get('/retiredPersonnel/profile', 'RetiredPersonnelController@profile')->name('retiredPersonnel.profile')->middleware('auth');
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Session;
+use App\Language;
 use Illuminate\Http\Request;
 use App\RetiredPersonnelsLanguage;
 
@@ -25,7 +26,8 @@ class RetiredPersonnelsLanguageController extends Controller
      */
     public function create()
     {
-        return view('retired.addLanguage');
+        $languages = Language::where('status', 1)->get();
+        return view('retired.addLanguage', compact('languages'));
     }
 
     /**

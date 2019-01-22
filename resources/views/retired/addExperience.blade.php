@@ -33,9 +33,9 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div id="work_description" class="form-group dis-cls">
-                            <label for="work_description">{{ __('Work Description') }}</label>
-                            <input id="work_description" type="text" class="form-control" name="work_description[]" placeholder="Work Description">
+                        <div id="nature_of_company_business" class="form-group dis-cls">
+                            <label for="nature_of_company_business" style="margin-top: -10px;">{{ __('Nature of company Business') }}</label>
+                            <input id="nature_of_company_business" type="text" class="form-control" name="nature_of_company_business[]" placeholder="Nature of company Business">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -50,10 +50,10 @@
                             <input id="to" type="date" class="form-control" name="to[]" placeholder="to">
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div id="nature_of_company_business" class="form-group dis-cls">
-                            <label for="nature_of_company_business">{{ __('Nature of company Business') }}</label>
-                            <input id="nature_of_company_business" type="text" class="form-control" name="nature_of_company_business[]" placeholder="Nature of company Business">
+                    <div class="col-md-12">
+                        <div id="work_description" class="form-group dis-cls">
+                            <label class="col-md-2" for="work_description">{{ __('Work Description') }}</label>
+                            <textarea class="form-control" name="work_description[]" id="work_description" cols="30" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -84,9 +84,9 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div id="work_description" class="form-group dis-cls">
-                                            <label for="work_description">{{ __('Work Description') }}</label>
-                                            <input id="work_description" type="text" class="form-control" name="work_description[]" placeholder="Work Description">
+                                        <div id="nature_of_company_business" class="form-group dis-cls">
+                                            <label for="nature_of_company_business" style="margin-top: -10px;">{{ __('Nature of company Business') }}</label>
+                                            <input id="nature_of_company_business" type="text" class="form-control" name="nature_of_company_business[]" placeholder="Nature of company Business">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -101,10 +101,10 @@
                                             <input id="to" type="date" class="form-control" name="to[]" placeholder="to">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div id="nature_of_company_business" class="form-group dis-cls">
-                                            <label for="nature_of_company_business">{{ __('Nature of company Business') }}</label>
-                                            <input id="nature_of_company_business" type="text" class="form-control" name="nature_of_company_business[]" placeholder="Nature of company Business">
+                                    <div class="col-md-12">
+                                        <div id="work_description" class="form-group dis-cls">
+                                            <label class="col-md-2" for="work_description">{{ __('Work Description') }}</label>
+                                            <textarea class="form-control" name="work_description[]" id="work_description" cols="30" rows="3"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-12">

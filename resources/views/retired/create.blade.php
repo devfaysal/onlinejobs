@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('retiredPersonnel.store') }}" enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="role" value="professional">
+                        <input type="hidden" name="role" value="retired">
                         <div class="form-group row">
                             <label for="name" class="col-sm-4 col-form-label text-right">{{ __('Name *') }}</label>
                             <div class="col-sm-8">
@@ -53,9 +53,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="postcode" class="col-sm-4 col-form-label text-right">{{ __('Postcode *') }}</label>
+                            <label for="postcode" class="col-sm-4 col-form-label text-right">{{ __('Postcode') }}</label>
                             <div class="col-sm-8">
-                                <input id="postcode" type="text" class="form-control{{ $errors->has('postcode') ? ' is-invalid' : '' }}" name="postcode" value="{{ old('postcode') }}" placeholder="Postcode" required>
+                                <input id="postcode" type="text" class="form-control{{ $errors->has('postcode') ? ' is-invalid' : '' }}" name="postcode" value="{{ old('postcode') }}" placeholder="Postcode">
 
                             @if ($errors->has('postcode'))
                                 <span class="invalid-feedback" role="alert">
@@ -65,9 +65,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="state" class="col-sm-4 col-form-label text-right">{{ __('State *') }}</label>
+                            <label for="state" class="col-sm-4 col-form-label text-right">{{ __('State') }}</label>
                             <div class="col-sm-8">
-                                <input id="state" type="text" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}" name="state" value="{{ old('state') }}" placeholder="State" required>
+                                <input id="state" type="text" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}" name="state" value="{{ old('state') }}" placeholder="State">
 
                             @if ($errors->has('state'))
                                 <span class="invalid-feedback" role="alert">
@@ -91,8 +91,11 @@
                         <div class="form-group row">
                             <label for="gender" class="col-sm-4 col-form-label text-right">{{ __('Gender *') }}</label>
                             <div class="col-sm-8">
-                                <input id="gender" type="text" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" name="gender" value="{{ old('gender') }}" placeholder="Gender" required>
-
+                                <select name="gender" id="gender" class="form-control" required>
+                                    <option>-- Select Gender --</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
                             @if ($errors->has('gender'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('gender') }}</strong>
@@ -125,15 +128,19 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="marital_status" class="col-sm-4 col-form-label text-right">{{ __('Marital Status *') }}</label>
+                            <label for="marital_status" class="col-sm-4 col-form-label text-right">{{ __('Marital Status') }}</label>
                             <div class="col-sm-8">
-                                <input id="marital_status" type="text" class="form-control{{ $errors->has('marital_status') ? ' is-invalid' : '' }}" name="marital_status" value="{{ old('marital_status') }}" placeholder="Marital Status" required>
-
-                            @if ($errors->has('marital_status'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('marital_status') }}</strong>
-                                </span>
-                            @endif
+                                <select onChange="displayChildren(this.value)" name="marital_status" id="marital_status" class="form-control{{ $errors->has('marital_status') ? ' is-invalid' : '' }}">
+                                    <option value="">--Select Marital Status--</option>
+                                    @foreach ($marital_statuses as $marital_status)
+                                        <option value="{{$marital_status->id}}" {{$marital_status->id == old('marital_status')? 'selected':''}}>{{$marital_status->name}}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('marital_status'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('marital_status') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                         <div class="form-group row">
@@ -178,9 +185,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="specialization" class="col-sm-4 col-form-label text-right">{{ __('Specialization *') }}</label>
+                            <label for="specialization" class="col-sm-4 col-form-label text-right">{{ __('Specialization') }}</label>
                             <div class="col-sm-8">
-                                <input id="specialization" type="text" class="form-control{{ $errors->has('specialization') ? ' is-invalid' : '' }}" name="specialization" value="{{ old('specialization') }}" placeholder="specialization" required>
+                                <input id="specialization" type="text" class="form-control{{ $errors->has('specialization') ? ' is-invalid' : '' }}" name="specialization" value="{{ old('specialization') }}" placeholder="specialization">
 
                             @if ($errors->has('specialization'))
                                 <span class="invalid-feedback" role="alert">
@@ -208,7 +215,7 @@
                                 <input id="full_time" class="form-control checkbox" type="checkbox" name="full_time">
                             </div> --}}
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row d-none hide_working_hours">
                             <label for="describe_working_hours" class="col-sm-4 col-form-label text-right">{{ __('Describe Working Hours') }}</label>
                             <div class="col-sm-8">
                                 <input id="describe_working_hours" type="text" class="form-control{{ $errors->has('describe_working_hours') ? ' is-invalid' : '' }}" name="describe_working_hours" value="{{ old('describe_working_hours') }}" placeholder="Describ Working Hours">
@@ -237,4 +244,20 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+<script>
+    part_time = document.querySelector('#part_time');
+    full_time = document.querySelector('#full_time');
+    part_time.addEventListener('click', function(){
+        if(part_time.checked){
+            document.querySelector('.hide_working_hours').classList.remove("d-none");
+        }
+    });
+    full_time.addEventListener('click', function(){
+        if(full_time.checked){
+            document.querySelector('.hide_working_hours').classList.add("d-none");
+        }
+    });
+</script>
 @endsection
