@@ -12,7 +12,7 @@
                     <th>Image</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Location</th>
+                    <th>City</th>
                     <th>Registered Date</th>
                     <th>Action</th>
                 </tr>
@@ -24,7 +24,7 @@
                     <th class="hide">Image</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Location</th>
+                    <th>City</th>
                     <th class="hide">Registered Date</th>
                     <th class="hide">Action</th>
                 </tr>
@@ -45,7 +45,7 @@
             {data: 'profile_image', name: 'profile_image'},
             {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},
-            {data: 'country', name: 'country'},
+            {data: 'city', name: 'city'},
             {data: 'created_at', name: 'created_at'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ],

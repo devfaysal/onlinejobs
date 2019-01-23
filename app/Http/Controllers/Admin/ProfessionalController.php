@@ -29,8 +29,8 @@ class ProfessionalController extends Controller
             $string = '<a href="'.route('professional.show', $user->id).'" class="btn btn-xs btn-primary">View</a> ';
             return $string;
         })
-        ->addColumn('country', function($user) {
-            return $user->professional_profile['country_data']['name'];
+        ->addColumn('city', function($user) {
+            return $user->professional_profile['city'];
         })
         ->addColumn('profile_image', function($user) {
             $img = $user->professional_profile['profile_image'] != '' ? asset('storage/resume/'.$user->professional_profile['profile_image']) :  asset('images/dummy.jpg');
