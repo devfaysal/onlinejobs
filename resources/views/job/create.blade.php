@@ -39,7 +39,7 @@
                         <div class="form-group dis-cls">
                             <label for="vacancies_description" class="col-sm-4 col-form-label text-right">{{ __('Vacancies Description *') }}</label>
                             <div class="col-sm-8">
-                                <textarea name="vacancies_description" id="vacancies_description" class="form-control{{ $errors->has('vacancies_description') ? ' is-invalid' : '' }}" cols="30" rows="6" required>{{ old('vacancies_description') }}</textarea>
+                                <textarea name="vacancies_description" id="vacancies_description" class="required form-control{{ $errors->has('vacancies_description') ? ' is-invalid' : '' }}" cols="30" rows="6" required>{{ old('vacancies_description') }}</textarea>
                             @if ($errors->has('vacancies_description'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('vacancies_description') }}</strong>
@@ -83,7 +83,7 @@
                         <div class="form-group dis-cls">
                             <label for="job_vacancies_type" class="col-sm-4 col-form-label text-right">{{ __('Job Vacancies Type *') }}</label>
                             <div class="col-sm-8">
-                                <select name="job_vacancies_type" id="job_vacancies_type" class="form-control{{ $errors->has('job_vacancies_type') ? ' is-invalid' : '' }}">
+                                <select name="job_vacancies_type" id="job_vacancies_type" class="form-control{{ $errors->has('job_vacancies_type') ? ' is-invalid' : '' }}" required>
                                     <option value="Permanent">Permanent</option>
                                     <option value="Part-Time">Part-Time</option>
                                     <option value="Contract">Contract</option>
@@ -156,7 +156,7 @@
                         <div class="form-group dis-cls">
                             <label for="working_hours" class="col-sm-4 col-form-label text-right">{{ __('Working Hours *') }}</label>
                             <div class="col-sm-8">
-                                <select name="working_hours" id="working_hours" class="form-control{{ $errors->has('working_hours') ? ' is-invalid' : '' }}">
+                                <select name="working_hours" id="working_hours" class="form-control{{ $errors->has('working_hours') ? ' is-invalid' : '' }}" required>
                                     <option value="Normal">Normal</option>
                                     <option value="Shift">Shift</option>
                                     <option value="Flexi-Time">Flexi-Time</option>
@@ -420,7 +420,7 @@
           // This function will figure out which tab to display
           var x = document.getElementsByClassName("tab");
           // Exit the function if any field in the current tab is invalid:
-          // if (n == 1 && !validateForm()) return false;
+          if (n == 1 && !validateForm()) return false;
           // Hide the current tab:
           x[currentTab].style.display = "none";
           // Increase or decrease the current tab by 1:

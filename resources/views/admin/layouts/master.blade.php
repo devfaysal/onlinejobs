@@ -210,6 +210,10 @@
                                     <a href="{{route('admin.professional.index')}}">
                                         <i class="fa fa-pencil-square-o"></i> Professionals </a>
                                 </li>
+                                <li class="{{ ( (Route::currentRouteName() === "admin.retired.index") ? "active" : "") }}">
+                                    <a href="{{route('admin.retired.index')}}">
+                                        <i class="fa fa-pencil-square-o"></i> Retired </a>
+                                </li>
                                 @endif
                                 <li class="{{ ( (Route::currentRouteName() === "admin.worker.index") ? "active" : "") }}">
                                     <a href="{{route('admin.worker.index')}}">
