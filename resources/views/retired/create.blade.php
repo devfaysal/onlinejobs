@@ -116,7 +116,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="phone" class="col-sm-4 col-form-label text-right">{{ __('Contuct No *') }}</label>
+                            <label for="phone" class="col-sm-4 col-form-label text-right">{{ __('Contact No *') }}</label>
                             <div class="col-sm-8">
                                 <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" placeholder="Contuct No" required>
 
@@ -173,13 +173,16 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="highest_academic_qualification" class="col-sm-4 col-form-label text-right">{{ __('Highest Academic Qualification *') }}</label>
+                            <label for="academic_qualification" class="col-sm-4 col-form-label text-right">{{ __('Highest Academic Qualification *') }}</label>
                             <div class="col-sm-8">
-                                <input id="highest_academic_qualification" type="text" class="form-control{{ $errors->has('highest_academic_qualification') ? ' is-invalid' : '' }}" name="highest_academic_qualification" value="{{ old('highest_academic_qualification') }}" placeholder="highest_academic_qualification" required>
-
-                            @if ($errors->has('highest_academic_qualification'))
+                                <select class="form-control{{ $errors->has('academic_qualification') ? ' is-invalid' : '' }}" name="highest_academic_qualification" id="academic_qualification">
+                                    @foreach ($academics as $academic)
+                                        <option value="{{$academic->name}}">{{$academic->name}}</option>
+                                    @endforeach
+                                </select>
+                            @if ($errors->has('academic_qualification'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('highest_academic_qualification') }}</strong>
+                                    <strong>{{ $errors->first('academic_qualification') }}</strong>
                                 </span>
                             @endif
                             </div>
@@ -187,8 +190,11 @@
                         <div class="form-group row">
                             <label for="specialization" class="col-sm-4 col-form-label text-right">{{ __('Specialization') }}</label>
                             <div class="col-sm-8">
-                                <input id="specialization" type="text" class="form-control{{ $errors->has('specialization') ? ' is-invalid' : '' }}" name="specialization" value="{{ old('specialization') }}" placeholder="specialization">
-
+                                <select class="form-control{{ $errors->has('specialization') ? ' is-invalid' : '' }}" name="specialization" id="specialization">
+                                    @foreach ($specializations as $specialization)
+                                        <option value="{{$specialization->name}}">{{$specialization->name}}</option>
+                                    @endforeach
+                                </select>
                             @if ($errors->has('specialization'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('specialization') }}</strong>
@@ -196,8 +202,57 @@
                             @endif
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <div id="czContainerLanguage">
+                                    <div id="first">
+                                        <div class="recordset">
+                                            <div class="fieldRow clearfix">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group row">
+                                                            <label for="academic_qualification" class="col-sm-4 col-form-label text-right">{{ __('Academic Qualification *') }}</label>
+                                                            <div class="col-sm-8">
+                                                                <select class="form-control{{ $errors->has('academic_qualification') ? ' is-invalid' : '' }}" name="academic_qualifications[]" id="academic_qualification">
+                                                                    @foreach ($academics as $academic)
+                                                                        <option value="{{$academic->name}}">{{$academic->name}}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            @if ($errors->has('academic_qualification'))
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $errors->first('academic_qualification') }}</strong>
+                                                                </span>
+                                                            @endif
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="specialization" class="col-sm-4 col-form-label text-right">{{ __('Specialization') }}</label>
+                                                            <div class="col-sm-8">
+                                                                <select class="form-control{{ $errors->has('specialization') ? ' is-invalid' : '' }}" name="specializations[]" id="specialization">
+                                                                    @foreach ($specializations as $specialization)
+                                                                        <option value="{{$specialization->name}}">{{$specialization->name}}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            @if ($errors->has('specialization'))
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $errors->first('specialization') }}</strong>
+                                                                </span>
+                                                            @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <hr class="mt-4 mb-4"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group row">
-                            <label for="government_employee" class="col-sm-4 col-form-label text-right">{{ __('Prefer Working hours ?') }}</label>
+                            <label for="full_time" class="col-sm-4 col-form-label text-right">{{ __('Prefer Working hours ?') }}</label>
                             <div class="col-sm-8 ml-auto mt-2">
                                 <div class="custom-control custom-radio custom-control-inline">
                                         <input type="radio" id="full_time" name="full_time" value="yes" class="custom-control-input">
@@ -208,12 +263,6 @@
                                         <label class="custom-control-label" for="part_time">Part Time</label>
                                 </div>
                             </div>
-
-
-                            {{-- <label for="full_time" class="col-sm-4 col-form-label text-right">{{ __('Full Time ?') }}</label>
-                            <div class="col-sm-1 mr-auto">
-                                <input id="full_time" class="form-control checkbox" type="checkbox" name="full_time">
-                            </div> --}}
                         </div>
                         <div class="form-group row d-none hide_working_hours">
                             <label for="describe_working_hours" class="col-sm-4 col-form-label text-right">{{ __('Describe Working Hours') }}</label>
@@ -225,6 +274,45 @@
                                     <strong>{{ $errors->first('describe_working_hours') }}</strong>
                                 </span>
                             @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="fit_to_work" class="col-sm-4 col-form-label text-right">{{ __('Fit to work ?') }}</label>
+                            <div class="col-sm-8 ml-auto mt-2">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="fit_to_work" name="fit_to_work" value="yes" class="custom-control-input">
+                                    <label class="custom-control-label" for="fit_to_work">Yes</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="fit_to_work2" name="fit_to_work" value="no" class="custom-control-input">
+                                    <label class="custom-control-label" for="fit_to_work2">No</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="have_blood_pressure" class="col-sm-4 col-form-label text-right">{{ __('Have blood pressure ?') }}</label>
+                            <div class="col-sm-8 ml-auto mt-2">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="have_blood_pressure" name="have_blood_pressure" value="yes" class="custom-control-input">
+                                    <label class="custom-control-label" for="have_blood_pressure">Yes</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="have_blood_pressure1" name="have_blood_pressure" value="no" class="custom-control-input">
+                                    <label class="custom-control-label" for="have_blood_pressure1">No</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="have_diabetes" class="col-sm-4 col-form-label text-right">{{ __('Have diabetes ?') }}</label>
+                            <div class="col-sm-8 ml-auto mt-2">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="have_diabetes" name="have_diabetes" value="yes" class="custom-control-input">
+                                    <label class="custom-control-label" for="have_diabetes">Yes</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="have_diabetes1" name="have_diabetes" value="no" class="custom-control-input">
+                                    <label class="custom-control-label" for="have_diabetes1">No</label>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -246,6 +334,150 @@
 </div>
 @endsection
 @section('script')
+<script>
+    (function ($, undefined) {
+    $.fn.czMore = function (options) {
+
+        //Set defauls for the control
+        var defaults = {
+            max: 5,
+            min: 0,
+            onLoad: null,
+            onAdd: null,
+            onDelete: null,
+            styleOverride: false,
+        };
+        //Update unset options with defaults if needed
+        var options = $.extend(defaults, options);
+        $(this).bind("onAdd", function (event, data) {
+            options.onAdd.call(event, data);
+        });
+        $(this).bind("onLoad", function (event, data) {
+            options.onLoad.call(event, data);
+        });
+        $(this).bind("onDelete", function (event, data) {
+            options.onDelete.call(event, data);
+        });
+        //Executing functionality on all selected elements
+        return this.each(function () {
+            var obj = $(this);
+            var i = obj.children(".recordset").length;
+            var divPlus = '<div id="btnPlus" class="btnPlus">Add</div>';
+            var count = '<input id="' + this.id + '_czMore_txtCount" name="' + this.id + '_czMore_txtCount" type="hidden" value="0" size="5" />';
+
+            obj.before(count);
+            var recordset = obj.children("#first");
+            obj.after(divPlus);
+            var set = recordset.children(".recordset").children().first();
+            var btnPlus = obj.siblings("#btnPlus");
+
+            if(!options.styleOverride) {
+              btnPlus.css({
+                  'border': '0px',
+                  'background-image': 'url("/images/add.png")',
+                  'background-position': 'center center',
+                  'background-repeat': 'no-repeat',
+                  'height': '25px',
+                  'width': '90px',
+                  'cursor': 'pointer',
+                  'margin': 'auto',
+              });
+            }
+
+            if (recordset.length) {
+                obj.siblings("#btnPlus").click(function () {
+                    var i = obj.children(".recordset").length;
+                    var item = recordset.clone().html();
+                    i++;
+                    item = item.replace(/\[([0-9]\d{0})\]/g, "[" + i + "]");
+                    item = item.replace(/\_([0-9]\d{0})\_/g, "_" + i + "_");
+                    //$(element).html(item);
+                    //item = $(item).children().first();
+                    //item = $(item).parent();
+
+                    obj.append(item);
+                    loadMinus(obj.children().last());
+                    minusClick(obj.children().last());
+                    if (options.onAdd != null) {
+                        obj.trigger("onAdd", i);
+                    }
+
+                    obj.siblings("input[name$='czMore_txtCount']").val(i);
+                    return false;
+                });
+                recordset.remove();
+                for (var j = 0; j <= i; j++) {
+                    loadMinus(obj.children()[j]);
+                    minusClick(obj.children()[j]);
+                    if (options.onAdd != null) {
+                        obj.trigger("onAdd", j);
+                    }
+                }
+
+                if (options.onLoad != null) {
+                    obj.trigger("onLoad", i);
+                }
+                //obj.bind("onAdd", function (event, data) {
+                //If you had passed anything in your trigger function, you can grab it using the second parameter in the callback function.
+                //});
+            }
+
+            function resetNumbering() {
+                $(obj).children(".recordset").each(function (index, element) {
+                   $(element).find('input:text, input:password, input:file, select, textarea').each(function(){
+                        old_name = this.name;
+                        new_name = old_name.replace(/\_([0-9]\d{0})\_/g, "_" + (index + 1) + "_");
+                        this.id = this.name = new_name;
+                        //alert(this.name);
+                    });
+                    index++
+                    minusClick(element);
+                });
+            }
+
+            function loadMinus(recordset) {
+                var divMinus = '<div id="btnMinus" class="btnMinus" />';
+                $(recordset).children().first().before(divMinus);
+                var btnMinus = $(recordset).children("#btnMinus");
+                if(!options.styleOverride) {
+                  btnMinus.css({
+                      'float': 'right',
+                      'border': '0px',
+                      'background-image': 'url("/images/remove.png")',
+                      'background-position': 'center center',
+                      'background-repeat': 'no-repeat',
+                      'height': '25px',
+                      'width': '25px',
+                      'cursor': 'poitnter',
+                  });
+              }
+            }
+
+            function minusClick(recordset) {
+                $(recordset).children("#btnMinus").click(function () {
+                    var i = obj.children(".recordset").length;
+                    var id = $(recordset).attr("data-id")
+                    $(recordset).remove();
+                    resetNumbering();
+                    obj.siblings("input[name$='czMore_txtCount']").val(obj.children(".recordset").length);
+                    i--;
+                    if (options.onDelete != null) {
+                        if (id != null)
+                            obj.trigger("onDelete", id);
+                    }
+                });
+            }
+        });
+    };
+})(jQuery);
+
+    </script>
+    <script type="text/javascript">
+        //One-to-many relationship plugin by Yasir O. Atabani. Copyrights Reserved.
+        $("#czContainer").czMore();
+        $("#czContainerLanguage").czMore();
+    </script>
+    
 <script>
     part_time = document.querySelector('#part_time');
     full_time = document.querySelector('#full_time');

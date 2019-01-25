@@ -6,8 +6,11 @@ use Session;
 use App\User;
 use App\Country;
 use App\MaritalStatus;
+use App\Specialization;
 use App\RetiredPersonnel;
 use Illuminate\Http\Request;
+use App\RetiredPersonnelAcademic;
+use App\RetiredPersonnelEducation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
@@ -41,8 +44,10 @@ class RetiredPersonnelController extends Controller
     public function create()
     {
         $marital_statuses = MaritalStatus::where('status', 1)->get();
+        $academics = RetiredPersonnelAcademic::where('status', 1)->get();
+        $specializations = Specialization::where('status', 1)->get();
         $countrys = Country::where('status', 1)->get();
-        return view('retired.create', compact('countrys','marital_statuses'));
+        return view('retired.create', compact('countrys','marital_statuses','academics','specializations'));
     }
 
     /**
@@ -53,6 +58,9 @@ class RetiredPersonnelController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'email' => 'required|string|email|max:255|unique:users',
+        ]);
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
@@ -85,6 +93,17 @@ class RetiredPersonnelController extends Controller
         $retiredPersonnel->full_time = $request->full_time;
         $retiredPersonnel->describe_working_hours = $request->describe_working_hours;
         $retiredPersonnel->save();
+
+        if($request->academic_qualifications && $request->academic_qualifications[0] != null){
+            for($i=0; $i< count($request->academic_qualifications); $i++){
+                $education = new RetiredPersonnelEducation;
+                $education->user_id = $user->id;
+                $education->academic_qualification = $request->academic_qualifications[$i];
+                $education->specialization = $request->specializations[$i];
+                $education->save();
+            }
+        }
+        
 
         Session::flash('message', 'Information saved successfully!'); 
         Session::flash('alert-class', 'alert-success');

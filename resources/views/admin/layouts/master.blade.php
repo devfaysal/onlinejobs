@@ -267,6 +267,12 @@
                                         <li class="{{ ( (Route::currentRouteName() === "admin.educationLevel.index") ? "active" : "") }}">
                                             <a href="{{route('admin.educationLevel.index')}}"> Education Level </a>
                                         </li>
+                                        <li class="{{ ( (Route::currentRouteName() === "admin.retiredPersonnelAcademic.index") ? "active" : "") }}">
+                                            <a href="{{route('admin.retiredPersonnelAcademic.index')}}"> Retired Personner Academic </a>
+                                        </li>
+                                        <li class="{{ ( (Route::currentRouteName() === "admin.specialization.index") ? "active" : "") }}">
+                                            <a href="{{route('admin.specialization.index')}}"> Specialization </a>
+                                        </li>
                                         {{-- <li>
                                             <a href="#"> Employer Apllications </a>
                                         </li> --}}

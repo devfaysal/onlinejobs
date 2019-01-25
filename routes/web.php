@@ -118,6 +118,13 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
     Route::get('/getSubsectors/{id}', 'Admin\SectorController@getSubsectors')->name('getSubsectors');
 
     Route::resource('/subSector', 'Admin\SubSectorController');
+
+    Route::resource('/retiredPersonnelAcademic', 'Admin\RetiredPersonnelAcademicController');
+    Route::get('/getretiredPersonnelAcademicData', 'Admin\RetiredPersonnelAcademicController@getretiredPersonnelAcademicData')->name('getretiredPersonnelAcademicData');
+
+    Route::resource('/specialization', 'Admin\SpecializationController');
+    Route::get('/getSpecializationData', 'Admin\SpecializationController@getSpecializationData')->name('getSpecializationData');
+    
 });
 
 Route::get('/', 'HomeController@index')->name('home');
