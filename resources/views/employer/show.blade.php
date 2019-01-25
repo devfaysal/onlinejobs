@@ -584,4 +584,23 @@
         }
     });
 </script>
+<script type="text/javascript">
+    function KeepCount() {                    
+        var inputTags = document.getElementsByName('id[]');                  
+        var total = 0;
+
+        for (var i = 0; i < inputTags.length; i++) {
+
+            if (inputTags[i].checked) {                      
+                    total = total + 1;
+            }
+
+            if (total > 1) {
+                alert('Please select only 1')
+                inputTags[i].checked = false;
+                return false;
+            }
+        }
+    }
+</script>
 @endsection

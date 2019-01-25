@@ -175,7 +175,7 @@ class EmployerProfileController extends Controller
         ->addColumn('action', function ($user) {
             $string =  '<a class="btn btn-xs btn-primary" href="'.route('profile.public', $user->public_id).'">View</a>';
             if ( ! $user->applicants()->first()['id'] ) {
-                $string .= ' <input style="width: 38px;height: 38px;vertical-align: middle;" type="checkbox" name="id[]" value="'.$user->id.'">';
+                $string .= ' <input style="width: 38px;height: 38px;vertical-align: middle;" onclick="KeepCount()" type="checkbox" name="id[]" value="'.$user->id.'">';
             }
 
             return $string;
