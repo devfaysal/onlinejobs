@@ -15,7 +15,7 @@ class CreateRetiredPersonnelAcademicsTable extends Migration
     {
         Schema::create('retired_personnel_academics', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });

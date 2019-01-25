@@ -16,8 +16,8 @@ class CreateRetiredPersonnelEducationsTable extends Migration
         Schema::create('retired_personnel_educations', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->string('academic_qualification');
-            $table->string('specialization');
+            $table->string('academic_qualification')->nullable();
+            $table->string('specialization')->nullable();
             $table->timestamps();
         });
     }

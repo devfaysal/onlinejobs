@@ -71,13 +71,14 @@
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="related_experience_year" class="col-sm-4 col-form-label text-right">{{ __('Related Experience *') }}</label>
+                            <label for="related_experience_year" class="col-sm-4 col-form-label text-right">{{ __('Experience *') }}</label>
                             <div class="col-sm-4">
-                                <input id="related_experience_year" type="text" class="form-control{{ $errors->has('related_experience_year') ? ' is-invalid' : '' }}" name="related_experience_year" value="{{ old('related_experience_year') }}" placeholder="Year">
+                                <input id="related_experience_year" type="text" class="form-control{{ $errors->has('related_experience_year') ? ' is-invalid' : '' }}" name="related_experience_year" value="{{ old('related_experience_year') }}">
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-sm-4"><p class="mt-2">Years</p></div>
+                            {{-- <div class="col-sm-4">
                                 <input id="related_experience_month" type="text" class="form-control{{ $errors->has('related_experience_month') ? ' is-invalid' : '' }}" name="related_experience_month" value="{{ old('related_experience_month') }}" placeholder="Month">
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="form-group dis-cls">
                             <label for="job_vacancies_type" class="col-sm-4 col-form-label text-right">{{ __('Job Vacancies Type *') }}</label>
@@ -265,9 +266,9 @@
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="other_requirements" class="col-sm-4 col-form-label text-right">{{ __('Other Requirements *') }}</label>
+                            <label for="other_requirements" class="col-sm-4 col-form-label text-right">{{ __('Other Requirements') }}</label>
                             <div class="col-sm-8">
-                                <textarea name="other_requirements" id="other_requirements" class="form-control{{ $errors->has('other_requirements') ? ' is-invalid' : '' }}" cols="30" rows="6" required>{{ old('other_requirements') }}</textarea>
+                                <textarea name="other_requirements" id="other_requirements" class="form-control{{ $errors->has('other_requirements') ? ' is-invalid' : '' }}" cols="30" rows="6">{{ old('other_requirements') }}</textarea>
                             @if ($errors->has('other_requirements'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('other_requirements') }}</strong>
@@ -276,7 +277,7 @@
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="facilities" class="col-sm-4 col-form-label text-right">{{ __('Facilities *') }}</label>
+                            <label for="facilities" class="col-sm-4 col-form-label text-right">{{ __('Facilities') }}</label>
                             <div class="col-sm-8">
                                 <input id="facilities" type="text" class="form-control{{ $errors->has('facilities') ? ' is-invalid' : '' }}" name="facilities" value="{{ old('facilities') }}">
 
@@ -327,7 +328,7 @@
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="driving_license" class="col-sm-4 col-form-label text-right">{{ __('Driving License *') }}</label>
+                            <label for="driving_license" class="col-sm-4 col-form-label text-right">{{ __('Driving License') }}</label>
                             <div class="col-sm-8">
                                 <input id="driving_license" type="text" class="form-control{{ $errors->has('driving_license') ? ' is-invalid' : '' }}" name="driving_license" value="{{ old('driving_license') }}">
 
@@ -339,9 +340,9 @@
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="other_skills" class="col-sm-4 col-form-label text-right">{{ __('Other Skills *') }}</label>
+                            <label for="other_skills" class="col-sm-4 col-form-label text-right">{{ __('Other Skills') }}</label>
                             <div class="col-sm-8">
-                                <textarea name="other_skills" id="other_skills" class="form-control{{ $errors->has('other_skills') ? ' is-invalid' : '' }}" cols="30" rows="6" required>{{ old('other_skills') }}</textarea>
+                                <textarea name="other_skills" id="other_skills" class="form-control{{ $errors->has('other_skills') ? ' is-invalid' : '' }}" cols="30" rows="6">{{ old('other_skills') }}</textarea>
                             @if ($errors->has('other_skills'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('other_skills') }}</strong>

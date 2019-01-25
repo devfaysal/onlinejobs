@@ -82,7 +82,7 @@ class JobController extends Controller
         $job->scope_of_duties = $request->scope_of_duties;
         $job->skills = $request->skills;
         $job->related_experience_year = $request->related_experience_year;
-        $job->related_experience_month = $request->related_experience_month;
+        // $job->related_experience_month = $request->related_experience_month;
         $job->job_vacancies_type = $request->job_vacancies_type;
         $job->salary_offer_currency = $request->salary_offer_currency;
         $job->salary_offer = $request->salary_offer;
