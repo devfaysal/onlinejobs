@@ -710,7 +710,7 @@ input.invalid {
 .no-border{
 	border:0 !important; 
 }
-.close {
+#search_card .close {
     position: absolute;
     right: 25px;
     color: #fff;
