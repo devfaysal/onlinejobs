@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Session;
 use App\Job;
+use Session;
+use App\Facilities;
 use Illuminate\Http\Request;
 
 class JobController extends Controller
@@ -59,7 +60,8 @@ class JobController extends Controller
      */
     public function create()
     {
-        return view('job.create');
+        $facilities = Facilities::where('status', 1)->get();
+        return view('job.create', compact('facilities'));
     }
 
     /**
@@ -103,7 +105,7 @@ class JobController extends Controller
         $job->race = $request->race;
         $job->age_eligibillity = $request->age_eligibillity;
         $job->other_requirements = $request->other_requirements;
-        $job->facilities = $request->facilities;
+        $job->facilities = implode("," , $request->facilities);
         $job->language = $request->language;
         $job->minimum_academic_qualification = $request->minimum_academic_qualification;
         $job->academic_field = $request->academic_field;

@@ -278,15 +278,36 @@
                         </div>
                         <div class="form-group dis-cls">
                             <label for="facilities" class="col-sm-4 col-form-label text-right">{{ __('Facilities') }}</label>
-                            <div class="col-sm-8">
+                            <div class="col-md-8 mt-2">
+                                <div class="row">
+                                    @foreach($facilities as $facility)
+                                        <div class="col-md-4">
+                                            <div class="custom-control custom-checkbox d-inline">
+                                                <input type="checkbox" class="custom-control-input" id="{{$facility->name}}" name="facilities[]" value="{{$facility->name}}">
+                                                <label class="custom-control-label" for="{{$facility->name}}">{{$facility->name}}</label>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                    <div class="col-md-8">
+                                        <div class="custom-control custom-checkbox d-inline">
+                                            <input type="checkbox" class="custom-control-input" id="other" value="yes">
+                                            <label class="custom-control-label" for="other">Other</label>
+                                            <input type="text" name="facilities[]" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- <div class="col-sm-8">
                                 <input id="facilities" type="text" class="form-control{{ $errors->has('facilities') ? ' is-invalid' : '' }}" name="facilities" value="{{ old('facilities') }}">
-
+                                
                             @if ($errors->has('facilities'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('facilities') }}</strong>
                                 </span>
                             @endif
-                            </div>
+                            </div> --}}
+
+                            
                         </div>
                     </div>
                     {{-- Academic --}}
@@ -420,7 +441,7 @@
           // This function will figure out which tab to display
           var x = document.getElementsByClassName("tab");
           // Exit the function if any field in the current tab is invalid:
-          if (n == 1 && !validateForm()) return false;
+          //if (n == 1 && !validateForm()) return false;
           // Hide the current tab:
           x[currentTab].style.display = "none";
           // Increase or decrease the current tab by 1:

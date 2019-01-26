@@ -277,6 +277,9 @@
                                         <li class="{{ ( (Route::currentRouteName() === "admin.specialization.index") ? "active" : "") }}">
                                             <a href="{{route('admin.specialization.index')}}"> Specialization </a>
                                         </li>
+                                        <li class="{{ ( (Route::currentRouteName() === "admin.facilities.index") ? "active" : "") }}">
+                                            <a href="{{route('admin.facilities.index')}}"> Facilities </a>
+                                        </li>
                                         {{-- <li>
                                             <a href="#"> Employer Apllications </a>
                                         </li> --}}

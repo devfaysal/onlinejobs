@@ -128,6 +128,9 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
 
     Route::resource('/specialization', 'Admin\SpecializationController');
     Route::get('/getSpecializationData', 'Admin\SpecializationController@getSpecializationData')->name('getSpecializationData');
+
+    Route::resource('/facilities', 'Admin\FacilitiesController');
+    Route::get('/getFacilitiesData', 'Admin\FacilitiesController@getFacilitiesData')->name('getFacilitiesData');
     
 });
 
