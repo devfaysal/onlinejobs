@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Job;
 use Session;
+use App\Language;
 use App\Facilities;
+use App\JobAcademic;
+use App\JobLanguage;
+use App\Specialization;
 use Illuminate\Http\Request;
+use App\RetiredPersonnelAcademic;
 
 class JobController extends Controller
 {
@@ -60,8 +65,11 @@ class JobController extends Controller
      */
     public function create()
     {
+        $academics = RetiredPersonnelAcademic::where('status', 1)->get();
+        $academic_fields = Specialization::where('status', 1)->get();
+        $languages = Language::where('status', 1)->get();
         $facilities = Facilities::where('status', 1)->get();
-        return view('job.create', compact('facilities'));
+        return view('job.create', compact('facilities','languages','academics','academic_fields'));
     }
 
     /**
@@ -106,13 +114,34 @@ class JobController extends Controller
         $job->age_eligibillity = $request->age_eligibillity;
         $job->other_requirements = $request->other_requirements;
         $job->facilities = implode("," , $request->facilities);
-        $job->language = $request->language;
+        // $job->language = $request->language;
         $job->minimum_academic_qualification = $request->minimum_academic_qualification;
         $job->academic_field = $request->academic_field;
         $job->driving_license = $request->driving_license;
         $job->other_skills = $request->other_skills;
         
         $job->save();
+
+        if($request->language && $request->language[0] != null){
+            for($i=0; $i< count($request->language); $i++){
+                $language = new JobLanguage;
+                $language->job_id = $job->id;
+                $language->language = $request->language[$i];
+                $language->speaking = $request->speaking[$i];
+                $language->writing = $request->writing[$i];
+                $language->save();
+            }
+        }
+
+        if($request->academic_qualifications && $request->academic_qualifications[0] != null){
+            for($i=0; $i< count($request->academic_qualifications); $i++){
+                $education = new JobAcademic;
+                $education->job_id = $job->id;
+                $education->academic_qualification = $request->academic_qualifications[$i];
+                $education->academic_field = $request->academic_fields[$i];
+                $education->save();
+            }
+        }
 
         Session::flash('message', 'Job Posted Successfully!!'); 
         Session::flash('alert-class', 'alert-success');

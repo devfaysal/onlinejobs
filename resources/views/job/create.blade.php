@@ -312,40 +312,200 @@
                     </div>
                     {{-- Academic --}}
                     <div class="tab">
-                        <div class="form-group dis-cls">
-                            <label for="language" class="col-sm-4 col-form-label text-right">{{ __('Language *') }}</label>
-                            <div class="col-sm-8">
-                                <input id="language" type="text" class="form-control{{ $errors->has('language') ? ' is-invalid' : '' }}" name="language" value="{{ old('language') }}">
-
-                            @if ($errors->has('language'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('language') }}</strong>
-                                </span>
-                            @endif
+                        <div class="col-md-12 mb-2">
+                            <h4>Language Proficiency</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div id="language" class="form-group dis-cls">
+                                    <label for="language">{{ __('Language *') }}</label>
+                                    <select class="form-control" name="language[]" id="language">
+                                        <option>--Select--</option>
+                                        @foreach($languages as $language)
+                                            <option value="{{$language->id}}">{{$language->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div id="speaking" class="form-group dis-cls">
+                                    <label for="speaking">{{ __('Speaking') }}</label>
+                                    <select class="form-control" name="speaking[]" id="speaking">
+                                        <option>--Select--</option>
+                                        <option value="Fluent">Fluent</option>
+                                        <option value="Good">Good</option>
+                                        <option value="Poor">Poor</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div id="writing" class="form-group dis-cls">
+                                    <label for="writing">{{ __('Writing') }}</label>
+                                    <select class="form-control" name="writing[]" id="writing">
+                                        <option>--Select--</option>
+                                        <option value="Fluent">Fluent</option>
+                                        <option value="Good">Good</option>
+                                        <option value="Poor">Poor</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group dis-cls">
-                            <label for="minimum_academic_qualification" class="col-sm-4 col-form-label text-right">{{ __('Minimum Academic Qualification *') }}</label>
-                            <div class="col-sm-8">
-                                <input id="minimum_academic_qualification" type="text" class="form-control{{ $errors->has('minimum_academic_qualification') ? ' is-invalid' : '' }}" name="minimum_academic_qualification" value="{{ old('minimum_academic_qualification') }}">
-
-                            @if ($errors->has('minimum_academic_qualification'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('minimum_academic_qualification') }}</strong>
-                                </span>
-                            @endif
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <div id="czContainerLanguage">
+                                    <div id="first">
+                                        <div class="recordset">
+                                            <div class="fieldRow clearfix">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <hr class="mt-4 mb-4"/>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div id="language" class="form-group dis-cls">
+                                                            <label for="language">{{ __('Language *') }}</label>
+                                                            <select class="form-control" name="language[]" id="language">
+                                                                <option>--Select--</option>
+                                                                @foreach($languages as $language)
+                                                                    <option value="{{$language->id}}">{{$language->name}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div id="speaking" class="form-group dis-cls">
+                                                            <label for="speaking">{{ __('Speaking') }}</label>
+                                                            <select class="form-control" name="speaking[]" id="speaking">
+                                                                <option>--Select--</option>
+                                                                <option value="Fluent">Fluent</option>
+                                                                <option value="Good">Good</option>
+                                                                <option value="Poor">Poor</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div id="writing" class="form-group dis-cls">
+                                                            <label for="writing">{{ __('Writing') }}</label>
+                                                            <select class="form-control" name="writing[]" id="writing">
+                                                                <option>--Select--</option>
+                                                                <option value="Fluent">Fluent</option>
+                                                                <option value="Good">Good</option>
+                                                                <option value="Poor">Poor</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group dis-cls">
-                            <label for="academic_field" class="col-sm-4 col-form-label text-right">{{ __('Academic Field *') }}</label>
-                            <div class="col-sm-8">
-                                <input id="academic_field" type="text" class="form-control{{ $errors->has('academic_field') ? ' is-invalid' : '' }}" name="academic_field" value="{{ old('academic_field') }}">
-
-                            @if ($errors->has('academic_field'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('academic_field') }}</strong>
-                                </span>
-                            @endif
+                        <div class="col-md-12 mt-3 mb-2">
+                            <h4>Academic Qualification</h4>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group row dis-cls">
+                                <label for="minimum_academic_qualification" class="col-sm-4 col-form-label text-right">{{ __('Minimum Academic Qualification *') }}</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control{{ $errors->has('minimum_academic_qualification') ? ' is-invalid' : '' }}" name="minimum_academic_qualification" id="minimum_academic_qualification">
+                                        @foreach ($academics as $academic)
+                                            <option value="{{$academic->name}}">{{$academic->name}}</option>
+                                        @endforeach
+                                    </select>
+                                @if ($errors->has('minimum_academic_qualification'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('minimum_academic_qualification') }}</strong>
+                                    </span>
+                                @endif
+                                </div>
+                            </div>
+                            <div class="form-group row dis-cls">
+                                <label for="academic_field" class="col-sm-4 col-form-label text-right">{{ __('Academic Field') }}</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control{{ $errors->has('academic_field') ? ' is-invalid' : '' }}" name="academic_field" id="academic_field">
+                                        @foreach ($academic_fields as $academic_field)
+                                            <option value="{{$academic_field->name}}">{{$academic_field->name}}</option>
+                                        @endforeach
+                                    </select>
+                                @if ($errors->has('academic_field'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('academic_field') }}</strong>
+                                    </span>
+                                @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <div id="czContainerAcademic">
+                                    <div id="first">
+                                        <div class="recordset">
+                                            <div class="fieldRow clearfix">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <hr class="mt-4 mb-4"/>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group row dis-cls">
+                                                            <label for="academic_qualification" class="col-sm-4 col-form-label text-right">{{ __('Academic Qualification *') }}</label>
+                                                            <div class="col-sm-8">
+                                                                <select class="form-control{{ $errors->has('academic_qualification') ? ' is-invalid' : '' }}" name="academic_qualifications[]" id="academic_qualification">
+                                                                    @foreach ($academics as $academic)
+                                                                        <option value="{{$academic->name}}">{{$academic->name}}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            @if ($errors->has('academic_qualification'))
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $errors->first('academic_qualification') }}</strong>
+                                                                </span>
+                                                            @endif
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row dis-cls">
+                                                            <label for="academic_fields" class="col-sm-4 col-form-label text-right">{{ __('Academic Field') }}</label>
+                                                            <div class="col-sm-8">
+                                                                <select class="form-control{{ $errors->has('academic_fields') ? ' is-invalid' : '' }}" name="academic_fields[]" id="academic_fields">
+                                                                    @foreach ($academic_fields as $academic_field)
+                                                                        <option value="{{$academic_field->name}}">{{$academic_field->name}}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            @if ($errors->has('academic_fields'))
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $errors->first('academic_fields') }}</strong>
+                                                                </span>
+                                                            @endif
+                                                            </div>
+                                                        </div>
+                                                        {{-- <div class="form-group dis-cls">
+                                                            <label for="academic_qualifications" class="col-sm-4 col-form-label text-right">{{ __('Academic Qualification *') }}</label>
+                                                            <div class="col-sm-8">
+                                                                <input id="academic_qualifications" type="text" class="form-control{{ $errors->has('academic_qualifications') ? ' is-invalid' : '' }}" name="academic_qualifications[]" value="{{ old('academic_qualifications') }}">
+                                
+                                                            @if ($errors->has('academic_qualifications'))
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $errors->first('academic_qualifications') }}</strong>
+                                                                </span>
+                                                            @endif
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group dis-cls">
+                                                            <label for="academic_fields" class="col-sm-4 col-form-label text-right">{{ __('Academic Fields *') }}</label>
+                                                            <div class="col-sm-8">
+                                                                <input id="academic_fields" type="text" class="form-control{{ $errors->has('academic_fields') ? ' is-invalid' : '' }}" name="academic_fields[]" value="{{ old('academic_fields') }}">
+                                
+                                                            @if ($errors->has('academic_fields'))
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $errors->first('academic_fields') }}</strong>
+                                                                </span>
+                                                            @endif
+                                                            </div>
+                                                        </div> --}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group dis-cls">
@@ -489,4 +649,148 @@
         }
     </script>
     <!---------End for Multi Step form---------->
+    <script>
+            (function ($, undefined) {
+            $.fn.czMore = function (options) {
+        
+                //Set defauls for the control
+                var defaults = {
+                    max: 5,
+                    min: 0,
+                    onLoad: null,
+                    onAdd: null,
+                    onDelete: null,
+                    styleOverride: false,
+                };
+                //Update unset options with defaults if needed
+                var options = $.extend(defaults, options);
+                $(this).bind("onAdd", function (event, data) {
+                    options.onAdd.call(event, data);
+                });
+                $(this).bind("onLoad", function (event, data) {
+                    options.onLoad.call(event, data);
+                });
+                $(this).bind("onDelete", function (event, data) {
+                    options.onDelete.call(event, data);
+                });
+                //Executing functionality on all selected elements
+                return this.each(function () {
+                    var obj = $(this);
+                    var i = obj.children(".recordset").length;
+                    var divPlus = '<div id="btnPlus" class="btnPlus">Add</div>';
+                    var count = '<input id="' + this.id + '_czMore_txtCount" name="' + this.id + '_czMore_txtCount" type="hidden" value="0" size="5" />';
+        
+                    obj.before(count);
+                    var recordset = obj.children("#first");
+                    obj.after(divPlus);
+                    var set = recordset.children(".recordset").children().first();
+                    var btnPlus = obj.siblings("#btnPlus");
+        
+                    if(!options.styleOverride) {
+                      btnPlus.css({
+                          'border': '0px',
+                          'background-image': 'url("/images/add.png")',
+                          'background-position': 'center center',
+                          'background-repeat': 'no-repeat',
+                          'height': '25px',
+                          'width': '90px',
+                          'cursor': 'pointer',
+                      });
+                    }
+        
+                    if (recordset.length) {
+                        obj.siblings("#btnPlus").click(function () {
+                            var i = obj.children(".recordset").length;
+                            var item = recordset.clone().html();
+                            i++;
+                            item = item.replace(/\[([0-9]\d{0})\]/g, "[" + i + "]");
+                            item = item.replace(/\_([0-9]\d{0})\_/g, "_" + i + "_");
+                            //$(element).html(item);
+                            //item = $(item).children().first();
+                            //item = $(item).parent();
+        
+                            obj.append(item);
+                            loadMinus(obj.children().last());
+                            minusClick(obj.children().last());
+                            if (options.onAdd != null) {
+                                obj.trigger("onAdd", i);
+                            }
+        
+                            obj.siblings("input[name$='czMore_txtCount']").val(i);
+                            return false;
+                        });
+                        recordset.remove();
+                        for (var j = 0; j <= i; j++) {
+                            loadMinus(obj.children()[j]);
+                            minusClick(obj.children()[j]);
+                            if (options.onAdd != null) {
+                                obj.trigger("onAdd", j);
+                            }
+                        }
+        
+                        if (options.onLoad != null) {
+                            obj.trigger("onLoad", i);
+                        }
+                        //obj.bind("onAdd", function (event, data) {
+                        //If you had passed anything in your trigger function, you can grab it using the second parameter in the callback function.
+                        //});
+                    }
+        
+                    function resetNumbering() {
+                        $(obj).children(".recordset").each(function (index, element) {
+                           $(element).find('input:text, input:password, input:file, select, textarea').each(function(){
+                                old_name = this.name;
+                                new_name = old_name.replace(/\_([0-9]\d{0})\_/g, "_" + (index + 1) + "_");
+                                this.id = this.name = new_name;
+                                //alert(this.name);
+                            });
+                            index++
+                            minusClick(element);
+                        });
+                    }
+        
+                    function loadMinus(recordset) {
+                        var divMinus = '<div id="btnMinus" class="btnMinus" />';
+                        $(recordset).children().first().before(divMinus);
+                        var btnMinus = $(recordset).children("#btnMinus");
+                        if(!options.styleOverride) {
+                          btnMinus.css({
+                              'float': 'right',
+                              'border': '0px',
+                              'background-image': 'url("/images/remove.png")',
+                              'background-position': 'center center',
+                              'background-repeat': 'no-repeat',
+                              'height': '25px',
+                              'width': '25px',
+                              'cursor': 'poitnter',
+                          });
+                      }
+                    }
+        
+                    function minusClick(recordset) {
+                        $(recordset).children("#btnMinus").click(function () {
+                            var i = obj.children(".recordset").length;
+                            var id = $(recordset).attr("data-id")
+                            $(recordset).remove();
+                            resetNumbering();
+                            obj.siblings("input[name$='czMore_txtCount']").val(obj.children(".recordset").length);
+                            i--;
+                            if (options.onDelete != null) {
+                                if (id != null)
+                                    obj.trigger("onDelete", id);
+                            }
+                        });
+                    }
+                });
+            };
+        })(jQuery);
+        
+            </script>
+            <script type="text/javascript">
+                //One-to-many relationship plugin by Yasir O. Atabani. Copyrights Reserved.
+                $("#czContainer").czMore();
+                $("#czContainerLanguage").czMore();
+                $("#czContainerAcademic").czMore();
+            </script>
+            
 @endsection
