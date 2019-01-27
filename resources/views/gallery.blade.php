@@ -12,7 +12,7 @@
             @foreach ($images as $image)
             <div class="col-4 mb-2">
                 <div class="card">
-                    <img class="card-img-top img-thumbnail" src="{{ asset('storage/gallery/'. $image->image_name) }}" alt="{{ $image->caption }}">
+                    <img class="card-img-top" src="{{ asset('storage/gallery/'. $image->image_name) }}" alt="{{ $image->caption }}">
                     <div class="card-body">
                         <p class="card-text text-center">{{$image->caption}}</p>
                     </div>
