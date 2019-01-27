@@ -131,6 +131,9 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
 
     Route::resource('/facilities', 'Admin\FacilitiesController');
     Route::get('/getFacilitiesData', 'Admin\FacilitiesController@getFacilitiesData')->name('getFacilitiesData');
+
+    Route::resource('/gallery', 'Admin\GalleryController');
+    Route::get('/getGalleryData', 'Admin\GalleryController@getGalleryData')->name('getGalleryData');
     
 });
 
@@ -208,5 +211,7 @@ Route::post('/retiredPersonnel/experience/store', 'RetiredPersonnelsWorkExperien
 
 Route::get('/retiredPersonnel/language/add', 'RetiredPersonnelsLanguageController@create')->name('retiredPersonnelsLanguage.create')->middleware('auth');
 Route::post('/retiredPersonnel/language/store', 'RetiredPersonnelsLanguageController@store')->name('retiredPersonnelsLanguage.store')->middleware('auth');
+
+Route::get('/gallery', 'Admin\GalleryController@gallery')->name('gallery');
 
 

@@ -8,7 +8,7 @@
                         <a class="nav-item nav-link" href="{{route('login')}}">Retired personnel</a>
                         <a class="nav-item nav-link" href="#">International Jobs</a>
                         <a class="nav-item nav-link" href="#">Walk in jobs</a>
-                        <a class="nav-item nav-link" href="#">Gallery</a>
+                        <a class="nav-item nav-link" href="{{route('gallery')}}">Gallery</a>
                         <a class="nav-item nav-link" href="{{route('CadidateStatusView')}}">Application Status </a>
                     </nav>
                 </div><!--  /.row  -->

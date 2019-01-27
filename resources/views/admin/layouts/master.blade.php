@@ -285,6 +285,10 @@
                                         </li> --}}
                                     </ul>
                                 </li>
+                                <li class="{{ ( (Route::currentRouteName() === "admin.gallery.index") ? "active" : "") }}">
+                                    <a href="{{route('admin.gallery.index')}}">
+                                        <i class="fa fa-download"></i> Gallery </a>
+                                </li>
                                 @endif
                                 {{-- <li>
                                     <a href="forms.html">
