@@ -75,7 +75,7 @@ class GalleryController extends Controller
     {
         if($request->file('image')){
             $this->validate($request, [
-                'license_file' => 'mimes:pdf,jpg,jpeg,png|max:1024',
+                'license_file' => 'mimes:jpg,jpeg,png|max:1024',
             ]);
             
             $image_basename = explode('.',$request->file('image')->getClientOriginalName())[0];
