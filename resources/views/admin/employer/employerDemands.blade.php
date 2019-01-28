@@ -75,7 +75,7 @@
 
                             <form method="post" action="{{route('admin.proposeGWToDemand')}}">
                             @csrf
-
+                                <input type="hidden" id="gws" name="gws" value="">
                                 <input type="hidden" id="demandID" name="demandID" value="">
                                 <table id="workers-table" class="table table-condensed">
                                     <thead>
@@ -216,11 +216,11 @@
 
 
     // workers table
-    $('#workers-table').DataTable({
+workersTable = $('#workers-table').DataTable({
         order: [[ 0, "desc" ]],
-        bPaginate: false,
         processing: true,
         serverSide: true,
+        pageLength: 25,
         ajax: '{{route('admin.getWorkersData')}}',
         columns: [
             {data: 'id', name: 'id'},
@@ -250,5 +250,35 @@
             $('tr th:nth-child(1)').hide();
         }
     });
+
+
+
+ids = [];
+
+function updateId(id){
+	if(id.checked == true){
+		ids.push(id.value);
+	}else if(id.checked == false){
+		var index = ids.indexOf(id.value);
+		if (index > -1) {
+			ids.splice(index, 1);
+		}
+	}
+    console.log(ids);
+	document.querySelector("#gws").value = ids;
+}
+
+document.querySelector("#workers-table_paginate").addEventListener('click', function(){
+    setTimeout(function(){
+        for (var i = 0; i < ids.length; i++) {
+            checkbox = document.querySelector("#gw"+ ids[i])
+
+            if(checkbox !=null){
+                checkbox.checked = true;
+            }
+        }
+    }, 1000);
+
+});
 </script>
 @endsection

@@ -110,6 +110,7 @@
                         <form method="post" action="{{route('confirmGWToDemand')}}">
                     @endif
                             @csrf
+                            <input type="hidden" id="gws" name="gws" value="">
                             <table id="workers-table" class="table table-condensed">
                                 <thead>
                                     <tr>
@@ -199,9 +200,10 @@
 
     // maids table
     $('#workers-table').DataTable({
+        order: [[ 0, "desc" ]],
         processing: true,
         serverSide: true,
-        order: [[ 2, 'asc' ]],
+        pageLength: 25,
         ajax: '{{route('proposedGW', ['damand_id' => $offer->id])}}',
         columns: [
             {data: 'id', name: 'id'},
@@ -248,5 +250,35 @@
             }
         }
     }
-</script> 
+</script>
+<script>
+    ids = [];
+
+    function updateId(id){
+        if(id.checked == true){
+            ids.push(id.value);
+        }else if(id.checked == false){
+            var index = ids.indexOf(id.value);
+            if (index > -1) {
+                ids.splice(index, 1);
+            }
+        }
+        console.log(ids);
+        document.querySelector("#gws").value = ids;
+    }
+
+    document.querySelector("#workers-table_paginate").addEventListener('click', function(){
+        
+        setTimeout(function(){
+            for (var i = 0; i < ids.length; i++) {
+                checkbox = document.querySelector("#gw"+ ids[i])
+
+                if(checkbox !=null){
+                    checkbox.checked = true;
+                }
+            }
+        }, 1000);
+
+    });
+</script>
 @endsection

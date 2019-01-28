@@ -224,11 +224,11 @@ class EmployerProfileController extends Controller
             if(auth()->user()->hasRole('agent'))
             {
                 if ( $data->applicants()->first()['status'] == 2 ) {
-                    $string .= ' <input class="pull-right demand-checkbox" style="width: 38px;height: 38px;vertical-align: middle;" type="checkbox" name="id[]" value="'.$data->applicants()->first()['id'].'">';
+                    $string .= ' <input class="pull-right demand-checkbox" onchange="updateId(this)" style="width: 38px;height: 38px;vertical-align: middle;" type="checkbox" name="id[]" id="gw'.$data->applicants()->first()['id'].'" value="'.$data->applicants()->first()['id'].'">';
                 }
             } else {
                 if ( $data->applicants()->first()['status'] == 1 ) {
-                    $string .= ' <input class="pull-right demand-checkbox" onclick="KeepCount()" style="width: 38px;height: 38px;vertical-align: middle;" type="checkbox" name="id[]" value="'.$data->applicants()->first()['id'].'">';
+                    $string .= ' <input class="pull-right demand-checkbox" onchange="updateId(this)" onclick="KeepCount()" style="width: 38px;height: 38px;vertical-align: middle;" type="checkbox" name="id[]" id="gw'.$data->applicants()->first()['id'].'" value="'.$data->applicants()->first()['id'].'">';
                 }                
             }
 
@@ -275,7 +275,7 @@ class EmployerProfileController extends Controller
 
     public function confirmGWToDemand(Request $request)
     {
-        if(!$request->id) {
+        if(!$request->gws) {
             Session::flash('message', 'No General Worker were Selected!'); 
             Session::flash('alert-class', 'alert-danger');
 
@@ -287,7 +287,7 @@ class EmployerProfileController extends Controller
         $demandUpdate->status = 5;  // confirmed GW
         $demandUpdate->save();
 
-        $ids = $request->id;
+        $ids = explode(",",$request->gws);
         foreach($ids as $id){
             $applicantUpdate = Applicant::where('id', $id)->first();
             $applicantUpdate->confirmed = 1;  // confirmed GW

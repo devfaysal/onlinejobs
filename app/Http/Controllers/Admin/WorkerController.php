@@ -42,7 +42,7 @@ class WorkerController extends Controller
         })
         ->addColumn('selectQW', function ($user) {
             if ( ! $user->applicants()->first()['user_id'] ) {
-                $string = '<input style="width: 38px;height: 38px;vertical-align: middle;" type="checkbox" name="id[]" value="'.$user->id.'">';
+                $string = '<input style="width: 38px;height: 38px;vertical-align: middle;" onchange="updateId(this)" type="checkbox" id="gw'.$user->id.'" name="id[]" value="'.$user->id.'">';
             } else {
                 $string = '';
             }

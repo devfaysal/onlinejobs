@@ -212,7 +212,7 @@ class EmployerController extends Controller
 
     public function proposeGWToDemand(Request $request)
     {
-        if(!$request->id) {
+        if(!$request->gws) {
             Session::flash('message', 'No General Worker Selected!'); 
             Session::flash('alert-class', 'alert-danger');
 
@@ -225,7 +225,7 @@ class EmployerController extends Controller
         $demandUpdate->proposed_date = date('Y-m-d');  // proposed GW
         $demandUpdate->save();
 
-        $ids = $request->id;
+        $ids = explode(",",$request->gws);
         foreach($ids as $id){
             $applicant = new Applicant;
             $applicant->offer_id = $request->demandID;
@@ -250,7 +250,7 @@ class EmployerController extends Controller
 
     public function finalizeGWToDemand(Request $request)
     {
-        if(!$request->id) {
+        if(!$request->gws) {
             Session::flash('message', 'No General Worker were Selected!'); 
             Session::flash('alert-class', 'alert-danger');
 
@@ -262,7 +262,7 @@ class EmployerController extends Controller
         $demandUpdate->status = 6;  // finalized GW
         $demandUpdate->save();
 
-        $ids = $request->id;
+        $ids = explode(",",$request->gws);
         foreach($ids as $id){
             $applicantUpdate = Applicant::where('id', $id)->first();
             $applicantUpdate->finalized = 1;  // finalized GW
