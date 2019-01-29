@@ -414,7 +414,7 @@ class AgentProfileController extends Controller
         }
 
         $profile->user_id = $user->id;
-        $profile->other_skills = $user->other_skills;
+        $profile->other_skills = $request->other_skills;
         $profile->agent_code = $request->agent_code;
         $profile->name = $request->name;
         $profile->date_of_birth = $request->date_of_birth;
