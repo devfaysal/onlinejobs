@@ -307,15 +307,15 @@
                         <div class="form-group row">
                             <div class="col-sm-8 ml-auto">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" name="looking_for_professional" class="custom-control-input" id="looking_for_professional">
-                                    <label class="custom-control-label" for="looking_for_professional">Looking For Professional</label>
+                                    <input type="checkbox" name="looking_for_pro" value="yes" class="custom-control-input" id="looking_for_pro">
+                                    <label class="custom-control-label" for="looking_for_pro">Looking For Professional</label>
                                 </div>
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" name="looking_for_gw" class="custom-control-input" id="looking_for_gw">
+                                    <input type="checkbox" name="looking_for_gw" value="yes" class="custom-control-input" id="looking_for_gw">
                                     <label class="custom-control-label" for="looking_for_gw">Looking For General Worker</label>
                                 </div>
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" name="looking_for_gw" class="custom-control-input" id="looking_for_dm">
+                                    <input type="checkbox" name="looking_for_dm" value="yes" class="custom-control-input" id="looking_for_dm">
                                     <label class="custom-control-label" for="looking_for_dm">Looking For Domestic Maid</label>
                                 </div>
                             </div>

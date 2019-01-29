@@ -35,19 +35,25 @@
                             @if(Auth::user()->status == 1)
                             <div class="col-md-12">
                                 <hr>
-                                <a class="btn btn-info btn-sm pull-left" href="#downloads"> <i class="fa fa-download"></i> Download files</a>
-                                <a class="btn btn-success btn-sm ml-3" href="{{route('job.create')}}">Post a Job</a>
+                                {{-- <a class="btn btn-info btn-sm pull-left" href="#downloads"> <i class="fa fa-download"></i> Download files</a> --}}
+                                @if($employer->employer_profile->looking_for_pro == 'yes')
+                                    <a class="btn btn-success btn-sm ml-3" href="{{route('job.create')}}">Post a Job</a>
+                                @endif
+                                @if($employer->employer_profile->looking_for_gw == 'yes')
+                                    <a class="btn btn-warning btn-sm ml-3" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#demandModal" href="#">Send a Demand</a>
+                                @endif
                             </div>
                             @endif
                         </div>
                     </div><!--/.panel-body-->
                 </div><!--/.panel panel-default-->
-                <div class="card mt-4">
+                {{-- <div class="card mt-4">
                     <div class="card-body">
                         <canvas id="myChart" width="75%" height="20vh"></canvas>
                     </div>
-                </div>
+                </div> --}}
                 @if(Auth::user()->status == 1)
+                @if($employer->employer_profile->looking_for_pro == 'yes')
                 {{-- Jobs Posted --}}
                 <div class="card mt-4">
                     <h4 class="card-title text-center mt-3">
@@ -78,6 +84,8 @@
                         </table>
                     </div>
                 </div>
+                @endif
+                @if($employer->employer_profile->looking_for_gw == 'yes')
                 <!-- Demands list -->
                 <div class="card mt-4">
                     <h4 class="card-title text-center mt-3">
@@ -123,6 +131,7 @@
                         </table>
                     </div>
                 </div>
+                @endif
                 <!-- Demand Entry Modal -->
                 <div class="modal fade" id="demandModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -348,7 +357,7 @@
                     </div><!--  /.modal-dialog modal-dialog-centered  -->
                 </div><!--  /.modal fade  -->
                 <!-- /.Login Modal -->
-
+                @if($employer->employer_profile->looking_for_dm == 'yes')
                 <!-- GW list for Employer -->
                 <div class="card mt-4">
                     <h4 class="card-title text-center mt-3">Domestic Maids</h4>
@@ -386,7 +395,8 @@
                         </form>
                     </div>
                 </div>
-
+                @endif
+                @if($employer->employer_profile->looking_for_gw == 'yes' || $employer->employer_profile->looking_for_dm == 'yes')
                 <!-- Downloads list -->
                 <div class="card mt-4" id="downloads">
                     <h4 class="card-title text-center mt-3">Download files</h4>
@@ -411,6 +421,7 @@
                         </table>
                     </div>
                 </div>
+                @endif
                 @endif
             </div><!--/.col-md-12-->
         </div>
