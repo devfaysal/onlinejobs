@@ -15,6 +15,7 @@ use App\EmployerProfile;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
+use App\Notifications\OfferSentToDM;
 use App\Notifications\DemandLetterSent;
 use App\Notifications\GWConfirmedByEmployer;
 use Illuminate\Support\Facades\Notification;
@@ -466,6 +467,11 @@ class EmployerProfileController extends Controller
 
         Session::flash('message', 'Offer sent successfully!'); 
         Session::flash('alert-class', 'alert-success');
+
+        //Send notification to the Admins
+        $admins = User::whereRoleIs('superadministrator')->get();
+        $data = $offer;
+        Notification::send($admins, new OfferSentToDM($data));
 
         return redirect()->route('employer.show');
     }
