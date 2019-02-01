@@ -30,7 +30,8 @@ class JobController extends Controller
 
         return DataTables::of($jobs)
         ->addColumn('action', function ($job) {
-            $string = '<a target="_blank" href="'.route('job.show', $job->id).'" class="btn btn-xs btn-primary">View</a> ';
+            $string  = '<a target="_blank" href="'.route('job.show', $job->id).'" class="btn btn-xs btn-primary">View</a> ';
+            $string .= '<a target="_blank" href="'.route('job.edit', $job->id).'" class="btn btn-xs btn-warning">Edit</a> ';
             return $string;
         })
         ->make(true);

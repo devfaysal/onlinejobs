@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card mb-5">
                 <div class="card-header">
-                    <h4 class="card-title mt-3">{{$job->positions_name}}</h4>
+                    <h4 class="card-title mt-3">{{$job->positions_name}} @if(Auth::user()->hasRole('employer')) <a href="{{route('job.edit', $job->id)}}">Edit</a> @endif</h4>
                 </div>
                 <div class="card-body">
                     <div class="mb-3">
