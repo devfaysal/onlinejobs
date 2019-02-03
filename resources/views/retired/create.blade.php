@@ -118,7 +118,7 @@
                         <div class="form-group row">
                             <label for="phone" class="col-sm-4 col-form-label text-right">{{ __('Contact No *') }}</label>
                             <div class="col-sm-8">
-                                <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" placeholder="Contuct No" required>
+                                <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" placeholder="Contact No" required>
 
                             @if ($errors->has('phone'))
                                 <span class="invalid-feedback" role="alert">

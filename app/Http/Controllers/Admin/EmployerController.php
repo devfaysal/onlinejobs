@@ -55,14 +55,14 @@ class EmployerController extends Controller
 
     public function getEmployersApplicationData()
     {
-        $users = User::where('status', 0)->whereRoleIs('employer')->get();
-
+        $users = User::with('employer_profile')->where('status', 0)->whereRoleIs('employer')->get();
+        
         return DataTables::of($users)
         ->addColumn('company_name', function ($user) {
-            return $user->employer_profile->company_name;
+            return $user->employer_profile->company_name ?? '';
         })
         ->addColumn('company_country', function ($user) {
-            return $user->employer_profile->company_country_data['name'];
+            return $user->employer_profile->company_country_data['name'] ?? '';
         })
         ->addColumn('action', function ($user) {
             $string  = '<a class="btn btn-xs btn-primary" href="'.route('employer.public', $user->public_id).'">View</a>';
