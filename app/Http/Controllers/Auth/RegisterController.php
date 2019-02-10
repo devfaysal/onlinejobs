@@ -202,9 +202,9 @@ class RegisterController extends Controller
             $employer->company_country = $data['company_country'];
             $employer->company_phone = $data['company_phone'];
             $employer->website = $data['website'];
-            $employer->looking_for_pro = $data['looking_for_pro'];
-            $employer->looking_for_gw = $data['looking_for_gw'];
-            $employer->looking_for_dm = $data['looking_for_dm'];
+            $employer->looking_for_pro = $data['looking_for_pro'] ?? null;
+            $employer->looking_for_gw = $data['looking_for_gw'] ?? null;
+            $employer->looking_for_dm = $data['looking_for_dm'] ?? null;
 
             $employer->save();
             Session::flash('message', 'Your Employer Application Submitted Successfully!!'); 
