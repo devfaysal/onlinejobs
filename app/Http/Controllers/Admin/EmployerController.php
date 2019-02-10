@@ -35,10 +35,10 @@ class EmployerController extends Controller
 
         return DataTables::of($users)
         ->addColumn('company_name', function ($user) {
-            return $user->employer_profile->company_name;
+            return $user->employer_profile->company_name ?? '';
         })
         ->addColumn('company_country', function ($user) {
-            return $user->employer_profile->company_country_data['name'];
+            return $user->employer_profile->company_country_data['name'] ?? '';
         })
         ->addColumn('action', function ($user) {
             //return '<a href="'.route('admin.agent.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
