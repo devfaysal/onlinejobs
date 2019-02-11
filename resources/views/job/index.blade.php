@@ -29,7 +29,7 @@
                             <p class="mb-0"><i class="mr-3 fa fa-map-marker" aria-hidden="true"></i> {{$job->district}}, {{$job->town}}, {{$job->state}}</p>
                             <p class="mb-0"><i class="mr-2 fa fa-briefcase" aria-hidden="true"></i> {{$job->related_experience_year ?? 0 }} Year {{$job->related_experience_month ?? 0}} Month</p>
                             <p class="mb-0"><i class="mr-2 fa fa-graduation-cap" aria-hidden="true"></i> {{$job->minimum_academic_qualification}}</p>
-                            <p class=" mb-0 text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Closing Date: {{$job->closing_date}}</p>
+                            <p class=" mb-0 text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Closing Date: {{\Carbon\Carbon::parse($job->closing_date)->format('d/m/Y')}}</p>
                         </div>
                     </div>
                 </a>

@@ -18,13 +18,13 @@ class JobController extends Controller
     {
         $jobs = Job::where('status', 1)
                     ->when($request->title, function($query) use($request){
-                        return $query->where('title', 'like', '%'.$request->title.'%');
+                        return $query->where('positions_name', 'like', '%'.$request->title.'%');
                     })
                     ->when($request->location, function($query) use($request){
-                        return $query->where('location', $request->location);
+                        return $query->where('district', $request->location);
                     })
                     ->when($request->experience, function($query) use($request){
-                        return $query->where('location', $request->location);
+                        return $query->where('related_experience_year', $request->experience);
                     })
                     ->when($request->salary, function($query) use($request){
                         return $query->where('salary_range_1','<', $request->salary);
@@ -42,13 +42,13 @@ class JobController extends Controller
     public function index(Request $request)
     {
         if($request->q == 'location'){
-            $jobs = Job::where('location', $request->c)->get();
+            $jobs = Job::where('district', $request->c)->get();
         }elseif($request->q == 'skill'){
-            $jobs = Job::where('location', $request->c)->get();
+            $jobs = Job::where('skills', $request->q)->get();
         }elseif($request->q == 'designation'){
-            $jobs = Job::where('location', $request->c)->get();
+            $jobs = Job::where('positions_name', $request->q)->get();
         }elseif($request->q == 'category'){
-            $jobs = Job::where('location', $request->c)->get();
+            $jobs = Job::where('positions_name', $request->q)->get();
         }else{
             $jobs = Job::all();
         }
