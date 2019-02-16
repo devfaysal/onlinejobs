@@ -183,10 +183,25 @@
 
 											<div class="col-md-9 col-sm-9">
 													<div class="whitebg heading-text">
-														<p>FOREIGN WORKERS WELFARE MANAGEMENT CENTER Sdn Bhd (FWWMC) was formed mainly as a support organization to manage and attend to the welfare of all foreign workers working in Malaysian. Understandably, every country sending their valuable citizens abroad for Employment would like a guarantee that they (the worker) are well taken care of and their right protected, We at FWWMC are proud to say that we can Give you that GUARANTEE.</p>
-														<p>Every Workers will have to register for the service. Upon registering with us, FWWMC shall do everything necessary to protect the Rights and welfare of the registered foreign worker, thus ensuring that his/her stay in Malaysia would be one that is safe and hassle free. FWWMC is proud to stay that we work closely with the Ministry of Human Resources Malaysia on all matters relating to human resources development and management in Malaysia; hence workers who register with us can be confident that rights will be protected. Any abuse or injustice they may face during the course of employment will be reported to us and we shall then do the necessary to arbitrate and solve the problem with extreme urgency by taking the matter direct to the ministry if required.</p>
-														<p>FWWMC is proud to be equipped with a complete and effective Welfare and Third Party Service (TPS) Management System. Our client base speaks well of our achievements. The confidence and trust of all foreign workers associated with us is our best reference and asset. When FWWMC handles your workers welfare and management you can be rest assured that they are in good hands. We have the expertise, resources and management assurance to give you the highest level of efficiency that your organization requires.</p>
-														<p>FWWMC was established on the 7th of January 2009 to help the Government agency tasked with Protecting and Promoting the welfare and well-being of all foreign workers employed here in Malaysia. FWWMC is a Membership Welfare Institute FWWMC is Recognized and Supported by the Department of Labour Under Ministry of Human Resources Malaysia with the supporting letter (34) JTK/30/11/992 jld.8 signed by the Director General</p>
+														<h1 class="text-primary">About Us</h1>
+														<h6>POWERING THE WORLD OF WORK WITH OUR ONLINE RECRUITING EXPERTISE</h6>
+
+														<h1 class="text-primary">Who we are</h1>
+														<p>Online Jobs is a global, specialist professional recruitment consultancy.</p>
+
+														<h1 class="text-primary">Mission, values and purpose</h1>
+														<p>We want to be the world’s leading specialist online recruitment consultancy and recruitment outsourcing provider. We provide online CV on local and foreign workers to carter local and global demand.</p>
+
+														<h4 class="font-italic">“Placing the right talents to the right jobs at the right companies”</h4>
+
+														<h1 class="text-primary">Our strategy</h1>
+														<p>Online Jobs is committed to providing you with the best-in-class research, methodology, tools and services to give your HR leadership team what they need to operate efficiently.
+															Our reputation for timely and accurate delivery of qualified and talented candidates. We also offer a full range of tailored recruitment solutions including market mapping, personality assessment, alignment and coaching.
+															</p>
+
+														<h1 class="text-primary">Our Advantages </h1>
+														<p>At Online Jobs we dedicated ourselves to our clients to meet their needs in the best possible way we can.we understand that identifying the best solution and talent for your company is no easy feat and will take precious time and effort, that is why we are here to help you with our professional services through our asia pacific network and expertise.</p>
+
 													</div>
 													<div class="whitebg">
 														<p class="titleContent top-title"> Best Places to Work </p> 
