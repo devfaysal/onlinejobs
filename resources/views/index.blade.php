@@ -182,26 +182,34 @@
 										</div>
 
 											<div class="col-md-9 col-sm-9">
-													<div class="whitebg heading-text">
-														<h1 class="text-primary">About Us</h1>
-														<h6>POWERING THE WORLD OF WORK WITH OUR ONLINE RECRUITING EXPERTISE</h6>
+													<div class="whitebg">
+														<div class="mb-5">
+															<h3 class="text-primary mb-0">About Us</h3>
+															<p class="font-size-1">POWERING THE WORLD OF WORK WITH OUR ONLINE RECRUITING EXPERTISE</p>
+														</div>
 
-														<h1 class="text-primary">Who we are</h1>
-														<p>Online Jobs is a global, specialist professional recruitment consultancy.</p>
+														<div class="mb-5">
+															<h3 class="text-primary mb-0">Who we are</h3>
+															<p class="font-size-1"><strong class="text-success"><span class="font-size-2">O</span>NLINE JOBS</strong> is a global, specialist professional recruitment consultancy.</p>
+														</div>
 
-														<h1 class="text-primary">Mission, values and purpose</h1>
-														<p>We want to be the world’s leading specialist online recruitment consultancy and recruitment outsourcing provider. We provide online CV on local and foreign workers to carter local and global demand.</p>
-
+														<div class="mb-5">
+															<h3 class="text-primary mb-0">Mission, values and purpose</h3>
+															<p class="font-size-1"><strong class="text-success"><span class="font-size-2">W</span>E</strong> want to be the world’s leading specialist online recruitment consultancy and recruitment outsourcing provider. We provide online CV on local and foreign workers to carter local and global demand.</p>
+														</div>
+														<div class="mb-5">
 														<h4 class="font-italic">“Placing the right talents to the right jobs at the right companies”</h4>
-
-														<h1 class="text-primary">Our strategy</h1>
-														<p>Online Jobs is committed to providing you with the best-in-class research, methodology, tools and services to give your HR leadership team what they need to operate efficiently.
+													</div>
+														<div class="mb-5">
+														<h3 class="text-primary mb-0">Our strategy</h3>
+														<p class="font-size-1"><strong class="text-success"><span class="font-size-2">O</span>NLINE JOBS</strong> is committed to providing you with the best-in-class research, methodology, tools and services to give your HR leadership team what they need to operate efficiently.
 															Our reputation for timely and accurate delivery of qualified and talented candidates. We also offer a full range of tailored recruitment solutions including market mapping, personality assessment, alignment and coaching.
 															</p>
-
-														<h1 class="text-primary">Our Advantages </h1>
-														<p>At Online Jobs we dedicated ourselves to our clients to meet their needs in the best possible way we can.we understand that identifying the best solution and talent for your company is no easy feat and will take precious time and effort, that is why we are here to help you with our professional services through our asia pacific network and expertise.</p>
-
+														</div>
+														<div class="mb-5">
+														<h3 class="text-primary mb-0">Our Advantages </h3>
+														<p class="font-size-1"><strong class="text-success"><span class="font-size-2">A</span>T ONLINE JOBS</strong> we dedicated ourselves to our clients to meet their needs in the best possible way we can.we understand that identifying the best solution and talent for your company is no easy feat and will take precious time and effort, that is why we are here to help you with our professional services through our asia pacific network and expertise.</p>
+													</div>
 													</div>
 													<div class="whitebg">
 														<p class="titleContent top-title"> Best Places to Work </p> 

@@ -18,3 +18,21 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
+$sizes: (
+	'1': 1em,
+	'2': 2em,
+	'3': 3em,
+	'4': 4em,
+	'5': 5em,
+	'6': 6em,
+	'7': 7em,
+	'8': 8em,
+	'9': 9em
+);
+
+@each $name, $em in $sizes {
+	.font-size-#{$name} {
+    font-size: #{$em};
+	}
+}
