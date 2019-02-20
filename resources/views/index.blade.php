@@ -183,45 +183,60 @@
 
 											<div class="col-md-9 col-sm-9">
 													<div class="whitebg">
-														<div class="mb-5">
-															<h3 class="text-primary mb-0">About Us</h3>
-															<p class="font-size-1">POWERING THE WORLD OF WORK WITH OUR ONLINE RECRUITING EXPERTISE</p>
-														</div>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <img style="width:100%" src="images/home/1st-Picture.jpg" alt="">
+                                                                <p class="mt-3 text-center text-danger">POWERING THE WORLD OF WORK WITH OUR ONLINE RECRUITING EXPERTISE</p>
+                                                            </div>
+                                                        </div>
 
-														<div class="mb-5">
-															<h3 class="text-primary mb-0">Who we are</h3>
-															<p class="font-size-1"><strong class="text-success"><span class="font-size-2">O</span>NLINE JOBS</strong> is a global, specialist professional recruitment consultancy.</p>
-														</div>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <p class="text-uppercase text-primary "><span class="font-size-3">W</span>ho We Are</p>
+                                                                <p>Online Jobs Is A Global Recruiting and Work Placement Consultant For JobSeeks and JobsProvider.</p>
+                                                            </div>
+                                                        </div>
 
-														<div class="mb-5">
-															<h3 class="text-primary mb-0">Mission, values and purpose</h3>
-															<p class="font-size-1"><strong class="text-success"><span class="font-size-2">W</span>E</strong> want to be the world’s leading specialist online recruitment consultancy and recruitment outsourcing provider. We provide online CV on local and foreign workers to carter local and global demand.</p>
-														</div>
-														<div class="mb-5">
-														<h4 class="font-italic">“Placing the right talents to the right jobs at the right companies”</h4>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <p class="text-uppercase text-primary mb-0"><span class="font-size-3">M</span>ission, values and purpose</p>
+                                                                <p>We want to be the world’s leading specialist online recruitment consultancy and Welfare protection provider for Jobseeks and Employer.  We provide online CV on local and foreign workers to carter local and global demand</p>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <img class="mt-3" style="width:100%" src="images/home/2nd-Picture.jpg" alt="">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <p class="text-danger text-center font-italic font-size-2">“Placing the right talents to the right jobs at the right companies”</p>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <img style="width:100%" src="images/home/3rd-Picture.jpg" alt="">
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <p class="mt-2">Online Jobs is committed to providing you with the best-in-class research, tailored recruitment solutions, methodology, tools and services to your HR leadership team what they need to operate efficiently.</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <img class="mt-3" style="width:100%" src="images/home/4th-Picture.jpg" alt="">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <p class="text-uppercase text-primary mb-0"><span class="font-size-3">O</span>ur Advantages </p>
+                                                                <p>At Online Jobs we dedicated ourselves to our clients to meet their needs in the best possible way we can. We understand that identifying the best solution and talent for your company is no easy task and will take precious time and effort that is why we are here to help you with our professional services through our Asia pacific network and expertise.</p>
+                                                            </div>
+                                                        </div>
 													</div>
-														<div class="mb-5">
-														<h3 class="text-primary mb-0">Our strategy</h3>
-														<p class="font-size-1"><strong class="text-success"><span class="font-size-2">O</span>NLINE JOBS</strong> is committed to providing you with the best-in-class research, methodology, tools and services to give your HR leadership team what they need to operate efficiently.
-															Our reputation for timely and accurate delivery of qualified and talented candidates. We also offer a full range of tailored recruitment solutions including market mapping, personality assessment, alignment and coaching.
-															</p>
-														</div>
-														<div class="mb-5">
-														<h3 class="text-primary mb-0">Our Advantages </h3>
-														<p class="font-size-1"><strong class="text-success"><span class="font-size-2">A</span>T ONLINE JOBS</strong> we dedicated ourselves to our clients to meet their needs in the best possible way we can.we understand that identifying the best solution and talent for your company is no easy feat and will take precious time and effort, that is why we are here to help you with our professional services through our asia pacific network and expertise.</p>
-													</div>
-													</div>
-													<div class="whitebg">
-														<p class="titleContent top-title"> Best Places to Work </p> 
-													</div> 
-													<div class="whitetab">
-														<nav>
-												<div class="nav nav-tabs" id="nav-tab" role="tablist">
-														<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-allsector" role="tab" aria-controls="nav-home" aria-selected="true">All sectors </a>
-														<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-it" role="tab" aria-controls="nav-profile" aria-selected="false">Information technology </a>
-														<a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-manufacture" role="tab" aria-controls="nav-contact" aria-selected="false">Manufacturing </a>
-														<a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-services" role="tab" aria-controls="nav-contact" aria-selected="false">Services </a>
-												</div>
+												<div class="whitetab">
+												<nav>
+                                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-allsector" role="tab" aria-controls="nav-home" aria-selected="true">All sectors </a>
+                                                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-it" role="tab" aria-controls="nav-profile" aria-selected="false">Information technology </a>
+                                                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-manufacture" role="tab" aria-controls="nav-contact" aria-selected="false">Manufacturing </a>
+                                                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-services" role="tab" aria-controls="nav-contact" aria-selected="false">Services </a>
+                                                    </div>
 												</nav>
 
 		<div class="tab-content" id="nav-tabContent">

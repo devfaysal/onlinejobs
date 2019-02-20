@@ -2263,11 +2263,6 @@ pre code {
   opacity: 1;
 }
 
-.form-control:-ms-input-placeholder {
-  color: #6c757d;
-  opacity: 1;
-}
-
 .form-control::-ms-input-placeholder {
   color: #6c757d;
   opacity: 1;
@@ -13954,34 +13949,14 @@ article h6 {
 }
 
 .font-size-2 {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .font-size-3 {
-  font-size: 3em;
+  font-size: 2em;
 }
 
 .font-size-4 {
-  font-size: 4em;
-}
-
-.font-size-5 {
-  font-size: 5em;
-}
-
-.font-size-6 {
-  font-size: 6em;
-}
-
-.font-size-7 {
-  font-size: 7em;
-}
-
-.font-size-8 {
-  font-size: 8em;
-}
-
-.font-size-9 {
-  font-size: 9em;
+  font-size: 3em;
 }
 
