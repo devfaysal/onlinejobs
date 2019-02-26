@@ -28,8 +28,13 @@
                         <div class="form-group dis-cls">
                             <label for="positions_name" class="col-sm-4 col-form-label text-right">{{ __('Position Name *') }}</label>
                             <div class="col-sm-8">
-                                <input id="positions_name" type="text" class="form-control{{ $errors->has('positions_name') ? ' is-invalid' : '' }}" name="positions_name" value="{{ $job->positions_name }}" required>
-
+                                {{-- <input id="positions_name" type="text" class="form-control{{ $errors->has('positions_name') ? ' is-invalid' : '' }}" name="positions_name" value="{{ $job->positions_name }}" required> --}}
+                                <select name="positions_name" id="positions_name" class="form-control{{ $errors->has('positions_name') ? ' is-invalid' : '' }}" required>
+                                    <option >--Select Position Name--</option>
+                                    @foreach ($PositionNames as $PositionName)
+                                        <option value="{{$PositionName->name}}" {{$PositionName->name == $job->positions_name ? 'selected' : ''}}>{{$PositionName->name}}</option>
+                                    @endforeach
+                                </select>
                             @if ($errors->has('positions_name'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('positions_name') }}</strong>

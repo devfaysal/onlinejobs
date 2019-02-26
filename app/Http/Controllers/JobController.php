@@ -6,6 +6,7 @@ use App\Job;
 use Session;
 use App\Language;
 use App\Facilities;
+use App\PositionName;
 use App\JobAcademic;
 use App\JobLanguage;
 use App\Specialization;
@@ -69,7 +70,8 @@ class JobController extends Controller
         $academic_fields = Specialization::where('status', 1)->get();
         $languages = Language::where('status', 1)->get();
         $facilities = Facilities::where('status', 1)->get();
-        return view('job.create', compact('facilities','languages','academics','academic_fields'));
+        $PositionNames = PositionName::where('status', 1)->get();
+        return view('job.create', compact('facilities','PositionNames','languages','academics','academic_fields'));
     }
 
     /**
@@ -174,7 +176,8 @@ class JobController extends Controller
         $academic_fields = Specialization::where('status', 1)->get();
         $languages = Language::where('status', 1)->get();
         $facilities = Facilities::where('status', 1)->get();
-        return view('job.edit', compact('job','facilities','languages','academics','academic_fields'));
+        $PositionNames = PositionName::where('status', 1)->get();
+        return view('job.edit', compact('job','facilities', 'PositionNames','languages','academics','academic_fields'));
     }
 
     /**
