@@ -89,7 +89,7 @@
                             </h4>
                             @foreach($user->retired_personnel_language as $language)
                                 <div class="mt-1">
-                                    <p class="mb-0">{{$language->language}}</p>
+                                    <p class="mb-0">{{$language->language_name()->name}}</p>
                                     <p class="mb-0">{{$language->speaking}}</p>
                                     <p class="mb-0">{{$language->writing}}</p>
                                 </div>

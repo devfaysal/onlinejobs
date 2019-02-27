@@ -163,13 +163,25 @@
                             <label for="government_employee" class="col-sm-4 col-form-label text-right">{{ __('Were you government servent ?') }}</label>
                             <div class="col-sm-8 ml-auto mt-2">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="government_employee1" name="government_employee" value="yes" class="custom-control-input">
-                                    <label class="custom-control-label" for="government_employee1">Yes</label>
+                                    <input type="radio" id="govt" name="government_employee" value="yes" class="custom-control-input">
+                                    <label class="custom-control-label" for="govt">Yes</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="government_employee2" name="government_employee" value="no" class="custom-control-input">
-                                    <label class="custom-control-label" for="government_employee2">No</label>
+                                    <input type="radio" id="non_govt" name="government_employee" value="no" class="custom-control-input">
+                                    <label class="custom-control-label" for="non_govt">No</label>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="form-group row d-none hide_govt_department">
+                            <label for="govt_department" class="col-sm-4 col-form-label text-right">{{ __('Department') }}</label>
+                            <div class="col-sm-8">
+                                <input id="govt_department" type="text" class="form-control{{ $errors->has('govt_department') ? ' is-invalid' : '' }}" name="govt_department" value="{{ old('govt_department') }}" placeholder="Department">
+
+                            @if ($errors->has('govt_department'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('govt_department') }}</strong>
+                                </span>
+                            @endif
                             </div>
                         </div>
                         <div class="form-group row">
@@ -477,7 +489,21 @@
         $("#czContainer").czMore();
         $("#czContainerLanguage").czMore();
     </script>
-    
+
+<script>
+    govt = document.querySelector('#govt');
+    non_govt = document.querySelector('#non_govt');
+    govt.addEventListener('click', function(){
+        if(govt.checked){
+            document.querySelector('.hide_govt_department').classList.remove("d-none");
+        }
+    });
+    non_govt.addEventListener('click', function(){
+        if(non_govt.checked){
+            document.querySelector('.hide_govt_department').classList.add("d-none");
+        }
+    });
+</script>
 <script>
     part_time = document.querySelector('#part_time');
     full_time = document.querySelector('#full_time');

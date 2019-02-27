@@ -88,6 +88,7 @@ class RetiredPersonnelController extends Controller
         $retiredPersonnel->marital_status = $request->marital_status;
         $retiredPersonnel->country = $request->country;
         $retiredPersonnel->government_employee = $request->government_employee;
+        $retiredPersonnel->govt_department = $request->govt_department;
         $retiredPersonnel->highest_academic_qualification = $request->highest_academic_qualification;
         $retiredPersonnel->specialization = $request->specialization;
         $retiredPersonnel->full_time = $request->full_time;
