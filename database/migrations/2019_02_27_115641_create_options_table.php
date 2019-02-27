@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePositionNamesTable extends Migration
+class CreateOptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreatePositionNamesTable extends Migration
      */
     public function up()
     {
-        Schema::create('position_names', function (Blueprint $table) {
+        Schema::create('options', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('type');
             $table->string('name');
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
@@ -28,6 +29,6 @@ class CreatePositionNamesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('position_names');
+        Schema::dropIfExists('options');
     }
 }

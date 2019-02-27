@@ -12,9 +12,12 @@ use App\JobLanguage;
 use App\Specialization;
 use Illuminate\Http\Request;
 use App\RetiredPersonnelAcademic;
+use App\Traits\OptionTrait;
 
 class JobController extends Controller
 {
+    use OptionTrait;
+
     public function search(Request $request)
     {
         $jobs = Job::where('status', 1)
@@ -70,7 +73,7 @@ class JobController extends Controller
         $academic_fields = Specialization::where('status', 1)->get();
         $languages = Language::where('status', 1)->get();
         $facilities = Facilities::where('status', 1)->get();
-        $PositionNames = PositionName::where('status', 1)->get();
+        $PositionNames = $this->getOptions('Position Name');
         return view('job.create', compact('facilities','PositionNames','languages','academics','academic_fields'));
     }
 
@@ -176,7 +179,7 @@ class JobController extends Controller
         $academic_fields = Specialization::where('status', 1)->get();
         $languages = Language::where('status', 1)->get();
         $facilities = Facilities::where('status', 1)->get();
-        $PositionNames = PositionName::where('status', 1)->get();
+        $PositionNames = $this->getOptions('Position Name');
         return view('job.edit', compact('job','facilities', 'PositionNames','languages','academics','academic_fields'));
     }
 

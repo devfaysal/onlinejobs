@@ -132,11 +132,11 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
     Route::resource('/facilities', 'Admin\FacilitiesController');
     Route::get('/getFacilitiesData', 'Admin\FacilitiesController@getFacilitiesData')->name('getFacilitiesData');
 
-    Route::resource('/positionName', 'Admin\PositionNameController');
-    Route::get('/getPositionNameData', 'Admin\PositionNameController@getPositionNameData')->name('getPositionNameData');
-
     Route::resource('/gallery', 'Admin\GalleryController');
     Route::get('/getGalleryData', 'Admin\GalleryController@getGalleryData')->name('getGalleryData');
+
+    Route::resource('/options', 'Admin\OptionController');
+    Route::get('/getOptionsData', 'Admin\OptionController@getOptionsData')->name('getOptionsData');
     
 });
 

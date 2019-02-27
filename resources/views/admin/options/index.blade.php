@@ -1,13 +1,14 @@
 @extends('admin.layouts.master')
 @section('content')
     <div class="title-block">
-        <h1 class="title"> PositionName <a class="btn btn-primary btn-sm" href="{{route('admin.positionName.create')}}">Add New</a></h1>
+        <h1 class="title"> Options <a class="btn btn-primary btn-sm" href="{{route('admin.options.create')}}">Add New Option</a></h1>
     </div>
     <section class="section">
         <table id="users-table" class="table table-condensed">
             <thead>
                 <tr>
                     <th>Id</th>
+                    <th>Type</th>
                     <th>Name</th>
                     <th>Status</th>
                     <th>Created At</th>
@@ -18,6 +19,7 @@
             <tfoot>
                 <tr>
                     <th>Id</th>
+                    <th>Type</th>
                     <th>Name</th>
                     <th>Status</th>
                     <th>Created At</th>
@@ -33,9 +35,10 @@
         searching: false,
         processing: true,
         serverSide: true,
-        ajax: '{{route('admin.getPositionNameData')}}',
+        ajax: '{{route('admin.getOptionsData')}}',
         columns: [
             {data: 'id', name: 'id'},
+            {data: 'type', name: 'type'},
             {data: 'name', name: 'name'},
             {data: 'status', name: 'status'},
             {data: 'created_at', name: 'created_at'},
