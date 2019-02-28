@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row bg-dark">
         <div class="col-12">
-            <h4 class="text-center text-white pb-3 pt-4"><a class="btn btn-info" href="{{route('employer.show')}}">Back</a> Post Job </h4>
+            <h4 class="text-center text-white pb-3 pt-4"> <button class="btn btn-info" onclick="location.href='{{route('employer.show')}}'" type="button">Back</button> Post Job </h4>
         </div>
     </div>
 </div>
@@ -252,9 +252,10 @@
                             <label for="race" class="col-sm-4 col-form-label text-right">{{ __('Race *') }}</label>
                             <div class="col-sm-8">
                                 <select name="race" id="race" class="form-control{{ $errors->has('race') ? ' is-invalid' : '' }}">
-                                    <option value="Malay">Malay</option>
-                                    <option value="Indian">Indian</option>
-                                    <option value="Chinese">Chinese</option>
+                                    <option>--Select Race--</option>
+                                    @foreach ($races as $race)
+                                        <option value="{{$race->name}}">{{$race->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

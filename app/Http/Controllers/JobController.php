@@ -74,7 +74,8 @@ class JobController extends Controller
         $languages = Language::where('status', 1)->get();
         $facilities = Facilities::where('status', 1)->get();
         $PositionNames = $this->getOptions('Position Name');
-        return view('job.create', compact('facilities','PositionNames','languages','academics','academic_fields'));
+        $races = $this->getOptions('Job Race');
+        return view('job.create', compact('facilities','PositionNames', 'races', 'languages','academics','academic_fields'));
     }
 
     /**

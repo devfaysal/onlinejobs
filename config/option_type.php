@@ -3,6 +3,7 @@
 return [
 
     'Position Name',
-    'Job Skill'
+    'Job Skill',
+    'Job Race'
 
 ];
