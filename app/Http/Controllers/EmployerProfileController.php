@@ -470,7 +470,7 @@ class EmployerProfileController extends Controller
 
         //Send notification to the Admins
         $admins = User::whereRoleIs('superadministrator')->get();
-        $data = $offer;
+        $data = User::where('id', $ids[0])->first();
         Notification::send($admins, new OfferSentToDM($data));
 
         return redirect()->route('employer.show');

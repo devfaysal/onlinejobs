@@ -58,7 +58,7 @@ class OfferSentToDM extends Notification
     {
         return [
             'message' => 'Offer Sent to Domestic Maid by Employer!!',
-            'link' => route('demand', $this->data->id),
+            'link' => route('profile.public', $this->data->public_id),
         ];
     }
 }
