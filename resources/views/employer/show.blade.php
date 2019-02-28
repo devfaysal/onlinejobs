@@ -18,7 +18,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <h1>Welcome {{$employer->name}}</h1>
+                                <h1>Welcome {{$employer->employer_profile->company_name}}</h1>
                                 @if(Auth::user()->status == 1)
                                 {{-- <p>Offer Sent: 25 <br/> Hired: 18</p> --}}
 

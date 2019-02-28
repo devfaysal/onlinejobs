@@ -194,10 +194,10 @@ class EmployerProfileController extends Controller
             return $user->profile->date_of_birth ? \Carbon\Carbon::parse($user->profile->date_of_birth)->format('d/m/Y') : '';
         })
         ->addColumn('passport', function($user) {
-            return '';
+            return $user->profile->passport_number;
         })
         ->addColumn('marital_status', function($user) {
-            return $user->profile->marital_status;
+            return $user->profile->marital_status_data['name'];
         })
         ->addColumn('image', function($user) {
             $img = $user->profile->image != '' ? asset('storage/'.$user->profile->image) :  asset('images/dummy.jpg');
