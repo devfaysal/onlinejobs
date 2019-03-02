@@ -56,13 +56,45 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="to" class="col-sm-4 col-form-label text-right">{{ __('To *') }}</label>
+                                    <label class="col-sm-4 col-form-label text-right">{{ __('Present Job?') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="to" type="date" class="form-control{{ $errors->has('to') ? ' is-invalid' : '' }}" name="to[]" value="{{ $professional_experience->to }}" placeholder="To" required>
+                                        <div class="form-check mt-2">
+                                            <input type="hidden" name="is_present_job[]" value="0" />
+                                            <input onchange="hideInput(this);" type="checkbox" class="form-check-input" {{ $professional_experience->is_present_job == 1 ? 'checked' : ''}} value="1" id="is_present_job">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="to" class="col-sm-4 col-form-label text-right">{{ __('To') }}</label>
+                                    <div class="col-sm-8">
+                                        <input id="to" type="date" class="form-control{{ $errors->has('to') ? ' is-invalid' : '' }}" name="to[]" value="{{ $professional_experience->to }}" placeholder="To">
         
                                     @if ($errors->has('to'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('to') }}</strong>
+                                        </span>
+                                    @endif
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="position_level" class="col-sm-4 col-form-label text-right">{{ __('Position Level') }}</label>
+                                    <div class="col-sm-8">
+                                        <input id="position_level" type="text" class="form-control{{ $errors->has('position_level') ? ' is-invalid' : '' }}" name="position_level[]" value="{{ $professional_experience->position_level }}" placeholder="Position Level">
+        
+                                    @if ($errors->has('position_level'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('position_level') }}</strong>
+                                        </span>
+                                    @endif
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="experience_description" class="col-sm-4 col-form-label text-right">{{ __('Experience Description *') }}</label>
+                                    <div class="col-sm-8">
+                                        <textarea class="form-control{{ $errors->has('experience_description') ? ' is-invalid' : '' }}" name="experience_description[]" id="experience_description" cols="30" rows="3" required>{{ $professional_experience->experience_description }}</textarea>
+                                    @if ($errors->has('experience_description'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('experience_description') }}</strong>
                                         </span>
                                     @endif
                                     </div>
@@ -111,13 +143,45 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="to" class="col-sm-4 col-form-label text-right">{{ __('To *') }}</label>
+                                <label class="col-sm-4 col-form-label text-right">{{ __('Present Job?') }}</label>
                                 <div class="col-sm-8">
-                                    <input id="to" type="date" class="form-control{{ $errors->has('to') ? ' is-invalid' : '' }}" name="to[]" value="{{ old('to') }}" placeholder="To" required>
+                                    <div class="form-check mt-2">
+                                        <input type="hidden" name="is_present_job[]" value="0" />
+                                        <input onchange="hideInput(this);" type="checkbox" class="form-check-input" {{old('is_present_job') == 1 ? 'checked' : ''}} value="1" id="is_present_job">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="to" class="col-sm-4 col-form-label text-right">{{ __('To') }}</label>
+                                <div class="col-sm-8">
+                                    <input id="to" type="date" class="form-control{{ $errors->has('to') ? ' is-invalid' : '' }}" name="to[]" value="{{ old('to') }}" placeholder="To">
     
                                 @if ($errors->has('to'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('to') }}</strong>
+                                    </span>
+                                @endif
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="position_level" class="col-sm-4 col-form-label text-right">{{ __('Position Level') }}</label>
+                                <div class="col-sm-8">
+                                    <input id="position_level" type="text" class="form-control{{ $errors->has('position_level') ? ' is-invalid' : '' }}" name="position_level[]" value="{{ old('position_level') }}" placeholder="Position Level">
+    
+                                @if ($errors->has('position_level'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('position_level') }}</strong>
+                                    </span>
+                                @endif
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="experience_description" class="col-sm-4 col-form-label text-right">{{ __('Experience Description *') }}</label>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control{{ $errors->has('experience_description') ? ' is-invalid' : '' }}" name="experience_description[]" id="experience_description" cols="30" rows="3" required>{{ old('experience_description') }}</textarea>
+                                @if ($errors->has('experience_description'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('experience_description') }}</strong>
                                     </span>
                                 @endif
                                 </div>
@@ -171,13 +235,45 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="to" class="col-sm-4 col-form-label text-right">{{ __('To *') }}</label>
+                                                    <label class="col-sm-4 col-form-label text-right">{{ __('Present Job?') }}</label>
                                                     <div class="col-sm-8">
-                                                        <input id="to" type="date" class="form-control{{ $errors->has('to') ? ' is-invalid' : '' }}" name="to[]" value="{{ old('to') }}" placeholder="To" required>
+                                                        <div class="form-check mt-2">
+                                                            <input type="hidden" name="is_present_job[]" value="0" />
+                                                            <input onchange="hideInput(this);" type="checkbox" class="form-check-input" {{old('is_present_job') == 1 ? 'checked' : ''}} value="1" id="is_present_job">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="to" class="col-sm-4 col-form-label text-right">{{ __('To') }}</label>
+                                                    <div class="col-sm-8">
+                                                        <input id="to" type="date" class="form-control{{ $errors->has('to') ? ' is-invalid' : '' }}" name="to[]" value="{{ old('to') }}" placeholder="To">
                         
                                                     @if ($errors->has('to'))
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $errors->first('to') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="position_level" class="col-sm-4 col-form-label text-right">{{ __('Position Level') }}</label>
+                                                    <div class="col-sm-8">
+                                                        <input id="position_level" type="text" class="form-control{{ $errors->has('position_level') ? ' is-invalid' : '' }}" name="position_level[]" value="{{ old('position_level') }}" placeholder="Position Level">
+                        
+                                                    @if ($errors->has('position_level'))
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $errors->first('position_level') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="experience_description" class="col-sm-4 col-form-label text-right">{{ __('Experience Description *') }}</label>
+                                                    <div class="col-sm-8">
+                                                        <textarea class="form-control{{ $errors->has('experience_description') ? ' is-invalid' : '' }}" name="experience_description[]" id="experience_description" cols="30" rows="3" required>{{ old('experience_description') }}</textarea>
+                                                    @if ($errors->has('experience_description'))
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $errors->first('experience_description') }}</strong>
                                                         </span>
                                                     @endif
                                                     </div>
@@ -346,5 +442,20 @@
         //One-to-many relationship plugin by Yasir O. Atabani. Copyrights Reserved.
         $("#czContainer").czMore();
         $("#czContainerEducation").czMore();
+    </script>
+    <script>
+        function hideInput(x)
+        {
+            console.log(x.previousElementSibling.value);
+            if(x.checked){
+                console.log('checked');
+                x.previousElementSibling.value = 1;
+                x.parentElement.parentElement.parentElement.nextElementSibling.classList.add("d-none");
+            }else if(!x.checked){
+                console.log('unchecked');
+                x.previousElementSibling.value = 0;
+                x.parentElement.parentElement.parentElement.nextElementSibling.classList.remove("d-none");
+            }
+        }
     </script>
 @endsection

@@ -200,6 +200,9 @@ class ProfessionalProfileController extends Controller
                 $professional_experience->company = $request->company[$i];
                 $professional_experience->from = $request->from[$i];
                 $professional_experience->to = $request->to[$i];
+                $professional_experience->position_level = $request->position_level[$i];
+                $professional_experience->experience_description = $request->experience_description[$i];
+                $professional_experience->is_present_job = $request->is_present_job[$i];
                 $professional_experience->save();
             }
 

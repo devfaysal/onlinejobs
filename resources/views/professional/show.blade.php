@@ -116,9 +116,12 @@
                             </h4>
                             @foreach($user->professional_experiences as $experience)
                                 <div class="mt-1">
-                                    <p class="mb-0">{{$experience->designation}}</p>
-                                    <p class="mb-0">{{$experience->company}}</p>
-                                    <p class="mb-0">{{\Carbon\Carbon::parse($experience->from)->format('M-Y') }} to {{\Carbon\Carbon::parse($experience->to)->format('M-Y') }}</p>
+                                    <p class="mb-0">Designation: {{$experience->designation}}</p>
+                                    <p class="mb-0">Company: {{$experience->company}}</p>
+                                    <p class="mb-0">{{\Carbon\Carbon::parse($experience->from)->format('M-Y') }} to {{ $experience->to ? \Carbon\Carbon::parse($experience->to)->format('M-Y') : 'Present' }}</p>
+                                    <p class="mb-0">Position Level: {{$experience->position_level}}</p>
+                                    <p class="mb-0">Experience Description: {{$experience->experience_description}}</p>
+                                    <hr/>
                                 </div>
                             @endforeach
                         </div>
@@ -132,11 +135,12 @@
                             </h4>
                             @foreach($user->qualifications as $qualification)
                                 <div class="mt-1">
-                                    <p class="mb-0">{{$qualification->qualification}}</p>
-                                    <p class="mb-0">{{$qualification->subject}}</p>
-                                    <p class="mb-0">{{$qualification->specialization}}</p>
-                                    <p class="mb-0">{{$qualification->university}}</p>
-                                    <p class="mb-0">{{$qualification->passing_year}}</p>
+                                    <p class="mb-0">Institute/University: {{$qualification->university}}</p>
+                                    <p class="mb-0">Graduation Date: {{$qualification->passing_year}}</p>
+                                    <p class="mb-0">Qualification: {{$qualification->qualification}}</p>
+                                    <p class="mb-0">Field of Study: {{$qualification->subject}}</p>
+                                    <p class="mb-0">Specialization: {{$qualification->specialization}}</p>
+                                    <hr/>
                                 </div>
                             @endforeach
                         </div>
