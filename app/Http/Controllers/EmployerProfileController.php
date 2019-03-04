@@ -8,10 +8,13 @@ use Storage;
 use App\User;
 use App\Offer;
 use App\Country;
+use App\Language;
 use App\Applicant;
 use App\Downloads;
 use Carbon\Carbon;
+use App\MaritalStatus;
 use App\EmployerProfile;
+use App\Traits\OptionTrait;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
@@ -23,6 +26,7 @@ use Image; /* https://github.com/Intervention/image */
 
 class EmployerProfileController extends Controller
 {
+    use OptionTrait;
     /**
      * Display a listing of the resource.
      *
@@ -73,13 +77,18 @@ class EmployerProfileController extends Controller
         }
 
         $countrys = Country::where('status', 1)->get();
+        $job_positions = $this->getOptions('Demand Job Position');
+        $genders = $this->getOptions('Demand Gender');
+        $educations = $this->getOptions('Demand Highest Education');
+        $marital_statuses = MaritalStatus::where('status', 1)->get();
+        $languages = Language::where('status', 1)->get();
         $total_maids = User::whereRoleIs('maid')->count();
         $total_workers = User::whereRoleIs('worker')->count();
         $total_agents = User::whereRoleIs('agent')->count();
         $offer_sent = Offer::where('employer_id', auth()->user()->id)->count();
         $jobs = Job::where('user_id', auth()->id())->get();
 
-        return view('employer.show', compact('jobs','employer','total_maids','total_workers', 'total_agents','offer_sent', 'countrys'));
+        return view('employer.show', compact('jobs', 'job_positions', 'genders', 'educations', 'languages' ,'marital_statuses', 'employer','total_maids','total_workers', 'total_agents','offer_sent', 'countrys'));
     }
 
     public function getAllDemands()
@@ -409,6 +418,14 @@ class EmployerProfileController extends Controller
             $offer->expexted_date = $request->ExpectedJoinDate;
             $offer->demand_qty = $request->demand_qty[$i];
             $offer->preferred_country = $request->preferred_country[$i];
+            $offer->job_position = $request->job_position;
+            $offer->gender = $request->gender;
+            $offer->marital_status = $request->marital_status;
+            $offer->highest_education = $request->highest_education;
+            $offer->preferred_language = $request->preferred_language;
+            $offer->reading = $request->reading;
+            $offer->written = $request->written;
+            $offer->job_location = $request->job_location;
 
             if($request->file('DemandFile')){            
                 $file_basename = explode('.',$request->file('DemandFile')->getClientOriginalName())[0];

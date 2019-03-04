@@ -148,7 +148,7 @@
                                         <form method="POST" action="{{ route('saveDemand') }}" aria-label="{{ __('Save Demand') }}" enctype="multipart/form-data">
                                             @csrf
                                             <div class="row">
-                                                <div class="form-group col-md-6">
+                                                <div class="form-group col-md-4">
                                                     <select id="HiringPackage" class="form-control{{ $errors->has('HiringPackage') ? ' is-invalid' : '' }}" name="HiringPackage">
                                                         <option value="">-- Hiring Package --</option>
                                                         <option value="p1">Package 1</option>
@@ -162,7 +162,7 @@
                                                         </span>
                                                     @endif
                                                 </div>
-                                                <div class="form-group col-md-6">
+                                                <div class="form-group col-md-4">
                                                     <input id="CompanyName" type="text" class="form-control{{ $errors->has('CompanyName') ? ' is-invalid' : '' }}" name="CompanyName" value="{{ old('CompanyName') }}" placeholder="Company Name*" required>
 
                                                     @if ($errors->has('CompanyName'))
@@ -171,9 +171,85 @@
                                                         </span>
                                                     @endif
                                                 </div>
+                                                <div class="form-group col-md-4">
+                                                    <select name="job_position" id="job_position" class="form-control{{ $errors->has('job_position') ? ' is-invalid' : '' }}">
+                                                        <option value="">-- Job Position --</option>
+                                                        @foreach ($job_positions as $job_position)
+                                                            <option value="{{$job_position->name}}" {{$job_position->name == old('job_position') ? 'selected':''}}>{{$job_position->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-md-4">
+                                                    <select name="gender" id="gender" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}">
+                                                        <option value="">-- Gender --</option>
+                                                        @foreach ($genders as $gender)
+                                                            <option value="{{$gender->name}}">{{$gender->name}}</option>
+                                                        @endforeach                                                        
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <select name="marital_status" id="marital_status" class="form-control{{ $errors->has('marital_status') ? ' is-invalid' : '' }}">
+                                                        <option value="">-- Marital Status --</option>
+                                                        @foreach ($marital_statuses as $marital_status)
+                                                            <option value="{{$marital_status->name}}">{{$marital_status->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <select name="highest_education" id="highest_education" class="form-control{{ $errors->has('highest_education') ? ' is-invalid' : '' }}">
+                                                        <option value="">-- Highest Education --</option>
+                                                        @foreach ($educations as $education)
+                                                            <option value="{{$education->name}}" {{$education->name == old('education') ? 'selected':''}}>{{$education->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-md-4">
+                                                    <select name="preferred_language" id="preferred_language" class="form-control{{ $errors->has('preferred_language') ? ' is-invalid' : '' }}">
+                                                        <option value="">-- Preferred Language --</option>
+                                                        @foreach ($languages as $language)
+                                                            <option value="{{$language->name}}">{{$language->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <select name="reading" id="reading" class="form-control{{ $errors->has('reading') ? ' is-invalid' : '' }}">
+                                                        <option value="">-- Reading --</option>
+                                                        <option value="Fluent">Fluent</option>
+                                                        <option value="Good">Good</option>
+                                                        <option value="Poor">Poor</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <select name="written" id="written" class="form-control{{ $errors->has('written') ? ' is-invalid' : '' }}">
+                                                        <option value="">-- Written --</option>
+                                                        <option value="Good">Good</option>
+                                                        <option value="Fluent">Fluent</option>
+                                                        <option value="Poor">Poor</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-md-6">
+                                                    <input class="form-control" type="text" name="job_location" id="job_location" placeholder="Job Location">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <textarea id="Comments" class="form-control{{ $errors->has('Comments') ? ' is-invalid' : '' }}" name="comments" value="{{ old('Comments') }}" placeholder="Vacancies Description"></textarea>
+        
+                                                        @if ($errors->has('Comments'))
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $errors->first('Comments') }}</strong>
+                                                            </span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-md-4">
                                                     <label for="IssueDate" class="pull-left">Issue Date*</label>
                                                     <input id="IssueDate" type="date" class="form-control{{ $errors->has('IssueDate') ? ' is-invalid' : '' }}" name="IssueDate" value="{{ old('IssueDate') }}" title="Issue Date*" required>
 
@@ -183,7 +259,7 @@
                                                         </span>
                                                     @endif
                                                 </div>
-                                                <div class="form-group col-md-6">
+                                                <div class="form-group col-md-4">
                                                     <label for="ExpectedJoinDate" class="pull-left">Expected Join Date*</label>
                                                     <input id="ExpectedJoinDate" type="date" class="form-control{{ $errors->has('ExpectedJoinDate') ? ' is-invalid' : '' }}" name="ExpectedJoinDate" value="{{ old('ExpectedJoinDate') }}" title="Expected Join Date*" required>
 
@@ -193,9 +269,8 @@
                                                         </span>
                                                     @endif
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="form-group col-md-6">
+                                                <div class="form-group col-md-4">
+                                                        <label for="ExpectedJoinDate" class="pull-left">.</label>
                                                     <input id="DemandLetterNo" type="text" class="form-control{{ $errors->has('DemandLetterNo') ? ' is-invalid' : '' }}" name="DemandLetterNo" value="{{ old('DemandLetterNo') }}" placeholder="Approval KDN No*" required>
 
                                                     @if ($errors->has('DemandLetterNo'))
@@ -204,15 +279,6 @@
                                                         </span>
                                                     @endif
                                                 </div>
-                                                {{-- <div class="form-group col-md-6">
-                                                    <input id="demand_qty" type="text" class="form-control{{ $errors->has('demand_qty') ? ' is-invalid' : '' }}" name="demand_qty[]" value="{{ old('demand_qty') }}" placeholder="Demand Quantity*" required>
-
-                                                    @if ($errors->has('demand_qty'))
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $errors->first('demand_qty') }}</strong>
-                                                        </span>
-                                                    @endif
-                                                </div> --}}
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-md-4">
@@ -281,43 +347,6 @@
                                                         </span>
                                                     @endif
                                                 </div>
-                                                {{-- <div class="form-group col-md-4">
-                                                    <select name="PreferredCountry2" id="PreferredCountry2" class="form-control{{ $errors->has('PreferredCountry2') ? ' is-invalid' : '' }}">
-                                                        <option value="">-- Preferred Country 2 --</option>
-                                                        @foreach ($countrys as $country)
-                                                            <option value="{{$country->id}}" {{$country->id == old('country') ? 'selected':''}}>{{$country->name}}</option>
-                                                        @endforeach
-                                                    </select>
-    
-                                                    @if ($errors->has('PreferredCountry2'))
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $errors->first('PreferredCountry2') }}</strong>
-                                                        </span>
-                                                    @endif
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <select name="PreferredCountry3" id="PreferredCountry3" class="form-control{{ $errors->has('PreferredCountry3') ? ' is-invalid' : '' }}">
-                                                        <option value="">-- Preferred Country 3 --</option>
-                                                        @foreach ($countrys as $country)
-                                                            <option value="{{$country->id}}" {{$country->id == old('country') ? 'selected':''}}>{{$country->name}}</option>
-                                                        @endforeach
-                                                    </select>
-    
-                                                    @if ($errors->has('PreferredCountry3'))
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $errors->first('PreferredCountry3') }}</strong>
-                                                        </span>
-                                                    @endif
-                                                </div> --}}
-                                            </div>
-                                            <div class="form-group">
-                                                <textarea id="Comments" class="form-control{{ $errors->has('Comments') ? ' is-invalid' : '' }}" name="comments" value="{{ old('Comments') }}" placeholder="Comments"></textarea>
-
-                                                @if ($errors->has('Comments'))
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $errors->first('Comments') }}</strong>
-                                                    </span>
-                                                @endif
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-md-6">
