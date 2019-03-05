@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row bg-dark">
         <div class="col-12">
-            <h4 class="text-center text-white pb-3 pt-4"><a class="btn btn-info" href="{{route('employer.show')}}">Back</a> Post Job </h4>
+            <h4 class="text-center text-white pb-3 pt-4"> <button class="btn btn-info" onclick="location.href='{{route('employer.show')}}'" type="button">Back</button> Post Job </h4>
         </div>
     </div>
 </div>

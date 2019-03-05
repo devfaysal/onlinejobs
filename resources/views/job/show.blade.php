@@ -75,7 +75,7 @@
                                 </tr>
                                 @foreach ($job->languages as $language)
                                     <tr>
-                                        <td>{{$language->language}}</td>
+                                        <td>{{$language->language_data->name}}</td>
                                         <td>{{$language->speaking}}</td>
                                         <td>{{$language->writing}}</td>
                                     </tr>
@@ -83,6 +83,7 @@
                             </table>
                             <p>Minimum Academic Qualification: {{$job->minimum_academic_qualification}}</p>
                             <p>Academic Field: {{$job->academic_field}}</p>
+                            @if($job->academics)
                             <table class="table table-sm">
                                 <tr>
                                     <th>Academic Qualification</th>
@@ -95,17 +96,46 @@
                                     </tr>
                                 @endforeach
                             </table>
+                            @endif
                         </div>
                     </div>
+                    @if($job->facilities)
                     <div class="mb-3">
                         <p class="mb-0"><strong>Facilities </strong></p>
                         <div class="ml-4">
                             {{$job->facilities}}
                         </div>
                     </div>
-                    <div>
+                    @endif
+                    @if($job->driving_license == 'yes')
+                    <div class="mb-3">
+                        <p class="mb-0"><strong>Driving license </strong></p>
+                        <div class="ml-4">
+                            Required
+                        </div>
+                    </div>
+                    @endif
+                    @if($job->other_requirements)
+                    <div class="mb-3">
+                        <p class="mb-0"><strong>Other Requirements </strong></p>
+                        <div class="ml-4">
+                            {{$job->other_requirements}}
+                        </div>
+                    </div>
+                    @endif
+                    @if($job->other_skills)
+                    <div class="mb-3">
+                        <p class="mb-0"><strong>Other Skills </strong></p>
+                        <div class="ml-4">
+                            {{$job->other_skills}}
+                        </div>
+                    </div>
+                    @endif
+                    <div class="mt-5">
                         <p class="text-center"><a class="btn btn-success" href="#">Apply Online</a></p>
                         <p class="text-center">Contact info</p>
+                        <p class="text-center mb-0">Company Name: {{$job->company()->company_name}}</p>
+                        <p class="text-center mb-0">{{$job->district ? 'District: '.$job->district : ''}} {{$job->town ? 'Town: '.$job->town : ''}} {{$job->state ? 'State: '.$job->state : '' }} {{$job->postcode ? 'Post Code: '.$job->postcode : '' }}</p>
                         <p class="text-center mb-0">{{$job->person_in_charge}}</p>
                         <p class="text-center mb-0">{{$job->telephone_number}}, {{$job->handphone_number}}</p>
                         <p class="text-center mb-0">{{$job->email}}</p>

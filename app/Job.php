@@ -19,4 +19,9 @@ class Job extends Model
     {
         return $this->hasMany(JobAcademic::class);
     }
+
+    public function company()
+    {
+        return EmployerProfile::where('user_id', $this->user_id)->first();
+    }
 }
