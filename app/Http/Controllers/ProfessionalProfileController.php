@@ -106,6 +106,7 @@ class ProfessionalProfileController extends Controller
         $professional->name = $request->name;
         $professional->resume_headline = $request->resume_headline;
         $professional->skills = $request->skills;
+        $professional->it_skills = $request->it_skills;
         $professional->city = $request->city;
         $professional->country = $request->country;
         $professional->current_salary = $request->current_salary;

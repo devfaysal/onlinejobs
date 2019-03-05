@@ -42,6 +42,18 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="it_skills" class="col-sm-4 col-form-label text-right">{{ __('IT Skills (Seperate with comma)') }}</label>
+                            <div class="col-sm-8">
+                                <input id="it_skills" type="text" class="form-control{{ $errors->has('it_skills') ? ' is-invalid' : '' }}" name="it_skills" value="{{ $user->professional_profile->it_skills }}" placeholder="IT Skills">
+
+                            @if ($errors->has('it_skills'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('it_skills') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="name" class="col-sm-4 col-form-label text-right">{{ __('Name *') }}</label>
                             <div class="col-sm-8">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->professional_profile->name }}" placeholder="Name" required>

@@ -69,13 +69,9 @@
                             <hr>
                             <p>Resume Headline</p>
                             <p>Key Skills</p>
+                            <p>IT SKills</p>
                             <p>Employment</p>
                             <p>Educaition</p>
-                            <p>IT SKills</p>
-                            <p>Projects</p>
-                            <p>Profile Summary</p>
-                            <p>Acknowledgements</p>
-                            <p>Desired Career Profile</p>
                             <p>Personal Details</p>
                             <p>Attach Resume</p>
                         </div>
@@ -104,6 +100,21 @@
                             @endphp
                             @foreach ($skills as $skill)
                             <span class="d-inline-block pl-2 pr-2 pt-1 pb-1 mr-2 mb-2 border border-secondary">{{$skill}}</span>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h4>IT Skills 
+                                @if(Auth::id() == $user->id)
+                                    <a class="text-black" href="{{route('professional.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                @endif
+                            </h4>
+                            @php
+                                $it_skills = explode(",",$user->professional_profile->it_skills);
+                            @endphp
+                            @foreach ($it_skills as $it_skill)
+                            <span class="d-inline-block pl-2 pr-2 pt-1 pb-1 mr-2 mb-2 border border-secondary">{{$it_skill}}</span>
                             @endforeach
                         </div>
                     </div>
