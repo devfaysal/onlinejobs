@@ -47,6 +47,25 @@ class SuperadminController extends Controller
                 return $applicant->offer->agent['name'];
 
             })
+            ->addColumn('applicant_status', function($applicant) {
+
+                if($applicant->proposed == 1){
+
+                    $applicant_status = 'Proposed by Agent';
+
+                }elseif($applicant->confirmed == 1){
+
+                    $applicant_status = 'Selected by Employer';
+
+                }elseif($applicant->finialized == 1){
+
+                    $applicant_status = 'Finalized by Agent';
+
+                }
+                
+                return $applicant_status;
+
+            })
             ->addColumn('proposed_time', function($applicant) {
 
                 $proposed_date = Carbon::parse($applicant->offer->proposed_date);

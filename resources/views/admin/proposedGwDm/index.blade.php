@@ -8,6 +8,7 @@
             <thead>
                 <tr>
                     <th></th>
+                    <th>GW/DM</th>
                     <th>Employer</th>
                     <th>Agent</th>
                     <th>Proposed by Agent</th>
@@ -18,6 +19,7 @@
             <tfoot>
                 <tr>
                     <th class="hide"></th>
+                    <th>GW/DM</th>
                     <th>employer</th>
                     <th>agent</th>
                     <th>Proposed by Agent</th>
@@ -31,16 +33,17 @@
 @section('javascript')
 <script>
     $('#users-table').DataTable({
-        order: [[ 0, "desc" ]],
+        order: [[ 4, "desc" ]],
         processing: true,
         serverSide: true,
         ajax: '{{route('admin.getProposedGwDm')}}',
         columns: [
             {data: 'id', name: 'id'},
+            {data: 'gw_dm', name: 'gw_dm'},
             {data: 'employer', name: 'employer'},
             {data: 'agent', name: 'agent'},
             {data: 'proposed_time', name: 'proposed_time'},
-            {data: 'status', name: 'status'},
+            {data: 'applicant_status', name: 'applicant_status'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ],
         initComplete: function () {
