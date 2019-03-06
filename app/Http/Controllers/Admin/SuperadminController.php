@@ -49,6 +49,8 @@ class SuperadminController extends Controller
             })
             ->addColumn('applicant_status', function($applicant) {
 
+                $applicant_status = '';
+
                 if($applicant->proposed == 1){
 
                     $applicant_status = 'Proposed by Agent';
