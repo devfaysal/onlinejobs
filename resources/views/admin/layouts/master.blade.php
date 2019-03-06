@@ -241,6 +241,9 @@
                                         <i class="fa arrow"></i>
                                     </a>
                                     <ul class="sidebar-nav">
+                                        <li class="{{ ( (Route::currentRouteName() === "admin.gallery.index") ? "active" : "") }}">
+                                            <a href="{{route('admin.gallery.index')}}"> Gallery </a>
+                                        </li>
                                         <li class="{{ ( (Route::currentRouteName() === "admin.downloads.index") ? "active" : "") }}">
                                             <a href="{{route('admin.downloads.index')}}"> Downloads </a>
                                         </li>
@@ -288,9 +291,9 @@
                                         </li> --}}
                                     </ul>
                                 </li>
-                                <li class="{{ ( (Route::currentRouteName() === "admin.gallery.index") ? "active" : "") }}">
-                                    <a href="{{route('admin.gallery.index')}}">
-                                        <i class="fa fa-download"></i> Gallery </a>
+                                <li class="{{ ( (Route::currentRouteName() === "admin.proposedGwDm") ? "active" : "") }}">
+                                    <a href="{{route('admin.proposedGwDm')}}">
+                                        <i class="fa fa-users"></i> Proposed GW/DM </a>
                                 </li>
                                 @endif
                             </ul>

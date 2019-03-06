@@ -89,6 +89,11 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
     Route::get('/getMaidsData', 'Admin\MaidController@getMaidsData')->name('getMaidsData');
     Route::resource('/maid', 'Admin\MaidController');
 
+    /*Proposed GW/DM */
+    Route::get('/getProposedGwDm', 'Admin\SuperadminController@getProposedGwDm')->name('getProposedGwDm');
+    Route::get('/proposedGwDm', 'Admin\SuperadminController@proposedGwDm')->name('proposedGwDm');
+    Route::get('/proposedGwDm/release/{applicant}', 'Admin\SuperadminController@releaseProposedGwDm')->name('releaseProposedGwDm');
+
     /*Settings*/
     Route::resource('/country', 'Admin\CountryController');
     Route::get('/getCountryData', 'Admin\CountryController@getCountryData')->name('getCountryData');
