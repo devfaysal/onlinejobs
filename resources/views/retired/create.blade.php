@@ -17,7 +17,7 @@
                         @csrf
                         <input type="hidden" name="role" value="retired">
                         <div class="form-group row">
-                            <label for="name" class="col-sm-4 col-form-label text-right">{{ __('Name *') }}</label>
+                            <label for="name" class="col-sm-4 col-form-label text-right">{{ __('Name ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="Name" required>
 
@@ -29,7 +29,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="nric" class="col-sm-4 col-form-label text-right">{{ __('NRIC *') }}</label>
+                            <label for="nric" class="col-sm-4 col-form-label text-right">{{ __('NRIC ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="nric" type="text" class="form-control{{ $errors->has('nric') ? ' is-invalid' : '' }}" name="nric" value="{{ old('nric') }}" placeholder="NRIC" required>
 
@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="address" class="col-sm-4 col-form-label text-right">{{ __('Address *') }}</label>
+                            <label for="address" class="col-sm-4 col-form-label text-right">{{ __('Address ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" placeholder="Address" required>
 
@@ -77,7 +77,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="age" class="col-sm-4 col-form-label text-right">{{ __('Age *') }}</label>
+                            <label for="age" class="col-sm-4 col-form-label text-right">{{ __('Age ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="age" type="text" class="form-control{{ $errors->has('age') ? ' is-invalid' : '' }}" name="age" value="{{ old('age') }}" placeholder="Age" required>
 
@@ -89,7 +89,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="gender" class="col-sm-4 col-form-label text-right">{{ __('Gender *') }}</label>
+                            <label for="gender" class="col-sm-4 col-form-label text-right">{{ __('Gender ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <select name="gender" id="gender" class="form-control" required>
                                     <option>-- Select Gender --</option>
@@ -104,7 +104,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-right">{{ __('Email *') }}</label>
+                            <label for="email" class="col-sm-4 col-form-label text-right">{{ __('Email ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email" required>
 
@@ -116,7 +116,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="phone" class="col-sm-4 col-form-label text-right">{{ __('Contact No *') }}</label>
+                            <label for="phone" class="col-sm-4 col-form-label text-right">{{ __('Contact No ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" placeholder="Contact No" required>
 
@@ -144,7 +144,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="country" class="col-sm-4 col-form-label text-right">{{ __('Nationality *') }}</label>
+                            <label for="country" class="col-sm-4 col-form-label text-right">{{ __('Nationality ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <select name="country" id="country" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" required>
                                     <option value="">--Select Nationality--</option>
@@ -185,9 +185,10 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="academic_qualification" class="col-sm-4 col-form-label text-right">{{ __('Highest Academic Qualification *') }}</label>
+                            <label for="academic_qualification" class="col-sm-4 col-form-label text-right">{{ __('Highest Academic Qualification ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <select class="form-control{{ $errors->has('academic_qualification') ? ' is-invalid' : '' }}" name="highest_academic_qualification" id="academic_qualification">
+                                    <option >--Select Academic Qualification--</option>
                                     @foreach ($academics as $academic)
                                         <option value="{{$academic->name}}">{{$academic->name}}</option>
                                     @endforeach
@@ -203,6 +204,7 @@
                             <label for="specialization" class="col-sm-4 col-form-label text-right">{{ __('Specialization') }}</label>
                             <div class="col-sm-8">
                                 <select class="form-control{{ $errors->has('specialization') ? ' is-invalid' : '' }}" name="specialization" id="specialization">
+                                    <option >--Select Specialization--</option>
                                     @foreach ($specializations as $specialization)
                                         <option value="{{$specialization->name}}">{{$specialization->name}}</option>
                                     @endforeach
@@ -223,7 +225,7 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group row">
-                                                            <label for="academic_qualification" class="col-sm-4 col-form-label text-right">{{ __('Academic Qualification *') }}</label>
+                                                            <label for="academic_qualification" class="col-sm-4 col-form-label text-right">{{ __('Academic Qualification ') }}<span class="text-danger">*</span></label>
                                                             <div class="col-sm-8">
                                                                 <select class="form-control{{ $errors->has('academic_qualification') ? ' is-invalid' : '' }}" name="academic_qualifications[]" id="academic_qualification">
                                                                     @foreach ($academics as $academic)
@@ -279,7 +281,7 @@
                         <div class="form-group row d-none hide_working_hours">
                             <label for="describe_working_hours" class="col-sm-4 col-form-label text-right">{{ __('Describe Working Hours') }}</label>
                             <div class="col-sm-8">
-                                <input id="describe_working_hours" type="text" class="form-control{{ $errors->has('describe_working_hours') ? ' is-invalid' : '' }}" name="describe_working_hours" value="{{ old('describe_working_hours') }}" placeholder="Describ Working Hours">
+                                <input id="describe_working_hours" type="text" class="form-control{{ $errors->has('describe_working_hours') ? ' is-invalid' : '' }}" name="describe_working_hours" value="{{ old('describe_working_hours') }}" placeholder="Describe Working Hours">
 
                             @if ($errors->has('describe_working_hours'))
                                 <span class="invalid-feedback" role="alert">
