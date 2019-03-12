@@ -4,7 +4,7 @@ Job Network website
 
 ## Installation
 
-* ```git clone https://gitlab.com/iamfaysal/jobnetwork.git```
+* ```git clone https://gitlab.com/devfaysal/jobnetwork.git```
 
 * ```cd jobnetwork```
 
