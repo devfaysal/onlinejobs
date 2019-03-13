@@ -67,6 +67,7 @@
                     </div>
                     <div class="mb-3">
                         <div class="ml-4">
+                            @if($job->languages->count() > 0)
                             <table class="table table-sm">
                                 <tr>
                                     <th>Language</th>
@@ -81,9 +82,10 @@
                                     </tr>
                                 @endforeach
                             </table>
+                            @endif
                             <p>Minimum Academic Qualification: {{$job->minimum_academic_qualification}}</p>
                             <p>Academic Field: {{$job->academic_field}}</p>
-                            @if($job->academics)
+                            @if($job->academics->count() > 0)
                             <table class="table table-sm">
                                 <tr>
                                     <th>Academic Qualification</th>
@@ -107,11 +109,11 @@
                         </div>
                     </div>
                     @endif
-                    @if($job->driving_license == 'yes')
+                    @if($job->driving_license != '')
                     <div class="mb-3">
                         <p class="mb-0"><strong>Driving license </strong></p>
                         <div class="ml-4">
-                            Required
+                            Required : {{$job->driving_license}}
                         </div>
                     </div>
                     @endif

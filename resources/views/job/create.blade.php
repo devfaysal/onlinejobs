@@ -25,7 +25,7 @@
                         @csrf
                     <div class="tab">
                         <div class="form-group dis-cls">
-                            <label for="positions_name" class="col-sm-4 col-form-label text-right">{{ __('Position Name *') }}</label>
+                            <label for="positions_name" class="col-sm-4 col-form-label text-right">{{ __('Position Name ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 {{-- <input id="positions_name" type="text" class="form-control{{ $errors->has('positions_name') ? ' is-invalid' : '' }}" name="positions_name" value="{{ old('positions_name') }}" required> --}}
                                 <select name="positions_name" id="positions_name" class="form-control{{ $errors->has('positions_name') ? ' is-invalid' : '' }}" required>
@@ -42,7 +42,7 @@
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="vacancies_description" class="col-sm-4 col-form-label text-right">{{ __('Vacancies Description *') }}</label>
+                            <label for="vacancies_description" class="col-sm-4 col-form-label text-right">{{ __('Vacancies Description ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 <textarea name="vacancies_description" id="vacancies_description" class="required form-control{{ $errors->has('vacancies_description') ? ' is-invalid' : '' }}" cols="30" rows="6" required>{{ old('vacancies_description') }}</textarea>
                             @if ($errors->has('vacancies_description'))
@@ -53,7 +53,7 @@
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="scope_of_duties" class="col-sm-4 col-form-label text-right">{{ __('Scope of Duties *') }}</label>
+                            <label for="scope_of_duties" class="col-sm-4 col-form-label text-right">{{ __('Scope of Duties ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 <textarea name="scope_of_duties" id="scope_of_duties" class="form-control{{ $errors->has('scope_of_duties') ? ' is-invalid' : '' }}" cols="30" rows="6" required>{{ old('scope_of_duties') }}</textarea>
                             @if ($errors->has('scope_of_duties'))
@@ -64,7 +64,7 @@
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="skills" class="col-sm-4 col-form-label text-right">{{ __('Skills *') }}</label>
+                            <label for="skills" class="col-sm-4 col-form-label text-right">{{ __('Skills ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 <input id="skills" type="text" class="form-control{{ $errors->has('skills') ? ' is-invalid' : '' }}" name="skills" value="{{ old('skills') }}" required>
 
@@ -76,7 +76,7 @@
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="related_experience_year" class="col-sm-4 col-form-label text-right">{{ __('Experience *') }}</label>
+                            <label for="related_experience_year" class="col-sm-4 col-form-label text-right">{{ __('Experience ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-4">
                                 <input id="related_experience_year" type="text" class="form-control{{ $errors->has('related_experience_year') ? ' is-invalid' : '' }}" name="related_experience_year" value="{{ old('related_experience_year') }}">
                             </div>
@@ -86,9 +86,10 @@
                             </div> --}}
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="job_vacancies_type" class="col-sm-4 col-form-label text-right">{{ __('Job Vacancies Type *') }}</label>
+                            <label for="job_vacancies_type" class="col-sm-4 col-form-label text-right">{{ __('Job Vacancies Type ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 <select name="job_vacancies_type" id="job_vacancies_type" class="form-control{{ $errors->has('job_vacancies_type') ? ' is-invalid' : '' }}" required>
+                                    <option>--Select Vacancies Type--</option>
                                     <option value="Permanent">Permanent</option>
                                     <option value="Part-Time">Part-Time</option>
                                     <option value="Contract">Contract</option>
@@ -101,7 +102,7 @@
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="salary_offer" class="col-sm-4 col-form-label text-right">{{ __('Salary Offer *') }}</label>
+                            <label for="salary_offer" class="col-sm-4 col-form-label text-right">{{ __('Salary Offer ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-2">
                                 <select name="salary_offer_currency" id="salary_offer_currency" class="form-control{{ $errors->has('salary_offer_currency') ? ' is-invalid' : '' }}">
                                     <option value="RM">RM</option>
@@ -135,7 +136,7 @@
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="total_number_of_vacancies" class="col-sm-4 col-form-label text-right">{{ __('Total Number of Vacancies *') }}</label>
+                            <label for="total_number_of_vacancies" class="col-sm-4 col-form-label text-right">{{ __('Total Number of Vacancies ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 <input id="total_number_of_vacancies" type="text" class="form-control{{ $errors->has('total_number_of_vacancies') ? ' is-invalid' : '' }}" name="total_number_of_vacancies" value="{{ old('total_number_of_vacancies') }}" required>
 
@@ -147,7 +148,7 @@
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="closing_date" class="col-sm-4 col-form-label text-right">{{ __('Closing Date *') }}</label>
+                            <label for="closing_date" class="col-sm-4 col-form-label text-right">{{ __('Closing Date ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 <input id="closing_date" type="date" class="form-control{{ $errors->has('closing_date') ? ' is-invalid' : '' }}" name="closing_date" value="{{ old('closing_date') }}">
 
@@ -159,9 +160,10 @@
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="working_hours" class="col-sm-4 col-form-label text-right">{{ __('Working Hours *') }}</label>
+                            <label for="working_hours" class="col-sm-4 col-form-label text-right">{{ __('Working Hours ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 <select name="working_hours" id="working_hours" class="form-control{{ $errors->has('working_hours') ? ' is-invalid' : '' }}" required>
+                                    <option>--Select Working hour--</option>
                                     <option value="Normal">Normal</option>
                                     <option value="Shift">Shift</option>
                                     <option value="Flexi-Time">Flexi-Time</option>
@@ -178,7 +180,7 @@
                     </div>
                     <div class="tab">
                         <div class="form-group dis-cls">
-                            <label for="person_in_charge" class="col-sm-4 col-form-label text-right">{{ __('Person in Charge *') }}</label>
+                            <label for="person_in_charge" class="col-sm-4 col-form-label text-right">{{ __('Person in Charge ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 <input id="person_in_charge" type="text" class="form-control{{ $errors->has('person_in_charge') ? ' is-invalid' : '' }}" name="person_in_charge" value="{{ old('person_in_charge') }}">
 
@@ -190,7 +192,7 @@
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="telephone_number" class="col-sm-4 col-form-label text-right">{{ __('Telephone Number *') }}</label>
+                            <label for="telephone_number" class="col-sm-4 col-form-label text-right">{{ __('Telephone Number ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 <input id="telephone_number" type="text" class="form-control{{ $errors->has('telephone_number') ? ' is-invalid' : '' }}" name="telephone_number" value="{{ old('telephone_number') }}">
 
@@ -202,7 +204,7 @@
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="handphone_number" class="col-sm-4 col-form-label text-right">{{ __('Handphone Number *') }}</label>
+                            <label for="handphone_number" class="col-sm-4 col-form-label text-right">{{ __('Handphone Number ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 <input id="handphone_number" type="text" class="form-control{{ $errors->has('handphone_number') ? ' is-invalid' : '' }}" name="handphone_number" value="{{ old('handphone_number') }}">
 
@@ -214,7 +216,7 @@
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="email" class="col-sm-4 col-form-label text-right">{{ __('Email *') }}</label>
+                            <label for="email" class="col-sm-4 col-form-label text-right">{{ __('Email ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}">
 
@@ -229,18 +231,21 @@
                     {{-- //Candidate details --}}
                     <div class="tab">
                         <div class="form-group dis-cls">
-                            <label for="gender" class="col-sm-4 col-form-label text-right">{{ __('Gender *') }}</label>
+                            <label for="gender" class="col-sm-4 col-form-label text-right">{{ __('Gender ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 <select name="gender" id="gender" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}">
+                                    <option>--Select Gender--</option>
+                                    <option value="Any">Any</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="marital_status" class="col-sm-4 col-form-label text-right">{{ __('Marital Status *') }}</label>
+                            <label for="marital_status" class="col-sm-4 col-form-label text-right">{{ __('Marital Status ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 <select name="marital_status" id="marital_status" class="form-control{{ $errors->has('marital_status') ? ' is-invalid' : '' }}">
+                                    <option>--Select Marital Status--</option>
                                     <option value="Any">Any</option>
                                     <option value="Single">Single</option>
                                     <option value="Married">Married</option>
@@ -249,7 +254,7 @@
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="race" class="col-sm-4 col-form-label text-right">{{ __('Race *') }}</label>
+                            <label for="race" class="col-sm-4 col-form-label text-right">{{ __('Race ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 <select name="race" id="race" class="form-control{{ $errors->has('race') ? ' is-invalid' : '' }}">
                                     <option>--Select Race--</option>
@@ -260,9 +265,10 @@
                             </div>
                         </div>
                         <div class="form-group dis-cls">
-                            <label for="age_eligibillity" class="col-sm-4 col-form-label text-right">{{ __('Age Eligibillity *') }}</label>
+                            <label for="age_eligibillity" class="col-sm-4 col-form-label text-right">{{ __('Age Eligibillity ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 <select name="age_eligibillity" id="age_eligibillity" class="form-control{{ $errors->has('age_eligibillity') ? ' is-invalid' : '' }}">
+                                    <option>--Select Age Range--</option>
                                     <option value="20-24">20-24</option>
                                     <option value="25-30">25-30</option>
                                     <option value="30-35">30-35</option>
@@ -324,7 +330,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div id="language" class="form-group dis-cls">
-                                    <label for="language">{{ __('Language *') }}</label>
+                                    <label for="language">{{ __('Language ') }}</label><span class="text-danger mt-2">*</span>
                                     <select class="form-control" name="language[]" id="language">
                                         <option>--Select--</option>
                                         @foreach($languages as $language)
@@ -368,7 +374,7 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div id="language" class="form-group dis-cls">
-                                                            <label for="language">{{ __('Language *') }}</label>
+                                                            <label for="language">{{ __('Language ') }}</label><span class="text-danger mt-2">*</span>
                                                             <select class="form-control" name="language[]" id="language">
                                                                 <option>--Select--</option>
                                                                 @foreach($languages as $language)
@@ -411,9 +417,10 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group row dis-cls">
-                                <label for="minimum_academic_qualification" class="col-sm-4 col-form-label text-right">{{ __('Minimum Academic Qualification *') }}</label>
+                                <label for="minimum_academic_qualification" class="col-sm-4 col-form-label text-right">{{ __('Minimum Academic Qualification ') }}</label><span class="text-danger mt-2">*</span>
                                 <div class="col-sm-8">
                                     <select class="form-control{{ $errors->has('minimum_academic_qualification') ? ' is-invalid' : '' }}" name="minimum_academic_qualification" id="minimum_academic_qualification">
+                                        <option>--Select Academic Qualification--</option>
                                         @foreach ($academics as $academic)
                                             <option value="{{$academic->name}}">{{$academic->name}}</option>
                                         @endforeach
@@ -429,6 +436,7 @@
                                 <label for="academic_field" class="col-sm-4 col-form-label text-right">{{ __('Academic Field') }}</label>
                                 <div class="col-sm-8">
                                     <select class="form-control{{ $errors->has('academic_field') ? ' is-invalid' : '' }}" name="academic_field" id="academic_field">
+                                        <option>--Select Academic Field--</option>
                                         @foreach ($academic_fields as $academic_field)
                                             <option value="{{$academic_field->name}}">{{$academic_field->name}}</option>
                                         @endforeach
@@ -453,9 +461,10 @@
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="form-group row dis-cls">
-                                                            <label for="academic_qualification" class="col-sm-4 col-form-label text-right">{{ __('Academic Qualification *') }}</label>
+                                                            <label for="academic_qualification" class="col-sm-4 col-form-label text-right">{{ __('Academic Qualification ') }}</label><span class="text-danger mt-2">*</span>
                                                             <div class="col-sm-8">
                                                                 <select class="form-control{{ $errors->has('academic_qualification') ? ' is-invalid' : '' }}" name="academic_qualifications[]" id="academic_qualification">
+                                                                    <option>--Select Academic Qualification--</option>
                                                                     @foreach ($academics as $academic)
                                                                         <option value="{{$academic->name}}">{{$academic->name}}</option>
                                                                     @endforeach
@@ -471,6 +480,7 @@
                                                             <label for="academic_fields" class="col-sm-4 col-form-label text-right">{{ __('Academic Field') }}</label>
                                                             <div class="col-sm-8">
                                                                 <select class="form-control{{ $errors->has('academic_fields') ? ' is-invalid' : '' }}" name="academic_fields[]" id="academic_fields">
+                                                                    <option>--Select Academic Qualification--</option>
                                                                     @foreach ($academic_fields as $academic_field)
                                                                         <option value="{{$academic_field->name}}">{{$academic_field->name}}</option>
                                                                     @endforeach
