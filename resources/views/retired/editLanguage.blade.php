@@ -11,16 +11,19 @@
 <div class="container mt-3 mb-3">
     <div class="row justify-content-center">
         <div class="col-sm-12">
-            <form method="POST" action="{{ route('retiredPersonnelsLanguage.store') }}">
+            <form method="POST" action="{{ route('retiredPersonnelsLanguage.update', $user->id) }}">
                 @csrf
+                @method('PATCH')
+                @if($user->retired_personnel_language->count()>0)
+                @foreach ($user->retired_personnel_language as $retiredLanguage)
                 <div class="row">
                     <div class="col-md-6">
                         <div id="language" class="form-group dis-cls">
                             <label for="language">{{ __('Language *') }}</label>
                             <select class="form-control" name="language[]" id="language">
-                                <option>--Select--</option>
+                                <option value="">--Select--</option>
                                 @foreach($languages as $language)
-                                    <option value="{{$language->name}}">{{$language->name}}</option>
+                                    <option value="{{$language->name}}" {{$retiredLanguage->language == $language->name ? 'selected' : ''}}>{{$language->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -29,10 +32,10 @@
                         <div id="speaking" class="form-group dis-cls">
                             <label for="speaking">{{ __('Speaking') }}</label>
                             <select class="form-control" name="speaking[]" id="speaking">
-                                <option>--Select--</option>
-                                <option value="Fluent">Fluent</option>
-                                <option value="Good">Good</option>
-                                <option value="Poor">Poor</option>
+                                <option value="">--Select--</option>
+                                <option value="Fluent" {{$retiredLanguage->speaking == 'Fluent'  ? 'selected' : ''}}>Fluent</option>
+                                <option value="Good" {{$retiredLanguage->speaking == 'Good'  ? 'selected' : ''}}>Good</option>
+                                <option value="Poor" {{$retiredLanguage->speaking == 'Poor' ? 'selected' : ''}}>Poor</option>
                             </select>
                         </div>
                     </div>
@@ -40,10 +43,10 @@
                         <div id="writing" class="form-group dis-cls">
                             <label for="writing">{{ __('Writing') }}</label>
                             <select class="form-control" name="writing[]" id="writing">
-                                <option>--Select--</option>
-                                <option value="Fluent">Fluent</option>
-                                <option value="Good">Good</option>
-                                <option value="Poor">Poor</option>
+                                <option value="">--Select--</option>
+                                <option value="Fluent" {{$retiredLanguage->writing == 'Fluent'  ? 'selected' : ''}}>Fluent</option>
+                                <option value="Good" {{$retiredLanguage->writing == 'Good'  ? 'selected' : ''}}>Good</option>
+                                <option value="Poor" {{$retiredLanguage->writing == 'Poor' ? 'selected' : ''}}>Poor</option>
                             </select>
                         </div>
                     </div>
@@ -51,6 +54,8 @@
                         <hr class="mt-4 mb-4"/>
                     </div>
                 </div>
+                @endforeach
+                @endif
                 <div id="czContainerLanguage">
                     <div id="first">
                         <div class="recordset">
@@ -60,7 +65,7 @@
                                         <div id="language" class="form-group dis-cls">
                                             <label for="language">{{ __('Language *') }}</label>
                                             <select class="form-control" name="language[]" id="language">
-                                                <option>--Select--</option>
+                                                <option value="">--Select--</option>
                                                 @foreach($languages as $language)
                                                     <option value="{{$language->name}}">{{$language->name}}</option>
                                                 @endforeach
@@ -71,7 +76,7 @@
                                         <div id="speaking" class="form-group dis-cls">
                                             <label for="speaking">{{ __('Speaking') }}</label>
                                             <select class="form-control" name="speaking[]" id="speaking">
-                                                <option>--Select--</option>
+                                                <option value="">--Select--</option>
                                                 <option value="Fluent">Fluent</option>
                                                 <option value="Good">Good</option>
                                                 <option value="Poor">Poor</option>
@@ -82,7 +87,7 @@
                                         <div id="writing" class="form-group dis-cls">
                                             <label for="writing">{{ __('Writing') }}</label>
                                             <select class="form-control" name="writing[]" id="writing">
-                                                <option>--Select--</option>
+                                                <option value="">--Select--</option>
                                                 <option value="Fluent">Fluent</option>
                                                 <option value="Good">Good</option>
                                                 <option value="Poor">Poor</option>

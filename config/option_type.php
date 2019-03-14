@@ -8,5 +8,6 @@ return [
     'Demand Job Position',
     'Demand Gender',
     'Demand Highest Education',
+    'Retired Health Statement',
 
 ];

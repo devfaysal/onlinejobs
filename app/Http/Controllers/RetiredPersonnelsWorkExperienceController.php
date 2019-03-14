@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Session;
+use App\User;
 use Illuminate\Http\Request;
 use App\RetiredPersonnelsWorkExperience;
 
@@ -77,7 +78,11 @@ class RetiredPersonnelsWorkExperienceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::where('id', $id)->first();
+
+        return view('retired.editExperience',[
+            'user' => $user,
+        ]);
     }
 
     /**
@@ -89,7 +94,31 @@ class RetiredPersonnelsWorkExperienceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::where('id', $id)->first();
+
+        if($request->company_name){
+            foreach($user->retired_personnel_experiences as $experience){
+                $experience->delete();
+            }
+
+            for($i=0; $i< count($request->company_name); $i++){
+                $experience = new RetiredPersonnelsWorkExperience;
+                $experience->user_id = $user->id;
+                $experience->company_name = $request->company_name[$i];
+                $experience->address = $request->address[$i];
+                $experience->position = $request->position[$i];
+                $experience->work_description = $request->work_description[$i];
+                $experience->from = $request->from[$i];
+                $experience->to = $request->to[$i];
+                $experience->nature_of_company_business = $request->nature_of_company_business[$i];
+                $experience->save();
+            }
+            Session::flash('message', 'Information saved successfully!'); 
+            Session::flash('alert-class', 'alert-success');
+            return redirect()->route('retiredPersonnel.show', $user->id);
+            
+        }
+
     }
 
     /**

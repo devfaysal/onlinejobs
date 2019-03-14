@@ -212,13 +212,19 @@ Route::post('/retiredPersonnel/store', 'RetiredPersonnelController@store')->name
 Route::get('/retiredPersonnel/show/{id}', 'RetiredPersonnelController@show')->name('retiredPersonnel.show');
 
 Route::get('/retiredPersonnel/profile', 'RetiredPersonnelController@profile')->name('retiredPersonnel.profile')->middleware('auth');
+Route::get('/retiredPersonnel/{user}/edit', 'RetiredPersonnelController@edit')->name('retiredPersonnel.edit')->middleware('auth');
+Route::post('/retiredPersonnel/{user}', 'RetiredPersonnelController@update')->name('retiredPersonnel.update')->middleware('auth');
 
 Route::get('/retiredPersonnel/experience/add', 'RetiredPersonnelsWorkExperienceController@create')->name('retiredPersonnelExperience.create')->middleware('auth');
 Route::post('/retiredPersonnel/experience/store', 'RetiredPersonnelsWorkExperienceController@store')->name('retiredPersonnelExperience.store')->middleware('auth');
+Route::get('/retiredPersonnel/experience/{user}/edit', 'RetiredPersonnelsWorkExperienceController@edit')->name('retiredPersonnelExperience.edit')->middleware('auth');
+Route::patch('/retiredPersonnel/experience/{user}', 'RetiredPersonnelsWorkExperienceController@update')->name('retiredPersonnelExperience.update')->middleware('auth');
 
 
 Route::get('/retiredPersonnel/language/add', 'RetiredPersonnelsLanguageController@create')->name('retiredPersonnelsLanguage.create')->middleware('auth');
 Route::post('/retiredPersonnel/language/store', 'RetiredPersonnelsLanguageController@store')->name('retiredPersonnelsLanguage.store')->middleware('auth');
+Route::get('/retiredPersonnel/language/{user}/edit', 'RetiredPersonnelsLanguageController@edit')->name('retiredPersonnelsLanguage.edit')->middleware('auth');
+Route::patch('/retiredPersonnel/language/{user}', 'RetiredPersonnelsLanguageController@update')->name('retiredPersonnelsLanguage.update')->middleware('auth');
 
 Route::get('/gallery', 'Admin\GalleryController@gallery')->name('gallery');
 

@@ -9,11 +9,10 @@
                     <div class="row">
                         <div class="col-md-11 ml-auto mr-auto">
                             <h4 class="mb-0">{{$user->name}}
-                                {{-- @if(Auth::id() == $user->id)
-                                    <a class="text-white" href="{{route('professional.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                @endif --}}
+                                @if(Auth::id() == $user->id)
+                                    <a class="text-white" href="{{route('retiredPersonnel.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                @endif
                             </h4>
-                            {{-- <p>{{$user->professional_experiences[0]->designation}}, {{$user->professional_experiences[0]->company}}</p> --}}
 
                             <div class="row">
                                 <div class="col-md-5">
@@ -37,6 +36,9 @@
                                     </div>                          
                                 </div>
                             </div>
+                            @if($user->retired_personnel->resume_file)
+                                <a class="mt-2 btn btn-sm btn-secondary" target="_blank" href="{{asset('storage/resume/'.$user->retired_personnel->resume_file)}}">View Resume</a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -54,10 +56,6 @@
                             <p>Employment</p>
                             <p>Educaition</p>
                             <p>IT SKills</p>
-                            <p>Projects</p>
-                            <p>Profile Summary</p>
-                            <p>Acknowledgements</p>
-                            <p>Desired Career Profile</p>
                             <p>Personal Details</p>
                             <p>Attach Resume</p>
                         </div>
@@ -67,9 +65,9 @@
                     <div class="card">
                         <div class="card-body">
                             <h4>Employment 
-                                {{-- @if(Auth::id() == $user->id)
-                                    <a class="text-black" href="{{route('professionalExperience.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                @endif --}}
+                                @if(Auth::id() == $user->id)
+                                    <a class="text-black" href="{{route('retiredPersonnelExperience.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                @endif
                             </h4>
                             @foreach($user->retired_personnel_experiences as $experience)
                                 <div class="mt-1">
@@ -77,25 +75,29 @@
                                     <p class="mb-0">{{$experience->company_name}}</p>
                                     <p class="mb-0">{{\Carbon\Carbon::parse($experience->from)->format('M-Y') }} to {{\Carbon\Carbon::parse($experience->to)->format('M-Y') }}</p>
                                 </div>
+                                <hr>
                             @endforeach
                         </div>
                     </div>
+                    @if($user->retired_personnel_language->count() > 0)
                     <div class="card mt-4">
                         <div class="card-body">
-                            <h4>Education 
-                                {{-- @if(Auth::id() == $user->id)
-                                    <a class="text-black" href="{{route('qualification.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                @endif --}}
+                            <h4>Language 
+                                @if(Auth::id() == $user->id)
+                                    <a class="text-black" href="{{route('retiredPersonnelsLanguage.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                @endif
                             </h4>
                             @foreach($user->retired_personnel_language as $language)
                                 <div class="mt-1">
-                                    <p class="mb-0">{{$language->language_name()->name}}</p>
+                                    <p class="mb-0">{{$language->language}}</p>
                                     <p class="mb-0">{{$language->speaking}}</p>
                                     <p class="mb-0">{{$language->writing}}</p>
                                 </div>
+                                <hr>
                             @endforeach
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>

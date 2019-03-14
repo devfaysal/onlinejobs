@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row bg-dark">
         <div class="col-12">
-            <h4 class="text-center text-white pb-3 pt-4"><span class="mr-3">Personal</span> <span class="mr-3 text-muted">Experience</span> <span class="mr-3 text-muted">Language</span></h4>
+            <h4 class="text-center text-white pb-3 pt-4"><span class="mr-3">Edit Personal Information</span></h4>
         </div>
     </div>
 </div>
@@ -13,13 +13,13 @@
         <div class="col-md-9">
             <div class="card auth-form mb-5">
                 <div class="card-body">
-                    <form method="POST" action="{{ route('retiredPersonnel.store') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('retiredPersonnel.update', $user->id) }}" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="role" value="retired">
                         <div class="form-group row">
                             <label for="name" class="col-sm-4 col-form-label text-right">{{ __('Name ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="Name" required>
+                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->retired_personnel->name }}" placeholder="Name" required>
 
                             @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
@@ -31,7 +31,7 @@
                         <div class="form-group row">
                             <label for="nric" class="col-sm-4 col-form-label text-right">{{ __('NRIC ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
-                                <input id="nric" type="text" class="form-control{{ $errors->has('nric') ? ' is-invalid' : '' }}" name="nric" value="{{ old('nric') }}" placeholder="NRIC" required>
+                                <input id="nric" type="text" class="form-control{{ $errors->has('nric') ? ' is-invalid' : '' }}" name="nric" value="{{ $user->retired_personnel->nric }}" placeholder="NRIC" required>
 
                             @if ($errors->has('nric'))
                                 <span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
                         <div class="form-group row">
                             <label for="address" class="col-sm-4 col-form-label text-right">{{ __('Address ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
-                                <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" placeholder="Address" required>
+                                <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{$user->retired_personnel->address}}" placeholder="Address" required>
 
                             @if ($errors->has('address'))
                                 <span class="invalid-feedback" role="alert">
@@ -55,7 +55,7 @@
                         <div class="form-group row">
                             <label for="postcode" class="col-sm-4 col-form-label text-right">{{ __('Postcode') }}</label>
                             <div class="col-sm-8">
-                                <input id="postcode" type="text" class="form-control{{ $errors->has('postcode') ? ' is-invalid' : '' }}" name="postcode" value="{{ old('postcode') }}" placeholder="Postcode">
+                                <input id="postcode" type="text" class="form-control{{ $errors->has('postcode') ? ' is-invalid' : '' }}" name="postcode" value="{{ $user->retired_personnel->postcode }}" placeholder="Postcode">
 
                             @if ($errors->has('postcode'))
                                 <span class="invalid-feedback" role="alert">
@@ -67,7 +67,7 @@
                         <div class="form-group row">
                             <label for="state" class="col-sm-4 col-form-label text-right">{{ __('State') }}</label>
                             <div class="col-sm-8">
-                                <input id="state" type="text" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}" name="state" value="{{ old('state') }}" placeholder="State">
+                                <input id="state" type="text" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}" name="state" value="{{ $user->retired_personnel->state }}" placeholder="State">
 
                             @if ($errors->has('state'))
                                 <span class="invalid-feedback" role="alert">
@@ -79,7 +79,7 @@
                         <div class="form-group row">
                             <label for="age" class="col-sm-4 col-form-label text-right">{{ __('Age ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
-                                <input id="age" type="text" class="form-control{{ $errors->has('age') ? ' is-invalid' : '' }}" name="age" value="{{ old('age') }}" placeholder="Age" required>
+                                <input id="age" type="text" class="form-control{{ $errors->has('age') ? ' is-invalid' : '' }}" name="age" value="{{ $user->retired_personnel->age }}" placeholder="Age" required>
 
                             @if ($errors->has('age'))
                                 <span class="invalid-feedback" role="alert">
@@ -93,8 +93,8 @@
                             <div class="col-sm-8">
                                 <select name="gender" id="gender" class="form-control" required>
                                     <option>-- Select Gender --</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
+                                    <option value="Male" {{$user->retired_personnel->gender == 'Male' ? 'selected' : ''}}>Male</option>
+                                    <option value="Female" {{$user->retired_personnel->gender == 'Female' ? 'selected' : ''}}>Female</option>
                                 </select>
                             @if ($errors->has('gender'))
                                 <span class="invalid-feedback" role="alert">
@@ -106,7 +106,7 @@
                         <div class="form-group row">
                             <label for="email" class="col-sm-4 col-form-label text-right">{{ __('Email ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email" required>
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $user->retired_personnel->email }}" placeholder="Email" required>
 
                             @if ($errors->has('email'))
                                 <span class="invalid-feedback" role="alert">
@@ -118,7 +118,7 @@
                         <div class="form-group row">
                             <label for="phone" class="col-sm-4 col-form-label text-right">{{ __('Contact No ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
-                                <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" placeholder="Contact No" required>
+                                <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ $user->retired_personnel->phone }}" placeholder="Contact No" required>
 
                             @if ($errors->has('phone'))
                                 <span class="invalid-feedback" role="alert">
@@ -133,7 +133,7 @@
                                 <select onChange="displayChildren(this.value)" name="marital_status" id="marital_status" class="form-control{{ $errors->has('marital_status') ? ' is-invalid' : '' }}">
                                     <option value="">--Select Marital Status--</option>
                                     @foreach ($marital_statuses as $marital_status)
-                                        <option value="{{$marital_status->id}}" {{$marital_status->id == old('marital_status')? 'selected':''}}>{{$marital_status->name}}</option>
+                                        <option value="{{$marital_status->name}}" {{$marital_status->name == $user->retired_personnel->marital_status? 'selected':''}}>{{$marital_status->name}}</option>
                                     @endforeach
                                 </select>
                                 @if ($errors->has('marital_status'))
@@ -149,7 +149,7 @@
                                 <select name="country" id="country" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" required>
                                     <option value="">--Select Nationality--</option>
                                     @foreach ($countrys as $country)
-                                        <option value="{{$country->id}}" {{$country->id == old('country') ? 'selected':''}}>{{$country->name}}</option>
+                                        <option value="{{$country->name}}" {{$country->name == $user->retired_personnel->country ? 'selected':''}}>{{$country->name}}</option>
                                     @endforeach
                                 </select>
                             @if ($errors->has('country'))
@@ -163,11 +163,11 @@
                             <label for="government_employee" class="col-sm-4 col-form-label text-right">{{ __('Were you government servent ?') }}</label>
                             <div class="col-sm-8 ml-auto mt-2">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="govt" name="government_employee" value="yes" class="custom-control-input">
+                                    <input type="radio" id="govt" name="government_employee" value="yes" {{$user->retired_personnel->government_employee == 'yes' ? 'checked' : ''}} class="custom-control-input">
                                     <label class="custom-control-label" for="govt">Yes</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="non_govt" name="government_employee" value="no" class="custom-control-input">
+                                    <input type="radio" id="non_govt" name="government_employee" value="no" {{$user->retired_personnel->government_employee == 'no' ? 'checked' : ''}} class="custom-control-input">
                                     <label class="custom-control-label" for="non_govt">No</label>
                                 </div>
                             </div>
@@ -175,7 +175,7 @@
                         <div class="form-group row d-none hide_govt_department">
                             <label for="govt_department" class="col-sm-4 col-form-label text-right">{{ __('Department') }}</label>
                             <div class="col-sm-8">
-                                <input id="govt_department" type="text" class="form-control{{ $errors->has('govt_department') ? ' is-invalid' : '' }}" name="govt_department" value="{{ old('govt_department') }}" placeholder="Department">
+                                <input id="govt_department" type="text" class="form-control{{ $errors->has('govt_department') ? ' is-invalid' : '' }}" name="govt_department" value="{{ $user->retired_personnel->govt_department }}" placeholder="Department">
 
                             @if ($errors->has('govt_department'))
                                 <span class="invalid-feedback" role="alert">
@@ -190,7 +190,7 @@
                                 <select class="form-control{{ $errors->has('academic_qualification') ? ' is-invalid' : '' }}" name="highest_academic_qualification" id="academic_qualification">
                                     <option value="">--Select Academic Qualification--</option>
                                     @foreach ($academics as $academic)
-                                        <option value="{{$academic->name}}">{{$academic->name}}</option>
+                                        <option value="{{$academic->name}}" {{$user->retired_personnel->highest_academic_qualification == $academic->name ? 'selected' : ''}}>{{$academic->name}}</option>
                                     @endforeach
                                 </select>
                             @if ($errors->has('academic_qualification'))
@@ -206,7 +206,7 @@
                                 <select class="form-control{{ $errors->has('specialization') ? ' is-invalid' : '' }}" name="specialization" id="specialization">
                                     <option value="">--Select Specialization--</option>
                                     @foreach ($specializations as $specialization)
-                                        <option value="{{$specialization->name}}">{{$specialization->name}}</option>
+                                        <option value="{{$specialization->name}}" {{$user->retired_personnel->specialization == $specialization->name ? 'selected' : ''}}>{{$specialization->name}}</option>
                                     @endforeach
                                 </select>
                             @if ($errors->has('specialization'))
@@ -228,6 +228,7 @@
                                                             <label for="academic_qualification" class="col-sm-4 col-form-label text-right">{{ __('Academic Qualification ') }}<span class="text-danger">*</span></label>
                                                             <div class="col-sm-8">
                                                                 <select class="form-control{{ $errors->has('academic_qualification') ? ' is-invalid' : '' }}" name="academic_qualifications[]" id="academic_qualification">
+                                                                    <option >--Select academic qualification--</option>
                                                                     @foreach ($academics as $academic)
                                                                         <option value="{{$academic->name}}">{{$academic->name}}</option>
                                                                     @endforeach
@@ -240,9 +241,10 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label for="specialization" class="col-sm-4 col-form-label text-right">{{ __('Specialization') }}</label>
+                                                            <label for="specializations" class="col-sm-4 col-form-label text-right">{{ __('Specialization') }}</label>
                                                             <div class="col-sm-8">
-                                                                <select class="form-control{{ $errors->has('specialization') ? ' is-invalid' : '' }}" name="specializations[]" id="specialization">
+                                                                <select class="form-control{{ $errors->has('specializations') ? ' is-invalid' : '' }}" name="specializations[]" id="specializations">
+                                                                    <option >--Select Specialization--</option>
                                                                     @foreach ($specializations as $specialization)
                                                                         <option value="{{$specialization->name}}">{{$specialization->name}}</option>
                                                                     @endforeach
@@ -269,11 +271,11 @@
                             <label for="full_time" class="col-sm-4 col-form-label text-right">{{ __('Prefer Working hours ?') }}</label>
                             <div class="col-sm-8 ml-auto mt-2">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="full_time" name="full_time" value="yes" class="custom-control-input">
+                                        <input type="radio" id="full_time" name="full_time" value="yes" {{$user->retired_personnel->full_time == 'yes' ? 'checked' : ''}} class="custom-control-input">
                                         <label class="custom-control-label" for="full_time">Full Time</label>
                                         </div>
                                         <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="part_time" name="full_time" value="no" class="custom-control-input">
+                                        <input type="radio" id="part_time" name="full_time" value="no" {{$user->retired_personnel->full_time == 'no' ? 'checked' : ''}} class="custom-control-input">
                                         <label class="custom-control-label" for="part_time">Part Time</label>
                                 </div>
                             </div>
@@ -281,7 +283,7 @@
                         <div class="form-group row d-none hide_working_hours">
                             <label for="describe_working_hours" class="col-sm-4 col-form-label text-right">{{ __('Describe Working Hours') }}</label>
                             <div class="col-sm-8">
-                                <input id="describe_working_hours" type="text" class="form-control{{ $errors->has('describe_working_hours') ? ' is-invalid' : '' }}" name="describe_working_hours" value="{{ old('describe_working_hours') }}" placeholder="Describe Working Hours">
+                                <input id="describe_working_hours" type="text" class="form-control{{ $errors->has('describe_working_hours') ? ' is-invalid' : '' }}" name="describe_working_hours" value="{{ $user->retired_personnel->describe_working_hours }}" placeholder="Describe Working Hours">
 
                             @if ($errors->has('describe_working_hours'))
                                 <span class="invalid-feedback" role="alert">
@@ -294,11 +296,11 @@
                             <label for="fit_to_work" class="col-sm-4 col-form-label text-right">{{ __('Fit to work ?') }}</label>
                             <div class="col-sm-8 ml-auto mt-2">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="fit_to_work" name="fit_to_work" value="yes" class="custom-control-input">
+                                    <input type="radio" id="fit_to_work" name="fit_to_work" value="yes" {{$user->retired_personnel->fit_to_work == 'yes' ? 'checked' : ''}} class="custom-control-input">
                                     <label class="custom-control-label" for="fit_to_work">Yes</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="fit_to_work2" name="fit_to_work" value="no" class="custom-control-input">
+                                    <input type="radio" id="fit_to_work2" name="fit_to_work" value="no" {{$user->retired_personnel->fit_to_work == 'no' ? 'checked' : ''}} class="custom-control-input">
                                     <label class="custom-control-label" for="fit_to_work2">No</label>
                                 </div>
                             </div>
@@ -307,11 +309,11 @@
                             <label for="have_blood_pressure" class="col-sm-4 col-form-label text-right">{{ __('Have blood pressure ?') }}</label>
                             <div class="col-sm-8 ml-auto mt-2">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="have_blood_pressure" name="have_blood_pressure" value="yes" class="custom-control-input">
+                                    <input type="radio" id="have_blood_pressure" name="have_blood_pressure" value="yes" {{$user->retired_personnel->have_blood_pressure == 'yes' ? 'checked' : ''}} class="custom-control-input">
                                     <label class="custom-control-label" for="have_blood_pressure">Yes</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="have_blood_pressure1" name="have_blood_pressure" value="no" class="custom-control-input">
+                                    <input type="radio" id="have_blood_pressure1" name="have_blood_pressure" value="no" {{$user->retired_personnel->fit_to_work == 'no' ? 'checked' : ''}} class="custom-control-input">
                                     <label class="custom-control-label" for="have_blood_pressure1">No</label>
                                 </div>
                             </div>
@@ -320,11 +322,11 @@
                             <label for="have_diabetes" class="col-sm-4 col-form-label text-right">{{ __('Have diabetes ?') }}</label>
                             <div class="col-sm-8 ml-auto mt-2">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="have_diabetes" name="have_diabetes" value="yes" class="custom-control-input">
+                                    <input type="radio" id="have_diabetes" name="have_diabetes" value="yes" {{$user->retired_personnel->have_diabetes == 'yes' ? 'checked' : ''}} class="custom-control-input">
                                     <label class="custom-control-label" for="have_diabetes">Yes</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="have_diabetes1" name="have_diabetes" value="no" class="custom-control-input">
+                                    <input type="radio" id="have_diabetes1" name="have_diabetes" value="no" {{$user->retired_personnel->have_diabetes == 'no' ? 'checked' : ''}} class="custom-control-input">
                                     <label class="custom-control-label" for="have_diabetes1">No</label>
                                 </div>
                             </div>
@@ -335,7 +337,7 @@
                                 <select class="form-control{{ $errors->has('health_statement') ? ' is-invalid' : '' }}" name="health_statement" id="health_statement">
                                     <option value="">--Select health Statement--</option>
                                     @foreach ($health_statements as $health_statement)
-                                        <option value="{{$health_statement->name}}">{{$health_statement->name}}</option>
+                                        <option value="{{$health_statement->name}}" {{$user->retired_personnel->health_statement == $health_statement->name ? 'selected' : ''}}>{{$health_statement->name}}</option>
                                     @endforeach
                                 </select>
                             @if ($errors->has('health_statement'))
@@ -348,7 +350,7 @@
                         <div class="form-group row">
                             <label for="additional_health_statement" class="col-sm-4 col-form-label text-right">{{ __('Additional Health Information ') }}</label>
                             <div class="col-sm-8">
-                                <input id="additional_health_statement" type="text" class="form-control{{ $errors->has('additional_health_statement') ? ' is-invalid' : '' }}" name="additional_health_statement" value="{{ old('additional_health_statement') }}" placeholder="Additional Health Information" >
+                                <input id="additional_health_statement" type="text" class="form-control{{ $errors->has('additional_health_statement') ? ' is-invalid' : '' }}" name="additional_health_statement" value="{{ $user->retired_personnel->additional_health_statement }}" placeholder="Additional Health Information" >
 
                             @if ($errors->has('additional_health_statement'))
                                 <span class="invalid-feedback" role="alert">

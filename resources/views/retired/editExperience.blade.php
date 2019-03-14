@@ -4,89 +4,112 @@
 <div class="container-fluid">
     <div class="row bg-dark">
         <div class="col-12">
-            <h4 class="text-center text-white pb-3 pt-4"><span class="mr-3 text-muted">Personal</span> <span class="mr-3 text-muted">Experience</span> <span class="mr-3">Language</span></h4>
+            <h4 class="text-center text-white pb-3 pt-4"><span class="mr-3 text-muted">Personal</span> <span class="mr-3">Experience</span> <span class="mr-3 text-muted">Language</span></h4>
         </div>
     </div>
 </div>
 <div class="container mt-3 mb-3">
     <div class="row justify-content-center">
         <div class="col-sm-12">
-            <form method="POST" action="{{ route('retiredPersonnelsLanguage.store') }}">
+            <form method="POST" action="{{ route('retiredPersonnelExperience.update', $user->id) }}">
                 @csrf
+                @method('PATCH')
+                @if($user->retired_personnel_experiences->count()>0)
+                @foreach ($user->retired_personnel_experiences as $experience)
                 <div class="row">
                     <div class="col-md-6">
-                        <div id="language" class="form-group dis-cls">
-                            <label for="language">{{ __('Language *') }}</label>
-                            <select class="form-control" name="language[]" id="language">
-                                <option>--Select--</option>
-                                @foreach($languages as $language)
-                                    <option value="{{$language->name}}">{{$language->name}}</option>
-                                @endforeach
-                            </select>
+                        <div id="company_name" class="form-group dis-cls">
+                            <label for="company_name">{{ __('Company Name *') }}</label>
+                            <input id="company_name" type="text" class="form-control" name="company_name[]" value="{{$experience->company_name}}" placeholder="Company Name" required>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div id="speaking" class="form-group dis-cls">
-                            <label for="speaking">{{ __('Speaking') }}</label>
-                            <select class="form-control" name="speaking[]" id="speaking">
-                                <option>--Select--</option>
-                                <option value="Fluent">Fluent</option>
-                                <option value="Good">Good</option>
-                                <option value="Poor">Poor</option>
-                            </select>
+                        <div id="address" class="form-group dis-cls">
+                            <label for="address">{{ __('Address') }}</label>
+                            <input id="address" type="text" class="form-control" name="address[]" value="{{$experience->address}}" placeholder="Address">
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div id="writing" class="form-group dis-cls">
-                            <label for="writing">{{ __('Writing') }}</label>
-                            <select class="form-control" name="writing[]" id="writing">
-                                <option>--Select--</option>
-                                <option value="Fluent">Fluent</option>
-                                <option value="Good">Good</option>
-                                <option value="Poor">Poor</option>
-                            </select>
+                        <div id="position" class="form-group dis-cls">
+                            <label for="position">{{ __('Position') }}</label>
+                            <input id="position" type="text" class="form-control" name="position[]" value="{{$experience->position}}" placeholder="Position">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="nature_of_company_business" class="form-group dis-cls">
+                            <label for="nature_of_company_business" style="margin-top: -10px;">{{ __('Nature of company Business') }}</label>
+                            <input id="nature_of_company_business" type="text" class="form-control" name="nature_of_company_business[]" value="{{$experience->nature_of_company_business}}" placeholder="Nature of company Business">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="from" class="form-group dis-cls">
+                            <label for="from">{{ __('from') }}</label>
+                            <input id="from" type="date" class="form-control" name="from[]" value="{{$experience->from}}" placeholder="from">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="to" class="form-group dis-cls">
+                            <label for="to">{{ __('to') }}</label>
+                            <input id="to" type="date" class="form-control" name="to[]" value="{{$experience->to}}" placeholder="to">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div id="work_description" class="form-group dis-cls">
+                            <label class="col-md-2" for="work_description">{{ __('Work Description') }}</label>
+                            <textarea class="form-control" name="work_description[]" id="work_description" cols="30" rows="3">{{$experience->work_description}}</textarea>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <hr class="mt-4 mb-4"/>
                     </div>
                 </div>
-                <div id="czContainerLanguage">
+                @endforeach
+                @endif
+                <div id="czContainerExperience">
                     <div id="first">
                         <div class="recordset">
                             <div class="fieldRow clearfix">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div id="language" class="form-group dis-cls">
-                                            <label for="language">{{ __('Language *') }}</label>
-                                            <select class="form-control" name="language[]" id="language">
-                                                <option>--Select--</option>
-                                                @foreach($languages as $language)
-                                                    <option value="{{$language->name}}">{{$language->name}}</option>
-                                                @endforeach
-                                            </select>
+                                        <div id="company_name" class="form-group dis-cls">
+                                            <label for="company_name">{{ __('Company Name') }}</label>
+                                            <input id="company_name" type="text" class="form-control" name="company_name[]" placeholder="Company Name">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div id="speaking" class="form-group dis-cls">
-                                            <label for="speaking">{{ __('Speaking') }}</label>
-                                            <select class="form-control" name="speaking[]" id="speaking">
-                                                <option>--Select--</option>
-                                                <option value="Fluent">Fluent</option>
-                                                <option value="Good">Good</option>
-                                                <option value="Poor">Poor</option>
-                                            </select>
+                                        <div id="address" class="form-group dis-cls">
+                                            <label for="address">{{ __('Address') }}</label>
+                                            <input id="address" type="text" class="form-control" name="address[]" placeholder="Address">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div id="writing" class="form-group dis-cls">
-                                            <label for="writing">{{ __('Writing') }}</label>
-                                            <select class="form-control" name="writing[]" id="writing">
-                                                <option>--Select--</option>
-                                                <option value="Fluent">Fluent</option>
-                                                <option value="Good">Good</option>
-                                                <option value="Poor">Poor</option>
-                                            </select>
+                                        <div id="position" class="form-group dis-cls">
+                                            <label for="position">{{ __('Position') }}</label>
+                                            <input id="position" type="text" class="form-control" name="position[]" placeholder="Position">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div id="nature_of_company_business" class="form-group dis-cls">
+                                            <label for="nature_of_company_business" style="margin-top: -10px;">{{ __('Nature of company Business') }}</label>
+                                            <input id="nature_of_company_business" type="text" class="form-control" name="nature_of_company_business[]" placeholder="Nature of company Business">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div id="from" class="form-group dis-cls">
+                                            <label for="from">{{ __('from') }}</label>
+                                            <input id="from" type="date" class="form-control" name="from[]" placeholder="from">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div id="to" class="form-group dis-cls">
+                                            <label for="to">{{ __('to') }}</label>
+                                            <input id="to" type="date" class="form-control" name="to[]" placeholder="to">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div id="work_description" class="form-group dis-cls">
+                                            <label class="col-md-2" for="work_description">{{ __('Work Description') }}</label>
+                                            <textarea class="form-control" name="work_description[]" id="work_description" cols="30" rows="3"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -250,7 +273,7 @@
     <script type="text/javascript">
         //One-to-many relationship plugin by Yasir O. Atabani. Copyrights Reserved.
         $("#czContainer").czMore();
-        $("#czContainerLanguage").czMore();
+        $("#czContainerExperience").czMore();
     </script>
     
 @endsection
