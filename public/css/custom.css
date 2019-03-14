@@ -749,12 +749,16 @@ input.invalid {
     padding: 0 10px;
 }
 
+.text-orange{
+	color: #f9a711;
+}
+
 .border-after:after{
 	margin-top: -5px;
-	height: 2px;
+	height: 1px;
 	display: block;
-	width: 80px;
-	background: rgb(52, 144, 220);
+	width: 50px;
+	background: #f9a711;
 	border-right: 1px white;
 	content: '';
 }

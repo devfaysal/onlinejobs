@@ -4,7 +4,11 @@
 <div class="container-fluid">
     <div class="row bg-dark">
         <div class="col-12">
-            <h4 class="text-center text-white pb-3 pt-4"><span class="mr-3">Personal</span> <span class="mr-3 text-muted">Education</span> <span class="mr-3 text-muted">Experience</span></h4>
+            <h4 class="text-center text-white pb-3 pt-4"><span class="mr-3">Personal</span> <span class="mr-3 text-muted">Education</span> 
+                @if(request('type')== 'pro')
+                <span class="mr-3 text-muted">Experience</span>
+                @endif
+            </h4>
         </div>
     </div>
 </div>
@@ -16,8 +20,9 @@
                     <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="role" value="professional">
+                        <input type="hidden" name="type" value="{{request('type')}}">
                         <div class="form-group row">
-                            <label for="name" class="col-sm-4 col-form-label text-right">{{ __('Name *') }}</label>
+                            <label for="name" class="col-sm-4 col-form-label text-right">{{ __('Name ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="Name" required>
 
@@ -29,7 +34,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-right">{{ __('Email *') }}</label>
+                            <label for="email" class="col-sm-4 col-form-label text-right">{{ __('Email ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email" required>
 
@@ -41,7 +46,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="phone" class="col-sm-4 col-form-label text-right">{{ __('Mobile Number *') }}</label>
+                            <label for="phone" class="col-sm-4 col-form-label text-right">{{ __('Mobile Number ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" placeholder="Mobile Number" required>
 
@@ -53,7 +58,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="country" class="col-sm-4 col-form-label text-right">{{ __('Country *') }}</label>
+                            <label for="country" class="col-sm-4 col-form-label text-right">{{ __('Country ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <select name="country" id="country" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" required>
                                     <option value="">--Select Country--</option>
@@ -69,7 +74,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="password" class="col-sm-4 col-form-label text-right">{{ __('Password *') }}</label>
+                            <label for="password" class="col-sm-4 col-form-label text-right">{{ __('Password ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password" required>
 
@@ -81,7 +86,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-sm-4 col-form-label text-right">{{ __('Confirm Password *') }}</label>
+                            <label for="password-confirm" class="col-sm-4 col-form-label text-right">{{ __('Confirm Password ') }}<span class="text-danger">*</span></label>
 
                             <div class="col-sm-8">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" required>

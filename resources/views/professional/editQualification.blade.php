@@ -4,7 +4,11 @@
 <div class="container-fluid">
     <div class="row bg-dark">
         <div class="col-12">
-            <h4 class="text-center text-white pb-3 pt-4"><span class="mr-3 text-muted">Personal</span> <span class="mr-3">Education</span><span class="mr-3 text-muted">Experience</span></h4>
+            <h4 class="text-center text-white pb-3 pt-4"><span class="mr-3 text-muted">Personal</span> <span class="mr-3">Education</span>
+                @if(request('type')== 'pro')
+                <span class="mr-3 text-muted">Experience</span>
+                @endif
+            </h4>
         </div>
     </div>
 </div>
@@ -16,11 +20,12 @@
                     <form method="POST" action="{{ route('qualification.update', $user->id) }}">
                         @csrf
                         @method('PATCH')
+                        <input type="hidden" name="type" value="{{request('type')}}">
                         @if(count($user->qualifications)>0)
                             @foreach ($user->qualifications as $qualification)
                             <div class="col-md-11">
                                 <div class="form-group row">
-                                    <label for="university" class="col-sm-4 col-form-label text-right">{{ __('Institute/University *') }}</label>
+                                    <label for="university" class="col-sm-4 col-form-label text-right">{{ __('Institute/University ') }} <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input id="university" type="text" class="form-control{{ $errors->has('university') ? ' is-invalid' : '' }}" name="university[]" value="{{ $qualification->university }}" placeholder="Institute/University" required>
         
@@ -32,7 +37,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="passing_year" class="col-sm-4 col-form-label text-right">{{ __('Graduation Date *') }}</label>
+                                    <label for="passing_year" class="col-sm-4 col-form-label text-right">{{ __('Graduation Date ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input id="passing_year" type="number" min="1900" class="form-control{{ $errors->has('passing_year') ? ' is-invalid' : '' }}" name="passing_year[]" value="{{ $qualification->passing_year }}" placeholder="Graduation Date" required>
         
@@ -44,7 +49,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="qualification" class="col-sm-4 col-form-label text-right">{{ __('Qualification *') }}</label>
+                                    <label for="qualification" class="col-sm-4 col-form-label text-right">{{ __('Qualification ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input id="qualification" type="text" class="form-control{{ $errors->has('qualification') ? ' is-invalid' : '' }}" name="qualification[]" value="{{ $qualification->qualification }}" placeholder="Qualification" required>
         
@@ -56,7 +61,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="subject" class="col-sm-4 col-form-label text-right">{{ __('Field of Study *') }}</label>
+                                    <label for="subject" class="col-sm-4 col-form-label text-right">{{ __('Field of Study ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input id="subject" type="text" class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject[]" value="{{ $qualification->subject }}" placeholder="Field of Study" required>
         
@@ -68,7 +73,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="specialization" class="col-sm-4 col-form-label text-right">{{ __('Specialization *') }}</label>
+                                    <label for="specialization" class="col-sm-4 col-form-label text-right">{{ __('Specialization ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input id="specialization" type="text" class="form-control{{ $errors->has('specialization') ? ' is-invalid' : '' }}" name="specialization[]" value="{{ $qualification->specialization }}" placeholder="Specialization" required>
         
@@ -87,7 +92,7 @@
                         @else
                         <div class="col-md-11">
                             <div class="form-group row">
-                                <label for="university" class="col-sm-4 col-form-label text-right">{{ __('Institute/University *') }}</label>
+                                <label for="university" class="col-sm-4 col-form-label text-right">{{ __('Institute/University ') }}<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <input id="university" type="text" class="form-control{{ $errors->has('university') ? ' is-invalid' : '' }}" name="university[]" value="{{ old('university') }}" placeholder="Institute/University" required>
     
@@ -99,7 +104,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="passing_year" class="col-sm-4 col-form-label text-right">{{ __('Graduation Date *') }}</label>
+                                <label for="passing_year" class="col-sm-4 col-form-label text-right">{{ __('Graduation Date ') }}<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <input id="passing_year" type="number" min="1900" class="form-control{{ $errors->has('passing_year') ? ' is-invalid' : '' }}" name="passing_year[]" value="{{ old('passing_year') }}" placeholder="Graduation Date" required>
     
@@ -111,7 +116,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="qualification" class="col-sm-4 col-form-label text-right">{{ __('Qualification *') }}</label>
+                                <label for="qualification" class="col-sm-4 col-form-label text-right">{{ __('Qualification ') }}<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <input id="qualification" type="text" class="form-control{{ $errors->has('qualification') ? ' is-invalid' : '' }}" name="qualification[]" value="{{ old('qualification') }}" placeholder="Qualification" required>
     
@@ -123,7 +128,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="subject" class="col-sm-4 col-form-label text-right">{{ __('Field of Study *') }}</label>
+                                <label for="subject" class="col-sm-4 col-form-label text-right">{{ __('Field of Study ') }}<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <input id="subject" type="text" class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject[]" value="{{ old('subject') }}" placeholder="Field of Study" required>
     
@@ -135,7 +140,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="specialization" class="col-sm-4 col-form-label text-right">{{ __('Specialization *') }}</label>
+                                <label for="specialization" class="col-sm-4 col-form-label text-right">{{ __('Specialization ') }}<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <input id="specialization" type="text" class="form-control{{ $errors->has('specialization') ? ' is-invalid' : '' }}" name="specialization[]" value="{{ old('specialization') }}" placeholder="Specialization" required>
     
@@ -159,7 +164,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group row">
-                                                    <label for="university" class="col-sm-4 col-form-label text-right">{{ __('Institute/University *') }}</label>
+                                                    <label for="university" class="col-sm-4 col-form-label text-right">{{ __('Institute/University ') }}<span class="text-danger">*</span></label>
                                                     <div class="col-sm-8">
                                                         <input id="university" type="text" class="form-control{{ $errors->has('university') ? ' is-invalid' : '' }}" name="university[]" value="{{ old('university') }}" placeholder="Institute/University" required>
                         
@@ -171,7 +176,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="passing_year" class="col-sm-4 col-form-label text-right">{{ __('Graduation Date *') }}</label>
+                                                    <label for="passing_year" class="col-sm-4 col-form-label text-right">{{ __('Graduation Date ') }}<span class="text-danger">*</span></label>
                                                     <div class="col-sm-8">
                                                         <input id="passing_year" type="number" min="1900" class="form-control{{ $errors->has('passing_year') ? ' is-invalid' : '' }}" name="passing_year[]" value="{{ old('passing_year') }}" placeholder="Graduation Date" required>
                         
@@ -183,7 +188,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="qualification" class="col-sm-4 col-form-label text-right">{{ __('Qualification *') }}</label>
+                                                    <label for="qualification" class="col-sm-4 col-form-label text-right">{{ __('Qualification ') }}<span class="text-danger">*</span></label>
                                                     <div class="col-sm-8">
                                                         <input id="qualification" type="text" class="form-control{{ $errors->has('qualification') ? ' is-invalid' : '' }}" name="qualification[]" value="{{ old('qualification') }}" placeholder="Qualification" required>
                         
@@ -195,7 +200,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="subject" class="col-sm-4 col-form-label text-right">{{ __('Field of Study *') }}</label>
+                                                    <label for="subject" class="col-sm-4 col-form-label text-right">{{ __('Field of Study ') }}<span class="text-danger">*</span></label>
                                                     <div class="col-sm-8">
                                                         <input id="subject" type="text" class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject[]" value="{{ old('subject') }}" placeholder="Field of Study" required>
                         
@@ -207,7 +212,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="specialization" class="col-sm-4 col-form-label text-right">{{ __('Specialization *') }}</label>
+                                                    <label for="specialization" class="col-sm-4 col-form-label text-right">{{ __('Specialization ') }}<span class="text-danger">*</span></label>
                                                     <div class="col-sm-8">
                                                         <input id="specialization" type="text" class="form-control{{ $errors->has('specialization') ? ' is-invalid' : '' }}" name="specialization[]" value="{{ old('specialization') }}" placeholder="Specialization" required>
                         

@@ -15,12 +15,12 @@
             </div>
             <div class="col-3 text-center">
                 <p><img style="width:100px; height:100px" src="{{asset('images/fresher.png')}}" alt=""></p>
-                <p class="mt-2"><a class="btn btn-warning" href="{{route('professional.create')}}">New Graduate</a></p>
+                <p class="mt-2"><a class="btn btn-warning" href="{{route('professional.create')}}?type=new">New Graduate</a></p>
                 <p>I have just graduated/I haven't worked after graduation</p>
             </div>
             <div class="col-3 text-center">
                 <p><img style="width:100px; height:100px" src="{{asset('images/professional.png')}}" alt=""></p>
-                <p class="mt-1"><a class="btn btn-warning" href="{{route('professional.create')}}">I am Professional</a></p>
+                <p class="mt-1"><a class="btn btn-warning" href="{{route('professional.create')}}?type=pro">I am Professional</a></p>
                 <p>I have at least 1 month of work experience</p>
             </div>
             <div class="col-12 mt-5 mb-5">

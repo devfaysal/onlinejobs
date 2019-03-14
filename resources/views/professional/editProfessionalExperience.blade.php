@@ -20,7 +20,7 @@
                             @foreach ($user->professional_experiences as $professional_experience)
                             <div class="col-md-11">
                                 <div class="form-group row">
-                                    <label for="designation" class="col-sm-4 col-form-label text-right">{{ __('Designation *') }}</label>
+                                    <label for="designation" class="col-sm-4 col-form-label text-right">{{ __('Designation ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input id="designation" type="text" class="form-control{{ $errors->has('designation') ? ' is-invalid' : '' }}" name="designation[]" value="{{ $professional_experience->designation }}" placeholder="Designation" required>
         
@@ -32,7 +32,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="company" class="col-sm-4 col-form-label text-right">{{ __('Company *') }}</label>
+                                    <label for="company" class="col-sm-4 col-form-label text-right">{{ __('Company ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input id="company" type="text" class="form-control{{ $errors->has('company') ? ' is-invalid' : '' }}" name="company[]" value="{{ $professional_experience->company }}" placeholder="Company" required>
         
@@ -44,7 +44,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="from" class="col-sm-4 col-form-label text-right">{{ __('From *') }}</label>
+                                    <label for="from" class="col-sm-4 col-form-label text-right">{{ __('From ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input id="from" type="date" class="form-control{{ $errors->has('from') ? ' is-invalid' : '' }}" name="from[]" value="{{ $professional_experience->from }}" placeholder="from" required>
         
@@ -89,7 +89,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="experience_description" class="col-sm-4 col-form-label text-right">{{ __('Experience Description *') }}</label>
+                                    <label for="experience_description" class="col-sm-4 col-form-label text-right">{{ __('Experience Description ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <textarea class="form-control{{ $errors->has('experience_description') ? ' is-invalid' : '' }}" name="experience_description[]" id="experience_description" cols="30" rows="3" required>{{ $professional_experience->experience_description }}</textarea>
                                     @if ($errors->has('experience_description'))
@@ -107,7 +107,7 @@
                         @else
                         <div class="col-md-11">
                             <div class="form-group row">
-                                <label for="designation" class="col-sm-4 col-form-label text-right">{{ __('Designation *') }}</label>
+                                <label for="designation" class="col-sm-4 col-form-label text-right">{{ __('Designation ') }}<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <input id="designation" type="text" class="form-control{{ $errors->has('designation') ? ' is-invalid' : '' }}" name="designation[]" value="{{ old('designation') }}" placeholder="Designation" required>
     
@@ -119,7 +119,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="company" class="col-sm-4 col-form-label text-right">{{ __('Company *') }}</label>
+                                <label for="company" class="col-sm-4 col-form-label text-right">{{ __('Company ') }}<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <input id="company" type="text" class="form-control{{ $errors->has('company') ? ' is-invalid' : '' }}" name="company[]" value="{{ old('company') }}" placeholder="Company" required>
     
@@ -131,7 +131,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="from" class="col-sm-4 col-form-label text-right">{{ __('From *') }}</label>
+                                <label for="from" class="col-sm-4 col-form-label text-right">{{ __('From ') }}<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <input id="from" type="date" class="form-control{{ $errors->has('from') ? ' is-invalid' : '' }}" name="from[]" value="{{ old('from') }}" placeholder="from" required>
     
@@ -176,7 +176,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="experience_description" class="col-sm-4 col-form-label text-right">{{ __('Experience Description *') }}</label>
+                                <label for="experience_description" class="col-sm-4 col-form-label text-right">{{ __('Experience Description ') }}<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <textarea class="form-control{{ $errors->has('experience_description') ? ' is-invalid' : '' }}" name="experience_description[]" id="experience_description" cols="30" rows="3" required>{{ old('experience_description') }}</textarea>
                                 @if ($errors->has('experience_description'))
@@ -199,7 +199,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group row">
-                                                    <label for="designation" class="col-sm-4 col-form-label text-right">{{ __('Designation *') }}</label>
+                                                    <label for="designation" class="col-sm-4 col-form-label text-right">{{ __('Designation ') }}<span class="text-danger">*</span></label>
                                                     <div class="col-sm-8">
                                                         <input id="designation" type="text" class="form-control{{ $errors->has('designation') ? ' is-invalid' : '' }}" name="designation[]" value="{{ old('designation') }}" placeholder="Designation" required>
                         
@@ -211,7 +211,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="company" class="col-sm-4 col-form-label text-right">{{ __('Company *') }}</label>
+                                                    <label for="company" class="col-sm-4 col-form-label text-right">{{ __('Company ') }}<span class="text-danger">*</span></label>
                                                     <div class="col-sm-8">
                                                         <input id="company" type="text" class="form-control{{ $errors->has('company') ? ' is-invalid' : '' }}" name="company[]" value="{{ old('company') }}" placeholder="Company" required>
                         
@@ -223,7 +223,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="from" class="col-sm-4 col-form-label text-right">{{ __('From *') }}</label>
+                                                    <label for="from" class="col-sm-4 col-form-label text-right">{{ __('From ') }}<span class="text-danger">*</span></label>
                                                     <div class="col-sm-8">
                                                         <input id="from" type="date" class="form-control{{ $errors->has('from') ? ' is-invalid' : '' }}" name="from[]" value="{{ old('from') }}" placeholder="from" required>
                         
@@ -268,7 +268,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="experience_description" class="col-sm-4 col-form-label text-right">{{ __('Experience Description *') }}</label>
+                                                    <label for="experience_description" class="col-sm-4 col-form-label text-right">{{ __('Experience Description ') }}<span class="text-danger">*</span></label>
                                                     <div class="col-sm-8">
                                                         <textarea class="form-control{{ $errors->has('experience_description') ? ' is-invalid' : '' }}" name="experience_description[]" id="experience_description" cols="30" rows="3" required>{{ old('experience_description') }}</textarea>
                                                     @if ($errors->has('experience_description'))

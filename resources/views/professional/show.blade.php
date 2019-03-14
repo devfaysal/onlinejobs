@@ -16,8 +16,9 @@
                                     <a class="text-white" href="{{route('professional.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                 @endif
                             </h4>
+                            @if($user->professional_experiences->count() > 0)
                             <p>{{$user->professional_experiences[0]->designation}}, {{$user->professional_experiences[0]->company}}</p>
-
+                            @endif
                             <div class="row">
                                 <div class="col-md-5">
                                     <p class="mb-0"><i class="mr-3 fa fa-map-marker" aria-hidden="true"></i> {{$user->professional_profile->city}}, {{$user->professional_profile->country}}</p>
@@ -118,6 +119,7 @@
                             @endforeach
                         </div>
                     </div>
+                    @if($user->professional_experiences->count() > 0)
                     <div class="card mt-4">
                         <div class="card-body">
                             <h4>Employment 
@@ -137,6 +139,7 @@
                             @endforeach
                         </div>
                     </div>
+                    @endif
                     <div class="card mt-4">
                         <div class="card-body">
                             <h4>Education 

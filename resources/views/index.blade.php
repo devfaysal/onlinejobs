@@ -192,18 +192,18 @@
 
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                                <p class="border-after text-uppercase text-primary "><span class="font-size-3">W</span>ho We Are</p>
+                                                                <p class="border-after text-uppercase text-orange "><span class="font-size-3">W</span>ho We Are</p>
                                                                 <p>Online Jobs Is A Global Recruiting and Work Placement Consultant For JobSeeks and JobsProvider.</p>
                                                             </div>
                                                         </div>
 
                                                         <div class="row">
                                                             <div class="col-md-6">
-                                                                <p class="border-after text-uppercase text-primary mb-1"><span class="font-size-3">M</span>ission, values and purpose</p>
+                                                                <p class="border-after text-uppercase text-orange mb-1"><span class="font-size-3">M</span>ission, values and purpose</p>
                                                                 <p>We want to be the world’s leading specialist online recruitment consultancy and Welfare protection provider for Jobseeks and Employer.  We provide online CV on local and foreign workers to carter local and global demand</p>
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <img class="mt-3" style="width:100%" src="images/home/2nd-Picture.jpg" alt="">
+                                                                <img class="mt-3" style="width:100%; height: 90%;" src="images/home/2nd-Picture.jpg" alt="">
                                                             </div>
                                                         </div>
 
@@ -221,10 +221,10 @@
 
                                                         <div class="row">
                                                             <div class="col-md-6">
-                                                                <img class="mt-3" style="width:100%" src="images/home/4th-Picture.jpg" alt="">
+                                                                <img class="mt-3" style="width:100%; height: 90%;" src="images/home/4th-Picture.jpg" alt="">
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <p class="border-after text-uppercase text-primary mb-1"><span class="font-size-3">O</span>ur Advantages </p>
+                                                                <p class="border-after text-uppercase text-orange mb-1"><span class="font-size-3">O</span>ur Advantages </p>
                                                                 <p>At Online Jobs we dedicated ourselves to our clients to meet their needs in the best possible way we can. We understand that identifying the best solution and talent for your company is no easy task and will take precious time and effort that is why we are here to help you with our professional services through our Asia pacific network and expertise.</p>
                                                             </div>
                                                         </div>

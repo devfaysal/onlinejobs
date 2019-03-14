@@ -50,7 +50,7 @@ class RegisterController extends Controller
         }elseif(Auth::user()->hasRole('professional')){
             Session::flash('message', 'Information saved successfully!!'); 
             Session::flash('alert-class', 'alert-success');
-            return route('qualification.edit', Auth::user()->id);
+            return route('qualification.edit', Auth::user()->id).'?type='.request('type');
         }else{
             return '/';
         }

@@ -175,8 +175,12 @@ class ProfessionalProfileController extends Controller
                 $qualification->passing_year = $request->passing_year[$i];
                 $qualification->save();
             }
-
-            return redirect()->route('professionalExperience.edit', $user->id);
+            if(request('type') == 'pro'){
+                return redirect()->route('professionalExperience.edit', $user->id);
+            }else{
+                return redirect()->route('professional.profile'); 
+            }
+            
         }
     }
 
