@@ -3,16 +3,6 @@
 @section('content')
     <div class="container mt-4">
         <div class="row">
-            {{-- @if(Session::has('message'))
-            <div class="col-md-12">
-                <div class="alert {{ Session::get('alert-class', 'alert-info') }} alert-dismissible fade show" role="alert">
-                    <strong>{{ Session::get('message') }}</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            </div>
-            @endif --}}
             @auth
             @if(Auth::user()->can('print'))
                 <div class="col-md-12 hidefromprint mb-3">
@@ -36,6 +26,38 @@
                                 <th width="15%">Company Name</th>
                                 <th>:</th>
                                 <td>{{$offer->company_name ?? 'N/A'}}</td>
+                            </tr>
+                            <tr>
+                                <th width="15%">Job Position</th>
+                                <th>:</th>
+                                <td width="25%">{{$offer->job_position ?? 'N/A'}}</td>
+                                <th width="15%">Gender</th>
+                                <th>:</th>
+                                <td>{{$offer->gender ?? 'N/A'}}</td>
+                            </tr>
+                            <tr>
+                                <th width="15%">Marital Status</th>
+                                <th>:</th>
+                                <td width="25%">{{$offer->marital_status ?? 'N/A'}}</td>
+                                <th width="15%">Highest Education</th>
+                                <th>:</th>
+                                <td>{{$offer->highest_education ?? 'N/A'}}</td>
+                            </tr>
+                            <tr>
+                                <th width="15%">Job Location</th>
+                                <th>:</th>
+                                <td width="25%">{{$offer->job_location ?? 'N/A'}}</td>
+                                <th width="15%">Preferred Language</th>
+                                <th>:</th>
+                                <td>{{$offer->preferred_language ?? 'N/A'}}</td>
+                            </tr>
+                            <tr>
+                                <th width="15%">Reading</th>
+                                <th>:</th>
+                                <td width="25%">{{$offer->reading ?? 'N/A'}}</td>
+                                <th width="15%">Written</th>
+                                <th>:</th>
+                                <td>{{$offer->written ?? 'N/A'}}</td>
                             </tr>
                             <tr>
                                 <th>Issue Date</th>
