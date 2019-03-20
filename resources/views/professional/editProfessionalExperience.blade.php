@@ -91,7 +91,7 @@
                                 <div class="form-group row">
                                     <label for="experience_description" class="col-sm-4 col-form-label text-right">{{ __('Experience Description ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
-                                        <textarea class="form-control{{ $errors->has('experience_description') ? ' is-invalid' : '' }}" name="experience_description[]" id="experience_description" cols="30" rows="3" required>{{ $professional_experience->experience_description }}</textarea>
+                                        <textarea class="form-control{{ $errors->has('experience_description') ? ' is-invalid' : '' }}" name="experience_description[]" id="experience_description" cols="30" rows="9" required>{{ $professional_experience->experience_description }}</textarea>
                                     @if ($errors->has('experience_description'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('experience_description') }}</strong>
@@ -178,7 +178,7 @@
                             <div class="form-group row">
                                 <label for="experience_description" class="col-sm-4 col-form-label text-right">{{ __('Experience Description ') }}<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <textarea class="form-control{{ $errors->has('experience_description') ? ' is-invalid' : '' }}" name="experience_description[]" id="experience_description" cols="30" rows="3" required>{{ old('experience_description') }}</textarea>
+                                    <textarea class="form-control{{ $errors->has('experience_description') ? ' is-invalid' : '' }}" name="experience_description[]" id="experience_description" cols="30" rows="9" required>{{ old('experience_description') }}</textarea>
                                 @if ($errors->has('experience_description'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('experience_description') }}</strong>
@@ -270,7 +270,7 @@
                                                 <div class="form-group row">
                                                     <label for="experience_description" class="col-sm-4 col-form-label text-right">{{ __('Experience Description ') }}<span class="text-danger">*</span></label>
                                                     <div class="col-sm-8">
-                                                        <textarea class="form-control{{ $errors->has('experience_description') ? ' is-invalid' : '' }}" name="experience_description[]" id="experience_description" cols="30" rows="3" required>{{ old('experience_description') }}</textarea>
+                                                        <textarea class="form-control{{ $errors->has('experience_description') ? ' is-invalid' : '' }}" name="experience_description[]" id="experience_description" cols="30" rows="9" required>{{ old('experience_description') }}</textarea>
                                                     @if ($errors->has('experience_description'))
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $errors->first('experience_description') }}</strong>

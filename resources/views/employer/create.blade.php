@@ -51,7 +51,7 @@
                             <h3>Contact Information</h3>
                         </div>
                         <div class="form-group row">
-                            <label for="name" class="col-sm-4 col-form-label">{{ __('Name *') }}</label>
+                            <label for="name" class="col-sm-4 col-form-label">{{ __('Name ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="Name" required>
 
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="contact_email" class="col-sm-4 col-form-label">{{ __('Email *') }}</label>
+                            <label for="contact_email" class="col-sm-4 col-form-label">{{ __('Email ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="contact_email" type="contact_email" class="form-control{{ $errors->has('contact_email') ? ' is-invalid' : '' }}" name="contact_email" value="{{ old('contact_email') }}" placeholder="Email" required>
 
@@ -75,7 +75,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="nric" class="col-sm-4 col-form-label">{{ __('NRIC *') }}</label>
+                            <label for="nric" class="col-sm-4 col-form-label">{{ __('NRIC ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="nric" type="text" class="form-control{{ $errors->has('nric') ? ' is-invalid' : '' }}" name="nric" value="{{ old('nric') }}" placeholder="NRIC" required>
 
@@ -87,7 +87,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="phone" class="col-sm-4 col-form-label">{{ __('Contact Number *') }}</label>
+                            <label for="phone" class="col-sm-4 col-form-label">{{ __('Contact Number ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" placeholder="Contact Number" required>
 
@@ -192,7 +192,7 @@
                             <h3>Company Information</h3>
                         </div>
                         <div class="form-group row">
-                            <label for="company_name" class="col-sm-4 col-form-label">{{ __('Company Name *') }}</label>
+                            <label for="company_name" class="col-sm-4 col-form-label">{{ __('Company Name ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="company_name" type="text" class="form-control{{ $errors->has('company_name') ? ' is-invalid' : '' }}" name="company_name" value="{{ old('name') }}" placeholder="Company Name" required>
 
@@ -204,7 +204,7 @@
                             </div>                            
                         </div>
                         <div class="form-group row">
-                            <label for="roc" class="col-sm-4 col-form-label">{{ __('ROC *') }}</label>
+                            <label for="roc" class="col-sm-4 col-form-label">{{ __('ROC ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="roc" type="text" class="form-control{{ $errors->has('roc') ? ' is-invalid' : '' }}" name="roc" value="{{ old('roc') }}" placeholder="ROC" required>
 
@@ -216,7 +216,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label">{{ __('Company Email *') }}</label>
+                            <label for="email" class="col-sm-4 col-form-label">{{ __('Company Email ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Company Email" required>
 

@@ -30,7 +30,7 @@
                                     <h3>Company Information</h3>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="agency_registered_name" class="col-sm-4 col-form-label">{{ __('Agency Registered Name *') }}</label>
+                                    <label for="agency_registered_name" class="col-sm-4 col-form-label">{{ __('Agency Registered Name ') }} <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input id="agency_registered_name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="agency_registered_name" value="{{ old('agency_registered_name') }}" placeholder="Registered Name" required>
 
@@ -68,7 +68,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="agency_country" class="col-sm-4 col-form-label">{{ __('Country *') }}</label>
+                                    <label for="agency_country" class="col-sm-4 col-form-label">{{ __('Country ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <select name="agency_country" id="agency_country" class="form-control{{ $errors->has('agency_country') ? ' is-invalid' : '' }}" required>
                                             <option value="">--Select Country--</option>
@@ -96,7 +96,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="agency_email" class="col-sm-4 col-form-label">{{ __('Email *') }}</label>
+                                    <label for="agency_email" class="col-sm-4 col-form-label">{{ __('Email ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input id="agency_email" type="email" class="form-control{{ $errors->has('agency_email') ? ' is-invalid' : '' }}" name="agency_email" value="{{ old('agency_email') }}" placeholder="Email" required>
 
@@ -120,7 +120,7 @@
                                     </div>
                                 </div> --}}
                                 <div class="form-group row">
-                                    <label for="license_no" class="col-sm-4 col-form-label">{{ __('Agency License No *') }}</label>
+                                    <label for="license_no" class="col-sm-4 col-form-label">{{ __('Agency License No ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input id="license_no" type="text" class="form-control{{ $errors->has('license_no') ? ' is-invalid' : '' }}" name="license_no" value="{{ old('license_no') }}" placeholder="Agency License No" required>
 
@@ -144,7 +144,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="license_expire_date" class="col-sm-4 col-form-label">{{ __('License Expire Date *') }}</label>
+                                    <label for="license_expire_date" class="col-sm-4 col-form-label">{{ __('License Expire Date ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input id="license_expire_date" type="date" class="form-control{{ $errors->has('license_expire_date') ? ' is-invalid' : '' }}" name="license_expire_date" min="1900-01-01" max="2200-01-01" value="{{old('license_expire_date') ? \Carbon\Carbon::parse(old('license_expire_date'))->format('Y-m-d') : ''}}" placeholder="license_expire_date" required>
 
@@ -212,7 +212,7 @@
                                     <h3>Contact Information</h3>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="first_name" class="col-sm-4 col-form-label">{{ __('First Name *') }}</label>
+                                    <label for="first_name" class="col-sm-4 col-form-label">{{ __('First Name ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input id="first_name" type="text" class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" name="first_name" value="{{ old('first_name') }}" placeholder="First Name" required>
 
@@ -272,7 +272,7 @@
                                     </div>
                                 </div> --}}
                                 <div class="form-group row">
-                                    <label for="nationality" class="col-sm-4 col-form-label">{{ __('Nationality *') }}</label>
+                                    <label for="nationality" class="col-sm-4 col-form-label">{{ __('Nationality ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <select name="nationality" id="nationality" class="form-control{{ $errors->has('nationality') ? ' is-invalid' : '' }}">
                                             <option value="">--Select Nationality--</option>
@@ -312,7 +312,7 @@
                                     </div>
                                 </div> --}}
                                 <div class="form-group row">
-                                    <label for="passport_file" class="col-sm-4 col-form-label">{{ __('Passport/NIC (Upload Scanned copy) *') }}</label>
+                                    <label for="passport_file" class="col-sm-4 col-form-label">{{ __('Passport/NIC (Upload Scanned copy) ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input id="passport_file" type="file" class="form-control-file{{ $errors->has('passport_file') ? ' is-invalid' : '' }}" name="passport_file" value="{{ old('passport_file') }}">
                                         <p class="text-danger">Supported file format JPG, PNG & PDF. Maximum file size: 1MB</p>
@@ -324,7 +324,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="contact_phone" class="col-sm-4 col-form-label">{{ __('Mobile Number *') }}</label>
+                                    <label for="contact_phone" class="col-sm-4 col-form-label">{{ __('Mobile Number ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input id="contact_phone" type="text" class="form-control{{ $errors->has('contact_phone') ? ' is-invalid' : '' }}" name="contact_phone" value="{{ old('contact_phone') }}" placeholder="Mobile Number">
 
