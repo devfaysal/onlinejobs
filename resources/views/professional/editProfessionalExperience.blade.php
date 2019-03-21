@@ -46,7 +46,33 @@
                                 <div class="form-group row">
                                     <label for="from" class="col-sm-4 col-form-label text-right">{{ __('From ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
-                                        <input id="from" type="date" class="form-control{{ $errors->has('from') ? ' is-invalid' : '' }}" name="from[]" value="{{ $professional_experience->from }}" placeholder="from" required>
+                                        {{-- <input id="from" type="date" class="form-control{{ $errors->has('from') ? ' is-invalid' : '' }}" name="from[]" value="{{ $professional_experience->from }}" placeholder="from" required> --}}
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <select class="form-control" name="from_day[]" id="">
+                                                    <option value="">--Day--</option>
+                                                    @for ($i = 1; $i <= 31; $i++)
+                                                        <option value="{{$i}}" {{$professional_experience->from_day() == $i ? 'selected' : ''}}>{{$i}}</option>
+                                                    @endfor
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <select class="form-control" name="from_month[]" id="">
+                                                    <option value="">--Month--</option>
+                                                    @for ($i = 1; $i <= 12; $i++)
+                                                        <option value="{{$i}}" {{$professional_experience->from_month() == $i ? 'selected' : ''}}>{{$i}}</option>
+                                                    @endfor
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <select class="form-control" name="from_year[]" id="">
+                                                    <option value="">--Year--</option>
+                                                    @for ($i = 1960; $i <= date('Y', time()); $i++)
+                                                        <option value="{{$i}}" {{$professional_experience->from_year() == $i ? 'selected' : ''}}>{{$i}}</option>
+                                                    @endfor
+                                                </select>
+                                            </div>
+                                        </div>
         
                                     @if ($errors->has('from'))
                                         <span class="invalid-feedback" role="alert">
@@ -67,8 +93,33 @@
                                 <div class="form-group row">
                                     <label for="to" class="col-sm-4 col-form-label text-right">{{ __('To') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="to" type="date" class="form-control{{ $errors->has('to') ? ' is-invalid' : '' }}" name="to[]" value="{{ $professional_experience->to }}" placeholder="To">
-        
+                                        {{-- <input id="to" type="date" class="form-control{{ $errors->has('to') ? ' is-invalid' : '' }}" name="to[]" value="{{ $professional_experience->to }}" placeholder="To"> --}}
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <select class="form-control" name="to_day[]" id="">
+                                                    <option value="">--Day--</option>
+                                                    @for ($i = 1; $i <= 31; $i++)
+                                                        <option value="{{$i}}" {{$professional_experience->to_day() == $i ? 'selected' : ''}}>{{$i}}</option>
+                                                    @endfor
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <select class="form-control" name="to_month[]" id="">
+                                                    <option value="">--Month--</option>
+                                                    @for ($i = 1; $i <= 12; $i++)
+                                                        <option value="{{$i}}" {{$professional_experience->to_month() == $i ? 'selected' : ''}}>{{$i}}</option>
+                                                    @endfor
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <select class="form-control" name="to_year[]" id="">
+                                                    <option value="">--Year--</option>
+                                                    @for ($i = 1960; $i <= date('Y', time()); $i++)
+                                                        <option value="{{$i}}" {{$professional_experience->to_year() == $i ? 'selected' : ''}}>{{$i}}</option>
+                                                    @endfor
+                                                </select>
+                                            </div>
+                                        </div>
                                     @if ($errors->has('to'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('to') }}</strong>
@@ -133,8 +184,33 @@
                             <div class="form-group row">
                                 <label for="from" class="col-sm-4 col-form-label text-right">{{ __('From ') }}<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input id="from" type="date" class="form-control{{ $errors->has('from') ? ' is-invalid' : '' }}" name="from[]" value="{{ old('from') }}" placeholder="from" required>
-    
+                                    {{-- <input id="from" type="date" class="form-control{{ $errors->has('from') ? ' is-invalid' : '' }}" name="from[]" value="{{ old('from') }}" placeholder="from" required> --}}
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <select class="form-control" name="from_day[]" id="">
+                                                <option value="">--Day--</option>
+                                                @for ($i = 1; $i <= 31; $i++)
+                                                    <option value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <select class="form-control" name="from_month[]" id="">
+                                                <option value="">--Month--</option>
+                                                @for ($i = 1; $i <= 12; $i++)
+                                                    <option value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <select class="form-control" name="from_year[]" id="">
+                                                <option value="">--Year--</option>
+                                                @for ($i = 1960; $i <= date('Y', time()); $i++)
+                                                    <option value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                            </select>
+                                        </div>
+                                    </div>
                                 @if ($errors->has('from'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('from') }}</strong>
@@ -154,8 +230,33 @@
                             <div class="form-group row">
                                 <label for="to" class="col-sm-4 col-form-label text-right">{{ __('To') }}</label>
                                 <div class="col-sm-8">
-                                    <input id="to" type="date" class="form-control{{ $errors->has('to') ? ' is-invalid' : '' }}" name="to[]" value="{{ old('to') }}" placeholder="To">
-    
+                                    {{-- <input id="to" type="date" class="form-control{{ $errors->has('to') ? ' is-invalid' : '' }}" name="to[]" value="{{ old('to') }}" placeholder="To"> --}}
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <select class="form-control" name="to_day[]" id="">
+                                                <option value="">--Day--</option>
+                                                @for ($i = 1; $i <= 31; $i++)
+                                                    <option value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <select class="form-control" name="to_month[]" id="">
+                                                <option value="">--Month--</option>
+                                                @for ($i = 1; $i <= 12; $i++)
+                                                    <option value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <select class="form-control" name="to_year[]" id="">
+                                                <option value="">--Year--</option>
+                                                @for ($i = 1960; $i <= date('Y', time()); $i++)
+                                                    <option value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                            </select>
+                                        </div>
+                                    </div>
                                 @if ($errors->has('to'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('to') }}</strong>
@@ -225,8 +326,33 @@
                                                 <div class="form-group row">
                                                     <label for="from" class="col-sm-4 col-form-label text-right">{{ __('From ') }}<span class="text-danger">*</span></label>
                                                     <div class="col-sm-8">
-                                                        <input id="from" type="date" class="form-control{{ $errors->has('from') ? ' is-invalid' : '' }}" name="from[]" value="{{ old('from') }}" placeholder="from" required>
-                        
+                                                        {{-- <input id="from" type="date" class="form-control{{ $errors->has('from') ? ' is-invalid' : '' }}" name="from[]" value="{{ old('from') }}" placeholder="from" required> --}}
+                                                        <div class="row">
+                                                            <div class="col-sm-4">
+                                                                <select class="form-control" name="from_day[]" id="">
+                                                                    <option value="">--Day--</option>
+                                                                    @for ($i = 1; $i <= 31; $i++)
+                                                                        <option value="{{$i}}">{{$i}}</option>
+                                                                    @endfor
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <select class="form-control" name="from_month[]" id="">
+                                                                    <option value="">--Month--</option>
+                                                                    @for ($i = 1; $i <= 12; $i++)
+                                                                        <option value="{{$i}}">{{$i}}</option>
+                                                                    @endfor
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <select class="form-control" name="from_year[]" id="">
+                                                                    <option value="">--Year--</option>
+                                                                    @for ($i = 1960; $i <= date('Y', time()); $i++)
+                                                                        <option value="{{$i}}">{{$i}}</option>
+                                                                    @endfor
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                     @if ($errors->has('from'))
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $errors->first('from') }}</strong>
@@ -246,8 +372,33 @@
                                                 <div class="form-group row">
                                                     <label for="to" class="col-sm-4 col-form-label text-right">{{ __('To') }}</label>
                                                     <div class="col-sm-8">
-                                                        <input id="to" type="date" class="form-control{{ $errors->has('to') ? ' is-invalid' : '' }}" name="to[]" value="{{ old('to') }}" placeholder="To">
-                        
+                                                        {{-- <input id="to" type="date" class="form-control{{ $errors->has('to') ? ' is-invalid' : '' }}" name="to[]" value="{{ old('to') }}" placeholder="To"> --}}
+                                                        <div class="row">
+                                                            <div class="col-sm-4">
+                                                                <select class="form-control" name="to_day[]" id="">
+                                                                    <option value="">--Day--</option>
+                                                                    @for ($i = 1; $i <= 31; $i++)
+                                                                        <option value="{{$i}}">{{$i}}</option>
+                                                                    @endfor
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <select class="form-control" name="to_month[]" id="">
+                                                                    <option value="">--Month--</option>
+                                                                    @for ($i = 1; $i <= 12; $i++)
+                                                                        <option value="{{$i}}">{{$i}}</option>
+                                                                    @endfor
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <select class="form-control" name="to_year[]" id="">
+                                                                    <option value="">--Year--</option>
+                                                                    @for ($i = 1960; $i <= date('Y', time()); $i++)
+                                                                        <option value="{{$i}}">{{$i}}</option>
+                                                                    @endfor
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                     @if ($errors->has('to'))
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $errors->first('to') }}</strong>

@@ -150,7 +150,7 @@
                             @foreach($user->qualifications as $qualification)
                                 <div class="mt-1">
                                     <p class="mb-0">Institute/University: {{$qualification->university}}</p>
-                                    <p class="mb-0">Graduation Date: {{$qualification->passing_year}}</p>
+                                    <p class="mb-0">Graduation Date: {{\Carbon\Carbon::parse($qualification->graduation_date)->format('d-M-Y') }}</p>
                                     <p class="mb-0">Qualification: {{$qualification->qualification}}</p>
                                     <p class="mb-0">Field of Study: {{$qualification->subject}}</p>
                                     <p class="mb-0">Specialization: {{$qualification->specialization}}</p>

@@ -37,13 +37,38 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="passing_year" class="col-sm-4 col-form-label text-right">{{ __('Graduation Date ') }}<span class="text-danger">*</span></label>
+                                    <label for="graduation_date" class="col-sm-4 col-form-label text-right">{{ __('Graduation Date ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
-                                        <input id="passing_year" type="number" min="1900" class="form-control{{ $errors->has('passing_year') ? ' is-invalid' : '' }}" name="passing_year[]" value="{{ $qualification->passing_year }}" placeholder="Graduation Date" required>
-        
-                                    @if ($errors->has('passing_year'))
+                                        {{-- <input id="graduation_date" type="number" min="1900" class="form-control{{ $errors->has('graduation_date') ? ' is-invalid' : '' }}" name="graduation_date[]" value="{{ $qualification->passing_year }}" placeholder="Graduation Date" required> --}}
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <select class="form-control" name="graduation_day[]" id="">
+                                                    <option value="">--Day--</option>
+                                                    @for ($i = 1; $i <= 31; $i++)
+                                                        <option value="{{$i}}" {{$qualification->graduation_day() == $i ? 'selected' : ''}}>{{$i}}</option>
+                                                    @endfor
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <select class="form-control" name="graduation_month[]" id="">
+                                                    <option value="">--Month--</option>
+                                                    @for ($i = 1; $i <= 12; $i++)
+                                                        <option value="{{$i}}" {{$qualification->graduation_month() == $i ? 'selected' : ''}}>{{$i}}</option>
+                                                    @endfor
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <select class="form-control" name="graduation_year[]" id="">
+                                                    <option value="">--Year--</option>
+                                                    @for ($i = 1960; $i <= date('Y', time()); $i++)
+                                                        <option value="{{$i}}" {{$qualification->graduation_year() == $i ? 'selected' : ''}}>{{$i}}</option>
+                                                    @endfor
+                                                </select>
+                                            </div>
+                                        </div>
+                                    @if ($errors->has('graduation_date'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('passing_year') }}</strong>
+                                            <strong>{{ $errors->first('graduation_date') }}</strong>
                                         </span>
                                     @endif
                                     </div>
@@ -104,13 +129,38 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="passing_year" class="col-sm-4 col-form-label text-right">{{ __('Graduation Date ') }}<span class="text-danger">*</span></label>
+                                <label for="graduation_date" class="col-sm-4 col-form-label text-right">{{ __('Graduation Date ') }}<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input id="passing_year" type="number" min="1900" class="form-control{{ $errors->has('passing_year') ? ' is-invalid' : '' }}" name="passing_year[]" value="{{ old('passing_year') }}" placeholder="Graduation Date" required>
-    
-                                @if ($errors->has('passing_year'))
+                                    {{-- <input id="graduation_date" type="number" min="1900" class="form-control{{ $errors->has('graduation_date') ? ' is-invalid' : '' }}" name="graduation_date[]" value="{{ old('graduation_date') }}" placeholder="Graduation Date" required> --}}
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <select class="form-control" name="graduation_day[]" id="">
+                                                <option value="">--Day--</option>
+                                                @for ($i = 1; $i <= 31; $i++)
+                                                    <option value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <select class="form-control" name="graduation_month[]" id="">
+                                                <option value="">--Month--</option>
+                                                @for ($i = 1; $i <= 12; $i++)
+                                                    <option value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <select class="form-control" name="graduation_year[]" id="">
+                                                <option value="">--Year--</option>
+                                                @for ($i = 1960; $i <= date('Y', time()); $i++)
+                                                    <option value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                            </select>
+                                        </div>
+                                    </div>
+                                @if ($errors->has('graduation_date'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('passing_year') }}</strong>
+                                        <strong>{{ $errors->first('graduation_date') }}</strong>
                                     </span>
                                 @endif
                                 </div>
@@ -176,13 +226,38 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="passing_year" class="col-sm-4 col-form-label text-right">{{ __('Graduation Date ') }}<span class="text-danger">*</span></label>
+                                                    <label for="graduation_date" class="col-sm-4 col-form-label text-right">{{ __('Graduation Date ') }}<span class="text-danger">*</span></label>
                                                     <div class="col-sm-8">
-                                                        <input id="passing_year" type="number" min="1900" class="form-control{{ $errors->has('passing_year') ? ' is-invalid' : '' }}" name="passing_year[]" value="{{ old('passing_year') }}" placeholder="Graduation Date" required>
-                        
-                                                    @if ($errors->has('passing_year'))
+                                                        {{-- <input id="graduation_date" type="number" min="1900" class="form-control{{ $errors->has('graduation_date') ? ' is-invalid' : '' }}" name="graduation_date[]" value="{{ old('graduation_date') }}" placeholder="Graduation Date" required> --}}
+                                                        <div class="row">
+                                                            <div class="col-sm-4">
+                                                                <select class="form-control" name="graduation_day[]" id="">
+                                                                    <option value="">--Day--</option>
+                                                                    @for ($i = 1; $i <= 31; $i++)
+                                                                        <option value="{{$i}}">{{$i}}</option>
+                                                                    @endfor
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <select class="form-control" name="graduation_month[]" id="">
+                                                                    <option value="">--Month--</option>
+                                                                    @for ($i = 1; $i <= 12; $i++)
+                                                                        <option value="{{$i}}">{{$i}}</option>
+                                                                    @endfor
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <select class="form-control" name="graduation_year[]" id="">
+                                                                    <option value="">--Year--</option>
+                                                                    @for ($i = 1960; $i <= date('Y', time()); $i++)
+                                                                        <option value="{{$i}}">{{$i}}</option>
+                                                                    @endfor
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    @if ($errors->has('graduation_date'))
                                                         <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $errors->first('passing_year') }}</strong>
+                                                            <strong>{{ $errors->first('graduation_date') }}</strong>
                                                         </span>
                                                     @endif
                                                     </div>
