@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div id="language" class="form-group dis-cls">
-                            <label for="language">{{ __('Language *') }}</label>
+                            <label for="language">{{ __('Language ') }}</label><span class="text-danger mt-2">*</span>
                             <select class="form-control" name="language[]" id="language">
                                 <option>--Select--</option>
                                 @foreach($languages as $language)
@@ -58,7 +58,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div id="language" class="form-group dis-cls">
-                                            <label for="language">{{ __('Language *') }}</label>
+                                            <label for="language">{{ __('Language ') }}</label><span class="text-danger mt-2">*</span>
                                             <select class="form-control" name="language[]" id="language">
                                                 <option>--Select--</option>
                                                 @foreach($languages as $language)

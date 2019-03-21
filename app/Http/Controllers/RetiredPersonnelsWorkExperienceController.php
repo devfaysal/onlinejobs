@@ -46,8 +46,8 @@ class RetiredPersonnelsWorkExperienceController extends Controller
                 $experience->address = $request->address[$i];
                 $experience->position = $request->position[$i];
                 $experience->work_description = $request->work_description[$i];
-                $experience->from = $request->from[$i];
-                $experience->to = $request->to[$i];
+                $experience->from = $request->from_year[$i] .'-'. $request->from_month[$i].'-'. $request->from_day[$i];
+                $experience->to = $request->to_year[$i] .'-'. $request->to_month[$i].'-'. $request->to_day[$i];
                 $experience->nature_of_company_business = $request->nature_of_company_business[$i];
                 $experience->save();
             }
@@ -108,8 +108,8 @@ class RetiredPersonnelsWorkExperienceController extends Controller
                 $experience->address = $request->address[$i];
                 $experience->position = $request->position[$i];
                 $experience->work_description = $request->work_description[$i];
-                $experience->from = $request->from[$i];
-                $experience->to = $request->to[$i];
+                $experience->from = $request->from_year[$i] .'-'. $request->from_month[$i].'-'. $request->from_day[$i];
+                $experience->to = $request->to_year[$i] .'-'. $request->to_month[$i].'-'. $request->to_day[$i];
                 $experience->nature_of_company_business = $request->nature_of_company_business[$i];
                 $experience->save();
             }

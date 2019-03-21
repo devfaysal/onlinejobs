@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div id="company_name" class="form-group dis-cls">
-                            <label for="company_name">{{ __('Company Name *') }}</label>
+                            <label for="company_name">{{ __('Company Name ') }}</label><span class="text-danger mt-2">*</span>
                             <input id="company_name" type="text" class="form-control" name="company_name[]" value="{{$experience->company_name}}" placeholder="Company Name" required>
                         </div>
                     </div>
@@ -44,13 +44,49 @@
                     <div class="col-md-6">
                         <div id="from" class="form-group dis-cls">
                             <label for="from">{{ __('from') }}</label>
-                            <input id="from" type="date" class="form-control" name="from[]" value="{{$experience->from}}" placeholder="from">
+                            {{-- <input id="from" type="date" class="form-control" name="from[]" value="{{$experience->from}}" placeholder="from"> --}}
+                            <select class="form-control" name="from_day[]" id="">
+                                <option value="">--Day--</option>
+                                @for ($i = 1; $i <= 31; $i++)
+                                    <option value="{{$i}}" {{$experience->from_day() == $i ? 'selected' : ''}}>{{$i}}</option>
+                                @endfor
+                            </select>
+                            <select class="form-control" name="from_month[]" id="">
+                                <option value="">--Month--</option>
+                                @for ($i = 1; $i <= 12; $i++)
+                                    <option value="{{$i}}" {{$experience->from_month() == $i ? 'selected' : ''}}>{{$i}}</option>
+                                @endfor
+                            </select>
+                            <select class="form-control" name="from_year[]" id="">
+                                <option value="">--Year--</option>
+                                @for ($i = 1960; $i <= date('Y', time()); $i++)
+                                    <option value="{{$i}}" {{$experience->from_year() == $i ? 'selected' : ''}}>{{$i}}</option>
+                                @endfor
+                            </select>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div id="to" class="form-group dis-cls">
                             <label for="to">{{ __('to') }}</label>
-                            <input id="to" type="date" class="form-control" name="to[]" value="{{$experience->to}}" placeholder="to">
+                            {{-- <input id="to" type="date" class="form-control" name="to[]" value="{{$experience->to}}" placeholder="to"> --}}
+                            <select class="form-control" name="to_day[]" id="">
+                                <option value="">--Day--</option>
+                                @for ($i = 1; $i <= 31; $i++)
+                                    <option value="{{$i}}" {{$experience->to_day() == $i ? 'selected' : ''}}>{{$i}}</option>
+                                @endfor
+                            </select>
+                            <select class="form-control" name="to_month[]" id="">
+                                <option value="">--Month--</option>
+                                @for ($i = 1; $i <= 12; $i++)
+                                    <option value="{{$i}}" {{$experience->to_month() == $i ? 'selected' : ''}}>{{$i}}</option>
+                                @endfor
+                            </select>
+                            <select class="form-control" name="to_year[]" id="">
+                                <option value="">--Year--</option>
+                                @for ($i = 1960; $i <= date('Y', time()); $i++)
+                                    <option value="{{$i}}" {{$experience->to_year() == $i ? 'selected' : ''}}>{{$i}}</option>
+                                @endfor
+                            </select>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -72,8 +108,8 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div id="company_name" class="form-group dis-cls">
-                                            <label for="company_name">{{ __('Company Name') }}</label>
-                                            <input id="company_name" type="text" class="form-control" name="company_name[]" placeholder="Company Name">
+                                            <label for="company_name">{{ __('Company Name *') }}</label><span class="text-danger mt-2">*</span>
+                                            <input id="company_name" type="text" class="form-control" name="company_name[]" placeholder="Company Name" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -97,13 +133,49 @@
                                     <div class="col-md-6">
                                         <div id="from" class="form-group dis-cls">
                                             <label for="from">{{ __('from') }}</label>
-                                            <input id="from" type="date" class="form-control" name="from[]" placeholder="from">
+                                            {{-- <input id="from" type="date" class="form-control" name="from[]" placeholder="from"> --}}
+                                            <select class="form-control" name="from_day[]" id="">
+                                                <option value="">--Day--</option>
+                                                @for ($i = 1; $i <= 31; $i++)
+                                                    <option value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                            </select>
+                                            <select class="form-control" name="from_month[]" id="">
+                                                <option value="">--Month--</option>
+                                                @for ($i = 1; $i <= 12; $i++)
+                                                    <option value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                            </select>
+                                            <select class="form-control" name="from_year[]" id="">
+                                                <option value="">--Year--</option>
+                                                @for ($i = 1960; $i <= date('Y', time()); $i++)
+                                                    <option value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div id="to" class="form-group dis-cls">
                                             <label for="to">{{ __('to') }}</label>
-                                            <input id="to" type="date" class="form-control" name="to[]" placeholder="to">
+                                            {{-- <input id="to" type="date" class="form-control" name="to[]" placeholder="to"> --}}
+                                            <select class="form-control" name="to_day[]" id="">
+                                                <option value="">--Day--</option>
+                                                @for ($i = 1; $i <= 31; $i++)
+                                                    <option value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                            </select>
+                                            <select class="form-control" name="to_month[]" id="">
+                                                <option value="">--Month--</option>
+                                                @for ($i = 1; $i <= 12; $i++)
+                                                    <option value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                            </select>
+                                            <select class="form-control" name="to_year[]" id="">
+                                                <option value="">--Year--</option>
+                                                @for ($i = 1960; $i <= date('Y', time()); $i++)
+                                                    <option value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
