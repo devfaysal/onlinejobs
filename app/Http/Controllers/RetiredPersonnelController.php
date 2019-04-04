@@ -232,6 +232,25 @@ class RetiredPersonnelController extends Controller
         }
         $retiredPersonnel->save();
 
+
+        if($request->academic_qualifications){
+            if($user->retired_personnel_educations->count() > 0){
+                foreach($user->retired_personnel_educations as $education){
+                    $education->delete();
+                }
+            }
+            
+            for($i=0; $i< count($request->academic_qualifications); $i++){
+                $education = new RetiredPersonnelEducation;
+                $education->user_id = $user->id;
+                $education->academic_qualification = $request->academic_qualifications[$i];
+                $education->specialization = $request->specializations[$i];
+                $education->save();
+            }
+            
+        }
+
+
         Session::flash('message', 'Information updated successfully!');
         Session::flash('alert-class', 'alert-success');
 

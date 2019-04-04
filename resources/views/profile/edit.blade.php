@@ -69,8 +69,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="district">{{ __('District *') }}</label>
-                                    <input id="district" type="text" class="form-control{{ $errors->has('district') ? ' is-invalid' : '' }}" name="district" value="{{ $profile->district }}" placeholder="District" required>
+                                    <label for="district">{{ __('District') }}</label>
+                                    <input id="district" type="text" class="form-control{{ $errors->has('district') ? ' is-invalid' : '' }}" name="district" value="{{ $profile->district }}" placeholder="District">
         
                                     @if ($errors->has('district'))
                                         <span class="invalid-feedback" role="alert">

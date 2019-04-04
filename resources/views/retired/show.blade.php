@@ -79,6 +79,25 @@
                             @endforeach
                         </div>
                     </div>
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h4>Education
+                                @if(Auth::id() == $user->id)
+                                    <a class="text-black" href="{{route('retiredPersonnel.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                @endif
+                            </h4>
+                            <p class="mb-0"><strong>Highest Academic Qualification:</strong> {{$user->retired_personnel->highest_academic_qualification}}</p>
+                            <p class="mb-0"><strong>Specialization:</strong> {{$user->retired_personnel->specialization}}</p>
+                            <hr>
+                            @foreach($user->retired_personnel_educations as $education)
+                                <div class="mt-1">
+                                    <p class="mb-0"><strong>Academic Qualification:</strong> {{$education->academic_qualification}}</p>
+                                    <p class="mb-0"><strong>Specialization:</strong> {{$education->specialization}}</p>
+                                </div>
+                                <hr>
+                            @endforeach
+                        </div>
+                    </div>
                     @if($user->retired_personnel_language->count() > 0)
                     <div class="card mt-4">
                         <div class="card-body">
@@ -98,6 +117,32 @@
                         </div>
                     </div>
                     @endif
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h4>Health 
+                                @if(Auth::id() == $user->id)
+                                    <a class="text-black" href="{{route('retiredPersonnel.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                @endif
+                            </h4>
+                            <p class="mb-0"><strong>Health Statement: </strong> {{$user->retired_personnel->health_statement }}</p>
+                            <p class="mb-0"><strong>Additional Health Information: </strong> {{$user->retired_personnel->additional_health_statement }}</p>
+                            <p class="mb-0"><strong>Fit to work ? </strong> {{$user->retired_personnel->fit_to_work }}</p>
+                            <p class="mb-0"><strong>Have blood pressure ? </strong> {{$user->retired_personnel->have_blood_pressure }}</p>
+                            <p class="mb-0"><strong>Have diabetes ? </strong> {{$user->retired_personnel->have_diabetes }}</p>
+                        </div>
+                    </div>
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h4>Other Info 
+                                @if(Auth::id() == $user->id)
+                                    <a class="text-black" href="{{route('retiredPersonnel.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                @endif
+                            </h4>
+                            <p class="mb-0"><strong>Were you government servent ? </strong> {{$user->retired_personnel->government_employee }}</p>
+                            <p class="mb-0"><strong>Prefer Working hours: </strong> {{$user->retired_personnel->full_time ? 'Full Time' : $user->retired_personnel->describe_working_hours}}</p>
+                            <p class="mb-0"><strong>NRIC </strong> {{$user->retired_personnel->nric }}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
