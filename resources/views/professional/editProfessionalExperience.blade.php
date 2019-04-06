@@ -48,15 +48,7 @@
                                     <div class="col-sm-8">
                                         {{-- <input id="from" type="date" class="form-control{{ $errors->has('from') ? ' is-invalid' : '' }}" name="from[]" value="{{ $professional_experience->from }}" placeholder="from" required> --}}
                                         <div class="row">
-                                            <div class="col-sm-4">
-                                                <select class="form-control" name="from_day[]" id="">
-                                                    <option value="">--Day--</option>
-                                                    @for ($i = 1; $i <= 31; $i++)
-                                                        <option value="{{$i}}" {{$professional_experience->from_day() == $i ? 'selected' : ''}}>{{$i}}</option>
-                                                    @endfor
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-6">
                                                 <select class="form-control" name="from_month[]" id="">
                                                     <option value="">--Month--</option>
                                                     @for ($i = 1; $i <= 12; $i++)
@@ -64,7 +56,7 @@
                                                     @endfor
                                                 </select>
                                             </div>
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-6">
                                                 <select class="form-control" name="from_year[]" id="">
                                                     <option value="">--Year--</option>
                                                     @for ($i = 1960; $i <= date('Y', time()); $i++)
@@ -95,15 +87,7 @@
                                     <div class="col-sm-8">
                                         {{-- <input id="to" type="date" class="form-control{{ $errors->has('to') ? ' is-invalid' : '' }}" name="to[]" value="{{ $professional_experience->to }}" placeholder="To"> --}}
                                         <div class="row">
-                                            <div class="col-sm-4">
-                                                <select class="form-control" name="to_day[]" id="">
-                                                    <option value="">--Day--</option>
-                                                    @for ($i = 1; $i <= 31; $i++)
-                                                        <option value="{{$i}}" {{$professional_experience->to_day() == $i ? 'selected' : ''}}>{{$i}}</option>
-                                                    @endfor
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-6">
                                                 <select class="form-control" name="to_month[]" id="">
                                                     <option value="">--Month--</option>
                                                     @for ($i = 1; $i <= 12; $i++)
@@ -111,7 +95,7 @@
                                                     @endfor
                                                 </select>
                                             </div>
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-6">
                                                 <select class="form-control" name="to_year[]" id="">
                                                     <option value="">--Year--</option>
                                                     @for ($i = 1960; $i <= date('Y', time()); $i++)
@@ -186,15 +170,7 @@
                                 <div class="col-sm-8">
                                     {{-- <input id="from" type="date" class="form-control{{ $errors->has('from') ? ' is-invalid' : '' }}" name="from[]" value="{{ old('from') }}" placeholder="from" required> --}}
                                     <div class="row">
-                                        <div class="col-sm-4">
-                                            <select class="form-control" name="from_day[]" id="">
-                                                <option value="">--Day--</option>
-                                                @for ($i = 1; $i <= 31; $i++)
-                                                    <option value="{{$i}}">{{$i}}</option>
-                                                @endfor
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-6">
                                             <select class="form-control" name="from_month[]" id="">
                                                 <option value="">--Month--</option>
                                                 @for ($i = 1; $i <= 12; $i++)
@@ -202,7 +178,7 @@
                                                 @endfor
                                             </select>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-6">
                                             <select class="form-control" name="from_year[]" id="">
                                                 <option value="">--Year--</option>
                                                 @for ($i = 1960; $i <= date('Y', time()); $i++)
@@ -232,15 +208,7 @@
                                 <div class="col-sm-8">
                                     {{-- <input id="to" type="date" class="form-control{{ $errors->has('to') ? ' is-invalid' : '' }}" name="to[]" value="{{ old('to') }}" placeholder="To"> --}}
                                     <div class="row">
-                                        <div class="col-sm-4">
-                                            <select class="form-control" name="to_day[]" id="">
-                                                <option value="">--Day--</option>
-                                                @for ($i = 1; $i <= 31; $i++)
-                                                    <option value="{{$i}}">{{$i}}</option>
-                                                @endfor
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-6">
                                             <select class="form-control" name="to_month[]" id="">
                                                 <option value="">--Month--</option>
                                                 @for ($i = 1; $i <= 12; $i++)
@@ -248,7 +216,7 @@
                                                 @endfor
                                             </select>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-6">
                                             <select class="form-control" name="to_year[]" id="">
                                                 <option value="">--Year--</option>
                                                 @for ($i = 1960; $i <= date('Y', time()); $i++)
@@ -328,15 +296,7 @@
                                                     <div class="col-sm-8">
                                                         {{-- <input id="from" type="date" class="form-control{{ $errors->has('from') ? ' is-invalid' : '' }}" name="from[]" value="{{ old('from') }}" placeholder="from" required> --}}
                                                         <div class="row">
-                                                            <div class="col-sm-4">
-                                                                <select class="form-control" name="from_day[]" id="">
-                                                                    <option value="">--Day--</option>
-                                                                    @for ($i = 1; $i <= 31; $i++)
-                                                                        <option value="{{$i}}">{{$i}}</option>
-                                                                    @endfor
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-sm-4">
+                                                            <div class="col-sm-6">
                                                                 <select class="form-control" name="from_month[]" id="">
                                                                     <option value="">--Month--</option>
                                                                     @for ($i = 1; $i <= 12; $i++)
@@ -344,7 +304,7 @@
                                                                     @endfor
                                                                 </select>
                                                             </div>
-                                                            <div class="col-sm-4">
+                                                            <div class="col-sm-6">
                                                                 <select class="form-control" name="from_year[]" id="">
                                                                     <option value="">--Year--</option>
                                                                     @for ($i = 1960; $i <= date('Y', time()); $i++)
@@ -374,15 +334,7 @@
                                                     <div class="col-sm-8">
                                                         {{-- <input id="to" type="date" class="form-control{{ $errors->has('to') ? ' is-invalid' : '' }}" name="to[]" value="{{ old('to') }}" placeholder="To"> --}}
                                                         <div class="row">
-                                                            <div class="col-sm-4">
-                                                                <select class="form-control" name="to_day[]" id="">
-                                                                    <option value="">--Day--</option>
-                                                                    @for ($i = 1; $i <= 31; $i++)
-                                                                        <option value="{{$i}}">{{$i}}</option>
-                                                                    @endfor
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-sm-4">
+                                                            <div class="col-sm-6">
                                                                 <select class="form-control" name="to_month[]" id="">
                                                                     <option value="">--Month--</option>
                                                                     @for ($i = 1; $i <= 12; $i++)
@@ -390,7 +342,7 @@
                                                                     @endfor
                                                                 </select>
                                                             </div>
-                                                            <div class="col-sm-4">
+                                                            <div class="col-sm-6">
                                                                 <select class="form-control" name="to_year[]" id="">
                                                                     <option value="">--Year--</option>
                                                                     @for ($i = 1960; $i <= date('Y', time()); $i++)

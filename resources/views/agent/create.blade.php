@@ -84,7 +84,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="agency_phone" class="col-sm-4 col-form-label">{{ __('Phone *') }}</label>
+                                    <label for="agency_phone" class="col-sm-4 col-form-label">{{ __('Phone ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input id="agency_phone" type="text" class="form-control{{ $errors->has('agency_phone') ? ' is-invalid' : '' }}" name="agency_phone" value="{{ old('agency_phone') }}" placeholder="Phone" required>
 
