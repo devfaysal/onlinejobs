@@ -186,7 +186,7 @@
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <img style="width:100%" src="images/home/1st-Picture.jpg" alt="">
-                                                                <p class="mt-3 text-center text-danger">POWERING THE WORLD OF WORK WITH OUR ONLINE RECRUITING EXPERTISE</p>
+                                                                <p class="mt-3 text-center text-danger home-serif-heading">POWERING THE WORLD OF WORK WITH OUR ONLINE RECRUITING EXPERTISE</p>
                                                             </div>
                                                         </div>
 
@@ -229,7 +229,7 @@
                                                             </div>
                                                         </div>
 													</div>
-												<div class="whitetab">
+												{{-- <div class="whitetab">
 												<nav>
                                                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                                             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-allsector" role="tab" aria-controls="nav-home" aria-selected="true">All sectors </a>
@@ -497,7 +497,7 @@
 		<div class="tab-pane fade" id="nav-manufacture" role="tabpanel" aria-labelledby="nav-contact-tab">333 </div>
 		<div class="tab-pane fade" id="nav-services" role="tabpanel" aria-labelledby="nav-contact-tab">333 </div>
 		</div>
-		</div> 
+		</div>  --}}
 											</div>
 									</div>
 

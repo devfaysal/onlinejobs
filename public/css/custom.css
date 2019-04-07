@@ -752,10 +752,17 @@ input.invalid {
 .text-orange{
 	color: #f9a711;
 }
-
+.home-serif-heading{
+	font-family: serif;
+	font-size: 18px;
+	font-weight: 600;
+}
+.border-after{
+	font-weight: 700;
+}
 .border-after:after{
 	margin-top: -5px;
-	height: 1px;
+	height: 4px;
 	display: block;
 	width: 50px;
 	background: #f9a711;

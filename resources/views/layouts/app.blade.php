@@ -314,7 +314,7 @@
         <div class="container tex-center">
             <div class="row">
                 <div class="col-md-12">
-                    <div align="center"> All rights reserved @ 2018 </div> 
+                    <div class="text-center"> All rights reserved @ 2019 </div> 
                 </div>
             </div>
         </div>
