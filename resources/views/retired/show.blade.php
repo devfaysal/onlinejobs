@@ -124,11 +124,10 @@
                                     <a class="text-black" href="{{route('retiredPersonnel.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                 @endif
                             </h4>
-                            <p class="mb-0"><strong>Health Statement: </strong> {{$user->retired_personnel->health_statement }}</p>
-                            <p class="mb-0"><strong>Additional Health Information: </strong> {{$user->retired_personnel->additional_health_statement }}</p>
                             <p class="mb-0"><strong>Fit to work ? </strong> {{$user->retired_personnel->fit_to_work }}</p>
                             <p class="mb-0"><strong>Have blood pressure ? </strong> {{$user->retired_personnel->have_blood_pressure }}</p>
                             <p class="mb-0"><strong>Have diabetes ? </strong> {{$user->retired_personnel->have_diabetes }}</p>
+                            <p class="mb-0"><strong>Additional Health Information: </strong> {{$user->retired_personnel->additional_health_statement }}</p>
                         </div>
                     </div>
                     <div class="card mt-4">

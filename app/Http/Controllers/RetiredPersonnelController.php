@@ -104,8 +104,7 @@ class RetiredPersonnelController extends Controller
         $retiredPersonnel->fit_to_work = $request->fit_to_work;
         $retiredPersonnel->have_blood_pressure = $request->have_blood_pressure;
         $retiredPersonnel->have_diabetes = $request->have_diabetes;
-        $retiredPersonnel->health_statement = $request->health_statement;
-        $retiredPersonnel->additional_health_statement = $request->additional_health_statement;
+        // $retiredPersonnel->health_statement = $request->health_statement;
         $retiredPersonnel->additional_health_statement = $request->additional_health_statement;
         if($request->file('resume_file')){
             $image_basename = explode('.',$request->file('resume_file')->getClientOriginalName())[0];
@@ -217,8 +216,7 @@ class RetiredPersonnelController extends Controller
         $retiredPersonnel->fit_to_work = $request->fit_to_work;
         $retiredPersonnel->have_blood_pressure = $request->have_blood_pressure;
         $retiredPersonnel->have_diabetes = $request->have_diabetes;
-        $retiredPersonnel->health_statement = $request->health_statement;
-        $retiredPersonnel->additional_health_statement = $request->additional_health_statement;
+        // $retiredPersonnel->health_statement = $request->health_statement;
         $retiredPersonnel->additional_health_statement = $request->additional_health_statement;
         if($request->file('resume_file')){
             $image_basename = explode('.',$request->file('resume_file')->getClientOriginalName())[0];

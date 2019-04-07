@@ -329,7 +329,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label for="health_statement" class="col-sm-4 col-form-label text-right">{{ __('Health Statement') }}</label>
                             <div class="col-sm-8">
                                 <select class="form-control{{ $errors->has('health_statement') ? ' is-invalid' : '' }}" name="health_statement" id="health_statement">
@@ -344,11 +344,12 @@
                                 </span>
                             @endif
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group row">
                             <label for="additional_health_statement" class="col-sm-4 col-form-label text-right">{{ __('Additional Health Information ') }}</label>
                             <div class="col-sm-8">
-                                <input id="additional_health_statement" type="text" class="form-control{{ $errors->has('additional_health_statement') ? ' is-invalid' : '' }}" name="additional_health_statement" value="{{ old('additional_health_statement') }}" placeholder="Additional Health Information" >
+                                {{-- <input id="additional_health_statement" type="text" class="form-control{{ $errors->has('additional_health_statement') ? ' is-invalid' : '' }}" name="additional_health_statement" value="{{ old('additional_health_statement') }}" placeholder="Additional Health Information" > --}}
+                                <textarea name="additional_health_statement" class="form-control{{ $errors->has('additional_health_statement') ? ' is-invalid' : '' }}" id="additional_health_statement" cols="30" rows="4">{{ old('additional_health_statement') }}</textarea>
 
                             @if ($errors->has('additional_health_statement'))
                                 <span class="invalid-feedback" role="alert">
