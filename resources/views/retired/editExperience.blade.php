@@ -44,13 +44,6 @@
                     <div class="col-md-6">
                         <div id="from" class="form-group dis-cls">
                             <label for="from">{{ __('from') }}</label>
-                            {{-- <input id="from" type="date" class="form-control" name="from[]" value="{{$experience->from}}" placeholder="from"> --}}
-                            <select class="form-control" name="from_day[]" id="">
-                                <option value="">--Day--</option>
-                                @for ($i = 1; $i <= 31; $i++)
-                                    <option value="{{$i}}" {{$experience->from_day() == $i ? 'selected' : ''}}>{{$i}}</option>
-                                @endfor
-                            </select>
                             <select class="form-control" name="from_month[]" id="">
                                 <option value="">--Month--</option>
                                 @for ($i = 1; $i <= 12; $i++)
@@ -68,13 +61,6 @@
                     <div class="col-md-6">
                         <div id="to" class="form-group dis-cls">
                             <label for="to">{{ __('to') }}</label>
-                            {{-- <input id="to" type="date" class="form-control" name="to[]" value="{{$experience->to}}" placeholder="to"> --}}
-                            <select class="form-control" name="to_day[]" id="">
-                                <option value="">--Day--</option>
-                                @for ($i = 1; $i <= 31; $i++)
-                                    <option value="{{$i}}" {{$experience->to_day() == $i ? 'selected' : ''}}>{{$i}}</option>
-                                @endfor
-                            </select>
                             <select class="form-control" name="to_month[]" id="">
                                 <option value="">--Month--</option>
                                 @for ($i = 1; $i <= 12; $i++)
@@ -133,13 +119,6 @@
                                     <div class="col-md-6">
                                         <div id="from" class="form-group dis-cls">
                                             <label for="from">{{ __('from') }}</label>
-                                            {{-- <input id="from" type="date" class="form-control" name="from[]" placeholder="from"> --}}
-                                            <select class="form-control" name="from_day[]" id="">
-                                                <option value="">--Day--</option>
-                                                @for ($i = 1; $i <= 31; $i++)
-                                                    <option value="{{$i}}">{{$i}}</option>
-                                                @endfor
-                                            </select>
                                             <select class="form-control" name="from_month[]" id="">
                                                 <option value="">--Month--</option>
                                                 @for ($i = 1; $i <= 12; $i++)
@@ -157,13 +136,6 @@
                                     <div class="col-md-6">
                                         <div id="to" class="form-group dis-cls">
                                             <label for="to">{{ __('to') }}</label>
-                                            {{-- <input id="to" type="date" class="form-control" name="to[]" placeholder="to"> --}}
-                                            <select class="form-control" name="to_day[]" id="">
-                                                <option value="">--Day--</option>
-                                                @for ($i = 1; $i <= 31; $i++)
-                                                    <option value="{{$i}}">{{$i}}</option>
-                                                @endfor
-                                            </select>
                                             <select class="form-control" name="to_month[]" id="">
                                                 <option value="">--Month--</option>
                                                 @for ($i = 1; $i <= 12; $i++)
