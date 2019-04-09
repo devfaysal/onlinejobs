@@ -204,7 +204,9 @@ class ProfessionalProfileController extends Controller
                 $professional_experience->designation = $request->designation[$i];
                 $professional_experience->company = $request->company[$i];
                 $professional_experience->from = $request->from_year[$i] .'-'. $request->from_month[$i].'-'. '1';
-                $professional_experience->to = $request->to_year[$i] .'-'. $request->to_month[$i].'-'. '1';
+                if($request->to_year[$i]){
+                    $professional_experience->to = $request->to_year[$i] .'-'. $request->to_month[$i].'-'. '1';
+                }
                 $professional_experience->position_level = $request->position_level[$i];
                 $professional_experience->experience_description = $request->experience_description[$i];
                 $professional_experience->is_present_job = $request->is_present_job[$i];
