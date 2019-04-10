@@ -69,6 +69,11 @@ class RetiredPersonnelController extends Controller
                 'resume_file' => 'mimes:pdf,doc,docx|max:1024',
             ]);
         }
+        if($request->file('profile_image')){
+            $this->validate($request, [
+                'profile_image' => 'mimes:jpg,jpeg,png|max:1024',
+            ]);
+        }
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
@@ -114,6 +119,16 @@ class RetiredPersonnelController extends Controller
 
             //add new image path to database
             $retiredPersonnel->resume = $image;
+            
+        }
+        if($request->file('profile_image')){
+            $image_basename = explode('.',$request->file('profile_image')->getClientOriginalName())[0];
+            $image = $image_basename . '-' . time() . '.' . $request->file('profile_image')->getClientOriginalExtension();
+
+            $request->profile_image->storeAs('public', $image);
+
+            //add new image path to database
+            $retiredPersonnel->profile_image = $image;
             
         }
         $retiredPersonnel->save();
@@ -191,6 +206,11 @@ class RetiredPersonnelController extends Controller
                 'resume_file' => 'mimes:pdf,doc,docx|max:1024',
             ]);
         }
+        if($request->file('profile_image')){
+            $this->validate($request, [
+                'profile_image' => 'mimes:jpg,jpeg,png|max:1024',
+            ]);
+        }
 
         $user = User::where('id', $id)->first();
 
@@ -226,6 +246,16 @@ class RetiredPersonnelController extends Controller
 
             //add new image path to database
             $retiredPersonnel->resume = $image;
+            
+        }
+        if($request->file('profile_image')){
+            $image_basename = explode('.',$request->file('profile_image')->getClientOriginalName())[0];
+            $image = $image_basename . '-' . time() . '.' . $request->file('profile_image')->getClientOriginalExtension();
+
+            $request->profile_image->storeAs('public', $image);
+
+            //add new image path to database
+            $retiredPersonnel->profile_image = $image;
             
         }
         $retiredPersonnel->save();

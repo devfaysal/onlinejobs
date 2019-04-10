@@ -7,7 +7,10 @@
             <div class="card bg-primary text-white">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-11 ml-auto mr-auto">
+                        <div class="col-md-1">
+                            <img class="rounded-circle" style="width: 75px; height:75px;" src="{{$user->retired_personnel->profile_image != '' ? asset('storage/'.$user->retired_personnel->profile_image) :  asset('images/dummy.jpg')}}">
+                        </div>
+                        <div class="col-md-11">
                             <h4 class="mb-0">{{$user->name}}
                                 @if(Auth::id() == $user->id)
                                     <a class="text-white" href="{{route('retiredPersonnel.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>

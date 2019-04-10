@@ -372,11 +372,21 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-sm-1 ml-auto">
-                                <input id="agreement" class="form-control checkbox" type="checkbox" name="agreement" checked required>
+                            <label for="profile_image" class="col-sm-4 col-form-label text-right">{{ __('Upload Profile Image') }}</label>
+                            <div class="col-sm-8">
+                                <input id="profile_image" type="file" class="form-control-file{{ $errors->has('profile_image') ? ' is-invalid' : '' }}" name="profile_image" value="{{ old('profile_image') }}">
+                                <p class="text-danger">Supported file format JPG, PNG. Maximum file size: 1MB</p>
+                            @if ($errors->has('profile_image'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('profile_image') }}</strong>
+                                </span>
+                            @endif
                             </div>
-                            <label for="agreement" class="col-sm-8">I have read and agree to the<a href="">Terms and Conditions</a> governing the use of onlinejobs.my</label>
                         </div>
+                        @if($user->retired_personnel->profile_image)
+                            <p>Current Image</p>
+                            <img src="{{asset('storage/'.$user->retired_personnel->profile_image)}}" alt="">
+                        @endif
                         <div class="form-group mb-0">
                             <button type="submit" class="btn btn-warning btn-block">
                                 {{ __('Register') }}
