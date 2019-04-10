@@ -120,6 +120,18 @@
                                 <td>:</td>
                                 <td>{{$profile->mother_name ?? 'N/A'}}</td>
                             </tr>
+                            @if($profile->user->hasRole('worker'))
+                            <tr>
+                                <th>Sector</th>
+                                <td>:</td>
+                                <td>{{$profile->sector()->name ?? 'N/A'}}</td>
+                            </tr>
+                            <tr>
+                                <th>Sub Sector</th>
+                                <td>:</td>
+                                <td>{{$profile->sub_sector()->name ?? 'N/A'}}</td>
+                            </tr>
+                            @endif
                         </table>
                     </div><!--/.panel-body-->
                 </div><!--/.panel panel-default-->

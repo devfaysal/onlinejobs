@@ -1168,6 +1168,13 @@
             $.ajax({
                 url: '/admin/getSubsectors/'+this.value,
                 success: data => {
+                    x =  data.sub_sectors;
+                    if(x.length < 1){
+                        $('#sub_sector').append('<option value="">--No Sub Sector for this sector--</option>')
+                    }else{
+                        $('#sub_sector').append('<option value="">--Select Sub Sector--</option>');
+                    }
+                    
                     data.sub_sectors.forEach(sub_sector =>
                         $('#sub_sector').append('<option value="'+sub_sector.id + '">' + sub_sector.name + '</option>')
                     )

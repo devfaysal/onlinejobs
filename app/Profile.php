@@ -28,4 +28,12 @@ class Profile extends Model
     public function gender_data(){
         return $this->belongsTo(Gender::class, 'gender');
     }
+    public function sector()
+    {
+        return Sector::where('id', $this->sector_id)->first();
+    }
+    public function sub_sector()
+    {
+        return SubSector::where('id', $this->sub_sector_id)->first();
+    }
 }

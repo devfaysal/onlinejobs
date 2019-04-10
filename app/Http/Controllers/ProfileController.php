@@ -7,6 +7,7 @@ use Storage;
 use App\User;
 use App\Skill;
 use App\Gender;
+use App\Sector;
 use App\Country;
 use App\Profile;
 use App\Language;
@@ -94,7 +95,8 @@ class ProfileController extends Controller
         $skill_set = (array) json_decode($profile->skill_set);
         $language_set = (array) json_decode($profile->language_set);
         $education_levels = EducationLevel::where('status', '=', 1)->get();
-        return view('profile.edit', compact('user','profile','religions','nationalitys','languages','skill_levels','marital_statuses','genders','language_set','skill_set','skills','skill_for','education_levels'));
+        $sectors = Sector::where('status', '=', 1)->get();
+        return view('profile.edit', compact('user','profile','religions','nationalitys','languages','skill_levels','marital_statuses','genders','language_set','skill_set','skills','skill_for','education_levels','sectors'));
 
     }
 
@@ -186,6 +188,8 @@ class ProfileController extends Controller
         $profile->father_name = $request->father_name;
         $profile->mother_name = $request->mother_name;
         $profile->father_contact_number = $request->father_contact_number;
+        $profile->sector_id = $request->sector;
+        $profile->sub_sector_id = $request->sub_sector;
 
         /*Emergency Contact*/
         $profile->emergency_contact_name = $request->emergency_contact_name;
