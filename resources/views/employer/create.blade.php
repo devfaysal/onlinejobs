@@ -320,6 +320,18 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="company_logo" class="col-sm-4 col-form-label">{{ __('Company Logo') }}</label>
+                            <div class="col-sm-8">
+                                <input id="company_logo" type="file" class="form-control-file{{ $errors->has('company_logo') ? ' is-invalid' : '' }}" name="company_logo" value="{{ old('company_logo') }}">
+                                <p class="text-danger">Supported file format JPG, PNG. Maximum file size: 1MB</p>
+                            @if ($errors->has('company_logo'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('company_logo') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
                                  
                         <div class="form-group row">
                             <div class="col-sm-8 ml-auto">

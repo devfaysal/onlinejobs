@@ -90,6 +90,11 @@ class RegisterController extends Controller
                 'resume_file' => 'mimes:pdf,doc,docx|max:1024',
             ]);
         }
+        if($request->file('company_logo')){
+            $this->validate($request, [
+                'company_logo' => 'mimes:jpg,jpeg,png|max:1024',
+            ]);
+        }
 
 
         // If agent set defailt values for sign-up
@@ -205,6 +210,17 @@ class RegisterController extends Controller
             $employer->looking_for_pro = $data['looking_for_pro'] ?? null;
             $employer->looking_for_gw = $data['looking_for_gw'] ?? null;
             $employer->looking_for_dm = $data['looking_for_dm'] ?? null;
+            $request = request();
+            if($request->file('company_logo')){
+                $image_basename = explode('.',$request->file('company_logo')->getClientOriginalName())[0];
+                $image = $image_basename . '-' . time() . '.' . $request->file('company_logo')->getClientOriginalExtension();
+
+                $request->company_logo->storeAs('public', $image);
+    
+                //add new image path to database
+                $employer->company_logo = $image;
+                
+            }
 
             $employer->save();
             Session::flash('message', 'Your Employer Application Submitted Successfully!!'); 

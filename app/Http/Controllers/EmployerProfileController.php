@@ -328,6 +328,7 @@ class EmployerProfileController extends Controller
     {
         $employer = User::where('id', $id)->first();
         $countrys = Country::where('status', 1)->get();
+        //return $employer->employer_profile;
         return view('employer.edit', compact('employer','countrys'));
     }
 
@@ -340,6 +341,12 @@ class EmployerProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //return $request;
+        if($request->file('company_logo')){
+            $this->validate($request, [
+                'company_logo' => 'mimes:jpg,jpeg,png|max:1024',
+            ]);
+        }
         $employer = User::where('id', $id)->first();
         $employer_profile = $employer->employer_profile;
 
@@ -362,6 +369,19 @@ class EmployerProfileController extends Controller
         $employer_profile->company_city= $request->company_city;
         $employer_profile->state= $request->state;
         $employer_profile->company_country= $request->company_country;
+        $employer_profile->looking_for_pro = $request->looking_for_pro ?? null;
+        $employer_profile->looking_for_gw = $request->looking_for_gw ?? null;
+        $employer_profile->looking_for_dm = $request->looking_for_dm ?? null;
+        if($request->file('company_logo')){
+            $image_basename = explode('.',$request->file('company_logo')->getClientOriginalName())[0];
+            $image = $image_basename . '-' . time() . '.' . $request->file('company_logo')->getClientOriginalExtension();
+
+            $request->company_logo->storeAs('public', $image);
+
+            //add new image path to database
+            $employer_profile->company_logo = $image;
+            
+        }
 
         $employer_profile->save();
 

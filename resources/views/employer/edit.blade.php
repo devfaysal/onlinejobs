@@ -24,7 +24,7 @@
                             <h3>Contact Information</h3>
                         </div>
                         <div class="form-group row">
-                            <label for="name" class="col-sm-4 col-form-label">{{ __('Name *') }}</label>
+                            <label for="name" class="col-sm-4 col-form-label">{{ __('Name ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $employer->name }}" placeholder="Name" required>
 
@@ -36,7 +36,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="contact_email" class="col-sm-4 col-form-label">{{ __('Email *') }}</label>
+                            <label for="contact_email" class="col-sm-4 col-form-label">{{ __('Email ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="contact_email" type="email" class="form-control{{ $errors->has('contact_email') ? ' is-invalid' : '' }}" name="contact_email" value="{{ $employer->employer_profile->contact_email }}" placeholder="Email" required>
 
@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="nric" class="col-sm-4 col-form-label">{{ __('NRIC *') }}</label>
+                            <label for="nric" class="col-sm-4 col-form-label">{{ __('NRIC ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="nric" type="text" class="form-control{{ $errors->has('nric') ? ' is-invalid' : '' }}" name="nric" value="{{ $employer->employer_profile->nric }}" placeholder="NRIC" required>
 
@@ -60,7 +60,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="phone" class="col-sm-4 col-form-label">{{ __('Contact Number *') }}</label>
+                            <label for="phone" class="col-sm-4 col-form-label">{{ __('Contact Number ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ $employer->phone }}" placeholder="Contact Number" required>
 
@@ -104,7 +104,7 @@
                             <h3>Company Information</h3>
                         </div>
                         <div class="form-group row">
-                            <label for="company_name" class="col-sm-4 col-form-label">{{ __('Company Name *') }}</label>
+                            <label for="company_name" class="col-sm-4 col-form-label">{{ __('Company Name ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="company_name" type="text" class="form-control{{ $errors->has('company_name') ? ' is-invalid' : '' }}" name="company_name" value="{{ $employer->employer_profile->company_name }}" placeholder="Company Name" required>
 
@@ -116,7 +116,7 @@
                             </div>                            
                         </div>
                         <div class="form-group row">
-                            <label for="roc" class="col-sm-4 col-form-label">{{ __('ROC *') }}</label>
+                            <label for="roc" class="col-sm-4 col-form-label">{{ __('ROC ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="roc" type="text" class="form-control{{ $errors->has('roc') ? ' is-invalid' : '' }}" name="roc" value="{{ $employer->employer_profile->roc }}" placeholder="ROC" required>
 
@@ -128,7 +128,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label">{{ __('Company Email *') }}</label>
+                            <label for="email" class="col-sm-4 col-form-label">{{ __('Company Email ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $employer->email }}" placeholder="Company Email" required>
 
@@ -140,7 +140,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="website" class="col-sm-4 col-form-label">{{ __('Company Website *') }}</label>
+                            <label for="website" class="col-sm-4 col-form-label">{{ __('Company Website ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input id="website" type="text" class="form-control{{ $errors->has('website') ? ' is-invalid' : '' }}" name="website" value="{{ $employer->employer_profile->website }}" placeholder="Company Website" required>
 
@@ -201,9 +201,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="company_country" class="col-sm-4 col-form-label">{{ __('Country') }}</label>
+                            <label for="company_country" class="col-sm-4 col-form-label">{{ __('Country ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
-                                <select name="company_country" id="company_country" class="form-control{{ $errors->has('company_country') ? ' is-invalid' : '' }}">
+                                <select name="company_country" id="company_country" class="form-control{{ $errors->has('company_country') ? ' is-invalid' : '' }}" required>
                                     <option value="">--Select Country--</option>
                                     @foreach ($countrys as $country)
                                         <option value="{{$country->id}}" {{$country->id == $employer->employer_profile->company_country ? 'selected':''}}>{{$country->name}}</option>
@@ -216,7 +216,38 @@
                             @endif
                             </div>
                         </div>
-
+                        <div class="form-group row">
+                            <div class="col-sm-8 ml-auto">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" name="looking_for_pro" value="yes" class="custom-control-input" id="looking_for_pro" {{ $employer->employer_profile->looking_for_pro == 'yes' ? 'checked' : '' }}>
+                                    <label class="custom-control-label" for="looking_for_pro">Looking For Professional</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" name="looking_for_gw" value="yes" class="custom-control-input" id="looking_for_gw" {{ $employer->employer_profile->looking_for_gw == 'yes' ? 'checked' : '' }}>
+                                    <label class="custom-control-label" for="looking_for_gw">Looking For General Worker</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" name="looking_for_dm" value="yes" class="custom-control-input" id="looking_for_dm" {{ $employer->employer_profile->looking_for_dm == 'yes' ? 'checked' : '' }}>
+                                    <label class="custom-control-label" for="looking_for_dm">Looking For Domestic Maid</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="company_logo" class="col-sm-4 col-form-label">{{ __('Company Logo') }}</label>
+                            <div class="col-sm-8">
+                                <input id="company_logo" type="file" class="form-control-file{{ $errors->has('company_logo') ? ' is-invalid' : '' }}" name="company_logo" value="{{ old('company_logo') }}">
+                                <p class="text-danger">Supported file format JPG, PNG. Maximum file size: 1MB</p>
+                            @if ($errors->has('company_logo'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('company_logo') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        @if($employer->employer_profile->company_logo)
+                            <p>Current Logo</p>
+                            <img src="{{asset('storage/'.$employer->employer_profile->company_logo)}}" alt="">
+                        @endif
                         <div class="form-group mb-0">
                             <button type="submit" class="btn btn-warning btn-block">
                                 {{ __('Update') }}
