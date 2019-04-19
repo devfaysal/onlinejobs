@@ -22,17 +22,21 @@
                 @endif
             
                 @forelse ($jobs as $job)
-                <a class="text-dark nav-link" href="{{route('job.show', $job->id)}}" target="_blank">
-                    <div class="card auth-form mb-3">
-                        <div class="card-body">
-                            <h4 class="text-success">{{$job->positions_name}}</h4>
-                            <p class="mb-0"><i class="mr-3 fa fa-map-marker" aria-hidden="true"></i> {{$job->district}}, {{$job->town}}, {{$job->state}}</p>
-                            <p class="mb-0"><i class="mr-2 fa fa-briefcase" aria-hidden="true"></i> {{$job->related_experience_year ?? 0 }} Year {{$job->related_experience_month ?? 0}} Month</p>
-                            <p class="mb-0"><i class="mr-2 fa fa-graduation-cap" aria-hidden="true"></i> {{$job->minimum_academic_qualification}}</p>
-                            <p class=" mb-0 text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Closing Date: {{\Carbon\Carbon::parse($job->closing_date)->format('d/m/Y')}}</p>
-                        </div>
+
+                <div class="mb-5">
+                    <h4 class="text-info"><a href="{{route('job.show', $job->id)}}">{{$job->positions_name}}</a></h4>
+                    <p class="mb-1 text-info">{{$job->company()->company_name}}</p>
+                    <div class="pl-4">
+                        <p class="my-0 text-secondary"> {{$job->district ? $job->district . ',' : ''}} {{$job->town ? $job->town . ',' : '' }} {{$job->state ?? '' }}</p>
+                        @auth
+                        <p class="my-0 text-secondary"> {{$job->salary_offer_currency }} {{$job->salary_offer}}</p>
+                        @else
+                        <p class="my-0"> <a href="/login">Login to view Salary</a> </p>
+                        @endif
                     </div>
-                </a>
+                    <p class="text-secondary"><small> {{\Carbon\Carbon::parse($job->created_at)->format('d M - g:i A')}}</small></p>
+                </div>
+
                 @empty
                 <div class="card auth-form mb-5">
                     <div class="card-body">

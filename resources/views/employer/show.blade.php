@@ -18,7 +18,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <img src="{{asset('storage/'.$employer->employer_profile->company_logo)}}" alt="">
+                                <img style="max-width: 200px;" src="{{asset('storage/'.$employer->employer_profile->company_logo)}}" alt="">
                                 <h1>Welcome {{$employer->employer_profile->company_name}}</h1>
                                 @if(Auth::user()->status == 1)
                                 {{-- <p>Offer Sent: 25 <br/> Hired: 18</p> --}}
