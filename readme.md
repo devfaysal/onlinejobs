@@ -16,6 +16,8 @@ Job Network website
 
 * Create database and update the ```.env``` file
 
+* ```php artisan storage:link```
+
 * ```php artisan serve``` or create vhost 
 
 * Additionally if it needs to add CSS/JS: ```npm install```
