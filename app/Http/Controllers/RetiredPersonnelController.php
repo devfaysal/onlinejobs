@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Session;
 use App\User;
 use App\Country;
+use Carbon\Carbon;
 use App\MaritalStatus;
 use App\Specialization;
 use App\RetiredPersonnel;
@@ -33,8 +34,10 @@ class RetiredPersonnelController extends Controller
     public function profile()
     {
         $user = Auth::user();
+        $totalExperience = $this->calculateTotalYearsOfExperience($user);
         return view('retired.show', [
-            'user' => $user
+            'user' => $user,
+            'totalExperience' => $totalExperience
         ]);
     }
 
@@ -163,9 +166,37 @@ class RetiredPersonnelController extends Controller
     public function show( $id)
     {
         $user = User::where('id', $id)->first();
+        $totalExperience = $this->calculateTotalYearsOfExperience($user);
         return view('retired.show', [
-            'user' => $user
+            'user' => $user,
+            'totalExperience' => $totalExperience
         ]);
+    }
+
+    public function calculateTotalYearsOfExperience($user)
+    {
+
+        if($user->retired_personnel_experiences->count() > 0){
+
+            foreach($user->retired_personnel_experiences as $experience){
+
+                $all_from_dates[] = $experience->from;
+    
+                $all_to_dates[] = $experience->to ?? date('Y-m-d', time());
+    
+            }
+    
+            $from = min($all_from_dates);
+    
+            $to = max($all_to_dates);
+    
+            return Carbon::parse($from)->diffInYears(Carbon::parse($to));
+
+        }
+
+        return 0;
+        
+
     }
 
     /**

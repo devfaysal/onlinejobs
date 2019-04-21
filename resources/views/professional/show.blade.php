@@ -70,13 +70,14 @@
                             <a class="text-black" href="{{route('professionalExperience.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
                             @endif
                         </h3>
-                        <p>Years of total experience</p>
+                        <p>{{$totalExperience}} Years of total experience</p>
 
                         @if($user->professional_experiences->count() > 0)
                             @foreach($user->professional_experiences as $experience)
                             <div class="row mb-3">
                                 <div class="col-md-3">
                                     <p class="mb-0">{{\Carbon\Carbon::parse($experience->from)->format('M Y') }} - {{ $experience->to ? \Carbon\Carbon::parse($experience->to)->format('M Y') : 'Present' }}</p>
+                                    <p class="mb-0"><small>{{\Carbon\Carbon::parse($experience->from)->diffInMonths(\Carbon\Carbon::parse($experience->to)) }} Months</small></p>
                                 </div>
                                 <div class="col-md-9">
                                     <p class="mb-0 font-20 font-weight-bold">{{$experience->designation}}</p>

@@ -56,7 +56,7 @@
                                 <a class="text-black" href="{{route('retiredPersonnelExperience.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
                             @endif
                         </h3>
-                        <p>Years of total experience</p>
+                        <p>{{$totalExperience}} Years of total experience</p>
     
                         @foreach($user->retired_personnel_experiences as $experience)
                             <div class="row mb-3">
