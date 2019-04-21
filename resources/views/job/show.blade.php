@@ -46,7 +46,7 @@
         </div>
     </div>
     <div class="row mt-3 d-flex align-items-end">
-        <div class="col-md-6">
+        <div class="col-md-7">
             <div class="pr-5">
                 <p class="mb-0"><strong>Scope of Duties </strong></p>
                 <div>
@@ -73,17 +73,17 @@
                 <p class="mb-0"><strong>Facilities</strong></p>
                 <p class="mb-0"><strong>{{$job->facilities}}</strong></p>
             </div>
+            <div class="mt-2">
+                <p class="mb-0"><strong>Language</strong></p>
+                @foreach ($job->languages as $language)
+                    <div class="mb-2">
+                        <p class="mb-0"><strong>{{$language->language_data->name}}</strong></p>
+                        <p class="mb-0"><strong>Speaking: {{$language->speaking}}, Writing:{{$language->writing}}</strong></p>
+                    </div>
+                @endforeach
+            </div>
         </div>
-        <div class="col-md-3">
-            <p class="mb-0">Language</p>
-            @foreach ($job->languages as $language)
-                <div class="mb-2">
-                    <p class="mb-0"><strong>{{$language->language_data->name}}</strong></p>
-                    <p class="mb-0"><strong>Speaking: {{$language->speaking}}, Writing:{{$language->writing}}</strong></p>
-                </div>
-            @endforeach
-        </div>
-        <div class="col-md-3 text-right">
+        <div class="col-md-5 text-right">
             <p class="mb-0">Closing Date</p>
             <p class="mb-0"><strong>{{\Carbon\Carbon::parse($job->closing_date)->format('d/m/Y')}}</strong></p>
         </div>
