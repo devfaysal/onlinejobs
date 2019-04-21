@@ -62,6 +62,7 @@
                             <div class="row mb-3">
                                 <div class="col-md-3">
                                     <p class="mb-0">{{\Carbon\Carbon::parse($experience->from)->format('M Y') }} - {{\Carbon\Carbon::parse($experience->to)->format('M Y') }}</p>
+                                    <p class="mb-0"><small>{{$experience->experienceLength()}}</small></p>
                                 </div>
                                 <div class="col-md-9">
                                     <p class="mb-0 font-20 font-weight-bold">{{$experience->position}}</p>
