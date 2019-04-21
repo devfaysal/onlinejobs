@@ -62,103 +62,100 @@
             </div>
         </div>
         <div class="col-md-12 mt-4">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4>Quick Links</h4>
-                            <hr>
-                            <p>Resume Headline</p>
-                            <p>Key Skills</p>
-                            <p>IT SKills</p>
-                            <p>Employment</p>
-                            <p>Educaition</p>
-                            <p>Personal Details</p>
-                            <p>Attach Resume</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-9">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4>Resume Headline
-                                @if(Auth::id() == $user->id) 
-                                    <a class="text-black" href="{{route('professional.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                @endif
-                            </h4>
-                            <p class="mb-0">{{$user->professional_profile->resume_headline}}</p>
-                        </div>
-                    </div>
-                    <div class="card mt-4">
-                        <div class="card-body">
-                            <h4>Key Skills 
-                                @if(Auth::id() == $user->id)
-                                    <a class="text-black" href="{{route('professional.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                @endif
-                            </h4>
-                            @php
-                                $skills = explode(",",$user->professional_profile->skills);
-                            @endphp
-                            @foreach ($skills as $skill)
-                            <span class="d-inline-block pl-2 pr-2 pt-1 pb-1 mr-2 mb-2 border border-secondary">{{$skill}}</span>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="card mt-4">
-                        <div class="card-body">
-                            <h4>IT Skills 
-                                @if(Auth::id() == $user->id)
-                                    <a class="text-black" href="{{route('professional.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                @endif
-                            </h4>
-                            @php
-                                $it_skills = explode(",",$user->professional_profile->it_skills);
-                            @endphp
-                            @foreach ($it_skills as $it_skill)
-                            <span class="d-inline-block pl-2 pr-2 pt-1 pb-1 mr-2 mb-2 border border-secondary">{{$it_skill}}</span>
-                            @endforeach
-                        </div>
-                    </div>
-                    @if($user->professional_experiences->count() > 0)
-                    <div class="card mt-4">
-                        <div class="card-body">
-                            <h4>Employment 
-                                @if(Auth::id() == $user->id)
-                                    <a class="text-black" href="{{route('professionalExperience.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                @endif
-                            </h4>
+            <div class="card">
+                <div class="card-body">
+                    <div>
+                        <h3><i class="fa fa-briefcase" aria-hidden="true"></i> Experience
+                            @if(Auth::id() == $user->id)
+                            <a class="text-black" href="{{route('professionalExperience.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            @endif
+                        </h3>
+                        <p>Years of total experience</p>
+
+                        @if($user->professional_experiences->count() > 0)
                             @foreach($user->professional_experiences as $experience)
-                                <div class="mt-1">
-                                    <p class="mb-0">Designation: {{$experience->designation}}</p>
-                                    <p class="mb-0">Company: {{$experience->company}}</p>
-                                    <p class="mb-0">{{\Carbon\Carbon::parse($experience->from)->format('M-Y') }} to {{ $experience->to ? \Carbon\Carbon::parse($experience->to)->format('M-Y') : 'Present' }}</p>
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <p class="mb-0">{{\Carbon\Carbon::parse($experience->from)->format('M Y') }} - {{ $experience->to ? \Carbon\Carbon::parse($experience->to)->format('M Y') : 'Present' }}</p>
+                                </div>
+                                <div class="col-md-9">
+                                    <p class="mb-0 font-20 font-weight-bold">{{$experience->designation}}</p>
+                                    <p class="mb-0 font-20">{{$experience->company}}</p>
+                                    <p class="mb-0">{{$experience->work_description}}</p>
                                     <p class="mb-0">Position Level: {{$experience->position_level}}</p>
                                     <p class="mb-0">Experience Description: {{$experience->experience_description}}</p>
-                                    <hr/>
                                 </div>
+                            </div>
                             @endforeach
-                        </div>
+                        @endif
                     </div>
-                    @endif
-                    <div class="card mt-4">
-                        <div class="card-body">
-                            <h4>Education 
-                                @if(Auth::id() == $user->id)
-                                    <a class="text-black" href="{{route('qualification.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                @endif
-                            </h4>
-                            @foreach($user->qualifications as $qualification)
-                                <div class="mt-1">
-                                    <p class="mb-0">Institute/University: {{$qualification->university}}</p>
-                                    <p class="mb-0">Graduation Date: {{\Carbon\Carbon::parse($qualification->graduation_date)->format('d-M-Y') }}</p>
-                                    <p class="mb-0">Qualification: {{$qualification->qualification}}</p>
-                                    <p class="mb-0">Field of Study: {{$qualification->subject}}</p>
-                                    <p class="mb-0">Specialization: {{$qualification->specialization}}</p>
-                                    <hr/>
-                                </div>
-                            @endforeach
+                    <div class="mt-5">
+                        <h3><i class="fa fa-graduation-cap" aria-hidden="true"></i> Education
+                            @if(Auth::id() == $user->id)
+                            <a class="text-black" href="{{route('qualification.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            @endif
+                        </h3>
+    
+                        @foreach($user->qualifications as $qualification)
+                        <div class="row mb-3">
+                            <div class="col-md-3">
+                                <p class="mb-0">{{\Carbon\Carbon::parse($qualification->graduation_date)->format('M Y') }}</p>
+                            </div>
+                            <div class="col-md-9">
+                                <p class="mb-0 font-20 font-weight-bold">{{$qualification->university}}</p>
+                                <p class="mb-0 font-20">{{$qualification->qualification}}</p>
+                                <p class="mb-0">{{$qualification->specialization}}</p>
+                                <p class="mb-0">{{$qualification->subject}}</p>
+                            </div>
                         </div>
+                        @endforeach
                     </div>
+
+                    <div class="mt-5">
+                        <h3><i class="fa fa-tasks" aria-hidden="true"></i> Skills
+                            @if(Auth::id() == $user->id)
+                            <a class="text-black" href="{{route('professional.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            @endif
+                        </h3>
+    
+                        @php
+                            $skills = explode(",",$user->professional_profile->skills);
+                        @endphp
+                        @foreach ($skills as $skill)
+                        <span class="d-inline-block pl-2 pr-2 pt-1 pb-1 mr-2 mb-2 border border-secondary">{{$skill}}</span>
+                        @endforeach
+                    </div>
+                    <div class="mt-5">
+                        <h3><i class="fa fa-th-list" aria-hidden="true"></i> IT Skills
+                            @if(Auth::id() == $user->id)
+                            <a class="text-black" href="{{route('professional.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            @endif
+                        </h3>
+    
+                        @php
+                            $it_skills = explode(",",$user->professional_profile->it_skills);
+                        @endphp
+                        @foreach ($it_skills as $it_skill)
+                        <span class="d-inline-block pl-2 pr-2 pt-1 pb-1 mr-2 mb-2 border border-secondary">{{$it_skill}}</span>
+                        @endforeach
+                    </div>
+                    <div class="mt-5">
+                        <h3><i class="fa fa-bars" aria-hidden="true"></i> Additional Info
+                            @if(Auth::id() == $user->id)
+                            <a class="text-black" href="{{route('professional.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            @endif
+                        </h3>
+                        <div class="row mb-3">
+                            <div class="col-md-3">
+                                <p class="mb-0">Expected Salary</p>
+                            </div>
+                            <div class="col-md-9">
+                                <p class="mb-0">{{$user->professional_profile->expected_salary}}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    
                 </div>
             </div>
         </div>
