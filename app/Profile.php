@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\AgentProfile;
 use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
@@ -35,5 +36,12 @@ class Profile extends Model
     public function sub_sector()
     {
         return SubSector::where('id', $this->sub_sector_id)->first();
+    }
+
+    public function agent()
+    {
+        $agent_profile = AgentProfile::where('agent_code', $this->agent_code)->first();
+
+        return $agent_profile->user;
     }
 }
