@@ -389,7 +389,7 @@
                         @endif
                         <div class="form-group mb-0">
                             <button type="submit" class="btn btn-warning btn-block">
-                                {{ __('Register') }}
+                                {{ __('Update') }}
                             </button>
                         </div>
                     </form>
