@@ -16,14 +16,14 @@
                         @endauth
                     </h5>
                 </li>
-                <li class="font-18">{{$job->company()->company_name}}</li>
-                <li class="font-18">{{$job->district }}</li>
-                <li class="font-18">{{$job->related_experience_year }} Year Experience</li>
-                <li class="font-18">{{$job->total_number_of_vacancies }} Vacancies</li>
-                <li class="font-18">Gender: {{$job->gender}}</li>
-                <li class="font-18">Marital Status: {{$job->marital_status}}</li>
-                <li class="font-18">Race: {{$job->race}}</li>
-                <li class="font-18">Age Eligibility: {{$job->age_eligibillity}}</li>
+                <li class="font-18">{{$job->company()->company_name ?? 'N/A'}}</li>
+                <li class="font-18">{{$job->district ? $job->district . ',' : ''}} {{$job->town ? $job->town . ',' : ''}} {{$job->state ? $job->state . ',': ''}} {{$job->postcode}}</li>
+                <li class="font-18">{{$job->related_experience_year ?? 'N/A'}} Year Experience</li>
+                <li class="font-18">{{$job->total_number_of_vacancies ?? 'N/A'}} Vacancies</li>
+                <li class="font-18">Gender: {{$job->gender ?? 'N/A'}}</li>
+                <li class="font-18">Marital Status: {{$job->marital_status ?? 'N/A'}}</li>
+                <li class="font-18">Race: {{$job->race ?? 'N/A'}}</li>
+                <li class="font-18">Age Eligibility: {{$job->age_eligibillity ?? 'N/A'}}</li>
             </ul>
         </div>
         <div class="col-md-4">
@@ -33,7 +33,7 @@
             </div>
             <div>
                 <p class=" my-0 ">Type Position</p>
-                <p class=" my-0 font-weight-bold">{{$job->job_vacancies_type}}</p>
+                <p class=" my-0 font-weight-bold">{{$job->job_vacancies_type ?? 'N/A'}}</p>
             </div>
         </div>
     </div>
@@ -41,7 +41,7 @@
         <div class="col-md-12">
             <p class="mb-0"><strong>Vacancies Description </strong></p>
             <div>
-                {{$job->vacancies_description}}
+                {{$job->vacancies_description ?? 'N/A'}}
             </div>
         </div>
     </div>
@@ -50,7 +50,7 @@
             <div class="pr-5">
                 <p class="mb-0"><strong>Scope of Duties </strong></p>
                 <div>
-                    {{$job->scope_of_duties}}
+                    {{$job->scope_of_duties ?? 'N/A'}}
                 </div>
             </div>
             <div class="mt-2">
@@ -63,22 +63,22 @@
             </div>
             <div class="mt-2">
                 <p class="mb-0"><strong>Required Skills</strong></p>
-                <p class="mb-0"><strong>{{$job->skills}}</strong></p>
+                <p class="mb-0">{{$job->skills ?? 'N/A'}}</p>
             </div>
             <div class="mt-2">
                 <p class="mb-0"><strong>Other Requirements</strong></p>
-                <p class="mb-0"><strong>{{$job->other_requirements}}</strong></p>
+                <p class="mb-0">{{$job->other_requirements ?? 'N/A'}}</p>
             </div>
             <div class="mt-2">
                 <p class="mb-0"><strong>Facilities</strong></p>
-                <p class="mb-0"><strong>{{$job->facilities}}</strong></p>
+                <p class="mb-0">{{$job->facilities ?? 'N/A'}}</p>
             </div>
             <div class="mt-2">
                 <p class="mb-0"><strong>Language</strong></p>
                 @foreach ($job->languages as $language)
                     <div class="mb-2">
-                        <p class="mb-0"><strong>{{$language->language_data->name}}</strong></p>
-                        <p class="mb-0"><strong>Speaking: {{$language->speaking}}, Writing:{{$language->writing}}</strong></p>
+                        <p class="mb-0">{{$language->language_data->name}}</p>
+                        <p class="mb-0"><strong>Speaking: </strong> {{$language->speaking}}, <strong>Writing: </strong>{{$language->writing}}</strong></p>
                     </div>
                 @endforeach
             </div>
@@ -91,12 +91,11 @@
     <div class="row my-5">
         <div class="col-md-12">
             <p class="text-center"><a class="btn btn-success" href="#">Apply Online</a></p>
-            <p class="text-center">Contact info</p>
-            <p class="text-center mb-0">Company Name: {{$job->company()->company_name}}</p>
-            <p class="text-center mb-0">{{$job->district ? 'District: '.$job->district : ''}} {{$job->town ? 'Town: '.$job->town : ''}} {{$job->state ? 'State: '.$job->state : '' }} {{$job->postcode ? 'Post Code: '.$job->postcode : '' }}</p>
-            <p class="text-center mb-0">{{$job->person_in_charge}}</p>
-            <p class="text-center mb-0">{{$job->telephone_number}}, {{$job->handphone_number}}</p>
-            <p class="text-center mb-0">{{$job->email}}</p>
+            {{-- <p class="text-center mb-0">Company Name: {{$job->company()->company_name}}</p> --}}
+            <p class="text-center mb-0">{{$job->district ? $job->district . ',': ''}} {{$job->town ? $job->town . ',' : ''}} {{$job->state ? $job->state . ',' : '' }} {{$job->postcode}}</p>
+            {{-- <p class="text-center mb-0">{{$job->person_in_charge}}</p> --}}
+            {{-- <p class="text-center mb-0">{{$job->telephone_number}}, {{$job->handphone_number}}</p> --}}
+            {{-- <p class="text-center mb-0">{{$job->email}}</p> --}}
         </div>
     </div>
 </div>

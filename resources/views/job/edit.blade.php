@@ -230,6 +230,7 @@
                             <label for="gender" class="col-sm-4 col-form-label text-right">{{ __('Gender ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 <select name="gender" id="gender" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}">
+                                    <option value="Any" {{$job->gender == 'Any' ?  'selected' : ''}}>Any</option>
                                     <option value="Male" {{$job->gender == 'Male' ?  'selected' : ''}}>Male</option>
                                     <option value="Female" {{$job->gender == 'Female' ?  'selected' : ''}}>Female</option>
                                 </select>
@@ -250,9 +251,9 @@
                             <label for="race" class="col-sm-4 col-form-label text-right">{{ __('Race ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 <select name="race" id="race" class="form-control{{ $errors->has('race') ? ' is-invalid' : '' }}">
-                                    <option value="Malay" >Malay</option>
-                                    <option value="Indian" >Indian</option>
-                                    <option value="Chinese" >Chinese</option>
+                                    @foreach ($races as $race)
+                                        <option value="{{$race->name}}" {{$job->race ==  $race->name ? 'selected' : ''}}>{{$race->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

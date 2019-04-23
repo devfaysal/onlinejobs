@@ -234,7 +234,7 @@
                             <label for="gender" class="col-sm-4 col-form-label text-right">{{ __('Gender ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 <select name="gender" id="gender" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}">
-                                    <option>--Select Gender--</option>
+                                    <option value="">--Select Gender--</option>
                                     <option value="Any">Any</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
@@ -245,7 +245,7 @@
                             <label for="marital_status" class="col-sm-4 col-form-label text-right">{{ __('Marital Status ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 <select name="marital_status" id="marital_status" class="form-control{{ $errors->has('marital_status') ? ' is-invalid' : '' }}">
-                                    <option>--Select Marital Status--</option>
+                                    <option value="">--Select Marital Status--</option>
                                     <option value="Any">Any</option>
                                     <option value="Single">Single</option>
                                     <option value="Married">Married</option>
@@ -257,7 +257,7 @@
                             <label for="race" class="col-sm-4 col-form-label text-right">{{ __('Race ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 <select name="race" id="race" class="form-control{{ $errors->has('race') ? ' is-invalid' : '' }}">
-                                    <option>--Select Race--</option>
+                                    <option value="">--Select Race--</option>
                                     @foreach ($races as $race)
                                         <option value="{{$race->name}}">{{$race->name}}</option>
                                     @endforeach
