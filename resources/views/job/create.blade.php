@@ -29,7 +29,7 @@
                             <div class="col-sm-8">
                                 {{-- <input id="positions_name" type="text" class="form-control{{ $errors->has('positions_name') ? ' is-invalid' : '' }}" name="positions_name" value="{{ old('positions_name') }}" required> --}}
                                 <select name="positions_name" id="positions_name" class="form-control{{ $errors->has('positions_name') ? ' is-invalid' : '' }}" required>
-                                    <option >--Select Position Name--</option>
+                                    <option value="">--Select Position Name--</option>
                                     @foreach ($PositionNames as $PositionName)
                                         <option value="{{$PositionName->name}}">{{$PositionName->name}}</option>
                                     @endforeach
@@ -89,7 +89,7 @@
                             <label for="job_vacancies_type" class="col-sm-4 col-form-label text-right">{{ __('Job Vacancies Type ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 <select name="job_vacancies_type" id="job_vacancies_type" class="form-control{{ $errors->has('job_vacancies_type') ? ' is-invalid' : '' }}" required>
-                                    <option>--Select Vacancies Type--</option>
+                                    <option value="">--Select Vacancies Type--</option>
                                     <option value="Permanent">Permanent</option>
                                     <option value="Part-Time">Part-Time</option>
                                     <option value="Contract">Contract</option>
@@ -163,7 +163,7 @@
                             <label for="working_hours" class="col-sm-4 col-form-label text-right">{{ __('Working Hours ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 <select name="working_hours" id="working_hours" class="form-control{{ $errors->has('working_hours') ? ' is-invalid' : '' }}" required>
-                                    <option>--Select Working hour--</option>
+                                    <option value="">--Select Working hour--</option>
                                     <option value="Normal">Normal</option>
                                     <option value="Shift">Shift</option>
                                     <option value="Flexi-Time">Flexi-Time</option>
@@ -268,7 +268,7 @@
                             <label for="age_eligibillity" class="col-sm-4 col-form-label text-right">{{ __('Age Eligibillity ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
                                 <select name="age_eligibillity" id="age_eligibillity" class="form-control{{ $errors->has('age_eligibillity') ? ' is-invalid' : '' }}">
-                                    <option>--Select Age Range--</option>
+                                    <option value="">--Select Age Range--</option>
                                     <option value="20-24">20-24</option>
                                     <option value="25-30">25-30</option>
                                     <option value="30-35">30-35</option>
@@ -332,7 +332,7 @@
                                 <div id="language" class="form-group dis-cls">
                                     <label for="language">{{ __('Language ') }}</label><span class="text-danger mt-2">*</span>
                                     <select class="form-control" name="language[]" id="language">
-                                        <option>--Select--</option>
+                                        <option value="">--Select--</option>
                                         @foreach($languages as $language)
                                             <option value="{{$language->id}}">{{$language->name}}</option>
                                         @endforeach
@@ -343,7 +343,7 @@
                                 <div id="speaking" class="form-group dis-cls">
                                     <label for="speaking">{{ __('Speaking') }}</label>
                                     <select class="form-control" name="speaking[]" id="speaking">
-                                        <option>--Select--</option>
+                                        <option value="">--Select--</option>
                                         <option value="Fluent">Fluent</option>
                                         <option value="Good">Good</option>
                                         <option value="Poor">Poor</option>
@@ -354,7 +354,7 @@
                                 <div id="writing" class="form-group dis-cls">
                                     <label for="writing">{{ __('Writing') }}</label>
                                     <select class="form-control" name="writing[]" id="writing">
-                                        <option>--Select--</option>
+                                        <option value="">--Select--</option>
                                         <option value="Fluent">Fluent</option>
                                         <option value="Good">Good</option>
                                         <option value="Poor">Poor</option>
@@ -376,7 +376,7 @@
                                                         <div id="language" class="form-group dis-cls">
                                                             <label for="language">{{ __('Language ') }}</label><span class="text-danger mt-2">*</span>
                                                             <select class="form-control" name="language[]" id="language">
-                                                                <option>--Select--</option>
+                                                                <option value="">--Select--</option>
                                                                 @foreach($languages as $language)
                                                                     <option value="{{$language->id}}">{{$language->name}}</option>
                                                                 @endforeach
@@ -387,7 +387,7 @@
                                                         <div id="speaking" class="form-group dis-cls">
                                                             <label for="speaking">{{ __('Speaking') }}</label>
                                                             <select class="form-control" name="speaking[]" id="speaking">
-                                                                <option>--Select--</option>
+                                                                <option value="">--Select--</option>
                                                                 <option value="Fluent">Fluent</option>
                                                                 <option value="Good">Good</option>
                                                                 <option value="Poor">Poor</option>
@@ -398,7 +398,7 @@
                                                         <div id="writing" class="form-group dis-cls">
                                                             <label for="writing">{{ __('Writing') }}</label>
                                                             <select class="form-control" name="writing[]" id="writing">
-                                                                <option>--Select--</option>
+                                                                <option value="">--Select--</option>
                                                                 <option value="Fluent">Fluent</option>
                                                                 <option value="Good">Good</option>
                                                                 <option value="Poor">Poor</option>
@@ -420,7 +420,7 @@
                                 <label for="minimum_academic_qualification" class="col-sm-4 col-form-label text-right">{{ __('Minimum Academic Qualification ') }}</label><span class="text-danger mt-2">*</span>
                                 <div class="col-sm-8">
                                     <select class="form-control{{ $errors->has('minimum_academic_qualification') ? ' is-invalid' : '' }}" name="minimum_academic_qualification" id="minimum_academic_qualification">
-                                        <option>--Select Academic Qualification--</option>
+                                        <option value="">--Select Academic Qualification--</option>
                                         @foreach ($academics as $academic)
                                             <option value="{{$academic->name}}">{{$academic->name}}</option>
                                         @endforeach
@@ -436,7 +436,7 @@
                                 <label for="academic_field" class="col-sm-4 col-form-label text-right">{{ __('Academic Field') }}</label>
                                 <div class="col-sm-8">
                                     <select class="form-control{{ $errors->has('academic_field') ? ' is-invalid' : '' }}" name="academic_field" id="academic_field">
-                                        <option>--Select Academic Field--</option>
+                                        <option value="">--Select Academic Field--</option>
                                         @foreach ($academic_fields as $academic_field)
                                             <option value="{{$academic_field->name}}">{{$academic_field->name}}</option>
                                         @endforeach
@@ -464,7 +464,7 @@
                                                             <label for="academic_qualification" class="col-sm-4 col-form-label text-right">{{ __('Academic Qualification ') }}</label><span class="text-danger mt-2">*</span>
                                                             <div class="col-sm-8">
                                                                 <select class="form-control{{ $errors->has('academic_qualification') ? ' is-invalid' : '' }}" name="academic_qualifications[]" id="academic_qualification">
-                                                                    <option>--Select Academic Qualification--</option>
+                                                                    <option value="">--Select Academic Qualification--</option>
                                                                     @foreach ($academics as $academic)
                                                                         <option value="{{$academic->name}}">{{$academic->name}}</option>
                                                                     @endforeach
@@ -480,7 +480,7 @@
                                                             <label for="academic_fields" class="col-sm-4 col-form-label text-right">{{ __('Academic Field') }}</label>
                                                             <div class="col-sm-8">
                                                                 <select class="form-control{{ $errors->has('academic_fields') ? ' is-invalid' : '' }}" name="academic_fields[]" id="academic_fields">
-                                                                    <option>--Select Academic Qualification--</option>
+                                                                    <option value="">--Select Academic Qualification--</option>
                                                                     @foreach ($academic_fields as $academic_field)
                                                                         <option value="{{$academic_field->name}}">{{$academic_field->name}}</option>
                                                                     @endforeach
