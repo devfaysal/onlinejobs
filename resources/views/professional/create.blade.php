@@ -96,7 +96,7 @@
                             <label for="resume_file" class="col-sm-4 col-form-label text-right">{{ __('Upload Resume') }}</label>
                             <div class="col-sm-8">
                                 <input id="resume_file" type="file" class="form-control-file{{ $errors->has('resume_file') ? ' is-invalid' : '' }}" name="resume_file" value="{{ old('resume_file') }}">
-                                <p class="text-danger">Supported file format JPG, PNG & PDF. Maximum file size: 1MB</p>
+                                <p class="text-danger">Supported file format pdf, doc or docx. Maximum file size: 1MB</p>
                             @if ($errors->has('resume_file'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('resume_file') }}</strong>
