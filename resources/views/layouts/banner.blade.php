@@ -1,4 +1,10 @@
-<section class="banner" style="min-height: 220px;">
+@if (Route::currentRouteName() == 'maids' || Route::currentRouteName() == 'maids.search')
+<section class="banner" style="min-height: 220px;background:linear-gradient(0deg,rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(/images/dm.jpg) no-repeat center center fixed;background-size: cover;">
+@elseif(Route::currentRouteName() == 'workers' || Route::currentRouteName() == 'workers.search')
+<section class="banner" style="min-height: 220px;background:linear-gradient(0deg,rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(/images/gw.jpg) no-repeat center center fixed;background-size: cover;">
+@else
+<section class="banner" style="min-height: 220px; background: url(/images/banner.jpg) no-repeat center center fixed;background-size: cover;">
+@endif
 
         @include('layouts.topbar')
 
@@ -6,7 +12,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="mt-3 text-primary text-uppercase text-center" style="border-bottom: 1px solid;">
+                    <h1 class="mt-3 text-white text-uppercase text-center" style="border-bottom: 1px solid;">
                         @if (Route::currentRouteName() == 'maids' || Route::currentRouteName() == 'maids.search')
                             Domestic Maids
                             <span class="pull-right"><small style="font-size: 14px;">Registered:</small> <span class="counter">{{$total_maids}}</span></span>

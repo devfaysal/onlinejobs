@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="banner">
+<section class="banner" style="min-height: 350px; background: url(/images/banner.jpg) no-repeat center center fixed;background-size: cover;">
 		@include('layouts.topbar')
 				<!--  banner body and search   -->
 				

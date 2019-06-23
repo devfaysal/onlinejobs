@@ -2263,6 +2263,11 @@ pre code {
   opacity: 1;
 }
 
+.form-control:-ms-input-placeholder {
+  color: #6c757d;
+  opacity: 1;
+}
+
 .form-control::-ms-input-placeholder {
   color: #6c757d;
   opacity: 1;
@@ -13560,12 +13565,6 @@ a.text-dark:focus {
 }
 
 /* home banner box */
-
-.banner {
-  background: url(/images/banner.jpg) no-repeat center center fixed;
-  background-size: cover;
-  min-height: 350px;
-}
 
 .banner .top_bar {
   background: url("/images/trans.png");
