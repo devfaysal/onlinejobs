@@ -149,7 +149,7 @@ class RegisterController extends Controller
             $data['name'] = $data['name'];
             $data['email'] = $data['email'];
             $data['password'] = "DefPassAgent";
-            $data['password_confirmation'] = "DefPassAgent";
+            $data['password_confirmation'] = "DefPassEmployer";
             $data['phone'] = $data['phone'] ?? '';
         }
 
