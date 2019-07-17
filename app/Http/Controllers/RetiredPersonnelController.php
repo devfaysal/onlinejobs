@@ -15,6 +15,8 @@ use App\RetiredPersonnelAcademic;
 use App\RetiredPersonnelEducation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendPasswordAfterRegistration;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\RetiredPersonnelRegistration;
 
