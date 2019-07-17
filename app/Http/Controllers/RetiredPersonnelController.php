@@ -149,6 +149,7 @@ class RetiredPersonnelController extends Controller
 
         Session::flash('message', 'Information saved successfully!'); 
         Session::flash('alert-class', 'alert-success');
+        Mail::to($user)->send(new SendPasswordAfterRegistration('DefPassRetired'));
         Auth::login($user);
         //Send notification to admins
         $data = $user;

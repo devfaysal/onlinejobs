@@ -111,9 +111,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="country" class="col-sm-4 col-form-label">{{ __('Country') }}</label>
+                            <label for="country" class="col-sm-4 col-form-label">{{ __('Country') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
-                                <select name="country" id="country" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}">
+                                <select name="country" id="country" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" required>
                                     <option value="">--Select Country--</option>
                                     @foreach ($countrys as $country)
                                         <option value="{{$country->id}}" {{$country->id == old('country') ? 'selected':''}}>{{$country->name}}</option>
@@ -289,9 +289,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="company_country" class="col-sm-4 col-form-label">{{ __('Country') }}</label>
+                            <label for="company_country" class="col-sm-4 col-form-label">{{ __('Country') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
-                                <select name="company_country" id="company_country" class="form-control{{ $errors->has('company_country') ? ' is-invalid' : '' }}">
+                                <select name="company_country" id="company_country" class="form-control{{ $errors->has('company_country') ? ' is-invalid' : '' }}" required>
                                     <option value="">--Select Country--</option>
                                     @foreach ($countrys as $country)
                                         <option value="{{$country->id}}" {{$country->id == old('company_country') ? 'selected':''}}>{{$country->name}}</option>
