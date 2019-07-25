@@ -279,7 +279,11 @@
                                             <select name="sector" id="sector" class="form-control{{ $errors->has('sector') ? ' is-invalid' : '' }}" >
                                                 <option value="">--Select Sector--</option>
                                                 @foreach ($sectors as $sector)
-                                                    <option value="{{$sector->id}}" {{$sector->id == $profile->sector()->id ? 'selected':''}}>{{$sector->name}}</option>
+                                                    @if($profile->sector())
+                                                        <option value="{{$sector->id}}" {{$sector->id == $profile->sector()->id ? 'selected':''}}>{{$sector->name}}</option>
+                                                    @else
+                                                        <option value="{{$sector->id}}">{{$sector->name}}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                             @if ($errors->has('sector'))
@@ -296,7 +300,11 @@
                                                 <option value="">--Select Sub Sector--</option>
                                                 @if($profile->sector())
                                                     @foreach ($profile->sector()->sub_sectors as $sub_sector)
-                                                        <option value="{{$sub_sector->id}}" {{$sub_sector->id == $profile->sub_sector()->id ? 'selected':''}}>{{$sub_sector->name}}</option>
+                                                        @if($profile->sub_sector())
+                                                            <option value="{{$sub_sector->id}}" {{$sub_sector->id == $profile->sub_sector()->id ? 'selected':''}}>{{$sub_sector->name}}</option>
+                                                        @else
+                                                            <option value="{{$sub_sector->id}}">{{$sub_sector->name}}</option>
+                                                        @endif
                                                     @endforeach
                                                 @endif
                                             </select>

@@ -234,7 +234,7 @@
                                 <table class="table table-striped table-sm">
                                     @if($language_set)
                                         @foreach($languages as $language)
-                                        @if($language_set[$language->slug] == 'Yes')
+                                        @if(isset($language_set[$language->slug]) && $language_set[$language->slug] == 'Yes')
                                             <span class="d-inline-block pl-2 pr-2 pt-1 pb-1 mr-2 mb-2 border border-secondary">{{$language->name}}</span>
                                         @endif
                                         {{-- <tr>
@@ -257,7 +257,7 @@
                     <div class="card-body pb-0">
                             @if($skill_set)
                                 @foreach($skills as $skill)
-                                @if($skill_set[$skill->slug] == 'Yes')
+                                @if(isset($skill_set[$skill->slug]) && $skill_set[$skill->slug] == 'Yes')
                                     <span class="d-inline-block pl-2 pr-2 pt-1 pb-1 mr-2 mb-2 border border-secondary">{{$skill->name}}</span>
                                 @endif
                                 {{-- {{$skill_set[$skill->slug] == 'yes' ? $skill->name}} --}}
