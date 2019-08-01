@@ -233,11 +233,11 @@ Route::get('/gallery', 'Admin\GalleryController@gallery')->name('gallery');
 
 
 
-Route::get('/DeleteAllWorker', function(){
-    $users = App\User::whereRoleIs('worker')->get();
-    foreach($users as $user){
-        $user->profile->delete();
+// Route::get('/DeleteAllWorker', function(){
+//     $users = App\User::whereRoleIs('worker')->get();
+//     foreach($users as $user){
+//         $user->profile->delete();
 
-        $user->delete();
-    }
-});
+//         $user->delete();
+//     }
+// });
