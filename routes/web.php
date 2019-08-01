@@ -85,6 +85,7 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
 
     /*Worker*/
     Route::get('/getWorkersData', 'Admin\WorkerController@getWorkersData')->name('getWorkersData');
+    Route::get('/worker/{user}/delete', 'Admin\WorkerController@delete')->name('worker.delete');
     Route::resource('/worker', 'Admin\WorkerController');
 
     /*Maid*/
@@ -231,3 +232,12 @@ Route::patch('/retiredPersonnel/language/{user}', 'RetiredPersonnelsLanguageCont
 Route::get('/gallery', 'Admin\GalleryController@gallery')->name('gallery');
 
 
+
+Route::get('/DeleteAllWorker', function(){
+    $users = App\User::whereRoleIs('worker')->get();
+    foreach($users as $user){
+        $user->profile->delete();
+
+        $user->delete();
+    }
+});
