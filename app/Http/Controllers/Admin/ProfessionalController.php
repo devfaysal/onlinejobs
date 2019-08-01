@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use Yajra\DataTables\Facades\DataTables;
 
 class ProfessionalController extends Controller
@@ -27,6 +28,7 @@ class ProfessionalController extends Controller
         return DataTables::of($users)
         ->addColumn('action', function ($user) {
             $string = '<a href="'.route('professional.show', $user->id).'" class="btn btn-xs btn-primary">View</a> ';
+            $string .= '<a class="btn btn-xs btn-danger" onclick="return confirm('."'Are you sure?'".')" href="'.route('admin.professional.delete', $user->id).'">Delete</a>';
             return $string;
         })
         ->addColumn('city', function($user) {
@@ -45,5 +47,22 @@ class ProfessionalController extends Controller
         ->rawColumns(['profile_image', 'action'])
         ->removeColumn('password')
         ->make(true);
+    }
+
+    public function delete(User $user)
+    {
+        if($user->professional_profile){
+            $user->professional_profile->delete();
+        }
+
+        foreach($user->professional_experiences as $experience){
+            $experience->delete();
+        }
+        
+        $user->delete();
+
+        Session::flash('message', 'Deleted successfully!'); 
+        Session::flash('alert-class', 'alert-success');
+        return redirect()->route('admin.professional.index');
     }
 }

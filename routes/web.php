@@ -73,6 +73,7 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
 
     /*Professional*/
     Route::get('/getProfessionalsData', 'Admin\ProfessionalController@getProfessionalsData')->name('getProfessionalsData');
+    Route::get('/professional/{user}/delete', 'Admin\ProfessionalController@delete')->name('professional.delete');
     Route::resource('/professional', 'Admin\ProfessionalController');
 
     /*Retired*/
