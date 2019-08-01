@@ -42,7 +42,9 @@ class EmployerController extends Controller
         })
         ->addColumn('action', function ($user) {
             //return '<a href="'.route('admin.agent.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-            return '<a class="btn btn-xs btn-primary" href="'.route('employer.public', $user->public_id).'">View</a>';
+            $str  = '<a class="btn btn-xs btn-primary mr-2" href="'.route('employer.public', $user->public_id).'">View</a>';
+            $str .= '<a class="btn btn-xs btn-danger" onclick="return confirm('."'Are you sure?'".')" href="'.route('admin.employer.delete', $user->id).'">Delete</a>';
+            return $str;
         })
         ->removeColumn('password')
         ->make(true);
@@ -406,6 +408,21 @@ class EmployerController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function delete(User $user)
+    {
+        $user->employer_profile->delete();
+        $offers = Offer::where('employer_id', $user->id)->get();
+        foreach($offers as $offer){
+            $offer->delete();
+        }
+        
+        $user->delete();
+
+        Session::flash('message', 'Deleted successfully!'); 
+        Session::flash('alert-class', 'alert-success');
+        return redirect()->route('admin.employer.index');
     }
 
     /**

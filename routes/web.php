@@ -49,6 +49,7 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
     Route::get('/getEmployersData', 'Admin\EmployerController@getEmployersData')->name('getEmployersData');
     Route::get('/employer-application', 'Admin\EmployerController@employerApplication')->name('employerApplication');
     Route::get('/getEmployersApplicationData', 'Admin\EmployerController@getEmployersApplicationData')->name('getEmployersApplicationData');
+    Route::get('/employer/{user}/delete', 'Admin\EmployerController@delete')->name('employer.delete');
     Route::resource('/employer', 'Admin\EmployerController');
 
     Route::get('/employer-demands', 'Admin\EmployerController@employerDemands')->name('employerDemands');
