@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\User;
+use App\Applicant;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
@@ -126,6 +127,13 @@ class MaidController extends Controller
     {
         if($user->profile){
             $user->profile->delete();
+        }
+
+        $applications = Applicant::where('user_id', $user->id) ->get();
+        if($applications){
+            foreach($applications as $application){
+                $application->delete();
+            }
         }
         
         $user->delete();

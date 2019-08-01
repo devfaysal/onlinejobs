@@ -138,6 +138,13 @@ class WorkerController extends Controller
         if($user->profile){
             $user->profile->delete();
         }
+
+        $applications = Applicant::where('user_id', $user->id) ->get();
+        if($applications){
+            foreach($applications as $application){
+                $application->delete();
+            }
+        }
         
         $user->delete();
 

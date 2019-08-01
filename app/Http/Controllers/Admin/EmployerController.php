@@ -420,6 +420,11 @@ class EmployerController extends Controller
 
         if($offers){
             foreach($offers as $offer){
+                if($offer->applicants){
+                    foreach($offer->applicants as $applicant){
+                        $applicant->delete();
+                    }
+                }
                 $offer->delete();
             }
         }
