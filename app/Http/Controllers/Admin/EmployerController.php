@@ -44,7 +44,7 @@ class EmployerController extends Controller
         ->addColumn('action', function ($user) {
             //return '<a href="'.route('admin.agent.edit', $user->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
             $str  = '<a class="btn btn-xs btn-primary mr-2" href="'.route('employer.public', $user->public_id).'">View</a>';
-            $str .= '<a class="btn btn-xs btn-danger" onclick="return confirm('."'Are you sure?'".')" href="'.route('admin.employer.delete', $user->id).'">Delete</a>';
+            // $str .= '<a class="btn btn-xs btn-danger" onclick="return confirm('."'Are you sure?'".')" href="'.route('admin.employer.delete', $user->id).'">Delete</a>';
             return $str;
         })
         ->removeColumn('password')
