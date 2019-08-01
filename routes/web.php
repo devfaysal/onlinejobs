@@ -92,6 +92,7 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
 
     /*Maid*/
     Route::get('/getMaidsData', 'Admin\MaidController@getMaidsData')->name('getMaidsData');
+    Route::get('/maid/{user}/delete', 'Admin\MaidController@delete')->name('maid.delete');
     Route::resource('/maid', 'Admin\MaidController');
 
     /*Proposed GW/DM */
