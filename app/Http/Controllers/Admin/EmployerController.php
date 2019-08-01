@@ -412,10 +412,15 @@ class EmployerController extends Controller
 
     public function delete(User $user)
     {
-        $user->employer_profile->delete();
+        if($user->employer_profile){
+            $user->employer_profile->delete();
+        }
         $offers = Offer::where('employer_id', $user->id)->get();
-        foreach($offers as $offer){
-            $offer->delete();
+
+        if($offers){
+            foreach($offers as $offer){
+                $offer->delete();
+            }
         }
         
         $user->delete();
