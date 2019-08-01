@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Job;
 use Session;
 use App\User;
 use App\Offer;
@@ -420,6 +421,13 @@ class EmployerController extends Controller
         if($offers){
             foreach($offers as $offer){
                 $offer->delete();
+            }
+        }
+
+        $jobs = Job::where('user_id', $user->id)->get();
+        if($jobs){
+            foreach($jobs as $job){
+                $job->delete();
             }
         }
         
