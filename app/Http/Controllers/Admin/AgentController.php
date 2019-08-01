@@ -34,6 +34,7 @@ class AgentController extends Controller
             $string = '<a href="'.route('admin.agent.show', $user->id).'" class="btn btn-xs btn-primary">View</a> ';
             if(auth()->user()->hasRole('superadministrator')){
                 $string .= '<a href="'.route('agent.edit', $user->id).'" class="btn btn-xs btn-info">Edit</a> ';
+                $string .= '<a class="btn btn-xs btn-danger" onclick="return confirm('."'Are you sure?'".')" href="'.route('admin.agent.delete', $user->id).'">Delete</a>';
             }
             return $string;
         })
@@ -246,6 +247,19 @@ class AgentController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function delete(User $user)
+    {
+        if($user->agent_profile){
+            $user->agent_profile->delete();
+        }
+
+        $user->delete();
+
+        Session::flash('message', 'Deleted successfully!'); 
+        Session::flash('alert-class', 'alert-success');
+        return redirect()->route('admin.agent.index');
     }
 
     /**

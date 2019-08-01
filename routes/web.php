@@ -67,6 +67,7 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
     Route::get('/getAgentsApplicationData', 'Admin\AgentController@getAgentsApplicationData')->name('getAgentsApplicationData');
     Route::get('/rejected-agent-application', 'Admin\AgentController@rejectedAgentApplication')->name('rejectedAgentApplication');
     Route::get('/getRejectedAgentApplicationData', 'Admin\AgentController@getRejectedAgentApplicationData')->name('getRejectedAgentApplicationData');
+    Route::get('/agent/{user}/delete', 'Admin\AgentController@delete')->name('agent.delete');
     Route::resource('/agent', 'Admin\AgentController');
     Route::get('/downloadFiles', 'Admin\AgentController@downloadFiles')->name('downloadFiles');
 
@@ -230,14 +231,3 @@ Route::get('/retiredPersonnel/language/{user}/edit', 'RetiredPersonnelsLanguageC
 Route::patch('/retiredPersonnel/language/{user}', 'RetiredPersonnelsLanguageController@update')->name('retiredPersonnelsLanguage.update')->middleware('auth');
 
 Route::get('/gallery', 'Admin\GalleryController@gallery')->name('gallery');
-
-
-
-// Route::get('/DeleteAllWorker', function(){
-//     $users = App\User::whereRoleIs('worker')->get();
-//     foreach($users as $user){
-//         $user->profile->delete();
-
-//         $user->delete();
-//     }
-// });
