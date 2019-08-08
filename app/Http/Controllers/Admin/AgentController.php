@@ -34,7 +34,7 @@ class AgentController extends Controller
             $string = '<a href="'.route('admin.agent.show', $user->id).'" class="btn btn-xs btn-primary">View</a> ';
             if(auth()->user()->hasRole('superadministrator')){
                 $string .= '<a href="'.route('agent.edit', $user->id).'" class="btn btn-xs btn-info">Edit</a> ';
-                // $string .= '<a class="btn btn-xs btn-danger" onclick="return confirm('."'Are you sure?'".')" href="'.route('admin.agent.delete', $user->id).'">Delete</a>';
+                $string .= '<a class="btn btn-xs btn-danger" onclick="return confirm('."'Are you sure?'".')" href="'.route('admin.agent.delete', $user->id).'">Delete</a>';
             }
             return $string;
         })

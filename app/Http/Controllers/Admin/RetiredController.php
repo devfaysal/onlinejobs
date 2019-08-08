@@ -28,7 +28,7 @@ class RetiredController extends Controller
         return DataTables::of($users)
         ->addColumn('action', function ($user) {
             $string  = '<a href="'.route('retiredPersonnel.show', $user->id).'" class="btn btn-xs btn-primary">View</a> ';
-            // $string .= '<a class="btn btn-xs btn-danger" onclick="return confirm('."'Are you sure?'".')" href="'.route('admin.retired.delete', $user->id).'">Delete</a>';;
+            $string .= '<a class="btn btn-xs btn-danger" onclick="return confirm('."'Are you sure?'".')" href="'.route('admin.retired.delete', $user->id).'">Delete</a>';;
             return $string;
         })
         ->addColumn('address', function($user) {

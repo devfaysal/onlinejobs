@@ -39,7 +39,7 @@ class WorkerController extends Controller
 
             $string =  '<a target="_blank" class="btn btn-xs btn-primary" href="'.route('profile.public', $user->public_id).'">View </a> ';
             $string .= '<a target="_blank" class="btn btn-xs btn-info mr-2" href="'.route('profile.edit', $user->id).'">Edit</a>';
-            // $string .= '<a class="btn btn-xs btn-danger" onclick="return confirm('."'Are you sure?'".')" href="'.route('admin.worker.delete', $user->id).'">Delete</a>';
+            $string .= '<a class="btn btn-xs btn-danger" onclick="return confirm('."'Are you sure?'".')" href="'.route('admin.worker.delete', $user->id).'">Delete</a>';
             return $string;
         })
         ->addColumn('selectQW', function ($user) {
