@@ -39,8 +39,8 @@
                                     </div>                          
                                 </div>
                             </div>
-                            @if($user->retired_personnel->resume_file)
-                                <a class="mt-2 btn btn-sm btn-secondary" target="_blank" href="{{asset('storage/resume/'.$user->retired_personnel->resume_file)}}">View Resume</a>
+                            @if($user->retired_personnel->resume)
+                                <a class="mt-2 btn btn-sm btn-secondary" target="_blank" href="{{asset('storage/resume/'.$user->retired_personnel->resume)}}">View Resume</a>
                             @endif
                         </div>
                     </div>
@@ -67,8 +67,8 @@
                                 <div class="col-md-9">
                                     <p class="mb-0 font-20 font-weight-bold">{{$experience->position}}</p>
                                     <p class="mb-0 font-20">{{$experience->company_name}} | {{$experience->address}}</p>
-                                    <p class="mb-0">Industry: {{$experience->nature_of_company_business}}</p>
-                                    <p class="mb-0">{{$experience->work_description}}</p>
+                                    <p class="mb-0"><strong>Industry:</strong> {{$experience->nature_of_company_business}}</p>
+                                    <p class="mb-0"><strong>Experience Description:</strong> {{$experience->work_description}}</p>
                                 </div>
                             </div>
                         @endforeach
@@ -79,16 +79,29 @@
                             <a class="text-black" href="{{route('retiredPersonnel.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
                             @endif
                         </h3>
-    
-                        <p class="mb-0"><strong>Highest Academic Qualification:</strong> {{$user->retired_personnel->highest_academic_qualification}}</p>
-                        <p class="mb-0"><strong>Specialization:</strong> {{$user->retired_personnel->specialization}}</p>
-    
-                        @foreach($user->retired_personnel_educations as $education)
-                            <div class="mt-2">
-                                <p class="mb-0"><strong>Academic Qualification:</strong> {{$education->academic_qualification}}</p>
-                                <p class="mb-0"><strong>Specialization:</strong> {{$education->specialization}}</p>
-                            </div>
-                        @endforeach
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th width="50%">Academic Qualification</th>
+                                    <th width="50%">Specialization</th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody>
+                                <tr>
+                                    <td>{{$user->retired_personnel->highest_academic_qualification ?? 'N/A'}}</td>
+                                    <td>{{$user->retired_personnel->specialization ?? 'N/A'}}</td>
+                                </tr>
+                                @if($user->retired_personnel_educations->count() > 0)
+                                    @foreach($user->retired_personnel_educations as $education)
+                                    <tr>
+                                        <td>{{$education->academic_qualification ?? 'N/A'}}</td>
+                                        <td>{{$education->specialization ?? 'N/A'}}</td>
+                                    </tr>
+                                    @endforeach
+                                @endif
+                            </tbody>
+                        </table>
                     </div>
 
                     <div class="mt-5">
@@ -127,10 +140,28 @@
                             <a class="text-black" href="{{route('retiredPersonnel.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
                             @endif
                         </h3>
-                        <p class="mb-0"><strong>Fit to work ? </strong> {{$user->retired_personnel->fit_to_work }}</p>
-                        <p class="mb-0"><strong>Have blood pressure ? </strong> {{$user->retired_personnel->have_blood_pressure }}</p>
-                        <p class="mb-0"><strong>Have diabetes ? </strong> {{$user->retired_personnel->have_diabetes }}</p>
-                        <p class="mb-0"><strong>Additional Health Information: </strong> {{$user->retired_personnel->additional_health_statement }}</p>
+                        <table class="table table-sm">
+                            <tr>
+                                <th width="25%">Fit to work ?</th>
+                                <td width="5%">:</td>
+                                <td width="70%">{{$user->retired_personnel->fit_to_work}}</td>
+                            </tr>
+                            <tr>
+                                <th width="25%">Have blood pressure ?</th>
+                                <td width="5%">:</td>
+                                <td width="70%">{{$user->retired_personnel->have_blood_pressure }}</td>
+                            </tr>
+                            <tr>
+                                <th width="25%">Have diabetes ?</th>
+                                <td width="5%">:</td>
+                                <td width="70%">{{$user->retired_personnel->have_diabetes }}</td>
+                            </tr>
+                            <tr>
+                                <th width="25%">Additional Health Information</th>
+                                <td width="5%">:</td>
+                                <td width="70%">{{$user->retired_personnel->additional_health_statement }}</td>
+                            </tr>
+                        </table>
                     </div>
 
                     <div class="mt-5">
@@ -139,9 +170,28 @@
                             <a class="text-black" href="{{route('retiredPersonnel.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
                             @endif
                         </h3>
-                        <p class="mb-0"><strong>Were you government servent ? </strong> {{$user->retired_personnel->government_employee }}</p>
-                        <p class="mb-0"><strong>Prefer Working hours: </strong> {{$user->retired_personnel->full_time ? 'Full Time' : $user->retired_personnel->describe_working_hours}}</p>
-                        <p class="mb-0"><strong>NRIC </strong> {{$user->retired_personnel->nric }}</p>
+                        <table class="table table-sm">
+                            <tr>
+                                <th width="25%">Were you government servent ?</th>
+                                <td width="5%">:</td>
+                                <td width="70%">{{$user->retired_personnel->government_employee}}</td>
+                            </tr>
+                            <tr>
+                                <th width="25%">Department</th>
+                                <td width="5%">:</td>
+                                <td width="70%">{{$user->retired_personnel->govt_department}}</td>
+                            </tr>
+                            <tr>
+                                <th width="25%">Prefer Working hours</th>
+                                <td width="5%">:</td>
+                                <td width="70%">{{$user->retired_personnel->full_time == 'yes' ? 'Full Time' : 'Part Time : ' . $user->retired_personnel->describe_working_hours }}</td>
+                            </tr>
+                            <tr>
+                                <th width="25%">NRIC</th>
+                                <td width="5%">:</td>
+                                <td width="70%">{{$user->retired_personnel->nric }}</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>

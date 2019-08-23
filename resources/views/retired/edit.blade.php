@@ -313,7 +313,7 @@
                                     <label class="custom-control-label" for="have_blood_pressure">Yes</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="have_blood_pressure1" name="have_blood_pressure" value="no" {{$user->retired_personnel->fit_to_work == 'no' ? 'checked' : ''}} class="custom-control-input">
+                                    <input type="radio" id="have_blood_pressure1" name="have_blood_pressure" value="no" {{$user->retired_personnel->have_blood_pressure == 'no' ? 'checked' : ''}} class="custom-control-input">
                                     <label class="custom-control-label" for="have_blood_pressure1">No</label>
                                 </div>
                             </div>
@@ -545,6 +545,15 @@
     </script>
 
 <script>
+    window.onload = function() {
+        //console.log(document.querySelector('#govt').value);
+        if(document.querySelector('#govt').value = 'yes'){
+            document.querySelector('.hide_govt_department').classList.remove("d-none");
+        }
+        if(document.querySelector('#part_time').value = 'no'){
+            document.querySelector('.hide_working_hours').classList.remove("d-none");
+        }
+    };
     govt = document.querySelector('#govt');
     non_govt = document.querySelector('#non_govt');
     govt.addEventListener('click', function(){
