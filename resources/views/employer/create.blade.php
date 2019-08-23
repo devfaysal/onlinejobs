@@ -99,7 +99,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="address" class="col-sm-4 col-form-label">{{ __('Address') }}</label>
+                            <label for="address" class="col-sm-4 col-form-label">{{ __('Company Address') }}</label>
                             <div class="col-sm-8">
                                 <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" placeholder="Address">
 
@@ -337,7 +337,7 @@
                             <div class="col-sm-8 ml-auto">
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" name="agreement" id="customCheck1" required checked>
-                                    <label class="custom-control-label" for="customCheck1">I have read and agree to the<a href="">Terms and Conditions</a> governing the use of onlinejobs.my</label>
+                                    <label class="custom-control-label" for="customCheck1">I have read and agree to the <a href="">Terms and Conditions</a> governing the use of onlinejobs.my</label>
                                 </div>
                             </div>
                         </div>
