@@ -83,8 +83,19 @@
                                     <p class="mb-0 font-20 font-weight-bold">{{$experience->designation}}</p>
                                     <p class="mb-0 font-20">{{$experience->company}}</p>
                                     <p class="mb-0">{{$experience->work_description}}</p>
-                                    <p class="mb-0">Position Level: {{$experience->position_level}}</p>
-                                    <p class="mb-0">Experience Description: {{$experience->experience_description}}</p>
+
+                                    <table class="table table-borderless table-sm">
+                                        <tr>
+                                            <th class="pl-0" width="25%">Position Level</th>
+                                            <td width="5%">:</td>
+                                            <td width="70%">{{$experience->position_level}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="pl-0" width="25%">Experience Description</th>
+                                            <td width="5%">:</td>
+                                            <td width="70%">{{$experience->experience_description}}</td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
                             @endforeach
@@ -104,9 +115,23 @@
                             </div>
                             <div class="col-md-9">
                                 <p class="mb-0 font-20 font-weight-bold">{{$qualification->university}}</p>
-                                <p class="mb-0 font-20">{{$qualification->qualification}}</p>
-                                <p class="mb-0">{{$qualification->specialization}}</p>
-                                <p class="mb-0">{{$qualification->subject}}</p>
+                                <table class="table table-borderless table-sm">
+                                    <tr>
+                                        <th class="pl-0" width="25%">Qualification</th>
+                                        <td width="5%">:</td>
+                                        <td width="70%">{{$qualification->qualification}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="pl-0" width="25%">Field of Study</th>
+                                        <td width="5%">:</td>
+                                        <td width="70%">{{$qualification->specialization}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="pl-0" width="25%">Specialization</th>
+                                        <td width="5%">:</td>
+                                        <td width="70%">{{$qualification->subject}}</td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                         @endforeach
