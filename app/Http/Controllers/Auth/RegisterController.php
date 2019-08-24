@@ -148,7 +148,7 @@ class RegisterController extends Controller
         if ($role == 'employer') {
             $data['name'] = $data['name'];
             $data['email'] = $data['email'];
-            $data['password'] = "DefPassAgent";
+            $data['password'] = "DefPassEmployer";
             $data['password_confirmation'] = "DefPassEmployer";
             $data['phone'] = $data['phone'] ?? '';
         }

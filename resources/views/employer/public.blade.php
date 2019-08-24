@@ -15,11 +15,12 @@
                         <div class="row">
                             <div class="col-md-6">
                                 {{-- <h1>{{$employer->name}}</h1> --}}
-                                <p>Offer Sent: 25 <br/> Hired: 18</p>
+                                <p>Offer Sent: {{$employer->employer_profile->offers->count() }} <br/> Hired: {{$employer->employer_profile->hireCount() }}</p>
                             </div>
                             <div class="col-md-6 text-right">
                                 <strong>Address</strong><br/>
-                                <span>{{$employer->employer_profile->address ?? 'N/A'}}</span><br/>
+                                <span>{{$employer->employer_profile->company_address ?? 'N/A'}}</span><br/>
+                                <span>{{$employer->employer_profile->company_city ?? ''}}, {{$employer->employer_profile->state ?? ''}}</span><br/>
                                 <span>{{$employer->employer_profile->country_data->name ?? 'N/A'}}</span>
                             </div>
                         </div>

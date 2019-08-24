@@ -15,4 +15,18 @@ class EmployerProfile extends Model
     public function company_country_data(){
         return $this->belongsTo(Country::class, 'company_country');
     }
+
+    public function offers(){
+        return $this->hasMany(Offer::class, 'employer_id', 'user_id');
+    }
+
+    public function hireCount()
+    {
+        $count = 0;
+        foreach($this->offers as $offer){
+            $count += $offer->applicants->where('status', 3)->count();
+        }
+
+        return $count;
+    }
 }
