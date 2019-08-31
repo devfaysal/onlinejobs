@@ -1,7 +1,7 @@
 @if (Route::currentRouteName() == 'maids' || Route::currentRouteName() == 'maids.search')
-<section class="banner" style="min-height: 220px;background:linear-gradient(0deg,rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(/images/dm.jpg) no-repeat center center fixed;background-size: cover;">
+<section class="banner" style="min-height: 350px;background:linear-gradient(0deg,rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(/images/domestic.png) no-repeat fixed;">
 @elseif(Route::currentRouteName() == 'workers' || Route::currentRouteName() == 'workers.search')
-<section class="banner" style="min-height: 220px;background:linear-gradient(0deg,rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(/images/gw.jpg) no-repeat center center fixed;background-size: cover;">
+<section class="banner" style="min-height: 350px;background:linear-gradient(0deg,rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(/images/general.png) no-repeat fixed;">
 @else
 <section class="banner" style="min-height: 220px; background: url(/images/banner.jpg) no-repeat center center fixed;background-size: cover;">
 @endif
