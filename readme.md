@@ -1,12 +1,12 @@
-## Jobnetwork
+## Onlinejobs
 
-Job Network website
+Onlinejobs website
 
 ## Installation
 
-* ```git clone https://gitlab.com/devfaysal/jobnetwork.git```
+* ```git clone https://github.com/devfaysal/onlinejobs.git```
 
-* ```cd jobnetwork```
+* ```cd onlinejobs```
 
 * ```composer inatall```
 
