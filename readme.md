@@ -1,6 +1,6 @@
-## Jobnetwork
+## Onlinejobs
 
-Job Network website
+Onlinejobs website
 
 ## Installation
 
