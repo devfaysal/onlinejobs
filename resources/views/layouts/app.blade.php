@@ -221,11 +221,6 @@
                   <li> <a href="" >Privacy Policy</a> </li>
                   <li> <a href="" >Careers with Us</a> </li>
                   <li> <a href="" >Sitemap</a> </li>
-                  <li> <a href="">Contact Us</a> </li>
-                  <li> <a href="">FAQs</a> </li>
-                  <li> <a href="" >Summons / Notices</a> </li>
-                  <li> <a href="">Grievances</a> </li>
-                  <li> <a href="">Fraud Alert</a> </li>
                 </ul>
           </div>
 
@@ -237,38 +232,15 @@
                   <li> <a href="">Terms &amp; Conditions</a> </li>
                   <li> <a href="" >Privacy Policy</a> </li>
                   <li> <a href="" >Careers with Us</a> </li>
-                  <li> <a href="" >Sitemap</a> </li>
-                  <li> <a href="">Contact Us</a> </li>
-                  <li> <a href="">FAQs</a> </li>
-                  <li> <a href="" >Summons / Notices</a> </li>
-                  <li> <a href="">Grievances</a> </li>
-                  <li> <a href="">Fraud Alert</a> </li>
                 </ul>
-
-                 <h6> fast  forward  </h6>
-                <ul class="list-unstyled">
-                 
-                  <li> <a href=""  >About Us</a> </li>
-                  <li> <a href="">Terms &amp; Conditions</a> </li>
-                  <li> <a href="" >Privacy Policy</a> </li>
-                  <li> <a href="" >Careers with Us</a> </li>
-                  <li> <a href="" >Sitemap</a> </li>
-                </ul> 
 
           </div>
 
           <div class="col-md-3 col-sm-6">
             <h6>  Brows Jobs  </h6>
                 <ul class="list-unstyled">
-                 
-                  <li> <a href=""  >About Us</a> </li>
-                  <li> <a href="">Terms &amp; Conditions</a> </li>
-                  <li> <a href="" >Privacy Policy</a> </li>
-                  <li> <a href="" >Careers with Us</a> </li>
-                  <li> <a href="" >Sitemap</a> </li>
-                  <li> <a href="">Contact Us</a> </li>
                   <li> <a href="">FAQs</a> </li>
-                  <li> <a href="" >Summons / Notices</a> </li>
+                  <li> <a href="" >Notices</a> </li>
                   <li> <a href="">Grievances</a> </li>
                   <li> <a href="">Fraud Alert</a> </li>
                 </ul>
@@ -280,32 +252,14 @@
                  
                   <li> <a href=""  >About Us</a> </li>
                   <li> <a href="">Terms &amp; Conditions</a> </li>
-                  <li> <a href="" >Privacy Policy</a> </li>
-                  <li> <a href="" >Careers with Us</a> </li>
-                  <li> <a href="" >Sitemap</a> </li>
-                  <li> <a href="">Contact Us</a> </li>
-                  
+                  <li> <a href="" >Privacy Policy</a> </li>                  
                 </ul>
                     <section class="social-icons">
                       <p class="hide">Follow Us</p>
                       <a href="fb" data-original-title="Facebook" data-placement="top" data-toggle="tooltip" class="btn-social facebook" target="_blank"><span class="fa fa-facebook"></span></a> 
                       <a href="twitter" data-original-title="Twitter" data-placement="top" data-toggle="tooltip" class="btn-social twitter" target="_blank"><span class="fa fa-twitter"></span></a> 
-                      <a href="googleplus" data-original-title="Google+" data-placement="top" data-toggle="tooltip" class="btn-social google-plus" target="_blank"><span class="fa fa-google-plus"></span></a> 
-                      <a href="pinterest" data-original-title="Pinterest" data-placement="top" data-toggle="tooltip" class="btn-social instagram" target="_blank"><span class="fa fa-pinterest"></span></a> 
                       <a href="youtube" data-original-title="Youtube" data-placement="top" data-toggle="tooltip" class="btn-social youtube" target="_blank"><span class="fa fa-youtube"></span></a>        
                    </section>
-
-                <h6>  Ambiton box   </h6>
-                <ul class="list-unstyled">
-                 
-                  <li> <a href=""  >About Us</a> </li>
-                  <li> <a href="">Terms &amp; Conditions</a> </li>
-                  <li> <a href="" >Privacy Policy</a> </li>
-                  <li> <a href="" >Careers with Us</a> </li>
-                  <li> <a href="" >Sitemap</a> </li>
-                  <li> <a href="">Contact Us</a> </li>
-                  
-                </ul>
           </div>
       </div>
     </div>
