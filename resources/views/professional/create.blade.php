@@ -108,7 +108,7 @@
                             <div class="col-sm-1 ml-auto">
                                 <input id="agreement" class="form-control checkbox" type="checkbox" name="agreement" checked required>
                             </div>
-                            <label for="agreement" class="col-sm-8">I have read and agree to the<a href="">Terms and Conditions</a> governing the use of onlinejobs.my</label>
+                            <label for="agreement" class="col-sm-8">I have read and agree to the<a href=""> Terms and Conditions</a> governing the use of onlinejobs.my</label>
                         </div>
                         <div class="form-group mb-0">
                             <button type="submit" class="btn btn-warning btn-block">
