@@ -196,7 +196,7 @@ class RegisterController extends Controller
             $user->attachRole($role);
             $employer = new EmployerProfile;
             $employer->user_id = $user->id;
-            $employer->address = $data['address'];
+            //$employer->address = $data['address'];
             $employer->country = $data['country'];
             $employer->nric = $data['nric'];
             $employer->roc = $data['roc'];

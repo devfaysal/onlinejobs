@@ -71,7 +71,7 @@
                             @endif
                             </div>
                         </div>
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label for="address" class="col-sm-4 col-form-label">{{ __('Address') }}</label>
                             <div class="col-sm-8">
                                 <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ $employer->employer_profile->address }}" placeholder="Address">
@@ -82,7 +82,7 @@
                                 </span>
                             @endif
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group row">
                             <label for="country" class="col-sm-4 col-form-label">{{ __('Country') }}</label>
                             <div class="col-sm-8">
@@ -164,9 +164,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="company_address" class="col-sm-4 col-form-label">{{ __('Company Address') }}</label>
+                            <label for="company_address" class="col-sm-4 col-form-label">{{ __('Company Address') }} <span class="text-danger">*</span></label>
                             <div class="col-sm-8">
-                                <input id="company_address" type="text" class="form-control{{ $errors->has('company_address') ? ' is-invalid' : '' }}" name="company_address" value="{{ $employer->employer_profile->company_address }}" placeholder="Company Address">
+                                <input id="company_address" type="text" class="form-control{{ $errors->has('company_address') ? ' is-invalid' : '' }}" name="company_address" value="{{ $employer->employer_profile->company_address }}" placeholder="Company Address" required>
 
                                 @if ($errors->has('company_address'))
                                     <span class="invalid-feedback" role="alert">

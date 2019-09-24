@@ -52,11 +52,11 @@
                                         <th>:</th>
                                         <td>{{$employer->phone ?? 'N/A'}}</td>
                                     </tr>
-                                    <tr>
+                                    {{-- <tr>
                                         <th>Employer Address</th>
                                         <th>:</th>
                                         <td>{{$employer->employer_profile->address ?? 'N/A'}}</td>
-                                    </tr>
+                                    </tr> --}}
                                     <tr>
                                         <th>Employer Country</th>
                                         <th>:</th>

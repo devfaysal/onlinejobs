@@ -98,7 +98,7 @@
                             @endif
                             </div>
                         </div>
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label for="address" class="col-sm-4 col-form-label">{{ __('Company Address') }}</label>
                             <div class="col-sm-8">
                                 <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" placeholder="Address">
@@ -109,7 +109,7 @@
                                 </span>
                             @endif
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group row">
                             <label for="country" class="col-sm-4 col-form-label">{{ __('Country') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
@@ -240,9 +240,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="company_phone" class="col-sm-4 col-form-label">{{ __('Company Phone ') }}</label>
+                            <label for="company_phone" class="col-sm-4 col-form-label">{{ __('Company Phone ') }} <span class="text-danger">*</span></label>
                             <div class="col-sm-8">
-                                <input id="company_phone" type="text" class="form-control{{ $errors->has('company_phone') ? ' is-invalid' : '' }}" name="company_phone" value="{{ old('company_phone') }}" placeholder="Company Phone">
+                                <input id="company_phone" type="text" class="form-control{{ $errors->has('company_phone') ? ' is-invalid' : '' }}" name="company_phone" value="{{ old('company_phone') }}" placeholder="Company Phone" required>
 
                             @if ($errors->has('company_phone'))
                                 <span class="invalid-feedback" role="alert">
@@ -252,9 +252,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="company_address" class="col-sm-4 col-form-label">{{ __('Company Address') }}</label>
+                            <label for="company_address" class="col-sm-4 col-form-label">{{ __('Company Address') }} <span class="text-danger">*</span></label>
                             <div class="col-sm-8">
-                                <input id="company_address" type="text" class="form-control{{ $errors->has('company_address') ? ' is-invalid' : '' }}" name="company_address" value="{{ old('company_address') }}" placeholder="Company Address">
+                                <input id="company_address" type="text" class="form-control{{ $errors->has('company_address') ? ' is-invalid' : '' }}" name="company_address" value="{{ old('company_address') }}" placeholder="Company Address" required>
 
                                 @if ($errors->has('company_address'))
                                     <span class="invalid-feedback" role="alert">
@@ -265,9 +265,9 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="company_city" class="col-sm-4 col-form-label">{{ __('City') }}</label>
+                            <label for="company_city" class="col-sm-4 col-form-label">{{ __('City') }} <span class="text-danger">*</span></label>
                             <div class="col-sm-8">
-                                <input id="company_city" type="text" class="form-control{{ $errors->has('company_city') ? ' is-invalid' : '' }}" name="company_city" value="{{ old('company_city') }}" placeholder="City">
+                                <input id="company_city" type="text" class="form-control{{ $errors->has('company_city') ? ' is-invalid' : '' }}" name="company_city" value="{{ old('company_city') }}" placeholder="City" required>
 
                             @if ($errors->has('company_city'))
                                 <span class="invalid-feedback" role="alert">
@@ -277,9 +277,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="state" class="col-sm-4 col-form-label">{{ __('State') }}</label>
+                            <label for="state" class="col-sm-4 col-form-label">{{ __('State') }} <span class="text-danger">*</span></label>
                             <div class="col-sm-8">
-                                <input id="state" type="text" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}" name="state" value="{{ old('state') }}" placeholder="State">
+                                <input id="state" type="text" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}" name="state" value="{{ old('state') }}" placeholder="State" required>
 
                             @if ($errors->has('state'))
                                 <span class="invalid-feedback" role="alert">

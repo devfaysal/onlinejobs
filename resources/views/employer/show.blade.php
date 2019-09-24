@@ -29,7 +29,7 @@
                             </div>
                             <div class="col-md-6 text-right">
                                 <strong>Address</strong><br/>
-                                <span>{{$employer->employer_profile->address ?? 'N/A'}}</span><br/>
+                                <span>{{$employer->employer_profile->company_address ?? 'N/A'}}</span><br/>
                                 <span>{{$employer->employer_profile->country_data->name ?? 'N/A'}}</span>
                             </div>
 

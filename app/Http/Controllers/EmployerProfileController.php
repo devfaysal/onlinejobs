@@ -357,7 +357,7 @@ class EmployerProfileController extends Controller
         $employer->save();
 
         $employer_profile->nric = $request->nric;
-        $employer_profile->address = $request->address;
+        //$employer_profile->address = $request->address;
         $employer_profile->country = $request->country;
         $employer_profile->contact_email = $request->contact_email;
 
