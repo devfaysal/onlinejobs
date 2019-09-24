@@ -8,6 +8,8 @@
             <thead>
                 <tr>
                     <th></th>
+                    <th>ID</th>
+                    <th>Image</th>
                     <th>GW/DM</th>
                     <th>Employer</th>
                     <th>Agent</th>
@@ -19,6 +21,8 @@
             <tfoot>
                 <tr>
                     <th class="hide"></th>
+                    <th>ID</th>
+                    <th class="hide">Image</th>
                     <th>GW/DM</th>
                     <th>employer</th>
                     <th>agent</th>
@@ -39,6 +43,8 @@
         ajax: '{{route('admin.getProposedGwDm')}}',
         columns: [
             {data: 'id', name: 'id'},
+            {data: 'code', name: 'code'},
+            {data: 'image', name: 'image'},
             {data: 'gw_dm', name: 'gw_dm'},
             {data: 'employer', name: 'employer'},
             {data: 'agent', name: 'agent'},
