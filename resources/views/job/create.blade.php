@@ -302,9 +302,9 @@
                                     @endforeach
                                     <div class="col-md-8">
                                         <div class="custom-control custom-checkbox d-inline">
-                                            <input type="checkbox" class="custom-control-input" id="other" value="yes">
+                                            <input type="checkbox" class="custom-control-input" onclick="toogleOtherFacilities(this);" name="other_faliclities_checkbox" id="other" value="yes">
                                             <label class="custom-control-label" for="other">Other</label>
-                                            <input type="text" name="facilities[]" class="form-control">
+                                            <input type="text" name="other_facilities" id="other_facilities" class="form-control d-none">
                                         </div>
                                     </div>
                                 </div>
@@ -808,5 +808,14 @@
                 $("#czContainerLanguage").czMore();
                 $("#czContainerAcademic").czMore();
             </script>
-            
+            <script>
+                function toogleOtherFacilities(input){
+                    console.log(input.checked);
+                    if(input.checked){
+                        document.querySelector('#other_facilities').classList.remove('d-none');
+                    }else{
+                        document.querySelector('#other_facilities').classList.add('d-none');
+                    }
+                }
+            </script>
 @endsection

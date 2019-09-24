@@ -120,6 +120,7 @@ class JobController extends Controller
         $job->age_eligibillity = $request->age_eligibillity;
         $job->other_requirements = $request->other_requirements;
         $job->facilities = implode(", " , $request->facilities);
+        $job->other_facilities = $request->other_facilities;
         // $job->language = $request->language;
         $job->minimum_academic_qualification = $request->minimum_academic_qualification;
         $job->academic_field = $request->academic_field;
@@ -227,6 +228,11 @@ class JobController extends Controller
         $job->age_eligibillity = $request->age_eligibillity;
         $job->other_requirements = $request->other_requirements;
         $job->facilities = implode(", " , $request->facilities);
+        if($request->other_faliclities_checkbox == 'yes'){
+            $job->other_facilities = $request->other_facilities;
+        }else{
+            $job->other_facilities = null;
+        }
         // $job->language = $request->language;
         $job->minimum_academic_qualification = $request->minimum_academic_qualification;
         $job->academic_field = $request->academic_field;

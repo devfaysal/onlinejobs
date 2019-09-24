@@ -71,7 +71,7 @@
             </div>
             <div class="mt-2">
                 <p class="mb-0"><strong>Facilities</strong></p>
-                <p class="mb-0">{{$job->facilities ?? 'N/A'}}</p>
+                <p class="mb-0">{{$job->facilities ?? 'N/A'}} {{ $job->other_facilities ? ', ' . $job->other_facilities : '' }}</p>
             </div>
             <div class="mt-2">
                 <p class="mb-0"><strong>Language</strong></p>
