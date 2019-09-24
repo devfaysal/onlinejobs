@@ -301,10 +301,10 @@ class RegisterController extends Controller
             $agent->save();
             
             //Send notification to admins
-            $data = $agent;
+            //$data = $agent;
             Mail::to($user)->send(new SendPasswordAfterRegistration($data['password']));
             $admins = User::whereRoleIs('superadministrator')->get();
-            Notification::send($admins, new AgentApplication($data));
+            Notification::send($admins, new AgentApplication($agent));
         }
 
         if($role == 'professional'){
