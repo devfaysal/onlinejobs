@@ -78,8 +78,15 @@ class SuperadminController extends Controller
 
                 return $length . ' Days Ago';
             })
+            ->addColumn('code', function($applicant){
+                return $applicant->gw_dm['code'];
+            })
+            ->addColumn('image', function($applicant){
+                $img = $applicant->gw_dm->profile['image'] != '' ? asset('storage/'.$applicant->gw_dm->profile['image']) :  asset('images/dummy.jpg');
+                return '<img src="'.$img.'" border="0" width="40" class="img-rounded" align="center" />';
+            })
 
-            // ->rawColumns(['image', 'action', 'selectQW'])
+            ->rawColumns(['image', 'action'])
             // ->removeColumn('password')
             ->make(true);
 
