@@ -13,10 +13,10 @@
                     </div>
 
                     <div class="form-group">
-                        <a class="btn btn-warning btn-lg btn-block" href="{{route('agent.create')}}">Register as Agent</a>
+                        <a class="btn btn-warning btn-lg btn-block" href="{{route('agent.create')}}">Register as Business Partner</a>
                     </div>
                     <div class="form-group">
-                        <a class="btn btn-info btn-lg btn-block" href="{{route('professional.index')}}">Register as Professional</a>
+                        <a class="btn btn-info btn-lg btn-block" href="{{route('professional.index')}}">Register as Job Seeker</a>
                     </div>
                     <div class="form-group">
                         <a class="btn btn-secondary btn-lg btn-block" href="{{route('retiredPersonnel.create')}}">Register as Retired Personnel</a>

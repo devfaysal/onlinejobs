@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card auth-form mb-5">
-                <div class="card-header"><h2 class="text-center">{{ __('Agent!!! Sign up today, its easy!') }}</h2></div>
+                <div class="card-header"><h2 class="text-center">{{ __('Business Partner!!! Sign up today, its easy!') }}</h2></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}" enctype="multipart/form-data">
