@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="banner" style="min-height: 350px; background: url(/images/technology.png) no-repeat fixed;">
+<section class="banner h_p_banner">
 		@include('layouts.topbar')
 				<!--  banner body and search   -->
 				
@@ -61,10 +61,10 @@
 				    </div>
 				</div>
 
-				<div class="container">
-						<div class="row">
-								<div class="col-sm-6 col-md-5 col-lg-6">
-									<div class="banner_tranparent">
+				<div class="banner_face">
+						<div class="row_">
+								<div class="col-sm-4 col-md-4 col-lg-6 offset-sm-3 offset-md-3 offset-lg-3">
+									<div class="banner_tranparent mar_adds">
 										<div class="input-group mb-3 form-search-outer">
 											<input type="text" class="form-control search-jobs" placeholder="Search Jobs" aria-label="Recipient's username" aria-describedby="basic-addon2">
 											<div class="input-group-append">
@@ -108,22 +108,29 @@
 										</div>
 									</div><!--  banner trand end   -->
 								</div>
-								<div class="col-sm-6 col-md-5 col-lg-6">
+								<div class="col-sm-12 col-md-12 col-lg-12 no_padding">
 								<div class="banner_tranparent">
-										<div class="row">
-												<div class="col-sm-6 col-md-5 col-lg-6 banner-left">
+										<div class="row_">
+												<div class="col-sm-7 col-md-7 col-lg-7 banner-left">
 													<div class="whitebg text-center banner_equal">
-														<p> Looking for General Worker<br>or Domestic Maid?</p>
-														<a class="btn btn-warning  btn-large btn-block" href="{{route('login')}}"> Quick Registration  </a>
-														<hr class="hr-text" data-content="or">
-														<h5><a href="#"> Upload Demand Letter </a> </h5>
-														<p class="small_TxT2"> Max 2 MB, doc, docx, rtf, pdf </p> 
-														<p>Our team will contact you.</p>
+														<div class="col-sm-4 col-md-4 col-lg-4 offset-sm-1 offset-md-1 offset-lg-1">
+															<p> Looking for General Worker<br>or Domestic Maid?</p>
+															<a class="btn btn-warning  btn-large btn-block" href="{{route('login')}}"> Quick Registration  </a>
+														</div>
+														<div class="col-sm-2 col-md-2 col-lg-2 mar_top">
+															<hr class="hr-text" data-content="or">
+														</div>
+														<div class="col-sm-4 col-md-4 col-lg-4">
+															<h5 class="p_top_20"><a href="#"> Upload Demand Letter </a> </h5>
+															<p class="small_TxT2"> Max 2 MB, doc, docx, rtf, pdf </p> 
+															<p>Our team will contact you.</p>
+														</div>
+														<hr class="hr-text borders">
 													</div>
 												</div>
-												<div class="col-sm-6 col-md-5 col-lg-6 banner-right">
-													<div class="whitebg align-middle banner_equal row align-items-center">
-														<h6>Hiring Packages are available. Choose the best suited for you.</h6>
+												<div class="col-sm-5 col-md-5 col-lg-5 banner-right">
+													<div class="whitebg align-middle add_padd banner_equal row align-items-center">
+														<h6 class="color_white">Hiring Packages are available. Choose the best suited for you.</h6>
 														<h5><a href="#"> View the Packages </a> </h5>
 													</div>
 												</div>
@@ -133,6 +140,23 @@
 						</div><!--  /.row  -->
 				</div><!--  /.container  -->
 		</section>
+		
+		<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+		  <div class="carousel-inner">
+			<div class="carousel-item active">
+			  <img class="d-block w-100" src="images/homepage_slide01.jpg" alt="First slide">
+			</div>
+			<div class="carousel-item">
+			  <img class="d-block w-100" src="images/homepage_slide02.jpg" alt="First slide">
+			</div>
+			<div class="carousel-item">
+			  <img class="d-block w-100" src="images/homepage_slide03.jpg" alt="First slide">
+			</div>
+			<div class="carousel-item">
+			  <img class="d-block w-100" src="images/homepage_slide04.jpg" alt="First slide">
+			</div>
+		  </div>
+		</div>
 
 		<section class="maincontent">
 				<div class="container">
