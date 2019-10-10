@@ -788,3 +788,112 @@ input.invalid {
 .font-23{
 	font-size: 23px!important;
 }
+.h_p_banner{
+	height: 350px;
+	position:absolute;
+	left:0;
+	right:0;
+}
+.banner_face{
+	position:relative;
+	z-index:1;
+}
+.banner_tranparent{
+	background:none;
+	float:left;
+	width:100%;
+	padding:0;
+	margin:0;
+}
+.banner_tranparent .search-jobs{
+	border-radius:90px 0 0 90px;
+}
+.banner_tranparent .btn-search{
+	border-radius:0 90px 90px 0;
+	padding: 0.375rem 1.75rem;
+}
+.banner_tranparent .form-control {
+    height: calc(2.9rem + 2px);
+	padding: 0.55rem 1.3rem;
+	background:#ebebeb;
+	border:1px solid #fff;
+}
+.no_padding{
+	padding:0;
+	float:left;
+}
+.banner-left{
+	float:left;
+	padding:0;
+	box-shadow: inset 0px 5px 0px #e35931;
+    box-sizing: border-box;
+}
+.banner-right{
+	float:right;
+	padding:0;
+	box-shadow: inset 0px 5px 0px #09c;
+    box-sizing: border-box;
+}
+.banner_tranparent .whitebg {
+    background: rgba(0, 0, 0, 0.74);
+}
+.text-center.banner_equal > div{
+	float:left;
+}
+.text-center.banner_equal p{
+	text-align: left;
+    color: #FFF;
+    line-height: normal;
+}
+.banner_tranparent .whitebg h5 {
+    text-align: left;
+	padding-bottom: 10px;
+}
+.banner_tranparent .whitebg h5 a{
+	padding-bottom:15px;
+}
+.banner_tranparent .whitebg .small_TxT2 {
+    margin-bottom: 15px;
+	color: #ccc;
+}
+.mar_top{
+	margin-top:23px;
+}
+.banner_tranparent .whitebg.banner_equal{
+	padding: 30px;
+	min-height: 157px;
+}
+.add_padd{
+	padding:30px !important;
+}
+.color_white{
+	color:#FFF !important;
+}
+.banner_tranparent .banner_equal h6 {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 20px;
+}
+.banner_tranparent .banner-right h5 {
+    top: -10px;
+}
+.mar_adds {
+    margin: 52px 0 !important;
+}
+.p_top_20{
+	padding-top:10px;
+}
+.borders{
+	-ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(90deg);
+    height: 50px;
+    position: absolute;
+    right: -41px;
+    bottom: 55px;
+    width: 82px;
+}
+
+
+
+
