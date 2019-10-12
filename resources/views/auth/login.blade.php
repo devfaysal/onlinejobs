@@ -9,17 +9,17 @@
 
                 <div class="card-body">
                     <div class="form-group">
-                        <a class="btn btn-primary btn-lg btn-block" href="{{route('employer.register')}}">Register as Employer</a>
+                        <a class="btn btn-primary btn-lg btn-block" href="{{route('employer.register')}}">Employer</a>
                     </div>
 
                     <div class="form-group">
-                        <a class="btn btn-warning btn-lg btn-block" href="{{route('agent.create')}}">Register as Business Partner</a>
+                        <a class="btn btn-warning btn-lg btn-block" href="{{route('agent.create')}}">Business Partner</a>
                     </div>
                     <div class="form-group">
-                        <a class="btn btn-info btn-lg btn-block" href="{{route('professional.index')}}">Register as Job Seeker</a>
+                        <a class="btn btn-info btn-lg btn-block" href="{{route('professional.index')}}">Job Seeker</a>
                     </div>
                     <div class="form-group">
-                        <a class="btn btn-secondary btn-lg btn-block" href="{{route('retiredPersonnel.create')}}">Register as Retired Personnel</a>
+                        <a class="btn btn-secondary btn-lg btn-block" href="{{route('retiredPersonnel.create')}}">Retired Personnel</a>
                     </div>
                 </div>
             </div>

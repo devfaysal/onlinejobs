@@ -50,7 +50,7 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Jobs
+                            Job Seekers
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @guest
@@ -66,7 +66,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle {{ ( (Route::currentRouteName() === "agent.create") ? "active" : "") }}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Consultants
+                            Business Partners
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @guest
@@ -90,13 +90,13 @@
                             <a class="dropdown-item" href="#">Company review</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
+                    {{-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle {{ ( (Route::currentRouteName() === "agent.create") ? "active" : "") }}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Services
                         </a>
-                    </li>
+                    </li> --}}
                      <li class="nav-item">
-                        <a class="nav-link {{ ( (Route::currentRouteName() === "workers") || (Route::currentRouteName() === "workers.search") ? "active" : "") }}" href="{{route('workers')}}">General Workers</a>
+                        <a class="nav-link {{ ( (Route::currentRouteName() === "workers") || (Route::currentRouteName() === "workers.search") ? "active" : "") }}" href="{{route('workers')}}">Foreign Worker</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ ( (Route::currentRouteName() === "maids") || (Route::currentRouteName() === "maids.search") ? "active" : "") }}" href="{{route('maids')}}">Domestic Maids</a>

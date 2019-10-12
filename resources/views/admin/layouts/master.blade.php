@@ -191,15 +191,15 @@
                                 
                                 <li class="mydropdown">
                                     <a href="">
-                                        <i class="fa fa-users"></i> Agents
+                                        <i class="fa fa-users"></i> Business Partners
                                         <i class="fa arrow"></i>
                                     </a>
                                     <ul class="sidebar-nav">
                                         <li class="{{ ( (Route::currentRouteName() === "admin.agent.index") ? "active" : "") }}">
-                                            <a href="{{route('admin.agent.index')}}"> Active Agents </a>
+                                            <a href="{{route('admin.agent.index')}}"> Active Business Partners </a>
                                         </li>
                                         <li class="{{ ( (Route::currentRouteName() === "admin.agentApplication") ? "active" : "") }}">
-                                            <a href="{{route('admin.agentApplication')}}"> Agent Apllications </a>
+                                            <a href="{{route('admin.agentApplication')}}"> Business Partner Apllications </a>
                                         </li>
                                         <li class="{{ ( (Route::currentRouteName() === "admin.rejectedAgentApplication") ? "active" : "") }}">
                                             <a href="{{route('admin.rejectedAgentApplication')}}">Pending Apllications </a>
@@ -208,7 +208,7 @@
                                 </li>
                                 <li class="{{ ( (Route::currentRouteName() === "admin.professional.index") ? "active" : "") }}">
                                     <a href="{{route('admin.professional.index')}}">
-                                        <i class="fa fa-pencil-square-o"></i> Professionals </a>
+                                        <i class="fa fa-pencil-square-o"></i> Job Seekers </a>
                                 </li>
                                 <li class="{{ ( (Route::currentRouteName() === "admin.retired.index") ? "active" : "") }}">
                                     <a href="{{route('admin.retired.index')}}">
@@ -217,7 +217,7 @@
                                 @endif
                                 <li class="{{ ( (Route::currentRouteName() === "admin.worker.index") ? "active" : "") }}">
                                     <a href="{{route('admin.worker.index')}}">
-                                        <i class="fa fa-pencil-square-o"></i> General Workers </a>
+                                        <i class="fa fa-pencil-square-o"></i> Foreign Worker </a>
                                 </li>
                                 <li class="{{ ( (Route::currentRouteName() === "admin.maid.index") ? "active" : "") }}">
                                     <a href="{{route('admin.maid.index')}}">

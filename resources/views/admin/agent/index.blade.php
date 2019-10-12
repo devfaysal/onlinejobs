@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 @section('content')
     <div class="title-block">
-        <h1 class="title"><span class="counter">{{$active_agent_count}}</span> Active Agents </h1>
+        <h1 class="title"><span class="counter">{{$active_agent_count}}</span> Active Business Partners </h1>
     </div>
     <section class="section">
         <table id="users-table" class="table table-condensed">
@@ -9,7 +9,7 @@
                 <tr>
                     <th></th>
                     <th>ID</th>
-                    <th>Agency Name</th>
+                    <th>Business Partners Name</th>
                     <th>Email</th>
                     <th>Person Incharge</th>
                     <th>Country</th>
@@ -22,7 +22,7 @@
                 <tr>
                     <th class="hide"></th>
                     <th>ID</th>
-                    <th>Agency Name</th>
+                    <th>Business Partners Name</th>
                     <th>Email</th>
                     <th>Person Incharge</th>
                     <th>Country</th>

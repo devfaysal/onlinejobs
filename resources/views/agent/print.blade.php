@@ -35,35 +35,35 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="card-title text-center mt-3">Agency Information</h4>
+                                    <h4 class="card-title text-center mt-3">Company Information</h4>
                                     <table class="table table-striped">
                                         <tr>
-                                            <th width="45%">Agency Registered Name</th>
+                                            <th width="45%">Company Name</th>
                                             <td width="5%">:</td>
                                             <td width="50%">{{$profile->agency_registered_name ?? 'N/A'}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Agency Address</th>
+                                            <th>Address</th>
                                             <td>:</td>
                                             <td>{{$profile->agency_address}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Agency City</th>
+                                            <th>City</th>
                                             <td>:</td>
                                             <td>{{$profile->agency_city}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Agency Country</th>
+                                            <th>Country</th>
                                             <td>:</td>
                                             <td>{{$profile->country_data->name ?? ''}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Agency Phone</th>
+                                            <th>Office Phone</th>
                                             <td>:</td>
                                             <td>{{$profile->agency_phone}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Agency Email</th>
+                                            <th>Email</th>
                                             <td>:</td>
                                             <td>{{$profile->agency_email}}</td>
                                         </tr>
@@ -72,7 +72,7 @@
                                             <td>{{$profile->agency_fax}}</td>
                                         </tr> --}}
                                         <tr>
-                                            <th>Agency License No</th>
+                                            <th>License No</th>
                                             <td>:</td>
                                             <td>{{$profile->license_no}}</td>
                                         </tr>

@@ -30,7 +30,7 @@
                                     <h3>Company Information</h3>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="agency_registered_name" class="col-sm-4 col-form-label">{{ __('Agency Registered Name ') }} <span class="text-danger">*</span></label>
+                                    <label for="agency_registered_name" class="col-sm-4 col-form-label">{{ __('Company Name ') }} <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input id="agency_registered_name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="agency_registered_name" value="{{ old('agency_registered_name') }}" placeholder="Registered Name" required>
 
@@ -120,9 +120,9 @@
                                     </div>
                                 </div> --}}
                                 <div class="form-group row">
-                                    <label for="license_no" class="col-sm-4 col-form-label">{{ __('Agency License No ') }}<span class="text-danger">*</span></label>
+                                    <label for="license_no" class="col-sm-4 col-form-label">{{ __('License No ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
-                                        <input id="license_no" type="text" class="form-control{{ $errors->has('license_no') ? ' is-invalid' : '' }}" name="license_no" value="{{ old('license_no') }}" placeholder="Agency License No" required>
+                                        <input id="license_no" type="text" class="form-control{{ $errors->has('license_no') ? ' is-invalid' : '' }}" name="license_no" value="{{ old('license_no') }}" placeholder="License No" required>
 
                                     @if ($errors->has('license_no'))
                                         <span class="invalid-feedback" role="alert">
