@@ -895,5 +895,16 @@ input.invalid {
 }
 
 
-
+.carousel {
+    position: relative;
+    height: 350px !important;
+    overflow: hidden;
+}
+.banner_tranparent .whitebg.banner_equal {
+    padding: 20px !important;
+    min-height: 131px !important;
+}
+.banner_tranparent.mar_adds {
+    margin: 65px 0 !important;
+}
 
