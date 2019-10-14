@@ -1,5 +1,5 @@
 @if (Route::currentRouteName() == 'maids' || Route::currentRouteName() == 'maids.search')
-<section class="banner" style="min-height: 350px;background:url(/images/homepage_slide02_02.jpg) no-repeat 0 63px fixed;">
+<section class="banner" style="min-height: 350px;background:url(/images/homepage_slide02_02.jpg) no-repeat fixed;">
 @elseif(Route::currentRouteName() == 'workers' || Route::currentRouteName() == 'workers.search')
 <section class="banner" style="min-height: 350px;background:linear-gradient(0deg,rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(/images/homepage_slide04_04.jpg) no-repeat fixed;">
 @else
