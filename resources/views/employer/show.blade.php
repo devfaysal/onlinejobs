@@ -85,6 +85,33 @@
                         </table>
                     </div>
                 </div>
+                <div class="card mt-4">
+                    <h4 class="card-title text-center mt-3">
+                        Available Resume
+                    </h4>
+                    <div class="card-body">
+                        <table id="resume-table" class="my_datatable table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>City</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th class="hide"></th>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>City</th>
+                                    <th class="hide">Action</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
                 @endif
                 @if($employer->employer_profile->looking_for_gw == 'yes')
                 <!-- Demands list -->
@@ -567,6 +594,35 @@
             {data: 'total_number_of_vacancies', name: 'total_number_of_vacancies'},
             {data: 'closing_date', name: 'closing_date'},
             {data: 'job_vacancies_type', name: 'job_vacancies_type'},
+            {data: 'action', name: 'action', orderable: false, searchable: false}
+        ],
+        initComplete: function () {
+            this.api().columns().every(function () {
+                var column = this;
+                var input = document.createElement("input");
+                input.className = 'form-control';
+                $(input).appendTo($(column.footer()).empty())
+                .on('keyup change', function () {
+                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
+
+                    column.search(val ? val : '', true, false).draw();
+                });
+            });
+            $('.hide input').hide();
+        }
+    });
+</script>
+<script>
+    $('#resume-table').DataTable({
+        order: [[ 0, "desc" ]],
+        processing: true,
+        serverSide: true,
+        ajax: '{{route('admin.getProfessionalsData')}}',
+        columns: [
+            {data: 'id', name: 'id'},
+            {data: 'profile_image', name: 'profile_image'},
+            {data: 'name', name: 'name'},
+            {data: 'city', name: 'city'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ],
         initComplete: function () {

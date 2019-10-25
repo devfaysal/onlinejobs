@@ -256,9 +256,11 @@
                 </ul>
                     <section class="social-icons">
                       <p class="hide">Follow Us</p>
-                      <a href="fb" data-original-title="Facebook" data-placement="top" data-toggle="tooltip" class="btn-social facebook" target="_blank"><span class="fa fa-facebook"></span></a> 
+                      <a href="https://www.facebook.com/ap.jobs.165" data-original-title="Facebook" data-placement="top" data-toggle="tooltip" class="btn-social facebook" target="_blank"><span class="fa fa-facebook"></span></a> 
                       <a href="twitter" data-original-title="Twitter" data-placement="top" data-toggle="tooltip" class="btn-social twitter" target="_blank"><span class="fa fa-twitter"></span></a> 
                       <a href="youtube" data-original-title="Youtube" data-placement="top" data-toggle="tooltip" class="btn-social youtube" target="_blank"><span class="fa fa-youtube"></span></a>        
+                      <a href="youtube" data-original-title="linkedin" data-placement="top" data-toggle="tooltip" class="btn-social linkedin" target="_blank"><span class="fa fa-linkedin"></span></a>        
+                      <a href="youtube" data-original-title="instagram" data-placement="top" data-toggle="tooltip" class="btn-social instagram" target="_blank"><span class="fa fa-instagram"></span></a>        
                    </section>
           </div>
       </div>
