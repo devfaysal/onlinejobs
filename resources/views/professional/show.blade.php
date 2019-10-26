@@ -26,8 +26,12 @@
                                     <p class="mb-0"><i class="mr-2 fa fa-money" aria-hidden="true"></i> {{$user->professional_profile->expected_salary}}</p>
                                 </div>
                                 <div class="col-md-5">
-                                    <p class="mb-0"><i class="mr-2 fa fa-phone" aria-hidden="true"></i> {{$user->professional_profile->phone}}</p>
-                                    <p class="mb-0"><i class="mr-2 fa fa-envelope-o" aria-hidden="true"></i> {{$user->professional_profile->email}}</p>
+                                    @auth
+                                        @if(Auth::user()->hasRole('superadministrator') || Auth::user()->hasRole('professional'))
+                                        <p class="mb-0"><i class="mr-2 fa fa-phone" aria-hidden="true"></i> {{$user->professional_profile->phone}}</p>
+                                        <p class="mb-0"><i class="mr-2 fa fa-envelope-o" aria-hidden="true"></i> {{$user->professional_profile->email}}</p>
+                                        @endif
+                                    @endauth
                                 </div>
                                 <div class="col-md-2">
                                     <p class="mb-0 bg-light text-center rounded text-uppercase text-primary">Verify</p>

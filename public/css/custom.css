@@ -9,6 +9,9 @@ table.dataTable tbody td {
 .social-icons .btn-social {
 	height: 45px;
 }
+.social-icons .linkedin{
+	background: #0073B0;
+}
 
 .table th,
 .table td {
