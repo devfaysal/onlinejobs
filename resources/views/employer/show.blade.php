@@ -617,7 +617,7 @@
         order: [[ 0, "desc" ]],
         processing: true,
         serverSide: true,
-        ajax: '{{route('admin.getProfessionalsData')}}',
+        ajax: '{{route('employer.getProfessionalsData')}}',
         columns: [
             {data: 'id', name: 'id'},
             {data: 'profile_image', name: 'profile_image'},

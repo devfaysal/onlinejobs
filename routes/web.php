@@ -182,6 +182,7 @@ Route::prefix('employer')->group(function(){
     Route::get('/view/{public_id}', 'EmployerProfileController@public')->name('employer.public');
     Route::get('/getAllMaids', 'EmployerProfileController@getAllMaids')->name('getAllMaids');
     Route::post('/sendOffer', 'EmployerProfileController@sendOffer')->name('sendOffer');
+    Route::get('/getProfessionalsData', 'EmployerProfileController@getProfessionalsData')->name('employer.getProfessionalsData');
     // Demand section
     Route::post('/saveDemand', 'EmployerProfileController@saveDemand')->name('saveDemand');
     Route::get('/getAllDemands', 'EmployerProfileController@getAllDemands')->name('getAllDemands');
