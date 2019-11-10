@@ -832,7 +832,8 @@ input.invalid {
     box-sizing: border-box;
 }
 .banner-right{
-	float:right;
+	/*float:right;*/
+	float:left;
 	padding:0;
 	box-shadow: inset 0px 5px 0px #09c;
     box-sizing: border-box;
@@ -910,4 +911,156 @@ input.invalid {
 .banner_tranparent.mar_adds {
     margin: 65px 0 !important;
 }
+
+.logbanner{
+	width:100%;
+}
+.logbanner .card{
+	border:0;
+	background:rgba(8, 29, 72, 0.81);
+	border-radius:0;
+}
+.logbanner .card h2{
+	font-size:18px;
+	color:#FFF;
+	text-align:center;
+	font-weight:bold;
+}
+.logbanner .card .card-header{
+	background:rgba(8, 29, 72, 0.72);
+	border:0;
+}
+.logbanner .card .card-body label.container{
+	color: #fff;
+	font-weight: 200;
+}
+.padding_tb{
+	padding-top:50px;
+	padding-bottom:50px;
+}
+.signu{
+	padding-left: 45px !important;
+    padding-right: 45px !important;
+}
+
+/* The container */
+.logbanner .signu .container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.logbanner .signu .container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.logbanner .signu .checkmark {
+	position: absolute;
+    top: 4px;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background: none;
+    border-radius: 50%;
+	border: 2px solid #fff;
+}
+
+/* On mouse-over, add a grey background color */
+.logbanner .signu .container:hover input ~ .checkmark {
+  background: none;
+}
+
+/* When the radio button is checked, add a blue background */
+.logbanner .signu .container input:checked ~ .checkmark {
+  background: none;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.logbanner .signu .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.logbanner .signu .container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.logbanner .signu .container .checkmark:after {
+	top: 3px;
+    left: 3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+.reg_btn{
+    background: #ed2677 !important;
+    border: 0;
+    margin-top: 35px;
+    font-size: 18px;
+    font-weight: 200;
+}
+.reg_btn:hover{
+	background:#ab1552 !important;
+}
+.no_bg{
+	background:none !important;
+}
+.logsec .form-control{
+	background:0;
+	border:0;
+	border-bottom:1px solid #fff;
+	border-radius:0;
+}
+.logsec .form-control:focus{
+	box-shadow:none;
+}
+
+.logsec{
+	padding:40px 45px;
+}
+
+.logsec_btn{
+    background: #244ab4 !important;
+    border: 0;
+    margin-top: 35px;
+    font-size: 18px;
+    font-weight: 200;
+}
+.logsec_btn:hover{
+	background:#1a388b !important;
+}
+.logsec .form-check-label{
+	color:#FFF;
+}
+.logsec .btn.btn-link{
+	color:#FFF;
+}
+
+.banner_tranparent.nbgt {
+    background: rgba(0, 0, 0, 0.74);
+}
+
+.banner_tranparent .whitebg {
+    background: none;
+}
+.banner_tranparent .whitebg h5 a {
+    padding-bottom: 15px;
+}
+
+
 
