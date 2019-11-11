@@ -17,7 +17,7 @@
                             Domestic Maids
                             <span class="pull-right"><small style="font-size: 14px;">Registered:</small> <span class="counter">{{$total_maids}}</span></span>
                         @elseif(Route::currentRouteName() == 'workers' || Route::currentRouteName() == 'workers.search')
-                            General Workers
+                            Foreign Workers
                             <span class="pull-right"><small style="font-size: 14px;">Registered:</small> <span class="counter">{{$total_workers}}</span></span>
                         @endif
                     </h1>
