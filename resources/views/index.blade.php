@@ -109,9 +109,9 @@
 									</div><!--  banner trand end   -->
 								</div>
 								<div class="col-sm-12 col-md-12 col-lg-12 no_padding">
-								<div class="banner_tranparent">
+								<div class="banner_tranparent nbgt">
 										<div class="row_">
-												<div class="col-sm-7 col-md-7 col-lg-7 banner-left">
+												<div class="col-sm-9 offset-md-1 offset-lg-1 col-md-7 col-lg-7 banner-left">
 													<div class="whitebg text-center banner_equal">
 														<div class="col-sm-4 col-md-4 col-lg-4 offset-sm-1 offset-md-1 offset-lg-1">
 															<p> Looking for General Worker<br>or Domestic Maid?</p>
@@ -128,7 +128,7 @@
 														<hr class="hr-text borders">
 													</div>
 												</div>
-												<div class="col-sm-5 col-md-5 col-lg-5 banner-right">
+												<div class="col-sm-3 col-md-3 col-lg-3 banner-right">
 													<div class="whitebg align-middle add_padd banner_equal row align-items-center">
 														<h6 class="color_white">Hiring Packages are available. Choose the best suited for you.</h6>
 														<h5><a href="#"> View the Packages </a> </h5>
@@ -144,16 +144,19 @@
 		<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
 		  <div class="carousel-inner">
 			<div class="carousel-item active">
-			  <img class="d-block w-100" src="images/homepage_slide01.jpg" alt="First slide">
+			  <img class="d-block w-100" src="images/technology.png" alt="First slide">
+			</div>
+			<div class="carousel-item">
+			  <img class="d-block w-100" src="images/homepage_slide04.jpg" alt="First slide">
+			</div>
+			<div class="carousel-item">
+			  <img class="d-block w-100" src="images/general.png" alt="First slide">
 			</div>
 			<div class="carousel-item">
 			  <img class="d-block w-100" src="images/homepage_slide02.jpg" alt="First slide">
 			</div>
 			<div class="carousel-item">
-			  <img class="d-block w-100" src="images/homepage_slide03.jpg" alt="First slide">
-			</div>
-			<div class="carousel-item">
-			  <img class="d-block w-100" src="images/homepage_slide04.jpg" alt="First slide">
+			  <img class="d-block w-100" src="images/restaurent-&-chef.png" alt="First slide">
 			</div>
 		  </div>
 		</div>
