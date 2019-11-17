@@ -308,11 +308,11 @@
                             <div class="col-sm-8 ml-auto">
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" name="looking_for_pro" value="yes" class="custom-control-input" id="looking_for_pro">
-                                    <label class="custom-control-label" for="looking_for_pro">Looking For Professional</label>
+                                    <label class="custom-control-label" for="looking_for_pro">Looking For Job Seeker</label>
                                 </div>
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" name="looking_for_gw" value="yes" class="custom-control-input" id="looking_for_gw">
-                                    <label class="custom-control-label" for="looking_for_gw">Looking For General Worker</label>
+                                    <label class="custom-control-label" for="looking_for_gw">Looking For Foreign Worker</label>
                                 </div>
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" name="looking_for_dm" value="yes" class="custom-control-input" id="looking_for_dm">

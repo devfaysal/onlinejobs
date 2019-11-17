@@ -114,7 +114,7 @@
 												<div class="col-sm-9 offset-md-1 offset-lg-1 col-md-7 col-lg-7 banner-left">
 													<div class="whitebg text-center banner_equal">
 														<div class="col-sm-4 col-md-4 col-lg-4 offset-sm-1 offset-md-1 offset-lg-1">
-															<p> Looking for General Worker<br>or Domestic Maid?</p>
+															<p> Looking for Foreign Worker<br>or Domestic Maid?</p>
 															<a class="btn btn-warning  btn-large btn-block" href="{{route('login')}}"> Quick Registration  </a>
 														</div>
 														<div class="col-sm-2 col-md-2 col-lg-2 mar_top">
