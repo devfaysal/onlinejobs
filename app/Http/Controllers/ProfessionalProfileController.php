@@ -7,6 +7,7 @@ use App\User;
 use App\Country;
 use Carbon\Carbon;
 use App\Qualification;
+use App\Traits\OptionTrait;
 use App\ProfessionalProfile;
 use Illuminate\Http\Request;
 use App\ProfessionalExperience;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfessionalProfileController extends Controller
 {
+    use OptionTrait;
     /**
      * Display a listing of the resource.
      *
@@ -108,8 +110,10 @@ class ProfessionalProfileController extends Controller
      */
     public function edit(User $professional)
     {
+        $PositionNames = $this->getOptions('Position Name');
         return view('professional.edit',[
-            'user' => $professional
+            'user' => $professional,
+            'PositionNames' => $PositionNames
         ]);
     }
 

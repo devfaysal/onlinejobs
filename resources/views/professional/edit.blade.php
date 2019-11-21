@@ -18,15 +18,19 @@
                         @method('PATCH')
                         <input type="hidden" name="role" value="professional">
                         <div class="form-group row">
-                            <label for="resume_headline" class="col-sm-4 col-form-label text-right">{{ __('Resume Headline *') }}</label>
+                            <label for="resume_headline" class="col-sm-4 col-form-label text-right">{{ __('Resume Headline ') }} <span class="text-danger mt-2">*</span></label>
                             <div class="col-sm-8">
-                                <input id="resume_headline" type="text" class="form-control{{ $errors->has('resume_headline') ? ' is-invalid' : '' }}" name="resume_headline" value="{{ $user->professional_profile->resume_headline }}" placeholder="Resume Headline" required>
-
-                            @if ($errors->has('resume_headline'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('resume_headline') }}</strong>
-                                </span>
-                            @endif
+                                <select name="resume_headline" id="resume_headline" class="form-control{{ $errors->has('resume_headline') ? ' is-invalid' : '' }}" required>
+                                    <option value="">-- Select Resume Headline --</option>
+                                    @foreach ($PositionNames as $PositionName)
+                                        <option value="{{$PositionName->name}}" {{$user->professional_profile->resume_headline == $PositionName->name ? 'selected' : ''}}>{{$PositionName->name}}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('resume_headline'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('resume_headline') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                         <div class="form-group row">
@@ -54,7 +58,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="name" class="col-sm-4 col-form-label text-right">{{ __('Name *') }}</label>
+                            <label for="name" class="col-sm-4 col-form-label text-right">{{ __('Name ') }} <span class="text-danger mt-2">*</span></label>
                             <div class="col-sm-8">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->professional_profile->name }}" placeholder="Name" required>
 
@@ -114,7 +118,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-right">{{ __('Email *') }}</label>
+                            <label for="email" class="col-sm-4 col-form-label text-right">{{ __('Email') }} <span class="text-danger mt-2">*</span></label>
                             <div class="col-sm-8">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $user->professional_profile->email }}" placeholder="Email" required>
 
@@ -126,7 +130,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="phone" class="col-sm-4 col-form-label text-right">{{ __('Mobile Number *') }}</label>
+                            <label for="phone" class="col-sm-4 col-form-label text-right">{{ __('Mobile Number') }} <span class="text-danger mt-2">*</span></label>
                             <div class="col-sm-8">
                                 <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ $user->professional_profile->phone }}" placeholder="Mobile Number" required>
 
