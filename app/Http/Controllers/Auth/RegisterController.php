@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Notifications\EmployerApplication;
 use App\Mail\SendPasswordAfterRegistration;
 use Illuminate\Support\Facades\Notification;
+use App\Notifications\NewJobSeekerRegistered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Image; /* https://github.com/Intervention/image */
 
@@ -328,6 +329,8 @@ class RegisterController extends Controller
             $professional->save();
         }
 
+        $admins = User::whereRoleIs('superadministrator')->get();
+        Notification::send($admins, new NewJobSeekerRegistered($user));
         // Session::flash('message', ucfirst($role).' Registered successfully!!'); 
         // Session::flash('alert-class', 'alert-success');
         return $user;
