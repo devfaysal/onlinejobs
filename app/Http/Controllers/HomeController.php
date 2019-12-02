@@ -32,6 +32,7 @@ class HomeController extends Controller
     {
         $registered_job_seekers = User::whereRoleIs('professional')->count();
         $registered_foreign_workers = User::whereRoleIs('worker')->count();
+        $registered_domestic_maids = User::whereRoleIs('maid')->count();
 
         $job_seeker_percentage = round($registered_job_seekers / ($registered_job_seekers + $registered_foreign_workers) * 100, 2);
         $foreign_worker_percentage = round($registered_foreign_workers / ($registered_job_seekers + $registered_foreign_workers) * 100, 2);
@@ -40,7 +41,8 @@ class HomeController extends Controller
             'registered_job_seekers' => $registered_job_seekers,
             'job_seeker_percentage' => $job_seeker_percentage,
             'registered_foreign_workers' => $registered_foreign_workers,
-            'foreign_worker_percentage' => $foreign_worker_percentage
+            'foreign_worker_percentage' => $foreign_worker_percentage,
+            'registered_domestic_maids' => $registered_domestic_maids
         ]);
     }
 

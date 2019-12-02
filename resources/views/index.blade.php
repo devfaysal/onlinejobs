@@ -113,29 +113,26 @@
 										<div class="row_">
 												<div class="col-sm-9 offset-md-1 offset-lg-1 col-md-7 col-lg-7 banner-left">
 													<div class="whitebg text-center banner_equal">
-														<div class="col-sm-5 col-md-5 col-lg-5">
+														<div class="col-sm-4 col-md-4 col-lg-4">
 															<p> Looking for Foreign Worker <br>or Domestic Maid?</p>
 															<a class="btn btn-warning btn-large btn-block" style="width: 90%;" href="{{route('login')}}"> Quick Registration  </a>
 															<hr style="bottom: 25px;" class="hr-text borders">
 														</div>
-														{{-- <div class="col-sm-2 col-md-2 col-lg-2 mar_top">
-															<hr class="hr-text" data-content="or">
-														</div>
-														<div class="col-sm-4 col-md-4 col-lg-4">
-															<h5 class="p_top_20"><a href="#"> Upload Demand Letter </a> </h5>
-															<p class="small_TxT2"> Max 2 MB, doc, docx, rtf, pdf </p> 
-															<p>Our team will contact you.</p>
-														</div> --}}
-														<div class="col-sm-7 col-md-7 col-lg-7">
-															<p class="mb-1">Registered Job Seekers</p>
-															<div class="progress mb-2">
-																<div class="progress-bar bg-success" role="progressbar" style="width: {{ $job_seeker_percentage }}%" aria-valuenow="{{ $job_seeker_percentage }}" aria-valuemin="0" aria-valuemax="100"><span style="font-size:16px;" class="pl-2 text-center text-dark font-weight-bold">{{ $job_seeker_percentage }}%</span></div>
+														<div class="col-sm-8 col-md-8 col-lg-8">
+															<div class="row">
+																<div class="col-md-4">
+																	<p class="text-white text-center">Job Seekers</p>
+																	<h2 class="text-info counter">{{$registered_job_seekers}}</h2>
+																</div>
+																<div class="col-md-4">
+																	<p class="text-white text-center">Foreign Workers</p>
+																	<h2 class="text-info counter">{{$registered_foreign_workers}}</h2>
+																</div>
+																<div class="col-md-4">
+																	<p class="text-white text-center">Domestic Maids</p>
+																	<h2 class="text-info counter">{{$registered_domestic_maids}}</h2>
+																</div>
 															</div>
-															<p class="mb-1">Registered Foreign Workers</p>
-															<div class="progress">
-																<div class="progress-bar bg-info" role="progressbar" style="width: {{ $foreign_worker_percentage }}%" aria-valuenow="{{ $foreign_worker_percentage }}" aria-valuemin="0" aria-valuemax="100"><span style="font-size:16px;" class="pl-2 text-center text-dark font-weight-bold">{{ $foreign_worker_percentage }}%</span></div>
-															</div>
-															
 														</div>
 														<hr class="hr-text borders">
 													</div>
