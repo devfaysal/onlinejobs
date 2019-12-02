@@ -69,8 +69,39 @@
                             @endif
                             </div>
                         </div>
+                        <div id="from" class="form-group row">
+                            <label class="col-md-4 col-form-label text-right" for="from">{{ __('Date of Birth') }} <span class="text-danger mt-2">*</span></label>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <select class="form-control" name="dob_day" id="" required>
+                                            <option value="">--Day--</option>
+                                            @for ($i = 1; $i <= 31; $i++)
+                                                <option value="{{$i}}" {{$user->professional_profile->dob_day() == $i ? 'selected' : ''}}>{{$i}}</option>
+                                            @endfor
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <select class="form-control" name="dob_month" id="" required>
+                                            <option value="">--Month--</option>
+                                            @for ($i = 1; $i <= 12; $i++)
+                                                <option value="{{$i}}" {{$user->professional_profile->dob_month() == $i ? 'selected' : ''}}>{{$i}}</option>
+                                            @endfor
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <select class="form-control" name="dob_year" id="" required>
+                                            <option value="">--Year--</option>
+                                            @for ($i = 1960; $i <= date('Y', time()); $i++)
+                                                <option value="{{$i}}" {{$user->professional_profile->dob_year() == $i ? 'selected' : ''}}>{{$i}}</option>
+                                            @endfor
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group row">
-                            <label for="city" class="col-sm-4 col-form-label text-right">{{ __('City') }}</label>
+                            <label for="city" class="col-sm-4 col-form-label text-right">{{ __('City') }} <span class="text-danger mt-2">*</span></label>
                             <div class="col-sm-8">
                                 <input id="city" type="text" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" value="{{ $user->professional_profile->city }}" placeholder="City" required>
 
@@ -82,7 +113,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="country" class="col-sm-4 col-form-label text-right">{{ __('Country') }}</label>
+                            <label for="country" class="col-sm-4 col-form-label text-right">{{ __('Country') }} <span class="text-danger mt-2">*</span></label>
                             <div class="col-sm-8">
                                 <input id="country" type="text" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" name="country" value="{{ $user->professional_profile->country }}" placeholder="Country" required>
 
@@ -94,7 +125,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="current_salary" class="col-sm-4 col-form-label text-right">{{ __('Current Salary') }}</label>
+                            <label for="current_salary" class="col-sm-4 col-form-label text-right">{{ __('Current Salary') }} <span class="text-danger mt-2">*</span></label>
                             <div class="col-sm-8">
                                 <input id="current_salary" type="text" class="form-control{{ $errors->has('current_salary') ? ' is-invalid' : '' }}" name="current_salary" value="{{ $user->professional_profile->current_salary }}" placeholder="Current Salary" required>
 
@@ -106,7 +137,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="expected_salary" class="col-sm-4 col-form-label text-right">{{ __('Expected Salary') }}</label>
+                            <label for="expected_salary" class="col-sm-4 col-form-label text-right">{{ __('Expected Salary') }} <span class="text-danger mt-2">*</span></label>
                             <div class="col-sm-8">
                                 <input id="expected_salary" type="text" class="form-control{{ $errors->has('expected_salary') ? ' is-invalid' : '' }}" name="expected_salary" value="{{ $user->professional_profile->expected_salary }}" placeholder="Expected Salary" required>
 

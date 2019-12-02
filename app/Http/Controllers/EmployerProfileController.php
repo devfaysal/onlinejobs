@@ -14,14 +14,17 @@ use App\Downloads;
 use Carbon\Carbon;
 use App\MaritalStatus;
 use App\EmployerProfile;
+use App\EmployerInvitation;
 use App\Traits\OptionTrait;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
 use App\Notifications\OfferSentToDM;
 use App\Notifications\DemandLetterSent;
+use App\Notifications\InvitedForInterview;
 use App\Notifications\GWConfirmedByEmployer;
 use Illuminate\Support\Facades\Notification;
+use App\Notifications\EmployerInvitedJobseeker;
 use Image; /* https://github.com/Intervention/image */
 
 class EmployerProfileController extends Controller
@@ -185,7 +188,7 @@ class EmployerProfileController extends Controller
         ->addColumn('action', function ($user) {
             $string =  '<a class="btn btn-xs btn-primary" href="'.route('profile.public', $user->public_id).'">View</a>';
             if ( ! $user->applicants()->first()['id'] ) {
-                $string .= ' <input style="width: 38px;height: 38px;vertical-align: middle;" onclick="KeepCount()" type="checkbox" name="id[]" value="'.$user->id.'">';
+                $string .= ' <input class="ml-1" onclick="KeepCount()" type="checkbox" name="id[]" value="'.$user->id.'">';
             }
 
             return $string;
@@ -535,7 +538,8 @@ class EmployerProfileController extends Controller
 
         return DataTables::of($users)
         ->addColumn('action', function ($user) {
-            $string = '<a href="'.route('professional.show', $user->id).'" class="btn btn-xs btn-primary">View</a> ';
+            $string = '<a href="'.route('professional.show', $user->id).'" class="btn btn-sm btn-primary">View</a> ';
+            $string .= ' <input class="ml-1" type="checkbox" name="ids[]" value="'.$user->id.'">';
             return $string;
         })
         ->addColumn('city', function($user) {
@@ -548,11 +552,52 @@ class EmployerProfileController extends Controller
         ->addColumn('name', function($user) {
             return $user->professional_profile['name'];
         })
+        ->addColumn('age', function($user) {
+            return $user->professional_profile->age();
+        })
+        ->addColumn('education', function($user) {
+            return $user->professional_profile->highest_qualification;
+        })
+        ->addColumn('position', function($user) {
+            return $user->professional_profile->resume_headline;
+        })
         ->addColumn('email', function($user) {
             return $user->professional_profile['email'];
         })
         ->rawColumns(['profile_image', 'action'])
         ->removeColumn('password')
         ->make(true);
+    }
+
+    public function inviteProfessional(Request $request)
+    {
+        $jobseekers = User::find($request->ids);
+
+        foreach($jobseekers as $jobseeker){
+            EmployerInvitation::create([
+                'employer_id' => auth()->user()->id,
+                'jobseeker_id' => $jobseeker->id
+            ]);
+        }
+
+        Notification::send($jobseekers, new InvitedForInterview());
+
+        $admins = User::whereRoleIs('superadministrator')->get();
+        Notification::send($admins, new EmployerInvitedJobseeker(auth()->user()));
+
+        Session::flash('message', 'Invitation sent successfully!'); 
+        Session::flash('alert-class', 'alert-success');
+        return redirect(route('employer.show'));
+    }
+
+    public function invites($employer_id)
+    {
+        $employer = User::find($employer_id);
+        $invites = EmployerInvitation::where('employer_id', $employer_id)->pluck('jobseeker_id');
+        $jobseekers = User::find($invites);
+        return view('employer.invites' ,[
+            'jobseekers' => $jobseekers,
+            'employer' => $employer
+        ]);
     }
 }

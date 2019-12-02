@@ -90,26 +90,35 @@
                         Available Resume
                     </h4>
                     <div class="card-body">
+                        <form method="post" action="{{route('inviteProfessional')}}">
+                        @csrf
                         <table id="resume-table" class="my_datatable table table-condensed">
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Image</th>
+                                    <th class="hide">Image</th>
                                     <th>Name</th>
+                                    <th>Age</th>
+                                    <th>Education</th>
+                                    <th>Position</th>
                                     <th>City</th>
-                                    <th>Action</th>
+                                    <th><input onclick="return confirm('Are you sure?')" class="btn btn-success btn-sm pull-right" type="submit" value="Invite"></th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
                                     <th class="hide"></th>
-                                    <th>Image</th>
+                                    <th class="hide">Image</th>
                                     <th>Name</th>
+                                    <th>Age</th>
+                                    <th>Education</th>
+                                    <th>Position</th>
                                     <th>City</th>
                                     <th class="hide">Action</th>
                                 </tr>
                             </tfoot>
                         </table>
+                    </form>
                     </div>
                 </div>
                 @endif
@@ -536,7 +545,7 @@
             {data: 'date_of_birth', name: 'date_of_birth'},
             {data: 'marital_status', name: 'marital_status'},
             {data: 'status', name: 'status'},
-            {data: 'action', name: 'action', orderable: false, searchable: false}
+            {data: 'action', name: 'action', orderable: false, searchable: false, class: 'd-flex'}
         ],
         initComplete: function () {
             this.api().columns().every(function () {
@@ -622,8 +631,11 @@
             {data: 'id', name: 'id'},
             {data: 'profile_image', name: 'profile_image'},
             {data: 'name', name: 'name'},
+            {data: 'age', name: 'age'},
+            {data: 'education', name: 'education'},
+            {data: 'position', name: 'position'},
             {data: 'city', name: 'city'},
-            {data: 'action', name: 'action', orderable: false, searchable: false}
+            {data: 'action', name: 'action', orderable: false, searchable: false, class: 'd-flex'}
         ],
         initComplete: function () {
             this.api().columns().every(function () {

@@ -147,6 +147,7 @@ class ProfessionalProfileController extends Controller
         $professional->expected_salary = $request->expected_salary;
         $professional->email = $request->email;
         $professional->phone = $request->phone;
+        $professional->dob = $request->dob_year .'-'. $request->dob_month.'-'. $request->dob_day;
         if($request->file('resume_file')){
             $image_basename = explode('.',$request->file('resume_file')->getClientOriginalName())[0];
             $image = $image_basename . '-' . time() . '.' . $request->file('resume_file')->getClientOriginalExtension();

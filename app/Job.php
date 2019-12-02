@@ -24,4 +24,9 @@ class Job extends Model
     {
         return EmployerProfile::where('user_id', $this->user_id)->first();
     }
+
+    public function jobApplicants()
+    {
+        return $this->hasMany(JobApplicant::class);
+    }
 }
