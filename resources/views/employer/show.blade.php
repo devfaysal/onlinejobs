@@ -38,10 +38,10 @@
                                 <hr>
                                 {{-- <a class="btn btn-info btn-sm pull-left" href="#downloads"> <i class="fa fa-download"></i> Download files</a> --}}
                                 @if($employer->employer_profile->looking_for_pro == 'yes')
-                                    <a class="btn btn-success btn-sm ml-3" href="{{route('job.create')}}">Post a Job</a>
+                                    <a class="btn btn-success btn-sm ml-3" href="{{route('job.create')}}">Post Vacancy for Jobseekers</a>
                                 @endif
                                 @if($employer->employer_profile->looking_for_gw == 'yes')
-                                    <a class="btn btn-warning btn-sm ml-3" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#demandModal" href="#">Send a Demand</a>
+                                    <a class="btn btn-warning btn-sm ml-3" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#demandModal" href="#">Send Demand for Foreign Workers</a>
                                 @endif
                             </div>
                             @endif

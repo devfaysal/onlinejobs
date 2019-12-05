@@ -18,7 +18,7 @@
                         @method('PATCH')
                         <input type="hidden" name="role" value="professional">
                         <div class="form-group row">
-                            <label for="resume_headline" class="col-sm-4 col-form-label text-right">{{ __('Resume Headline ') }} <span class="text-danger mt-2">*</span></label>
+                            <label for="resume_headline" class="col-sm-4 col-form-label text-right">{{ __('Vacancy Position ') }} <span class="text-danger mt-2">*</span></label>
                             <div class="col-sm-8">
                                 <select name="resume_headline" id="resume_headline" class="form-control{{ $errors->has('resume_headline') ? ' is-invalid' : '' }}" required>
                                     <option value="">-- Select Resume Headline --</option>
