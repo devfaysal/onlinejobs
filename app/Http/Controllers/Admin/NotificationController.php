@@ -9,7 +9,10 @@ class NotificationController extends Controller
 {
     public function showAllNotification()
     {
-        return view('admin.notification.index');
+        $notifications = auth()->user()->notifications()->paginate(20);
+        return view('admin.notification.index', [
+            'notifications' => $notifications
+        ]);
     }
 
     public function markAllAsRead()

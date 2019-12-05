@@ -14,7 +14,7 @@
                 </tr>
             </thead>
             <tfoot>
-                @foreach (Auth::user()->notifications as $notification)
+                @foreach ($notifications as $notification)
                 <tr>
                     <th></th>
                     <th>{{$notification->data['message']}}</th>
@@ -26,5 +26,6 @@
                 @endforeach
             </tfoot>
         </table>
+        {{$notifications->links()}}
     </section>
 @endsection
