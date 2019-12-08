@@ -792,7 +792,7 @@ input.invalid {
 	font-size: 23px!important;
 }
 .h_p_banner{
-	height: 350px;
+	height: 450px;
 	position:absolute;
 	left:0;
 	right:0;
@@ -800,6 +800,7 @@ input.invalid {
 .banner_face{
 	position:relative;
 	z-index:1;
+	min-height: 414px;
 }
 .banner_tranparent{
 	background:none;
@@ -818,8 +819,8 @@ input.invalid {
 .banner_tranparent .form-control {
     height: calc(2.9rem + 2px);
 	padding: 0.55rem 1.3rem;
-	background:#ebebeb;
-	border:1px solid #fff;
+	background: rgba(235, 235, 235, 0.5490196078431373);
+	border: 2px solid #09c;
 }
 .no_padding{
 	padding:0;
@@ -901,7 +902,7 @@ input.invalid {
 
 .carousel {
     position: relative;
-    height: 350px !important;
+    height: 450px !important;
     overflow: hidden;
 }
 .banner_tranparent .whitebg.banner_equal {
@@ -909,7 +910,7 @@ input.invalid {
     min-height: 131px !important;
 }
 .banner_tranparent.mar_adds {
-    margin: 65px 0 !important;
+    margin: 115px 0 !important;
 }
 
 .logbanner{
@@ -1025,6 +1026,7 @@ input.invalid {
 	border:0;
 	border-bottom:1px solid #fff;
 	border-radius:0;
+	color:#FFF;
 }
 .logsec .form-control:focus{
 	box-shadow:none;
@@ -1061,6 +1063,9 @@ input.invalid {
 .banner_tranparent .whitebg h5 a {
     padding-bottom: 15px;
 }
-
+.b_caption_p{
+	position:absolute !important;
+	bottom:0;
+}
 
 

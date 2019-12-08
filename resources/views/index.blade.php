@@ -108,7 +108,7 @@
 										</div>
 									</div><!--  banner trand end   -->
 								</div>
-								<div class="col-sm-12 col-md-12 col-lg-12 no_padding">
+								<div class="col-sm-12 col-md-12 col-lg-12 b_caption_p no_padding">
 								<div class="banner_tranparent nbgt">
 										<div class="row_">
 												<div class="col-sm-9 offset-md-1 offset-lg-1 col-md-7 col-lg-7 banner-left">
