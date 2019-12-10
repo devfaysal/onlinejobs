@@ -83,6 +83,9 @@ Route::prefix('admin')->name('admin.')->middleware('role:administrator|superadmi
 
     /*Jobs*/
     Route::get('/getJobsData', 'Admin\JobController@getJobsData')->name('getJobsData');
+    Route::get('/job/{job}/getJobseekerByPosition', 'Admin\JobController@getJobseekerByPosition')->name('job.getJobseekerByPosition');
+    Route::get('/job/{job}/suggest-jobseekers', 'Admin\JobController@suggestJobseekers')->name('job.suggestJobseekers');
+    Route::post('/job/{job}/suggest-jobseekers', 'Admin\JobController@sendSuggesion')->name('job.sendSuggesion');
     Route::resource('/job', 'Admin\JobController');
 
     /*Worker*/
