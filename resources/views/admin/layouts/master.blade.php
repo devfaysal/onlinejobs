@@ -183,6 +183,9 @@
                                         <li class="{{ ( (Route::currentRouteName() === "admin.employerDemands") ? "active" : "" ) }}">
                                             <a href="{{route('admin.employerDemands')}}"> Employer Demands </a>
                                         </li>
+                                        <li class="{{ ( (Route::currentRouteName() === "admin.employerOffers") ? "active" : "" ) }}">
+                                            <a href="{{route('admin.employerOffers')}}"> Employer Offers </a>
+                                        </li>
                                         <li class="{{ ( (Route::currentRouteName() === "admin.job.index") ? "active" : "" ) }}">
                                             <a href="{{route('admin.job.index')}}"> Jobs </a>
                                         </li>

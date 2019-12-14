@@ -453,4 +453,16 @@ class EmployerController extends Controller
     {
         //
     }
+
+    public function employerOffers()
+    {
+        $offers = Offer::with('employer')->get();
+        $offers = $offers->filter(function ($offer){
+            return $offer->title == null;
+        });
+        // dd($offers);
+        return view('admin.employer.offers', [
+            'offers' => $offers
+        ]);
+    }
 }
