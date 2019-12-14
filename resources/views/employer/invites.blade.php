@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.master')
 
 @section('content')
     <div class="container">
@@ -20,7 +20,7 @@
                     @foreach ($jobseekers as $jobseeker)
                         <tr>
                             <td>{{$jobseeker->code}}</td>
-                            <td><img src="{{$jobseeker->professional_profile['profile_image'] != '' ? asset('storage/resume/'.$user->professional_profile['profile_image']) :  asset('images/dummy.jpg')}}" width="40" class="img-rounded" /></td>
+                            <td><img src="{{$jobseeker->professional_profile['profile_image'] != '' ? asset('storage/resume/'.$jobseeker->professional_profile['profile_image']) :  asset('images/dummy.jpg')}}" width="40" class="img-rounded" /></td>
                             <td>{{$jobseeker->name}}</td>
                             <td>{{$jobseeker->email}}</td>
                             <td>{{$jobseeker->professional_profile['city']}}</td>

@@ -2,6 +2,59 @@
 
 @section('content')
 <div class="container mt-3">
+    @auth
+    @if(Auth::user()->hasRole('employer') && isset($jobseekers))
+    <div class="row mb-5">
+        <div class="col-md-12">
+            <div class="card mt-4">
+                <h4 class="card-title text-center mt-3">
+                    Suggested Jobseekers
+                </h4>
+                <div class="card-body">
+                    <form method="post" action="{{route('inviteProfessional')}}">
+                    @csrf
+                    <table id="resume-table" class="my_datatable table table-condensed">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th class="hide">Image</th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Education</th>
+                                <th>Position</th>
+                                <th>City</th>
+                                <th><input onclick="return confirm('Are you sure?')" class="btn btn-success btn-sm pull-right" type="submit" value="Invite"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($jobseekers as $jobseeker)
+                            <tr>
+                                <td></td>
+                                <td><img src="{{$jobseeker->professional_profile['profile_image']}}" border="0" width="40" class="img-rounded" align="center" /></td>
+                                <td>{{ $jobseeker->name}}</td>
+                                <td>{{ $jobseeker->professional_profile->age()}}</td>
+                                <td>{{ $jobseeker->professional_profile->highest_qualification}}</td>
+                                <td>{{ $jobseeker->professional_profile->resume_headline}}</td>
+                                <td>{{ $jobseeker->professional_profile['city']}}</td>
+                                <td>
+                                    @if(in_array($jobseeker->id, $invitations))
+                                    <span class="bade badge-success p-1">Already Invited</span>
+                                    @else
+                                    <a href="{{route('professional.show', $jobseeker->id)}}" class="btn btn-sm btn-primary">View</a>
+                                    <input class="ml-1" type="checkbox" name="ids[]" value="{{$jobseeker->id}}">
+                                    @endif
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+    @endauth
     <div class="row">
         <div class="col-md-3">
             <img class="img-fluid" src="{{asset('storage/'.$job->company()->company_logo)}}" alt="">

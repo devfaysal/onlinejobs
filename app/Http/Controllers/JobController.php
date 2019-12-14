@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Job;
 use Session;
+use App\User;
 use App\Language;
 use App\Facilities;
-use App\PositionName;
 use App\JobAcademic;
 use App\JobLanguage;
+use App\PositionName;
 use App\Specialization;
+use App\EmployerInvitation;
+use App\Traits\OptionTrait;
 use Illuminate\Http\Request;
 use App\RetiredPersonnelAcademic;
-use App\Traits\OptionTrait;
 
 class JobController extends Controller
 {
@@ -164,6 +166,19 @@ class JobController extends Controller
      */
     public function show(Job $job)
     {
+        if(auth()->user()->hasRole('employer') && $job->suggested_jobseekers !=null){
+            $jobseekers = [];
+            foreach($job->suggested_jobseekers as $jobseeker){
+                $jobseekers[] = User::find($jobseeker);
+            }
+            $invitations = EmployerInvitation::where('employer_id', auth()->user()->id)->pluck('jobseeker_id')->toArray();
+            return view('job.show', [
+                'job' => $job,
+                'jobseekers' => $jobseekers,
+                'invitations' => $invitations
+            ]);
+        }
+        
         return view('job.show', [
             'job' => $job
         ]);

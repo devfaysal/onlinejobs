@@ -135,7 +135,7 @@
                         <div class="form-group dis-cls">
                             <label for="total_number_of_vacancies" class="col-sm-4 col-form-label text-right">{{ __('Total Number of Vacancies ') }}</label><span class="text-danger mt-2">*</span>
                             <div class="col-sm-8">
-                                <input id="total_number_of_vacancies" type="text" class="form-control{{ $errors->has('total_number_of_vacancies') ? ' is-invalid' : '' }}" name="total_number_of_vacancies" value="{{ $job->total_number_of_vacancies }}" required>
+                                <input id="total_number_of_vacancies" type="number" class="form-control{{ $errors->has('total_number_of_vacancies') ? ' is-invalid' : '' }}" name="total_number_of_vacancies" value="{{ $job->total_number_of_vacancies }}" required>
 
                             @if ($errors->has('total_number_of_vacancies'))
                                 <span class="invalid-feedback" role="alert">

@@ -36,7 +36,10 @@ class JobController extends Controller
         ->addColumn('action', function ($job) {
             $string  = '<a target="_blank" href="'.route('job.show', $job->id).'" class="btn btn-xs btn-primary">View</a> ';
             $string .= '<a target="_blank" href="'.route('job.edit', $job->id).'" class="btn btn-xs btn-warning">Edit</a> ';
-            $string .= '<a target="_blank" href="'.route('admin.job.suggestJobseekers', $job->id).'" class="btn btn-xs btn-warning">Suggest</a> ';
+            if(auth()->user()->hasRole('superadministrator')){
+                $string .= '<a target="_blank" href="'.route('admin.job.suggestJobseekers', $job->id).'" class="btn btn-xs btn-info">Suggestion</a> ';
+            }
+            
             return $string;
         })
         ->make(true);
