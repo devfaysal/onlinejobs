@@ -119,16 +119,24 @@
 															<hr style="bottom: 25px;" class="hr-text borders">
 														</div>
 														<div class="col-sm-8 col-md-8 col-lg-8">
-															<div class="row">
-																<div class="col-md-4">
+															<div class="row d-flex justify-content-center">
+																<div class="px-2">
+																	<p class="text-white text-center">Employers</p>
+																	<h2 class="text-info counter">{{$registered_employers}}</h2>
+																</div>
+																<div class="px-2">
 																	<p class="text-white text-center">Job Seekers</p>
 																	<h2 class="text-info counter">{{$registered_job_seekers}}</h2>
 																</div>
-																<div class="col-md-4">
+																<div class="px-2">
+																	<p class="text-white text-center">Retired Personnels</p>
+																	<h2 class="text-info counter">{{$registered_retired_personnels}}</h2>
+																</div>
+																<div class="px-2">
 																	<p class="text-white text-center">Foreign Workers</p>
 																	<h2 class="text-info counter">{{$registered_foreign_workers}}</h2>
 																</div>
-																<div class="col-md-4">
+																<div class="px-2">
 																	<p class="text-white text-center">Domestic Maids</p>
 																	<h2 class="text-info counter">{{$registered_domestic_maids}}</h2>
 																</div>
