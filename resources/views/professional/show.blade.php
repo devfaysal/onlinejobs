@@ -46,9 +46,13 @@
                                 </div>
                             </div>
 
+                            @auth
+                            @if(Auth::user()->hasRole('superadministrator') || Auth::user()->hasRole('professional'))
                             @if($user->professional_profile->resume_file)
                                 <a class="mt-2 btn btn-sm btn-secondary" target="_blank" href="{{asset('storage/resume/'.$user->professional_profile->resume_file)}}">View Resume</a>
                             @endif
+                            @endif
+                            @endauth
                         </div>
                         <div class="col-md-3">
                             <div class="card bg-info">

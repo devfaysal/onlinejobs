@@ -129,7 +129,7 @@
                         
                         Demand for Foreign Workers
                         
-                        <a class="btn btn-warning btn-sm mb-2 mr-2 pull-right" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#demandModal" href="#">Send a Demand</a>
+                        <a class="btn btn-warning btn-sm mb-2 mr-2 pull-right" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#demandModal" href="#">Send Demand for Foreign Workers</a>
                     </h4>
                     <div class="card-body">
                         <table id="demands-table" class="my_datatable table table-condensed">
@@ -174,7 +174,7 @@
                     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                         <div class="modal-content tex-center">
                             <div class="modal-header">
-                                <h5 class="modal-title text-center" id="exampleModalLongTitle"> Send a Demand Letter </h5>
+                                <h5 class="modal-title text-center" id="exampleModalLongTitle"> Send Demand for Foreign Workers </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
