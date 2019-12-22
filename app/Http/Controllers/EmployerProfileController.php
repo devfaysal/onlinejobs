@@ -586,10 +586,10 @@ class EmployerProfileController extends Controller
 
         $jobseekers = User::find($request->ids);
 
-        Notification::send($jobseekers, new InvitedForInterview());
+        Notification::send($jobseekers, new InvitedForInterview($job));
 
         $admins = User::whereRoleIs('superadministrator')->get();
-        Notification::send($admins, new EmployerInvitedJobseeker(auth()->user()));
+        Notification::send($admins, new EmployerInvitedJobseeker($job));
 
         Session::flash('message', 'Invitation sent successfully!'); 
         Session::flash('alert-class', 'alert-success');

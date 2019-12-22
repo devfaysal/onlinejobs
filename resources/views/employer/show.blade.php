@@ -102,7 +102,7 @@
                                     <th>Education</th>
                                     <th>Position</th>
                                     <th>City</th>
-                                    <th><input onclick="return confirm('Are you sure?')" class="btn btn-success btn-sm pull-right" type="submit" value="Invite"></th>
+                                    <th><input onclick="return confirm('Are you sure?')" class="btn btn-success btn-sm pull-right" type="submit" value="Select"></th>
                                 </tr>
                             </thead>
                             <tfoot>

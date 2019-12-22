@@ -111,7 +111,7 @@ class JobController extends Controller
         }
 
         $employer = User::find($job->user_id);
-        Notification::send($employer, new SuggestJobseeker());
+        Notification::send($employer, new SuggestJobseeker($job));
 
         Session::flash('message', 'Invitation sent successfully!'); 
         Session::flash('alert-class', 'alert-success');
@@ -162,7 +162,7 @@ class JobController extends Controller
             $string = '';
             $applicant = $job->jobApplicants->where('user_id', $user->id)->first();
             if($applicant->invited_by_employer == true){
-                $string .= '<span class="bade badge-success p-1">Invited by Employer</span>';
+                $string .= '<span class="bade badge-success p-1">Selected by Employer</span>';
             }else{
                 if($applicant->suggested_by_admin == true){
                     $string .= '<span class="bade badge-warning p-1">Suggested By Admin</span>';

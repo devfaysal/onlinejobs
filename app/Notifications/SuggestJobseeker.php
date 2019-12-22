@@ -16,10 +16,12 @@ class SuggestJobseeker extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
+
+    private $data;
 
     /**
      * Get the notification's delivery channels.
@@ -29,7 +31,7 @@ class SuggestJobseeker extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -41,8 +43,8 @@ class SuggestJobseeker extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->line('Jobseeker Suggested by Admin.')
+                    ->action('Notification Action', route('job.show', $this->data->id))
                     ->line('Thank you for using our application!');
     }
 
@@ -55,7 +57,8 @@ class SuggestJobseeker extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'message' => 'New Retired Personnel Registered',
+            'link' => route('job.show', $this->data->id),
         ];
     }
 }

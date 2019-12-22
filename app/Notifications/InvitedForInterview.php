@@ -16,10 +16,12 @@ class InvitedForInterview extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
+
+    private $data;
 
     /**
      * Get the notification's delivery channels.
@@ -29,7 +31,7 @@ class InvitedForInterview extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -54,7 +56,8 @@ class InvitedForInterview extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'message' => 'One Employer Selected You!',
+            'link' => route('job.show', $this->data->id),
         ];
     }
 }

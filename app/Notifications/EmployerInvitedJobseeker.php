@@ -31,7 +31,7 @@ class EmployerInvitedJobseeker extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -43,9 +43,8 @@ class EmployerInvitedJobseeker extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line($this->data->company()->company_name . ' Selected some Job seekers!')
+                    ->action('Show', route('applicants', $this->data->id));
     }
 
     /**
@@ -57,8 +56,8 @@ class EmployerInvitedJobseeker extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => 'Employer Selected some Job seekers!',
-            'link' => route('employer.invites', $this->data->id),
+            'message' => $this->data->company()->company_name . ' Selected some Job seekers!',
+            'link' => route('applicants', $this->data->id),
         ];
     }
 }

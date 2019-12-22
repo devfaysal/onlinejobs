@@ -38,7 +38,7 @@
                                 <td>{{ $applicant->jobseeker->professional_profile['city']}}</td>
                                 <td>
                                     @if($applicant->invited_by_employer == true)
-                                        <span class="bade badge-success p-1">Already Invited</span>
+                                        <span class="bade badge-success p-1">Already Selected</span>
                                     @else
                                         @if($applicant->suggested_by_admin == true)
                                             <span class="bade badge-warning p-1">Suggested By Admin</span>
