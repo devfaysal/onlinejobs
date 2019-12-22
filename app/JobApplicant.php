@@ -13,4 +13,9 @@ class JobApplicant extends Model
      * 3 = Interview Done
      * 4 = Hired
      */
+
+    public function jobseeker()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

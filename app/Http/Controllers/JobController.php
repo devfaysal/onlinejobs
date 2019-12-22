@@ -168,16 +168,10 @@ class JobController extends Controller
      */
     public function show(Job $job)
     {
-        if(auth()->user() && auth()->user()->hasRole('employer') && $job->suggested_jobseekers !=null){
-            $jobseekers = [];
-            foreach($job->suggested_jobseekers as $jobseeker){
-                $jobseekers[] = User::find($jobseeker);
-            }
-            $invitations = EmployerInvitation::where('employer_id', auth()->user()->id)->pluck('jobseeker_id')->toArray();
+        if(auth()->user() && auth()->user()->hasRole('employer')){
             return view('job.show', [
                 'job' => $job,
-                'jobseekers' => $jobseekers,
-                'invitations' => $invitations
+                'applicants' => $job->jobApplicants
             ]);
         }
         

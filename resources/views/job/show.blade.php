@@ -3,12 +3,12 @@
 @section('content')
 <div class="container mt-3">
     @auth
-    @if(Auth::user()->hasRole('employer') && isset($jobseekers))
+    @if(Auth::user()->hasRole('employer'))
     <div class="row mb-5">
         <div class="col-md-12">
             <div class="card mt-4">
                 <h4 class="card-title text-center mt-3">
-                    Suggested Jobseekers
+                    Applied/Suggested Jobseekers
                 </h4>
                 <div class="card-body">
                     <form method="post" action="{{route('inviteProfessional')}}">
@@ -23,25 +23,30 @@
                                 <th>Education</th>
                                 <th>Position</th>
                                 <th>City</th>
-                                <th><input onclick="return confirm('Are you sure?')" class="btn btn-success btn-sm pull-right" type="submit" value="Invite"></th>
+                                <th><input onclick="return confirm('Are you sure?')" class="btn btn-success btn-sm pull-right" type="submit" value="Select"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($jobseekers as $jobseeker)
+                            @foreach($applicants as $applicant)
                             <tr>
                                 <td></td>
-                                <td><img src="{{$jobseeker->professional_profile['profile_image']}}" border="0" width="40" class="img-rounded" align="center" /></td>
-                                <td>{{ $jobseeker->name}}</td>
-                                <td>{{ $jobseeker->professional_profile->age()}}</td>
-                                <td>{{ $jobseeker->professional_profile->highest_qualification}}</td>
-                                <td>{{ $jobseeker->professional_profile->resume_headline}}</td>
-                                <td>{{ $jobseeker->professional_profile['city']}}</td>
+                                <td><img src="{{$applicant->jobseeker->professional_profile['profile_image']}}" border="0" width="40" class="img-rounded" align="center" /></td>
+                                <td>{{ $applicant->jobseeker->name}}</td>
+                                <td>{{ $applicant->jobseeker->professional_profile->age()}}</td>
+                                <td>{{ $applicant->jobseeker->professional_profile->highest_qualification}}</td>
+                                <td>{{ $applicant->jobseeker->professional_profile->resume_headline}}</td>
+                                <td>{{ $applicant->jobseeker->professional_profile['city']}}</td>
                                 <td>
-                                    @if(in_array($jobseeker->id, $invitations))
-                                    <span class="bade badge-success p-1">Already Invited</span>
+                                    @if($applicant->invited_by_employer == true)
+                                        <span class="bade badge-success p-1">Already Invited</span>
                                     @else
-                                    <a href="{{route('professional.show', $jobseeker->id)}}" class="btn btn-sm btn-primary">View</a>
-                                    <input class="ml-1" type="checkbox" name="ids[]" value="{{$jobseeker->id}}">
+                                        @if($applicant->suggested_by_admin == true)
+                                            <span class="bade badge-warning p-1">Suggested By Admin</span>
+                                        @elseif($applicant->applied_by_jobseeker == true)
+                                            <span class="bade badge-info p-1">Applied by Jobseeker</span>
+                                        @endif
+                                        <a href="{{route('professional.show', $applicant->id)}}" class="btn btn-sm btn-primary">View</a>
+                                        <input class="ml-1" type="checkbox" name="ids[]" value="{{$applicant->id}}">
                                     @endif
                                 </td>
                             </tr>
