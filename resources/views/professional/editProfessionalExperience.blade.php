@@ -12,6 +12,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card auth-form mb-5">
+                <div class="card-header text-center">
+                    <a class="btn btn-info" href="{{route('professional.profile')}}">Skip Adding Expereince >></a>
+                </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('professionalExperience.update', $user->id) }}">
                         @csrf
