@@ -123,7 +123,7 @@ class JobController extends Controller
         $job->race = $request->race;
         $job->age_eligibillity = $request->age_eligibillity;
         $job->other_requirements = $request->other_requirements;
-        $job->facilities = implode(", " , $request->facilities);
+        $job->facilities = $request->facilities ? implode(", " , $request->facilities) : null;
         $job->other_facilities = $request->other_facilities;
         // $job->language = $request->language;
         $job->minimum_academic_qualification = $request->minimum_academic_qualification;
