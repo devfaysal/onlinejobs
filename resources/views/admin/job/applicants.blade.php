@@ -17,6 +17,7 @@
                     <th>Education</th>
                     <th>Position</th>
                     <th>City</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -29,6 +30,7 @@
                     <th>Education</th>
                     <th>Position</th>
                     <th>City</th>
+                    <th>Status</th>
                     <th class="hide">Action</th>
                 </tr>
             </tfoot>
@@ -50,6 +52,7 @@ $('#resume-table').DataTable({
         {data: 'education', name: 'education'},
         {data: 'position', name: 'position'},
         {data: 'city', name: 'city'},
+        {data: 'status', name: 'status'},
         {data: 'action', name: 'action', orderable: false, searchable: false, class: 'd-flex'}
     ],
     initComplete: function () {

@@ -158,7 +158,21 @@ class JobController extends Controller
         ->addColumn('email', function($user) {
             return $user->professional_profile['email'];
         })
-        ->rawColumns(['profile_image', 'action'])
+        ->addColumn('status', function($user) use($job){
+            $string = '';
+            $applicant = $job->jobApplicants->where('user_id', $user->id)->first();
+            if($applicant->invited_by_employer == true){
+                $string .= '<span class="bade badge-success p-1">Invited by Employer</span>';
+            }else{
+                if($applicant->suggested_by_admin == true){
+                    $string .= '<span class="bade badge-warning p-1">Suggested By Admin</span>';
+                }elseif($applicant->applied_by_jobseeker == true){
+                    $string .= '<span class="bade badge-info p-1">Applied by Jobseeker</span>';
+                }
+            }
+            return $string;
+        })
+        ->rawColumns(['profile_image', 'status', 'action'])
         ->removeColumn('password')
         ->make(true);
     }

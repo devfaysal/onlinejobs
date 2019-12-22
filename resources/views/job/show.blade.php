@@ -11,7 +11,7 @@
                     Applied/Suggested Jobseekers
                 </h4>
                 <div class="card-body">
-                    <form method="post" action="{{route('inviteProfessional')}}">
+                    <form method="post" action="{{route('inviteProfessional', $job->id)}}">
                     @csrf
                     <table id="resume-table" class="my_datatable table table-condensed">
                         <thead>
@@ -46,7 +46,7 @@
                                             <span class="bade badge-info p-1">Applied by Jobseeker</span>
                                         @endif
                                         <a href="{{route('professional.show', $applicant->id)}}" class="btn btn-sm btn-primary">View</a>
-                                        <input class="ml-1" type="checkbox" name="ids[]" value="{{$applicant->id}}">
+                                        <input class="ml-1" type="checkbox" name="ids[]" value="{{$applicant->jobseeker->id}}">
                                     @endif
                                 </td>
                             </tr>
@@ -61,9 +61,13 @@
     @endif
     @endauth
     <div class="row">
+        @auth
+        @if(Auth::user()->hasRole('employer') || Auth::user()->hasRole('superadministrator'))
         <div class="col-md-3">
             <img class="img-fluid" src="{{asset('storage/'.$job->company()->company_logo)}}" alt="">
         </div>
+        @endif
+        @endauth
         <div class="col-md-5">
             <ul>
                 <li class="font-18">
@@ -74,7 +78,11 @@
                         @endauth
                     </h5>
                 </li>
-                <li class="font-18">{{$job->company()->company_name ?? 'N/A'}}</li>
+                @auth
+                @if(Auth::user()->hasRole('employer') || Auth::user()->hasRole('superadministrator'))
+                    <li class="font-18">{{$job->company()->company_name ?? 'N/A'}}</li>
+                @endif
+                @endauth
                 <li class="font-18">{{$job->district ? $job->district . ',' : ''}} {{$job->town ? $job->town . ',' : ''}} {{$job->state ? $job->state . ',': ''}} {{$job->postcode}}</li>
                 <li class="font-18">{{$job->related_experience_year ?? 'N/A'}} Year Experience</li>
                 <li class="font-18">{{$job->total_number_of_vacancies ?? 'N/A'}} Vacancies</li>

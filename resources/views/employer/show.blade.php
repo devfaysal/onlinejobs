@@ -90,7 +90,7 @@
                         Available Resume
                     </h4>
                     <div class="card-body">
-                        <form method="post" action="{{route('inviteProfessional')}}">
+                        <form method="post" action="{{route('inviteProfessional', 1)}}">
                         @csrf
                         <table id="resume-table" class="my_datatable table table-condensed">
                             <thead>

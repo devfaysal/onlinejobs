@@ -569,16 +569,22 @@ class EmployerProfileController extends Controller
         ->make(true);
     }
 
-    public function inviteProfessional(Request $request)
+    public function inviteProfessional(Request $request, Job $job)
     {
-        $jobseekers = User::find($request->ids);
-
-        foreach($jobseekers as $jobseeker){
-            EmployerInvitation::create([
-                'employer_id' => auth()->user()->id,
-                'jobseeker_id' => $jobseeker->id
-            ]);
+        foreach($request->ids as $id){
+            if(!$job->alreadyApplied($id)){
+                $job->jobApplicants()->create([
+                    'user_id' => $id,
+                    'invited_by_employer' => true
+                ]);
+            }else{
+                $applicant = $job->jobApplicants->where('user_id', $id)->first();
+                $applicant->invited_by_employer = true; 
+                $applicant->save();
+            }
         }
+
+        $jobseekers = User::find($request->ids);
 
         Notification::send($jobseekers, new InvitedForInterview());
 
@@ -587,7 +593,7 @@ class EmployerProfileController extends Controller
 
         Session::flash('message', 'Invitation sent successfully!'); 
         Session::flash('alert-class', 'alert-success');
-        return redirect(route('employer.show'));
+        return redirect(route('job.show', $job->id));
     }
 
     public function invites($employer_id)
