@@ -15,6 +15,8 @@ use App\EmployerInvitation;
 use App\Traits\OptionTrait;
 use Illuminate\Http\Request;
 use App\RetiredPersonnelAcademic;
+use App\Notifications\JobSeekerApplied;
+use Illuminate\Support\Facades\Notification;
 
 class JobController extends Controller
 {
@@ -166,7 +168,7 @@ class JobController extends Controller
      */
     public function show(Job $job)
     {
-        if(auth()->user()->hasRole('employer') && $job->suggested_jobseekers !=null){
+        if(auth()->user() && auth()->user()->hasRole('employer') && $job->suggested_jobseekers !=null){
             $jobseekers = [];
             foreach($job->suggested_jobseekers as $jobseeker){
                 $jobseekers[] = User::find($jobseeker);
@@ -284,6 +286,23 @@ class JobController extends Controller
         }
 
         Session::flash('message', 'Job Updated Successfully!!'); 
+        Session::flash('alert-class', 'alert-success');
+
+        return redirect()->route('job.show', $job->id);
+    }
+
+
+    public function applyOnline(Job $job)
+    {
+        $job->jobApplicants()->create([
+            'user_id' => auth()->user()->id,
+            'applied_by_jobseeker' => true
+        ]);
+
+        $admins = User::whereRoleIs('superadministrator')->get();
+        Notification::send($admins, new JobSeekerApplied($job));
+
+        Session::flash('message', 'Application Sent Successfully!!'); 
         Session::flash('alert-class', 'alert-success');
 
         return redirect()->route('job.show', $job->id);

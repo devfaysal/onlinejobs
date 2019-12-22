@@ -11,7 +11,7 @@
                     <th>Positions Name</th>
                     <th>Vacancies</th>
                     <th>Closing Date</th>
-                    <th>Nature</th>
+                    <th>Company Name</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -21,7 +21,7 @@
                     <th>Positions Name</th>
                     <th>Vacancies</th>
                     <th>Closing Date</th>
-                    <th>Nature</th>
+                    <th>Company Name</th>
                     <th class="hide">Action</th>
                 </tr>
             </tfoot>
@@ -40,7 +40,7 @@
             {data: 'positions_name', name: 'positions_name'},
             {data: 'total_number_of_vacancies', name: 'total_number_of_vacancies'},
             {data: 'closing_date', name: 'closing_date'},
-            {data: 'job_vacancies_type', name: 'job_vacancies_type'},
+            {data: 'company_name', name: 'company_name'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ],
         initComplete: function () {

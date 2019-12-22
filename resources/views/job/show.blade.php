@@ -143,7 +143,14 @@
     </div>
     <div class="row my-5">
         <div class="col-md-12">
-            <p class="text-center"><a class="btn btn-success" href="#">Apply Online</a></p>
+            @guest
+            <p class="text-center"><a class="btn btn-success" href="{{route('login')}}">Apply Online</a></p>
+            @endguest
+            @auth
+                @if(Auth::user()->hasRole('professional'))
+                    <p class="text-center"><a class="btn btn-success" href="{{route('applyOnline', $job->id)}}">Apply Online</a></p>
+                @endif
+            @endauth
             {{-- <p class="text-center mb-0">Company Name: {{$job->company()->company_name}}</p> --}}
             <p class="text-center mb-0">{{$job->district ? $job->district . ',': ''}} {{$job->town ? $job->town . ',' : ''}} {{$job->state ? $job->state . ',' : '' }} {{$job->postcode}}</p>
             {{-- <p class="text-center mb-0">{{$job->person_in_charge}}</p> --}}

@@ -34,13 +34,16 @@ class JobController extends Controller
 
         return DataTables::of($jobs)
         ->addColumn('action', function ($job) {
-            $string  = '<a target="_blank" href="'.route('job.show', $job->id).'" class="btn btn-xs btn-primary">View</a> ';
+            $string  = '<a target="_blank" href="'.route('applicants', $job->id).'" class="btn btn-xs btn-primary">View</a> ';
             $string .= '<a target="_blank" href="'.route('job.edit', $job->id).'" class="btn btn-xs btn-warning">Edit</a> ';
             if(auth()->user()->hasRole('superadministrator')){
                 $string .= '<a target="_blank" href="'.route('admin.job.suggestJobseekers', $job->id).'" class="btn btn-xs btn-info">Suggestion</a> ';
             }
             
             return $string;
+        })
+        ->addColumn('company_name', function($job) {
+            return $job->company()->company_name;
         })
         ->make(true);
     }
@@ -109,5 +112,50 @@ class JobController extends Controller
         Session::flash('message', 'Invitation sent successfully!'); 
         Session::flash('alert-class', 'alert-success');
         return redirect(route('admin.job.suggestJobseekers', $job->id));
+    }
+
+    public function applicants(Job $job)
+    {
+        return view('admin.job.applicants', [
+            'job' => $job
+        ]);
+    }
+
+    public function getJobApplicants(Job $job)
+    {
+        $applicants = $job->jobApplicants->pluck('user_id');
+
+        $users = User::find($applicants);
+
+        return DataTables::of($users)
+        ->addColumn('action', function ($user) {
+            $string = '<a href="'.route('professional.show', $user->id).'" class="btn btn-sm btn-primary">View</a> ';
+            return $string;
+        })
+        ->addColumn('city', function($user) {
+            return $user->professional_profile['city'];
+        })
+        ->addColumn('profile_image', function($user) {
+            $img = $user->professional_profile['profile_image'] != '' ? asset('storage/resume/'.$user->professional_profile['profile_image']) :  asset('images/dummy.jpg');
+            return '<img src="'.$img.'" border="0" width="40" class="img-rounded" align="center" />';
+        })
+        ->addColumn('name', function($user) {
+            return $user->professional_profile['name'];
+        })
+        ->addColumn('age', function($user) {
+            return $user->professional_profile->age();
+        })
+        ->addColumn('education', function($user) {
+            return $user->professional_profile->highest_qualification;
+        })
+        ->addColumn('position', function($user) {
+            return $user->professional_profile->resume_headline;
+        })
+        ->addColumn('email', function($user) {
+            return $user->professional_profile['email'];
+        })
+        ->rawColumns(['profile_image', 'action'])
+        ->removeColumn('password')
+        ->make(true);
     }
 }
