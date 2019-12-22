@@ -53,7 +53,7 @@ class JobController extends Controller
         $users = User::with('professional_profile')->where('status', 0)->whereRoleIs('professional')->get();
 
         $users = $users->reject(function ($user) use ($job){
-                    return $user->professional_profile->resume_headline != $job->positions_name || in_array($user->id, $job->suggested_jobseekers ?: []);
+                    return $user->professional_profile->resume_headline != $job->positions_name || $job->alreadyApplied($user->id);
                 });
         
         return DataTables::of($users)
@@ -98,13 +98,12 @@ class JobController extends Controller
 
     public function sendSuggesion(Request $request, Job $job)
     {
-        if($job->suggested_jobseekers == null){
-            $job->suggested_jobseekers = $request->ids;
-        }else{
-            $job->suggested_jobseekers = array_merge($job->suggested_jobseekers, $request->ids);
+        foreach($request->ids as $id){
+            $job->jobApplicants()->create([
+                'user_id' => $id,
+                'suggested_by_admin' => true
+            ]);
         }
-        
-        $job->save();
 
         $employer = User::find($job->user_id);
         Notification::send($employer, new SuggestJobseeker());

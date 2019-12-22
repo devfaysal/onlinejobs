@@ -3,9 +3,7 @@
     <div class="title-block">
         <h1 class="title"> {{ $job->positions_name}} </h1>
         <p>{{ $job->total_number_of_vacancies }} {{ $job->job_vacancies_type }} vacancy open</p>
-        @if($job->suggested_jobseekers != null)
-        <p><span class="badge badge-success">{{count($job->suggested_jobseekers)}} Jobseekers Suggested</span></p>
-        @endif
+        <p><span class="badge badge-success">{{count($job->suggested_jobseekers())}} Jobseekers Suggested</span></p>
     </div>
     <section class="section">
         <h1>Available Jobseekers</h1>

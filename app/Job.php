@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Job extends Model
 {
     protected $casts = [
-        'closing_date' => 'datetime:d/m/Y',
-        'suggested_jobseekers' => 'array'
+        'closing_date' => 'datetime:d/m/Y'
     ];
 
     public function languages()
@@ -29,5 +28,17 @@ class Job extends Model
     public function jobApplicants()
     {
         return $this->hasMany(JobApplicant::class);
+    }
+
+    public function alreadyApplied($user)
+    {
+        $applicants = $this->jobApplicants->pluck('user_id')->toArray();
+
+        return in_array($user, $applicants);
+    }
+
+    public function suggested_jobseekers()
+    {
+        return $this->jobApplicants->where('suggested_by_admin', true);
     }
 }
