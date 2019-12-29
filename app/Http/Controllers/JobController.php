@@ -302,6 +302,25 @@ class JobController extends Controller
         return redirect()->route('job.show', $job->id);
     }
 
+    public function availableJobseekers(Job $job, Request $request)
+    {
+        $age_terms = [
+            '18-24' => [18, 24],
+            '25-35' => [25, 35],
+            '36-45' => [36, 45],
+        ];
+        $jobseekers = $job->availableJobseekers();
+        if(isset($request->age_term)){
+            $jobseekers = $jobseekers->filter(function ($jobseeker) use($age_terms, $request){
+                return $jobseeker->professional_profile->age() > $age_terms[$request->age_term][0] && $jobseeker->professional_profile->age() < $age_terms[$request->age_term][1];
+            });
+        }
+        return view('job.availableJobseekers', [
+            'job' => $job,
+            'jobseekers' => $jobseekers
+        ]);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

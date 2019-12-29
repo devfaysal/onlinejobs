@@ -8,7 +8,7 @@
         <div class="col-md-12">
             <div class="card mt-4">
                 <h4 class="card-title text-center mt-3">
-                    Applied/Suggested Jobseekers
+                    Applied/Suggested Jobseekers <a target="_blank" href="{{route('availableJobseekers', $job->id)}}" class="btn btn-xs btn-info">View all available Resume</a>
                 </h4>
                 <div class="card-body">
                     <form method="post" action="{{route('inviteProfessional', $job->id)}}">

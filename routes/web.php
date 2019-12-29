@@ -204,6 +204,7 @@ Route::get('/job/search', 'JobController@search')->name('job.search');
 Route::get('/job/{job}/applyOnline', 'JobController@applyOnline')->name('applyOnline')->middleware('auth');
 Route::get('/job/{job}/applicants', 'Admin\JobController@applicants')->name('applicants')->middleware('role:administrator|superadministrator');
 Route::get('/job/{job}/getJobApplicants', 'Admin\JobController@getJobApplicants')->name('getJobApplicants')->middleware('role:administrator|superadministrator');
+Route::get('/job/{job}/available-jobseekers', 'JobController@availableJobseekers')->name('availableJobseekers');
 Route::resource('/job', 'JobController');
 
 /*Professional*/

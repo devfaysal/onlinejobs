@@ -85,7 +85,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="card mt-4">
+                {{-- <div class="card mt-4">
                     <h4 class="card-title text-center mt-3">
                         Available Resume
                     </h4>
@@ -120,7 +120,7 @@
                         </table>
                     </form>
                     </div>
-                </div>
+                </div> --}}
                 @endif
                 @if($employer->employer_profile->looking_for_gw == 'yes')
                 <!-- Demands list -->

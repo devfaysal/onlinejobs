@@ -41,4 +41,14 @@ class Job extends Model
     {
         return $this->jobApplicants->where('suggested_by_admin', true);
     }
+
+    public function availableJobseekers()
+    {
+        $users = User::with('professional_profile')->where('status', 0)->whereRoleIs('professional')->get();
+
+        $users = $users->reject(function ($user){
+                    return $user->professional_profile->resume_headline != $this->positions_name || $this->alreadyApplied($user->id);
+                });
+        return $users;
+    }
 }

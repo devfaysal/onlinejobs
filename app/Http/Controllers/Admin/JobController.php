@@ -39,6 +39,7 @@ class JobController extends Controller
                 $string .= '<a target="_blank" href="'.route('applicants', $job->id).'" class="btn btn-xs btn-primary">View</a> ';
             }elseif(auth()->user()->hasRole('employer')){
                 $string .= '<a target="_blank" href="'.route('job.show', $job->id).'" class="btn btn-xs btn-primary">View</a> ';
+                $string .= '<a target="_blank" href="'.route('availableJobseekers', $job->id).'" class="btn btn-xs btn-info">Available Resume</a> ';
             }
             $string .= '<a target="_blank" href="'.route('job.edit', $job->id).'" class="btn btn-xs btn-warning">Edit</a> ';
             if(auth()->user()->hasRole('superadministrator')){
