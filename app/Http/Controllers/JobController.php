@@ -73,8 +73,8 @@ class JobController extends Controller
      */
     public function create()
     {
-        $academics = RetiredPersonnelAcademic::where('status', 1)->get();
-        $academic_fields = Specialization::where('status', 1)->get();
+        $academics = $this->getOptions('Job Academic Qualification');
+        $academic_fields = $this->getOptions('Job Academic Field');
         $languages = Language::where('status', 1)->get();
         $facilities = Facilities::where('status', 1)->get();
         $PositionNames = $this->getOptions('Position Name');

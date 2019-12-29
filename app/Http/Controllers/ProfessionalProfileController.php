@@ -188,8 +188,13 @@ class ProfessionalProfileController extends Controller
 
     public function editQualification(User $user)
     {
+        $qualifications = $this->getOptions('Job Academic Qualification');
+        $field_of_studys = $this->getOptions('Job Academic Field');
+
         return view('professional.editQualification', [
-            'user' => $user
+            'user' => $user,
+            'qualifications' => $qualifications,
+            'field_of_studys' => $field_of_studys
         ]);
     }
 

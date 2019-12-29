@@ -76,7 +76,13 @@
                                 <div class="form-group row">
                                     <label for="qualification" class="col-sm-4 col-form-label text-right">{{ __('Qualification ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
-                                        <input id="qualification" type="text" class="form-control{{ $errors->has('qualification') ? ' is-invalid' : '' }}" name="qualification[]" value="{{ $qualification->qualification }}" placeholder="Qualification" required>
+                                        {{-- <input id="qualification" type="text" class="form-control{{ $errors->has('qualification') ? ' is-invalid' : '' }}" name="qualification[]" value="{{ $qualification->qualification }}" placeholder="Qualification" required> --}}
+                                        <select class="form-control{{ $errors->has('qualification') ? ' is-invalid' : '' }}" name="qualification[]" id="qualification">
+                                            <option value="">--Select Qualification--</option>
+                                            @foreach ($qualifications as $qualification)
+                                                <option value="{{$qualification->name}}">{{$qualification->name}}</option>
+                                            @endforeach
+                                        </select>
         
                                     @if ($errors->has('qualification'))
                                         <span class="invalid-feedback" role="alert">
@@ -88,8 +94,13 @@
                                 <div class="form-group row">
                                     <label for="subject" class="col-sm-4 col-form-label text-right">{{ __('Field of Study ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
-                                        <input id="subject" type="text" class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject[]" value="{{ $qualification->subject }}" placeholder="Field of Study" required>
-        
+                                        {{-- <input id="subject" type="text" class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject[]" value="{{ $qualification->subject }}" placeholder="Field of Study" required> --}}
+                                        <select class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject[]" id="subject">
+                                            <option value="">--Select Field of Study--</option>
+                                            @foreach ($field_of_studys as $study)
+                                                <option value="{{$study->name}}">{{$study->name}}</option>
+                                            @endforeach
+                                        </select>
                                     @if ($errors->has('subject'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('subject') }}</strong>
@@ -168,8 +179,13 @@
                             <div class="form-group row">
                                 <label for="qualification" class="col-sm-4 col-form-label text-right">{{ __('Qualification ') }}<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input id="qualification" type="text" class="form-control{{ $errors->has('qualification') ? ' is-invalid' : '' }}" name="qualification[]" value="{{ old('qualification') }}" placeholder="Qualification" required>
-    
+                                    {{-- <input id="qualification" type="text" class="form-control{{ $errors->has('qualification') ? ' is-invalid' : '' }}" name="qualification[]" value="{{ old('qualification') }}" placeholder="Qualification" required> --}}
+                                    <select class="form-control{{ $errors->has('qualification') ? ' is-invalid' : '' }}" name="qualification[]" id="qualification">
+                                            <option value="">--Select Qualification--</option>
+                                            @foreach ($qualifications as $qualification)
+                                                <option value="{{$qualification->name}}">{{$qualification->name}}</option>
+                                            @endforeach
+                                        </select>
                                 @if ($errors->has('qualification'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('qualification') }}</strong>
@@ -180,8 +196,13 @@
                             <div class="form-group row">
                                 <label for="subject" class="col-sm-4 col-form-label text-right">{{ __('Field of Study ') }}<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input id="subject" type="text" class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject[]" value="{{ old('subject') }}" placeholder="Field of Study" required>
-    
+                                    {{-- <input id="subject" type="text" class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject[]" value="{{ old('subject') }}" placeholder="Field of Study" required> --}}
+                                    <select class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject[]" id="subject">
+                                        <option value="">--Select Field of Study--</option>
+                                        @foreach ($field_of_studys as $study)
+                                            <option value="{{$study->name}}">{{$study->name}}</option>
+                                        @endforeach
+                                    </select>
                                 @if ($errors->has('subject'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('subject') }}</strong>
@@ -265,8 +286,13 @@
                                                 <div class="form-group row">
                                                     <label for="qualification" class="col-sm-4 col-form-label text-right">{{ __('Qualification ') }}<span class="text-danger">*</span></label>
                                                     <div class="col-sm-8">
-                                                        <input id="qualification" type="text" class="form-control{{ $errors->has('qualification') ? ' is-invalid' : '' }}" name="qualification[]" value="{{ old('qualification') }}" placeholder="Qualification" required>
-                        
+                                                        {{-- <input id="qualification" type="text" class="form-control{{ $errors->has('qualification') ? ' is-invalid' : '' }}" name="qualification[]" value="{{ old('qualification') }}" placeholder="Qualification" required> --}}
+                                                        <select class="form-control{{ $errors->has('qualification') ? ' is-invalid' : '' }}" name="qualification[]" id="qualification">
+                                                            <option value="">--Select Qualification--</option>
+                                                            @foreach ($qualifications as $qualification)
+                                                                <option value="{{$qualification->name}}">{{$qualification->name}}</option>
+                                                            @endforeach
+                                                        </select>
                                                     @if ($errors->has('qualification'))
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $errors->first('qualification') }}</strong>
@@ -277,8 +303,13 @@
                                                 <div class="form-group row">
                                                     <label for="subject" class="col-sm-4 col-form-label text-right">{{ __('Field of Study ') }}<span class="text-danger">*</span></label>
                                                     <div class="col-sm-8">
-                                                        <input id="subject" type="text" class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject[]" value="{{ old('subject') }}" placeholder="Field of Study" required>
-                        
+                                                        {{-- <input id="subject" type="text" class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject[]" value="{{ old('subject') }}" placeholder="Field of Study" required> --}}
+                                                        <select class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject[]" id="subject">
+                                                            <option value="">--Select Field of Study--</option>
+                                                            @foreach ($field_of_studys as $study)
+                                                                <option value="{{$study->name}}">{{$study->name}}</option>
+                                                            @endforeach
+                                                        </select>
                                                     @if ($errors->has('subject'))
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $errors->first('subject') }}</strong>
