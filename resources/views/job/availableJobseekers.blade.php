@@ -78,7 +78,7 @@
                                         <input class="custom-control-input" type="checkbox" name="ids[]" id="userid{{$user->id}}" value="{{$user->id}}">
                                         <label class="custom-control-label text-success" for="userid{{$user->id}}">Select</label>
                                     </div>
-                                    <img class="img-thumbnail" src="{{$user->professional_profile->profile_image != '' ? asset('storage/'.$user->professional_profile->profile_image) : asset('images/avatar.jpg')}}" style="height: 130px; width: 130px; border-radius: 50%; margin-bottom: 10px;" alt="{{$user->professional_profile->name ?? ''}}">
+                                    <img class="img-thumbnail" src="{{$user->professional_profile->profile_image != '' ? asset('storage/resume/'.$user->professional_profile->profile_image) : asset('images/avatar.jpg')}}" style="height: 130px; width: 130px; border-radius: 50%; margin-bottom: 10px;" alt="{{$user->professional_profile->name ?? ''}}">
                                     <br>
                                     <a href="{{route('professional.show', $user->id)}}" class="btn btn-sm btn-block btn-primary" target="_blank">Details</a>
                                 </div>
