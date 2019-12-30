@@ -263,6 +263,18 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="postcode" class="col-sm-4 col-form-label">{{ __('Postcode') }} <span class="text-danger">*</span></label>
+                            <div class="col-sm-8">
+                                <input id="postcode" type="text" class="form-control{{ $errors->has('postcode') ? ' is-invalid' : '' }}" name="postcode" value="{{ old('postcode') }}" placeholder="Postcode" required>
+
+                                @if ($errors->has('postcode'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('postcode') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="company_city" class="col-sm-4 col-form-label">{{ __('City') }} <span class="text-danger">*</span></label>

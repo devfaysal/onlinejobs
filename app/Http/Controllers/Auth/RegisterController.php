@@ -206,6 +206,7 @@ class RegisterController extends Controller
             $employer->contact_email = $data['contact_email'];
             $employer->company_name = $data['company_name'];
             $employer->company_address = $data['company_address'];
+            $employer->postcode = $data['postcode'];
             $employer->company_city = $data['company_city'];
             $employer->company_country = $data['company_country'];
             $employer->company_phone = $data['company_phone'];

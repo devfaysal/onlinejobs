@@ -98,6 +98,11 @@
                                         <td>{{$employer->employer_profile->company_address ?? 'N/A'}}</td>
                                     </tr>
                                     <tr>
+                                        <th>Postcode</th>
+                                        <th>:</th>
+                                        <td>{{$employer->employer_profile->postcode ?? 'N/A'}}</td>
+                                    </tr>
+                                    <tr>
                                         <th>City</th>
                                         <th>:</th>
                                         <td>{{$employer->employer_profile->company_city ?? 'N/A'}}</td>

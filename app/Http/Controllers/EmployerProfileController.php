@@ -369,6 +369,7 @@ class EmployerProfileController extends Controller
         $employer_profile->website = $request->website;
         $employer_profile->roc = $request->roc;
         $employer_profile->company_address = $request->company_address;
+        $employer_profile->postcode = $request->postcode;
         $employer_profile->company_city= $request->company_city;
         $employer_profile->state= $request->state;
         $employer_profile->company_country= $request->company_country;
