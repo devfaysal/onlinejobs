@@ -17,10 +17,10 @@ use Illuminate\Support\Facades\Mail;
 use App\Notifications\AgentApplication;
 use Illuminate\Support\Facades\Validator;
 use App\Notifications\EmployerApplication;
-use App\Mail\SendPasswordAfterRegistration;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\NewJobSeekerRegistered;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Notifications\SendPasswordAfterRegistration;
 use Image; /* https://github.com/Intervention/image */
 
 class RegisterController extends Controller
@@ -227,7 +227,7 @@ class RegisterController extends Controller
             }
 
             $employer->save();
-            Mail::to($user)->send(new SendPasswordAfterRegistration($data['password']));
+            Notification::send($user, new SendPasswordAfterRegistration($data['password']));
             Session::flash('message', 'Your Employer Application Submitted Successfully!!'); 
             Session::flash('alert-class', 'alert-success');
 
@@ -304,7 +304,7 @@ class RegisterController extends Controller
             
             //Send notification to admins
             //$data = $agent;
-            Mail::to($user)->send(new SendPasswordAfterRegistration($data['password']));
+            Notification::send($user, new SendPasswordAfterRegistration($data['password']));
             $admins = User::whereRoleIs('superadministrator')->get();
             Notification::send($admins, new AgentApplication($agent));
         }
