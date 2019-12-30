@@ -304,6 +304,8 @@ class JobController extends Controller
 
     public function availableJobseekers(Job $job, Request $request)
     {
+        $qualifications = $this->getOptions('Job Academic Qualification');
+        $field_of_studys = $this->getOptions('Job Academic Field');
         $age_terms = [
             '18-24' => [18, 24],
             '25-35' => [25, 35],
@@ -315,9 +317,32 @@ class JobController extends Controller
                 return $jobseeker->professional_profile->age() > $age_terms[$request->age_term][0] && $jobseeker->professional_profile->age() < $age_terms[$request->age_term][1];
             });
         }
+        if(isset($request->city)){
+            $jobseekers = $jobseekers->filter(function ($jobseeker) use($age_terms, $request){
+                return $jobseeker->professional_profile->city == $request->city;
+            });
+        }
+        if(isset($request->qualification)){
+            $jobseekers = $jobseekers->filter(function ($jobseeker) use($request){
+                $qualifications = $jobseeker->qualifications;
+                foreach($qualifications as $qualification){
+                    return $qualification->qualification == $request->qualification;
+                }
+            });
+        }
+        if(isset($request->field_of_study)){
+            $jobseekers = $jobseekers->filter(function ($jobseeker) use($request){
+                $qualifications = $jobseeker->qualifications;
+                foreach($qualifications as $qualification){
+                    return $qualification->subject == $request->field_of_study;
+                }
+            });
+        }
         return view('job.availableJobseekers', [
             'job' => $job,
-            'jobseekers' => $jobseekers
+            'jobseekers' => $jobseekers,
+            'qualifications' => $qualifications,
+            'field_of_studys' => $field_of_studys
         ]);
     }
 

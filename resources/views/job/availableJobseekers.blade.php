@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="mt-3 text-white text-uppercase text-center" style="border-bottom: 1px solid;">
-                        Professionals
+                        Available Professionals
                         <span class="pull-right"><small style="font-size: 14px;">Available:</small> <span class="counter">{{count($jobseekers)}}</span></span>
                     </h1>
                 </div>
@@ -27,8 +27,30 @@
                                         <option value="36-45" @if(request('age_term')=="36-45"){{"selected"}} @endif>36-45</option>
                                     </select>
                                 </div>
+                                <div class="col-2">
+                                    <label class="sr-only" for="qualification">Qualification</label>
+                                    <select name="qualification" id="qualification" class="form-control">
+                                        <option value="">-- Qualification --</option>
+                                        @foreach ($qualifications as $qualification)
+                                            <option value="{{ $qualification->name }}" @if(request('qualification')==$qualification->name){{"selected"}} @endif>{{ $qualification->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-2">
+                                    <label class="sr-only" for="field_of_study">Field of study</label>
+                                    <select name="field_of_study" id="field_of_study" class="form-control">
+                                        <option value="">-- Field of study --</option>
+                                        @foreach ($field_of_studys as $field_of_study)
+                                            <option value="{{ $field_of_study->name }}" @if(request('field_of_study')==$field_of_study->name){{"selected"}} @endif>{{ $field_of_study->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-2">
+                                    <label class="sr-only" for="city">Age</label>
+                                    <input type="text" class="form-control" id="city" name="city" placeholder="Type City" value="{{request('city')}}">
+                                </div>
                                 
-                                <div class="col-3">
+                                <div class="col-2">
                                     <button type="submit" class="btn btn-primary text-capitalize btn-block">Search Professional</button>
                                 </div>
                             </div>
@@ -42,17 +64,25 @@
         <div class="row">
             <div class="col-md-12">
                 @if(isset($jobseekers))
-                    <!-- <h1>Search Results</h1> -->
+                <form method="post" action="{{route('inviteProfessional', $job->id)}}">
+                @csrf
+                    <div class="text-center py-2">
+                        <input onclick="return confirm('Are you sure?')" class="btn btn-success btn-sm" type="submit" value="Submit Selected Professionals">
+                    </div>
                     <div class="card">
                         <div class="card-body">
                             <div class="row verticle-center">
                                 @foreach ($jobseekers as $user)
-                                <div class="col-md-2 mb-2 text-center" style="border: 1px solid #e6edee; height: 210px; padding-top: 10px;">
-                                    <img class="img-thumbnail" src="{{$user->professional_profile->profile_image != '' ? asset('storage/'.$user->professional_profile->profile_image) : asset('images/avatar.jpg')}}" style="height: 130px; width: 130px; border-radius: 50%; margin-bottom: 10px;" alt="{{$user->professional_profile->profile_image ?? ''}}">
+                                <div class="col-md-2 mb-2 text-center" style="border: 1px solid #e6edee; height: 220px; padding-top: 10px;">
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" type="checkbox" name="ids[]" id="userid{{$user->id}}" value="{{$user->id}}">
+                                        <label class="custom-control-label text-success" for="userid{{$user->id}}">Select</label>
+                                    </div>
+                                    <img class="img-thumbnail" src="{{$user->professional_profile->profile_image != '' ? asset('storage/'.$user->professional_profile->profile_image) : asset('images/avatar.jpg')}}" style="height: 130px; width: 130px; border-radius: 50%; margin-bottom: 10px;" alt="{{$user->professional_profile->name ?? ''}}">
                                     <br>
-                                    <a href="{{route('professional.show', $user->id)}}" class="btn btn-block btn-primary" target="_blank">Details</a>
+                                    <a href="{{route('professional.show', $user->id)}}" class="btn btn-sm btn-block btn-primary" target="_blank">Details</a>
                                 </div>
-                                <div class="col-md-4 mb-2" style="border: 1px solid #e6edee; border-left: none; height: 210px; padding-top: 10px;">
+                                <div class="col-md-4 mb-2" style="border: 1px solid #e6edee; border-left: none; height: 220px; padding-top: 10px;">
                                     <table class="table table-sm table-borderless">
                                         <tr>
                                             <th width="35%">Position</th>
@@ -87,6 +117,7 @@
                     </div>
                 @endif
             </div><!--/.col-md-9-->
+            </form>
         </div><!--/.row-->
     </div><!--/.container-->
 @endsection
