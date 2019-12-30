@@ -53,6 +53,9 @@
                                 <div class="col-2">
                                     <button type="submit" class="btn btn-primary text-capitalize btn-block">Search Professional</button>
                                 </div>
+                                <div class="col-1">
+                                    <a href="{{ route('availableJobseekers', $job->id) }}" class="btn btn-danger text-capitalize">Clear</a>
+                                </div>
                             </div>
                         </form>
                     </div><!--  banner trand end   -->
@@ -118,9 +121,9 @@
                             </div>
                         </div>
                     </div>
+                    </form>
                 @endif
             </div><!--/.col-md-9-->
-            </form>
         </div><!--/.row-->
     </div><!--/.container-->
 @endsection

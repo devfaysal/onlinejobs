@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Job;
 use App\User;
+use App\Traits\OptionTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Notifications\SuggestJobseeker;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Notification;
 
 class JobController extends Controller
 {
+    use OptionTrait;
     /**
      * Display a listing of the resource.
      *
@@ -95,15 +97,58 @@ class JobController extends Controller
         ->make(true);
     }
 
-    public function suggestJobseekers(Job $job)
+    public function suggestJobseekers(Job $job, Request $request)
     {
+        $qualifications = $this->getOptions('Job Academic Qualification');
+        $field_of_studys = $this->getOptions('Job Academic Field');
+        $age_terms = [
+            '18-24' => [18, 24],
+            '25-35' => [25, 35],
+            '36-45' => [36, 45],
+        ];
+
+        $jobseekers = $job->availableJobseekers();
+        if(isset($request->age_term)){
+            $jobseekers = $jobseekers->filter(function ($jobseeker) use($age_terms, $request){
+                return $jobseeker->professional_profile->age() > $age_terms[$request->age_term][0] && $jobseeker->professional_profile->age() < $age_terms[$request->age_term][1];
+            });
+        }
+        if(isset($request->city)){
+            $jobseekers = $jobseekers->filter(function ($jobseeker) use($age_terms, $request){
+                return $jobseeker->professional_profile->city == $request->city;
+            });
+        }
+        if(isset($request->qualification)){
+            $jobseekers = $jobseekers->filter(function ($jobseeker) use($request){
+                $qualifications = $jobseeker->qualifications;
+                foreach($qualifications as $qualification){
+                    return $qualification->qualification == $request->qualification;
+                }
+            });
+        }
+        if(isset($request->field_of_study)){
+            $jobseekers = $jobseekers->filter(function ($jobseeker) use($request){
+                $qualifications = $jobseeker->qualifications;
+                foreach($qualifications as $qualification){
+                    return $qualification->subject == $request->field_of_study;
+                }
+            });
+        }
+
         return view('admin.job.suggestJobseekers', [
-            'job' => $job
+            'job' => $job,
+            'jobseekers' => $jobseekers,
+            'qualifications' => $qualifications,
+            'field_of_studys' => $field_of_studys
         ]);
     }
 
     public function sendSuggesion(Request $request, Job $job)
     {
+        $request->validate([
+            'ids' => 'required'
+        ]);
+
         foreach($request->ids as $id){
             $job->jobApplicants()->create([
                 'user_id' => $id,
@@ -114,7 +159,7 @@ class JobController extends Controller
         $employer = User::find($job->user_id);
         Notification::send($employer, new SuggestJobseeker($job));
 
-        Session::flash('message', 'Invitation sent successfully!'); 
+        Session::flash('message', 'Suggesion sent successfully!'); 
         Session::flash('alert-class', 'alert-success');
         return redirect(route('admin.job.suggestJobseekers', $job->id));
     }
