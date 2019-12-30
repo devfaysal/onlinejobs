@@ -68,6 +68,9 @@
                 @csrf
                     <div class="text-center py-2">
                         <input onclick="return confirm('Are you sure?')" class="btn btn-success btn-sm" type="submit" value="Submit Selected Professionals">
+                        @if ($errors->has('ids'))
+                            <span class="badge badge-danger">Please Select at least one Jobseeker</span>
+                        @endif
                     </div>
                     <div class="card">
                         <div class="card-body">

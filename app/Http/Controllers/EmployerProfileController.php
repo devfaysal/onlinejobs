@@ -572,6 +572,9 @@ class EmployerProfileController extends Controller
 
     public function inviteProfessional(Request $request, Job $job)
     {
+        $request->validate([
+            'ids' => 'required'
+        ]);
         foreach($request->ids as $id){
             if(!$job->alreadyApplied($id)){
                 $job->jobApplicants()->create([
