@@ -44,7 +44,7 @@
 					    			<select name="salary" class="form-control">
                                     	<option value="">Salary</option>
                                         @foreach ($search_salarys as $salary)
-											<option value="{{ $salary->name }}">{{ $salary->name }}</option>
+											<option value="{{ $salary->name }}">RM {{ $salary->name }}</option>
 										@endforeach
                                     </select>
 					    		</div>

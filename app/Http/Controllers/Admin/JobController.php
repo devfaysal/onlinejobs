@@ -106,6 +106,8 @@ class JobController extends Controller
             '18-24' => [18, 24],
             '25-35' => [25, 35],
             '36-45' => [36, 45],
+            '46-60' => [46, 60],
+            'Above 60' => [61, 100],
         ];
 
         $jobseekers = $job->availableJobseekers();

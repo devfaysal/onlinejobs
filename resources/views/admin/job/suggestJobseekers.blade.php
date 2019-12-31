@@ -15,6 +15,8 @@
                         <option value="18-24" @if(request('age_term')=="18-24"){{"selected"}} @endif>18-24</option>
                         <option value="25-35" @if(request('age_term')=="25-35"){{"selected"}} @endif>25-35</option>
                         <option value="36-45" @if(request('age_term')=="36-45"){{"selected"}} @endif>36-45</option>
+                        <option value="46-60" @if(request('age_term')=="46-60"){{"selected"}} @endif>46-60</option>
+                        <option value="Above 60" @if(request('age_term')=="Above 60"){{"selected"}} @endif>Above 60</option>
                     </select>
                 </div>
                 <div class="col-2">
@@ -40,7 +42,7 @@
                     <select name="salary" id="salary" class="form-control">
                         <option value="">-- Salary --</option>
                         @foreach ($salarys as $salary)
-                            <option value="{{ $salary->name }}" @if(request('salary')==$salary->name){{"selected"}} @endif>{{ $salary->name }}</option>
+                            <option value="{{ $salary->name }}" @if(request('salary')==$salary->name){{"selected"}} @endif>RM {{ $salary->name }}</option>
                         @endforeach
                     </select>
                 </div>
