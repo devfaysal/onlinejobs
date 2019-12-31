@@ -704,8 +704,8 @@
                     total = total + 1;
             }
 
-            if (total > 1) {
-                alert('Please select only 1')
+            if (total > 3) {
+                alert('Please select Max 3')
                 inputTags[i].checked = false;
                 return false;
             }
