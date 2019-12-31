@@ -127,7 +127,7 @@
                         <div class="form-group row">
                             <label for="current_salary" class="col-sm-4 col-form-label text-right">{{ __('Current Salary') }} <span class="text-danger mt-2">*</span></label>
                             <div class="col-sm-8">
-                                <input id="current_salary" type="text" class="form-control{{ $errors->has('current_salary') ? ' is-invalid' : '' }}" name="current_salary" value="{{ $user->professional_profile->current_salary }}" placeholder="Current Salary" required>
+                                <input id="current_salary" type="number" class="form-control{{ $errors->has('current_salary') ? ' is-invalid' : '' }}" name="current_salary" value="{{ $user->professional_profile->current_salary }}" placeholder="Current Salary" required>
 
                             @if ($errors->has('current_salary'))
                                 <span class="invalid-feedback" role="alert">
@@ -139,7 +139,7 @@
                         <div class="form-group row">
                             <label for="expected_salary" class="col-sm-4 col-form-label text-right">{{ __('Expected Salary') }} <span class="text-danger mt-2">*</span></label>
                             <div class="col-sm-8">
-                                <input id="expected_salary" type="text" class="form-control{{ $errors->has('expected_salary') ? ' is-invalid' : '' }}" name="expected_salary" value="{{ $user->professional_profile->expected_salary }}" placeholder="Expected Salary" required>
+                                <input id="expected_salary" type="number" class="form-control{{ $errors->has('expected_salary') ? ' is-invalid' : '' }}" name="expected_salary" value="{{ $user->professional_profile->expected_salary }}" placeholder="Expected Salary" required>
 
                             @if ($errors->has('expected_salary'))
                                 <span class="invalid-feedback" role="alert">

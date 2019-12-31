@@ -46,12 +46,21 @@
                                     </select>
                                 </div>
                                 <div class="col-2">
+                                    <label class="sr-only" for="salary">Salary</label>
+                                    <select name="salary" id="salary" class="form-control">
+                                        <option value="">-- Salary --</option>
+                                        @foreach ($salarys as $salary)
+                                            <option value="{{ $salary->name }}" @if(request('salary')==$salary->name){{"selected"}} @endif>{{ $salary->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-2">
                                     <label class="sr-only" for="city">Age</label>
                                     <input type="text" class="form-control" id="city" name="city" placeholder="Type City" value="{{request('city')}}">
                                 </div>
                                 
-                                <div class="col-2">
-                                    <button type="submit" class="btn btn-primary text-capitalize btn-block">Search Professional</button>
+                                <div class="col-1">
+                                    <button type="submit" class="btn btn-primary text-capitalize btn-block">Search</button>
                                 </div>
                                 <div class="col-1">
                                     <a href="{{ route('availableJobseekers', $job->id) }}" class="btn btn-danger text-capitalize">Clear</a>

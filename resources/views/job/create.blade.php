@@ -111,7 +111,7 @@
                                 </select>
                             </div>
                             <div class="col-sm-3">
-                                <input id="salary_offer" type="text" class="form-control{{ $errors->has('salary_offer') ? ' is-invalid' : '' }}" name="salary_offer" value="{{ old('salary_offer') }}" required>
+                                <input id="salary_offer" type="number" class="form-control{{ $errors->has('salary_offer') ? ' is-invalid' : '' }}" name="salary_offer" value="{{ old('salary_offer') }}" required>
                             </div>
                             <div class="col-sm-3">
                                 <select name="salary_offer_period" id="salary_offer_period" class="form-control{{ $errors->has('salary_offer_period') ? ' is-invalid' : '' }}">

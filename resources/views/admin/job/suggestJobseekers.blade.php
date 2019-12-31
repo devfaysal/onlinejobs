@@ -8,7 +8,7 @@
     <section class="section">
         <form method="GET" action="{{ route('admin.job.suggestJobseekers', $job->id) }}">
             <div class="form-row justify-content-center ext-box">
-                <div class="col-2">
+                <div class="col-1">
                     <label class="sr-only" for="age_term">Age</label>
                     <select name="age_term" id="age_term" class="form-control">
                         <option value="">-- Age --</option>
@@ -36,12 +36,21 @@
                     </select>
                 </div>
                 <div class="col-2">
+                    <label class="sr-only" for="salary">Salary</label>
+                    <select name="salary" id="salary" class="form-control">
+                        <option value="">-- Salary --</option>
+                        @foreach ($salarys as $salary)
+                            <option value="{{ $salary->name }}" @if(request('salary')==$salary->name){{"selected"}} @endif>{{ $salary->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-1">
                     <label class="sr-only" for="city">Age</label>
                     <input type="text" class="form-control" id="city" name="city" placeholder="Type City" value="{{request('city')}}">
                 </div>
                 
-                <div class="col-2">
-                    <button type="submit" class="btn btn-primary text-capitalize btn-block">Search Professional</button>
+                <div class="col-1">
+                    <button type="submit" class="btn btn-primary text-capitalize btn-block">Search</button>
                 </div>
                 <div class="col-1">
                     <a href="{{ route('admin.job.suggestJobseekers', $job->id) }}" class="btn btn-danger text-capitalize">Clear</a>

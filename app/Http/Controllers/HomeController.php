@@ -9,10 +9,12 @@ use App\Country;
 use App\Language;
 use App\Religion;
 use Carbon\Carbon;
+use App\Traits\OptionTrait;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    use OptionTrait;
     /**
      * Create a new controller instance.
      *
@@ -35,6 +37,9 @@ class HomeController extends Controller
         $registered_domestic_maids = User::whereRoleIs('maid')->count();
         $registered_employers = User::whereRoleIs('employer')->count();
         $registered_retired_personnels = User::whereRoleIs('retired')->count();
+        $search_locations = $this->getOptions('Job Search Location');
+        $search_experiences = $this->getOptions('Job Search Experience');
+        $search_salarys = $this->getOptions('Job Search Salary');
 
         return view('index', [
             'registered_job_seekers' => $registered_job_seekers,
@@ -42,6 +47,9 @@ class HomeController extends Controller
             'registered_domestic_maids' => $registered_domestic_maids,
             'registered_employers' => $registered_employers,
             'registered_retired_personnels' => $registered_retired_personnels,
+            'search_locations' => $search_locations,
+            'search_experiences' => $search_experiences,
+            'search_salarys' => $search_salarys,
         ]);
     }
 

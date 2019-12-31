@@ -26,32 +26,26 @@
 				    			<div class="suggest_location">
 									{{-- <input class="js-search-tags form-control" type="text" name="location" placeholder="Location"> --}}
 							        <select class="js-location-tags form-control" name="location" placeholder="123">
-							          <option value="">Location</option>
-							          <option value="Malaysia">Malaysia</option>
-							          <option value="Bangladesh">Bangladesh</option>
-							          <option value="India">India</option>
+										<option value="">Location</option>
+										@foreach ($search_locations as $location)
+											<option value="{{ $location->name }}">{{ $location->name }}</option>
+										@endforeach
 							        </select>
 					    		</div>
 					    		<div class="singleDD">
 					    			<select name="experience" class="form-control">
-                                    	<option value="">Experience</option>
-                                        <option value="1">0 Year</option>
-                                        <option value="2">1</option>
-                                        <option value="3">2</option>
-                                        <option value="3">3</option>
-                                        <option value="3">4</option>
-                                        <option value="3">5</option>
-                                        <option value="3">6</option>
+                                    	<option value="">Experience (Years)</option>
+                                        @foreach ($search_experiences as $year)
+											<option value="{{ $year->name }}">{{ $year->name }}</option>
+										@endforeach
                                     </select>
 					    		</div>
 					    		<div class="singleDD no-border">
 					    			<select name="salary" class="form-control">
                                     	<option value="">Salary</option>
-                                        <option value="100000">100,000</option>
-                                        <option value="50000">50,000</option>
-                                        <option value="40000">40,000</option>
-                                        <option value="30000">30,000</option>
-                                        <option value="20000">20,000</option>
+                                        @foreach ($search_salarys as $salary)
+											<option value="{{ $salary->name }}">{{ $salary->name }}</option>
+										@endforeach
                                     </select>
 					    		</div>
 					    	</div>

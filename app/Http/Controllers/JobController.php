@@ -29,13 +29,14 @@ class JobController extends Controller
                         return $query->where('positions_name', 'like', '%'.$request->title.'%');
                     })
                     ->when($request->location, function($query) use($request){
-                        return $query->where('district', $request->location);
+                        return $query->where('district', 'LIKE', '%' . $request->location . '%')->orWhere('town', 'LIKE', '%' . $request->location . '%')->orWhere('state', 'LIKE', '%' . $request->location . '%');
                     })
                     ->when($request->experience, function($query) use($request){
-                        return $query->where('related_experience_year', $request->experience);
+                        return $query->where('related_experience_year', 'LIKE', '%' . $request->experience . '%');
                     })
                     ->when($request->salary, function($query) use($request){
-                        return $query->where('salary_range_1','<', $request->salary);
+
+                        return $query->where('salary_offer','<', $request->salary + 500)->where('salary_offer','>', $request->salary - 500);
                     })->get();
 
         return view('job.index', [
@@ -306,6 +307,7 @@ class JobController extends Controller
     {
         $qualifications = $this->getOptions('Job Academic Qualification');
         $field_of_studys = $this->getOptions('Job Academic Field');
+        $salarys = $this->getOptions('Jobseeker Search Salary');
         $age_terms = [
             '18-24' => [18, 24],
             '25-35' => [25, 35],
@@ -338,11 +340,17 @@ class JobController extends Controller
                 }
             });
         }
+        if(isset($request->salary)){
+            $jobseekers = $jobseekers->filter(function ($jobseeker) use($request){
+                return $jobseeker->professional_profile->expected_salary <= $request->salary && $jobseeker->professional_profile->expected_salary > $request->salary - 500;
+            });
+        }
         return view('job.availableJobseekers', [
             'job' => $job,
             'jobseekers' => $jobseekers,
             'qualifications' => $qualifications,
-            'field_of_studys' => $field_of_studys
+            'field_of_studys' => $field_of_studys,
+            'salarys' => $salarys
         ]);
     }
 
