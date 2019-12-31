@@ -13,6 +13,7 @@ trait OptionTrait{
 
         $options = Option::where('type', $type)
             ->where('status', 1)
+            ->orderBy('name')
             ->get();
 
         return $options;
