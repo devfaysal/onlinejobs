@@ -25,7 +25,11 @@
 
                 <div class="mb-5">
                     <h4 class="text-info"><a href="{{route('job.show', $job->id)}}">{{$job->positions_name}}</a></h4>
+                    @auth
+                    @if(Auth::user()->hasRole('employer') || Auth::user()->hasRole('superadministrator'))
                     <p class="mb-1 text-info">{{$job->company()->company_name}}</p>
+                    @endif
+                    @endauth
                     <div class="pl-4">
                         <p class="my-0 text-secondary"> {{$job->district ? $job->district . ',' : ''}} {{$job->town ? $job->town . ',' : '' }} {{$job->state ?? '' }}</p>
                         @auth
