@@ -119,6 +119,10 @@
 																	<h2 class="text-info counter">{{$registered_employers}}</h2>
 																</div>
 																<div class="px-2">
+																	<p class="text-white text-center">Business Partners</p>
+																	<h2 class="text-info counter">{{$registered_business_partners}}</h2>
+																</div>
+																<div class="px-2">
 																	<p class="text-white text-center">Job Seekers</p>
 																	<h2 class="text-info counter">{{$registered_job_seekers}}</h2>
 																</div>

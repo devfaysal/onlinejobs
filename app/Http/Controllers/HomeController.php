@@ -36,6 +36,7 @@ class HomeController extends Controller
         $registered_foreign_workers = User::whereRoleIs('worker')->count();
         $registered_domestic_maids = User::whereRoleIs('maid')->count();
         $registered_employers = User::whereRoleIs('employer')->count();
+        $registered_business_partners = User::whereRoleIs('agent')->count();
         $registered_retired_personnels = User::whereRoleIs('retired')->count();
         $search_locations = $this->getOptions('Job Search Location');
         $search_experiences = $this->getOptions('Job Search Experience');
@@ -46,6 +47,7 @@ class HomeController extends Controller
             'registered_foreign_workers' => $registered_foreign_workers,
             'registered_domestic_maids' => $registered_domestic_maids,
             'registered_employers' => $registered_employers,
+            'registered_business_partners' => $registered_business_partners,
             'registered_retired_personnels' => $registered_retired_personnels,
             'search_locations' => $search_locations,
             'search_experiences' => $search_experiences,
