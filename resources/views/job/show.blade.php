@@ -30,7 +30,7 @@
                             @foreach($applicants as $applicant)
                             <tr>
                                 <td></td>
-                                <td><img src="{{$applicant->jobseeker->professional_profile['profile_image']}}" border="0" width="40" class="img-rounded" align="center" /></td>
+                                <td><img src="{{$applicant->jobseeker->professional_profile['profile_image'] != '' ? asset('storage/resume/'.$applicant->jobseeker->professional_profile['profile_image']) : asset('images/avatar.jpg')}}" border="0" width="40" class="img-rounded" align="center" /></td>
                                 <td>{{ $applicant->jobseeker->name}}</td>
                                 <td>{{ $applicant->jobseeker->professional_profile->age()}}</td>
                                 <td>{{ $applicant->jobseeker->professional_profile->highest_qualification}}</td>
