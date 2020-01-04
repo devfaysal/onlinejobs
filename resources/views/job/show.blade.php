@@ -45,7 +45,7 @@
                                         @elseif($applicant->applied_by_jobseeker == true)
                                             <span class="bade badge-info p-1">Applied by Jobseeker</span>
                                         @endif
-                                        <a href="{{route('professional.show', $applicant->id)}}" class="btn btn-sm btn-primary">View</a>
+                                        <a href="{{route('professional.show', $applicant->jobseeker->id)}}" class="btn btn-sm btn-primary">View</a>
                                         <input class="ml-1" type="checkbox" name="ids[]" value="{{$applicant->jobseeker->id}}">
                                     @endif
                                 </td>
