@@ -57,7 +57,7 @@ class SuggestJobseeker extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => 'New Retired Personnel Registered',
+            'message' => 'Some Jobseeker Suggested by Admin',
             'link' => route('job.show', $this->data->id),
         ];
     }
