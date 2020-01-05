@@ -317,6 +317,9 @@ class RegisterController extends Controller
             $professional->name = $request->name;
             $professional->email = $request->email;
             $professional->phone = $request->phone;
+            $professional->country = $request->country;
+            $professional->highest_qualification = $request->qualification;
+            $professional->subject  = $request->subject;
             if($request->file('resume_file')){
                 $image_basename = explode('.',$request->file('resume_file')->getClientOriginalName())[0];
                 $image = $image_basename . '-' . time() . '.' . $request->file('resume_file')->getClientOriginalExtension();

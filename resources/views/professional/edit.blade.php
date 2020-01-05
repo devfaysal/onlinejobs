@@ -34,6 +34,39 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="qualification" class="col-sm-4 col-form-label text-right">{{ __('Highest Qualification ') }}<span class="text-danger">*</span></label>
+                            <div class="col-sm-8">
+                                <select class="form-control{{ $errors->has('qualification') ? ' is-invalid' : '' }}" name="qualification" id="qualification">
+                                    <option value="">--Select Qualification--</option>
+                                    @foreach ($qualifications as $qualification)
+                                        <option value="{{$qualification->name}}" {{ $user->professional_profile->highest_qualification == $qualification->name ? 'selected' : '' }}>{{$qualification->name}}</option>
+                                    @endforeach
+                                </select>
+
+                            @if ($errors->has('qualification'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('qualification') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="subject" class="col-sm-4 col-form-label text-right">{{ __('Field of Study ') }}<span class="text-danger">*</span></label>
+                            <div class="col-sm-8">
+                                <select class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject" id="subject">
+                                    <option value="">--Select Field of Study--</option>
+                                    @foreach ($field_of_studys as $study)
+                                        <option value="{{$study->name}}" {{ $user->professional_profile->subject == $study->name ? 'selected' : '' }}>{{$study->name}}</option>
+                                    @endforeach
+                                </select>
+                            @if ($errors->has('subject'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('subject') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="skills" class="col-sm-4 col-form-label text-right">{{ __('Skills (Seperate with comma)') }}</label>
                             <div class="col-sm-8">
                                 <input id="skills" type="text" class="form-control{{ $errors->has('skills') ? ' is-invalid' : '' }}" name="skills" value="{{ $user->professional_profile->skills }}" placeholder="Skills">
@@ -113,10 +146,14 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="country" class="col-sm-4 col-form-label text-right">{{ __('Country') }} <span class="text-danger mt-2">*</span></label>
+                            <label for="country" class="col-sm-4 col-form-label text-right">{{ __('Country ') }}<span class="text-danger">*</span></label>
                             <div class="col-sm-8">
-                                <input id="country" type="text" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" name="country" value="{{ $user->professional_profile->country }}" placeholder="Country" required>
-
+                                <select name="country" id="country" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" required>
+                                    <option value="">--Select Country--</option>
+                                    @foreach ($countrys as $country)
+                                        <option value="{{$country->id}}" {{$country->id == $user->professional_profile->country ? 'selected':''}}>{{$country->name}}</option>
+                                    @endforeach
+                                </select>
                             @if ($errors->has('country'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('country') }}</strong>

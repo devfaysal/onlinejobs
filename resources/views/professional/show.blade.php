@@ -11,7 +11,7 @@
                             <img class="rounded-circle" style="width: 75px; height:75px;" src="{{$user->professional_profile->profile_image != '' ? asset('storage/resume/'.$user->professional_profile->profile_image) :  asset('images/dummy.jpg')}}">
                         </div>
                         <div class="col-md-8">
-                            <h4 class="mb-0">{{$user->name}}
+                            <h4 class="mb-0">{{$user->professional_profile->name ?? $user->name}}
                                 @if(Auth::id() == $user->id)
                                     <a class="text-white" href="{{route('professional.edit', $user->id)}}"> <i class="ml-3 fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                 @endif

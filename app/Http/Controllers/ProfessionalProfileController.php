@@ -71,8 +71,15 @@ class ProfessionalProfileController extends Controller
      */
     public function create()
     {
+        $qualifications = $this->getOptions('Job Academic Qualification');
+        $field_of_studys = $this->getOptions('Job Academic Field');
         $countrys = Country::where('status', 1)->get();
-        return view('professional.create', compact('countrys'));
+
+        return view('professional.create', [
+            'countrys' => $countrys,
+            'qualifications' => $qualifications,
+            'field_of_studys' => $field_of_studys
+        ]);
     }
 
     /**
@@ -111,9 +118,15 @@ class ProfessionalProfileController extends Controller
     public function edit(User $professional)
     {
         $PositionNames = $this->getOptions('Position Name');
+        $qualifications = $this->getOptions('Job Academic Qualification');
+        $field_of_studys = $this->getOptions('Job Academic Field');
+        $countrys = Country::where('status', 1)->get();
         return view('professional.edit',[
             'user' => $professional,
-            'PositionNames' => $PositionNames
+            'countrys' => $countrys,
+            'PositionNames' => $PositionNames,
+            'qualifications' => $qualifications,
+            'field_of_studys' => $field_of_studys
         ]);
     }
 
@@ -139,6 +152,8 @@ class ProfessionalProfileController extends Controller
         $professional = $professional->professional_profile;
         $professional->name = $request->name;
         $professional->resume_headline = $request->resume_headline;
+        $professional->highest_qualification = $request->qualification;
+        $professional->subject = $request->subject;
         $professional->skills = $request->skills;
         $professional->it_skills = $request->it_skills;
         $professional->city = $request->city;

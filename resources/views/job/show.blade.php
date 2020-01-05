@@ -20,7 +20,8 @@
                                 <th class="hide">Image</th>
                                 <th>Name</th>
                                 <th>Age</th>
-                                <th>Education</th>
+                                <th>Qualification</th>
+                                <th>Field of Study</th>
                                 <th>Position</th>
                                 <th>City</th>
                                 <th><input onclick="return confirm('Are you sure?')" class="btn btn-success btn-sm pull-right" type="submit" value="Select"></th>
@@ -31,19 +32,20 @@
                             <tr>
                                 <td></td>
                                 <td><img src="{{$applicant->jobseeker->professional_profile['profile_image'] != '' ? asset('storage/resume/'.$applicant->jobseeker->professional_profile['profile_image']) : asset('images/avatar.jpg')}}" border="0" width="40" class="img-rounded" align="center" /></td>
-                                <td>{{ $applicant->jobseeker->name}}</td>
+                                <td>{{ $applicant->jobseeker->professional_profile->name ?? $applicant->jobseeker->name}}</td>
                                 <td>{{ $applicant->jobseeker->professional_profile->age()}}</td>
                                 <td>{{ $applicant->jobseeker->professional_profile->highest_qualification}}</td>
+                                <td>{{ $applicant->jobseeker->professional_profile->subject}}</td>
                                 <td>{{ $applicant->jobseeker->professional_profile->resume_headline}}</td>
                                 <td>{{ $applicant->jobseeker->professional_profile['city']}}</td>
                                 <td>
                                     @if($applicant->invited_by_employer == true)
-                                        <span class="bade badge-success p-1">Already Selected</span>
+                                        <span style="font-size:12px;" class="bade badge-success p-1">Already Selected</span>
                                     @else
                                         @if($applicant->suggested_by_admin == true)
-                                            <span class="bade badge-warning p-1">Suggested By Admin</span>
+                                            <span style="font-size:12px;" class="bade badge-warning p-1">Suggested By Admin</span>
                                         @elseif($applicant->applied_by_jobseeker == true)
-                                            <span class="bade badge-info p-1">Applied by Jobseeker</span>
+                                            <span style="font-size:12px;" class="bade badge-info p-1">Applied by Jobseeker</span>
                                         @endif
                                         <a href="{{route('professional.show', $applicant->jobseeker->id)}}" class="btn btn-sm btn-primary">View</a>
                                         <input class="ml-1" type="checkbox" name="ids[]" value="{{$applicant->jobseeker->id}}">
