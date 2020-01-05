@@ -53,13 +53,12 @@ class WorkerController extends Controller
         })
         ->addColumn('status', function($user) {
             $applicant_status = 'Active';
-
-            if($user->applicants()->first()['proposed'] == 1 && $user->applicants()->first()['confirmed'] == 0 && $user->applicants()->first()['finialized'] == 0){
-                $applicant_status = 'Proposed by Agent';
-            }elseif($user->applicants()->first()['confirmed'] == 1 && $user->applicants()->first()['finialized'] == 0){
-                $applicant_status = 'Selected by Employer';
-            }elseif($user->applicants()->first()['finialized'] == 1){
+            if($user->applicants()->first()['finialized'] == 1){
                 $applicant_status = 'Finalized by Agent';
+            }elseif($user->applicants()->first()['confirmed'] == 1){
+                $applicant_status = 'Selected by Employer';
+            }elseif($user->applicants()->first()['proposed'] == 1){
+                $applicant_status = 'Proposed by Agent';
             }
             
             return $applicant_status;
