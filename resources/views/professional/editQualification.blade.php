@@ -77,10 +77,10 @@
                                     <label for="qualification" class="col-sm-4 col-form-label text-right">{{ __('Qualification ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         {{-- <input id="qualification" type="text" class="form-control{{ $errors->has('qualification') ? ' is-invalid' : '' }}" name="qualification[]" value="{{ $qualification->qualification }}" placeholder="Qualification" required> --}}
-                                        <select class="form-control{{ $errors->has('qualification') ? ' is-invalid' : '' }}" name="qualification[]" id="qualification">
+                                        <select class="form-control{{ $errors->has('qualification') ? ' is-invalid' : '' }}" name="qualification[]" id="qualification" required>
                                             <option value="">--Select Qualification--</option>
-                                            @foreach ($qualifications as $qualification)
-                                                <option value="{{$qualification->name}}">{{$qualification->name}}</option>
+                                            @foreach ($qualifications as $q)
+                                                <option value="{{$q->name}}" {{$qualification->qualification == $q->name ? 'selected' : '' }}>{{$q->name}}</option>
                                             @endforeach
                                         </select>
         
@@ -95,10 +95,10 @@
                                     <label for="subject" class="col-sm-4 col-form-label text-right">{{ __('Field of Study ') }}<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         {{-- <input id="subject" type="text" class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject[]" value="{{ $qualification->subject }}" placeholder="Field of Study" required> --}}
-                                        <select class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject[]" id="subject">
+                                        <select class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject[]" id="subject" required>
                                             <option value="">--Select Field of Study--</option>
                                             @foreach ($field_of_studys as $study)
-                                                <option value="{{$study->name}}">{{$study->name}}</option>
+                                                <option value="{{$study->name}}" {{$qualification->subject == $study->name ? 'selected' : '' }}>{{$study->name}}</option>
                                             @endforeach
                                         </select>
                                     @if ($errors->has('subject'))
@@ -109,9 +109,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="specialization" class="col-sm-4 col-form-label text-right">{{ __('Specialization ') }}<span class="text-danger">*</span></label>
+                                    <label for="specialization" class="col-sm-4 col-form-label text-right">{{ __('Specialization ') }}</label>
                                     <div class="col-sm-8">
-                                        <input id="specialization" type="text" class="form-control{{ $errors->has('specialization') ? ' is-invalid' : '' }}" name="specialization[]" value="{{ $qualification->specialization }}" placeholder="Specialization" required>
+                                        <input id="specialization" type="text" class="form-control{{ $errors->has('specialization') ? ' is-invalid' : '' }}" name="specialization[]" value="{{ $qualification->specialization }}" placeholder="Specialization">
         
                                     @if ($errors->has('specialization'))
                                         <span class="invalid-feedback" role="alert">
@@ -180,7 +180,7 @@
                                 <label for="qualification" class="col-sm-4 col-form-label text-right">{{ __('Qualification ') }}<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     {{-- <input id="qualification" type="text" class="form-control{{ $errors->has('qualification') ? ' is-invalid' : '' }}" name="qualification[]" value="{{ old('qualification') }}" placeholder="Qualification" required> --}}
-                                    <select class="form-control{{ $errors->has('qualification') ? ' is-invalid' : '' }}" name="qualification[]" id="qualification">
+                                    <select class="form-control{{ $errors->has('qualification') ? ' is-invalid' : '' }}" name="qualification[]" id="qualification" required>
                                             <option value="">--Select Qualification--</option>
                                             @foreach ($qualifications as $qualification)
                                                 <option value="{{$qualification->name}}">{{$qualification->name}}</option>
@@ -197,7 +197,7 @@
                                 <label for="subject" class="col-sm-4 col-form-label text-right">{{ __('Field of Study ') }}<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     {{-- <input id="subject" type="text" class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject[]" value="{{ old('subject') }}" placeholder="Field of Study" required> --}}
-                                    <select class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject[]" id="subject">
+                                    <select class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject[]" id="subject" required>
                                         <option value="">--Select Field of Study--</option>
                                         @foreach ($field_of_studys as $study)
                                             <option value="{{$study->name}}">{{$study->name}}</option>
@@ -211,9 +211,9 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="specialization" class="col-sm-4 col-form-label text-right">{{ __('Specialization ') }}<span class="text-danger">*</span></label>
+                                <label for="specialization" class="col-sm-4 col-form-label text-right">{{ __('Specialization ') }}</label>
                                 <div class="col-sm-8">
-                                    <input id="specialization" type="text" class="form-control{{ $errors->has('specialization') ? ' is-invalid' : '' }}" name="specialization[]" value="{{ old('specialization') }}" placeholder="Specialization" required>
+                                    <input id="specialization" type="text" class="form-control{{ $errors->has('specialization') ? ' is-invalid' : '' }}" name="specialization[]" value="{{ old('specialization') }}" placeholder="Specialization">
     
                                 @if ($errors->has('specialization'))
                                     <span class="invalid-feedback" role="alert">
@@ -287,7 +287,7 @@
                                                     <label for="qualification" class="col-sm-4 col-form-label text-right">{{ __('Qualification ') }}<span class="text-danger">*</span></label>
                                                     <div class="col-sm-8">
                                                         {{-- <input id="qualification" type="text" class="form-control{{ $errors->has('qualification') ? ' is-invalid' : '' }}" name="qualification[]" value="{{ old('qualification') }}" placeholder="Qualification" required> --}}
-                                                        <select class="form-control{{ $errors->has('qualification') ? ' is-invalid' : '' }}" name="qualification[]" id="qualification">
+                                                        <select class="form-control{{ $errors->has('qualification') ? ' is-invalid' : '' }}" name="qualification[]" id="qualification" required>
                                                             <option value="">--Select Qualification--</option>
                                                             @foreach ($qualifications as $qualification)
                                                                 <option value="{{$qualification->name}}">{{$qualification->name}}</option>
@@ -304,7 +304,7 @@
                                                     <label for="subject" class="col-sm-4 col-form-label text-right">{{ __('Field of Study ') }}<span class="text-danger">*</span></label>
                                                     <div class="col-sm-8">
                                                         {{-- <input id="subject" type="text" class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject[]" value="{{ old('subject') }}" placeholder="Field of Study" required> --}}
-                                                        <select class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject[]" id="subject">
+                                                        <select class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject[]" id="subject" required>
                                                             <option value="">--Select Field of Study--</option>
                                                             @foreach ($field_of_studys as $study)
                                                                 <option value="{{$study->name}}">{{$study->name}}</option>
@@ -318,9 +318,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="specialization" class="col-sm-4 col-form-label text-right">{{ __('Specialization ') }}<span class="text-danger">*</span></label>
+                                                    <label for="specialization" class="col-sm-4 col-form-label text-right">{{ __('Specialization ') }}</label>
                                                     <div class="col-sm-8">
-                                                        <input id="specialization" type="text" class="form-control{{ $errors->has('specialization') ? ' is-invalid' : '' }}" name="specialization[]" value="{{ old('specialization') }}" placeholder="Specialization" required>
+                                                        <input id="specialization" type="text" class="form-control{{ $errors->has('specialization') ? ' is-invalid' : '' }}" name="specialization[]" value="{{ old('specialization') }}" placeholder="Specialization">
                         
                                                     @if ($errors->has('specialization'))
                                                         <span class="invalid-feedback" role="alert">
