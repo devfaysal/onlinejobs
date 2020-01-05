@@ -34,8 +34,8 @@
                                 <td><img src="{{$applicant->jobseeker->professional_profile['profile_image'] != '' ? asset('storage/resume/'.$applicant->jobseeker->professional_profile['profile_image']) : asset('images/avatar.jpg')}}" border="0" width="40" class="img-rounded" align="center" /></td>
                                 <td>{{ $applicant->jobseeker->professional_profile->name ?? $applicant->jobseeker->name}}</td>
                                 <td>{{ $applicant->jobseeker->professional_profile->age()}}</td>
-                                <td>{{ $applicant->jobseeker->professional_profile->highest_qualification}}</td>
-                                <td>{{ $applicant->jobseeker->professional_profile->subject}}</td>
+                                <td>{{ $applicant->jobseeker->professional_profile->highest_qualification ?? $applicant->jobseeker->qualifications->first()->qualification}}</td>
+                                <td>{{ $applicant->jobseeker->professional_profile->subject ?? $applicant->jobseeker->qualifications->first()->subject}}</td>
                                 <td>{{ $applicant->jobseeker->professional_profile->resume_headline}}</td>
                                 <td>{{ $applicant->jobseeker->professional_profile['city']}}</td>
                                 <td>

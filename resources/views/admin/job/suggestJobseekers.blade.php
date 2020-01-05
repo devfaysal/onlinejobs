@@ -71,7 +71,7 @@
                 <div class="card-body">
                     <div class="row verticle-center">
                         @foreach ($jobseekers as $user)
-                        <div class="col-md-2 mb-2 text-center" style="border: 1px solid #e6edee; height: 220px; padding-top: 10px;">
+                        <div class="col-md-2 mb-2 text-center" style="border: 1px solid #e6edee; height: 250px; padding-top: 10px;">
                             <div class="custom-control custom-checkbox">
                                 <input class="custom-control-input" type="checkbox" name="ids[]" id="userid{{$user->id}}" value="{{$user->id}}">
                                 <label class="custom-control-label text-success" for="userid{{$user->id}}">Select</label>
@@ -80,7 +80,7 @@
                             <br>
                             <a href="{{route('professional.show', $user->id)}}" class="btn btn-sm btn-block btn-primary" target="_blank">Details</a>
                         </div>
-                        <div class="col-md-4 mb-2" style="border: 1px solid #e6edee; border-left: none; height: 220px; padding-top: 10px;">
+                        <div class="col-md-4 mb-2" style="border: 1px solid #e6edee; border-left: none; height: 250px; padding-top: 10px;">
                             <table class="table table-sm table-borderless">
                                 <tr>
                                     <th></th>
@@ -111,6 +111,18 @@
                                     <th width="35%">Salary</th>
                                     <th width="5%">:</th>
                                     <td width="60%">{{$user->professional_profile->expected_salary ?? ''}}</td>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <th width="35%">Qualification</th>
+                                    <th width="5%">:</th>
+                                    <td width="60%">{{$user->professional_profile->highest_qualification ?? $user->qualifications->first()->qualification}}</td>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <th width="35%">Field of Study</th>
+                                    <th width="5%">:</th>
+                                    <td width="60%">{{$user->professional_profile->subject ?? $user->qualifications->first()->subject}}</td>
                                 </tr>
                             </table>
                         </div>
