@@ -57,7 +57,7 @@ class GWProposedByAgent extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => 'GW Proposed by agent!!',
+            'message' => 'FW Proposed by agent!!',
             'link' => route('demand', $this->data->id),
         ];
     }

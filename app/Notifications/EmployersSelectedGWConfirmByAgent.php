@@ -57,7 +57,7 @@ class EmployersSelectedGWConfirmByAgent extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => 'GW Confirmed by agent!!',
+            'message' => 'FW Confirmed by agent!!',
             'link' => route('demand', $this->data->id),
         ];
     }

@@ -57,7 +57,7 @@ class AgentApplication extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => $this->data->first_name. ' wants to become an Agent!',
+            'message' => $this->data->first_name. ' wants to become a Business Partner!',
             'link' => route('admin.agentApplication'),
         ];
     }

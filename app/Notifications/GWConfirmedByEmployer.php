@@ -57,7 +57,7 @@ class GWConfirmedByEmployer extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => 'GW Confirmed by Employer!!',
+            'message' => 'FW Confirmed by Employer!!',
             'link' => route('demand', $this->data->id),
         ];
     }
