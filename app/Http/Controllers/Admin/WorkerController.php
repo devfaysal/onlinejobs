@@ -52,10 +52,24 @@ class WorkerController extends Controller
             return $string;
         })
         ->addColumn('status', function($user) {
-            if($user->applicants()->first()['id']){
-                return 'Offered';
-            };
-            return 'Active';
+            $applicant_status = 'Active';
+
+            if($user->applicants()->first()['proposed'] == 1){
+                $applicant_status = 'Proposed by Agent';
+            }elseif($user->applicants()->first()['confirmed'] == 1){
+                $applicant_status = 'Selected by Employer';
+            }elseif($user->applicants()->first()['finialized'] == 1){
+                $applicant_status = 'Finalized by Agent';
+            }
+            
+            return $applicant_status;
+
+
+
+            // if($user->applicants()->first()['proposed'] == 1){
+            //     return 'Offered';
+            // }elseif($user->applicants()->first()['confirmed'] == 1)
+            // return 'Active';
         })
         ->addColumn('country', function($user) {
             return $user->profile->nationality_data['name'];
