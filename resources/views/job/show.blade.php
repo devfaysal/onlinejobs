@@ -162,8 +162,10 @@
             <p class="text-center"><a class="btn btn-success" href="{{route('login')}}">Apply Online</a></p>
             @endguest
             @auth
-                @if(Auth::user()->hasRole('professional'))
+                @if(Auth::user()->hasRole('professional') && !$job->alreadyApplied(Auth::user()->id))
                     <p class="text-center"><a class="btn btn-success" href="{{route('applyOnline', $job->id)}}">Apply Online</a></p>
+                @else
+                    <p class="text-center"><span class="badge badge-success">You Already Applied/Invited</span></a></p>
                 @endif
             @endauth
             {{-- <p class="text-center mb-0">Company Name: {{$job->company()->company_name}}</p> --}}

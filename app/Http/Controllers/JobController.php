@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use App\RetiredPersonnelAcademic;
 use App\Notifications\JobSeekerApplied;
 use Illuminate\Support\Facades\Notification;
+use App\Notifications\JobSeekerAppliedNotifyEmployer;
 
 class JobController extends Controller
 {
@@ -296,6 +297,7 @@ class JobController extends Controller
 
         $admins = User::whereRoleIs('superadministrator')->get();
         Notification::send($admins, new JobSeekerApplied($job));
+        Notification::send($job->employer, new JobSeekerAppliedNotifyEmployer($job));
 
         Session::flash('message', 'Application Sent Successfully!!'); 
         Session::flash('alert-class', 'alert-success');

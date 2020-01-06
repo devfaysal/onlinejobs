@@ -20,6 +20,11 @@ class Job extends Model
         return $this->hasMany(JobAcademic::class);
     }
 
+    public function employer()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function company()
     {
         return EmployerProfile::where('user_id', $this->user_id)->first();
