@@ -456,7 +456,7 @@ class EmployerController extends Controller
 
     public function employerOffers()
     {
-        $offers = Offer::with('employer')->get();
+        $offers = Offer::with('employer')->orderBy('id','desc')->get();
         $offers = $offers->filter(function ($offer){
             return $offer->title == null;
         });

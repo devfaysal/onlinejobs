@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class OfferSentToDM extends Notification
+class OfferSentToDMNotifyAdmin extends Notification
 {
     use Queueable;
 
@@ -16,13 +16,11 @@ class OfferSentToDM extends Notification
      *
      * @return void
      */
-    public function __construct($data, $employer)
+    public function __construct($employer)
     {
-        $this->data = $data;
         $this->employer = $employer;
     }
 
-    private $data;
     private $employer;
 
     /**
@@ -60,7 +58,7 @@ class OfferSentToDM extends Notification
     {
         return [
             'message' => 'Offer Sent to Domestic Maid by ' . $this->employer->employer_profile->company_name. '!!',
-            'link' => route('profile.public', $this->data->public_id),
+            'link' => route('admin.employerOffers'),
         ];
     }
 }

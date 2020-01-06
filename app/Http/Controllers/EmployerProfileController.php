@@ -25,6 +25,7 @@ use App\Notifications\InvitedForInterview;
 use App\Notifications\GWConfirmedByEmployer;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\EmployerInvitedJobseeker;
+use App\Notifications\OfferSentToDMNotifyAdmin;
 use Image; /* https://github.com/Intervention/image */
 
 class EmployerProfileController extends Controller
@@ -504,6 +505,8 @@ class EmployerProfileController extends Controller
             $applicant->offer_id = $offer->id;
             $applicant->user_id = $id;
             $applicant->save();
+            $data = User::where('id', $id)->first();
+            Notification::send($data->profile->agent(), new OfferSentToDM($data, auth()->user()));
         }
 
         Session::flash('message', 'Offer sent successfully!'); 
@@ -511,9 +514,7 @@ class EmployerProfileController extends Controller
 
         //Send notification to the Admins
         $admins = User::whereRoleIs('superadministrator')->get();
-        $data = User::where('id', $ids[0])->first();
-        Notification::send($admins, new OfferSentToDM($data));
-        Notification::send($data->profile->agent(), new OfferSentToDM($data));
+        Notification::send($admins, new OfferSentToDMNotifyAdmin(auth()->user()));
 
         return redirect()->route('employer.show');
     }
