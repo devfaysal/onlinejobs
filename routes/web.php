@@ -203,6 +203,8 @@ Route::prefix('employer')->group(function(){
 Route::get('/job/search', 'JobController@search')->name('job.search');
 Route::get('/job/{job}/applyOnline', 'JobController@applyOnline')->name('applyOnline')->middleware('auth');
 Route::get('/job/{job}/applicants', 'Admin\JobController@applicants')->name('applicants')->middleware('role:administrator|superadministrator');
+Route::get('/job/{job}/applicants/{applicant}/changestatus', 'Admin\JobController@changestatus')->name('applicants.changestatus')->middleware('role:administrator|superadministrator');
+Route::post('/job/{job}/applicants/{applicant}', 'Admin\JobController@updatestatus')->name('applicants.updatestatus')->middleware('role:administrator|superadministrator');
 Route::get('/job/{job}/getJobApplicants', 'Admin\JobController@getJobApplicants')->name('getJobApplicants')->middleware('role:administrator|superadministrator');
 Route::get('/job/{job}/available-jobseekers', 'JobController@availableJobseekers')->name('availableJobseekers');
 Route::resource('/job', 'JobController');

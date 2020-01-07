@@ -180,6 +180,38 @@ class JobController extends Controller
         ]);
     }
 
+    public function changestatus(Job $job, User $applicant)
+    {
+        $statuses = [
+            '1' => 'Called for interview',
+            '2' => 'Finalized interview date',
+            '3' => 'Interview Done',
+            '4' => 'Hired',
+        ];
+        return view('admin.job.changestatus', [
+            'job' => $job,
+            'applicant' => $applicant,
+            'data' => $job->jobApplicants->where('user_id', $applicant->id)->first(),
+            'statuses' => $statuses
+        ]);
+    }
+
+    public function updatestatus(Job $job, User $applicant, Request $request)
+    {
+        $applicant_info = $job->jobApplicants->where('user_id', $applicant->id)->first();
+        $applicant_info->status = $request->status;
+        if($request->status == 2){
+            $applicant_info->interview_date = $request->date;
+        }elseif($request->status == 4){
+            $applicant_info->hiring_date = $request->date;
+        }
+        $applicant_info->save();
+
+        Session::flash('message', 'Status Updated successfully!'); 
+        Session::flash('alert-class', 'alert-success');
+        return redirect(route('applicants', $job->id));
+    }
+
     public function getJobApplicants(Job $job)
     {
         $applicants = $job->jobApplicants->pluck('user_id');
@@ -187,8 +219,9 @@ class JobController extends Controller
         $users = User::find($applicants);
 
         return DataTables::of($users)
-        ->addColumn('action', function ($user) {
+        ->addColumn('action', function ($user) use ($job) {
             $string = '<a href="'.route('professional.show', $user->id).'" class="btn btn-sm btn-primary">View</a> ';
+            $string .= '<a href="'.route('applicants.changestatus', [$job->id, $user->id]).'" class="btn btn-sm btn-warning ml-2">Change Status</a>';
             return $string;
         })
         ->addColumn('city', function($user) {
@@ -225,6 +258,15 @@ class JobController extends Controller
                     $string .= '<span class="bade badge-info p-1">Applied by Jobseeker</span>';
                 }
             }
+            $statuses = [
+                '1' => 'Called for interview',
+                '2' => 'Finalized interview date',
+                '3' => 'Interview Done',
+                '4' => 'Hired',
+            ];
+
+            $string .= '<br/><span class="bade badge-success px-1 mt-1" style="display:inline-block">' . $statuses[$applicant->status] . '</span>';
+
             return $string;
         })
         ->rawColumns(['profile_image', 'status', 'action'])
