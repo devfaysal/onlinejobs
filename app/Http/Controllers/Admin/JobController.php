@@ -168,7 +168,7 @@ class JobController extends Controller
         $employer = User::find($job->user_id);
         Notification::send($employer, new SuggestJobseeker($job));
 
-        Session::flash('message', 'Suggesion sent successfully!'); 
+        Session::flash('message', 'Suggestion sent successfully!'); 
         Session::flash('alert-class', 'alert-success');
         return redirect(route('admin.job.suggestJobseekers', $job->id));
     }

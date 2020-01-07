@@ -159,11 +159,11 @@ class EmployerController extends Controller
             } elseif ($demand->status == 3) {
                 $status = 'Assigned Agent';
             } elseif ($demand->status == 4) {
-                $status = 'Proposed GW';
+                $status = 'Proposed FW';
             } elseif ($demand->status == 5) {
-                $status = 'Confirmed GW';
+                $status = 'Confirmed FW';
             } elseif ($demand->status == 6) {
-                $status = 'Finalized GW';
+                $status = 'Finalized FW';
             } elseif ($demand->status == 7) {
                 $status = 'Closed';
             } else {
@@ -216,7 +216,7 @@ class EmployerController extends Controller
     public function proposeGWToDemand(Request $request)
     {
         if(!$request->gws) {
-            Session::flash('message', 'No General Worker Selected!'); 
+            Session::flash('message', 'No Foreign Worker Selected!'); 
             Session::flash('alert-class', 'alert-danger');
 
             return redirect()->back();
@@ -254,7 +254,7 @@ class EmployerController extends Controller
     public function finalizeGWToDemand(Request $request)
     {
         if(!$request->gws) {
-            Session::flash('message', 'No General Worker were Selected!'); 
+            Session::flash('message', 'No Foreign Worker were Selected!'); 
             Session::flash('alert-class', 'alert-danger');
 
             return redirect()->back();

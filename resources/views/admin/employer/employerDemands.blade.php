@@ -64,7 +64,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content tex-center">
                 <div class="modal-header">
-                    <h5 class="modal-title text-center" id="exampleModalLongTitle"> Select General Workers </h5>
+                    <h5 class="modal-title text-center" id="exampleModalLongTitle"> Select Foreign Workers </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -88,7 +88,7 @@
                                             <th>Country</th>
                                             <th>Status</th>
                                             <th></th>
-                                            <th><input onclick="return confirm('Are you sure?')" class="btn btn-success btn-sm pull-right" type="submit" value="Propose GW"></th>
+                                            <th><input onclick="return confirm('Are you sure?')" class="btn btn-success btn-sm pull-right" type="submit" value="Propose FW"></th>
                                         </tr>
                                     </thead>
                                     <tfoot>
