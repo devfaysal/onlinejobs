@@ -43,8 +43,7 @@ class InvitedForInterview extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('You have been invited by an Employer.')
-                    ->line('Please Contact Us to set interview date!');
+                    ->line('Your Resume Have Been Selected by Employer on '. date('d-m-Y') .'. Please Contact Online Jobs for further details and coordination for interview.');
     }
 
     /**
@@ -56,7 +55,7 @@ class InvitedForInterview extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => 'One Employer Selected You!',
+            'message' => 'Your Resume Have Been Selected by Employer! Please Contact Online Jobs for further details',
             'link' => route('job.show', $this->data->id),
         ];
     }

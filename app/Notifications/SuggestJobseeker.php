@@ -43,9 +43,9 @@ class SuggestJobseeker extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Jobseeker Suggested by Admin.')
-                    ->action('Notification Action', route('job.show', $this->data->id))
-                    ->line('Thank you for using our application!');
+                    ->line('There is resume of Candidate recommended by Online Jobs Admin Team. Please login with your credential.')
+                    ->line('Please Contact Online Jobs for further details.')
+                    ->action('Show', route('job.show', $this->data->id));
     }
 
     /**
@@ -57,7 +57,7 @@ class SuggestJobseeker extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => 'Some Jobseeker Suggested by Admin',
+            'message' => 'There is resume of Candidate recommended by Online Jobs Admin Team.',
             'link' => route('job.show', $this->data->id),
         ];
     }

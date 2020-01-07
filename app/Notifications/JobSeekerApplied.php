@@ -43,7 +43,7 @@ class JobSeekerApplied extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('A Job seeker Applied for a job.')
+                    ->line('Job seekers interested to work with ' . $this->data->company()->company_name)
                     ->action('Check now', route('applicants', $this->data->id));
     }
 
@@ -56,7 +56,7 @@ class JobSeekerApplied extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => 'A Job seeker Applied for a job.',
+            'message' => 'Job seekers interested to work with ' . $this->data->company()->company_name,
             'link' => route('applicants', $this->data->id),
         ];
     }

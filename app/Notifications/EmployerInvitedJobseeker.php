@@ -43,7 +43,7 @@ class EmployerInvitedJobseeker extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line($this->data->company()->company_name . ' Selected some Job seekers!')
+                    ->line($this->data->company()->company_name . ' has selected some Job seekers!')
                     ->action('Show', route('applicants', $this->data->id));
     }
 

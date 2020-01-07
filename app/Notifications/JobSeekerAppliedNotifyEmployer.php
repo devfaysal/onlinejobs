@@ -43,7 +43,7 @@ class JobSeekerAppliedNotifyEmployer extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('A Job seeker Applied')
+                    ->line('A job seeker chosen you as his / her employer. Please Contact Online Jobs for further details.')
                     ->action('Check now', route('job.show', $this->data->id));
     }
 
@@ -56,7 +56,7 @@ class JobSeekerAppliedNotifyEmployer extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => 'A Job seeker Applied',
+            'message' => 'A job seeker chosen you as his / her employer. Please Contact Online Jobs for further details.',
             'link' => route('job.show', $this->data->id),
         ];
     }
