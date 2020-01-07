@@ -114,29 +114,31 @@
 														</div>
 														<div class="col-sm-8 col-md-8 col-lg-8">
 															<div class="row d-flex justify-content-center">
-																<div class="px-2">
-																	<p class="text-white text-center">Employers</p>
-																	<h2 class="text-info counter">{{$registered_employers}}</h2>
+																<div class="col-4 px-2">
+																	<p class="text-white text-center mb-1">Employers</p>
+																	<p class="text-center text-info counter mb-1 font-weight-bold">{{$registered_employers}}</p>
 																</div>
-																<div class="px-2">
-																	<p class="text-white text-center">Business Partners</p>
-																	<h2 class="text-info counter">{{$registered_business_partners}}</h2>
+																<div class="col-4 px-2">
+																	<p class="text-white text-center mb-1">Business Partners</p>
+																	<p class="text-center text-info counter mb-1 font-weight-bold">{{$registered_business_partners}}</p>
 																</div>
-																<div class="px-2">
-																	<p class="text-white text-center">Job Seekers</p>
-																	<h2 class="text-info counter">{{$registered_job_seekers}}</h2>
+																<div class="col-4 px-2">
+																	<p class="text-white text-center mb-1">Job Seekers</p>
+																	<p class="text-center text-info counter mb-1 font-weight-bold">{{$registered_job_seekers}}</p>
 																</div>
-																<div class="px-2">
-																	<p class="text-white text-center">Retired Personnels</p>
-																	<h2 class="text-info counter">{{$registered_retired_personnels}}</h2>
+															</div>
+															<div class="row mt-1 d-flex justify-content-center">
+																<div class="col-4 px-2">
+																	<p class="text-white text-center mb-1">Retired Personnels</p>
+																	<p class="text-center text-info counter mb-1 font-weight-bold">{{$registered_retired_personnels}}</p>
 																</div>
-																<div class="px-2">
-																	<p class="text-white text-center">Foreign Workers</p>
-																	<h2 class="text-info counter">{{$registered_foreign_workers}}</h2>
+																<div class="col-4 px-2">
+																	<p class="text-white text-center mb-1">Foreign Workers</p>
+																	<p class="text-center text-info counter mb-1 font-weight-bold">{{$registered_foreign_workers}}</p>
 																</div>
-																<div class="px-2">
-																	<p class="text-white text-center">Domestic Maids</p>
-																	<h2 class="text-info counter">{{$registered_domestic_maids}}</h2>
+																<div class="col-4 px-2">
+																	<p class="text-white text-center mb-1">Domestic Maids</p>
+																	<p class="text-center text-info counter mb-1 font-weight-bold">{{$registered_domestic_maids}}</p>
 																</div>
 															</div>
 														</div>
