@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="logbanner" style="min-height: 350px;background:url(/images/loginpage.png) no-repeat fixed;">
+<div class="logbanner" style="min-height: 60vh;background:url(/images/loginpage.png) no-repeat center center;">
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-4 col-md-offset-4">

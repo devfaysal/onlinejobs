@@ -13965,5 +13965,11 @@ article h6 {
 	position: relative;
     transform: translate(-50%, -0%);
     left: 50%;*/
-	width:auto !important;
+	/* width:auto !important; */
+}
+
+@media only screen and (max-width: 1568px) {
+  .carousel-item .d-block{
+    height: 450px;
+  }
 }
