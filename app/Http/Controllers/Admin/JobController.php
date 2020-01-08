@@ -265,8 +265,10 @@ class JobController extends Controller
                 '4' => 'Hired',
             ];
 
-            $string .= '<br/><span class="bade badge-success px-1 mt-1" style="display:inline-block">' . $statuses[$applicant->status] . '</span>';
-
+            if($applicant->status != null){
+                $string .= '<br/><span class="bade badge-success px-1 mt-1" style="display:inline-block">' . $statuses[$applicant->status] . '</span>';
+            }
+            
             return $string;
         })
         ->rawColumns(['profile_image', 'status', 'action'])
