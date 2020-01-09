@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="logbanner" style="min-height: 60vh;background:linear-gradient(0deg,rgba(0,0,0,0.1),rgba(0,0,0,0.1)),url(/images/loginpage_1.png) no-repeat center;background-size: cover; width:100%;">
+<div class="logbanner" style="min-height: 60vh;background:linear-gradient(0deg,rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(/images/login-img.jpg) no-repeat center;background-size: cover; width:100%;">
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-4 col-md-offset-4">
