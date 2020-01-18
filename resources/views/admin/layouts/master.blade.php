@@ -296,7 +296,7 @@
                                 </li>
                                 <li class="{{ ( (Route::currentRouteName() === "admin.proposedGwDm") ? "active" : "") }}">
                                     <a href="{{route('admin.proposedGwDm')}}">
-                                        <i class="fa fa-users"></i> Proposed GW/DM </a>
+                                        <i class="fa fa-users"></i> Proposed FW/DM </a>
                                 </li>
                                 @endif
                             </ul>

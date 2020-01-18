@@ -2,7 +2,7 @@
 @section('content')
     <section class="section">
         <div class="title-block">
-            <h1 class="title"> General Workers @if(Auth::user()->hasRole('agent') && Auth::user()->status == 1)<a class="btn btn-success" href="/agent/createuser?t=gw">Add General Worker</a>@endif</h1>
+            <h1 class="title"> Foreign Workers</h1>
         </div>
         <table id="users-table" class="table table-condensed">
             <thead>
@@ -10,7 +10,7 @@
                     <th></th>
                     <th>ID</th>
                     <th>Image</th>
-                    <th>GW/DM</th>
+                    <th>FW/DM</th>
                     <th>Employer</th>
                     <th>Agent</th>
                     <th>Proposed by Agent</th>
@@ -23,9 +23,9 @@
                     <th class="hide"></th>
                     <th>ID</th>
                     <th class="hide">Image</th>
-                    <th>GW/DM</th>
-                    <th>employer</th>
-                    <th>agent</th>
+                    <th>FW/DM</th>
+                    <th>Employer</th>
+                    <th>Agent</th>
                     <th>Proposed by Agent</th>
                     <th>status</th>
                     <th class="hide">Action</th>
